@@ -1,0 +1,96 @@
+"""CourseGraph MCP sunucusu (stdio).
+
+opencode / Claude / Cursor gibi ajanlar için ders bilgi grafiği araçları.
+Çalıştırma: python -m coursegraph.server
+"""
+from __future__ import annotations
+
+import json
+from pathlib import Path
+
+from fastmcp import FastMCP
+
+from .graph import load
+from .indexer import write_index
+
+mcp = FastMCP(
+    "coursegraph",
+    instructions=(
+        "CourseGraph: Açık İlahiyat ders bilgi grafiği. "
+        "Ders, bölüm, kavram, quiz ve vize/final/yaz sınavlarını sorgula. "
+        "Araçları doğrudan kullan; dosya dosya tarama yerine graf kullan."
+    ),
+)
+
+
+def _fmt(obj) -> str:
+    return json.dumps(obj, ensure_ascii=False, indent=2)
+
+
+@mcp.tool
+def coursegraph_stats() -> str:
+    """Graf boyutu ve tip dağılımı (hızlı genel bakış)."""
+    return _fmt(load().stats())
+
+
+@mcp.tool
+def course_explore(query: str) -> str:
+    """Sorguya göre surgical context: en iyi bölüm/kavram/quiz eşleşmeleri ve komşuları.
+
+    Kullanım: "mezhep nedir", "Lozan", "ünlu uyumu", "Cemel" gibi sorular.
+    """
+    return _fmt(load().explore(query))
+
+
+@mcp.tool
+def course_search(query: str, limit: int = 15) -> str:
+    """Ders metinlerinde hızlı arama (bölüm, kavram, quiz, sınav, artifact)."""
+    return _fmt(load().search(query, limit=limit))
+
+
+@mcp.tool
+def course_impact(term: str) -> str:
+    """Bir terim/kavram hangi bölümleri, quiz ve sınav sorularını etkiliyor?"""
+    return _fmt(load().impact(term))
+
+
+@mcp.tool
+def course_overview(slug: str) -> str:
+    """Ders genel görünümü: üniversite, dönem, bölümler, quiz, sınavlar.
+
+    slug: ataturk-ilkeleri-1 | turk-dili-1 | islam-mezhepleri-tarihi
+    """
+    return _fmt(load().course_overview(slug))
+
+
+@mcp.tool
+def chapter_detail(course: str, chapter: int) -> str:
+    """Bölüm detayı: özet, hedefler, kavramlar, timeline, kaynaklar.
+
+    course: ders slug'ı; chapter: 1-based bölüm numarası.
+    """
+    return _fmt(load().chapter_detail(course, chapter))
+
+
+@mcp.tool
+def coursegraph_rebuild() -> str:
+    """Grafiği kaynaklardan yeniden oluştur (yeni ders/exam eklendikten sonra)."""
+    path = write_index()
+    # cache'i zorla yenile
+    import coursegraph.graph as gg
+
+    gg._cache = None
+    meta = json.loads((Path(path).parent / "meta.json").read_text(encoding="utf-8"))
+    return _fmt({"status": "ok", "path": str(path), **meta})
+
+
+def main() -> None:
+    # ilk açılışta index yoksa üret
+    idx = Path(__file__).resolve().parent / "index" / "graph.json"
+    if not idx.exists():
+        write_index()
+    mcp.run()
+
+
+if __name__ == "__main__":
+    main()
