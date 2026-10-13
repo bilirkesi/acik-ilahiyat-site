@@ -412,5 +412,12 @@ table.transcript { width: 100%; border-collapse: collapse; background: var(--pap
 .past-row .btn { flex: none; min-height: 40px; }
 .game-q.revealed { border-left-color: var(--gold); }
 .self-grade { margin-top: .9rem; padding-top: .75rem; border-top: 1px dashed var(--line); }
+
+/* çıkmış vize çözüm bağlantıları */
+.solution-links { margin: .85rem 0 0; padding: .75rem .85rem; background: #f3eddf; border: 1px solid var(--line); }
+.solution-label { margin: 0 0 .5rem; font: 600 .72rem/1 var(--sans); letter-spacing: .08em; text-transform: uppercase; color: var(--gold); }
+.solution-link { display: block; padding: .45rem .55rem; margin: .25rem 0; color: var(--navy); font: 600 .92rem/1.3 var(--sans); text-decoration: none; border-left: 3px solid var(--gold); background: var(--paper); }
+.solution-link:hover { border-left-color: var(--navy); }
+.solution-link span { display: block; margin-top: .2rem; font: 400 .82rem/1.45 var(--sans); color: var(--muted); }
 .chip-row { display: flex; flex-wrap: wrap; gap: .35rem; margin-top: .55rem; }
 .chip { font: 500 .72rem/1 var(--sans); padding: .28rem .45rem; border: 1px solid var(--line); border-radius: 999px; color: var(--muted); }

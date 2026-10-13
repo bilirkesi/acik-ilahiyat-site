@@ -549,7 +549,7 @@ def main() -> int:
         # çıkmış vize arşivi (self-graded anımsama; OCR seçenekleri eksik olabilir)
         past_path = ROOT / "data" / slug / "past_exams.json"
         if past_path.exists():
-            from coursegraph.past_exams import UNIT_TITLES, annotate_questions
+            from coursegraph.past_exams import UNIT_TITLES, UNIT_TO_CHAPTERS, annotate_questions
 
             past_index = [f"# {meta.get('subject', slug)} Çıkmış Vizeler\n",
                           "Sorular PDF OCR'dan; cevap anahtarı PDF'in son sayfasındandır. Ünite etiketi eklenmiştir.\n"]
@@ -561,19 +561,43 @@ def main() -> int:
                     f"Ders: {meta.get('subject', slug)} · {university_label(unis, meta.get('university_id', 'aof'))}. "
                     f"{len(qs)} soru. Cevap anahtarı var (PDF son sayfa).\n",
                 ]
+                plan_path = ROOT / "data" / slug / "study_plan.json"
+                plan = load_json(plan_path) if plan_path.exists() else {}
+                ch_titles = {i: (ch.get("title") or f"Bölüm {i}") for i, ch in enumerate(plan.get("chapters") or [], 1)}
                 for n, q in enumerate(qs, 1):
                     u = q.get("unit")
                     unit_t = UNIT_TITLES.get(u, f"Ünite {u}") if u else "Bilinmiyor"
                     kws = ", ".join(q.get("keywords") or [])
+                    ch_nums = UNIT_TO_CHAPTERS.get(u, []) if u else []
                     lines.append(f"## {n}. {q.get('stem', '')}\n")
                     lines.append(f"*Ünite:* {unit_t}\n")
+                    if ch_nums:
+                        ch_bits = []
+                        for cn in ch_nums:
+                            title = ch_titles.get(cn, "")
+                            ch_bits.append(f"{cn}. bölüm{f' ({title})' if title else ''}")
+                        lines.append("*İlgili bölümler:* " + "; ".join(ch_bits) + "\n")
                     if kws:
                         lines.append(f"*Anahtar kelimeler:* {kws}\n")
                     letters = ["A", "B", "C", "D", "E", "F"]
+                    correct = q.get("correct")
+                    correct_opt = next((o for o in (q.get("options") or []) if o.get("key") == correct), None)
+                    if correct and correct_opt:
+                        lines.append(f"**Cevap anahtarı:** {correct}) {correct_opt.get('text', '')}\n")
                     for j, o in enumerate(q.get("options") or []):
                         letter = o.get("key") or letters[j]
-                        lines.append(f"{letter}) {o.get('text', '')}")
+                        mark = " *" if letter == correct or o.get("isCorrect") else ""
+                        lines.append(f"{letter}) {o.get('text', '')}{mark}")
                     lines.append("")
+                    sol_parts = []
+                    if correct and correct_opt:
+                        sol_parts.append(f"Doğru cevap {correct}) {correct_opt.get('text', '')}")
+                    if unit_t and unit_t != "Bilinmiyor":
+                        sol_parts.append(f"konu ünitesi {unit_t}")
+                    if ch_nums:
+                        sol_parts.append("ilgili ders bölümleri " + ", ".join(f"{cn}. bölüm" for cn in ch_nums))
+                    if sol_parts:
+                        lines.append("**Çözüm:** " + "; ".join(sol_parts) + ".\n")
                 p_fm = [
                     ("type", "Past Exam"),
                     ("title", f"Çıkmış vize {exam.get('year', '')}"),

@@ -18,7 +18,7 @@ school: İstanbul Üniversitesi (e-Medrese yayını)
 mode: lectures
 language: tr
 status: active
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-13T15:23:05Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-13T15:45:18Z }
 source_provider: aof
 resource: "https://www.youtube.com/playlist?list=PLNbpRT8SFQRrt0jMiJkPXprfdebuCSTJw"
 notebook: "https://notebooklm.google.com/notebook/ad4a99c9-cc96-4f29-92f5-ca8638bc42c2"

@@ -5,7 +5,7 @@ description: Bu bölümde Türk dilinin biçim bilgisi yapısı, en küçük anl
 course: turk-dili-1
 chapter: 4
 status: stable
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-13T15:23:05Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-13T15:45:18Z }
 notebook: "https://notebooklm.google.com/notebook/c702ed26-fe17-463d-b217-202acd0c3d26"
 ---
 

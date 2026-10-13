@@ -402,12 +402,25 @@
       fb = `<strong>Örnek cevap:</strong> ${esc(q.grading.modelAnswer)}` +
         (q.grading.requiredAttributes ? `<ul style="margin:.5rem 0 0">${q.grading.requiredAttributes.map((a) => `<li>${esc(a)}</li>`).join("")}</ul>` : "");
     }
+    if ((q.type === "multiple_choice" || q.type === "multiple_select") && q.solution) {
+      fb = esc(q.solution);
+    }
     if (fb || ok !== null) {
       const d = document.createElement("div");
       d.className = "feedback " + (ok === true ? "ok" : ok === false ? "no" : "");
       d.innerHTML = (ok === true ? "<strong>Doğru.</strong> " : ok === false ? "<strong>Tam değil.</strong> " : "") + fb;
       box.appendChild(d);
       typeset(d);
+    }
+    if (Array.isArray(q.chapterMeta) && q.chapterMeta.length) {
+      const wrap = document.createElement("div");
+      wrap.className = "solution-links";
+      wrap.innerHTML = `<p class="solution-label">Çözüm · ilgili bölüm</p>` + q.chapterMeta.map((m) => {
+        const slug = q._slug || q.course || "";
+        const href = `#/course/${slug}/chapter/${m.n}`;
+        return `<a class="solution-link" href="${href}">${esc(m.n)}. ${esc(m.title)}${m.summary ? `<span>${esc(m.summary)}</span>` : ""}</a>`;
+      }).join("");
+      box.appendChild(wrap);
     }
     box.querySelectorAll("input,textarea").forEach((x) => (x.disabled = true));
   }
@@ -702,10 +715,14 @@
     const questions = (exam.questions || []).map((q) => ({
       ...q,
       _slug: c.slug,
+      course: c.slug,
       type: "multiple_choice",
       question: q.question || q.stem || "",
+      solution: q.solution || "",
+      chapterMeta: q.chapterMeta || [],
       answerOptions: (q.options || []).map((o) => ({
         text: o.text,
+        rationale: o.rationale || "",
         isCorrect: !!(o.isCorrect || (q.correct && o.key === q.correct)),
       })),
     }));
