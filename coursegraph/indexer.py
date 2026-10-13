@@ -125,6 +125,7 @@ def build() -> dict:
             "course",
             c.get("subject", slug),
             slug=slug,
+            course=slug,
             course_code=c.get("course_code", ""),
             course_name=c.get("course_name", c.get("subject", slug)),
             university=uid,

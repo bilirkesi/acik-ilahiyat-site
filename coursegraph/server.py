@@ -74,14 +74,49 @@ def chapter_detail(course: str, chapter: int) -> str:
 
 @mcp.tool
 def coursegraph_rebuild() -> str:
-    """Grafiği kaynaklardan yeniden oluştur (yeni ders/exam eklendikten sonra)."""
-    path = write_index()
-    # cache'i zorla yenile
+    """Grafiği ve zihin haritalarını kaynaklardan yeniden oluştur."""
+    from .watch import rebuild_all
+
     import coursegraph.graph as gg
 
     gg._cache = None
-    meta = json.loads((Path(path).parent / "meta.json").read_text(encoding="utf-8"))
-    return _fmt({"status": "ok", "path": str(path), **meta})
+    return _fmt(rebuild_all())
+
+
+@mcp.tool
+def course_mindmap(course: str, mindmap_id: str | None = None) -> str:
+    """Ders zihin haritası (JSON): panel ağacı, bölüm ağacı, NotebookLM haritaları, graf türevi.
+
+    course: ataturk-ilkeleri-1 | turk-dili-1 | islam-mezhepleri-tarihi
+    mindmap_id: opsiyonel (panel-tree | panel-chapters | nl-01... | graph-derived)
+    HTML: coursegraph/index/mindmaps/<course>.html
+    """
+    path = Path(__file__).resolve().parent / "index" / "mindmaps" / f"{course}.json"
+    if not path.exists():
+        # dene: rebuild
+        from .mindmap import build_mindmaps
+
+        build_mindmaps(load())
+    if not path.exists():
+        return _fmt({"error": "mindmap yok", "course": course})
+    data = json.loads(path.read_text(encoding="utf-8"))
+    if mindmap_id:
+        maps = [m for m in data.get("mindmaps", []) if m.get("id") == mindmap_id]
+        if not maps:
+            return _fmt({"error": "mindmap_id bulunamadı", "available": [m["id"] for m in data.get("mindmaps", [])]})
+        data = {**data, "mindmaps": maps}
+    return _fmt(data)
+
+
+@mcp.tool
+def course_mindmap_index() -> str:
+    """Tüm ders zihin haritalarının listesi."""
+    path = Path(__file__).resolve().parent / "index" / "mindmaps" / "index.json"
+    if not path.exists():
+        from .mindmap import build_mindmaps
+
+        build_mindmaps(load())
+    return _fmt(json.loads(path.read_text(encoding="utf-8")))
 
 
 def main() -> None:

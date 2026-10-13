@@ -1,0 +1,95 @@
+{
+  "generated_at": "2026-10-13T13:05:54Z",
+  "courses": [
+    {
+      "course": "ataturk-ilkeleri-1",
+      "title": "Atatürk İlkeleri ve İnkılap Tarihi",
+      "mindmaps": [
+        {
+          "id": "panel-tree",
+          "title": "Atatürk İlkeleri ve İnkılap Tarihi I İnteraktif Paneli",
+          "nodes": 6,
+          "source": "interactive.tree"
+        },
+        {
+          "id": "panel-chapters",
+          "title": "ataturk-ilkeleri-1 bölüm ağacı",
+          "nodes": 72,
+          "source": "interactive.chapters"
+        },
+        {
+          "id": "nl-01",
+          "title": "I. TBMM'nin Kurucu Özellikleri ve Yapısı",
+          "nodes": 21,
+          "source": "artifact:mind-map__I. TBMM Zihin Haritası.json"
+        },
+        {
+          "id": "nl-02",
+          "title": "Mondros Sonrası Gelişmeler ve Milli Mücadele Hazırlıkları",
+          "nodes": 48,
+          "source": "artifact:mind-map__Mondros Mütarekesi Zihin Haritası.json"
+        },
+        {
+          "id": "nl-03",
+          "title": "HTML5, Canvas ve Chart.js Modüler Yapısı ve Veri Akışı",
+          "nodes": 29,
+          "source": "artifact:mind-map__Veri Görselleştirme Zihin Haritası.json"
+        },
+        {
+          "id": "graph-derived",
+          "title": "ataturk-ilkeleri-1 kavram ağacı (graf)",
+          "nodes": 41,
+          "source": "coursegraph"
+        }
+      ]
+    },
+    {
+      "course": "islam-mezhepleri-tarihi",
+      "title": "İslam Mezhepleri Tarihi",
+      "mindmaps": [
+        {
+          "id": "panel-tree",
+          "title": "İslam Mezhepleri Tarihi İnteraktif Paneli",
+          "nodes": 14,
+          "source": "interactive.tree"
+        },
+        {
+          "id": "panel-chapters",
+          "title": "islam-mezhepleri-tarihi bölüm ağacı",
+          "nodes": 56,
+          "source": "interactive.chapters"
+        },
+        {
+          "id": "graph-derived",
+          "title": "islam-mezhepleri-tarihi kavram ağacı (graf)",
+          "nodes": 43,
+          "source": "coursegraph"
+        }
+      ]
+    },
+    {
+      "course": "turk-dili-1",
+      "title": "Türk Dili",
+      "mindmaps": [
+        {
+          "id": "panel-tree",
+          "title": "Türk Dili I İnteraktif Paneli",
+          "nodes": 8,
+          "source": "interactive.tree"
+        },
+        {
+          "id": "panel-chapters",
+          "title": "turk-dili-1 bölüm ağacı",
+          "nodes": 72,
+          "source": "interactive.chapters"
+        },
+        {
+          "id": "graph-derived",
+          "title": "turk-dili-1 kavram ağacı (graf)",
+          "nodes": 57,
+          "source": "coursegraph"
+        }
+      ]
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 # CourseGraph
 
-Ders verisi için CodeGraph mantığında yerel bilgi grafiği + MCP sunucusu.
+Ders verisi için CodeGraph mantığında yerel bilgi grafiği + MCP sunucusu + **canlı zihin haritaları**.
 
 ## Düğüm / kenar
 
@@ -16,14 +16,34 @@ Kenarlar: `has_course`, `has_chapter`, `defines_concept`, `mentions_concept`, `h
 ## Kurulum
 
 ```bash
-# indeksi üret (veri değiştikten sonra)
-python -m coursegraph.indexer
+# indeks + zihin haritaları (veri değiştikten sonra)
+python -m coursegraph.mindmap
+
+# canlı izleyici (debounce 1.5s; interactive.js, data/, courses.json, catalog.json)
+python -m coursegraph.watch
+
+# tek sefer rebuild
+python -m coursegraph.watch --once
 
 # MCP sunucusu (stdio) — opencode.json zaten kayıtlı
 python -m coursegraph.server
 ```
 
 opencode için: `opencode.json` → `mcp.coursegraph`. Değişiklikten sonra **opencode'u yeniden başlat**.
+
+## Canlı zihin haritaları
+
+Kaynak: `interactive.tree`, `interactive.chapters`, NotebookLM `mind-map__*.json`, graf türevi (bölüm→kavram).
+
+Çıktı: `coursegraph/index/mindmaps/`
+
+| Dosya | İçerik |
+|-------|--------|
+| `<slug>.html` | Cytoscape interaktif harita (self-contained) |
+| `<slug>.json` | Harita nodes/edges |
+| `index.html` / `index.json` | Tüm dersler |
+
+`watch` çalışırken `interactive.js` veya `data/` değişince graf + harita otomatik yenilenir.
 
 ## MCP araçları
 
@@ -34,8 +54,10 @@ opencode için: `opencode.json` → `mcp.coursegraph`. Değişiklikten sonra **o
 | `course_impact(term)` | Terimin etkilediği bölümler/sorular |
 | `course_overview(slug)` | Ders: üniversite, dönem, bölümler, sınavlar |
 | `chapter_detail(course, n)` | Bölüm + kavramlar + timeline |
+| `course_mindmap(course[, id])` | Zihin haritası JSON |
+| `course_mindmap_index()` | Tüm haritaların listesi |
 | `coursegraph_stats()` | Graf boyutu |
-| `coursegraph_rebuild()` | Grafiği yeniden üret |
+| `coursegraph_rebuild()` | Graf + mindmap yeniden üret |
 
 ## Python API
 
@@ -46,4 +68,4 @@ g.explore("Lozan")
 g.impact("mezhep")
 ```
 
-İndeks: `coursegraph/index/graph.json` (~800KB, commit edilir).
+İndeks: `coursegraph/index/graph.json` + `mindmaps/` (commit edilir).
