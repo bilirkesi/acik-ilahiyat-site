@@ -52,8 +52,12 @@
     quiz: "Quiz",
     exam: "Sınav",
     artifact: "Kaynak",
+    past_exam: "Çıkmış Vize",
+    past_question: "Çıkmış Soru",
+    unit: "Ünite",
+    keyword: "Anahtar",
   };
-  const TYPE_RANK = { course: 0, chapter: 1, concept: 2, quiz_question: 3, exam_question: 4, event: 5, artifact: 6, quiz: 7, exam: 8 };
+  const TYPE_RANK = { course: 0, chapter: 1, concept: 2, quiz_question: 3, exam_question: 4, past_question: 5, unit: 6, keyword: 7, event: 8, artifact: 9, past_exam: 10, quiz: 11, exam: 12 };
 
   const CG_FOLD = { "ç": "c", "Ç": "c", "ğ": "g", "Ğ": "g", "ı": "i", "İ": "i", "I": "i", "ö": "o", "Ö": "o", "ş": "s", "Ş": "s", "ü": "u", "Ü": "u", "â": "a", "Â": "a", "î": "i", "Î": "i", "û": "u", "Û": "u" };
   const fold = (s) => String(s || "").replace(/[çÇğĞıİIöÖşŞüÜâÂîÎûÛ]/g, (ch) => CG_FOLD[ch]).toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
@@ -905,7 +909,7 @@
     if (!hits.length) return `<p class="sm-empty">Aramanızla eşleşen sonuç yok.</p>`;
     const byType = {};
     for (const h of hits) (byType[h.item.type] = byType[h.item.type] || []).push(h);
-    const order = ["course", "chapter", "concept", "quiz_question", "exam_question", "event", "artifact"];
+    const order = ["course", "chapter", "concept", "quiz_question", "past_question", "exam_question", "unit", "keyword", "event", "artifact", "past_exam"];
     let out = `<p class="sm-progress-label">${hits.length} sonuç</p>`;
     for (const t of order) {
       const list = byType[t];

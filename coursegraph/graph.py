@@ -110,7 +110,7 @@ class CourseGraph:
     def impact(self, term: str) -> dict:
         """Bir terimin etkilediği düğümler (bölüm, quiz, sınav, artifact)."""
         hits = self.search(term, limit=50)
-        focus_types = {"chapter", "concept", "quiz_question", "exam_question", "artifact", "event", "course"}
+        focus_types = {"chapter", "concept", "quiz_question", "exam_question", "artifact", "event", "course", "past_question", "unit", "keyword"}
         primary = [h for h in hits if h["type"] in focus_types]
         # expand: for each chapter/concept hit, pull quiz and exams of same course
         courses = sorted({h["course"] for h in primary if h.get("course")})
@@ -123,6 +123,9 @@ class CourseGraph:
         exams = [h for h in primary if h["type"] == "exam_question"]
         concepts = [h for h in primary if h["type"] == "concept"]
         artifacts = [h for h in primary if h["type"] == "artifact"]
+        past_qs = [h for h in primary if h["type"] == "past_question"]
+        units = [h for h in primary if h["type"] == "unit"]
+        keywords = [h for h in primary if h["type"] == "keyword"]
         return {
             "term": term,
             "courses": courses,
@@ -131,12 +134,18 @@ class CourseGraph:
             "quiz_questions": quizzes[:15],
             "exam_questions": exams[:15],
             "artifacts": artifacts[:10],
+            "past_questions": past_qs[:20],
+            "units": units[:10],
+            "keywords": keywords[:15],
             "counts": {
                 "chapters": len(chapters),
                 "concepts": len(concepts),
                 "quiz_questions": len(quizzes),
                 "exam_questions": len(exams),
                 "artifacts": len(artifacts),
+                "past_questions": len(past_qs),
+                "units": len(units),
+                "keywords": len(keywords),
             },
         }
 

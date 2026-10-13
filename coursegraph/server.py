@@ -119,6 +119,24 @@ def course_mindmap_index() -> str:
     return _fmt(json.loads(path.read_text(encoding="utf-8")))
 
 
+@mcp.tool
+def past_exam_coverage(course: str = "islam-mezhepleri-tarihi") -> str:
+    """Çıkmış vize sorularının ünite/anahtar kelime dağılımı (hangi üniteye kadar sorumlu).
+
+    AÖF İslâm Mezhepleri Tarihi için: ünite başına soru sayısı, yıllar, örnekler, site bölümleri.
+    """
+    from .past_exams import unit_coverage
+
+    cov = unit_coverage(course)
+    out = {
+        "course": course,
+        "exam_type": "vize (ara sınav)",
+        "units": [cov[u] for u in sorted(cov)],
+        "scope_hint": "Çoğu yıl U1-U5 (Şiîlik I); U6'ya temas sınırlı; U7-10 çıkmadı.",
+    }
+    return _fmt(out)
+
+
 def main() -> None:
     # ilk açılışta index yoksa üret
     idx = Path(__file__).resolve().parent / "index" / "graph.json"

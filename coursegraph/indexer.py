@@ -88,6 +88,90 @@ class GraphBuilder:
         }
 
 
+def _add_past_exams(g: GraphBuilder, slug: str, cid: str) -> None:
+    """data/<slug>/past_exams.json → ünite, çıkmış vize, soru, anahtar kelime düğümleri."""
+    from .past_exams import UNIT_TITLES, UNIT_TO_CHAPTERS, annotate_questions
+
+    exams = annotate_questions(slug)
+    if not exams:
+        return
+
+    # ünite düğümleri (tüm 1-10, kapsam boş olsa bile)
+    for u, title in UNIT_TITLES.items():
+        uid = f"unit:{slug}:{u}"
+        g.node(
+            uid,
+            "unit",
+            f"Ünite {u}: {title}",
+            course=slug,
+            unit=u,
+            unit_title=title,
+            chapters=UNIT_TO_CHAPTERS.get(u, []),
+            text=f"{title} ünite {u}",
+        )
+        g.edge(cid, uid, "has_unit")
+
+    for exam in exams:
+        exam_id = exam.get("exam_id") or f"{exam.get('year', 'x')}-vize"
+        eroot = f"pastexam:{slug}:{exam_id}"
+        g.node(
+            eroot,
+            "past_exam",
+            f"Çıkmış Vize {exam.get('year', exam_id)}",
+            course=slug,
+            exam_id=exam_id,
+            year=exam.get("year", ""),
+            term=exam.get("term", "guz"),
+            source_file=exam.get("file", ""),
+            question_count=len(exam.get("questions") or []),
+            text=f"çıkmış sınav vize {exam.get('year', '')} {exam.get('file', '')}",
+        )
+        g.edge(cid, eroot, "has_past_exam")
+
+        units_in_exam: set[int] = set()
+        for q in exam.get("questions") or []:
+            qi = q.get("index") or 1
+            qid = f"pastq:{slug}:{exam_id}:{qi:02d}"
+            unit = q.get("unit")
+            stem = q.get("stem") or ""
+            kws = q.get("keywords") or []
+            g.node(
+                qid,
+                "past_question",
+                stem[:80],
+                course=slug,
+                exam_id=exam_id,
+                year=exam.get("year", ""),
+                unit=unit,
+                keywords=kws,
+                question=stem,
+                options=q.get("options") or [],
+                text=f"{stem} {' '.join(kws)}",
+            )
+            g.edge(eroot, qid, "has_question")
+            if unit:
+                units_in_exam.add(unit)
+                uid = f"unit:{slug}:{unit}"
+                g.edge(qid, uid, "in_unit", unit=unit)
+                for ch in UNIT_TO_CHAPTERS.get(unit, []):
+                    g.edge(qid, f"chapter:{slug}:{ch:02d}", "in_chapter", chapter=ch)
+                for kw in kws[:6]:
+                    kid = f"kw:{slug}:{fold(kw)[:40]}"
+                    g.node(
+                        kid,
+                        "keyword",
+                        kw,
+                        course=slug,
+                        text=kw,
+                    )
+                    g.edge(qid, kid, "has_keyword")
+
+        for u in sorted(units_in_exam):
+            g.edge(eroot, f"unit:{slug}:{u}", "covers_unit", unit=u)
+            for ch in UNIT_TO_CHAPTERS.get(u, []):
+                g.edge(eroot, f"chapter:{slug}:{ch:02d}", "covers_chapter", chapter=ch)
+
+
 def build() -> dict:
     g = GraphBuilder()
     courses = load_json(ROOT / "courses.json")
@@ -295,6 +379,9 @@ def build() -> dict:
                     text=q.get("question", ""),
                 )
                 g.edge(eroot, qid, "has_question")
+
+        # çıkmış vize (AÖF PDF) + ünite/anahtar kelime
+        _add_past_exams(g, slug, cid)
 
         # artifacts
         for art in catalog:
