@@ -6,6 +6,7 @@
   const COURSES = window.COURSES || [];
   const INTERACTIVE = window.INTERACTIVE || {};
   const CG = window.CG || { items: [], edges: {} };
+  const MINDMAPS = window.MINDMAPS || {};
   const DEFAULT_COLORS = { primary: "#1b2a4a", accent: "#b08d4a", paper: "#f8f4ea" };
   const slugify = (s) => String(s || "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 
@@ -58,6 +59,42 @@
   const fold = (s) => String(s || "").replace(/[çÇğĞıİIöÖşŞüÜâÂîÎûÛ]/g, (ch) => CG_FOLD[ch]).toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
   const tokenize = (s) => fold(s).split(/\s+/).filter(Boolean);
   const hayOf = (it) => it.hay || tokenize([it.title, it.snippet, it.definition, it.answer, it.course].filter(Boolean).join(" ")).join(" ");
+
+  // ---- zihin haritası (mindmaps.js) ------------------------------------------
+  function courseMaps(slug) {
+    const d = MINDMAPS[slug];
+    return (d && d.mindmaps) || [];
+  }
+  function pickMap(slug, preferId) {
+    const maps = courseMaps(slug);
+    if (!maps.length) return null;
+    const byPref = maps.find((m) => m.id === preferId);
+    if (byPref) return byPref;
+    return maps.find((m) => m.id === "panel-chapters") || maps.find((m) => m.id === "graph-derived") || maps[0];
+  }
+  function mapTabsHtml(slug, activeId) {
+    const maps = courseMaps(slug);
+    if (maps.length < 2) return "";
+    return `<div class="mm-tabs" role="tablist">` + maps.map((m) =>
+      `<button type="button" class="mm-tab${m.id === activeId ? " active" : ""}" role="tab" data-mm="${esc(m.id)}" aria-selected="${m.id === activeId}">${esc(m.title || m.id)}</button>`
+    ).join("") + `</div>`;
+  }
+  function mindmapSectionHtml(slug, opts) {
+    const o = opts || {};
+    const maps = courseMaps(slug);
+    if (!maps.length) return "";
+    const active = pickMap(slug, o.preferId || "panel-chapters");
+    const focusCh = o.chapter || null;
+    return `<section class="mindmap-section" data-mm-course="${esc(slug)}" data-mm-id="${esc(active.id)}"${focusCh ? ` data-mm-chapter="${focusCh}"` : ""}>
+      <div class="mm-head">
+        <h2>${esc(o.title || "Zihin haritası")}</h2>
+        <p class="muted">${esc(o.lead || "Bölümler, kavramlar ve ilişkiler. Düğüm tıklayınca ilgili bölüme geçin.")}</p>
+      </div>
+      ${mapTabsHtml(slug, active.id)}
+      <div class="mm-canvas" id="mm-canvas" aria-label="Zihin haritası"></div>
+      <p class="mm-detail muted" id="mm-detail">Düğüm seçin.</p>
+    </section>`;
+  }
 
   function scoreItem(it, terms, raw) {
     const hay = hayOf(it);
@@ -266,6 +303,7 @@
           ${credit}
         </aside>
       </section>
+      ${mindmapSectionHtml(c.slug, { title: "Ders zihin haritası", lead: "Bölüm başlıkları ve alt kavramlar. Bölüm düğümüne tıklayınca o bölüme geçilir." })}
       <h2>Bölümler</h2>
       <ol class="syllabus">${chapters}</ol>`;
   }
@@ -287,6 +325,12 @@
       <p class="lead muted" style="font:1.15rem/1.6 var(--serif)">${esc(ch.summary)}</p>
       ${ch.image ? `<figure class="figure"><img src="${esc(ch.image)}" alt="${esc(ch.title)} infografiği" data-zoom><figcaption><b>Şekil ${n}.</b> Yalnızca bu bölümün ${noun(c, 2)}lerinden NotebookLM ile üretildi.</figcaption></figure>` : ""}
       ${chapterPanel(c, n)}
+      ${mindmapSectionHtml(c.slug, {
+        title: n + ". bölüm zihin haritası",
+        lead: "Bu bölümün konu ağacı. Vurgulu düğüm aktif bölümdür; komşularına tıklayarak gezinin.",
+        chapter: n,
+        preferId: "panel-chapters",
+      })}
       <div class="two-col">
         <div>
           <h2>Çalışma notları</h2>
@@ -905,6 +949,139 @@
     if (!input.value) input.focus();
   }
 
+  // zihin haritası bağlayıcı (Cytoscape lazy load)
+  function ensureCytoscape() {
+    if (window.cytoscape) return Promise.resolve(window.cytoscape);
+    if (window.__cyPromise) return window.__cyPromise;
+    window.__cyPromise = new Promise((resolve, reject) => {
+      const s = document.createElement("script");
+      s.src = "https://unpkg.com/cytoscape@3.30.2/dist/cytoscape.min.js";
+      s.onload = () => resolve(window.cytoscape);
+      s.onerror = reject;
+      document.head.appendChild(s);
+    });
+    return window.__cyPromise;
+  }
+
+  function bindMindmaps() {
+    const root = document.querySelector(".mindmap-section");
+    if (!root) return;
+    const slug = root.dataset.mmCourse;
+    const maps = courseMaps(slug);
+    if (!maps.length) return;
+    let activeId = root.dataset.mmId || "panel-chapters";
+    let cy = null;
+    const canvas = root.querySelector("#mm-canvas");
+    const detail = root.querySelector("#mm-detail");
+
+    function mapById(id) {
+      return maps.find((m) => m.id === id) || maps[0];
+    }
+
+    function draw() {
+      const map = mapById(activeId);
+      if (!map || !canvas) return;
+      root.dataset.mmId = activeId;
+      const focusCh = +(root.dataset.mmChapter || 0);
+      const elements = [];
+      const nodeById = {};
+      for (const n of map.nodes || []) {
+        nodeById[n.id] = n;
+        const data = { id: n.id, label: n.label, depth: n.depth || 0, chapter: n.chapter || 0, href: n.href || "", desc: n.desc || "" };
+        elements.push({ group: "nodes", data });
+      }
+      for (const e of map.edges || []) {
+        elements.push({ group: "edges", data: { source: e.source, target: e.target } });
+      }
+      ensureCytoscape().then((cytoscape) => {
+        if (cy) { cy.destroy(); cy = null; }
+        cy = cytoscape({
+          container: canvas,
+          elements,
+          style: [
+            { selector: "node", style: {
+              "background-color": "#f8f4ea",
+              "border-width": 2,
+              "border-color": "#1b2a4a",
+              label: "data(label)",
+              "text-valign": "bottom",
+              "text-margin-y": 6,
+              "font-size": 11,
+              "text-wrap": "wrap",
+              "text-max-width": 120,
+              color: "#1b2a4a",
+              width: "label",
+              height: "label",
+              padding: 8,
+              shape: "round-rectangle",
+            } },
+            { selector: "node[depth = 0]", style: {
+              "background-color": "#1b2a4a",
+              color: "#f8f4ea",
+              "border-color": "#b08d4a",
+              "font-weight": 600,
+              "text-wrap": "wrap",
+              "text-max-width": 140,
+            } },
+            { selector: "node[depth = 1]", style: {
+              "background-color": "#e9dcbf",
+              "border-color": "#b08d4a",
+              color: "#1b2a4a",
+            } },
+            { selector: "node.mm-focus", style: {
+              "border-width": 4,
+              "border-color": "#b08d4a",
+              "background-color": "#b08d4a",
+              color: "#1b2a4a",
+              "font-weight": 700,
+            } },
+            { selector: "edge", style: {
+              width: 1.5,
+              "line-color": "#c9b896",
+              "curve-style": "bezier",
+            } },
+          ],
+          layout: { name: "cose", animate: false, padding: 24 },
+        });
+        if (focusCh) {
+          const target = cy.nodes().filter((el) => +el.data("chapter") === focusCh);
+          if (target.length) {
+            cy.elements().addClass("mm-dim");
+            target.removeClass("mm-dim");
+            target.addClass("mm-focus");
+            // komşular da belirgin
+            target.connectedEdges().removeClass("mm-dim");
+            target.neighborhood().removeClass("mm-dim");
+            cy.fit(target.closedNeighborhood(), 48);
+          }
+        }
+        cy.on("tap", "node", (evt) => {
+          const d = evt.target.data();
+          if (detail) detail.innerHTML = `<strong>${esc(d.label)}</strong>${d.desc ? " · " + esc(d.desc) : ""}`;
+          if (d.href) location.hash = d.href.replace(/^#/, "");
+        });
+        cy.on("mouseover", "node", () => { canvas.style.cursor = "pointer"; });
+        cy.on("mouseout", "node", () => { canvas.style.cursor = "default"; });
+      }).catch(() => {
+        // CDN yoksa: düz liste
+        canvas.innerHTML = '<ul class="mm-fallback">' + (map.nodes || []).filter((n) => n.depth === 0).map((n) =>
+          `<li>${n.href ? `<a href="${esc(n.href)}">${esc(n.label)}</a>` : esc(n.label)}</li>`
+        ).join("") + '</ul>';
+      });
+    }
+
+    root.querySelectorAll(".mm-tab").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        root.querySelectorAll(".mm-tab").forEach((b) => { b.classList.remove("active"); b.setAttribute("aria-selected", "false"); });
+        btn.classList.add("active");
+        btn.setAttribute("aria-selected", "true");
+        activeId = btn.dataset.mm;
+        draw();
+      });
+    });
+    draw();
+  }
+
   // üst cubuk arama + Ctrl/Cmd+K
   (function bindNavSearch() {
     const form = document.getElementById("nav-search");
@@ -952,9 +1129,9 @@
     else if (parts[0] === "certificate") { html = viewCertificate(); bind = bindCertificate; }
     else if (parts[0] === "course" && bySlug[parts[1]]) {
       const c = bySlug[parts[1]];
-      if (parts[2] === "chapter") html = viewChapter(c, +parts[3]);
+      if (parts[2] === "chapter") { html = viewChapter(c, +parts[3]); bind = bindMindmaps; }
       else if (parts[2] === "quiz") { html = viewQuiz(c); bind = () => bindQuiz(c); }
-      else html = viewCourse(c);
+      else { html = viewCourse(c); bind = bindMindmaps; }
     } else html = viewNotFound();
     closeZoom();
     app.innerHTML = html;

@@ -31,28 +31,34 @@ def _tree_to_nodes_edges(
     mindmap_id: str,
     parent: str | None = None,
     depth: int = 0,
+    chapter_of: dict[str, int] | None = None,
 ) -> tuple[list, list]:
+    """tree → nodes/edges. chapter_of: fold(label) → chapter no (depth-1 kökler)."""
     nodes, edges = [], []
     for i, item in enumerate(tree, 1):
         label = item.get("label") or item.get("name") or f"node{i}"
         desc = item.get("d") or item.get("desc") or item.get("definition") or ""
-        nid = f"mm:{course}:{mindmap_id}:{depth}:{i}:{fold(label)[:32]}"
-        nodes.append(
-            {
-                "id": nid,
-                "label": label,
-                "desc": desc,
-                "depth": depth,
-                "mindmap": mindmap_id,
-                "course": course,
-            }
-        )
+        key = fold(label)[:32]
+        nid = f"mm:{course}:{mindmap_id}:{depth}:{i}:{key}"
+        node = {
+            "id": nid,
+            "label": label,
+            "desc": desc,
+            "depth": depth,
+            "mindmap": mindmap_id,
+            "course": course,
+        }
+        if chapter_of and key in chapter_of and depth <= 1:
+            n = chapter_of[key]
+            node["chapter"] = n
+            node["href"] = f"#/course/{course}/chapter/{n}"
+        nodes.append(node)
         if parent:
             edges.append({"source": parent, "target": nid})
         children = item.get("branches") or item.get("children") or []
         if children:
             child_nodes, child_edges = _tree_to_nodes_edges(
-                children, course, mindmap_id, parent=nid, depth=depth + 1
+                children, course, mindmap_id, parent=nid, depth=depth + 1, chapter_of=chapter_of
             )
             nodes.extend(child_nodes)
             edges.extend(child_edges)
@@ -116,11 +122,34 @@ def build_mindmaps(g: CourseGraph | None = None) -> dict:
         chapters = panel.get("chapters") or []
         if chapters:
             # chapters: dict n -> {title, takeaways...} veya liste
+            chapter_of: dict[str, int] = {}
             if isinstance(chapters, dict):
-                ch_list = [{"label": v.get("title", k), "d": (v.get("takeaways") or [{}])[0].get("d", "") if v.get("takeaways") else "", "children": [
-                    {"name": t.get("t", ""), "children": [{"name": t.get("d", "")}]} for t in (v.get("takeaways") or [])
-                ]} for k, v in chapters.items()]
-                nodes, edges = _tree_to_nodes_edges(ch_list, course, "panel-chapters")
+                ch_list = []
+                for k, v in chapters.items():
+                    try:
+                        ch_no = int(k)
+                    except (TypeError, ValueError):
+                        ch_no = len(ch_list) + 1
+                    title = v.get("title", k)
+                    chapter_of[fold(title)[:32]] = ch_no
+                    first_d = ""
+                    if v.get("takeaways"):
+                        first_d = (v["takeaways"][0] or {}).get("d", "") if isinstance(v["takeaways"][0], dict) else ""
+                    ch_list.append(
+                        {
+                            "label": title,
+                            "d": first_d,
+                            "children": [
+                                {"name": t.get("t", ""), "children": [{"name": t.get("d", "")}]}
+                                for t in (v.get("takeaways") or [])
+                                if isinstance(t, dict)
+                            ],
+                        }
+                    )
+                nodes, edges = _tree_to_nodes_edges(ch_list, course, "panel-chapters", chapter_of=chapter_of)
+                for n in nodes:
+                    if n["depth"] == 0:
+                        n["href"] = f"#/course/{course}/chapter/{n.get('chapter', 1)}"
                 mindmaps.append(
                     {
                         "id": "panel-chapters",
@@ -149,11 +178,15 @@ def build_mindmaps(g: CourseGraph | None = None) -> dict:
         cnid = f"course:{course}"
         if cnid in g.nodes:
             derived = [{"label": g.nodes[cnid].get("title", course), "children": []}]
+            chapter_of = {}
             for e in g.out[cnid]:
                 if e["rel"] != "has_chapter" or e["dst"] not in g.nodes:
                     continue
                 ch = g.nodes[e["dst"]]
-                ch_node = {"label": ch.get("title", e["dst"]), "children": []}
+                ch_title = ch.get("title", e["dst"])
+                ch_no = ch.get("chapter") or 0
+                chapter_of[fold(ch_title)[:32]] = ch_no
+                ch_node = {"label": ch_title, "children": []}
                 for ce in g.out[e["dst"]]:
                     if ce["rel"] in ("defines_concept", "mentions_concept") and ce["dst"] in g.nodes:
                         con = g.nodes[ce["dst"]]
@@ -161,7 +194,7 @@ def build_mindmaps(g: CourseGraph | None = None) -> dict:
                             {"name": con.get("title", ""), "children": [{"name": (con.get("definition") or "")[:200]}]}
                         )
                 derived[0]["children"].append(ch_node)
-            nodes, edges = _tree_to_nodes_edges(derived, course, "graph-derived")
+            nodes, edges = _tree_to_nodes_edges(derived, course, "graph-derived", chapter_of=chapter_of)
             mindmaps.append(
                 {
                     "id": "graph-derived",
@@ -206,7 +239,53 @@ def build_mindmaps(g: CourseGraph | None = None) -> dict:
         encoding="utf-8",
     )
     (OUT / "index.html").write_text(render_index_html(index_rows), encoding="utf-8")
+    write_site_mindmaps()
     return {"out": str(OUT), "courses": len(index_rows), "maps": sum(len(r["mindmaps"]) for r in index_rows)}
+
+
+def write_site_mindmaps() -> Path:
+    """site/mindmaps.js → window.MINDMAPS (sitede bölüm entegrasyonu için)."""
+    site = ROOT / "site"
+    site.mkdir(exist_ok=True)
+    payload: dict[str, dict] = {}
+    for f in sorted(OUT.glob("*.json")):
+        if f.name == "index.json":
+            continue
+        data = load_json(f)
+        if not isinstance(data, dict) or "course" not in data:
+            continue
+        course = data["course"]
+        maps = []
+        for m in data.get("mindmaps") or []:
+            maps.append(
+                {
+                    "id": m.get("id"),
+                    "title": m.get("title"),
+                    "source": m.get("source"),
+                    "nodes": [
+                        {
+                            "id": n.get("id"),
+                            "label": n.get("label"),
+                            "desc": (n.get("desc") or "")[:240],
+                            "depth": n.get("depth", 0),
+                            "chapter": n.get("chapter"),
+                            "href": n.get("href"),
+                        }
+                        for n in (m.get("nodes") or [])
+                    ],
+                    "edges": m.get("edges") or [],
+                }
+            )
+        payload[course] = {"course": course, "generated_at": data.get("generated_at"), "mindmaps": maps}
+    out = site / "mindmaps.js"
+    out.write_text(
+        "/* CourseGraph zihin haritalari. python -m coursegraph.mindmap ile uretilir. */\n"
+        "window.MINDMAPS = "
+        + json.dumps(payload, ensure_ascii=False)
+        + ";\n",
+        encoding="utf-8",
+    )
+    return out
 
 
 def render_html(course: str, mindmaps: list[dict]) -> str:
