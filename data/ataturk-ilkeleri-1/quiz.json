@@ -1,0 +1,329 @@
+{
+  "title": "Tarih Testi",
+  "questions": [
+    {
+      "question": "Osmanlı Devleti'nin 17. ve 18. yüzyıl tarih yazımında geleneksel olarak öne çıkan \"gerileme paradigması\" yerine, günümüz tarihçiliğinde benimsenen modern yaklaşım aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Devleti yıkılmaya giden çaresiz bir yapı değil, askeri bir imparatorluktan Bürokratik ve modern bir devlete evrilen dönüşüm süreci olarak görmek",
+          "rationale": "Modern tarih yazımı, bu dönemi tek taraflı bir çöküş değil, devlet yapısının kadimden cedide doğru dönüşerek kendini yenilediği Bürokratik bir süreç olarak tanımlar.",
+          "isCorrect": true
+        },
+        {
+          "text": "Devletin kuruluş dönemindeki askeri ve toplumsal kurumlarına aynen geri dönerek ıslahat yapabileceğini kabul etmek",
+          "rationale": "Geleneksel risalelerde iddialar bu yönde olsa da modern paradigma eski düzene dönüşün imkansızlığını ve yenileşmenin kaçınılmazlığını vurgular.",
+          "isCorrect": false
+        },
+        {
+          "text": "Avrupa merkezci görüşü tamamen reddedip Osmanlı Devleti'nin hiç kriz yaşamadığını iddia etmek",
+          "rationale": "Modern yaklaşım ekonomik ve siyasi krizlerin varlığını reddetmez; aksine krizlerin devleti dönüşüme zorlayan dinamikler olduğunu kabul eder.",
+          "isCorrect": false
+        },
+        {
+          "text": "17. yüzyılı doğrudan Cumhuriyet rejimine geçişin tamamlandığı nihai evre olarak nitelendirmek",
+          "rationale": "17. yüzyıl dönüşümün temellerinin atıldığı ıslahatlar çağıdır; Cumhuriyet ise bu uzun dönüşümün nihai sonucudur.",
+          "isCorrect": false
+        }
+      ],
+      "hint": "Devletin kurumlarının çöküşünden ziyade yeni idari biçimlere evrilme kapasitesini dikkate alan görüşü düşününüz.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "İttihat ve Terakki Cemiyeti'nin 1902 Paris Kongresi'nde yaşadığı bölünmede, Prens Sabahattin önderliğindeki grubun Ahmet Rıza Bey grubundan ayrıştığı temel nokta aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Rejim değişikliği sürecinde adem-i merkeziyetçiliği ve dış müdahaleyi savunmaları",
+          "rationale": "Prens Sabahattin ve arkadaşları yerel yönetimi güçlendiren adem-i merkeziyetçi yapıyı ve İngiliz desteğiyle ihtilal yapmayı savunurken, Ahmet Rıza grubu merkezi yönetimi ve yabancı müdahalesiz değişimi savunmuştur.",
+          "isCorrect": true
+        },
+        {
+          "text": "Meşrutiyet rejimi yerine doğrudan saltanatın kaldırılmasını ve cumhuriyet ilan edilmesini talep etmeleri",
+          "rationale": "Bu dönemde her iki grup da Kanun-ı Esasi'nin yeniden yürürlüğe konması ve Meşrutiyet idaresi üzerinde durmaktaydı.",
+          "isCorrect": false
+        },
+        {
+          "text": "Ordu mensuplarının cemiyete üye yapılmasını tamamen yasaklamak istemeleri",
+          "rationale": "Kongredeki temel fikir ayrılığı ordunun rolünden ziyade idari yapılanma ve yabancı devlet müdahalesine bakış açısında ortaya çıkmıştır.",
+          "isCorrect": false
+        },
+        {
+          "text": "Makedonya bölgesindeki komitacılık faaliyetlerine son vererek basın yayın çalışmalarını durdurmaları",
+          "rationale": "Her iki taraf da basın-yayın ve propaganda faaliyetlerini muhalefetlerinin odağında tutmaya devam etmişlerdir.",
+          "isCorrect": false
+        }
+      ],
+      "hint": "Yönetim erkinin yerelleşmesi ve dış güçlerin süreçteki rolüne dair görüş ayrılıklarını hatırlayınız.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "13 Nisan 1909'da gerçekleşen 31 Mart Vakası'nın bastırılmasının ardından Meclis-i Mebusan'ın fetvaya dayanarak tahttan indirdiği Osmanlı padişahı aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Sultan II. Abdülhamid",
+          "rationale": "İsyanın bastırılması ve Hareket Ordusu'nun İstanbul'da denetimi sağlamasının ardından 27 Nisan 1909'da çıkarılan fetvayla II. Abdülhamid tahttan indirilmiştir.",
+          "isCorrect": true
+        },
+        {
+          "text": "Sultan V. Mehmed Reşad",
+          "rationale": "V. Mehmed Reşad, II. Abdülhamid'in tahttan indirilmesinden sonra meclis kararıyla tahta çıkarılan padişahtır.",
+          "isCorrect": false
+        },
+        {
+          "text": "Sultan VI. Mehmed Vahdettin",
+          "rationale": "VI. Mehmed Vahdettin, Osmanlı Devleti'nin son padişahı olup 1922 yılında saltanatın kaldırılmasıyla tahtını kaybetmiştir.",
+          "isCorrect": false
+        },
+        {
+          "text": "Sultan II. Osman",
+          "rationale": "II. Osman (Genç Osman), 17. yüzyılda yeniçeri isyanı sonucu katledilen padişahtır.",
+          "isCorrect": false
+        }
+      ],
+      "hint": "33 yıllık hükümdarlığı Meşrutiyet'in ilanı ve Hareket Ordusu'nun İstanbul'a girişiyle sona eren padişahı düşününüz.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Milli Mücadele döneminde işgallere karşı halkın kendiliğinden oluşturduğu Kuvayı Milliye birliklerinin sağladığı en kritik askeri katkı aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Düşman kuvvetlerini belirli hatlarda oyalayarak TBMM'nin düzenli orduyu kurmasına zaman kazandırmak",
+          "rationale": "Kuvayı Milliye düşmanı tamamen yurttan atacak güce sahip olmasa da ilerleyişi yavaşlatmış ve TBMM'ye düzenli ordunun örgütlenmesi için ihtiyaç duyduğu süreyi sağlamıştır.",
+          "isCorrect": true
+        },
+        {
+          "text": "Lozan Barış Konferansı'nda Türkiye'yi askeri delegasyon olarak temsil etmek",
+          "rationale": "Lozan'daki diplomatik temsil TBMM hükümeti ve Dışişleri Bakanlığı tarafından yürütülmüştür.",
+          "isCorrect": false
+        },
+        {
+          "text": "İtilaf Devletleri donanmasını Çanakkale ve İstanbul boğazlarından tamamen söküp atmak",
+          "rationale": "Kuvayı Milliye yerel gerilla kuvvetleri niteliğindeydi ve İtilaf donanmasını boğazlardan çıkaracak deniz gücüne sahip değildi.",
+          "isCorrect": false
+        },
+        {
+          "text": "Sevr Antlaşması'nın uluslararası alanda hukuken geçersiz kılınmasını doğrudan sağlamak",
+          "rationale": "Sevr'in hukuken ve fiilen geçersiz kılınması düzenli ordunun zaferleri ve Lozan Antlaşması ile gerçekleşmiştir.",
+          "isCorrect": false
+        }
+      ],
+      "hint": "Düzensiz birliklerin işgalci orduların hızlı ilerleyişi karşısındaki zaman kazandırıcı rolünü değerlendiriniz.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Birinci TBMM'nin benimsediği Meclis Hükümeti sisteminde yasama, yürütme ve yargı yetkilerinin Mecliste toplanmasının (Kuvvetler Birliği) temel gerekçesi aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Olağanüstü savaş koşullarında kararların hızlıca alınmasını ve derhal uygulanmasını sağlamak",
+          "rationale": "Vatanın işgal altında olduğu ve iç isyanların sürdüğü olağanüstü dönemde yetkilerin tek elde toplanması hızlı karar alma ihtiyacından doğmuştur.",
+          "isCorrect": true
+        },
+        {
+          "text": "Çok partili siyasi hayata geçişi hızlandırmak ve parti içi muhalefeti engellemek",
+          "rationale": "Kuvvetler birliği ilkesi parti içi süreçlerden ziyade devlet mekanizmasının işgal koşullarındaki sevk ve idaresiyle ilgilidir.",
+          "isCorrect": false
+        },
+        {
+          "text": "İstanbul Hükümeti ile idari yetkileri eşit olarak paylaşmak",
+          "rationale": "TBMM, İstanbul Hükümeti'ni gayrimeşru saymış ve yetki paylaşımına gitmeyerek ulusal iradeyi tek temsilci kılmıştır.",
+          "isCorrect": false
+        },
+        {
+          "text": "Avrupa devletlerinin anayasal modellerini birebir kopyalamak",
+          "rationale": "Bu tercih dış modellerin taklidinden ziyade Milli Mücadele'nin pratik ve olağanüstü ihtiyaçlarından kaynaklanmıştır.",
+          "isCorrect": false
+        }
+      ],
+      "hint": "Savaş zamanlarında karar alma mekanizmalarının hızlandırılması ihtiyacını göz önüne alınız.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Amasya Genelgesi'nde yer alan \"Milletin bağımsızlığını yine milletin azim ve kararı kurtaracaktır\" maddesi Milli Mücadele tarihi açısından nasıl bir dönüşümü simgeler?",
+      "answerOptions": [
+        {
+          "text": "Mücadelenin dayanağının padişah iradesi değil, ulusal irade olduğunu belirterek üstü kapalı biçimde milli egemenliğe işaret etmesi",
+          "rationale": "Bu ifade, Kurtuluş Savaşı'nın yöntemini ve amacını belirlerken kararın millete ait olduğunu vurgulayarak egemenlik anlayışında tarihi bir değişim başlatmıştır.",
+          "isCorrect": true
+        },
+        {
+          "text": "Manda ve himaye fikrinin kesin olarak kabul edildiğini duyurması",
+          "rationale": "Amasya Genelgesi manda fikrini değil, aksine tam bağımsızlığı ve milli iradeyi esas almaktadır.",
+          "isCorrect": false
+        },
+        {
+          "text": "Osmanlı Mebusan Meclisi'nin İstanbul'da süresiz toplanmasını garanti altına alması",
+          "rationale": "Genelge, İstanbul Hükümeti'nin sorumluluğunu yerine getirmediğini tescil ederek milli bir heyetin kurulmasını önermiştir.",
+          "isCorrect": false
+        },
+        {
+          "text": "Kuvayı Milliye Birlikleri'nin ilga edilerek İtilaf Devletleri'ne teslim olunacağını bildirmesi",
+          "rationale": "Amasya Genelgesi bir teslimiyet belgesi değil, işgallere karşı ulusal direnişin ihtilal bildirisi niteliğindedir.",
+          "isCorrect": false
+        }
+      ],
+      "hint": "Karar alma yetkisinin şahsi saltanattan halkın kendi iradesine geçişini ifade eden kavrama odaklanınız.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Ekim 1920'de gerçekleşen Gediz Taarruzu'nun başarısızlıkla sonuçlanması, Milli Mücadele'nin askeri teşkilatlanmasında hangi radikal kararın alınmasına yol açmıştır?",
+      "answerOptions": [
+        {
+          "text": "Düzensiz Kuvayı Milliye birliklerinin sevk-idare yetersizliği görülerek vakit kaybetmeden düzenli orduya geçilmesi",
+          "rationale": "Gediz Taarruzu'ndaki başarısızlık, emri-komuta zincirinden yoksun birliklerle Yunan ordusunun durdurulamayacağını kanıtlamış ve düzenli ordunun kurulmasını zorunlu kılmıştır.",
+          "isCorrect": true
+        },
+        {
+          "text": "Batı Cephesi'ndeki tüm askeri birliklerin terhis edilerek mücadelenin diplomatik yollarla sürdürülmesi",
+          "rationale": "Gediz sonrasında askeri mücadele terk edilmemiş, aksine daha disiplinli bir askeri yapı kurulmuştur.",
+          "isCorrect": false
+        },
+        {
+          "text": "Milli Savunma Bakanlığı'nın kapatılarak yetkilerinin Kolordu komutanlıklarına devredilmesi",
+          "rationale": "Aksine, karar sonrasında merkezi askeri bürokrasi ve komuta kademesi güçlendirilmiştir.",
+          "isCorrect": false
+        },
+        {
+          "text": "Sevr Antlaşması şartlarının kabul edilerek Mondros Mütarekesi çizgisine dönülmesi",
+          "rationale": "TBMM ve askeri liderlik Sevr'i reddetmeye ve bağımsızlık hedefine düzenli orduyla yürümeye karar vermiştir.",
+          "isCorrect": false
+        }
+      ],
+      "hint": "Düzensiz seyyar kuvvetlerin disiplinsizliği karşısında merkezi ve hiyerarşik bir askeri yapının kurulması gerekliliğini hatırlayınız.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "İtilaf Devletleri'nin Lozan Barış Konferansı'na hem TBMM Hükümeti'ni hem de İstanbul Hükümeti'ni birlikte davet etmesi üzerine TBMM'nin ikilik çıkarılmasını engellemek amacıyla 1 Kasım 1922'de aldığı tarihi karar aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Saltanatın kaldırılması ve halifeliğin saltanattan ayrılması",
+          "rationale": "İtilaf Devletleri'nin Türk tarafını bölme planına yanıt olarak TBMM, 1 Kasım 1922'de saltanatı kaldırarak Türk milletinin tek temsilcisinin Ankara Hükümeti olduğunu hukuken tescil etmiştir.",
+          "isCorrect": true
+        },
+        {
+          "text": "Hıyanet-i Vataniye Kanunu'nun yürürlükten kaldırılması",
+          "rationale": "Hıyanet-i Vataniye Kanunu 1920'de çıkarılmış olup Meclis'in meşruiyetini korumayı amaçlayan bir kanundur.",
+          "isCorrect": false
+        },
+        {
+          "text": "Cumhuriyetin ilan edilmesi ve kabine sistemine geçilmesi",
+          "rationale": "Cumhuriyetin ilanı Saltanatın kaldırılmasından yaklaşık bir yıl sonra, 29 Ekim 1923'te gerçekleşmiştir.",
+          "isCorrect": false
+        },
+        {
+          "text": "Takrir-i Sükun Kanunu'nun kabul edilerek örfi idare ilan edilmesi",
+          "rationale": "Takrir-i Sükun Kanunu 1925 yılında Şeyh Sait İsyanı sürecinde çıkarılmıştır.",
+          "isCorrect": false
+        }
+      ],
+      "hint": "Osmanlı hanedanının siyasi yetkilerine son veren ve Ankara'nın tek meşru temsilci olmasını sağlayan gelişmeyi düşününüz.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "1924 yılında kurulan Türkiye Cumhuriyeti'nin ilk muhalefet partisi Terakkiperver Cumhuriyet Fırkası'nın programında yer alan hangi ifade, Şeyh Sait İsyanı sonrasında partinin kapatılmasında temel gerekçelerden biri yapılmıştır?",
+      "answerOptions": [
+        {
+          "text": "Parti, dini inançlara ve düşüncelere saygılıdır",
+          "rationale": "Programın 6. maddesinde yer alan bu ifade, gerici çevreleri cesaretlendirdiği ve isyanla irtibatlı olduğu iddiasıyla kapatılma kararına zemin teşkil etmiştir.",
+          "isCorrect": true
+        },
+        {
+          "text": "Devletçi ekonomik model tek geçerli iktisat politikasıdır",
+          "rationale": "Terakkiperver Cumhuriyet Fırkası devletçiliği değil, liberal ekonomik prensipleri savunmuştur.",
+          "isCorrect": false
+        },
+        {
+          "text": "İki dereceli seçim sistemi aynen muhafaza edilmelidir",
+          "rationale": "Parti programında iki dereceli değil, Tek dereceli seçim sistemi savunulmuştur.",
+          "isCorrect": false
+        },
+        {
+          "text": "Yabancı sermayenin ülkeye girmesi tamamen engellenmelidir",
+          "rationale": "Parti, yabancı sermayenin teşvik edilmesini ve serbest piyasa ilkelerini benimsemiştir.",
+          "isCorrect": false
+        }
+      ],
+      "hint": "Parti programındaki vicdan özgürlüğü ve inançlara bakışla ilgili 6. maddeyi hatırlayınız.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "1937 yılında Başbakan İsmet İnönü'nün görevinden istifa ederek yerine Celal Bayar'ın atanması sürecinde Atatürk ile İnönü arasında fikir ayrılığı yaşanan konulardan biri değildir?",
+      "answerOptions": [
+        {
+          "text": "Balkan Antantı'nın kurulması kararı",
+          "rationale": "Balkan Antantı 1934 yılında her iki liderin tam bir işbirliği ve uzlaşısı içinde imzalanmıştır; 1937'deki ayrışma konularından biri değildir.",
+          "isCorrect": true
+        },
+        {
+          "text": "Hatay sorununun çözümünde izlenecek yöntem ve askerî ihtimaller",
+          "rationale": "Atatürk Hatay için gerekirse askerî müdahaleyi göze alan kararlı bir tutum sergilerken, İnönü Fransa ile ilişkilerin diplomatik boyutta kalmasını savunmuştur.",
+          "isCorrect": false
+        },
+        {
+          "text": "Nyon Konferansı kararlarının kabul edilip edilmemesi hususu",
+          "rationale": "Akdeniz'deki korsanlığa karşı hazırlanan Nyon metni konusunda İnönü daha ihtiyatlı yaklaşırken Atatürk metnin derhal kabulünü istemiştir.",
+          "isCorrect": false
+        },
+        {
+          "text": "Gazi Orman Çiftliği ile Bomonti Bira Fabrikası arasındaki rekabet ve idari anlaşmazlıklar",
+          "rationale": "Ankara ve İstanbul'daki bira fabrikalarının ticari alanları ve sözleşmeleri konusu Çankaya'daki görüşmelerde iki lider arasında tartışmaya yol açmıştır.",
+          "isCorrect": false
+        }
+      ],
+      "hint": "1934 yılında bölgesel barışı korumak amacıyla komşu ülkelerle yapılan uluslararası antlaşmayı dikkate alınız.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Türkiye ile İngiltere arasında uzun süre kriz teşkil eden Musul Meselesi, 5 Haziran 1926 tarihinde imzalanan Ankara Antlaşması ile nasıl bir sonuca bağlanmıştır?",
+      "answerOptions": [
+        {
+          "text": "Musul Irak'a bırakılmış, buna karşılık Türkiye Irak petrol gelirlerinden 25 yıl süreyle %10 pay almayı kabul etmiştir",
+          "rationale": "Milletler Cemiyeti kararı ve iç gelişmeler çerçevesinde Türkiye, Musul üzerindeki haklarından Irak lehine feragat etmiş ve petrol gelirlerinden pay alma şartıyla antlaşmayı imzalamıştır.",
+          "isCorrect": true
+        },
+        {
+          "text": "Musul bölgesinde derhal halk oylaması (plebisit) yapılması kararlaştırılmıştır",
+          "rationale": "Türkiye halk oylamasını savunmuşsa da İngiltere bunu reddetmiş ve nihai antlaşmada halk oylaması yer almamıştır.",
+          "isCorrect": false
+        },
+        {
+          "text": "Musul tamamen Türkiye sınırlarına katılmış ve Misakı Milli aynen gerçekleşmiştir",
+          "rationale": "Musul, Misakı Milli sınırları içinde görülmesine rağmen 1926 antlaşmasıyla Türkiye sınırları dışında kalmıştır.",
+          "isCorrect": false
+        },
+        {
+          "text": "Musul'un yönetimi 50 yıllığına Milletler Cemiyeti'ne devredilmiştir",
+          "rationale": "Musul doğrudan İngiliz mandasındaki Irak yönetimine bırakılmıştır.",
+          "isCorrect": false
+        }
+      ],
+      "hint": "Sınır çiziminde verilen tavize karşılık elde edilen mali telafi mekanizmasını düşününüz.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "1936 yılında imzalanan Montrö Boğazlar Sözleşmesi ile Lozan Boğazlar Sözleşmesi'ne kıyasla elde edilen en önemli diplomatik ve askeri kazanım aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Uluslararası Boğazlar Komisyonu'nun kaldırılarak Boğazların yönetimi ve silahlandırılması yetkisinin tamamen Türkiye'ye geçmesi",
+          "rationale": "Montrö ile Lozan'da getirilen kısıtlamalar kaldırılmış, Boğazlar Komisyonu lağvedilerek egemenlik hakları ve askeri kontrol tam anlamıyla Türkiye'ye verilmiştir.",
+          "isCorrect": true
+        },
+        {
+          "text": "Ticaret gemilerinin Boğazlardan geçişinin tamamen yasaklanması",
+          "rationale": "Montrö Sözleşmesi ticaret gemileri için barış zamanında geçiş serbestliğini korumuştur.",
+          "isCorrect": false
+        },
+        {
+          "text": "Karadeniz'e kıyısı olan devletlerin savaş gemilerinin geçişine nihai olarak son verilmesi",
+          "rationale": "Karadeniz'e kıyıdaş olan devletlerin savaş gemilerine belirli kurallar çerçevesinde geçiş kolaylığı sağlanmıştır.",
+          "isCorrect": false
+        },
+        {
+          "text": "Boğazlar bölgesinin yönetiminin Birleşmiş Milletler Güvenlik Konseyi'ne devredilmesi",
+          "rationale": "Boğazların yönetimi herhangi bir uluslararası kuruluşa değil, doğrudan Türkiye Cumhuriyeti'ne devredilmiştir.",
+          "isCorrect": false
+        }
+      ],
+      "hint": "Lozan'da Türkiye'nin hükümranlık haklarını sınırlayan uluslararası komisyonun akıbetini değerlendiriniz.",
+      "type": "multiple_choice"
+    }
+  ]
+}

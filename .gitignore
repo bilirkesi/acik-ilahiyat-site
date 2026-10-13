@@ -1,0 +1,14 @@
+# Large / regenerable (root-only source dirs)
+/artifacts/
+/assets/
+/logs/
+__pycache__/
+*.pyc
+*.pyo
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/

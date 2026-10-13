@@ -1,0 +1,26 @@
+{
+  "name": "Açık İlahiyat Üniversitesi",
+  "tagline": "AÖF İlahiyat ön lisans ücretsiz dersler",
+  "issuer": "Açık İlahiyat Üniversitesi",
+  "issuerUrl": "",
+  "passMark": 0.7,
+  "codePrefix": "AIU",
+  "audience": "AÖF İlahiyat öğrencileri ve kendini geliştirmek isteyen yetişkinler",
+  "language": "Turkish",
+  "chapters": {
+    "min": 5,
+    "max": 10
+  },
+  "quiz": {
+    "difficulty": "medium",
+    "quantity": "standard"
+  },
+  "colors": {
+    "primary": "#1b2a4a",
+    "accent": "#b08d4a",
+    "paper": "#f8f4ea"
+  },
+  "figureStyle": "light ivory background, deep navy text and shapes, muted gold accents only, flat vector icons, two-column layout",
+  "showNotebookLinks": true,
+  "plannedCourses": 0
+}

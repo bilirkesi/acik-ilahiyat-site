@@ -1,0 +1,71 @@
+{
+  "islam-mezhepleri-tarihi": {
+    "mode": "lectures",
+    "subject": "İslam Mezhepleri Tarihi",
+    "course": "İLH207U - İslam Mezhepleri Tarihi",
+    "professor": "Doç. Dr. Kadir Gömbeyaz",
+    "school": "İstanbul Üniversitesi (e-Medrese yayını)",
+    "note": "AÖF resmî kanalındaki Konu Anlatımı playlist'i NotebookLM tarafından alınamadı (çoğu videoda altyazı track'i yok). Yerine aynı dersin üniversite hocalısı Doç. Dr. Kadir Gömbeyaz'ın 10 derslik serisi kullanıldı; tüm videoların tr ve en altyazıları doğrulandı.",
+    "playlist": "https://www.youtube.com/playlist?list=PLNbpRT8SFQRrt0jMiJkPXprfdebuCSTJw",
+    "videos": [
+      [
+        "b4gBBKiduvg",
+        "1- Din ile Mezhep Arasındaki İlişki | Mezhepler Tarihi | Doç. Dr. Kadir Gömbeyaz"
+      ],
+      [
+        "-7EaH53FX1U",
+        "2- Bir Mezhep Nasıl Oluşur? | Mezhepler Tarihi | Doç. Dr. Kadir Gömbeyaz"
+      ],
+      [
+        "hNIKhXt1hDw",
+        "3- \"Hak Mezhep\" Söylemi | Mezhepler Tarihi | Doç. Dr. Kadir Gömbeyaz"
+      ],
+      [
+        "NbB-jbETFFY",
+        "4- İslam'da Mezhepleşmenin Sebepleri | Mezhepler Tarihi | Doç. Dr. Kadir Gömbeyaz"
+      ],
+      [
+        "3R20cPXxFXU",
+        "5- İlk Siyasi-İrtidat Bölünmesi: Hâricîler | Mezhepler Tarihi | Doç. Dr. Kadir Gömbeyaz"
+      ],
+      [
+        "e_CDpYpnfqU",
+        "6- Hâricîlerle Başlayan Temel Tartışma: Kebire | Mezhepler Tarihi | Doç. Dr. Kadir Gömbeyaz"
+      ],
+      [
+        "dZ8nMOAz3_Y",
+        "7- Temel Kelamî Meseleler ve Etrafında Oluşan Mezhepler | Mezhepler Tarihi | Doç. Dr. Kadir Gömbeyaz"
+      ],
+      [
+        "I6uc87hI5uE",
+        "8- İslam Toplumunun Temel Ayrılığı: Şia ve İmâmet | Mezhepler Tarihi | Doç. Dr. Kadir Gömbeyaz"
+      ],
+      [
+        "YXT_gTinJXY",
+        "9- Günümüze Ulaşan Kollarıyla Şîa: Zeydiyye | Mezhepler Tarihi | Doç. Dr. Kadir Gömbeyaz"
+      ],
+      [
+        "EDOncSKtEX0",
+        "10- Günümüze Ulaşan Kollarıyla Şîa: İsmailiyye | Mezhepler Tarihi | Doç. Dr. Kadir Gömbeyaz"
+      ]
+    ]
+  },
+  "turk-dili-1": {
+    "mode": "own",
+    "notebook_id": "c702ed26-fe17-463d-b217-202acd0c3d26",
+    "subject": "Türk Dili",
+    "course": "TÜR201U - Türk Dili I",
+    "school": "Anadolu Üniversitesi Açıköğretim Fakültesi",
+    "note": "Resmî AÖF Konu Anlatımı playlist'i (Ünite 1-8, 21 video) kullanıldı. 16 videoda YouTube'un en otomatik altyazıları doğrudan eklendi; 5 videoda en altyazı olmadığından tr altyazı dosyası indirilip metin kaynağı olarak yüklendi. Ünite 9-14 için resmî video bulunamadı.",
+    "playlist": "https://www.youtube.com/playlist?list=PLfFz63YLe29p6tY65NyEc37KZVhSW63ey"
+  },
+  "ataturk-ilkeleri-1": {
+    "mode": "own",
+    "notebook_id": "436f4e9d-25d4-4441-98f1-ed97d01b9b7f",
+    "subject": "Atatürk İlkeleri ve İnkılap Tarihi",
+    "course": "TAR201U - Atatürk İlkeleri ve İnkılap Tarihi I",
+    "school": "Anadolu Üniversitesi Açıköğretim Fakültesi",
+    "note": "Resmî AÖF Konu Anlatımı playlist'i (Ünite 1-8, 15 video) kullanıldı. Tüm videolarda YouTube'un en otomatik altyazıları bulunuyor; hepsi doğrudan YouTube URL olarak eklendi.",
+    "playlist": "https://www.youtube.com/playlist?list=PLfFz63YLe29pwZQOQ_IezppbdazyVOoPO"
+  }
+}

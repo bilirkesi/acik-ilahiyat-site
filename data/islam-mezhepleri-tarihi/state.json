@@ -1,0 +1,112 @@
+{
+  "notebook_id": "ad4a99c9-cc96-4f29-92f5-ca8638bc42c2",
+  "sources": {
+    "tiPi24Ye7dA": {
+      "id": "a9f97763-cc85-4d33-9a3b-5dedfece1ee7",
+      "title": "İSLAM MEZHEPLERİ TARİHİ - Ünite 1 Konu Anlatımı 1",
+      "url": "https://www.youtube.com/watch?v=tiPi24Ye7dA",
+      "type": "youtube",
+      "status": "ready"
+    },
+    "b4gBBKiduvg": {
+      "id": "1e500d4f-39aa-482f-b337-a348aeb722d4",
+      "title": "1- The Relationship Between Religion and Sects | History of Sects | Assoc. Prof. Dr. Kadir Gömbeyaz",
+      "url": "https://www.youtube.com/watch?v=b4gBBKiduvg",
+      "type": "youtube",
+      "status": "ready"
+    },
+    "-7EaH53FX1U": {
+      "id": "62954e7e-cb44-41b9-b4ac-3d149fda5468",
+      "title": "2- Bir Mezhep Nasıl Oluşur? | Mezhepler Tarihi | Doç. Dr. Kadir Gömbeyaz",
+      "url": "https://www.youtube.com/watch?v=-7EaH53FX1U",
+      "type": "youtube",
+      "status": "ready"
+    },
+    "hNIKhXt1hDw": {
+      "id": "a4b3371a-69d9-4b35-984f-c0e0c6d3c442",
+      "title": "3- \"Hak Mezhep\" Söylemi | Mezhepler Tarihi | Doç. Dr. Kadir Gömbeyaz",
+      "url": "https://www.youtube.com/watch?v=hNIKhXt1hDw",
+      "type": "youtube",
+      "status": "ready"
+    },
+    "NbB-jbETFFY": {
+      "id": "ed14576b-2aa5-4528-be76-b6a621ce3ff0",
+      "title": "4- İslam'da Mezhepleşmenin Sebepleri | Mezhepler Tarihi | Doç. Dr. Kadir Gömbeyaz",
+      "url": "https://www.youtube.com/watch?v=NbB-jbETFFY",
+      "type": "youtube",
+      "status": "ready"
+    },
+    "3R20cPXxFXU": {
+      "id": "da946ebe-cf66-496a-b7ec-6470fe46351f",
+      "title": "5- İlk Siyasî-İtikadî Mezhepleşme: Hâricîler | Mezhepler Tarihi | Doç. Dr. Kadir Gömbeyaz",
+      "url": "https://www.youtube.com/watch?v=3R20cPXxFXU",
+      "type": "youtube",
+      "status": "ready"
+    },
+    "e_CDpYpnfqU": {
+      "id": "6a987eeb-5cf6-4e82-bdfc-24f225db7696",
+      "title": "6- Hâricîlerle Başlayan Temel Tartışma: Kebîre | Mezhepler Tarihi | Doç. Dr. Kadir Gömbeyaz",
+      "url": "https://www.youtube.com/watch?v=e_CDpYpnfqU",
+      "type": "youtube",
+      "status": "ready"
+    },
+    "dZ8nMOAz3_Y": {
+      "id": "54a07659-7f9f-4539-8e92-f0c0d798e282",
+      "title": "7- Temel Kelamî Meseleler ve Etrafında Oluşan Mezhepler | Mezhepler Tarihi | Doç. Dr. Kadir Gömbeyaz",
+      "url": "https://www.youtube.com/watch?v=dZ8nMOAz3_Y",
+      "type": "youtube",
+      "status": "ready"
+    },
+    "I6uc87hI5uE": {
+      "id": "7a7daeaa-058a-45fd-8230-ba6f591e7118",
+      "title": "8- İslam Toplumunun Temel Ayrılığı: Şia ve İmâmet | Mezhepler Tarihi | Doç. Dr. Kadir Gömbeyaz",
+      "url": "https://www.youtube.com/watch?v=I6uc87hI5uE",
+      "type": "youtube",
+      "status": "ready"
+    },
+    "YXT_gTinJXY": {
+      "id": "c84bc21f-b1a4-42e8-a2fa-99a13942acb3",
+      "title": "9- Günümüze Ulaşan Kollarıyla Şîa: \"Zeydiyye\" | Mezhepler Tarihi | Doç. Dr. Kadir Gömbeyaz",
+      "url": "https://www.youtube.com/watch?v=YXT_gTinJXY",
+      "type": "youtube",
+      "status": "ready"
+    },
+    "EDOncSKtEX0": {
+      "id": "2610f1ed-122f-4900-87f3-2315dac3ac1f",
+      "title": "10- Günümüze Ulaşan Kollarıyla Şîa: \"İsmailiyye\" | Mezhepler Tarihi | Doç. Dr. Kadir Gömbeyaz",
+      "url": "https://www.youtube.com/watch?v=EDOncSKtEX0",
+      "type": "youtube",
+      "status": "ready"
+    }
+  },
+  "order": [
+    "b4gBBKiduvg",
+    "-7EaH53FX1U",
+    "hNIKhXt1hDw",
+    "NbB-jbETFFY",
+    "3R20cPXxFXU",
+    "e_CDpYpnfqU",
+    "dZ8nMOAz3_Y",
+    "I6uc87hI5uE",
+    "YXT_gTinJXY",
+    "EDOncSKtEX0"
+  ],
+  "tries": {
+    "quiz": 1,
+    "infographic-1": 1,
+    "infographic-2": 1,
+    "infographic-3": 1,
+    "infographic-4": 1,
+    "infographic-5": 1,
+    "infographic-6": 1
+  },
+  "quiz_artifact": "6bb74920-4e95-4e3a-9117-e6d323e7c467",
+  "infographics": {
+    "infographic-1": "dcb74998-f5e4-4c1d-8445-89419b64b8fb",
+    "infographic-2": "900d0e13-7b05-463e-8e1e-275a45a9af5d",
+    "infographic-3": "a30edc23-8e73-4052-88ee-b6878c0da448",
+    "infographic-4": "5f89cf41-7ae0-47af-bf56-604e22edd068",
+    "infographic-5": "62e0c9fd-d347-4e30-87d8-6916a64f37fc",
+    "infographic-6": "bd441746-726a-439b-8b5f-f7a68d41d2d2"
+  }
+}

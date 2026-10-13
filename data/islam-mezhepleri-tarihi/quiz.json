@@ -1,0 +1,410 @@
+{
+  "title": "Mezhepler Tarihi Testi",
+  "questions": [
+    {
+      "question": "Mezhepler Tarihi literatüründe kullanılan \"mezhep\" ve \"fırka\" kavramlarının kökeni ve anlamsal çerçevesi düşünüldüğünde, aşağıdakilerden hangisi doğrudur?",
+      "answerOptions": [
+        {
+          "text": "\"Mezhep\" kelimesi bir hedefe ulaştıran olumlu anlamdaki yolu ifade ederken, \"fırka\" kelimesi bütünden kopan ve bölünen parçayı simgeler.",
+          "isCorrect": true,
+          "rationale": "Mezhep kelimesi zehebe kökünden gelip gitme eyleminin yapıldığı olumlu yolu ifade ederken, fırka kelimesi kök anlamı itibarıyla bir bütünün bozulması ve parçalanması anlamını taşır."
+        },
+        {
+          "text": "\"Fırka\" kelimesi fıkhi ve ameli gruplaşmalar için kullanılırken, \"mezhep\" kelimesi sadece siyasi ve itikadi ayrışmaları ifade etmek için tercih edilir.",
+          "isCorrect": false,
+          "rationale": "Arapça kullanımda itikadi ve siyasi oluşumlar için daha ziyade fırka, ameli oluşumlar için ise mezhep kelimesinin tercih edildiği belirtilmektedir."
+        },
+        {
+          "text": "Arapça literatürde itikadi oluşumlar için ısrarla \"mezhep\", ameli ihtilaflar sonucunda doğan gruplar için ise \"fırka\" kelimesi seçilir.",
+          "isCorrect": false,
+          "rationale": "Metinde Arapçada itikadi gruplar için fırka, ameli gruplar için mezhep kelimesinin daha yaygın kullanıldığı ifade edilmektedir."
+        },
+        {
+          "text": "Her iki kelime de köken itibarıyla olumsuz içerik taşır ve toplumsal bütünlüğün bozulmasını ifade etmek üzere sözlüğe girmiştir.",
+          "isCorrect": false,
+          "rationale": "Mezhep kelimesi 'yol' anlamına geldiği için özünde olumsuz bir içerik barındırmaz, aksine hedefe götüren bir imkanı temsil eder."
+        }
+      ],
+      "hint": "Kelimelerin Arapça kök anlamlarına (zehebe ve feraka) ve ders metninde belirtilen olumlu/olumsuz içerik farklarına odaklanınız.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Bir fikri hareketin veya cemaatin zamanla kurumsallaşarak müstakil bir \"mezhep\" haline gelmesi sürecinde, kurucu imamdan sonra gelen ve \"ikinci adam\" olarak adlandırılan şahsiyetin temel rolü aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Mezhebin fikirlerini sistemleştirip belirgin bir doktrin, kimlik ve literatür haline getirmek.",
+          "isCorrect": true,
+          "rationale": "Kurucu imamdan sonra gelen ikinci adam, mezhebin görüşlerini derleyip sistemleştirerek gruba ayırt edici bir kimlik ve yazılı gelenek kazandırır."
+        },
+        {
+          "text": "Siyasi iktidarın desteğini alarak mezhebi devletin tek resmi mezhebi ilan ettirmek.",
+          "isCorrect": false,
+          "rationale": "Devlet desteği mezheplerin yayılmasında etkili olsa da 'ikinci adam'ın asli görevi siyasi nüfuz kurmaktan ziyade düşünceyi sistemleştirmektir."
+        },
+        {
+          "text": "Mezhep içerisindeki tüm farklı içtihatları iptal ederek tek bir fıkhi görüşü zorunlu kılmak.",
+          "isCorrect": false,
+          "rationale": "İkinci adam hiyerarşiyi ve metodolojiyi belirlese de mezhep içi dinamizmi ve içtihat çeşitliliğini tamamen yok etmez."
+        },
+        {
+          "text": "Dış kültürlerden gelen eleştirilere karşı sadece rivayetlere sığınarak kelami tartışmaları sonlandırmak.",
+          "isCorrect": false,
+          "rationale": "Sistemleştirme süreci sadece rivayete dayanmaz; metot belirleme ve yazılı literatür oluşturma çabasını kapsar."
+        }
+      ],
+      "hint": "Sivil inisiyatiften kurumsallaşmaya giden yolda kimlik inşası ve öğretinin derlenip toparlanması aşamasını düşününüz.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Derslerde vurgulanan \"İhtilaf\" ve \"İftirak\" ayrımı ile \"Mezhepsizlik\" söylemi dikkate alındığında, aşağıdaki yargılardan hangisi kaynak metinlerdeki görüşlerle bağdaşır?",
+      "answerOptions": [
+        {
+          "text": "Farklı düşünmek ve ihtilaf etmek doğaldır; problem bu farklılıkların ümmet birliğini parçalayan \"iftirak\"a dönüştürülmesi veya tek hak benim iddiasıdır.",
+          "isCorrect": true,
+          "rationale": "İnsan yaratılışı gereği ihtilaf kaçınılmazdır; dinin yasakladığı şey farklı düşünmek değil, bu düşünce ayrılıklarını ayrıştırıcı kargaşaya (iftirak) dönüştürmektir."
+        },
+        {
+          "text": "Mezhepleri tamamen aradan çıkarıp doğrudan Kur'an ve Sünnete bakmak ihtilafları kökten çözer ve tam bir birlik sağlar.",
+          "isCorrect": false,
+          "rationale": "Doğrudan metne gitmek mezhepleri ortadan kaldırmaz; aksine ehil olmayan kişilerin usulsüz yorumlarıyla yeni ihtilaflara kapı aralar."
+        },
+        {
+          "text": "İslam dininin hak olması, müntesiplerinin hiçbir zaman mezheplere ve görüş ayrılıklarına bölünmeyeceği anlamına gelir.",
+          "isCorrect": false,
+          "rationale": "Dinin hak oluşu insanların beşeri çabalarla mezheplere bölünmeyeceği anlamına gelmez, çünkü din insan için bir imtihandır."
+        },
+        {
+          "text": "Her bir mezhep mensubunun kendi mezhebini dinin kendisiyle eşitlemesi, taassubu önleyen en temel zihniyet yapısıdır.",
+          "isCorrect": false,
+          "rationale": "Mezhebini dinin kendisiyle eşitlemek ve 'tek hak benim' demek taassubu önlemez, aksine mezhepçilik istismarını doğurur."
+        }
+      ],
+      "hint": "Dinin bölünmeyi yasaklaması ile insan yaratılışındaki farklı yaklaşım biçimlerinin (beşeri yöntemin) farkını gözetiniz.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Müslümanların fütuhat hareketleriyle kısa sürede geniş coğrafyalara yayılması ve Kadim medeniyetlerle yüzleşmesi neticesinde ortaya çıkan tartışmalardan biri de \"Halku'l-Kur'an\" (Kur'an'ın yaratılmışlığı) meselesidir. Metne göre bu tartışmanın erken dönemdeki arka planında aşağıdakilerden hangisi etkili olmıştır?",
+      "answerOptions": [
+        {
+          "text": "Hristiyan bilginlerin (Yuhanna el-Dımeşki gibi) Kur'an'daki \"Kelime\" ifadesinden hareketle Hz. İsa'nın ezeli tanrısallığını temellendirme çabaları.",
+          "isCorrect": true,
+          "rationale": "Hristiyan ilahiyatçılar Kur'an'daki 'Hz. İsa Allah'ın kelimesidir' ayetini gerekçe göstererek kelamın ezeliliğinden Hz. İsa'nın tanrısallığına ulaşmaya çalışmış, Müslümanlar da buna cevap üretirken Kur'an'ın mahluk olup olmadığını tartışmışlardır."
+        },
+        {
+          "text": "Sasani İmparatorluğu'nun çift tanrılı inanç esaslarının İslam kelamcıları tarafından doğrudan benimsenebilecek bir yapı sunması.",
+          "isCorrect": false,
+          "rationale": "Sasani zerdüşt etkileri daha çok kader ve iyilik-kötülük (kaderiye) tartışmalarında gündeme gelmiş, Halku'l-Kur'an ile doğrudan ilişkilendirilmemiştir."
+        },
+        {
+          "text": "Hz. Peygamber döneminde sahabe arasında Kur'an'ın mahluk olup olmadığının açıkça tartışılması ama bir karara bağlanamaması.",
+          "isCorrect": false,
+          "rationale": "Metinde bu konunun sahabe döneminde hiç gündeme gelmediği, dış kültürlerle temas sonucu ortaya çıktığı vurgulanmaktadır."
+        },
+        {
+          "text": "Haricilerin tahkim kararına karşı çıkarken Kur'an-ı Kerim'in metinsel yapısını yetersiz görerek eleştirmeleri.",
+          "isCorrect": false,
+          "rationale": "Hariciler tahkim kararına 'Hüküm ancak Allah'a aittir' sloganıyla karşı çıkmış, Kur'an'ın halkı/mahluk oluşuyla ilgilenmemişlerdir."
+        }
+      ],
+      "hint": "Emevi sarayında görev yapan Doğu kilisesi patriğinin Kur'an ayetlerindeki kelam/kelime kavramı üzerinden getirdiği eleştiriyi hatırlayınız.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "İlk siyasi-itikadi fırka olarak kabul edilen Hâricîlere muhalifleri veya kendileri tarafından verilen isimler ve anlamlarıyla ilgili aşağıdakilerden hangisi yanlıştır?",
+      "answerOptions": [
+        {
+          "text": "\"Marika\" ismi, Kur'an-ı Kerim'i çokça okuyup Allah yolunda mallarını ve canlarını cennet karşılığında satanları övmek için haricilerin kendilerine verdiği isimdir.",
+          "isCorrect": true,
+          "rationale": "Marika, 'okun yaydan fırlayıp çıkması' gibi dinden çıkanları ifade etmek üzere muhalifler tarafından yergi amacıyla kullanılan olumsuz bir isimdir."
+        },
+        {
+          "text": "\"Muhakkime\" ismi, Sıffin Savaşı sonrasındaki tahkim olayında \"Hüküm ancak Allah'a aittir\" ilkesini savunmalarından dolayı kullanılmıştır.",
+          "isCorrect": false,
+          "rationale": "Muhakkime, tahkimi reddedip 'La hükme illa lillah' sloganını merkeze aldıkları için kendilerinin de benimsediği tarihsel bir isimdir."
+        },
+        {
+          "text": "\"Haruriye\" adı, Hz. Ali'nin ordusundan ayrıldıktan sonra ilk toplandıkları yer olan Harura köyüne nispetle verilmiştir.",
+          "isCorrect": false,
+          "rationale": "Hz. Ali'den ayrılan ilk kitlenin Harura köyünde toplanması sebebiyle bu isim literatürde sıklıkla kullanılmıştır."
+        },
+        {
+          "text": "\"Şat\" kelimesi, Allah yolunda canlarını ve mallarını satanlar anlamında kendilerinin benimsediği olumlu bir adlandırmadır.",
+          "isCorrect": false,
+          "rationale": "Şat (çoğulu Şıra/Şarii), ayetlerde geçen 'canını Allah yolunda satanlar' övgüsüne dayanarak Haricilerin kendileri için tercih ettiği olumlu bir kavralamdır."
+        }
+      ],
+      "hint": "\"Marika\" teriminin \"okun yaydan fırlaması\" hadisine dayanan pejoratif (olumsuz) bir adlandırma olduğunu unutmayınız.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Hariciliğin günümüze kadar ulaşan tek kolu olan İbâziyye'nin radikal Ezârika kolundan ayrılan en temel ılımlı görüşü aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Kendileri dışındaki büyük günah işleyen veya farklı düşünen Müslümanları müşrik değil, \"küfr-i nimet\" (nimete nankörlük eden) sayıp dünyada Mümin muamelesi yapmaları.",
+          "isCorrect": true,
+          "rationale": "İbaziler, Ezarika'nın aksine kendilerinden olmayan Müslümanları müşrik ilan etmemiş; onları dini inkar eden değil nimete nankörlük eden olarak görüp dünyevi haklarını tanımışlardır."
+        },
+        {
+          "text": "Sadece Kureyş soyundan gelen takva sahibi kişilerin devlet başkanı olabileceğini kabul etmeleri.",
+          "isCorrect": false,
+          "rationale": "İbaziler de diğer Hariciler gibi devlet başkanlığında Kureyşli olma şartını aramazlar."
+        },
+        {
+          "text": "Hz. Ali ve Hz. Osman da dahil olmak üzere tüm halifelerin meşruiyetini kayıtsız şartsız reddetmeleri.",
+          "isCorrect": false,
+          "rationale": "Hariciler genel olarak Hz. Ebubekir ve Ömer'i tam model görür, Hz. Osman'ın ilk 6 yılını ve Hz. Ali'nin tahkime kadarki dönemini meşru sayarlar."
+        },
+        {
+          "text": "Müslümanların canlarını, mallarını ve çocuklarını helal görüp \"istıraz\" (sorgulama/imtihan) uygulamasını zorunlu kılmaları.",
+          "isCorrect": false,
+          "rationale": "İstıraz (yolda durdurup insanları imtihan edip öldürme) Ezariqa'nın şiddet yanlısı uygulamasıdır, İbaziyye bunu reddeder."
+        }
+      ],
+      "hint": "İbazilerin büyük günah işleyen kişiye ahiret ve dünya ahkamı açısından nasıl baktığını ve \"nankörlük\" kavramını hatırlayınız.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Haricilerin katı tekfirci tutumuna ve toplumdaki kargaşaya tepki olarak doğan Mürcie ekolünün temel çıkış noktası ve yaklaşımı aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Ameli imanın ayrılmaz bir parçası saymayıp, büyük günah işleyen kimsenin durumunu ve nihai yargısını Allah'a ertelemek (irca etmek).",
+          "isCorrect": true,
+          "rationale": "Mürcie, Haricilerin ameli imandan sayıp günahkarları tekfir etmesine karşı çıkarak, inandığını söyleyen herkesi Mümin kabul etmiş ve son kararı Allah'a bırakmıştır."
+        },
+        {
+          "text": "İmanı sadece dille ikrardan ibaret görüp kalbin tasdikini tamamen değersizleştirmek.",
+          "isCorrect": false,
+          "rationale": "Mürcie ekolünün genel gövdesi ve Ebu Hanife gibi isimler imanın aslı olarak kalbin tasdikini görürler."
+        },
+        {
+          "text": "Hz. Ali ile Muaviye arasındaki çatışmada Muaviye'nin tamamen haklı olduğunu ve Hz. Ali'nin dinden çıktığını savunmak.",
+          "isCorrect": false,
+          "rationale": "Mürcie, sahabeler arasındaki siyasi çatışmalarda taraf tutmayıp onların durumunu Allah'a ertelemeyi ilk edinmiştir."
+        },
+        {
+          "text": "Büyük günah işleyen kimsenin ne mümin ne de kafir olduğunu, \"fısk\" adında üçüncü bir mertebede bulunduğunu iddia etmek.",
+          "isCorrect": false,
+          "rationale": "Büyük günah işleyeni fasık ilan edip iki konum arasında bir yere koyan görüş Mürcie'ye değil, Mutezile'ye aittir."
+        }
+      ],
+      "hint": "Kelime anlamı \"ertelemek\" veya \"ümit vermek\" olan bu akımın amel-iman ilişkisindeki konumunu düşününüz.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Mutezile mezhebinin tarihsel gelişimi ve Mihne süreci düşünüldüğünde aşağıdakilerden hangisi doğru bir bilgidir?",
+      "answerOptions": [
+        {
+          "text": "Mihne süreci, Halife Memun'un \"Kur'an mahluktur\" görüşünü ulemaya dayatmasıyla başlamış; Ahmed bin Hanbel bu dayatmaya karşı direnerek simge isim olmıştır.",
+          "isCorrect": true,
+          "rationale": "Memun döneminde devlet eliyle Kur'an'ın mahluk olduğu fikri dayatılmış, Ahmed bin Hanbel buna boyun eğmeyerek hapis yatmış ve ashabü'l-hadisin lideri haline gelmiştir."
+        },
+        {
+          "text": "Mutezile mezhebi, Bağdat'ta kurulmuş ve tüm tarihi boyunca sadece devlet desteğiyle varlığını sürdürmüş siyasi bir teşkilattır.",
+          "isCorrect": false,
+          "rationale": "Mutezile Basra merkezli doğmuş akademik/fikri bir harekettir; devlet desteği sadece Bağdat Mutezilesi'nin bir dönemi için geçerlidir."
+        },
+        {
+          "text": "Mihne olayları Basra Mutezilesi tarafından planlanıp yürütülmüş, Bağdat Mutezilesi ise bu uygulamaya şiddetle karşı çıkmıştır.",
+          "isCorrect": false,
+          "rationale": "Mihne uygulamasını sarayda etkili olan bazı Bağdat Mutezili isimleri (Ahmet b. Ebi Duat gibi) yürütmüş, Basra ekolü buna mesafeli durmuştur."
+        },
+        {
+          "text": "Mutezile kelamcıları usul-i hamse ilkelerinden biri olan el-Menzile beyne'l-Menzileteyn ile rüyetullahı (Allah'ın ahirette görülmesini) kanıtlamışlardır.",
+          "isCorrect": false,
+          "rationale": "Mutezile, Tevhit ilkesi gereği rüyetullahı (Allah'ın görülmesini) tamamen reddeder; el-Menzile ise büyük günah işleyenin durumuyla ilgilidir."
+        }
+      ],
+      "hint": "Kur'an'ın yaratılmışlığı dayatmasına karşı sabreden muhaddis alimin kim olduğunu ve bu dönemin adını hatırlayınız.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "İslam kelam tarihinde \"Kaderiye\" olarak adlandırılan akım ile ilgili yapılan nitelemeler dikkate alındığında, aşağıdakilerden hangisi bu kavramın özgün kullanımını doğru açıklar?",
+      "answerOptions": [
+        {
+          "text": "\"Kaderiye\" ismi, insanın kendi fiillerinin mucidi ve faili olduğunu, fiillerinde hür bulunduğunu savunup kader konusunu sıkça tartışanlara verilen isimdir.",
+          "isCorrect": true,
+          "rationale": "Tarihsel kelam kullanımında Kaderiye, 'kaderci' olanları değil; kader konusunu gündeme getirip kulun fiillerinde hür olduğunu (tefviz) savunanları ifade eder."
+        },
+        {
+          "text": "İnsanın rüzgar önündeki yaprak gibi olduğunu ve hiçbir iradesinin bulunmadığını savunan cebirci gruplara verilen addır.",
+          "isCorrect": false,
+          "rationale": "İnsanın iradesiz olduğunu savunan görüş Kaderiye değil, Cebriye olarak adlandırılır."
+        },
+        {
+          "text": "Allah'ın ezeli takdirini ve kaderi harfiyen kabul edip insanın hiçbir sorumluluğu olmadığını iddia eden kişileri ifade eder.",
+          "isCorrect": false,
+          "rationale": "Kaderiye, kulun sorumluluğunu ve adalet ilkesini vurgulayarak kaderi/alın yazısını insanın fiilleri bağlamında reddeden görüştür."
+        },
+        {
+          "text": "Emevi idarecilerinin yaptıkları zulümleri \"Allah'ın kaderi\" diyerek meşrulaştırma söylemine verilen genel isimdir.",
+          "isCorrect": false,
+          "rationale": "Emevi yöneticilerinin bu meşrulaştırma söylemine karşı çıkan Mabet el-Cüheni ve Gaylan ed-Dımeşki gibi isimlere Kaderiye denilmiştir."
+        }
+      ],
+      "hint": "Terimin bugünkü \"kaderci\" kelimesinin aksine, kader konusunu problem edip kulun hürriyetini (tefviz) savunanlar için kullanıldığını dikkate alınız.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Allah'ın zatı ve sıfatları ile ilgili tartışmalarda Cehm bin Safvan ile simgeleşen ve Mutezile'nin de belirli ölçüde etkilendiği \"Tatil\" (Muattıla) anlayışının temel iddiası nedir?",
+      "answerOptions": [
+        {
+          "text": "Allah'ın zatına ilave ezeli sıfatların varlığını reddederek, Taaddüd-i Kudema'yı önlemek adına zatı sıfatlardan soyutlamak.",
+          "isCorrect": true,
+          "rationale": "Tatil anlayışı, birden fazla ezeli varlık (Taaddüd-i Kudema) oluşmasını engellemek amacıyla Allah'ın zattan ayrı ezeli sıfatları olduğunu reddeder ve negatif teolojiye kayar."
+        },
+        {
+          "text": "Allah'ın haberi sıfatlarını (el, yüz, arşa istiva) olduğu gibi bedensel biçimde kabul edip O'nu yaratılmışlara benzetmek.",
+          "isCorrect": false,
+          "rationale": "Allah'ı yaratılmışlara benzetip cisimleştiren anlayış Tatil değil, Müşebbihe ve Mücessime'dir."
+        },
+        {
+          "text": "Allah'ın zattan ayrı ve ezeli ilim, kudret, irade gibi subuti sıfatlarının bulunduğunu savunmak.",
+          "isCorrect": false,
+          "rationale": "Zatına ilave ezeli sıfatları kabul eden yaklaşım Tatil değil, Ehli Sünnet'in de dahil olduğu Sıfatiye anlayışıdır."
+        },
+        {
+          "text": "Allah'ın ahirette müminler tarafından baş gözüyle ve şekilsel olarak görülebileceğini (rüyetullah) kabul etmek.",
+          "isCorrect": false,
+          "rationale": "Muattıla ve Mutezile gibi tenzih merkezli gruplar rüyetullahı kesinlikle reddederler."
+        }
+      ],
+      "hint": "Tatil kelimesinin \"boşaltmak, soyutlamak\" anlamını ve \"birden fazla ezeli varlık kabul etmeme\" endişesini hatırlayınız.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Şia mezhebinin doğuşu ve erken dönem gelişimiyle ilgili aşağıdaki bilgilerden hangisi metinlerde verilen tarihsel gerçeklerle uyuşmaktadır?",
+      "answerOptions": [
+        {
+          "text": "Şia'ya muhalifleri tarafından verilen \"Rafıza\" ismi, Zeyd bin Ali'nin Hz. Ebubekir ve Hz. Ömer hakkındaki olumlu tutumu üzerine bazı taraftarlarının kendisini terk etmesine dayanır.",
+          "isCorrect": true,
+          "rationale": "Zeyd b. Ali, ilk iki halifeyi hayırla anınca ordusundaki radikal bir grup 'Seni terk ediyoruz' diyerek ayrılmış ve muhaliflerce bu gruba 'Rafıza' (terk edenler) adı verilmiştir."
+        },
+        {
+          "text": "Şia, en başından itibaren tamamen Sasani/İran kökenli bir proje olarak kurgulanmış ve Arap coğrafyasında hiç zemin bulamamıştır.",
+          "isCorrect": false,
+          "rationale": "Metinde Şia'nın doğuşu itibarıyla Farisi değil, tamamen Arap kaynaklı bir siyasi/dini hareket olduğu açıkça ifade edilmektedir."
+        },
+        {
+          "text": "Hazreti Hüseyin Kerbela'da şehit edildikten sonra oğlu Ali Zeynel Abidin hemen Emevilere karşı büyük bir ordu toplayıp isyan başlatmıştır.",
+          "isCorrect": false,
+          "rationale": "Ali Zeynel Abidin siyasi hareketlerden tamamen uzak durmuş, Medine'de kendisini ibadet ve ilme vermiştir."
+        },
+        {
+          "text": "\"Beda\" inancı, Hz. Ali'nin Sıffin Savaşı'nda hakem olayını kabul etmesi üzerine ilahi emrin değiştiğini savunmak amacıyla doğmuştur.",
+          "isCorrect": false,
+          "rationale": "Beda inancı, Muhtar es-Sekafi'nin zafer vaadinin gerçekleşmemesi üzerine 'Allah'ın fikrini/kararını değiştirdiği' iddiasıyla ortaya atılmıştır."
+        }
+      ],
+      "hint": "Zeyd b. Ali'nin \"Beni terk ettiniz\" (rafadtunî) sözünün hangi sahabeler hakkındaki soru üzerine söylendiğini düşününüz.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "12 İmam Şiiliği (İsnaaşeriyye / Caferiyye) bünyesinde benimsenen \"Gaybet\" ve \"İmamet\" anlayışı ile ilgili aşağıdakilerden hangisi yanlıştır?",
+      "answerOptions": [
+        {
+          "text": "12. İmam Muhammed el-Mehdi'nin küçük yaşta gaybete girmesiyle birlikte imamet silsilesi son bulmuş ve Şia yeni imam belirleme usulünü tamamen terk etmiştir.",
+          "isCorrect": true,
+          "rationale": "İsnaaşeriyye'ye göre imamet son bulmamıştır; 12. İmam ölmemiş, gaybete çekilmiştir ve kıyametten önce Mehdi olarak dönüp dünyayı adaletle dolduracaktır."
+        },
+        {
+          "text": "12 İmam Şiiliğine göre imamlar tıpkı peygamberler gibi masumdurlar, ilahi bilgiye sahiptirler ve nasla belirlenmişlerdir.",
+          "isCorrect": false,
+          "rationale": "İsnaaşeriyye'de imamlar masumiyet, ledünni ilim ve peygamber tayini (nas) vasıflarına sahip otoriter figürlerdir."
+        },
+        {
+          "text": "Gaybet dönemi \"Gaybet-i Suğra\" (sefirler dönemi) ve günümüze kadar devam eden \"Gaybet-i Kübra\" olmak üzere iki aşamadan oluşur.",
+          "isCorrect": false,
+          "rationale": "12. İmam'ın gaybet süreci önce elçiler aracılığıyla iletişim kurulan küçük gaybet, ardından tam kesintinin olduğu büyük gaybet olarak ikiye ayrılır."
+        },
+        {
+          "text": "Dini hükümlerin çıkarılmasında imamlardan gelen rivayetlerle yetinen Ahbariler ile akıl ve içtihadı devreye sokan Usuliler şeklinde iki ana eğilim vardır.",
+          "isCorrect": false,
+          "rationale": "12 İmam Şiiliği fıkhında ve usulünde Ahbari ve Usuli şeklinde iki temel metodolojik ekol mevcuttur."
+        }
+      ],
+      "hint": "Gaybet inancında imamet zincirinin kesintiye uğramadığı, 12. İmam'ın Mehdi olarak gizlendiği ve döneceği fikrini hatırlayınız.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Zeydiyye mezhebinin İmamet anlayışını diğer Şiî gruplardan (İsnaaşeriyye ve İsmailiyye) ayıran en temel özellik aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "İmamın gizli (Gaip) ve masum olmadığını; Fatımi soyundan, alim, takva sahibi ve bizzat ortaya çıkıp (huruc) davet eden bir şahıs olması gerektiğini savunmaları.",
+          "isCorrect": true,
+          "rationale": "Zeydiler gaybet ve masumiyet inancını reddederler; imamın açıkça ortaya çıkmasını, alim ve takva sahibi olarak kılıcıyla davet etmesini şart koşarlar."
+        },
+        {
+          "text": "İmametin sadece Hz. Hüseyin'in soyundan gelen tek bir kişiye nasla geçtiğine ve babadan oğula aktarıldığına inanmaları.",
+          "isCorrect": false,
+          "rationale": "Zeydiler imametin hem Hz. Hasan hem de Hz. Hüseyin soyundan (Fatımi) gelen şartları taşıyan herhangi bir alime geçebileceğini savunurlar."
+        },
+        {
+          "text": "Hz. Ebubekir ve Hz. Ömer'in hilafetini tamamen batıl görüp, \"Meftul'ün İmameti\" fikrini kesinlikle reddetmeleri.",
+          "isCorrect": false,
+          "rationale": "Zeydiyye 'Meftul'ün (üstün olmayan) imametini' caiz gördüğü için Hz. Ebubekir ve Ömer'in hilafetini meşru sayar."
+        },
+        {
+          "text": "Dini emir ve ibadetlerin zahiri anlamlarını tamamen iptal edip sadece batıni yorumlara uymayı zorunlu kılmaları.",
+          "isCorrect": false,
+          "rationale": "Zeydilik zahiri şeriatı ve fıkhi hükümleri esas alır, Batıni aşırılıklara uzak durur."
+        }
+      ],
+      "hint": "Zeydilerin davet ve isyan (aşikar olma) şartını, ayrıca Eftal varken Meftul'ün de imam olabileceği görüşünü düşününüz.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "İsmailiyye mezhebinin temel doktrinleri ve tarihsel kolları ile ilgili aşağıdakilerden hangisi doğrudur?",
+      "answerOptions": [
+        {
+          "text": "Tarihte Nizariler (Alamut, Hasan Sabbah, Ağa Han) ve Müsta'liler (Bohralar, Daî-i Mutlak) olarak ikiye ayrılmışlar; Batıni tevil ve 7'li devir anlayışını benimsemişlerdir.",
+          "isCorrect": true,
+          "rationale": "İsmailiyye, Fatımi halifesi Mustansır'ın ölümünden sonra Nizariler ve Müsta'liler olarak ayrılmış, öğretilerinde Batıni tevil ve 7'li periyot ilkelerini benimsemişlerdir."
+        },
+        {
+          "text": "Zahiri hükümleri tamamen uygulayan ve batıni tevili kesinlikle reddeden mütedil bir Sünni kelam ekolüdür.",
+          "isCorrect": false,
+          "rationale": "İsmailiyye, nasların gizli/öz anlamını esas alan Batıni ekollerin başında gelir."
+        },
+        {
+          "text": "İmameti Cafer es-Sadık'tan sonra oğlu Musa el-Kazım ve onun soyu üzerinden 12 imama kadar tamamlayan gruptur.",
+          "isCorrect": false,
+          "rationale": "Cafer es-Sadık'tan sonra Musa el-Kazım'ı değil, en büyük oğlu İsmail'i ve onun oğlu Muhammed b. İsmail'i imam kabul etmişlerdir."
+        },
+        {
+          "text": "Tarih boyunca hiçbir devlet kurmamış, sadece gizli bir tebliğ örgütü olarak kalmışlardır.",
+          "isCorrect": false,
+          "rationale": "İsmailler tarihte Fatımiler Devleti, Alamut İsmaili Devleti gibi önemli siyasi yapılar kurmuşlardır."
+        }
+      ],
+      "hint": "Mısır'da Fatımiler, Alamut'ta Nizariler ve Mısır/Yemen/Hindistan hattındaki bölünmeleri hatırlayınız.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "İslam Mezhepleri Tarihi edebiyatının gelişimi dönemi (Hicri 4. Asır ve sonrası) ile ilgili aşağıdakilerden hangisi doğrudur?",
+      "answerOptions": [
+        {
+          "text": "Eş'ari (Makalâtü'l-İslamiyyin), Bağdadi (el-Fark beyne'l-Fırak) ve Şehristani (el-Milel ve'n-Nihal) gibi müellifler eserlerinde çoğunlukla \"73 Fırka\" hadisini esas alan tasnifler yapmışlardır.",
+          "isCorrect": true,
+          "rationale": "Gelişim döneminde yazılan bu klasikler, mezhepleri tanıtırken çoğunlukla ümmetin 73 fırkaya bölüneceğini belirten hadisi çerçeve olarak kullanmışlardır."
+        },
+        {
+          "text": "Bu dönemde yazılan ilk Makalat türü eserlerin tamamı ehli hadis ve Sünni alimler tarafından kaleme alınmış, Mutezile bu alana hiç katkı vermemiştir.",
+          "isCorrect": false,
+          "rationale": "İlk Makalat örneklerini Mutezili, Harici, Şii müellifler kaleme almış; Sünni alimler başlangıçta yazmaya istekli olmamışlardır."
+        },
+        {
+          "text": "Duraklama ve taklit dönemi eserlerinde Osmanlı-Safevi mücadelesinin hiçbir etkisi görülmemiş, tam aksine tarafsız metinler yazılmıştır.",
+          "isCorrect": false,
+          "rationale": "Osmanlı-Safevi siyasi mücadelesi, İbn Kemal gibi dönemin Osmanlı müelliflerinin üslubuna ve Şia eleştirilerine sert bir şekilde yansımıştır."
+        },
+        {
+          "text": "Mezhepler Tarihi, Cumhuriyet öncesinde hiçbir medrese müfredatında yer almamış, ilk kez 11 Eylül olaylarından sonra akademide bir disiplin olmuştur.",
+          "isCorrect": false,
+          "rationale": "Disiplin İkinci Meşrutiyet sonrası medrese müfredatına girmiş, ardından Darülfünun İlahiyat Fakültesi'nde yer almıştır."
+        }
+      ],
+      "hint": "Hicri 4. asırda Şiiliğin teşekkülü ile Sünni kelamcıların yazmaya başladığı temel eserleri ve 73 fırka hadisi çerçevesini hatırlayınız.",
+      "type": "multiple_choice"
+    }
+  ]
+}

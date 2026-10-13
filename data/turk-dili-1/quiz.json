@@ -1,0 +1,410 @@
+{
+  "title": "Türkçe Testi",
+  "questions": [
+    {
+      "question": "Metinlerde vurgulanan görüşe göre, günümüz Türkçesinde yaşanan bozulma ve yetersizliklerin temel nedeni aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Türkçenin yapısı gereği soyut ve bilimsel kavramları türetmeye elverişsiz olması",
+          "isCorrect": false,
+          "rationale": "Metinde Türkçenin kendi ihtiyaçlarını karşılayacak olanaklara sahip olduğu ve dilin kendisinden kaynaklanan bir sorun bulunmadığı açıkça ifade edilmektedir."
+        },
+        {
+          "text": "Konuşurların dile karşı duyarsızlığı, kayıtsızlığı ve yabancı sözcüklerin özentisine kapılması",
+          "isCorrect": true,
+          "rationale": "Kaynaklarda Türkçedeki sorunların doğrudan dilin kendisinden değil, konuşurların olumsuz tutumlarından ve yabancı sözcük özentisinden kaynaklandığı vurgulanmaktadır."
+        },
+        {
+          "text": "Türkçede hece ve ses kurallarının zamanla tamamen ortadan kalkmış olması",
+          "isCorrect": false,
+          "rationale": "Türkçenin ses ve hece yapısı belirli kurallarla varlığını korumaktadır; sorun kuralların yok olması değil, konuşurların bu kurallara uymamasıdır."
+        },
+        {
+          "text": "Türk Dil Kurumunun terim türetme çalışmalarını tamamen durdurmuş olması",
+          "isCorrect": false,
+          "rationale": "Türk Dil Kurumu yabancı kelimelere Türkçe karşılıklar türetmeye ve terim sözlükleri yayımlamaya aralıksız devam etmektedir."
+        }
+      ],
+      "hint": "Sorun dilden değil, dili kullanan bireylerin tutum ve alışkanlıklarından kaynaklanmaktadır.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Yükseköğretimde derslerin Türkçe yerine yabancı dille (örneğin İngilizce) verilmesinin en olumsuz sonucu aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Türkçenin bir bilim dili olarak gelişmesinin ve terimleşmesinin önüne engel çıkarması",
+          "isCorrect": true,
+          "rationale": "Mesleki ve bilimsel derslerin yabancı dille okutulması ve makalelerin yabancı dilde yazılmasının teşvik edilmesi Türkçenin bilim dili olarak işlenmesini engeller."
+        },
+        {
+          "text": "Öğrencilerin mezuniyet sonrasında uluslararası iş imkânlarını tamamen kaybetmesi",
+          "isCorrect": false,
+          "rationale": "Bu durum iş imkânlarını kaybettirmekten ziyade anadille öğrenimin getireceği kavramsal kavrayışı ve Türkçenin gelişkenliğini olumsuz etkiler."
+        },
+        {
+          "text": "Yabancı dil hazırlık sınıflarının üniversitelerden tamamen kaldırılması zorunluluğu",
+          "isCorrect": false,
+          "rationale": "Kaynakta çözüm olarak öğretim dilinin Türkçe olması, ancak bununla birlikte mükemmel bir yabancı dil ve mesleki yabancı dil eğitimi verilmesi önerilmektedir."
+        },
+        {
+          "text": "Türkçedeki yabancı kökenli sözcüklerin tamamen temizlenmesine yol açması",
+          "isCorrect": false,
+          "rationale": "Yabancı dille öğretim yabancı kelimeleri temizlemez, aksine dildeki yabancılaşmayı artırır."
+        }
+      ],
+      "hint": "Bu durum Türkçenin soyut kavramlar ve terimler üreten bir vasıf kazanmasını güçleştirir.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Kişinin dünyayı anadili çerçevesinde algıladığını, konuştuğu dil ile dünyayı algılama ve davranma biçimi arasında sistemli bir ilişki bulunduğunu savunan hipotez/varsayım aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Tek Köken Kuramı",
+          "isCorrect": false,
+          "rationale": "Tek Köken Kuramı, dünyadaki tüm dillerin tek bir ana dilden türediğini savunur."
+        },
+        {
+          "text": "Sapir-Whorf Hipotezi",
+          "isCorrect": true,
+          "rationale": "Sapir-Whorf varsayımına göre insan ana dili çerçevesinde dünyayı algılar ve dil kişinin dünya görüşünü şekillendirir."
+        },
+        {
+          "text": "Yansıma Kuramı",
+          "isCorrect": false,
+          "rationale": "Yansıma Kuramı, dillerin doğuşunu doğadaki doğa ve hayvan seslerinin taklit edilmesine bağlar."
+        },
+        {
+          "text": "Etkileşim Kuramı",
+          "isCorrect": false,
+          "rationale": "Etkileşim Kuramı, dilin doğuşunu insanların birlikte çalışırken yaptıkları iş birliği ve seslenmelerle açıklar."
+        }
+      ],
+      "hint": "Bu varsayım, dilin sadece düşünceyi aktaran bir araç olmadığını, düşünceyi biçimlendiren bir rehber olduğunu öne sürer.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Arapçada fiil çekimlerinin ve çoğul yapılarının (örneğin 'mektup' kelimesinin çoğulunun 'mekatip' olması) kelime kökü içerisindeki ses değişiklikleriyle sağlanması, Arapçayı yapı bakımından hangi dil grubuna dahil eder?",
+      "answerOptions": [
+        {
+          "text": "Eklemeli (Bitişken) Diller",
+          "isCorrect": false,
+          "rationale": "Eklemeli dillerde kelime kökü sabit kalır ve kökün sonuna gramer görevli ekler getirilir (Türkçe gibi)."
+        },
+        {
+          "text": "Yalınlayan (Kök) Diller",
+          "isCorrect": false,
+          "rationale": "Yalınlayan dillerde çekim yoktur, kelimeler ek almaz ve gramer işlevleri söz dizimiyle sağlanır (Çince gibi)."
+        },
+        {
+          "text": "Çekimli (Bükümlü) Diller",
+          "isCorrect": true,
+          "rationale": "Çekimli dillerde türetme ve çekim sırasında kelime kökünde iç büküm veya değişme meydana gelir."
+        },
+        {
+          "text": "Isolating (İzole) Diller",
+          "isCorrect": false,
+          "rationale": "İzole dil, herhangi bir dil ailesine mensup olmayan ya da akrabası bulunmayan dilleri ifade eden coğrafi/genetik bir tanımdır."
+        }
+      ],
+      "hint": "Kelime kökünün büküme uğrayarak kalıp değiştirdiği dilleri düşününüz.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Türkçenin bilinen ilk ve hacimli yazılı belgeleri olan Köktürk Yazıtları (Tonyukuk, Köl Tigin, Bilge Kağan) Türk dilinin hangi tarihi dönemine aittir?",
+      "answerOptions": [
+        {
+          "text": "Hun Dönemi",
+          "isCorrect": false,
+          "rationale": "Hun Dönemi yazılı Türkçe metinlerin bulunmadığı, izlerin yalnızca Çin kaynaklarındaki birkaç sözcük ve cümleyle takip edildiği dönemdir."
+        },
+        {
+          "text": "Eski Türkçe Dönemi",
+          "isCorrect": true,
+          "rationale": "5-10. yüzyıllar arasını kapsayan Eski Türkçe dönemi, Köktürk ve Uygur devirlerini içerir."
+        },
+        {
+          "text": "Orta Türkçe Dönemi",
+          "isCorrect": false,
+          "rationale": "Orta Türkçe dönemi, Karahanlı ve Harezm sahalarında İslamiyet'in kabulüyle başlayan dönemdir."
+        },
+        {
+          "text": "Eski Oğuz Türkçesi Dönemi",
+          "isCorrect": false,
+          "rationale": "Eski Oğuz Türkçesi, 13. yüzyıldan itibaren Anadolu ve çevresinde gelişen Batı Türkçesi koludur."
+        }
+      ],
+      "hint": "Türkçenin 5. ile 10. yüzyıllar arasındaki ilk yazılı evresini hatırlayınız.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Uygurların Soğut alfabesini geliştirerek oluşturdukları, 11-15. yüzyıllar arasında Çağatay, Altınordu ve Kıpçak sahalarında da kullanılan ve Osmanlı sarayında Doğu Türklüğü ile yazışmalarda dahi yararlanılan alfabe aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Mani Alfabesi",
+          "isCorrect": false,
+          "rationale": "Mani alfabesi yalnızca Maniheizm dinine ait sınırlı metinlerde kullanılmış dar kapsamlı bir alfabedir."
+        },
+        {
+          "text": "Uygur Alfabesi",
+          "isCorrect": true,
+          "rationale": "Soğut yazısından geliştirilen Uygur alfabesi, millî bir nitelik kazanarak asırlarca geniş bir coğrafyada kullanılmıştır."
+        },
+        {
+          "text": "Brahmi Alfabesi",
+          "isCorrect": false,
+          "rationale": "Brahmi alfabesi Hindistan kökenli olup yalnızca bazı Budist metinlerin tercümesinde kullanılmıştır."
+        },
+        {
+          "text": "Kiril Alfabesi",
+          "isCorrect": false,
+          "rationale": "Kiril alfabesi Türk topluluklarına Sovyetler Birliği döneminde (özellikle 1939 sonrası) zorunlu kılınmıştır."
+        }
+      ],
+      "hint": "Türklerin kendi kültürleriyle özdeşleştirdiği ve Soğut türevi olan köklü yazıyı düşününüz.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Türkçe kökenli sözcüklerin ses özellikleri göz önüne alındığında, aşağıdakilerden hangisi Türkçe kökenli bir sözcükte doğrudan **bulunamayacak** bir özelliktir?",
+      "answerOptions": [
+        {
+          "text": "Sözcük başında J sesinin bulunması",
+          "isCorrect": true,
+          "rationale": "Türkçe kökenli kelimelerin başında J sesi yer almaz; bu ses yansımalar hariç Fransızca ve Farsçadan geçen alıntılarda görülür."
+        },
+        {
+          "text": "İlk heceden sonraki ünlülerde 'o' ve 'ö' seslerinin yer almaması",
+          "isCorrect": false,
+          "rationale": "Türkçede 'o' ve 'ö' sesleri kural olarak yalnızca ilk hecede bulunabilir."
+        },
+        {
+          "text": "Sözcük kökünde ikiz ünsüzün (aynı ünsüzün yan yana) bulunmaması",
+          "isCorrect": false,
+          "rationale": "Sözcük kökünde ikiz ünsüz bulunmaması Türkçenin asli ses kuralıdır."
+        },
+        {
+          "text": "Sözcük başında genellikle c, f, ğ, h, l, m, n, r, v ünsüzlerinin yer almaması",
+          "isCorrect": false,
+          "rationale": "Bu ünsüzlerin söz başında bulunmaması (bazı istisnalar hariç) Türkçenin temel özelliğidir."
+        }
+      ],
+      "hint": "Jale, jön, kolej gibi kelimelerin kökenini hatırlayınız.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Eski Türkçedeki 'barmak', 'busug', 'bastırma' gibi sözcüklerin başındaki ötümlü 'b-' ünsüzünün Batı Türkçesinde 'p-' sesine dönüşmesi (parmak, pusuk, bastırma > pastırma) hangi ses olayı ile açıklanır?",
+      "answerOptions": [
+        {
+          "text": "Ötümlüleşme",
+          "isCorrect": false,
+          "rationale": "Ötümlüleşme, t- > d- veya k- > g- örneklerinde olduğu gibi ötümsüz seslerin ötümlü hale gelmesidir."
+        },
+        {
+          "text": "Ötümsüzleşme",
+          "isCorrect": true,
+          "rationale": "Ötümlü bir ses olan 'b' ünsüzünün ötümsüz bir ses olan 'p' ünsüzüne dönüşmesi ötümsüzleşmedir."
+        },
+        {
+          "text": "Göçüşme (Metatez)",
+          "isCorrect": false,
+          "rationale": "Göçüşme, sözcük içindeki iki sesin yer değiştirmesidir (ekşi > eşki gibi)."
+        },
+        {
+          "text": "Süreklileşme",
+          "isCorrect": false,
+          "rationale": "Süreklileşme, p > f veya k > h örneklerindeki gibi süreksiz seslerin sürekli sızıcı seslere dönüşmesidir."
+        }
+      ],
+      "hint": "Titreşimli (ötümlü) bir ünsüzün titreşimsiz (sert/ötümsüz) bir ünsüze dönüşme sürecini düşününüz.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Türkçede 'yıka-' eyleminden '-n' ekiyle türetilen 'yıkan-' veya 'gör-' eyleminden '-ş' ekiyle türetilen 'görüş-' yapıları, fiilde hangi biçim bilgisel kavramı ifade eder?",
+      "answerOptions": [
+        {
+          "text": "Ad Durumu (Hal Ekleri)",
+          "isCorrect": false,
+          "rationale": "Ad durum ekleri eylemlere değil, isim soylu sözcüklere gelerek ilişki kurar."
+        },
+        {
+          "text": "Çatı Ekleri (Eylemden Eylem Yapım Ekleri)",
+          "isCorrect": true,
+          "rationale": "Eylemin özne ve nesneyle ilişkisini düzenleyen dönüşlülük, işteşlik, edilgenlik ve ettirgenlik ekleri eylemden eylem türeten çatı ekleridir."
+        },
+        {
+          "text": "İyelik Ekleri",
+          "isCorrect": false,
+          "rationale": "İyelik ekleri isimlere eklenerek nesnenin kime/neye ait olduğunu belirtir."
+        },
+        {
+          "text": "Eylemsi (Fiilimsi) Ekleri",
+          "isCorrect": false,
+          "rationale": "Eylemsiler eylemleri geçici olarak ad, sıfat veya zarf yapan yapılardır."
+        }
+      ],
+      "hint": "Özne ve nesnenin eylemle kurduğu bağlantıyı sağlayan ve fiilin yönünü belirleyen ek kategorisidir.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Fransızcadaki 'école' sözcüğünden modellenerek, Türkçe 'oku-' eylemine aslında dilde bulunmayan bir '-l' eki getirilip 'okul' kelimesinin üretilmesi hangi sözcük yapımı türüne örnektir?",
+      "answerOptions": [
+        {
+          "text": "Kırpma",
+          "isCorrect": false,
+          "rationale": "Kırpma, popüler > pop örneğinde olduğu gibi kelimenin hecelerinin atılmasıdır."
+        },
+        {
+          "text": "Örnekseme",
+          "isCorrect": true,
+          "rationale": "Örnekseme, yabancı dildeki bir kelime model alınarak yerli ek ve köklerle ona benzetilerek yeni sözcük üretilmesidir."
+        },
+        {
+          "text": "Karma",
+          "isCorrect": false,
+          "rationale": "Karma, araştırma-geliştirme > arge örneğindeki gibi iki kelimenin parçalarının birleştirilmesidir."
+        },
+        {
+          "text": "Kalıplaşma",
+          "isCorrect": false,
+          "rationale": "Kalıplaşma, imambayıldı veya toptan örneklerinde olduğu gibi cümle veya ek yapıları donmasıdır."
+        }
+      ],
+      "hint": "Yabancı bir sözcüğün yapısı ve ses tasarımı örnek alınarak yapılan türetim yolunu hatılayınız.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Aşağıdaki cümlelerin hangisinde yüklem geçişsiz bir eylem olduğu için cümlede **nesne** ögesi yer alamaz?",
+      "answerOptions": [
+        {
+          "text": "Ağabeyim dün gece sabaha kadar uyudu.",
+          "isCorrect": true,
+          "rationale": "'Uyu-' fiili 'neyi/kimi?' sorularına cevap vermeyen geçişsiz bir eylemdir, dolayısıyla nesne alamaz."
+        },
+        {
+          "text": "Öğrenciler kütüphanedeki kitapları dikkatle inceledi.",
+          "isCorrect": false,
+          "rationale": "'İnceledi' eylemi geçişlidir ve 'kitapları' sözcüğü belirtili nesnedir."
+        },
+        {
+          "text": "Usta, evin kapısını kırmızıya boyadı.",
+          "isCorrect": false,
+          "rationale": "'Boyadı' eylemi geçişlidir ve 'evin kapısını' öbeği belirtili nesnedir."
+        },
+        {
+          "text": "Tüm soruları kısa sürede çözdü.",
+          "isCorrect": false,
+          "rationale": "'Çözdü' eylemi geçişlidir ve 'tüm soruları' öbeği nesnedir."
+        }
+      ],
+      "hint": "'Neyi?' veya 'Kimi?' sorularına cevap veremeyen nesnesiz fiili tespit ediniz.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "'Sanıyordu ki bir daha hiç gelmeyecek.' cümlesi, yapısına göre aşağıdaki cümle türlerinden hangisine örnektir?",
+      "answerOptions": [
+        {
+          "text": "Şartlı Birleşik Cümle",
+          "isCorrect": false,
+          "rationale": "Şartlı birleşik cümle -sa/-se ekiyle kurulan yan cümleciklerden oluşur."
+        },
+        {
+          "text": "İç İçe Birleşik Cümle",
+          "isCorrect": false,
+          "rationale": "İç içe birleşik cümle bir cümlenin başka bir cümlenin nesnesi olduğu yapılardır (doğrudan aktarmalar gibi)."
+        },
+        {
+          "text": "Ki'li Birleşik Cümle",
+          "isCorrect": true,
+          "rationale": "Temel cümlenin 'ki' bağlacıyla yan cümleye bağlandığı yapılar ki'li birleşik cümledir."
+        },
+        {
+          "text": "Bağımsız Sıralı Cümle",
+          "isCorrect": false,
+          "rationale": "Sıralı cümleler virgül veya noktalı virgülle ayrılan, hiçbir ögesi ortak olmayan veya olan bağımsız yargılardır."
+        }
+      ],
+      "hint": "Cümledeki ana bağlayıcı öge olan Farsça kökenli bağlaca dikkat ediniz.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Atasözleri ile deyimler karşılaştırıldığında, aşağıdakilerden hangisi deyimlerin atasözlerinden ayrılan temel bir özelliğidir?",
+      "answerOptions": [
+        {
+          "text": "Deyimlerin genel bir kural veya tecrübeye dayalı öğüt/yargı bildirmemesi, sadece bir durumu anlatması",
+          "isCorrect": true,
+          "rationale": "Atasözleri öğüt veren ve kesin yargı bildiren cümlelerdir; deyimler ise yargı bildirmeyip durumu kavramlaştıran kalıplardır."
+        },
+        {
+          "text": "Deyimlerin sözlerinin hiçbir zaman değiştirilememesi, atasözlerinin ise sürekli değişmesi",
+          "isCorrect": false,
+          "rationale": "Her ikisi de kalıplaşmış sözlerdir; ancak bazı deyimlerde ufak varyasyonlar olabilirken atasözleri değişmez kural niteliğindedir."
+        },
+        {
+          "text": "Deyimlerin sadece tek kelimeden oluşması",
+          "isCorrect": false,
+          "rationale": "Deyimler en az iki sözcükten oluşan kalıplaşmış öbeklerdir."
+        },
+        {
+          "text": "Atasözlerinin anonim olmaması, söyleyeninin belli olması",
+          "isCorrect": false,
+          "rationale": "Hem atasözleri hem de deyimler toplumun ortak malı olan anonim ürünlerdir."
+        }
+      ],
+      "hint": "Deyimler bir olay veya tutumu resmederken, atasözleri yol gösterici bir ders sunar.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Toplumun ötekileşmiş veya belirli kesimlerinin kendilerini gizlemek, ayrıştırmak ya da ortak dili farklılaştırarak mizahi/sanatlı bir örtü kazandırmak amacıyla kullandığı özel söz varlığına ne ad verilir?",
+      "answerOptions": [
+        {
+          "text": "Ölçünlü Dil",
+          "isCorrect": false,
+          "rationale": "Ölçünlü dil, toplumun tamamının eğitim ve yönetimde kullandığı standart ortak dildir."
+        },
+        {
+          "text": "Argo",
+          "isCorrect": true,
+          "rationale": "Argo, belirli grupların başkalarınca anlaşılmamak veya ayrışmak amacıyla ana dilin sözcüklerine yeni anlamlar yükleyerek oluşturduğu sistemdir."
+        },
+        {
+          "text": "Ağız",
+          "isCorrect": false,
+          "rationale": "Ağız, bir ülkenin bölgesel ses ve biçim farklılıklarına dayanan konuşma şeklidir."
+        },
+        {
+          "text": "Alkış",
+          "isCorrect": false,
+          "rationale": "Alkış, Türkçe söz varlığında iyi dilek ve dua anlamındaki kalıp ifadelerdir."
+        }
+      ],
+      "hint": "'Cicozlamak', 'kirişi kırmak', 'zamkinos etmek' gibi kelimelerin ait olduğu alan.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Türkçenin başka dillere verdiği sözcükler (verintiler) incelendiğinde, 10.000'in üzerindeki verintimiz içinde en çok Türkçe sözcük alan ve dilinde bini aşkın Türkçe kelime barındıran dil aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Sırpça",
+          "isCorrect": true,
+          "rationale": "Metne göre Türkçeden en fazla sözcük alan dil Sırpçadır."
+        },
+        {
+          "text": "İngilizce",
+          "isCorrect": false,
+          "rationale": "İngilizce Türkçeden kısıtlı sayıda sözcük almıştır, günümüzde etkileyen konumundadır."
+        },
+        {
+          "text": "Fransızca",
+          "isCorrect": false,
+          "rationale": "Fransızca Tanzimat sonrası Türkçeye çok sözcük vermiş, ancak Türkçeden çok az sözcük almıştır."
+        },
+        {
+          "text": "Çince",
+          "isCorrect": false,
+          "rationale": "Çince Eski Türkçe döneminde Türkçeyi etkilemiş ve kısıtlı kelime alışverişi yapılmıştır."
+        }
+      ],
+      "hint": "Balkan coğrafyasında uzun yüzyıllar Osmanlı idaresinde kalmış bir Slav dilini düşününüz.",
+      "type": "multiple_choice"
+    }
+  ]
+}
