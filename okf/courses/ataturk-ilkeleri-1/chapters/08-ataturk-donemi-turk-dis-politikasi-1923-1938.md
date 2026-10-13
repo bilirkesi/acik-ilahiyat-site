@@ -5,7 +5,7 @@ description: Lozan sonrası dönemde Türkiye, barışçı ve millî bir dış p
 course: ataturk-ilkeleri-1
 chapter: 8
 status: stable
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-13T17:08:40Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-13T19:42:22Z }
 notebook: "https://notebooklm.google.com/notebook/436f4e9d-25d4-4441-98f1-ed97d01b9b7f"
 ---
 
@@ -15,7 +15,11 @@ Lozan sonrası dönemde Türkiye, barışçı ve millî bir dış politika izley
 
 # AÖF Ünite İnfoğrafik
 
-![Atatürk Dönemi Türk Dış Politikası (1923-1938) AÖF infoğrafik](/assets/ataturk-ilkeleri-1/aof-infographic-8.png)
+Ünite 8 infoğrafik sayfaları:
+
+![Atatürk Dönemi Türk Dış Politikası (1923-1938) AÖF infoğrafik sayfa 1/2](/assets/ataturk-ilkeleri-1/aof-infographic-8-p1.png)
+
+![Atatürk Dönemi Türk Dış Politikası (1923-1938) AÖF infoğrafik sayfa 2/2](/assets/ataturk-ilkeleri-1/aof-infographic-8-p2.png)
 
 Kaynak PDF: `assets/ataturk-ilkeleri-1/aof/` (Anadolu Üniversitesi ünite infoğrafikleri).
 
@@ -38,19 +42,19 @@ Bu bölümün içinde yaşadığı ders paneli: [Atatürk İlkeleri ve İnkılap
 
 ### 1. 1923-1932 Yılları Arasında Türk Dış Politikasında Öne Çıkan Musul Meselesi ve İkili İlişkileri Açıklayabilme
 
-Öğrenci bu öğrenme hedefi kapsamında, Yeni Türk Devleti'nin Lozan Barış Antlaşması sonrasında tam bağımsızlık ve barışçıl diplomasi ilkeleriyle hareket ettiğini öğrenir [1, 2]. Bu dönemde İngiltere ile yaşanan en kritik uyuşmazlığın Musul Meselesi olduğunu kavrar [3]. Türk tarafının bölgede halk oylaması yapılması yönündeki teklifinin İngiltere tarafından kabul edilmediğini ve konunun Milletler Cemiyeti'ne taşındığını görür [3, 4]. İç politikadaki Şeyh Sait İsyanı gibi çalkantıların ve uluslararası yalnızlığın da etkisiyle Türkiye'nin yeni bir savaşı göze alamayarak 5 Haziran 1926 Ankara Antlaşması ile Musul'u Irak'a (İngiliz mandasına) bırakmak zorunda kaldığını, buna karşılık 25 yıl süreyle Irak petrol gelirlerinin yüzde 10'unu aldığını öğrenir [5-7]. 
+Öğrenci bu öğrenme hedefi kapsamında, Yeni Türk Devleti'nin Lozan Barış Antlaşması sonrasında tam bağımsızlık ve barışçıl diplomasi ilkeleriyle hareket ettiğini öğrenir [1, 2]. Bu dönemde İngiltere ile yaşanan en kritik uyuşmazlığın Musul Meselesi olduğunu kavrar [3]. Türk tarafının bölgede halk oylaması yapılması yönündeki teklifinin İngiltere tarafından kabul edilmediğini ve konunun Milletler Cemiyeti'ne taşındığını görür [3, 4]. İç politikadaki Şeyh Sait İsyanı gibi çalkantıların ve uluslararası yalnızlığın da etkisiyle Türkiye'nin yeni bir savaşı göze alamayarak 5 Haziran 1926 Ankara Antlaşması ile Musul'u Irak'a (İngiliz mandasına) bırakmak zorunda kaldığını, buna karşılık 25 yıl süreyle Irak petrol gelirlerinin yüzde 10'unu aldığını öğrenir [5-7].
 
 ABD ile ilişkilerin ise başlangıçta Ermeni lobisi ve misyonerlerin baskısıyla ABD Kongresi'nin Lozan'ı onaylamaması nedeniyle aksadığını [8, 9]; ancak 1927'de imzalanan mektup notası ve ticari anlaşmalarla normale döndüğünü kavrar [10, 11]. Ayrıca Türkiye'nin Kellogg-Briand Paktı'na katılarak barışçı yaklaşımını sergilediğini ve 1931'de afyon fabrikalarını kapatıp ABD ile yaşanan gerilimi çözdüğünü öğrenir [10-12].
 
 ### 2. 1932-1938 Döneminde Kolektif Güvenliği Sağlamaya Yönelik Milletler Cemiyeti Üyeliği ve Balkan Antantı Adımlarını Değerlendirebilme
 
-Öğrenci bu öğrenme hedefinde, 1930'lu yıllarda Almanya, İtalya ve Japonya gibi devletlerin saldırgan ve revizyonist (mevcut durumu değiştirmek isteyen) politikalar izlemesi karşısında Türkiye'nin statükoyu ve barışı koruyan grupta yer aldığını öğrenir [13, 14]. Musul kararı nedeniyle daha önce mesafeli yaklaşılan Milletler Cemiyeti'ne, Mustafa Kemal Atatürk'ün kararlılığı doğrultusunda kendi başvurusuyla değil, 1932 yılında gelen özel davet üzerine katıldığını kavrar [15, 16]. 
+Öğrenci bu öğrenme hedefinde, 1930'lu yıllarda Almanya, İtalya ve Japonya gibi devletlerin saldırgan ve revizyonist (mevcut durumu değiştirmek isteyen) politikalar izlemesi karşısında Türkiye'nin statükoyu ve barışı koruyan grupta yer aldığını öğrenir [13, 14]. Musul kararı nedeniyle daha önce mesafeli yaklaşılan Milletler Cemiyeti'ne, Mustafa Kemal Atatürk'ün kararlılığı doğrultusunda kendi başvurusuyla değil, 1932 yılında gelen özel davet üzerine katıldığını kavrar [15, 16].
 
 Bölgesel güvenliği pekiştirmek amacıyla 9 Şubat 1934 tarihinde Türkiye, Yunanistan, Romanya ve Yugoslavya arasında Balkan Antantı'nın imzalandığını öğrenir [16, 17]. Bu antant ile tarafların karşılıklı olarak sınırlarını garanti altına aldıklarını ve Balkanlar'da kolektif güvenliği tesis etmeye çalıştıklarını değerlendirir [17, 18].
 
 ### 3. Montrö Boğazlar Sözleşmesi'nin Kazanımlarını ve Atatürk Dönemi Dış Politikasının Temel İlkelerini Kavrayabilme
 
-Öğrenci bu hedef doğrultusunda, Lozan'da kabul edilen uluslararası Boğazlar Komisyonu ve askersizleştirme hükümlerinin 1930'lardaki silahlanma yarışı ve uluslararası krizler nedeniyle güvenlik riski oluşturması üzerine Türkiye'nin diplomatik girişimler başlattığını öğrenir [19, 20]. 20 Temmuz 1936'da imzalanan Montrö Boğazlar Sözleşmesi sayesinde uluslararası komisyonun kaldırıldığını, Boğazlar üzerinde tam Türk egemenliğinin sağlandığını ve bölgeyi askerileştirme hakkının elde edildiğini kavrar [20, 21]. 
+Öğrenci bu hedef doğrultusunda, Lozan'da kabul edilen uluslararası Boğazlar Komisyonu ve askersizleştirme hükümlerinin 1930'lardaki silahlanma yarışı ve uluslararası krizler nedeniyle güvenlik riski oluşturması üzerine Türkiye'nin diplomatik girişimler başlattığını öğrenir [19, 20]. 20 Temmuz 1936'da imzalanan Montrö Boğazlar Sözleşmesi sayesinde uluslararası komisyonun kaldırıldığını, Boğazlar üzerinde tam Türk egemenliğinin sağlandığını ve bölgeyi askerileştirme hakkının elde edildiğini kavrar [20, 21].
 
 Ticaret gemilerine serbestlik verilirken Karadeniz'e kıyısı olmayan ülkelerin savaş gemilerine kısıtlamalar getirildiğini ve böylece Türkiye'nin hayati bir stratejik zafer kazandığını öğrenir [21, 22]. Ayrıca öğrenci, Atatürk dönemi dış politikasının "Yurtta sulh, cihanda sulh" ilkesi doğrultusunda barışçılık, tam bağımsızlık, gerçekçilik, uluslararası hukuka saygı ve millî menfaatleri esas alma ilkeleri üzerine kurulduğunu bütüncül bir şekilde kavrar [1, 2, 14, 22].
 

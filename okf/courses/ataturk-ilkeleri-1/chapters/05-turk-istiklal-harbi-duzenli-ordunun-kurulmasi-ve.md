@@ -5,7 +5,7 @@ description: Kuvayı Milliye birliklerinin düşman ilerleyişini durdurmada yet
 course: ataturk-ilkeleri-1
 chapter: 5
 status: stable
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-13T17:08:40Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-13T19:42:22Z }
 notebook: "https://notebooklm.google.com/notebook/436f4e9d-25d4-4441-98f1-ed97d01b9b7f"
 ---
 
@@ -37,7 +37,7 @@ Bu bölümün içinde yaşadığı ders paneli: [Atatürk İlkeleri ve İnkılap
 
 ### 1. Kuvayı Milliye Birliklerinden Düzenli Orduya Geçilme Nedenleri ve Bu Sürecin Aşamaları
 
-Bu öğrenme hedefi kapsamında öğrenci, Mondros Mütarekesi sonrasında başlayan işgallere karşı halkın kendiliğinden kurduğu Kuvayı Milliye direnişinin yapısını ve yetersizliklerini kavrar [1, 2]. Kuvayı Milliye birlikleri düşmana zararlar vermiş, Yunan ilerleyişini yavaşlatmış ve Türkiye Büyük Millet Meclisi'ne karşı çıkan iç ayaklanmaları bastırmada önemli hizmetler sunmuştur [2]. Ancak bu birliklerin askeri disiplin ve hiyerarşiden yoksun olması, her grubun kendi liderinin emriyle hareket etmesi ve halka yönelik keyfi tutumlar sergilemesi kesin başarı kazanılmasını engellemiştir [2]. 
+Bu öğrenme hedefi kapsamında öğrenci, Mondros Mütarekesi sonrasında başlayan işgallere karşı halkın kendiliğinden kurduğu Kuvayı Milliye direnişinin yapısını ve yetersizliklerini kavrar [1, 2]. Kuvayı Milliye birlikleri düşmana zararlar vermiş, Yunan ilerleyişini yavaşlatmış ve Türkiye Büyük Millet Meclisi'ne karşı çıkan iç ayaklanmaları bastırmada önemli hizmetler sunmuştur [2]. Ancak bu birliklerin askeri disiplin ve hiyerarşiden yoksun olması, her grubun kendi liderinin emriyle hareket etmesi ve halka yönelik keyfi tutumlar sergilemesi kesin başarı kazanılmasını engellemiştir [2].
 
 Düzenli orduya geçiş sürecini hızlandıran ve kesinleştiren kırılma noktası, Batı Cephesi Komutanı Ali Fuat Paşa'nın Genelkurmay'ın karşı çıkmasına rağmen 24 Ekim 1920'de gerçekleştirdiği Gediz Taarruzu olmuştur [3]. Bu taarruzun başarısızlıkla sonuçlanması üzerine Ali Fuat Paşa Moskova elçiliğine atanmış, Batı Cephesi ikiye bölünmüş ve vakit kaybetmeden düzenli orduya geçilmesine karar verilmiştir [3].
 
@@ -49,7 +49,7 @@ Merkez teşkilatında Genelkurmay Başkanlığı ilk aşamada Ziraat Mektebi bin
 
 ### 3. İstiklal Harbi Bünyesinde Yürütülen Askeri Harekatların ve Cephe Mücadelelerinin Genel Seyri
 
-Öğrenci bu öğrenme hedefinde, Millî Mücadele'nin askeri safhasındaki çetin gelişmeleri ve iç ile dış tehditlerin eş zamanlı yönetilmesini değerlendirir [3, 4]. Kuvayı Milliye birliklerinin düşmanı oyalamasına rağmen Gediz Taarruzu'nda yaşanan başarısızlık sonrasında Yunan ordusu Bursa ve Uşak hatlarından karşı taarruza geçmiştir [3]. 
+Öğrenci bu öğrenme hedefinde, Millî Mücadele'nin askeri safhasındaki çetin gelişmeleri ve iç ile dış tehditlerin eş zamanlı yönetilmesini değerlendirir [3, 4]. Kuvayı Milliye birliklerinin düşmanı oyalamasına rağmen Gediz Taarruzu'nda yaşanan başarısızlık sonrasında Yunan ordusu Bursa ve Uşak hatlarından karşı taarruza geçmiştir [3].
 
 TBMM'nin düzenli ordu kurma kararı alması üzerine Kütahya bölgesindeki Çerkez Ethem (Kuvayı Seyyare) ve Denizli civarındaki Demirci Efe düzenli ordu emir komutasına girmeyi reddetmişlerdir [4]. Çerkez Ethem ve kardeşlerinin bu tepkisi kısa sürede bir iç isyana dönüşmüş, bu iç çalkantıdan yararlanmak isteyen Yunan ordusu da Afyon ve Eskişehir yönlerinde ileri harekata başlamıştır [4]. Öğrenci böylece, İstiklal Harbi'nde bir yandan işgalci düşmana karşı cephe savaşı yürütülürken, diğer yandan merkezi otoriteyi tesis etmek için iç isyanlarla mücadele edildiğini analiz eder [2, 4].
 

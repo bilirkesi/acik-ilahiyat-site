@@ -4,7 +4,7 @@ type: Bundle Index
 title: Açık İlahiyat Ders Bilgisi
 description: "AÖF / İÜ gibi kaynak üniversitelere göre ayrılmış ders bilgisi: yıl, dönem, bölümler, sınavlar, artifact kataloğu."
 language: tr
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-13T17:08:40Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-13T19:42:22Z }
 ---
 
 # Üniversiteler

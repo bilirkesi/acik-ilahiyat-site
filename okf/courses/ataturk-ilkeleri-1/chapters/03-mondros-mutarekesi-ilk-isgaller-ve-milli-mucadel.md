@@ -5,7 +5,7 @@ description: Birinci Dünya Savaşı sonrasında imzalanan Mondros Mütarekesi, 
 course: ataturk-ilkeleri-1
 chapter: 3
 status: stable
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-13T17:08:40Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-13T19:42:22Z }
 notebook: "https://notebooklm.google.com/notebook/436f4e9d-25d4-4441-98f1-ed97d01b9b7f"
 ---
 
@@ -38,7 +38,7 @@ Bu bölümün içinde yaşadığı ders paneli: [Atatürk İlkeleri ve İnkılap
 
 ### 1. Mondros Mütarekesi'nin Maddelerini ve İtilaf Devletleri'nin Gerçekleştirdiği Haksız İşgalleri Analiz Edebilme
 
-Öğrenci bu öğrenme hedefi doğrultusunda, Birinci Dünya Savaşı sonrasında Rusya, Avusturya-Macaristan, Almanya ve Osmanlı Devleti gibi büyük imparatorlukların yıkıldığını öğrenmektedir [1]. Osmanlı Devleti'nin savaştan çekilmesini sağlayan Mondros Mütarekesi, uluslararası hukuka göre geçici bir ateşkes antlaşması olması gerekirken İtilaf Devletleri tarafından kesin barış antlaşması beklenmeksizin derhal haksız işgallere zemin hazırlanması amacıyla kullanılmıştır [2, 3]. 
+Öğrenci bu öğrenme hedefi doğrultusunda, Birinci Dünya Savaşı sonrasında Rusya, Avusturya-Macaristan, Almanya ve Osmanlı Devleti gibi büyük imparatorlukların yıkıldığını öğrenmektedir [1]. Osmanlı Devleti'nin savaştan çekilmesini sağlayan Mondros Mütarekesi, uluslararası hukuka göre geçici bir ateşkes antlaşması olması gerekirken İtilaf Devletleri tarafından kesin barış antlaşması beklenmeksizin derhal haksız işgallere zemin hazırlanması amacıyla kullanılmıştır [2, 3].
 
 Mütarekenin özellikle 7. ve 24. maddeleri, galip devletlere istedikleri stratejik bölgeleri işgal etme yetkisi tanımıştır [4, 5]. Bunun yanı sıra ordu ile donanmanın terhis edilmesi, tüm silah ve cephanelerin teslim edilmesi şart koşularak Türk milletinin savunma imkanları elinden alınmak istenmiştir [3, 5]. İtilaf Devletleri bu maddelere dayanarak Çanakkale Boğazı'nı, Güneydoğu Anadolu bölgesini, Karadeniz limanlarını ve Batum'u işgal etmiştir [4, 6, 7]. 13 Kasım 1918 tarihinde 61 parçalık İtilaf donanmasının İstanbul limanına demirlemesiyle Osmanlı başkenti fiilen kontrol altına alınmış, Osmanlı yönetimi ise yaşanan bu işgaller karşısında çaresiz ve teslimiyetçi bir tutum sergilemiştir [8-10].
 

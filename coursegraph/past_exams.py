@@ -79,6 +79,17 @@ AIT_UNIT_KEYWORDS: dict[int, list[str]] = {
         "mekteb-i harbiye", "erkan-i harbiye", "harbiye", "tanzimat dönemi",
         "mustafa reşit", "ali paşa", "fuat paşa", "midhat", "meşveret",
         "şura-yı devlet", "meclis-i vala", "dar-ül funun", "numune-i terakki",
+        "çanakkale", "i. dünya savaşı", "birinci dünya savaşı", "kıyık",
+        "balkan savaşları", "balkan savaşı", "uşi", "londra antlaşması",
+        "monroe", "wilson", "truman", "marshall", "balfor", "14 madde",
+        "ırak cephesi", "irak cephesi", "kanal cephesi", "hicaz", "yemen",
+        "kafkasya cephesi", "galiçya", "sina", "filistin cephesi", "suriye cephesi",
+        "meriç", "bulgaristan", "yunanistan sınır", "osmanlıcılık",
+        "batıcılık", "türkçülük", "islamcılık", "adem-i merkeziyet",
+        "tercüman-ı ahval", "tasvir-i efkar", "ceride-i havadis", "takvim-i vekayi",
+        "vaka-i vakviye", "vaka-i hayriye", "irad-i cedid", "nizam-i cedid",
+        "celali", "gümüş", "enflasyon", "tımar", "iltizam", "devşirme",
+        "koçi bey", "lütfi paşa", "şark meselesi", "hasta adam", "küçük kaynarca",
     ],
     2: [
         "31 mart", "hak ve hürriyet", "hürriyet fırkası", "alemdar", "müdafaa-i hukuk",
@@ -482,15 +493,25 @@ def extract_keywords(stem: str, max_n: int = 8) -> list[str]:
 
 
 def classify_unit(stem: str, options_text: str = "", slug: str = "islam-mezhepleri-tarihi") -> tuple[int | None, dict[int, int]]:
-    """Soruyu AÖF ünitesine eşler. (best_unit, scores)."""
-    blob = fold(f"{stem} {options_text}")
+    """Soruyu AÖF ünitesine eşler. (best_unit, scores).
+
+    Stem (soru gövdesi) 3x, seçenekler 1x ağırlıkta; aksi halde doğru cevap
+    metnindeki anahtar kelimeler (ör. Boğazlar) üniteyi şaşırtır.
+    """
     scores: dict[int, int] = {}
+    stems = fold(stem or "")
+    opts = fold(options_text or "")
     for unit, keys in unit_keywords(slug).items():
         s = 0
         for k in keys:
             kf = fold(k)
-            if kf and kf in blob:
-                s += 3 if len(kf) > 8 else 2
+            if not kf:
+                continue
+            w = 3 if len(kf) > 8 else 2
+            if kf in stems:
+                s += w * 3
+            if kf in opts:
+                s += w
         if s:
             scores[unit] = s
     if not scores:

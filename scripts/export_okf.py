@@ -63,6 +63,50 @@ process.stdout.write(JSON.stringify(global.window.INTERACTIVE));
     return json.loads(out)
 
 
+def clean_grounding(text: str) -> str:
+    """NotebookLM sohbet artıklarını ve em dash'i OKF gövdesinden temizle."""
+    text = re.sub(r"\s*\u2014\s*", ", ", text or "")
+    lines = [ln.rstrip() for ln in (text or "").splitlines()]
+    drop_re = re.compile(
+        r"^(?:📚|Bu ünite|Bu bölüm|Bu ders|Hazırlamamı|ister misiniz|"
+        r"Ek olarak|İsterseniz|Aşağıdaki|Not:|Tip:|İpucu:)",
+        re.I,
+    )
+    cleaned: list[str] = []
+    for ln in lines:
+        s = ln.strip()
+        if drop_re.match(s) and s.endswith("?"):
+            continue
+        if s.startswith("📚"):
+            continue
+        cleaned.append(ln)
+    out = "\n".join(cleaned).strip()
+    out = re.sub(r"\n{3,}", "\n\n", out)
+    return out
+
+
+def aof_infographic_block(slug: str, unit: int, title: str) -> str:
+    """Çok sayfalı ünitelerde sayfa PNG'lerini, tek sayfada stitch'i listeler."""
+    assets = ROOT / "assets" / slug
+    pages = sorted(assets.glob(f"aof-infographic-{unit}-p*.png"))
+    stitched = assets / f"aof-infographic-{unit}.png"
+    lines = ["# AÖF Ünite İnfoğrafik\n"]
+    if pages:
+        lines.append(f"Ünite {unit} infoğrafik sayfaları:\n")
+        for pi, p in enumerate(pages, 1):
+            rel = f"/assets/{slug}/{p.name}"
+            lines.append(f"![{title} AÖF infoğrafik sayfa {pi}/{len(pages)}]({rel})\n")
+    elif stitched.exists():
+        rel = f"/assets/{slug}/aof-infographic-{unit}.png"
+        lines.append(f"![{title} AÖF infoğrafik]({rel})\n")
+    else:
+        return ""
+    lines.append(
+        f"Kaynak PDF: `assets/{slug}/aof/` (Anadolu Üniversitesi ünite infoğrafikleri).\n"
+    )
+    return "\n".join(lines)
+
+
 def slugify(text: str, maxlen: int = 48) -> str:
     import unicodedata
 
@@ -427,15 +471,7 @@ def main() -> int:
             obj_list = "\n".join(f"{n}. {o}" for n, o in enumerate(ch.get("objectives", []), 1))
             lec_list = "\n".join(f"* {l}" for l in ch.get("lectures", [])) or "* (ders listesi yok)"
 
-            aof_png = ROOT / "assets" / slug / f"aof-infographic-{i}.png"
-            aof_block = ""
-            if aof_png.exists():
-                aof_rel = f"/assets/{slug}/aof-infographic-{i}.png"
-                aof_block = (
-                    f"# AÖF Ünite İnfoğrafik\n\n"
-                    f"![{title} AÖF infoğrafik]({aof_rel})\n\n"
-                    f"Kaynak PDF: `assets/{slug}/aof/` (Anadolu Üniversitesi ünite infoğrafikleri).\n"
-                )
+            aof_block = aof_infographic_block(slug, i, title)
 
             ch_body = [
                 f"# Özet\n\n{ch.get('summary', '')}\n",
@@ -454,7 +490,9 @@ def main() -> int:
 
             grounding = ch.get("grounding") or {}
             if grounding.get("answer"):
-                ch_body.append(f"# Kaynak Temellendirme\n\n{grounding['answer']}\n")
+                g = clean_grounding(grounding["answer"])
+                if g:
+                    ch_body.append(f"# Kaynak Temellendirme\n\n{g}\n")
 
             src_ids = ch.get("source_ids", [])
             if src_ids:

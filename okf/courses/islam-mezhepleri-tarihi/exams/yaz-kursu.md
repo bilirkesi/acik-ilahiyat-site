@@ -14,7 +14,7 @@ pass_mark: 0.7
 has_answer_key: false
 has_solutions: false
 status: draft
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-13T17:08:40Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-13T19:42:22Z }
 resource: /courses/islam-mezhepleri-tarihi/exams/yaz-kursu.md
 ---
 

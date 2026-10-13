@@ -5,7 +5,7 @@ description: Osmanlı Devleti'nin 17. ve 18. yüzyıllardaki dönüşüm süreci
 course: ataturk-ilkeleri-1
 chapter: 1
 status: stable
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-13T17:08:40Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-13T19:42:22Z }
 notebook: "https://notebooklm.google.com/notebook/436f4e9d-25d4-4441-98f1-ed97d01b9b7f"
 ---
 
@@ -15,7 +15,11 @@ Osmanlı Devleti'nin 17. ve 18. yüzyıllardaki dönüşüm süreci, ekonomik kr
 
 # AÖF Ünite İnfoğrafik
 
-![Türk İnkılabını Hazırlayan Sebepler ve Doğu Sorunu AÖF infoğrafik](/assets/ataturk-ilkeleri-1/aof-infographic-1.png)
+Ünite 1 infoğrafik sayfaları:
+
+![Türk İnkılabını Hazırlayan Sebepler ve Doğu Sorunu AÖF infoğrafik sayfa 1/2](/assets/ataturk-ilkeleri-1/aof-infographic-1-p1.png)
+
+![Türk İnkılabını Hazırlayan Sebepler ve Doğu Sorunu AÖF infoğrafik sayfa 2/2](/assets/ataturk-ilkeleri-1/aof-infographic-1-p2.png)
 
 Kaynak PDF: `assets/ataturk-ilkeleri-1/aof/` (Anadolu Üniversitesi ünite infoğrafikleri).
 
@@ -47,8 +51,6 @@ Bu öğrenme hedefinde öğrenci, Avrupalı büyük güçlerin Osmanlı Devleti 
 ### 3. Büyük Devletlerin Boğazlar ve Osmanlı Coğrafyası Üzerindeki Paylaşım Planları ve İzledikleri Politikalar
 
 Bu öğrenme hedefinde öğrenci, emperyalist güçlerin Osmanlı topraklarına yönelik farklılaşan stratejilerini ve bölgesel denklemdeki hamlelerini değerlendirmektedir. Çarlık Rusyası, Boğazları ele geçirip sıcak denizlere inmek, Balkanlar'daki Slav ile Ortodoks halkları kışkırtmak ve Ermeni meselesini uluslararası alana taşımak suretiyle Osmanlı'yı paylaşmayı hedeflemiştir [9, 13]. İngiltere ise Hindistan sömürge yolunu emniyete almak amacıyla uzun süre Osmanlı'nın toprak bütünlüğünü ve Boğazların harp gemilerine kapatılmasını savunmuş, ancak ilerleyen süreçte Rusya ile Reval'de görüşerek paylaşım planlarına katılmıştır [8, 12-14]. Fransa; Mısır, Cezayir ve Tunus'u işgal ederek Doğu Akdeniz'deki konumunu güçlendirmeye çalışmış ve gizli paylaşım antlaşmalarında yer almıştır [13, 14]. Almanya ise İngiltere'nin Ortadoğu'daki üstünlüğünü kırmak amacıyla Osmanlı Devleti'nin toprak bütünlüğünü desteklemiş, Bağdat demiryolu projesi ve askeri ıslahat heyetleri üzerinden kurduğu yakınlaşmayı I. Dünya Savaşı'nda resmi bir ittifaka dönüştürmüştür [14, 15].
-
-📚 Bu ünite konularını pekiştirmek için 1. ünite özelinde interaktif bir test veya çalışma kartları hazırlamamı ister misiniz?
 
 # Kaynaklar
 

@@ -5,7 +5,7 @@ description: Bu bölümde dilin temel özellikleri, doğuşu, toplum ve kültür
 course: turk-dili-1
 chapter: 1
 status: stable
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-13T17:08:40Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-13T19:42:22Z }
 notebook: "https://notebooklm.google.com/notebook/c702ed26-fe17-463d-b217-202acd0c3d26"
 ---
 
@@ -15,7 +15,23 @@ Bu bölümde dilin temel özellikleri, doğuşu, toplum ve kültürle olan kökl
 
 # AÖF Ünite İnfoğrafik
 
-![Dil, Kültür ve Dünya Dilleri AÖF infoğrafik](/assets/turk-dili-1/aof-infographic-1.png)
+Ünite 1 infoğrafik sayfaları:
+
+![Dil, Kültür ve Dünya Dilleri AÖF infoğrafik sayfa 1/8](/assets/turk-dili-1/aof-infographic-1-p1.png)
+
+![Dil, Kültür ve Dünya Dilleri AÖF infoğrafik sayfa 2/8](/assets/turk-dili-1/aof-infographic-1-p2.png)
+
+![Dil, Kültür ve Dünya Dilleri AÖF infoğrafik sayfa 3/8](/assets/turk-dili-1/aof-infographic-1-p3.png)
+
+![Dil, Kültür ve Dünya Dilleri AÖF infoğrafik sayfa 4/8](/assets/turk-dili-1/aof-infographic-1-p4.png)
+
+![Dil, Kültür ve Dünya Dilleri AÖF infoğrafik sayfa 5/8](/assets/turk-dili-1/aof-infographic-1-p5.png)
+
+![Dil, Kültür ve Dünya Dilleri AÖF infoğrafik sayfa 6/8](/assets/turk-dili-1/aof-infographic-1-p6.png)
+
+![Dil, Kültür ve Dünya Dilleri AÖF infoğrafik sayfa 7/8](/assets/turk-dili-1/aof-infographic-1-p7.png)
+
+![Dil, Kültür ve Dünya Dilleri AÖF infoğrafik sayfa 8/8](/assets/turk-dili-1/aof-infographic-1-p8.png)
 
 Kaynak PDF: `assets/turk-dili-1/aof/` (Anadolu Üniversitesi ünite infoğrafikleri).
 
@@ -40,9 +56,9 @@ Bu bölümün içinde yaşadığı ders paneli: [Türk Dili paneli](/courses/tur
 Aşağıda, ders kaynakları doğrultusunda belirlenen üç temel öğrenme hedefi kapsamında öğrencilerin edineceği kazanımlar açıklanmıştır:
 
 ### 1. Dilin Tanımı, Temel Bilimsel Özellikleri ve Düşünce ile İlişkisi
-Öğrenci bu hedef kapsamında ilk olarak dilin ne olduğunu kavrar. Dil; insanların kendi aralarında anlaşmasını sağlayan **sesli bir işaretler sistemi**, somut dünyanın söz dizgeleri düzeyinde yeniden oluşturulması ve temeli bilinmeyen zamanlarda atılmış **gizli bir antlaşmalar sistemi** olarak tanımlanmaktadır [1, 2]. 
+Öğrenci bu hedef kapsamında ilk olarak dilin ne olduğunu kavrar. Dil; insanların kendi aralarında anlaşmasını sağlayan **sesli bir işaretler sistemi**, somut dünyanın söz dizgeleri düzeyinde yeniden oluşturulması ve temeli bilinmeyen zamanlarda atılmış **gizli bir antlaşmalar sistemi** olarak tanımlanmaktadır [1, 2].
 
-Öğrenci, dilin bilimsel özelliklerini incelerken dilin kuralları olan ve öğrenilebilir bir **sistem** niteliği taşıdığını görür [3]. Yansıma kelimeler dışındaki sözcükler ile onların temsil ettiği nesneler arasında doğrudan bir nedensellik ilişkisi bulunmadığını [3], hiçbir dilin yapısı gereği bir diğerine üstün olmadığını [3] ve dilin belirli kurallarla **sonsuz sayıda cümle** üretilmesine imkan tanıdığını öğrenir [3]. Ayrıca dilin coğrafyaya, yaşa, cinsiyete ve meslek gruplarına göre farklılık gösterdiğini; argo, jargon, diyalekt ve kod değiştirme gibi dil içi değişkenlikleri keşfeder [4-6]. 
+Öğrenci, dilin bilimsel özelliklerini incelerken dilin kuralları olan ve öğrenilebilir bir **sistem** niteliği taşıdığını görür [3]. Yansıma kelimeler dışındaki sözcükler ile onların temsil ettiği nesneler arasında doğrudan bir nedensellik ilişkisi bulunmadığını [3], hiçbir dilin yapısı gereği bir diğerine üstün olmadığını [3] ve dilin belirli kurallarla **sonsuz sayıda cümle** üretilmesine imkan tanıdığını öğrenir [3]. Ayrıca dilin coğrafyaya, yaşa, cinsiyete ve meslek gruplarına göre farklılık gösterdiğini; argo, jargon, diyalekt ve kod değiştirme gibi dil içi değişkenlikleri keşfeder [4-6].
 
 Dil ve düşünce ilişkisi bağlamında ise iki temel görüşü değerlendirir: **Safir-Whorf varsayımı** doğrultusunda dilin insanın dünyayı algılama ve düşünme biçimini şekillendirdiğini öğrenirken; **Eflatun ve Aristo** gibi filozofların yaklaşımıyla düşüncenin dili belirlediği ve dilin yalnızca bir aktarım aracı olduğu görüşünü analiz eder [7].
 

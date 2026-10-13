@@ -6,7 +6,7 @@ course: islam-mezhepleri-tarihi
 question_count: 15
 pass_mark: 0.7
 status: stable
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-13T17:08:40Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-13T19:42:22Z }
 resource: /courses/islam-mezhepleri-tarihi/quiz.md
 ---
 

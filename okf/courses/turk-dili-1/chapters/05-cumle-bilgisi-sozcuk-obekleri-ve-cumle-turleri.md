@@ -5,7 +5,7 @@ description: Bu bölümde söz diziminin temel ögeleri olan sözcük öbekleri 
 course: turk-dili-1
 chapter: 5
 status: stable
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-13T17:08:40Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-13T19:42:22Z }
 notebook: "https://notebooklm.google.com/notebook/c702ed26-fe17-463d-b217-202acd0c3d26"
 ---
 
@@ -15,7 +15,17 @@ Bu bölümde söz diziminin temel ögeleri olan sözcük öbekleri ve tamlamalar
 
 # AÖF Ünite İnfoğrafik
 
-![Cümle Bilgisi, Sözcük Öbekleri ve Cümle Türleri AÖF infoğrafik](/assets/turk-dili-1/aof-infographic-5.png)
+Ünite 5 infoğrafik sayfaları:
+
+![Cümle Bilgisi, Sözcük Öbekleri ve Cümle Türleri AÖF infoğrafik sayfa 1/5](/assets/turk-dili-1/aof-infographic-5-p1.png)
+
+![Cümle Bilgisi, Sözcük Öbekleri ve Cümle Türleri AÖF infoğrafik sayfa 2/5](/assets/turk-dili-1/aof-infographic-5-p2.png)
+
+![Cümle Bilgisi, Sözcük Öbekleri ve Cümle Türleri AÖF infoğrafik sayfa 3/5](/assets/turk-dili-1/aof-infographic-5-p3.png)
+
+![Cümle Bilgisi, Sözcük Öbekleri ve Cümle Türleri AÖF infoğrafik sayfa 4/5](/assets/turk-dili-1/aof-infographic-5-p4.png)
+
+![Cümle Bilgisi, Sözcük Öbekleri ve Cümle Türleri AÖF infoğrafik sayfa 5/5](/assets/turk-dili-1/aof-infographic-5-p5.png)
 
 Kaynak PDF: `assets/turk-dili-1/aof/` (Anadolu Üniversitesi ünite infoğrafikleri).
 

@@ -5,7 +5,7 @@ description: Bu bölümde Şia'nın günümüze kadar varlığını sürdüren k
 course: islam-mezhepleri-tarihi
 chapter: 6
 status: stable
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-13T17:08:40Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-13T19:42:22Z }
 notebook: "https://notebooklm.google.com/notebook/ad4a99c9-cc96-4f29-92f5-ca8638bc42c2"
 ---
 
@@ -43,8 +43,6 @@ Bu bölümün içinde yaşadığı ders paneli: [İslam Mezhepleri Tarihi paneli
 Öğrenci bu hedef çerçevesinde, iki mezhebin tarih içindeki dönüşümünü ve günümüzdeki varlıklarını analiz eder. Zeydiyye, kurucusu Zeyd b. Ali'nin Emevilere karşı yürüttüğü isyanın başarısızlıkla sonuçlanması ve şehit edilmesi sonrasında, varlığını korumak amacıyla merkez coğrafyadan uzaklaşmıştır [12, 13]. Hazar Denizi kıyısındaki Tabaristan bölgesinde ve Yemen'de bağımsız devletler kurmuşlardır [13]. Tabaristan'daki devlet Büveyhiler tarafından yıkılmış, fakat Yemen'deki Zeydi imamet yönetimi varlığını günümüze kadar sürdürmüştür [13]. İtikadi konularda Mutezile mezhebinin görüşlerinden geniş ölçüde etkilenen Zeydiler, günümüzde Yemen nüfusunun önemli bir bölümünü oluşturmaktadır [5, 14]. Yemen'deki iç savaş dışarıdan bir mezhep çatışması gibi görünse de aslında siyasi bir güç mücadelesidir; nitekim tarih boyunca Zeydiler ile Şafiler aynı camilerde ibadet ederek barış içinde yaşamışlardır [15] *(Ders: 9- Günümüze Ulaşan Kollarıyla Şîa: "Zeydiyye")*.
 
 İsmailiyye ise Cafer es-Sadık'ın oğlu İsmail ve onun oğlu Muhammed b. İsmail etrafında gizli davetçiler (Dai) teşkilatıyla örgütlenmiştir [9, 16, 17]. Kuzey Afrika ve Mısır'da Ubeydullah el-Mehdi önderliğinde güçlü Fatımi Devleti'ni kurmuşlardır [11]. Halife Hakim bi-Emrillah döneminde Dürzilik mezhebi bu yapıdan ayrılmış; 8. halife Mustansır'ın ölümünün ardından ise Büyükoğlu Nizar'ı destekleyen Nizariler ile Küçükoğlu Musta'li'yi destekleyen Musta'liler şeklinde günümüze kadar gelen ana bölünme yaşanmıştır [18, 19]. Hasan Sabbah, Nizariler adına Alamut Kalesi merkezli devleti kurmuştur [19]. Günümüzde Musta'liler daha çok Hindistan'da "Bohralar" adıyla Dâi-i Mutlak önderliğinde varlıklarını sürdürmekte ve ibadetlerinde İslam şeriatının zahirine bağlı kalmaktadırlar [10, 20]. Nizariler ise 4. Ağa Han (Kerim Şah) liderliğinde 20'den fazla ülkede yaşamakta ve ibadetlerde batıni yorumları öne çıkararak yaşadıkları ülkelerin kültürlerine uyum sağlamaktadırlar [7, 10, 20] *(Ders: 10- Günümüze Ulaşan Kollarıyla Şîa: "İsmailiyye")*.
-
-📚 Tüm derslerin ünite kazanımlarını tamamlamış olduk. Dilerseniz derslerde geçen kavramları ve mezhepleri karşılaştırmalı olarak gözden geçirebileceğiniz bir özet tablo veya sınav hazırlığı için çalışma soruları oluşturabilirim.
 
 # Kaynaklar
 
