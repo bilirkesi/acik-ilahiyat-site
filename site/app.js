@@ -419,8 +419,19 @@
         const slug = q._slug || q.course || "";
         const href = `#/course/${slug}/chapter/${m.n}`;
         return `<a class="solution-link" href="${href}">${esc(m.n)}. ${esc(m.title)}${m.summary ? `<span>${esc(m.summary)}</span>` : ""}</a>`;
-      }).join("");
+      }).join("") + (q._examId ? `<button type="button" class="sol-copy sol-game-copy" data-q="${(i || 0) + 1}">Bu sorunun linkini kopyala</button>` : "");
       box.appendChild(wrap);
+      const copyBtn = wrap.querySelector(".sol-game-copy");
+      if (copyBtn && q._examId) {
+        const path = `#/course/${q._slug || q.course}/past/${encodeURIComponent(q._examId)}?soru=${(i || 0) + 1}`;
+        copyBtn.dataset.link = path;
+        copyBtn.onclick = async () => {
+          const abs = location.href.split("#")[0] + path;
+          try { await navigator.clipboard.writeText(abs); copyBtn.textContent = "Kopyalandı"; }
+          catch (_) { copyBtn.textContent = abs; }
+          setTimeout(() => { copyBtn.textContent = "Bu sorunun linkini kopyala"; }, 2000);
+        };
+      }
     }
     box.querySelectorAll("input,textarea").forEach((x) => (x.disabled = true));
   }
@@ -652,12 +663,16 @@
     ];
     const pastList = sessions.map((s) => {
       const n = (s.questions || []).length;
+      const id = encodeURIComponent(s.exam_id);
       return `<li class="past-row">
         <div>
-          <a href="#/course/${c.slug}/past/${encodeURIComponent(s.exam_id)}"><strong>${esc(s.year || s.exam_id)}</strong>${s.group ? " · " + esc(s.group) + " grup" : ""} · ${esc(String(s.term || "guz").replace("guz", "Güz").replace("bahar", "Bahar").replace("yaz", "Yaz"))} vize</a>
+          <a href="#/course/${c.slug}/past/${id}"><strong>${esc(s.year || s.exam_id)}</strong>${s.group ? " · " + esc(s.group) + " grup" : ""} · ${esc(String(s.term || "guz").replace("guz", "Güz").replace("bahar", "Bahar").replace("yaz", "Yaz"))} vize</a>
           <div class="muted" style="font-size:.82rem">${n} soru${s.hasAnswerKey === false ? "" : " · cevap anahtarı var"}</div>
         </div>
-        <a class="btn ghost" href="#/course/${c.slug}/past/${encodeURIComponent(s.exam_id)}">Çöz</a>
+        <div class="btn-row" style="margin:0">
+          <a class="btn ghost" href="#/course/${c.slug}/past/${id}?mod=rehber">Çözüm rehberi</a>
+          <a class="btn ghost" href="#/course/${c.slug}/past/${id}">Çöz</a>
+        </div>
       </li>`;
     }).join("");
     return `<p class="crumbs"><a href="#/">Katalog</a> / <a href="#/course/${c.slug}">${esc(c.subject)}</a> / Sınavlar</p>
@@ -674,19 +689,34 @@
       ${sessions.length ? `<h2>Çıkmış vize dönemleri</h2><ul class="past-list">${pastList}</ul>` : ""}`;
   }
 
-  function viewPastExam(c, examId) {
+  function viewPastExam(c, examId, query) {
     const sessions = pastFor(c.slug);
     const exam = sessions.find((s) => s.exam_id === examId) || sessions[0];
     if (!exam) return viewNotFound();
     const n = (exam.questions || []).length;
     const hasKey = exam.hasAnswerKey !== false && (exam.questions || []).some((q) => q.correct || (q.options || []).some((o) => o.isCorrect));
     const grp = exam.group && exam.group !== "A" ? ` · ${exam.group} grup` : "";
+    const eid = encodeURIComponent(exam.exam_id);
+    const rehber = String(query.mod || "") === "rehber";
+    if (rehber) {
+      return `<p class="crumbs"><a href="#/">Katalog</a> / <a href="#/course/${c.slug}">${esc(c.subject)}</a> / <a href="#/course/${c.slug}/exams">Sınavlar</a> / <a href="#/course/${c.slug}/past/${eid}">Çıkmış vize</a> / Çözüm rehberi</p>
+        <div class="quiz-head">
+          <div><p class="eyebrow">Çözüm rehberi</p><h1 style="margin:0">${esc(exam.year || exam.exam_id)}${esc(grp)}</h1></div>
+          <div class="muted" style="font-size:.9rem">${n} soru · her sorunun kalıcı linki var</div>
+        </div>
+        <div class="btn-row"><a class="btn ghost" href="#/course/${c.slug}/past/${eid}">Oyun moduna geç</a></div>
+        <ol class="sol-toc" id="sol-toc">
+          ${Array.from({ length: n }, (_, i) => `<li><a href="#/course/${c.slug}/past/${eid}?mod=rehber&amp;soru=${i + 1}">${i + 1}. soru</a></li>`).join("")}
+        </ol>
+        <div id="sol-guide" data-exam="${esc(exam.exam_id)}" data-course="${esc(c.slug)}" data-n="${n}"></div>`;
+    }
     return `<p class="crumbs"><a href="#/">Katalog</a> / <a href="#/course/${c.slug}">${esc(c.subject)}</a> / <a href="#/course/${c.slug}/exams">Sınavlar</a> / Çıkmış vize</p>
       <div class="quiz-head">
         <div><p class="eyebrow">Çıkmış vize${hasKey ? " · puanlı" : " · anımsama"}</p><h1 style="margin:0">${esc(exam.year || exam.exam_id)}${esc(grp)}</h1></div>
         <div class="muted" style="font-size:.9rem">${n} soru · ${hasKey ? "cevap anahtarı var (PDF son sayfa)" : "cevap anahtarı yok"}${exam.group ? " · grup " + esc(exam.group) : ""}</div>
       </div>
       <p class="muted">${hasKey ? "Doğru cevap otomatik işaretlenir. Puan, süre ve seri anlık HUD'da." : "Seçenekler PDF OCR olabilir; kendinizi işaretleyin."}</p>
+      <div class="btn-row"><a class="btn ghost" href="#/course/${c.slug}/past/${eid}?mod=rehber">Çözüm rehberi (tüm sorular)</a></div>
       <div id="game-root" data-course="${esc(c.slug)}" data-exam="${esc(exam.exam_id)}" data-mode="past">
         ${quizHudHtml(c, 0, n)}
         <div id="game-stage"></div>
@@ -704,6 +734,75 @@
       ${opts ? opts : `<p class="muted">Bu soru için okunabilir seçenek metni yok. Aklınızdaki cevabı düşünüp alttaki butonla işaretleyin.</p>`}
       ${q.unitTitle ? `<p class="muted" style="font-size:.85rem;margin:.6rem 0 0">İlgili ünite: <strong>${esc(q.unitTitle)}</strong>${chLinks ? " · " + chLinks : ""}</p>` : ""}
       ${kw ? `<div class="chip-row">${kw}</div>` : ""}`;
+  }
+
+  function solutionGuideItemHtml(q, i, c, examId) {
+    const letters = ["A", "B", "C", "D", "E", "F"];
+    const correctIdx = (q.options || []).findIndex((o) => o.isCorrect || o.key === q.correct);
+    const opts = (q.options || []).map((o, j) => {
+      const letter = o.key || letters[j];
+      const cls = j === correctIdx ? "opt sol-correct" : "opt";
+      const mark = j === correctIdx ? " · doğru" : "";
+      return `<div class="${cls}"><span><b>${esc(letter)})</b> ${esc(o.text || "")}${mark}</span></div>`;
+    }).join("");
+    const link = "#/course/" + c.slug + "/past/" + encodeURIComponent(examId) + "?mod=rehber&soru=" + (i + 1);
+    const metas = Array.isArray(q.chapterMeta) && q.chapterMeta.length
+      ? q.chapterMeta
+      : (q.chapters || []).map((n) => ({ n: n, title: n + ". bölüm", summary: "" }));
+    const chHtml = metas.map((m) => {
+      const sum = m.summary ? `<span>${esc(m.summary)}</span>` : "";
+      return `<a class="solution-link" href="#/course/${c.slug}/chapter/${m.n}">${esc(m.n)}. ${esc(m.title || "")}${sum}</a>`;
+    }).join("");
+    const solHtml = q.solution
+      ? `<div class="feedback ok sol-feedback"><strong>Çözüm.</strong> ${esc(q.solution)}</div>`
+      : "";
+    return `<article class="q sol-item" id="soru-${i + 1}" data-soru="${i + 1}">
+      <div class="sol-item-head">
+        <div class="qn">Soru ${i + 1}${q.unit ? ` · Ünite ${q.unit}` : ""}</div>
+        <button type="button" class="sol-copy" data-link="${esc(link)}" title="Bu sorunun linkini kopyala">Linki kopyala</button>
+      </div>
+      <p class="qt">${esc(q.stem || q.question || "")}</p>
+      ${opts}
+      ${solHtml}
+      <div class="solution-links">
+        <p class="solution-label">İlgili bölüm</p>
+        ${chHtml}
+        <a class="solution-link sol-self" href="#${link}">Bu sorunun kalıcı linki<span>${esc(link)}</span></a>
+      </div>
+    </article>`;
+  }
+
+  function bindSolutionGuide(c, examId) {
+    const root = document.getElementById("sol-guide");
+    if (!root) return;
+    const exam = pastFor(c.slug).find((s) => s.exam_id === examId) || pastFor(c.slug)[0];
+    if (!exam) return;
+    const questions = exam.questions || [];
+    root.innerHTML = questions.map((q, i) => {
+      const n = Object.assign({}, q, { _slug: c.slug });
+      return solutionGuideItemHtml(n, i, c, exam.exam_id);
+    }).join("");
+    root.querySelectorAll(".sol-copy").forEach((btn) => {
+      btn.onclick = async () => {
+        const abs = location.href.split("#")[0] + btn.dataset.link;
+        try {
+          await navigator.clipboard.writeText(abs);
+          btn.textContent = "Kopyalandı";
+        } catch (_) {
+          btn.textContent = abs;
+        }
+        setTimeout(() => { btn.textContent = "Linki kopyala"; }, 2000);
+      };
+    });
+    const qraw = parseLoc().query.soru;
+    const qnum = parseInt(String(qraw || "").split("#")[0], 10);
+    if (qnum >= 1 && qnum <= questions.length) {
+      const el = root.querySelector(`#soru-${qnum}`);
+      if (el) {
+        el.classList.add("sol-focus");
+        requestAnimationFrame(() => el.scrollIntoView({ behavior: "smooth", block: "start" }));
+      }
+    }
   }
 
   function bindPastExam(c, examId) {
@@ -727,7 +826,8 @@
       })),
     }));
     const hasKey = questions.some((q) => q.answerOptions.some((o) => o.isCorrect));
-    let idx = 0, right = 0, streak = 0, bestStreakRun = 0, xp = 0, gradedDone = 0, gradedRight = 0;
+    const startQ = Math.max(1, Math.min(questions.length || 1, parseInt(String(parseLoc().query.soru || "1").split("#")[0], 10) || 1));
+    let idx = startQ - 1, right = 0, streak = 0, bestStreakRun = 0, xp = 0, gradedDone = 0, gradedRight = 0;
     const t0 = Date.now();
     let timer = null;
     const hud = (id) => document.getElementById(id);
@@ -761,6 +861,10 @@
       clearInterval(timer);
       const q = questions[i];
       if (!q) { finish(); return; }
+      if (q._examId == null) q._examId = exam.exam_id;
+      const hashQ = `?soru=${i + 1}`;
+      const base = `#/course/${c.slug}/past/${encodeURIComponent(exam.exam_id)}`;
+      history.replaceState(null, "", location.pathname + location.search + base + hashQ);
       if (hasKey) {
         stage.innerHTML = `<div class="q game-q" data-q="${i}">${questionHTML(q, i)}
           <div class="btn-row game-actions">
@@ -875,7 +979,7 @@
       document.getElementById("result").scrollIntoView({ behavior: "smooth", block: "center" });
     }
 
-    showQuestion(0);
+    showQuestion(idx);
   }
 
   // ---- transkript ------------------------------------------------------------
@@ -1545,8 +1649,25 @@
   document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !zoom.hidden) closeZoom(); });
 
   // ---- yönlendirici ---------------------------------------------------------------
+  function parseLoc() {
+    const raw = location.hash.replace(/^#\/?/, "");
+    const [pathPart, queryPart] = raw.split("?");
+    const parts = pathPart.split("/").filter(Boolean);
+    const query = {};
+    if (queryPart) {
+      queryPart.split("&").forEach((kv) => {
+        if (!kv) return;
+        const eq = kv.indexOf("=");
+        const k = decodeURIComponent(eq < 0 ? kv : kv.slice(0, eq));
+        const v = eq < 0 ? "1" : decodeURIComponent(kv.slice(eq + 1).replace(/\+/g, " "));
+        query[k] = v;
+      });
+    }
+    return { parts, query, path: parts.join("/") };
+  }
+
   function route() {
-    const parts = location.hash.replace(/^#\/?/, "").split("?")[0].split("/").filter(Boolean);
+    const { parts, query } = parseLoc();
     let html, bind = () => {};
     if (!parts.length) html = viewCatalog();
     else if (parts[0] === "ozet") { html = viewSummary(); bind = bindSummary; }
@@ -1558,7 +1679,11 @@
       if (parts[2] === "chapter") { html = viewChapter(c, +parts[3]); bind = bindMindmaps; }
       else if (parts[2] === "quiz") { html = viewQuiz(c); bind = () => bindQuiz(c); }
       else if (parts[2] === "exams") { html = viewExamHub(c); bind = () => {}; }
-      else if (parts[2] === "past") { const id = decodeURIComponent(parts[3] || ""); html = viewPastExam(c, id); bind = () => bindPastExam(c, id); }
+      else if (parts[2] === "past") {
+        const id = decodeURIComponent(parts[3] || "");
+        html = viewPastExam(c, id, query);
+        bind = () => (String(query.mod || "") === "rehber" ? bindSolutionGuide(c, id) : bindPastExam(c, id));
+      }
       else { html = viewCourse(c); bind = bindMindmaps; }
     } else html = viewNotFound();
     closeZoom();
