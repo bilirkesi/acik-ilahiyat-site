@@ -16,8 +16,9 @@ Kenarlar: `has_course`, `has_chapter`, `defines_concept`, `mentions_concept`, `h
 ## Kurulum
 
 ```bash
-# indeks + zihin haritaları (veri değiştikten sonra)
+# indeks + zihin haritaları + site arama JS (veri değiştikten sonra)
 python -m coursegraph.mindmap
+python -m coursegraph.site_export
 
 # canlı izleyici (debounce 1.5s; interactive.js, data/, courses.json, catalog.json)
 python -m coursegraph.watch
@@ -44,6 +45,10 @@ Kaynak: `interactive.tree`, `interactive.chapters`, NotebookLM `mind-map__*.json
 | `index.html` / `index.json` | Tüm dersler |
 
 `watch` çalışırken `interactive.js` veya `data/` değişince graf + harita otomatik yenilenir.
+
+## Site arama (`coursegraph.site_export`)
+
+`site/coursegraph.js` → `window.CG` (items + edges). Sitede `#/ara`, üst çubuk araması ve özet sayfasındaki "İlgili kavram, test ve sınav" kutusu bu indeksi kullanır. `build.py` siteyi yeniden kurarken `coursegraph.js`'i korur; indeks tazelendikten sonra `site_export` + `build.py` çalıştırın.
 
 ## MCP araçları
 

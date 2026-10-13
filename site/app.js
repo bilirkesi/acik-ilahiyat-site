@@ -5,6 +5,7 @@
   const U = window.UNIVERSITY || {};
   const COURSES = window.COURSES || [];
   const INTERACTIVE = window.INTERACTIVE || {};
+  const CG = window.CG || { items: [], edges: {} };
   const DEFAULT_COLORS = { primary: "#1b2a4a", accent: "#b08d4a", paper: "#f8f4ea" };
   const slugify = (s) => String(s || "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 
@@ -38,6 +39,73 @@
 
   const bySlug = Object.fromEntries(COURSES.map((c) => [c.slug, c]));
   const app = document.getElementById("app");
+
+  // ---- CourseGraph yerel arama (coursegraph.js) -----------------------------
+  const TYPE_LABEL = {
+    course: "Ders",
+    chapter: "Bölüm",
+    concept: "Kavram",
+    event: "Olay",
+    quiz_question: "Test",
+    exam_question: "Sınav",
+    quiz: "Quiz",
+    exam: "Sınav",
+    artifact: "Kaynak",
+  };
+  const TYPE_RANK = { course: 0, chapter: 1, concept: 2, quiz_question: 3, exam_question: 4, event: 5, artifact: 6, quiz: 7, exam: 8 };
+
+  const CG_FOLD = { "ç": "c", "Ç": "c", "ğ": "g", "Ğ": "g", "ı": "i", "İ": "i", "I": "i", "ö": "o", "Ö": "o", "ş": "s", "Ş": "s", "ü": "u", "Ü": "u", "â": "a", "Â": "a", "î": "i", "Î": "i", "û": "u", "Û": "u" };
+  const fold = (s) => String(s || "").replace(/[çÇğĞıİIöÖşŞüÜâÂîÎûÛ]/g, (ch) => CG_FOLD[ch]).toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
+  const tokenize = (s) => fold(s).split(/\s+/).filter(Boolean);
+  const hayOf = (it) => it.hay || tokenize([it.title, it.snippet, it.definition, it.answer, it.course].filter(Boolean).join(" ")).join(" ");
+
+  function scoreItem(it, terms, raw) {
+    const hay = hayOf(it);
+    const title = fold(it.title || "");
+    let score = 0;
+    for (const t of terms) {
+      if (!hay.includes(t)) return 0;
+      if (title.includes(t)) score += title === t ? 12 : 6;
+      else score += 2;
+    }
+    if (raw && hay.includes(raw)) score += 3;
+    score += (TYPE_RANK[it.type] !== undefined ? 8 - TYPE_RANK[it.type] : 0);
+    if (it.course && bySlug[it.course]) score += 1;
+    return score;
+  }
+
+  function cgSearch(q, opts) {
+    const o = opts || {};
+    const raw = fold(q || "").trim();
+    if (!raw) return [];
+    const terms = raw.split(/\s+/).filter((t) => t.length >= 2);
+    if (!terms.length) return [];
+    const limit = o.limit || 40;
+    const hits = [];
+    for (const it of CG.items || []) {
+      if (o.type && it.type !== o.type) continue;
+      if (o.course && it.course !== o.course) continue;
+      const s = scoreItem(it, terms, raw);
+      if (s > 0) hits.push({ item: it, score: s });
+    }
+    hits.sort((a, b) => b.score - a.score || (a.item.title || "").localeCompare(b.item.title || "", "tr"));
+    return hits.slice(0, limit);
+  }
+
+  function cgRelated(id, limit) {
+    const n = limit || 6;
+    const ids = (CG.edges && CG.edges[id]) || [];
+    const out = [];
+    const seen = new Set();
+    for (const other of ids) {
+      if (seen.has(other)) continue;
+      seen.add(other);
+      const it = (CG.items || []).find((x) => x.id === other);
+      if (it) out.push(it);
+      if (out.length >= n) break;
+    }
+    return out;
+  }
 
   // ---- yardımcılar ----------------------------------------------------------
   const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (ch) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[ch]));
@@ -588,6 +656,7 @@
       <p class="sm-progress-label">${done} / ${totalCh} bölüm okundu</p>
       <div class="sm-tools">
         <input class="sm-search" type="search" id="sm-search" placeholder="Özetlerde ara…" aria-label="Ders özetlerinde ara" autocomplete="off">
+        <div id="sm-cg" class="cg-box" hidden></div>
         <div class="sm-chips" role="group" aria-label="Ders filtresi">
           <button class="chip active" type="button" data-filter="" aria-pressed="true">Tümü</button>${chips}
         </div>
@@ -606,13 +675,32 @@
     if (!wrap) return;
     const search = document.getElementById("sm-search");
     const empty = document.querySelector(".sm-empty");
+    const cgBox = document.getElementById("sm-cg");
     let filter = "";
+
+    function renderCg(q) {
+      if (!cgBox) return;
+      if (!q || q.length < 2) { cgBox.hidden = true; cgBox.innerHTML = ""; return; }
+      const hits = cgSearch(q, { limit: 12 }).filter((h) => h.item.type !== "chapter" || !filter || h.item.course === filter);
+      if (!hits.length) { cgBox.hidden = true; cgBox.innerHTML = ""; return; }
+      cgBox.hidden = false;
+      cgBox.innerHTML = `<p class="sm-label">İlgili kavram, test ve sınav</p><ul class="cg-hits">` +
+        hits.map((h) => {
+          const it = h.item;
+          return `<li><a href="${esc(it.href)}"><span class="cg-type">${esc(TYPE_LABEL[it.type] || it.type)}</span><span class="cg-title">${esc(it.title)}</span>${it.course && bySlug[it.course] ? `<span class="cg-course">${esc(bySlug[it.course].subject)}</span>` : ""}</a></li>`;
+        }).join("") + `</ul>`;
+    }
 
     function apply() {
       const q = norm(search.value);
       let visible = 0;
+      const chapterHits = q ? new Set(cgSearch(q, { type: "chapter", limit: 200 }).map((h) => h.item.id)) : null;
       wrap.querySelectorAll(".sm-item").forEach((it) => {
-        const ok = (!filter || it.dataset.course === filter) && (!q || it.dataset.hay.includes(q));
+        let ok = (!filter || it.dataset.course === filter) && (!q || it.dataset.hay.includes(q));
+        if (ok && q && chapterHits) {
+          const id = `chapter:${it.dataset.course}:${it.dataset.n}`;
+          ok = chapterHits.has(id) || it.dataset.hay.includes(q);
+        }
         it.hidden = !ok;
         if (ok) visible++;
       });
@@ -620,6 +708,7 @@
         d.hidden = !d.querySelector(".sm-item:not([hidden])");
       });
       if (empty) empty.hidden = visible > 0;
+      renderCg(search.value.trim());
     }
 
     function refreshCounts() {
@@ -763,7 +852,80 @@
   }
   const viewNotFound = () => `<h1>Sayfa bulunamadı</h1><p><a href="#/">Kataloğa dön</a></p>`;
 
-  // ---- şekil yakınlaştırma ------------------------------------------------------
+  // ---- CourseGraph arama sayfası (#/ara) ------------------------------------
+  function searchResultsHtml(q) {
+    const hits = cgSearch(q, { limit: 60 });
+    if (!q || q.length < 2) {
+      return `<p class="muted">En az 2 karakter yazın. Ders, bölüm, kavram, test ve sınav sorularında aranır.</p>`;
+    }
+    if (!hits.length) return `<p class="sm-empty">Aramanızla eşleşen sonuç yok.</p>`;
+    const byType = {};
+    for (const h of hits) (byType[h.item.type] = byType[h.item.type] || []).push(h);
+    const order = ["course", "chapter", "concept", "quiz_question", "exam_question", "event", "artifact"];
+    let out = `<p class="sm-progress-label">${hits.length} sonuç</p>`;
+    for (const t of order) {
+      const list = byType[t];
+      if (!list) continue;
+      out += `<section class="cg-section"><h2>${esc(TYPE_LABEL[t] || t)} <span class="sm-count">${list.length}</span></h2><ul class="cg-hits">`;
+      for (const h of list) {
+        const it = h.item;
+        const courseSub = it.course && bySlug[it.course] ? esc(bySlug[it.course].subject) : "";
+        const chap = it.chapter ? ` · B${it.chapter}` : "";
+        out += `<li><a href="${esc(it.href)}"><span class="cg-title">${esc(it.title)}</span><span class="cg-course">${courseSub}${chap}</span></a>${it.snippet ? `<p class="cg-snippet">${esc(it.snippet)}</p>` : ""}${it.answer ? `<p class="cg-snippet">Cevap: ${esc(it.answer)}</p>` : ""}</li>`;
+      }
+      out += `</ul></section>`;
+    }
+    return out;
+  }
+
+  function viewSearch() {
+    const q = new URLSearchParams(location.hash.split("?")[1] || "").get("q") || "";
+    return `<p class="eyebrow">CourseGraph</p><h1>Arama</h1>
+      <p class="lead muted">Dersler, bölümler, kavramlar, test ve sınav soruları tek indekste.</p>
+      <div class="sm-tools">
+        <input class="sm-search" type="search" id="cg-q" placeholder="Örn. Lozan, iman, üslup..." aria-label="Ara" autocomplete="off" value="${esc(q)}">
+      </div>
+      <div id="cg-results">${searchResultsHtml(q)}</div>`;
+  }
+
+  function bindSearch() {
+    const input = document.getElementById("cg-q");
+    const box = document.getElementById("cg-results");
+    if (!input || !box) return;
+    let timer = null;
+    input.addEventListener("input", () => {
+      clearTimeout(timer);
+      timer = setTimeout(() => {
+        const q = input.value.trim();
+        box.innerHTML = searchResultsHtml(q);
+        const base = "#/ara";
+        history.replaceState(null, "", q ? `${base}?q=${encodeURIComponent(q)}` : base);
+      }, 120);
+    });
+    if (!input.value) input.focus();
+  }
+
+  // üst cubuk arama + Ctrl/Cmd+K
+  (function bindNavSearch() {
+    const form = document.getElementById("nav-search");
+    const input = document.getElementById("nav-q");
+    if (!form || !input) return;
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const q = input.value.trim();
+      location.hash = q ? `#/ara?q=${encodeURIComponent(q)}` : "#/ara";
+      if (location.hash.startsWith("#/ara")) route();
+    });
+    document.addEventListener("keydown", (e) => {
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "k") {
+        e.preventDefault();
+        input.focus();
+        input.select();
+      }
+    });
+  })();
+
+  // ---- zoom ------------------------------------------------------
   const zoom = document.createElement("div");
   zoom.className = "zoom";
   zoom.hidden = true;
@@ -781,10 +943,11 @@
 
   // ---- yönlendirici ---------------------------------------------------------------
   function route() {
-    const parts = location.hash.replace(/^#\/?/, "").split("/").filter(Boolean);
+    const parts = location.hash.replace(/^#\/?/, "").split("?")[0].split("/").filter(Boolean);
     let html, bind = () => {};
     if (!parts.length) html = viewCatalog();
     else if (parts[0] === "ozet") { html = viewSummary(); bind = bindSummary; }
+    else if (parts[0] === "ara") { html = viewSearch(); bind = bindSearch; }
     else if (parts[0] === "transcript") { html = viewTranscript(); bind = bindTranscript; }
     else if (parts[0] === "certificate") { html = viewCertificate(); bind = bindCertificate; }
     else if (parts[0] === "course" && bySlug[parts[1]]) {
@@ -797,7 +960,11 @@
     app.innerHTML = html;
     bind();
     typeset(app);
-    document.querySelectorAll(".nav a").forEach((a) => a.classList.toggle("active", a.getAttribute("href") === "#/" + (parts[0] || "")));
+    document.querySelectorAll(".nav a").forEach((a) => {
+      const href = a.getAttribute("href");
+      const key = parts[0] || "";
+      a.classList.toggle("active", href === "#/" + key || (key === "ara" && href === "#/ara"));
+    });
     window.scrollTo(0, 0);
   }
   window.addEventListener("hashchange", route);

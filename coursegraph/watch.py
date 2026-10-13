@@ -1,4 +1,4 @@
-"""Kaynak izleyici: değişiklikte CourseGraph + mindmap yeniden üretir.
+"""Kaynak izleyici: değişiklikte CourseGraph + mindmap + site arama JS yeniden üretir.
 
 Çalıştırma:
   python -m coursegraph.watch
@@ -46,12 +46,14 @@ def rebuild_all() -> dict:
     path = write_index()
     import coursegraph.graph as gg
     from .mindmap import build_mindmaps
+    from .site_export import write_site_cg, build_site_cg
 
     gg._cache = None
     g = gg.load()
     mm = build_mindmaps(g)
+    site_path = write_site_cg(build_site_cg(g))
     meta = json.loads((Path(path).parent / "meta.json").read_text(encoding="utf-8"))
-    return {"graph": meta, "mindmap": mm}
+    return {"graph": meta, "mindmap": mm, "site": str(site_path)}
 
 
 def run_once() -> dict:

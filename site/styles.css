@@ -315,3 +315,38 @@ table.transcript { width: 100%; border-collapse: collapse; background: var(--pap
 @media (prefers-reduced-motion: reduce) {
   .sm-progress > i, .sm-caret, .sm-course > summary::after { transition: none; }
 }
+
+/* CourseGraph arama */
+.nav-search { display: flex; align-items: center; }
+.nav-search input {
+  width: min(220px, 36vw); padding: .45rem .7rem; border: 1px solid rgba(248, 244, 234, .25);
+  border-radius: 2px; background: rgba(248, 244, 234, .08); color: var(--ivory);
+  font: 400 .88rem/1.2 var(--sans); outline: none;
+}
+.nav-search input::placeholder { color: rgba(248, 244, 234, .55); }
+.nav-search input:focus { border-color: var(--gold); background: rgba(248, 244, 234, .14); }
+@media (max-width: 720px) {
+  .masthead { flex-direction: column; align-items: stretch; }
+  .nav { justify-content: center; }
+  .nav-search { justify-content: center; }
+  .nav-search input { width: 100%; }
+}
+
+.cg-box { margin: .5rem 0 .75rem; padding: .85rem 1rem; background: var(--paper); border: 1px solid var(--line); }
+.cg-box[hidden] { display: none; }
+.cg-hits { list-style: none; margin: 0; padding: 0; }
+.cg-hits li { padding: .55rem 0; border-bottom: 1px dashed var(--line); }
+.cg-hits li:last-child { border-bottom: 0; }
+.cg-hits a { display: flex; flex-wrap: wrap; gap: .4rem .7rem; align-items: baseline; text-decoration: none; color: var(--navy); }
+.cg-hits a:hover .cg-title { text-decoration: underline; }
+.cg-type {
+  font: 600 .68rem/1 var(--sans); letter-spacing: .08em; text-transform: uppercase;
+  color: var(--gold); border: 1px solid var(--gold-soft); background: var(--gold-soft);
+  padding: .22rem .4rem; border-radius: 2px; flex: none;
+}
+.cg-title { font: 500 1.05rem/1.3 var(--serif); color: var(--navy); }
+.cg-course { font-size: .78rem; color: var(--muted); }
+.cg-snippet { margin: .3rem 0 0; font-size: .88rem; color: var(--muted); }
+.cg-section { margin: 1.4rem 0 0; }
+.cg-section h2 { font-size: 1.2rem; margin-bottom: .35rem; }
+.cg-section .sm-count { font: 500 .85rem/1 var(--sans); color: var(--muted); }
