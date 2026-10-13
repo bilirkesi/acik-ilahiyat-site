@@ -18,7 +18,7 @@ school: Anadolu Üniversitesi Açıköğretim Fakültesi
 mode: own
 language: tr
 status: active
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-13T12:42:43Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-13T14:53:07Z }
 resource: "https://www.youtube.com/playlist?list=PLfFz63YLe29pwZQOQ_IezppbdazyVOoPO"
 notebook: "https://notebooklm.google.com/notebook/436f4e9d-25d4-4441-98f1-ed97d01b9b7f"
 sources:
@@ -51,6 +51,7 @@ Resmî AÖF Konu Anlatımı playlist'i (Ünite 1-8, 15 video) kullanıldı. Tüm
 * [Bölümler](/ataturk-ilkeleri-1/chapters/index.md) (8)
 * [Quiz](/ataturk-ilkeleri-1/quiz.md)
 * [Sınavlar](/ataturk-ilkeleri-1/exams/index.md) - vize, final, yaz kursu
+* [Çıkmış vizeler](/ataturk-ilkeleri-1/exams/past/index.md)
 * [Artifact'ler](/ataturk-ilkeleri-1/artifacts.md)
 
 # Panel Öne Çıkanları

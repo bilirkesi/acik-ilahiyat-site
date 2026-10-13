@@ -7,7 +7,7 @@ short_name: İÜ
 program: İlahiyat
 language: tr
 status: stable
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-13T12:42:43Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-13T14:53:07Z }
 resource: "https://www.istanbul.edu.tr"
 ---
 

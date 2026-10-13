@@ -6,7 +6,7 @@ course: turk-dili-1
 question_count: 15
 pass_mark: 0.7
 status: stable
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-13T12:42:43Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-13T14:53:07Z }
 resource: /courses/turk-dili-1/quiz.md
 ---
 

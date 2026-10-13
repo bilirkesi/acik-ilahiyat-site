@@ -398,3 +398,19 @@ table.transcript { width: 100%; border-collapse: collapse; background: var(--pap
   .hud-best { margin-left: 0; width: 100%; }
   .hud-item { min-width: 2.8rem; }
 }
+
+/* sınav modları hub */
+.exam-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: .75rem; margin: 1.2rem 0 1.6rem; }
+.exam-card { display: block; padding: 1rem 1.1rem; border: 1px solid var(--line); background: var(--paper); color: var(--ink); text-decoration: none; min-height: 120px; }
+.exam-card:hover { border-color: var(--gold); }
+.exam-card.disabled { opacity: .55; pointer-events: none; }
+.exam-card h3 { margin: .35rem 0 .4rem; font: 600 1.1rem/1.25 var(--sans); color: var(--navy); }
+.exam-card p { margin: 0; font-size: .9rem; color: var(--muted); line-height: 1.45; }
+.exam-badge { display: inline-block; font: 600 .65rem/1 var(--sans); letter-spacing: .08em; text-transform: uppercase; color: var(--navy); background: var(--gold-soft); padding: .28rem .5rem; }
+.past-list { list-style: none; margin: 0; padding: 0; }
+.past-row { display: flex; align-items: center; justify-content: space-between; gap: .8rem; padding: .75rem 0; border-bottom: 1px solid var(--line); }
+.past-row .btn { flex: none; min-height: 40px; }
+.game-q.revealed { border-left-color: var(--gold); }
+.self-grade { margin-top: .9rem; padding-top: .75rem; border-top: 1px dashed var(--line); }
+.chip-row { display: flex; flex-wrap: wrap; gap: .35rem; margin-top: .55rem; }
+.chip { font: 500 .72rem/1 var(--sans); padding: .28rem .45rem; border: 1px solid var(--line); border-radius: 999px; color: var(--muted); }

@@ -5,7 +5,7 @@ description: Bu bölümde dilin temel özellikleri, doğuşu, toplum ve kültür
 course: turk-dili-1
 chapter: 1
 status: stable
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-13T12:42:43Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-13T14:53:07Z }
 notebook: "https://notebooklm.google.com/notebook/c702ed26-fe17-463d-b217-202acd0c3d26"
 ---
 

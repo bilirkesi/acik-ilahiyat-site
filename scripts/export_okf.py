@@ -18,6 +18,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(ROOT))
 OKF = ROOT / "okf"
 NOW = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
 ACTOR = "acik-ilahiyat-exporter/1.0"
@@ -357,6 +358,7 @@ def main() -> int:
             f"# Yapı\n\n* [Bölümler](/{slug}/chapters/index.md) ({len(chapters)})\n"
             f"* [Quiz](/{slug}/quiz.md)\n"
             f"* [Sınavlar](/{slug}/exams/index.md) - vize, final, yaz kursu\n"
+            f"* [Çıkmış vizeler](/{slug}/exams/past/index.md)\n"
             f"* [Artifact'ler](/{slug}/artifacts.md)\n",
         ]
         if panel.get("takeaways"):
@@ -543,6 +545,57 @@ def main() -> int:
             )
         if exam_index and len(exam_index) > 1:
             write(OKF / "courses" / slug / "exams" / "index.md", "\n".join(exam_index) + "\n")
+
+        # çıkmış vize arşivi (self-graded anımsama; OCR seçenekleri eksik olabilir)
+        past_path = ROOT / "data" / slug / "past_exams.json"
+        if past_path.exists():
+            from coursegraph.past_exams import UNIT_TITLES, annotate_questions
+
+            past_index = [f"# {meta.get('subject', slug)} Çıkmış Vizeler\n",
+                          "Cevap anahtarı yok; sorular PDF OCR'dan gelir. OKF'e ünite etiketi eklenmiştir.\n"]
+            for exam in annotate_questions(slug):
+                eid = str(exam.get("exam_id") or "past")
+                qs = exam.get("questions") or []
+                lines = [
+                    f"# Çıkmış Vize {exam.get('year', '')} {semester_label(exam.get('term', 'guz'))}\n",
+                    f"Ders: {meta.get('subject', slug)} · {university_label(unis, meta.get('university_id', 'aof'))}. "
+                    f"{len(qs)} soru. Cevap anahtarı yok (self-graded).\n",
+                ]
+                for n, q in enumerate(qs, 1):
+                    u = q.get("unit")
+                    unit_t = UNIT_TITLES.get(u, f"Ünite {u}") if u else "Bilinmiyor"
+                    kws = ", ".join(q.get("keywords") or [])
+                    lines.append(f"## {n}. {q.get('stem', '')}\n")
+                    lines.append(f"*Ünite:* {unit_t}\n")
+                    if kws:
+                        lines.append(f"*Anahtar kelimeler:* {kws}\n")
+                    letters = ["A", "B", "C", "D", "E", "F"]
+                    for j, o in enumerate(q.get("options") or []):
+                        letter = o.get("key") or letters[j]
+                        lines.append(f"{letter}) {o.get('text', '')}")
+                    lines.append("")
+                p_fm = [
+                    ("type", "Past Exam"),
+                    ("title", f"Çıkmış vize {exam.get('year', '')}"),
+                    ("description", f"{meta.get('subject', slug)} çıkmış vize arşivi; cevap anahtarı yok."),
+                    ("course", slug),
+                    ("exam_id", eid),
+                    ("exam_window", str(exam.get("year") or "")),
+                    ("exam_type", "vize"),
+                    ("term", str(exam.get("term") or "")),
+                    ("question_count", str(len(qs))),
+                    ("has_answer_key", "false"),
+                    ("status", "stable"),
+                    ("generated", f"{{ by: {ACTOR}, at: {NOW} }}"),
+                    ("resource", f"/courses/{slug}/exams/past/{eid}.md"),
+                ]
+                write(OKF / "courses" / slug / "exams" / "past" / f"{eid}.md", fm(p_fm) + "\n".join(lines))
+                past_index.append(f"* [{exam.get('year', eid)}](past/{eid}.md) - {len(qs)} soru")
+            if len(past_index) > 2:
+                write(OKF / "courses" / slug / "exams" / "past" / "index.md", "\n".join(past_index) + "\n")
+            exam_index.append("* [Çıkmış vizeler](past/index.md) - arşiv, cevap anahtarı yok")
+            if exam_index and len(exam_index) > 1:
+                write(OKF / "courses" / slug / "exams" / "index.md", "\n".join(exam_index) + "\n")
 
         # course body: sınav linkleri
         # (yukarıdaki course.md çoktan yazıldı; exams/ linkleri için course.md'yi güncelle)

@@ -4,7 +4,7 @@ title: Türk Dili artifact kataloğu
 description: turk-dili-1 için NotebookLM artifact listesi ve kategori dağılımı.
 course: turk-dili-1
 artifact_count: 17
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-13T12:42:43Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-13T14:53:07Z }
 ---
 
 # Türk Dili Artifact'leri
