@@ -427,8 +427,19 @@ def main() -> int:
             obj_list = "\n".join(f"{n}. {o}" for n, o in enumerate(ch.get("objectives", []), 1))
             lec_list = "\n".join(f"* {l}" for l in ch.get("lectures", [])) or "* (ders listesi yok)"
 
+            aof_png = ROOT / "assets" / slug / f"aof-infographic-{i}.png"
+            aof_block = ""
+            if aof_png.exists():
+                aof_rel = f"/assets/{slug}/aof-infographic-{i}.png"
+                aof_block = (
+                    f"# AÖF Ünite İnfoğrafik\n\n"
+                    f"![{title} AÖF infoğrafik]({aof_rel})\n\n"
+                    f"Kaynak PDF: `assets/{slug}/aof/` (Anadolu Üniversitesi ünite infoğrafikleri).\n"
+                )
+
             ch_body = [
                 f"# Özet\n\n{ch.get('summary', '')}\n",
+                aof_block,
                 f"# Öğrenme Hedefleri\n\n{obj_list}\n" if obj_list else "",
                 f"# Dersler\n\n{lec_list}\n",
             ]
@@ -549,10 +560,12 @@ def main() -> int:
         # çıkmış vize arşivi (self-graded anımsama; OCR seçenekleri eksik olabilir)
         past_path = ROOT / "data" / slug / "past_exams.json"
         if past_path.exists():
-            from coursegraph.past_exams import UNIT_TITLES, UNIT_TO_CHAPTERS, annotate_questions
+            from coursegraph.past_exams import annotate_questions, unit_titles, unit_to_chapters
 
             past_index = [f"# {meta.get('subject', slug)} Çıkmış Vizeler\n",
                           "Sorular PDF OCR'dan; cevap anahtarı PDF'in son sayfasındandır. Ünite etiketi eklenmiştir.\n"]
+            titles_map = unit_titles(slug)
+            ch_map = unit_to_chapters(slug)
             for exam in annotate_questions(slug):
                 eid = str(exam.get("exam_id") or "past")
                 qs = exam.get("questions") or []
@@ -566,9 +579,9 @@ def main() -> int:
                 ch_titles = {i: (ch.get("title") or f"Bölüm {i}") for i, ch in enumerate(plan.get("chapters") or [], 1)}
                 for n, q in enumerate(qs, 1):
                     u = q.get("unit")
-                    unit_t = UNIT_TITLES.get(u, f"Ünite {u}") if u else "Bilinmiyor"
+                    unit_t = titles_map.get(u, f"Ünite {u}") if u else "Bilinmiyor"
                     kws = ", ".join(q.get("keywords") or [])
-                    ch_nums = UNIT_TO_CHAPTERS.get(u, []) if u else []
+                    ch_nums = list(ch_map.get(u, []) if u else [])
                     lines.append(f"## {n}. {q.get('stem', '')}\n")
                     lines.append(f"*Ünite:* {unit_t}\n")
                     if ch_nums:

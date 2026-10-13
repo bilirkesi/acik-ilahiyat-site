@@ -5,13 +5,19 @@ description: Bu bölümde ses bilgisinin temel ilkeleri, konuşma seslerinin olu
 course: turk-dili-1
 chapter: 3
 status: stable
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-13T15:45:18Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-13T16:35:23Z }
 notebook: "https://notebooklm.google.com/notebook/c702ed26-fe17-463d-b217-202acd0c3d26"
 ---
 
 # Özet
 
 Bu bölümde ses bilgisinin temel ilkeleri, konuşma seslerinin oluşumu ve Türkçedeki ünlü ile ünsüz seslerin nitelikleri öğretilmektedir. Türkçe sözcüklerin ses özellikleri, ünlü ve ünsüz uyumları ile altı farklı hece yapısı detaylıca açıklanmaktadır. Zamanla ortaya çıkan ses olayları ile vurgu, durak ve tonlama gibi parçalar üstü ses birimlerinin işlevleri sunulmaktadır.
+
+# AÖF Ünite İnfoğrafik
+
+![Türk Dilinin Ses Yapısı ve Ses Özellikleri AÖF infoğrafik](/assets/turk-dili-1/aof-infographic-3.png)
+
+Kaynak PDF: `assets/turk-dili-1/aof/` (Anadolu Üniversitesi ünite infoğrafikleri).
 
 # Öğrenme Hedefleri
 

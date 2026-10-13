@@ -147,6 +147,8 @@ table.transcript { width: 100%; border-collapse: collapse; background: var(--pap
 .katex { font-size: 1.02em; }
 
 /* syllabus: each chapter carries its infographic as a captioned figure */
+.aof-figure { margin-top: .9rem; border: 1px solid var(--line); background: #f8f4ea; }
+.aof-figure img { display: block; width: 100%; height: auto; }
 .ch-text { min-width: 0; }
 .plate { margin: 1.4rem 0 .2rem; }
 .plate img, .figure img { width: 100%; height: auto; border: 1px solid var(--line); cursor: zoom-in; }

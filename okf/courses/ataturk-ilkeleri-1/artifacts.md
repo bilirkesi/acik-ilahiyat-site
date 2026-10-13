@@ -4,7 +4,7 @@ title: Atatürk İlkeleri ve İnkılap Tarihi artifact kataloğu
 description: ataturk-ilkeleri-1 için NotebookLM artifact listesi ve kategori dağılımı.
 course: ataturk-ilkeleri-1
 artifact_count: 34
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-13T15:45:18Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-13T16:35:23Z }
 ---
 
 # Atatürk İlkeleri ve İnkılap Tarihi Artifact'leri

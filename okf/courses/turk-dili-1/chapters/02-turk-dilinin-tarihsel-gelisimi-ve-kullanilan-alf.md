@@ -5,13 +5,19 @@ description: Bu bölümde Türk dilinin ilk yazılı belgelerinden günümüze k
 course: turk-dili-1
 chapter: 2
 status: stable
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-13T15:45:18Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-13T16:35:23Z }
 notebook: "https://notebooklm.google.com/notebook/c702ed26-fe17-463d-b217-202acd0c3d26"
 ---
 
 # Özet
 
 Bu bölümde Türk dilinin ilk yazılı belgelerinden günümüze kadar geçirdiği tarihsel dönemler ve geçiş evreleri incelenmektedir. Türklerin tarih boyunca kullandığı Köktürk, Uygur, Arap ve Latin gibi farklı alfabeler ile bu değişimlerin nedenleri aktarılmaktadır. Son olarak Türkiye Türkçesinin oluşumu, sadeleşme hareketleri ve Harf Devriminin etkileri ele alınmaktadır.
+
+# AÖF Ünite İnfoğrafik
+
+![Türk Dilinin Tarihsel Gelişimi ve Kullanılan Alfabeler AÖF infoğrafik](/assets/turk-dili-1/aof-infographic-2.png)
+
+Kaynak PDF: `assets/turk-dili-1/aof/` (Anadolu Üniversitesi ünite infoğrafikleri).
 
 # Öğrenme Hedefleri
 

@@ -5,13 +5,19 @@ description: Bu bölümde dilin temel özellikleri, doğuşu, toplum ve kültür
 course: turk-dili-1
 chapter: 1
 status: stable
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-13T15:45:18Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-13T16:35:23Z }
 notebook: "https://notebooklm.google.com/notebook/c702ed26-fe17-463d-b217-202acd0c3d26"
 ---
 
 # Özet
 
 Bu bölümde dilin temel özellikleri, doğuşu, toplum ve kültürle olan köklü ilişkisi ayrıntılı biçimde ele alınmaktadır. Ayrıca dünya dillerinin yapı ve köken bakımından sınıflandırılması açıklanarak Türkçenin Altay dil ailesi içindeki yeri incelenmektedir. Öğrencilerin dilin toplumsal işlevini ve kültür aktarımındaki rolünü kavramaları amaçlanmaktadır.
+
+# AÖF Ünite İnfoğrafik
+
+![Dil, Kültür ve Dünya Dilleri AÖF infoğrafik](/assets/turk-dili-1/aof-infographic-1.png)
+
+Kaynak PDF: `assets/turk-dili-1/aof/` (Anadolu Üniversitesi ünite infoğrafikleri).
 
 # Öğrenme Hedefleri
 

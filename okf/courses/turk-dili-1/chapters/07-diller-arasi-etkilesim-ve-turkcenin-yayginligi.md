@@ -5,13 +5,19 @@ description: "Bu bölümde dillerin birbirleriyle girdikleri tarihsel ve kültü
 course: turk-dili-1
 chapter: 7
 status: stable
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-13T15:45:18Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-13T16:35:23Z }
 notebook: "https://notebooklm.google.com/notebook/c702ed26-fe17-463d-b217-202acd0c3d26"
 ---
 
 # Özet
 
 Bu bölümde dillerin birbirleriyle girdikleri tarihsel ve kültürel etkileşim süreçleri incelenmektedir. Türkçenin geniş coğrafyalarda farklı medeniyetlerle temas kurarak sözcük alışverişinde bulunması açıklanmaktadır. Türk dilinin dünya üzerindeki yaygınlığı ve köklü yapısıyla diğer dillere etkisi ele alınmaktadır.
+
+# AÖF Ünite İnfoğrafik
+
+![Diller Arası Etkileşim ve Türkçenin Yaygınlığı AÖF infoğrafik](/assets/turk-dili-1/aof-infographic-7.png)
+
+Kaynak PDF: `assets/turk-dili-1/aof/` (Anadolu Üniversitesi ünite infoğrafikleri).
 
 # Öğrenme Hedefleri
 

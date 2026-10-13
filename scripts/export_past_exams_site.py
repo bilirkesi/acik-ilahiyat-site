@@ -14,7 +14,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 
-from coursegraph.past_exams import UNIT_TITLES, UNIT_TO_CHAPTERS, annotate_questions  # noqa: E402
+from coursegraph.past_exams import annotate_questions, unit_titles, unit_to_chapters  # noqa: E402
 
 SLUGS = ["ataturk-ilkeleri-1", "turk-dili-1", "islam-mezhepleri-tarihi"]
 
@@ -59,13 +59,15 @@ def main() -> int:
         if not rows:
             continue
         plan = load_plan(slug)
+        titles = unit_titles(slug)
+        ch_map = unit_to_chapters(slug)
         exams = []
         for exam in rows:
             qs = []
             for q in exam.get("questions") or []:
                 u = q.get("unit")
                 correct = q.get("correct")
-                ch_nums = list(UNIT_TO_CHAPTERS.get(u, []) if u else [])
+                ch_nums = list(ch_map.get(u, []) if u else [])
                 ch_metas = [chapter_meta(plan, n) for n in ch_nums]
                 correct_opt = next(
                     (o for o in (q.get("options") or []) if o.get("key") == correct),
@@ -78,10 +80,10 @@ def main() -> int:
                     oi["isCorrect"] = is_c
                     if is_c:
                         oi["rationale"] = build_solution(
-                            {"correct": correct}, oi, UNIT_TITLES.get(u) if u else None, ch_metas
+                            {"correct": correct}, oi, titles.get(u) if u else None, ch_metas
                         )
                     opts.append(oi)
-                unit_title = UNIT_TITLES.get(u) if u else None
+                unit_title = titles.get(u) if u else None
                 solution = build_solution(q, correct_opt, unit_title, ch_metas)
                 qs.append(
                     {

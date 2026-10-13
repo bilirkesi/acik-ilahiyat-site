@@ -10,8 +10,9 @@ from pathlib import Path
 
 from .indexer import ROOT, fold
 
-# AÖF ünite başlıkları (İslâm Mezhepleri Tarihi, Anadolu Üniv. 2010)
-UNIT_TITLES = {
+# ---- kurs konfigürasyonları ---------------------------------------------------
+# Varsayılan: İslâm Mezhepleri Tarihi (geriye uyumluluk için modül seviyesinde de tanımlı)
+ISLAM_UNIT_TITLES = {
     1: "Mezhepler Tarihine Giriş",
     2: "Mezheplerin Ortaya Çıkış Nedenleri",
     3: "Yönetim, İman-Küfür ve Kader Meseleleri Etrafında Oluşan İlk Mezhepler",
@@ -24,8 +25,7 @@ UNIT_TITLES = {
     10: "Çağdaş İslâmî Akımlar",
 }
 
-# Site bölüm no'ları (study_plan); ünite -> bölüm (boş liste = sitede yok)
-UNIT_TO_CHAPTERS = {
+ISLAM_UNIT_TO_CHAPTERS = {
     1: [1],
     2: [2],
     3: [3, 4],
@@ -38,7 +38,139 @@ UNIT_TO_CHAPTERS = {
     10: [],
 }
 
-# Ünite başına ayırt edici anahtar (fold edilmiş, küçük harf)
+TD_UNIT_TITLES = {
+    1: "Dil ve Kültür",
+    2: "Türkçenin Gelişimi ve Tarihsel Dönemleri",
+    3: "Ses Bilgisi",
+    4: "Biçim Bilgisi",
+    5: "Cümle Bilgisi",
+    6: "Türkçenin Söz Varlığı",
+    7: "Diller Arası Etkileşim ve Türkçe",
+    8: "Türkçenin Güncel Sorunları",
+}
+
+# study_plan bölümleri ile birebir
+TD_UNIT_TO_CHAPTERS = {i: [i] for i in range(1, 9)}
+
+TD_UNIT_KEYWORDS: dict[int, list[str]] = {
+    1: [
+        "dil ve kultur", "dilin ozellikleri", "bilimsel bakimdan",
+        "dil nedir", "dil bir sistemdir", "ana dili", "edilen dil",
+        "edogmu", "kultur", "medeniyet", "dil ve dusunce", "sapir-whorf",
+        "dil felsefesi", "dil bilimi", "dil bilimci", "kavram",
+        "sozcuk anlam", "deyim", "kulturel", "irkcilik", "irkcil",
+        "milliyetcilik", "dil uygulamasi", "dil politikasi",
+        "orta asya", "kultur tasima", "yazi dili", "lehce",
+        "agiz", "dialet", "diyalekt", "standart dil",
+    ],
+    2: [
+        "turk dilleri", "ilk yazili belge", "orkhon", "gokturk",
+        "uygur", "kutadgu bilig", "divanu lugati", "kashgari",
+        "kasgarli", "muhakemet", "lugatut turk", "ahmet yesevi",
+        "yunus emre", "asik pasa", "sultan veled", "karahanli",
+        "hakanlar", "yusuf has hacib", "edip ahmet", "ali sir nevai",
+        "hüseyin baykara", "osmanli", "divan edebiyati",
+        "halk edebiyati", "tanzimat", "servet-i funun", "milli edebiyat",
+        "genc kalemler", "yeni lisan", "yazim", "alfabe",
+        "orkhon yazitlari", "turk dili tarihi", "eski turkce",
+        "orta turkce", "yeni turkce", "istanbul turkcesi",
+        "osmanlica", "arap alfabesi", "latin alfabesi", "kiril",
+        "girift harf", "turk dil kurumu", "tdk", "dil inkilabi",
+        "yazi devrimi", "sadelesme", "bilinc dili", "konusma dili",
+        "yaziyi kabul", "hun", "aksak timur", "timur",
+    ],
+    3: [
+        "ses bilgisi", "unlu", "unluler", "unsuz", "unsuzler",
+        "unlu birlesmesi", "unlu uyumu", "unlu daralmasi", "unlu uzamasi",
+        "unlulerin siniflandirilmasi", "kalinses", "ince ses",
+        "agizlik", "yardimci unlu", "kalin unlu", "kalin sesli",
+        "turkcede sekiz unlu", "unlu dusses", "unlu yukselisi",
+        "sessizlerin siniflandirilmasi", "cift dudak", "damak",
+        "disdi", "yari sessiz", "sert sessiz", "yumusak sessiz",
+        "sessiz benzesmesi", "sertlik uyumu", "yanses", "nefeslenme",
+        "kalinlik", "ic ses", "dil ucu", "boyunsuz", "ses olayi",
+        "ses bilimi", "fonetik", "fonoloji", "hece", "heceleme",
+        "hece kurallari", "vurgu", "tonlama", "bozulma",
+        "kalin unlu daralmasi", "yumusama", "sertlesme",
+        "sessiz dusmesi", "ses bilgisinde", "unlu birlesmeleri",
+        "turkce sesler", "sesli harf", "sessiz harf",
+    ],
+    4: [
+        "bicim bilgisi", "ekler", "eklenme", "son eklenme",
+        "yapim eki", "cekim eki", "durum eki", "iyelik eki",
+        "cogul eki", "soru eki", "aitlik eki", "ek eylem",
+        "fiil eki", "isim hali", "belirtisiz", "belirtili",
+        "tamlayici", "isim turleri", "sayi ismi", "zaman ismi",
+        "yordam ismi", "ulastirma ismi", "degisme ismi", "nitelik ismi",
+        "belli belirsiz", "sozcuk turu", "isim", "sifat", "zamir",
+        "edat", "baglac", "unlem", "sayi", "edat sozcu",
+        "parcal isim", "birlesik isim", "tamlacli isim",
+        "ekli isim", "yapim eylemi", "isim yapim eki",
+        "sozcuk yapisi", "kok", "govde", "ek", "yapim",
+        "cekim", "isim cekimi", "fiil cekimi", "kisim eki",
+        "zaman kipi", "emir kipi", "dilek kipi", "haber kipi",
+        "gecmis zaman", "simdi zaman", "gelecek zaman",
+    ],
+    5: [
+        "cumle bilgisi", "cumle ogeleri", "yuklem", "ozne", "nesne",
+        "tumleci", "zarf", "belirteci", "ad tamlamasi", "sifat tamlamasi",
+        "isim tamlamasi", "tamlama", "belirtisiz ad tamlamasi",
+        "belirtili ad tamlamasi", "takissiz ad tamlamasi",
+        "unvan obegi", "edat obegi", "baglama obegi", "karma obegi",
+        "sozcuk obegi", "cumle turleri", "olumlu", "olumsuz", "soru",
+        "emir", "unlem", "basit cumle", "birlesik cumle", "bagli cumle",
+        "sirali cumle", "devrik cumle", "kuralli cumle", "eylem cumlesi",
+        "ad cumlesi", "yuklem turu", "isim yuklem", "eylem yuklem",
+        "sozdizimi", "soru cumlesi", "olumsuzluk", "olumsuz eki",
+        "midir", "mi", "değil", "degil", "cumle kurulusu",
+        "anlamca", "yuklemin turune gore", "ogelerin dizilisi",
+    ],
+    6: [
+        "soz varligi", "deyimler", "atasozleri", "ikilemeler",
+        "alinti sozler", "agiz ogeleri", "argo", "iliski sozleri",
+        "alkis", "kargis", "dua", "beddua", "deyim nedir",
+        "atasozu", "deyim ile atasozu", "turkce soz varligi",
+        "mecaz", "gercek anlam", "yan anlam", "terim",
+        "sozcuk anlami", "anlam iliskileri", "elesme", "karsitlik",
+        "baglilik", "akrilik", "deyim cesitleri", "yali deyim",
+        "sozcuklu deyim", "tekerleme", "sokagi aglatan",
+        "kesme sugar", "basari", "ikileme", "mukerrer",
+        "tekrarli sozcuk", "kalin agiz", "istanbul agzi",
+        "kibris agzi", "urfa", "mus", "galat", "sporcul sozcuk",
+    ],
+    7: [
+        "diller arasi etkilesim", "turkceye giren kelimeler",
+        "alinti sozcuk", "arapca", "farsca", "fransizca", "ingilizce",
+        "italyanca", "rumca", "almanca", "latince", "rusca",
+        "yunanca", "ispanyolca", "ermenice", "bulgarca", "macarca",
+        "mongolca", "japonca", "ibranice", "fince", "malay",
+        "portekizce", "cince", "korece", "urduca", "farca",
+        "turkcenin yayilma alanlari", "afsar turkcesi", "ahiska",
+        "altay", "azerbaycan turkcesi", "bashkir", "bashkurt",
+        "kazak", "kirgiz", "nogay", "tatar", "tuva", "yakut",
+        "turkmen", "uzbek", "gagavuz", "karay", "kirim",
+        "yugoslav", "giris sozcuk", "terkip", "kalip",
+        "turkceye alinti", "ozgu turkce", "arapca alinti",
+        "kultur etkilesimi", "ozturklesme", "karsilikli etkilesim",
+    ],
+    8: [
+        "guncel sorunlar", "turkcenin kullanimi", "yabanci kelimeler",
+        "ozgun turkce", "kirlilik", "sokak dili", "sosyal medya",
+        "teknoloji", "internet dili", "kisaltma", "lakap",
+        "reklam", "medya", "televizyon", "radyo", "gazete",
+        "dil bilinci", "dil bilgisi", "dil sevgisi", "dil bilinci",
+        "milli dil", "resmi dil", "standart", "kullanim hatasi",
+        "yazim kurali", "noktalama", "buyuk harf", "virgul",
+        "iki nokta", "dilimizde", "koruma", "zenginlestirme",
+        "yeni kelimeler", "terim", "bilim dili", "teknik terim",
+        "ingilizce etkisi", "globallesme", "dil tasfiyesi",
+        "sadelesme hareketi", "turkce gunu", "dil dernekleri",
+    ],
+}
+
+# AÖF ünite başlıkları (varsayılan kurs: İslâm Mezhepleri Tarihi)
+UNIT_TITLES = ISLAM_UNIT_TITLES
+UNIT_TO_CHAPTERS = ISLAM_UNIT_TO_CHAPTERS
 UNIT_KEYWORDS: dict[int, list[str]] = {
     1: [
         "mezhepler tarihi", "tanimi", "amatlari", "fenomenoloji",
@@ -116,6 +248,41 @@ UNIT_KEYWORDS: dict[int, list[str]] = {
     ],
 }
 
+# slug -> konfigürasyon
+COURSE_UNIT_CONFIGS = {
+    "islam-mezhepleri-tarihi": {
+        "titles": ISLAM_UNIT_TITLES,
+        "chapters": ISLAM_UNIT_TO_CHAPTERS,
+        "keywords": UNIT_KEYWORDS,  # islam keywords atama sonrası doldurulur
+    },
+    "turk-dili-1": {
+        "titles": TD_UNIT_TITLES,
+        "chapters": TD_UNIT_TO_CHAPTERS,
+        "keywords": TD_UNIT_KEYWORDS,
+    },
+}
+
+# islam UNIT_KEYWORDS ataması (yukarıdaki dict literalinden sonra)
+COURSE_UNIT_CONFIGS["islam-mezhepleri-tarihi"]["keywords"] = UNIT_KEYWORDS
+
+
+def course_unit_cfg(slug: str) -> dict:
+    return COURSE_UNIT_CONFIGS.get(slug, COURSE_UNIT_CONFIGS["islam-mezhepleri-tarihi"])
+
+
+def unit_titles(slug: str) -> dict[int, str]:
+    return course_unit_cfg(slug)["titles"]
+
+
+def unit_to_chapters(slug: str) -> dict[int, list[int]]:
+    return course_unit_cfg(slug)["chapters"]
+
+
+def unit_keywords(slug: str) -> dict[int, list[str]]:
+    return course_unit_cfg(slug)["keywords"]
+
+
+# Geriye uyumluluk: varsayılan islam
 # Soru gövdesinden anahtar kelime adayları
 _STOP = {
     "hangi", "hangilerinin", "asagidakilerden", "asagidaki", "asagidakilerin",
@@ -178,11 +345,11 @@ def extract_keywords(stem: str, max_n: int = 8) -> list[str]:
     return found[:max_n]
 
 
-def classify_unit(stem: str, options_text: str = "") -> tuple[int | None, dict[int, int]]:
+def classify_unit(stem: str, options_text: str = "", slug: str = "islam-mezhepleri-tarihi") -> tuple[int | None, dict[int, int]]:
     """Soruyu AÖF ünitesine eşler. (best_unit, scores)."""
     blob = fold(f"{stem} {options_text}")
     scores: dict[int, int] = {}
-    for unit, keys in UNIT_KEYWORDS.items():
+    for unit, keys in unit_keywords(slug).items():
         s = 0
         for k in keys:
             kf = fold(k)
@@ -193,7 +360,6 @@ def classify_unit(stem: str, options_text: str = "") -> tuple[int | None, dict[i
     if not scores:
         return None, scores
     best = max(scores, key=scores.get)
-    # eşik: en az 2 puan (tek zayıf kelime yeterli değil)
     if scores[best] < 2:
         return None, scores
     return best, scores
@@ -211,13 +377,15 @@ def load_past_exams(slug: str) -> list[dict]:
 def annotate_questions(slug: str) -> list[dict]:
     """past_exams.json sorularına unit + keywords ekler."""
     exams = load_past_exams(slug)
+    titles = unit_titles(slug)
+    chapters = unit_to_chapters(slug)
     out = []
     for exam in exams:
         rows = []
         for i, q in enumerate(exam.get("questions") or [], 1):
             stem = q.get("stem") or q.get("question") or ""
             opts = " ".join(o.get("text", "") for o in q.get("options") or [])
-            unit, scores = classify_unit(stem, opts)
+            unit, scores = classify_unit(stem, opts, slug=slug)
             kws = extract_keywords(stem)
             rows.append(
                 {
@@ -225,6 +393,8 @@ def annotate_questions(slug: str) -> list[dict]:
                     "index": i,
                     "stem": stem,
                     "unit": unit,
+                    "unitTitle": titles.get(unit) if unit else None,
+                    "chapters": list(chapters.get(unit, [])) if unit else [],
                     "unit_scores": scores,
                     "keywords": kws,
                 }
@@ -235,6 +405,8 @@ def annotate_questions(slug: str) -> list[dict]:
 
 def unit_coverage(slug: str) -> dict[int, dict]:
     """Ünite başına soru sayısı, yıllar, anahtar kelimeler."""
+    titles = unit_titles(slug)
+    chapters = unit_to_chapters(slug)
     cov: dict[int, dict] = {}
     for exam in annotate_questions(slug):
         year = exam.get("year") or exam.get("exam_id", "")
@@ -242,7 +414,7 @@ def unit_coverage(slug: str) -> dict[int, dict]:
             u = q.get("unit")
             if not u:
                 continue
-            row = cov.setdefault(u, {"unit": u, "title": UNIT_TITLES.get(u, f"Ünite {u}"), "count": 0, "years": set(), "keywords": set(), "samples": []})
+            row = cov.setdefault(u, {"unit": u, "title": titles.get(u, f"Ünite {u}"), "count": 0, "years": set(), "keywords": set(), "samples": []})
             row["count"] += 1
             if year:
                 row["years"].add(year)
@@ -253,14 +425,17 @@ def unit_coverage(slug: str) -> dict[int, dict]:
     for u, row in cov.items():
         row["years"] = sorted(row["years"])
         row["keywords"] = sorted(row["keywords"], key=str.lower)[:20]
-        row["chapters"] = UNIT_TO_CHAPTERS.get(u, [])
+        row["chapters"] = chapters.get(u, [])
     return cov
 
 
 if __name__ == "__main__":
-    import json
+    import sys as _sys
 
-    cov = unit_coverage("islam-mezhepleri-tarihi")
+    slug = _sys.argv[1] if len(_sys.argv) > 1 else "islam-mezhepleri-tarihi"
+    cov = unit_coverage(slug)
+    total = sum(c["count"] for c in cov.values())
+    print(f"{slug}: {total} labeled / units={len(cov)}")
     for u in sorted(cov):
         c = cov[u]
         print(f"U{u:02d} n={c['count']} years={c['years']} ch={c['chapters']}")

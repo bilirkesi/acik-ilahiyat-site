@@ -5,7 +5,7 @@ description: Mudanya Mütarekesi sonrası toplanan Lozan Barış Konferansı ön
 course: ataturk-ilkeleri-1
 chapter: 6
 status: stable
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-13T15:45:18Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-13T16:35:23Z }
 notebook: "https://notebooklm.google.com/notebook/436f4e9d-25d4-4441-98f1-ed97d01b9b7f"
 ---
 
