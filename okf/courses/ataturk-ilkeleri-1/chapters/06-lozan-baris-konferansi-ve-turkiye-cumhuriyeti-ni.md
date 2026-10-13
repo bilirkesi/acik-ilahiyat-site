@@ -5,13 +5,19 @@ description: Mudanya Mütarekesi sonrası toplanan Lozan Barış Konferansı ön
 course: ataturk-ilkeleri-1
 chapter: 6
 status: stable
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-13T16:35:23Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-13T17:08:40Z }
 notebook: "https://notebooklm.google.com/notebook/436f4e9d-25d4-4441-98f1-ed97d01b9b7f"
 ---
 
 # Özet
 
 Mudanya Mütarekesi sonrası toplanan Lozan Barış Konferansı öncesinde Saltanat kaldırılarak Türk milletinin tek temsilcisinin TBMM olduğu vurgulanmıştır. İki dönem halinde çetin müzakerelere sahne olan konferansta Türk heyeti Kapitülasyonların kaldırılmasını ve tam bağımsızlığı kararlılıkla savunmuştur. 24 Temmuz 1923'te imzalanan Lozan Barış Antlaşması ile Yeni Türk Devleti'nin bağımsızlığı uluslararası alanda tescillenmiş ve Sevr Antlaşması tarihe gömülmüştür.
+
+# AÖF Ünite İnfoğrafik
+
+![Lozan Barış Konferansı ve Türkiye Cumhuriyeti'nin Kuruluş Belgesi AÖF infoğrafik](/assets/ataturk-ilkeleri-1/aof-infographic-6.png)
+
+Kaynak PDF: `assets/ataturk-ilkeleri-1/aof/` (Anadolu Üniversitesi ünite infoğrafikleri).
 
 # Öğrenme Hedefleri
 

@@ -5,13 +5,19 @@ description: "Cumhuriyetin ilanının ardından çok partili siyasi hayata geçi
 course: ataturk-ilkeleri-1
 chapter: 7
 status: stable
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-13T16:35:23Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-13T17:08:40Z }
 notebook: "https://notebooklm.google.com/notebook/436f4e9d-25d4-4441-98f1-ed97d01b9b7f"
 ---
 
 # Özet
 
 Cumhuriyetin ilanının ardından çok partili siyasi hayata geçiş amacıyla Terakkiperver Cumhuriyet Fırkası ve Serbest Cumhuriyet Fırkası kurulmuş, ancak yaşanan siyasi ve sosyal gelişmeler nedeniyle bu denemeler kısa sürmüştür. İç politikada tarımın desteklenmesi, köylünün ferahlatılması ve mülkiyet ilişkilerinin düzenlenmesi amacıyla toprak reformu tartışmaları yürütülmüştür. Ayrıca bu dönemde toplumsal huzuru korumaya yönelik idari tedbirler alınmış ve devlet yapısının pekiştirilmesi sağlanmıştır.
+
+# AÖF Ünite İnfoğrafik
+
+![Atatürk Dönemi İç Politika ve Siyasi Hayattaki Gelişmeler AÖF infoğrafik](/assets/ataturk-ilkeleri-1/aof-infographic-7.png)
+
+Kaynak PDF: `assets/ataturk-ilkeleri-1/aof/` (Anadolu Üniversitesi ünite infoğrafikleri).
 
 # Öğrenme Hedefleri
 

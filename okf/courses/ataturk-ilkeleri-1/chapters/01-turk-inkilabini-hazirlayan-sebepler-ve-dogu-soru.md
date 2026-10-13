@@ -5,13 +5,19 @@ description: Osmanlı Devleti'nin 17. ve 18. yüzyıllardaki dönüşüm süreci
 course: ataturk-ilkeleri-1
 chapter: 1
 status: stable
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-13T16:35:23Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-13T17:08:40Z }
 notebook: "https://notebooklm.google.com/notebook/436f4e9d-25d4-4441-98f1-ed97d01b9b7f"
 ---
 
 # Özet
 
 Osmanlı Devleti'nin 17. ve 18. yüzyıllardaki dönüşüm süreci, ekonomik krizler, iç isyanlar ve ıslahat arayışları Türk inkılabını hazırlayan temel dinamikleri oluşturmuştur. Bu süreçte büyük devletlerin Osmanlı topraklarını paylaşma hırsı ve Şark Meselesi bağlamındaki politikaları imparatorluğu derin bir krize sürüklemiştir. Osmanlı devlet adamları denge politikası izleyerek ve yenileşme hareketlerine girişerek devletin varlığını korumaya çalışmışlardır.
+
+# AÖF Ünite İnfoğrafik
+
+![Türk İnkılabını Hazırlayan Sebepler ve Doğu Sorunu AÖF infoğrafik](/assets/ataturk-ilkeleri-1/aof-infographic-1.png)
+
+Kaynak PDF: `assets/ataturk-ilkeleri-1/aof/` (Anadolu Üniversitesi ünite infoğrafikleri).
 
 # Öğrenme Hedefleri
 

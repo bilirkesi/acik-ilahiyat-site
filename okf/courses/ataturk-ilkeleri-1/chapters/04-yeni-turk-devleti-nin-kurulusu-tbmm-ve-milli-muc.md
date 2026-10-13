@@ -5,13 +5,19 @@ description: "Ankara'da 23 Nisan 1920'de Türkiye Büyük Millet Meclisi'nin aç
 course: ataturk-ilkeleri-1
 chapter: 4
 status: stable
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-13T16:35:23Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-13T17:08:40Z }
 notebook: "https://notebooklm.google.com/notebook/436f4e9d-25d4-4441-98f1-ed97d01b9b7f"
 ---
 
 # Özet
 
 Ankara'da 23 Nisan 1920'de Türkiye Büyük Millet Meclisi'nin açılmasıyla yeni Türk devletinin hukuki ve siyasi temelleri atılmıştır. Meclis, Kuvvetler Birliği ve Meclis Hükümeti sistemini benimseyerek vatanın kurtarılması ve millî egemenliğin sağlanması yönünde kararlar almıştır. İzmir'in işgaliyle uyanan millî şuur, kongreler süreci ve örgütlenen lojistik destek sayesinde Millî Mücadele'nin maddi ve manevi gücünü oluşturmuştur.
+
+# AÖF Ünite İnfoğrafik
+
+![Yeni Türk Devleti'nin Kuruluşu, TBMM ve Millî Mücadelenin Temelleri AÖF infoğrafik](/assets/ataturk-ilkeleri-1/aof-infographic-4.png)
+
+Kaynak PDF: `assets/ataturk-ilkeleri-1/aof/` (Anadolu Üniversitesi ünite infoğrafikleri).
 
 # Öğrenme Hedefleri
 

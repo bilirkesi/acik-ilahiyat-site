@@ -18,7 +18,7 @@ school: Anadolu Üniversitesi Açıköğretim Fakültesi
 mode: own
 language: tr
 status: active
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-13T16:35:23Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-13T17:08:40Z }
 resource: "https://www.youtube.com/playlist?list=PLfFz63YLe29p6tY65NyEc37KZVhSW63ey"
 notebook: "https://notebooklm.google.com/notebook/c702ed26-fe17-463d-b217-202acd0c3d26"
 sources:
