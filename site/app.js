@@ -278,7 +278,7 @@
           <p>${esc(ch.summary)}</p>
           <ul class="objectives">${ch.objectives.map((o) => `<li>${esc(o)}</li>`).join("")}</ul>
           ${ch.image ? `<figure class="plate"><img src="${esc(ch.image)}" alt="${esc(ch.title)} infografiği" data-zoom loading="lazy"><figcaption><b>Şekil ${i + 1}.</b> ${esc(ch.title)}. Bu bölümün ${ch.lectures.length} ${noun(c, ch.lectures.length)}ından NotebookLM ile üretildi.</figcaption></figure>` : ""}
-          ${ch.aofInfographic ? `<figure class="plate aof-figure"><img src="${esc(ch.aofInfographic)}" alt="${esc(ch.title)} AÖF infografiği" data-zoom loading="lazy"><figcaption><b>AÖF infografik.</b> Anadolu Üniversitesi ünite özeti.</figcaption></figure>` : ""}
+          ${aofFiguresHtml(ch, i + 1, "plate")}
         </div>
       </li>`).join("");
     const credit = c.playlist
@@ -314,6 +314,19 @@
       <ol class="syllabus">${chapters}</ol>`;
   }
 
+  function aofFiguresHtml(ch, n, cls) {
+    const raw = ch.aofInfographic;
+    if (!raw) return "";
+    const list = Array.isArray(raw) ? raw : [raw];
+    if (!list.length) return "";
+    return list.map((src, j) => {
+      const cap = list.length > 1
+        ? `<b>AÖF infografik ${j + 1}/${list.length}.</b> Anadolu Üniversitesi ünite özeti (yüksek çözünürlük).`
+        : `<b>AÖF infografik.</b> Anadolu Üniversitesi ünite özeti (yüksek çözünürlük).`;
+      return `<figure class="${cls} aof-figure"><img src="${esc(src)}" alt="${esc(ch.title)} AÖF infografiği ${j + 1}" data-zoom loading="lazy"><figcaption>${cap}</figcaption></figure>`;
+    }).join("");
+  }
+
   function viewChapter(c, n) {
     const ch = c.chapters[n - 1];
     if (!ch) return viewNotFound();
@@ -330,7 +343,7 @@
       <h1>${esc(ch.title)}</h1>
       <p class="lead muted" style="font:1.15rem/1.6 var(--serif)">${esc(ch.summary)}</p>
       ${ch.image ? `<figure class="figure"><img src="${esc(ch.image)}" alt="${esc(ch.title)} infografiği" data-zoom><figcaption><b>Şekil ${n}.</b> Yalnızca bu bölümün ${noun(c, 2)}lerinden NotebookLM ile üretildi.</figcaption></figure>` : ""}
-      ${ch.aofInfographic ? `<figure class="figure aof-figure"><img src="${esc(ch.aofInfographic)}" alt="${esc(ch.title)} AÖF ünite infografiği" data-zoom loading="lazy"><figcaption><b>AÖF ünite infografiği.</b> Anadolu Üniversitesi ünite özeti; ders kitabı ve infografik PDF'inden derlendi.</figcaption></figure>` : ""}
+      ${aofFiguresHtml(ch, n, "figure")}
       ${chapterPanel(c, n)}
       ${mindmapSectionHtml(c.slug, {
         title: n + ". bölüm zihin haritası",
