@@ -702,7 +702,7 @@
     const questions = (exam.questions || []).map((q) => ({
       ...q,
       _slug: c.slug,
-      type: "past_mc",
+      type: "multiple_choice",
       answerOptions: (q.options || []).map((o) => ({
         text: o.text,
         isCorrect: !!(o.isCorrect || (q.correct && o.key === q.correct)),
