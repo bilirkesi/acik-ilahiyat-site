@@ -361,7 +361,7 @@
   const norm = (s) => String(s || "").replace(/[çÇğĞıİIöÖşŞüÜâÂîÎûÛ]/g, (ch) => TR_FOLD[ch]).toLowerCase().replace(/\$/g, "").replace(/[^a-z0-9.%-]+/g, " ").trim();
 
   function questionHTML(q, i) {
-    const head = `<div class="qn">Soru ${i + 1}${GRADED.has(q.type) ? "" : " · Tartışma, puanlanmaz"}</div><p class="qt">${esc(q.question)}</p>`;
+    const head = `<div class="qn">Soru ${i + 1}${GRADED.has(q.type) ? "" : " · Tartışma, puanlanmaz"}</div><p class="qt">${esc(q.question || q.stem || "")}</p>`;
     if ((q.type === "multiple_choice" || q.type === "multiple_select") && Array.isArray(q.answerOptions)) {
       const type = q.type === "multiple_choice" ? "radio" : "checkbox";
       const opts = q.answerOptions.map((o, j) => `<label class="opt" data-opt="${j}"><input type="${type}" name="q${i}" value="${j}"><span>${esc(o.text)}</span></label><div class="rationale" data-rat="${j}" hidden>${esc(o.rationale || "")}</div>`).join("");
@@ -703,6 +703,7 @@
       ...q,
       _slug: c.slug,
       type: "multiple_choice",
+      question: q.question || q.stem || "",
       answerOptions: (q.options || []).map((o) => ({
         text: o.text,
         isCorrect: !!(o.isCorrect || (q.correct && o.key === q.correct)),
