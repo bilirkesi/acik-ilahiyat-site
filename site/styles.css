@@ -366,3 +366,35 @@ table.transcript { width: 100%; border-collapse: collapse; background: var(--pap
 .mm-fallback { margin: .5rem 0 0; padding-left: 1.2rem; }
 .mm-fallback li { margin: .25rem 0; }
 .mm-dim { opacity: .18; }
+
+/* oyun modu sınav HUD */
+.hud {
+  position: sticky; top: 0; z-index: 8; display: flex; flex-wrap: wrap; gap: .35rem .85rem;
+  align-items: center; padding: .65rem .8rem; margin: 0 0 1rem;
+  background: var(--navy); color: var(--ivory); border-bottom: 3px solid var(--gold);
+}
+.hud-item { display: flex; flex-direction: column; gap: .1rem; min-width: 3.2rem; }
+.hud-k { font: 600 .62rem/1 var(--sans); letter-spacing: .1em; text-transform: uppercase; color: var(--gold-soft); }
+.hud-v { font: 600 1.05rem/1.1 var(--sans); font-variant-numeric: tabular-nums; }
+.hud-best { margin-left: auto; opacity: .9; }
+.hud-best .hud-v { font-size: .82rem; font-weight: 500; }
+.hud-bar { flex: 1 1 100%; height: 3px; background: rgba(248, 244, 234, .2); border-radius: 2px; overflow: hidden; }
+.hud-bar > i { display: block; height: 100%; background: var(--gold); transition: width .25s; }
+
+.game-q { background: var(--paper); border: 1px solid var(--line); padding: 1rem 1.1rem; border-left: 4px solid var(--line); }
+.game-q.hit { border-left-color: var(--ok); }
+.game-q.miss { border-left-color: var(--bad); }
+.game-q.skip-note { border-left-color: var(--gold); }
+.game-actions { margin-top: .9rem; gap: .6rem; }
+.game-actions .btn { min-height: 44px; }
+
+.game-stats {
+  list-style: none; display: flex; flex-wrap: wrap; gap: .6rem 1.2rem; margin: .7rem 0 1rem; padding: 0;
+  font-size: .88rem; color: var(--gold-soft);
+}
+.game-stats b { font: 600 1.15rem/1 var(--sans); color: var(--ivory); margin-right: .25rem; }
+
+@media (max-width: 560px) {
+  .hud-best { margin-left: 0; width: 100%; }
+  .hud-item { min-width: 2.8rem; }
+}

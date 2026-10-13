@@ -411,49 +411,186 @@
     box.querySelectorAll("input,textarea").forEach((x) => (x.disabled = true));
   }
 
+  // ---- oyun modu sınavı (learnGitBranching golf ilhamlı) --------------------
+  // progress[slug].game = { bestXp, bestStreak, bestTimeMs, runs }
+  function gameStats(slug) {
+    const r = progress[slug];
+    return (r && r.game) || { bestXp: 0, bestStreak: 0, bestTimeMs: 0, runs: 0 };
+  }
+  function saveGameStats(slug, run) {
+    const rec = progress[slug] || (progress[slug] = { best: 0, attempts: 0, passed: false, read: [] });
+    const g = rec.game || (rec.game = { bestXp: 0, bestStreak: 0, bestTimeMs: 0, runs: 0 });
+    g.bestXp = Math.max(g.bestXp, run.xp);
+    g.bestStreak = Math.max(g.bestStreak, run.streak);
+    if (run.timeMs > 0 && (g.bestTimeMs === 0 || run.timeMs < g.bestTimeMs)) g.bestTimeMs = run.timeMs;
+    g.runs += 1;
+    rec.best = Math.max(rec.best || 0, run.score);
+    rec.passed = rec.passed || run.passed;
+    rec.attempts = (rec.attempts || 0) + 1;
+    rec.lastAt = new Date().toISOString();
+    save(progress);
+    return g;
+  }
+
+  function fmtMs(ms) {
+    const s = Math.max(0, Math.round(ms / 1000));
+    const m = Math.floor(s / 60);
+    const r = s % 60;
+    return m ? `${m}:${String(r).padStart(2, "0")}` : `${r}s`;
+  }
+
+  function quizHudHtml(c, idx, total) {
+    const g = gameStats(c.slug);
+    return `<div class="hud" id="quiz-hud" aria-live="polite">
+      <div class="hud-item"><span class="hud-k">Soru</span><span class="hud-v" id="hud-idx">${idx + 1}/${total}</span></div>
+      <div class="hud-item"><span class="hud-k">Doğru</span><span class="hud-v" id="hud-right">0</span></div>
+      <div class="hud-item"><span class="hud-k">Seri</span><span class="hud-v" id="hud-streak">0</span></div>
+      <div class="hud-item"><span class="hud-k">Puan</span><span class="hud-v" id="hud-xp">0</span></div>
+      <div class="hud-item"><span class="hud-k">Süre</span><span class="hud-v" id="hud-time">0s</span></div>
+      <div class="hud-item hud-best"><span class="hud-k">Rekor</span><span class="hud-v">${g.bestXp} XP · seri ${g.bestStreak}</span></div>
+      <div class="hud-bar" aria-hidden="true"><i id="hud-bar" style="width:${(idx / total) * 100}%"></i></div>
+    </div>`;
+  }
+
   function viewQuiz(c) {
     if (!canAccess("quiz")) return viewGate("quiz");
     const graded = c.quiz.filter((q) => GRADED.has(q.type)).length;
     const r = progress[c.slug];
+    const g = gameStats(c.slug);
     return `<p class="crumbs"><a href="#/">Katalog</a> / <a href="#/course/${c.slug}">${esc(c.subject)}</a> / Sınav</p>
       <div class="quiz-head">
-        <div><p class="eyebrow">Final sınavı</p><h1 style="margin:0">${esc(c.course)}</h1></div>
-        <div class="muted" style="font-size:.9rem">${graded} puanlı soru · geçme notu ${pct(CONFIG.passMark)}${r ? ` · en iyi ${pct(r.best)}` : ""}</div>
+        <div><p class="eyebrow">Oyun modu · Final</p><h1 style="margin:0">${esc(c.course)}</h1></div>
+        <div class="muted" style="font-size:.9rem">${graded} puanlı soru · geçme ${pct(CONFIG.passMark)}${r ? ` · en iyi ${pct(r.best)}` : ""}</div>
       </div>
-      <p class="muted">Sorular bu dersin ${noun(c, 2)}lerinden NotebookLM ile üretilmiştir. Tartışma soruları örnek cevap gösterir ve puanınıza sayılmaz.</p>
-      <form id="quiz">${c.quiz.map((q, i) => `<div class="q" data-q="${i}">${questionHTML(q, i)}</div>`).join("")}
+      <p class="muted">Sorular sırayla gelir. Her doğru <strong>+10</strong>; seri katlayarak bonus verir. Yanlış seriyi sıfırlar.</p>
+      <div id="game-root" data-course="${esc(c.slug)}">
+        ${quizHudHtml(c, 0, c.quiz.length)}
+        <div id="game-stage"></div>
         <div id="result"></div>
-        <div class="sticky-submit"><button class="btn" type="submit" style="width:100%">Cevapları gönder</button></div>
-      </form>`;
+      </div>`;
   }
 
   function bindQuiz(c) {
-    const form = document.getElementById("quiz");
-    if (!form) return;
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
-      let right = 0, total = 0;
-      c.quiz.forEach((q, i) => {
-        const ok = grade(q, i, form);
-        if (ok !== null) { total++; if (ok) right++; }
-        showFeedback(q, i, ok, form.querySelector(`[data-q="${i}"]`));
-      });
-      const score = total ? right / total : 0;
-      const passed = total > 0 && score >= CONFIG.passMark;
-      const prev = progress[c.slug] || { best: 0, attempts: 0, passed: false };
-      progress[c.slug] = { best: Math.max(prev.best, score), passed: prev.passed || passed, attempts: prev.attempts + 1, lastAt: new Date().toISOString() };
-      save(progress);
+    const root = document.getElementById("game-root");
+    const stage = document.getElementById("game-stage");
+    if (!root || !stage) return;
+
+    const questions = c.quiz;
+    let idx = 0;
+    let right = 0;
+    let streak = 0;
+    let bestStreakRun = 0;
+    let xp = 0;
+    let gradedDone = 0;
+    let gradedRight = 0;
+    const t0 = Date.now();
+    let timer = null;
+    const perQ = {}; // süreler
+
+    const hud = (id) => document.getElementById(id);
+    function paintHud() {
+      hud("hud-idx").textContent = `${Math.min(idx + 1, questions.length)}/${questions.length}`;
+      hud("hud-right").textContent = String(right);
+      hud("hud-streak").textContent = String(streak);
+      hud("hud-xp").textContent = String(xp);
+      hud("hud-time").textContent = fmtMs(Date.now() - t0);
+      const bar = hud("hud-bar");
+      if (bar) bar.style.width = (idx / questions.length) * 100 + "%";
+    }
+
+    function startTimer() {
+      clearInterval(timer);
+      timer = setInterval(paintHud, 500);
+    }
+
+    function showQuestion(i) {
+      const q = questions[i];
+      if (!q) { finish(); return; }
+      const qStart = Date.now();
+      stage.innerHTML = `<div class="q game-q" data-q="${i}">${questionHTML(q, i)}
+        <div class="btn-row game-actions">
+          <button class="btn" type="button" id="check-ans">Kontrol et</button>
+          <button class="btn ghost" type="button" id="skip-q" style="display:none">Sonraki</button>
+        </div>
+      </div>`;
+      paintHud();
+      const box = stage.querySelector(".game-q");
+      const check = document.getElementById("check-ans");
+      const skip = document.getElementById("skip-q");
+      check.focus();
+      check.onclick = () => {
+        const ok = grade(q, i, stage);
+        showFeedback(q, i, ok, box);
+        perQ[i] = Date.now() - qStart;
+        const isGraded = GRADED.has(q.type);
+        if (isGraded) {
+          gradedDone++;
+          if (ok === true) {
+            gradedRight++;
+            right++;
+            streak++;
+            bestStreakRun = Math.max(bestStreakRun, streak);
+            const bonus = streak >= 3 ? streak * 2 : 0;
+            xp += 10 + bonus;
+            box.classList.add("hit");
+          } else {
+            streak = 0;
+            box.classList.add("miss");
+          }
+        } else {
+          box.classList.add("skip-note");
+        }
+        check.hidden = true;
+        skip.hidden = false;
+        skip.textContent = i < questions.length - 1 ? "Sonraki soru" : "Sonucu gör";
+        skip.focus();
+        skip.onclick = () => { idx++; showQuestion(idx); };
+        paintHud();
+        box.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      };
+      skip.onclick = () => {
+        if (!check.hidden) {
+          // bilerek geç: seriyi bozmadan, puan yok
+          streak = 0;
+          paintHud();
+        }
+        idx++;
+        showQuestion(idx);
+      };
+      startTimer();
+    }
+
+    function finish() {
+      clearInterval(timer);
+      const totalGraded = questions.filter((q) => GRADED.has(q.type)).length;
+      const score = gradedDone ? gradedRight / gradedDone : 0;
+      const passed = totalGraded > 0 && score >= CONFIG.passMark;
+      const timeMs = Date.now() - t0;
+      const avgMs = gradedDone ? Math.round(timeMs / Math.max(1, idx)) : 0;
+      const run = { xp, streak: bestStreakRun, score, passed, timeMs, right: gradedRight, total: gradedDone };
+      const g = saveGameStats(c.slug, run);
+      const isRecord = xp >= g.bestXp && xp > 0;
       const box = document.getElementById("result");
-      box.innerHTML = `<div class="result ${passed ? "pass" : "fail"}">
-        <p class="eyebrow" style="color:var(--gold-soft)">${passed ? "Geçti" : "Henüz geçemedi"}</p>
-        <h2>${total} sorudan ${right} doğru · ${pct(score)}</h2>
-        <p>${passed ? "Bu ders artık transkriptinizde." : `Geçmek için ${pct(CONFIG.passMark)} almanız gerekir. Bölümleri gözden geçirip tekrar deneyin.`}</p>
-        <div class="btn-row"><a class="btn ghost" style="color:var(--ivory);border-color:var(--gold)" href="#/transcript">Transkripti görüntüle</a>
-        <button class="btn ghost" style="color:var(--ivory);border-color:var(--gold)" type="button" id="retry">Tekrar dene</button></div></div>`;
-      form.querySelector(".sticky-submit").remove();
+      box.innerHTML = `<div class="result ${passed ? "pass" : "fail"} game-result">
+        <p class="eyebrow" style="color:var(--gold-soft)">${passed ? "Geçti" : "Henüz geçemedi"}${isRecord ? " · Yeni rekor!" : ""}</p>
+        <h2>${xp} XP · ${gradedRight}/${gradedDone} doğru · ${pct(score)}</h2>
+        <ul class="game-stats">
+          <li><b>${bestStreakRun}</b> en uzun seri</li>
+          <li><b>${fmtMs(timeMs)}</b> toplam süre</li>
+          <li><b>${fmtMs(avgMs)}</b> soru başına</li>
+          <li><b>${g.bestXp}</b> rekor XP (${g.runs} deneme)</li>
+        </ul>
+        <p>${passed ? "Bu ders artık transkriptinizde." : `Geçmek için ${pct(CONFIG.passMark)} gerekir. Özet sayfasından tekrar edin.`}</p>
+        <div class="btn-row"><a class="btn ghost" style="color:var(--ivory);border-color:var(--gold)" href="#/transcript">Transkript</a>
+        <button class="btn ghost" style="color:var(--ivory);border-color:var(--gold)" type="button" id="retry">Tekrar oyna</button></div></div>`;
       document.getElementById("retry").onclick = () => route();
+      const hudBar = document.getElementById("hud-bar");
+      if (hudBar) hudBar.style.width = "100%";
+      paintHud();
       box.scrollIntoView({ behavior: "smooth", block: "center" });
-    });
+    }
+
+    showQuestion(0);
   }
 
   // ---- transkript ------------------------------------------------------------
