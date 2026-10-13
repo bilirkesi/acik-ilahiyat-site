@@ -5,7 +5,7 @@ description: Bu bölümde Şia'nın günümüze kadar varlığını sürdüren k
 course: islam-mezhepleri-tarihi
 chapter: 6
 status: stable
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-13T12:23:40Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-13T12:42:43Z }
 notebook: "https://notebooklm.google.com/notebook/ad4a99c9-cc96-4f29-92f5-ca8638bc42c2"
 ---
 

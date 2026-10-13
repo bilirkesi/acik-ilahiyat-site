@@ -3,13 +3,22 @@ type: Course
 title: Türk Dili
 description: TÜR201U - Türk Dili I. Resmî AÖF Konu Anlatımı playlist'i (Ünite 1-8, 21 video) kullanıldı. 16 videoda YouTube'un en otomatik altyazıları doğrudan eklendi; 5 videoda en altyazı olmadığından tr altyazı dosyası indirilip metin kaynağı olarak yüklendi. Ünite 9-14 için resmî video bulunamadı.
 slug: turk-dili-1
-course_code: TÜR201U - Türk Dili I
+university: aof
+university_name: AÖF
+program: İlahiyat (Ön Lisans)
+academic_year: 2026-2027
+semester: guz
+term_code: 20262027-1
+level: 1
+ects_credits: 5
+course_code: TÜR201U
+course_name: Türk Dili I
 professor: ""
 school: Anadolu Üniversitesi Açıköğretim Fakültesi
 mode: own
 language: tr
-status: stable
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-13T12:23:40Z }
+status: active
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-13T12:42:43Z }
 resource: "https://www.youtube.com/playlist?list=PLfFz63YLe29p6tY65NyEc37KZVhSW63ey"
 notebook: "https://notebooklm.google.com/notebook/c702ed26-fe17-463d-b217-202acd0c3d26"
 sources:
@@ -23,6 +32,16 @@ sources:
     author: acik-ilahiyat-exporter/1.0
 ---
 
+# Üniversite ve Dönem
+
+* Üniversite: [AÖF](/universities/aof.md)
+* Program: İlahiyat (Ön Lisans)
+* Akademik yıl: 2026-2027
+* Dönem: Güz
+* Kod: TÜR201U - Türk Dili I
+* AKTS: 5 | Seviye: 1
+
+
 # Özet
 
 Resmî AÖF Konu Anlatımı playlist'i (Ünite 1-8, 21 video) kullanıldı. 16 videoda YouTube'un en otomatik altyazıları doğrudan eklendi; 5 videoda en altyazı olmadığından tr altyazı dosyası indirilip metin kaynağı olarak yüklendi. Ünite 9-14 için resmî video bulunamadı.
@@ -31,6 +50,7 @@ Resmî AÖF Konu Anlatımı playlist'i (Ünite 1-8, 21 video) kullanıldı. 16 v
 
 * [Bölümler](/turk-dili-1/chapters/index.md) (8)
 * [Quiz](/turk-dili-1/quiz.md)
+* [Sınavlar](/turk-dili-1/exams/index.md) - vize, final, yaz kursu
 * [Artifact'ler](/turk-dili-1/artifacts.md)
 
 # Panel Öne Çıkanları

@@ -1,0 +1,26 @@
+{
+  "id": "final",
+  "type": "final",
+  "title": "Final Sınavı",
+  "description": "Dönem sonu (final) testi. Sorular, cevap anahtarı ve çözümler içerir.",
+  "exam_window": "final",
+  "pass_mark": 0.7,
+  "questions": [],
+  "_schema": {
+    "question": "string",
+    "answerOptions": [
+      {
+        "text": "string",
+        "isCorrect": "bool",
+        "rationale": "kisa neden (opsiyonel)"
+      }
+    ],
+    "solution": "Adim adim cozum metni (markdown)",
+    "hint": "ipucu (opsiyonel)",
+    "type": "test | multi | open (opsiyonel)",
+    "points": "number (opsiyonel)",
+    "tags": [
+      "bolum/kavram etiketleri"
+    ]
+  }
+}

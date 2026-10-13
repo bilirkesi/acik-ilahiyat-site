@@ -3,13 +3,22 @@ type: Course
 title: Atatürk İlkeleri ve İnkılap Tarihi
 description: TAR201U - Atatürk İlkeleri ve İnkılap Tarihi I. Resmî AÖF Konu Anlatımı playlist'i (Ünite 1-8, 15 video) kullanıldı. Tüm videolarda YouTube'un en otomatik altyazıları bulunuyor; hepsi doğrudan YouTube URL olarak eklendi.
 slug: ataturk-ilkeleri-1
-course_code: TAR201U - Atatürk İlkeleri ve İnkılap Tarihi I
+university: aof
+university_name: AÖF
+program: İlahiyat (Ön Lisans)
+academic_year: 2026-2027
+semester: guz
+term_code: 20262027-1
+level: 1
+ects_credits: 5
+course_code: TAR201U
+course_name: Atatürk İlkeleri ve İnkılap Tarihi I
 professor: ""
 school: Anadolu Üniversitesi Açıköğretim Fakültesi
 mode: own
 language: tr
-status: stable
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-13T12:23:40Z }
+status: active
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-13T12:42:43Z }
 resource: "https://www.youtube.com/playlist?list=PLfFz63YLe29pwZQOQ_IezppbdazyVOoPO"
 notebook: "https://notebooklm.google.com/notebook/436f4e9d-25d4-4441-98f1-ed97d01b9b7f"
 sources:
@@ -23,6 +32,16 @@ sources:
     author: acik-ilahiyat-exporter/1.0
 ---
 
+# Üniversite ve Dönem
+
+* Üniversite: [AÖF](/universities/aof.md)
+* Program: İlahiyat (Ön Lisans)
+* Akademik yıl: 2026-2027
+* Dönem: Güz
+* Kod: TAR201U - Atatürk İlkeleri ve İnkılap Tarihi I
+* AKTS: 5 | Seviye: 1
+
+
 # Özet
 
 Resmî AÖF Konu Anlatımı playlist'i (Ünite 1-8, 15 video) kullanıldı. Tüm videolarda YouTube'un en otomatik altyazıları bulunuyor; hepsi doğrudan YouTube URL olarak eklendi.
@@ -31,6 +50,7 @@ Resmî AÖF Konu Anlatımı playlist'i (Ünite 1-8, 15 video) kullanıldı. Tüm
 
 * [Bölümler](/ataturk-ilkeleri-1/chapters/index.md) (8)
 * [Quiz](/ataturk-ilkeleri-1/quiz.md)
+* [Sınavlar](/ataturk-ilkeleri-1/exams/index.md) - vize, final, yaz kursu
 * [Artifact'ler](/ataturk-ilkeleri-1/artifacts.md)
 
 # Panel Öne Çıkanları

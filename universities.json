@@ -1,0 +1,30 @@
+{
+  "aof": {
+    "id": "aof",
+    "name": "Anadolu Üniversitesi",
+    "faculty": "Açıköğretim Fakültesi",
+    "short": "AÖF",
+    "url": "https://www.anadolu.edu.tr",
+    "program": "İlahiyat (Ön Lisans)",
+    "note": "AÖF resmî Konu Anlatımı ve ünite materyalleri esas alınır."
+  },
+  "iu": {
+    "id": "iu",
+    "name": "İstanbul Üniversitesi",
+    "faculty": "İlahiyat Fakültesi",
+    "short": "İÜ",
+    "url": "https://www.istanbul.edu.tr",
+    "program": "İlahiyat",
+    "note": "Üniversite hocalarının ders serileri ve e-Medrese yayinlari."
+  },
+  "aiu": {
+    "id": "aiu",
+    "name": "Açık İlahiyat Üniversitesi",
+    "faculty": "Platform çatısı",
+    "short": "AIU",
+    "url": "",
+    "program": "Açık İlahiyat (toplu vitrin)",
+    "note": "Bu platformun vitrin adı; dersler kaynak üniversitelere göre ayrılır.",
+    "is_platform": true
+  }
+}

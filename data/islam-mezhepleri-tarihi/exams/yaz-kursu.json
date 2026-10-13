@@ -1,0 +1,26 @@
+{
+  "id": "yaz-kursu",
+  "type": "yaz-kursu",
+  "title": "Yaz Kursu Testi",
+  "description": "Yaz donemi yogunlastirma (yaz kursu) testi. Sorular, cevap anahtari ve cozumler icerir.",
+  "exam_window": "summer",
+  "pass_mark": 0.7,
+  "questions": [],
+  "_schema": {
+    "question": "string",
+    "answerOptions": [
+      {
+        "text": "string",
+        "isCorrect": "bool",
+        "rationale": "kisa neden (opsiyonel)"
+      }
+    ],
+    "solution": "Adim adim cozum metni (markdown)",
+    "hint": "ipucu (opsiyonel)",
+    "type": "test | multi | open (opsiyonel)",
+    "points": "number (opsiyonel)",
+    "tags": [
+      "bolum/kavram etiketleri"
+    ]
+  }
+}

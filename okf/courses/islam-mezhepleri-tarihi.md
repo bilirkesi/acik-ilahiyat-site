@@ -3,13 +3,23 @@ type: Course
 title: İslam Mezhepleri Tarihi
 description: İLH207U - İslam Mezhepleri Tarihi. AÖF resmî kanalındaki Konu Anlatımı playlist'i NotebookLM tarafından alınamadı (çoğu videoda altyazı track'i yok). Yerine aynı dersin üniversite hocalısı Doç. Dr. Kadir Gömbeyaz'ın 10 derslik serisi kullanıldı; tüm videoların tr ve en altyazıları doğrulandı.
 slug: islam-mezhepleri-tarihi
-course_code: İLH207U - İslam Mezhepleri Tarihi
+university: iu
+university_name: İÜ
+program: İlahiyat
+academic_year: 2026-2027
+semester: guz
+term_code: 20262027-1
+level: 1
+ects_credits: 6
+course_code: İLH207U
+course_name: İslam Mezhepleri Tarihi
 professor: Doç. Dr. Kadir Gömbeyaz
 school: İstanbul Üniversitesi (e-Medrese yayını)
 mode: lectures
 language: tr
-status: stable
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-13T12:23:40Z }
+status: active
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-13T12:42:43Z }
+source_provider: aof
 resource: "https://www.youtube.com/playlist?list=PLNbpRT8SFQRrt0jMiJkPXprfdebuCSTJw"
 notebook: "https://notebooklm.google.com/notebook/ad4a99c9-cc96-4f29-92f5-ca8638bc42c2"
 sources:
@@ -23,6 +33,16 @@ sources:
     author: acik-ilahiyat-exporter/1.0
 ---
 
+# Üniversite ve Dönem
+
+* Üniversite: [İÜ](/universities/iu.md)
+* Program: İlahiyat
+* Akademik yıl: 2026-2027
+* Dönem: Güz
+* Kod: İLH207U - İslam Mezhepleri Tarihi
+* AKTS: 6 | Seviye: 1
+
+
 # Özet
 
 AÖF resmî kanalındaki Konu Anlatımı playlist'i NotebookLM tarafından alınamadı (çoğu videoda altyazı track'i yok). Yerine aynı dersin üniversite hocalısı Doç. Dr. Kadir Gömbeyaz'ın 10 derslik serisi kullanıldı; tüm videoların tr ve en altyazıları doğrulandı.
@@ -31,6 +51,7 @@ AÖF resmî kanalındaki Konu Anlatımı playlist'i NotebookLM tarafından alın
 
 * [Bölümler](/islam-mezhepleri-tarihi/chapters/index.md) (6)
 * [Quiz](/islam-mezhepleri-tarihi/quiz.md)
+* [Sınavlar](/islam-mezhepleri-tarihi/exams/index.md) - vize, final, yaz kursu
 * [Artifact'ler](/islam-mezhepleri-tarihi/artifacts.md)
 
 # Panel Öne Çıkanları

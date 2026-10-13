@@ -5,7 +5,7 @@ description: Lozan sonrası dönemde Türkiye, barışçı ve millî bir dış p
 course: ataturk-ilkeleri-1
 chapter: 8
 status: stable
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-13T12:23:40Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-13T12:42:43Z }
 notebook: "https://notebooklm.google.com/notebook/436f4e9d-25d4-4441-98f1-ed97d01b9b7f"
 ---
 

@@ -5,7 +5,7 @@ description: Bu bölümde ses bilgisinin temel ilkeleri, konuşma seslerinin olu
 course: turk-dili-1
 chapter: 3
 status: stable
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-13T12:23:40Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-13T12:42:43Z }
 notebook: "https://notebooklm.google.com/notebook/c702ed26-fe17-463d-b217-202acd0c3d26"
 ---
 

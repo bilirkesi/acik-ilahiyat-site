@@ -48,7 +48,18 @@
         "EDOncSKtEX0",
         "10- Günümüze Ulaşan Kollarıyla Şîa: İsmailiyye | Mezhepler Tarihi | Doç. Dr. Kadir Gömbeyaz"
       ]
-    ]
+    ],
+    "university_id": "iu",
+    "program": "İlahiyat",
+    "academic_year": "2026-2027",
+    "semester": "guz",
+    "term_code": "20262027-1",
+    "level": 1,
+    "ects_credits": 6,
+    "course_code": "İLH207U",
+    "course_name": "İslam Mezhepleri Tarihi",
+    "status": "active",
+    "source_provider": "aof"
   },
   "turk-dili-1": {
     "mode": "own",
@@ -57,7 +68,17 @@
     "course": "TÜR201U - Türk Dili I",
     "school": "Anadolu Üniversitesi Açıköğretim Fakültesi",
     "note": "Resmî AÖF Konu Anlatımı playlist'i (Ünite 1-8, 21 video) kullanıldı. 16 videoda YouTube'un en otomatik altyazıları doğrudan eklendi; 5 videoda en altyazı olmadığından tr altyazı dosyası indirilip metin kaynağı olarak yüklendi. Ünite 9-14 için resmî video bulunamadı.",
-    "playlist": "https://www.youtube.com/playlist?list=PLfFz63YLe29p6tY65NyEc37KZVhSW63ey"
+    "playlist": "https://www.youtube.com/playlist?list=PLfFz63YLe29p6tY65NyEc37KZVhSW63ey",
+    "university_id": "aof",
+    "program": "İlahiyat (Ön Lisans)",
+    "academic_year": "2026-2027",
+    "semester": "guz",
+    "term_code": "20262027-1",
+    "level": 1,
+    "ects_credits": 5,
+    "course_code": "TÜR201U",
+    "course_name": "Türk Dili I",
+    "status": "active"
   },
   "ataturk-ilkeleri-1": {
     "mode": "own",
@@ -66,6 +87,16 @@
     "course": "TAR201U - Atatürk İlkeleri ve İnkılap Tarihi I",
     "school": "Anadolu Üniversitesi Açıköğretim Fakültesi",
     "note": "Resmî AÖF Konu Anlatımı playlist'i (Ünite 1-8, 15 video) kullanıldı. Tüm videolarda YouTube'un en otomatik altyazıları bulunuyor; hepsi doğrudan YouTube URL olarak eklendi.",
-    "playlist": "https://www.youtube.com/playlist?list=PLfFz63YLe29pwZQOQ_IezppbdazyVOoPO"
+    "playlist": "https://www.youtube.com/playlist?list=PLfFz63YLe29pwZQOQ_IezppbdazyVOoPO",
+    "university_id": "aof",
+    "program": "İlahiyat (Ön Lisans)",
+    "academic_year": "2026-2027",
+    "semester": "guz",
+    "term_code": "20262027-1",
+    "level": 1,
+    "ects_credits": 5,
+    "course_code": "TAR201U",
+    "course_name": "Atatürk İlkeleri ve İnkılap Tarihi I",
+    "status": "active"
   }
 }

@@ -24,9 +24,25 @@ ACTOR = "acik-ilahiyat-exporter/1.0"
 
 SLUGS = ["ataturk-ilkeleri-1", "turk-dili-1", "islam-mezhepleri-tarihi"]
 
+SEMESTER_TR = {
+    "guz": "Güz",
+    "bahar": "Bahar",
+    "yaz": "Yaz",
+}
+
 
 def load_json(path: Path):
     return json.loads(path.read_text(encoding="utf-8-sig"))
+
+
+def university_label(unis: dict, uid: str) -> str:
+    u = unis.get(uid, {})
+    short = u.get("short") or u.get("name") or uid
+    return short
+
+
+def semester_label(code: str) -> str:
+    return SEMESTER_TR.get(code, code or "-")
 
 
 def dump_interactive() -> dict:
@@ -100,6 +116,31 @@ def md_escape_cell(s: str) -> str:
     return str(s).replace("|", "\\|").replace("\n", " ")
 
 
+def render_question_block(n: int, q: dict) -> str:
+    lines = [f"## {n}. {q.get('question', '')}\n"]
+    if q.get("hint"):
+        lines.append(f"*İpucu:* {q['hint']}\n")
+    for j, opt in enumerate(q.get("answerOptions", [])):
+        mark = " *" if opt.get("isCorrect") else ""
+        letter = chr(ord("A") + j)
+        lines.append(f"{letter}) {opt.get('text', '')}{mark}")
+    lines.append("")
+    correct = [chr(ord("A") + j) for j, o in enumerate(q.get("answerOptions", [])) if o.get("isCorrect")]
+    if correct:
+        lines.append(f"**Cevap anahtarı:** {', '.join(correct)}\n")
+    for j, opt in enumerate(q.get("answerOptions", [])):
+        if opt.get("isCorrect") and opt.get("rationale"):
+            letter = chr(ord("A") + j)
+            lines.append(f"**Gerekçe ({letter}):** {opt['rationale']}\n")
+    solution = q.get("solution") or q.get("explanation") or q.get("why") or ""
+    if solution:
+        lines.append(f"### Çözüm\n\n{solution}\n")
+    tags = q.get("tags") or []
+    if tags:
+        lines.append(f"*Etiketler:* {', '.join(str(t) for t in tags)}\n")
+    return "\n".join(lines)
+
+
 def main() -> int:
     # temiz yeniden üretim
     if OKF.exists():
@@ -108,11 +149,25 @@ def main() -> int:
         shutil.rmtree(OKF)
 
     courses = load_json(ROOT / "courses.json")
+    unis = load_json(ROOT / "universities.json") if (ROOT / "universities.json").exists() else {}
     interactive = dump_interactive()
     catalog = load_json(ROOT / "artifacts" / "catalog.json") if (ROOT / "artifacts" / "catalog.json").exists() else []
     by_course_cat: dict[str, dict[str, list]] = {}
     for e in catalog:
         by_course_cat.setdefault(e["course"], {}).setdefault(e["category"], []).append(e)
+
+    # dersleri üniversite + döneme göre grupla
+    by_uni: dict[str, list[str]] = {}
+    by_term: dict[tuple[str, str], list[str]] = {}
+    for s in SLUGS:
+        if s not in courses:
+            continue
+        c = courses[s]
+        uid = c.get("university_id") or "aof"
+        year = c.get("academic_year") or "bilinmiyor"
+        sem = c.get("semester") or "guz"
+        by_uni.setdefault(uid, []).append(s)
+        by_term.setdefault((year, sem), []).append(s)
 
     write(
         OKF / "index.md",
@@ -121,31 +176,123 @@ def main() -> int:
                 ("okf_version", '"0.2"'),
                 ("type", "Bundle Index"),
                 ("title", "Açık İlahiyat Ders Bilgisi"),
-                ("description", "AÖF İlahiyat ön lisans dersleri için OKF v0.2 bilgi paketi: dersler, bölümler, quiz ve artifact kataloğu."),
+                ("description", "AÖF / İÜ gibi kaynak üniversitelere göre ayrılmış ders bilgisi: yıl, dönem, bölümler, sınavlar, artifact kataloğu."),
                 ("language", "tr"),
                 ("generated", f"{{ by: {ACTOR}, at: {NOW} }}"),
             ]
         )
-        + "# Dersler\n\n"
+        + "# Üniversiteler\n\n"
         + "\n".join(
-            f"* [{courses[s]['subject']}](/courses/{s}.md) - {courses[s].get('course', '')}"
+            f"* [{university_label(unis, uid)}](/universities/{uid}.md) - {len(slugs)} ders"
+            for uid, slugs in sorted(by_uni.items())
+        )
+        + "\n\n# Dönemler\n\n"
+        + "\n".join(
+            f"* [{year} {semester_label(sem)}](/terms/{year}/{sem}.md) - {len(slugs)} ders"
+            for (year, sem), slugs in sorted(by_term.items())
+        )
+        + "\n\n# Dersler\n\n"
+        + "\n".join(
+            f"* [{courses[s]['subject']}](/courses/{s}.md) - "
+            f"{university_label(unis, courses[s].get('university_id', 'aof'))} · "
+            f"{courses[s].get('academic_year', '')} {semester_label(courses[s].get('semester', 'guz'))} · "
+            f"{courses[s].get('course_code', '')}"
             for s in SLUGS
             if s in courses
         )
         + "\n\n# Yardımcılar\n\n"
-        + "* [Artifact kataloğu](/artifacts/index.md) - NotebookLM çıktıları (rapor, infografik, quiz, slayt)\n"
+        + "* [Artifact kataloğu](/artifacts/index.md) - NotebookLM çıktıları\n"
         + "* [Dizin](/courses/index.md)\n",
     )
 
     write(
         OKF / "log.md",
-        f"# Bundle Log\n\n## {NOW[:10]}\n* **Creation**: İlk OKF export (courses.json, study_plan, quiz, interactive panel, artifact catalog).\n",
+        f"# Bundle Log\n\n## {NOW[:10]}\n"
+        "* **Update**: Üniversite + yıl + dönem (güz/bahar) hiyerarşisi eklendi.\n"
+        "* **Creation**: İlk OKF export (courses.json, study_plan, quiz, interactive panel, artifact catalog).\n",
     )
+
+    # universities index + pages
+    uni_lines = ["# Üniversiteler\n"]
+    for uid in sorted(by_uni):
+        u = unis.get(uid, {})
+        name = u.get("name", uid)
+        short = u.get("short", uid)
+        faculty = u.get("faculty", "")
+        uni_lines.append(f"* [{short} - {name}]({uid}.md) - {faculty}, {len(by_uni[uid])} ders")
+        course_rows = []
+        for s in by_uni[uid]:
+            c = courses[s]
+            course_rows.append(
+                f"* [{c.get('subject', s)}](/courses/{s}.md) - "
+                f"{c.get('course_code', '')} · {c.get('academic_year', '')} "
+                f"{semester_label(c.get('semester', 'guz'))} · seviye {c.get('level', '-')}"
+            )
+        write(
+            OKF / "universities" / f"{uid}.md",
+            fm(
+                [
+                    ("type", "University"),
+                    ("title", name),
+                    ("description", f"{faculty}. {u.get('note', '')}".strip()),
+                    ("university_id", uid),
+                    ("short_name", short),
+                    ("program", u.get("program", "")),
+                    ("language", "tr"),
+                    ("status", "stable"),
+                    ("generated", f"{{ by: {ACTOR}, at: {NOW} }}"),
+                ]
+                + ([("resource", u["url"])] if u.get("url") else [])
+            )
+            + f"# Dersler ({len(by_uni[uid])})\n\n" + "\n".join(course_rows) + "\n",
+        )
+    write(OKF / "universities" / "index.md", "\n".join(uni_lines) + "\n")
+
+    # terms index + pages
+    term_lines = ["# Akademik Dönemler\n"]
+    for (year, sem), slugs in sorted(by_term.items()):
+        tdir = OKF / "terms" / year / f"{sem}.md"
+        rows = []
+        for s in slugs:
+            c = courses[s]
+            rows.append(
+                f"* [{c.get('subject', s)}](/courses/{s}.md) - "
+                f"{university_label(unis, c.get('university_id', 'aof'))} · {c.get('course_code', '')}"
+            )
+        write(
+            tdir,
+            fm(
+                [
+                    ("type", "Academic Term"),
+                    ("title", f"{year} {semester_label(sem)}"),
+                    ("description", f"{year} öğretim yılı {semester_label(sem)} dönemi ders listesi."),
+                    ("academic_year", year),
+                    ("semester", sem),
+                    ("term_code", courses[slugs[0]].get("term_code", "") if slugs else ""),
+                    ("course_count", str(len(slugs))),
+                    ("language", "tr"),
+                    ("status", "stable"),
+                    ("generated", f"{{ by: {ACTOR}, at: {NOW} }}"),
+                ]
+            )
+            + f"# Dersler ({len(slugs)})\n\n" + "\n".join(rows) + "\n",
+        )
+        term_lines.append(
+            f"* [{year} {semester_label(sem)}]({year}/{sem}.md) - {len(slugs)} ders"
+        )
+    write(OKF / "terms" / "index.md", "\n".join(term_lines) + "\n")
 
     write(
         OKF / "courses" / "index.md",
         "# Dersler\n\n"
-        + "\n".join(f"* [{courses[s]['subject']}]({s}.md)" for s in SLUGS if s in courses)
+        "University ve dönem bilgisi her dersin frontmatter'ındadır.\n\n"
+        + "\n".join(
+            f"* [{courses[s]['subject']}]({s}.md) - "
+            f"{university_label(unis, courses[s].get('university_id', 'aof'))} · "
+            f"{courses[s].get('academic_year', '')} {semester_label(courses[s].get('semester', 'guz'))}"
+            for s in SLUGS
+            if s in courses
+        )
         + "\n",
     )
 
@@ -174,23 +321,42 @@ def main() -> int:
             ("title", meta.get("subject", slug)),
             ("description", f"{meta.get('course', '')}. {meta.get('note', '')}".strip()[:300]),
             ("slug", slug),
-            ("course_code", meta.get("course", "")),
+            ("university", meta.get("university_id", "aof")),
+            ("university_name", university_label(unis, meta.get("university_id", "aof"))),
+            ("program", meta.get("program", "")),
+            ("academic_year", meta.get("academic_year", "")),
+            ("semester", meta.get("semester", "")),
+            ("term_code", meta.get("term_code", "")),
+            ("level", str(meta.get("level", ""))),
+            ("ects_credits", str(meta.get("ects_credits", ""))),
+            ("course_code", meta.get("course_code") or meta.get("course", "")),
+            ("course_name", meta.get("course_name") or meta.get("subject", slug)),
             ("professor", meta.get("professor", "")),
             ("school", meta.get("school", "")),
             ("mode", meta.get("mode", "")),
             ("language", "tr"),
-            ("status", "stable"),
+            ("status", meta.get("status", "stable")),
             ("generated", f"{{ by: {ACTOR}, at: {NOW} }}"),
         ]
+        if meta.get("source_provider"):
+            course_fm.append(("source_provider", meta["source_provider"]))
         if resource:
             course_fm.append(("resource", resource))
         if notebook_url:
             course_fm.append(("notebook", notebook_url))
 
         body_parts = [
+            f"# Üniversite ve Dönem\n\n"
+            f"* Üniversite: [{university_label(unis, meta.get('university_id', 'aof'))}](/universities/{meta.get('university_id', 'aof')}.md)\n"
+            f"* Program: {meta.get('program', '')}\n"
+            f"* Akademik yıl: {meta.get('academic_year', '')}\n"
+            f"* Dönem: {semester_label(meta.get('semester', 'guz'))}\n"
+            f"* Kod: {meta.get('course_code', '')} - {meta.get('course_name', '')}\n"
+            f"* AKTS: {meta.get('ects_credits', '')} | Seviye: {meta.get('level', '')}\n\n",
             f"# Özet\n\n{meta.get('note', '')}\n",
             f"# Yapı\n\n* [Bölümler](/{slug}/chapters/index.md) ({len(chapters)})\n"
             f"* [Quiz](/{slug}/quiz.md)\n"
+            f"* [Sınavlar](/{slug}/exams/index.md) - vize, final, yaz kursu\n"
             f"* [Artifact'ler](/{slug}/artifacts.md)\n",
         ]
         if panel.get("takeaways"):
@@ -307,18 +473,10 @@ def main() -> int:
         questions = quiz.get("questions", [])
         q_lines = [
             f"# {quiz.get('title', 'Quiz')}\n",
-            f"Toplam {len(questions)} soru. Doğru cevaplar `*` ile işaretli seçeneklerdir.\n",
+            f"Toplam {len(questions)} soru. Doğru cevaplar `*` ile işaretli seçeneklerdir; gerekçe ve çözüm seçenek altındadır.\n",
         ]
         for n, q in enumerate(questions, 1):
-            q_lines.append(f"## {n}. {q.get('question', '')}\n")
-            for j, opt in enumerate(q.get("answerOptions", [])):
-                mark = " *" if opt.get("isCorrect") else ""
-                letter = chr(ord("A") + j)
-                q_lines.append(f"{letter}) {opt.get('text', '')}{mark}")
-            why = q.get("explanation") or q.get("why") or ""
-            if why:
-                q_lines.append(f"\n> {why}")
-            q_lines.append("")
+            q_lines.append(render_question_block(n, q))
         quiz_fm = [
             ("type", "Quiz"),
             ("title", quiz.get("title", f"{meta.get('subject', slug)} Testi")),
@@ -331,6 +489,73 @@ def main() -> int:
             ("resource", f"/courses/{slug}/quiz.md"),
         ]
         write(OKF / "courses" / slug / "quiz.md", fm(quiz_fm) + "\n".join(q_lines))
+
+        # exams: vize / final / yaz-kursu
+        exam_dir = ROOT / "data" / slug / "exams"
+        exam_index = [f"# {meta.get('subject', slug)} Sınavları\n"]
+        exam_ids = ["vize", "final", "yaz-kursu"]
+        exam_tr = {"vize": "Vize", "final": "Final", "yaz-kursu": "Yaz Kursu"}
+        for eid in exam_ids:
+            epath = exam_dir / f"{eid}.json"
+            if not epath.exists():
+                continue
+            edata = load_json(epath)
+            eqs = edata.get("questions", [])
+            has_key = any(o.get("isCorrect") for q in eqs for o in q.get("answerOptions", []))
+            has_sol = any(q.get("solution") or q.get("explanation") for q in eqs)
+            e_lines = [
+                f"# {edata.get('title', exam_tr.get(eid, eid))}\n",
+                f"Ders: {meta.get('subject', slug)} · "
+                f"{university_label(unis, meta.get('university_id', 'aof'))} · "
+                f"{meta.get('academic_year', '')} {semester_label(meta.get('semester', 'guz'))}. "
+                f"Toplam {len(eqs)} soru. "
+                "Doğru cevaplar `*`; her soruda gerekçe ve çözüm vardır.\n",
+            ]
+            for n, q in enumerate(eqs, 1):
+                e_lines.append(render_question_block(n, q))
+            if not eqs:
+                e_lines.append("_Bu sınav için henüz soru eklenmedi. JSON şeması için `data/_exam_schema.md` dosyasına bakın._\n")
+            e_fm = [
+                ("type", "Exam"),
+                ("title", edata.get("title", f"{meta.get('subject', slug)} {exam_tr.get(eid, eid)}")),
+                ("description", edata.get("description", "")),
+                ("course", slug),
+                ("university", meta.get("university_id", "aof")),
+                ("academic_year", meta.get("academic_year", "")),
+                ("semester", meta.get("semester", "")),
+                ("exam_id", eid),
+                ("exam_window", edata.get("exam_window", "")),
+                ("exam_type", eid),
+                ("question_count", str(len(eqs))),
+                ("pass_mark", str(edata.get("pass_mark", 0.7))),
+                ("has_answer_key", "true" if has_key else "false"),
+                ("has_solutions", "true" if has_sol else "false"),
+                ("status", "draft" if not eqs else "stable"),
+                ("generated", f"{{ by: {ACTOR}, at: {NOW} }}"),
+                ("resource", f"/courses/{slug}/exams/{eid}.md"),
+            ]
+            write(OKF / "courses" / slug / "exams" / f"{eid}.md", fm(e_fm) + "\n".join(e_lines))
+            exam_index.append(
+                f"* [{edata.get('title', exam_tr.get(eid, eid))}]({eid}.md) "
+                f"- {len(eqs)} soru, cevap anahtarı: "
+                f"{'var' if has_key else 'yok'}, çözümler: "
+                f"{'var' if has_sol else 'yok'}"
+            )
+        if exam_index and len(exam_index) > 1:
+            write(OKF / "courses" / slug / "exams" / "index.md", "\n".join(exam_index) + "\n")
+
+        # course body: sınav linkleri
+        # (yukarıdaki course.md çoktan yazıldı; exams/ linkleri için course.md'yi güncelle)
+        course_path = OKF / "courses" / f"{slug}.md"
+        if course_path.exists():
+            ctext = course_path.read_text(encoding="utf-8")
+            marker = f"* [Artifact'ler](/{slug}/artifacts.md)"
+            exam_links = (
+                "\n* [Sınavlar](/{slug}/exams/index.md) - vize, final, yaz kursu"
+            )
+            if marker in ctext and "/exams/" not in ctext:
+                course_path.write_text(ctext.replace(marker, marker + exam_links), encoding="utf-8")
+
 
         # artifacts catalog page for course
         cats = by_course_cat.get(slug, {})
