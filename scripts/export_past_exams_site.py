@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
 """data/<slug>/past_exams.json -> site/past_exams.js (window.PAST_EXAMS)
 
-Çıkmış vize sorularına ünite/bölüm etiketi ekler (coursegraph.past_exams).
-OCR seçenekleri eksik olabilir; site self-graded anımsama modu kullanır.
+Çıkmış vize sorularına ünite/bölüm etiketi ve cevap anahtarı (isCorrect) ekler.
 """
 from __future__ import annotations
 
@@ -29,23 +28,33 @@ def main() -> int:
             qs = []
             for q in exam.get("questions") or []:
                 u = q.get("unit")
+                correct = q.get("correct")
+                opts = []
+                for o in q.get("options") or []:
+                    oi = dict(o)
+                    oi["isCorrect"] = bool(o.get("isCorrect")) or (correct is not None and o.get("key") == correct)
+                    opts.append(oi)
                 qs.append(
                     {
                         "n": q.get("n") or q.get("index"),
                         "stem": q.get("stem") or "",
-                        "options": q.get("options") or [],
+                        "options": opts,
+                        "correct": correct,
                         "unit": u,
                         "unitTitle": UNIT_TITLES.get(u) if u else None,
                         "chapters": UNIT_TO_CHAPTERS.get(u, []) if u else [],
                         "keywords": (q.get("keywords") or [])[:6],
                     }
                 )
+            has_key = any(q.get("correct") for q in qs)
             exams.append(
                 {
                     "exam_id": exam.get("exam_id"),
                     "year": exam.get("year"),
                     "term": exam.get("term"),
+                    "group": exam.get("group"),
                     "file": exam.get("file"),
+                    "hasAnswerKey": has_key,
                     "questions": qs,
                 }
             )

@@ -4,7 +4,7 @@ title: İslam Mezhepleri Tarihi artifact kataloğu
 description: islam-mezhepleri-tarihi için NotebookLM artifact listesi ve kategori dağılımı.
 course: islam-mezhepleri-tarihi
 artifact_count: 20
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-13T14:53:07Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-13T15:23:05Z }
 ---
 
 # İslam Mezhepleri Tarihi Artifact'leri

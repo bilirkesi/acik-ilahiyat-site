@@ -552,14 +552,14 @@ def main() -> int:
             from coursegraph.past_exams import UNIT_TITLES, annotate_questions
 
             past_index = [f"# {meta.get('subject', slug)} Çıkmış Vizeler\n",
-                          "Cevap anahtarı yok; sorular PDF OCR'dan gelir. OKF'e ünite etiketi eklenmiştir.\n"]
+                          "Sorular PDF OCR'dan; cevap anahtarı PDF'in son sayfasındandır. Ünite etiketi eklenmiştir.\n"]
             for exam in annotate_questions(slug):
                 eid = str(exam.get("exam_id") or "past")
                 qs = exam.get("questions") or []
                 lines = [
                     f"# Çıkmış Vize {exam.get('year', '')} {semester_label(exam.get('term', 'guz'))}\n",
                     f"Ders: {meta.get('subject', slug)} · {university_label(unis, meta.get('university_id', 'aof'))}. "
-                    f"{len(qs)} soru. Cevap anahtarı yok (self-graded).\n",
+                    f"{len(qs)} soru. Cevap anahtarı var (PDF son sayfa).\n",
                 ]
                 for n, q in enumerate(qs, 1):
                     u = q.get("unit")
@@ -577,14 +577,14 @@ def main() -> int:
                 p_fm = [
                     ("type", "Past Exam"),
                     ("title", f"Çıkmış vize {exam.get('year', '')}"),
-                    ("description", f"{meta.get('subject', slug)} çıkmış vize arşivi; cevap anahtarı yok."),
+                    ("description", f"{meta.get('subject', slug)} çıkmış vize arşivi; cevap anahtarı PDF son sayfasından alınmıştır."),
                     ("course", slug),
                     ("exam_id", eid),
                     ("exam_window", str(exam.get("year") or "")),
                     ("exam_type", "vize"),
                     ("term", str(exam.get("term") or "")),
                     ("question_count", str(len(qs))),
-                    ("has_answer_key", "false"),
+                    ("has_answer_key", "true" if any(q.get("correct") for q in qs) else "false"),
                     ("status", "stable"),
                     ("generated", f"{{ by: {ACTOR}, at: {NOW} }}"),
                     ("resource", f"/courses/{slug}/exams/past/{eid}.md"),
@@ -593,7 +593,7 @@ def main() -> int:
                 past_index.append(f"* [{exam.get('year', eid)}](past/{eid}.md) - {len(qs)} soru")
             if len(past_index) > 2:
                 write(OKF / "courses" / slug / "exams" / "past" / "index.md", "\n".join(past_index) + "\n")
-            exam_index.append("* [Çıkmış vizeler](past/index.md) - arşiv, cevap anahtarı yok")
+            exam_index.append("* [Çıkmış vizeler](past/index.md) - arşiv, cevap anahtarı var")
             if exam_index and len(exam_index) > 1:
                 write(OKF / "courses" / slug / "exams" / "index.md", "\n".join(exam_index) + "\n")
 

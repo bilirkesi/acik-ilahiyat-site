@@ -8,7 +8,7 @@ term_code: 20262027-1
 course_count: 3
 language: tr
 status: stable
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-13T14:53:07Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-13T15:23:05Z }
 ---
 
 # Dersler (3)

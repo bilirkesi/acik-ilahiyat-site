@@ -1,503 +1,2685 @@
 [
   {
-    "year": "2022-2023",
+    "year": "2021-2022",
     "term": "guz",
-    "exam_id": "20222023-guz-vize",
-    "file": "İSLÂM MEZHEPLERİ TARİHİ - Çıkmış Sınav Soruları (1).pdf",
+    "exam_id": "20212022-guz-vize-a",
+    "group": "A",
+    "file": "İSLÂM MEZHEPLERİ TARİHİ - Çıkmış Sınav Soruları.pdf",
+    "answer_key": {
+      "1": "E",
+      "2": "B",
+      "3": "C",
+      "4": "D",
+      "5": "D",
+      "6": "A",
+      "7": "D",
+      "8": "B",
+      "9": "C",
+      "10": "A",
+      "11": "C",
+      "12": "A",
+      "13": "A",
+      "14": "C",
+      "15": "E",
+      "16": "E",
+      "17": "B",
+      "18": "E",
+      "19": "B",
+      "20": "D"
+    },
     "questions": [
       {
         "n": 1,
-        "stem": "Hangi mezheplerin hak, hangilerinin batıl olduğunu tespit etmek",
+        "stem": "Aşağıdakilerden hangisi İslam mezhepleri tarihi disiplininin amaçlarından biri değildir?",
         "options": [
           {
             "key": "A",
-            "text": "Mezhep ve dini grupların tarihte bıraktıkları"
+            "text": "Mezheplerin İslam medeniyetine katkılarını gün yüzüne çıkartmak",
+            "isCorrect": false
           },
           {
             "key": "B",
-            "text": "Mezheplerin İslam medeniyetine katkılarını"
+            "text": "Mezhep ve dini grupların tarihte bıraktıkları izleri sürmek",
+            "isCorrect": false
           },
           {
             "key": "C",
-            "text": "Müslümanlar arasındaki mezhepsel ve"
+            "text": "Müslümanlar arasındaki mezhepsel ve grupsal çatışma ve sorunlara çözümler bulmak",
+            "isCorrect": false
           },
           {
             "key": "D",
-            "text": "Müslüman toplumların sosyal ve psikolojik"
+            "text": "Müslüman toplumların sosyal ve psikolojik kuvvet ve zaafları hakkında verilere ulaşmak",
+            "isCorrect": false
           },
           {
             "key": "E",
-            "text": "Sözlükte ''önceden olmadığı halde icat edilen"
+            "text": "Hangi mezheplerin hak, hangilerinin batıl olduğunu tespit etmek",
+            "isCorrect": true
           }
-        ]
-      },
-      {
-        "n": 3,
-        "stem": "Bir mezhebin “kurtarıcı bekleme” inancı geliştirmesinin psikolojik sebepleri",
-        "options": [
-          {
-            "key": "A",
-            "text": "Bir mezhepte cemaatsel hiyerarşinin nasıl"
-          },
-          {
-            "key": "B",
-            "text": "Bir mezhebin diğer dinlerden nasıl etkileşim"
-          },
-          {
-            "key": "C",
-            "text": "Bir mezhepteki batıl inançların nasıl tespit"
-          },
-          {
-            "key": "D",
-            "text": "Bir mezhebin kendine özgü ibadetlerini nasıl"
-          },
-          {
-            "key": "E",
-            "text": "Nakşibendiyye tarikatının iki büyük kolunun"
-          }
-        ]
-      },
-      {
-        "n": 6,
-        "stem": "Mezheplerin oluşumunda politik ve ekonomik unsurlar yer almaz.",
-        "options": [
-          {
-            "key": "A",
-            "text": "Bir mezhebin ortaya çıkış sebebi tek bir"
-          },
-          {
-            "key": "B",
-            "text": "Mezhepler, din alanındaki farklılaşmaların"
-          },
-          {
-            "key": "C",
-            "text": "Din anlayışındaki farklılaşmalar, inananların"
-          },
-          {
-            "key": "D",
-            "text": "Bir mezhebin doğru bir şekilde"
-          },
-          {
-            "key": "E",
-            "text": "Mezheplerin “dinin anlaşılma biçimleri” ve"
-          }
-        ]
-      },
-      {
-        "n": 7,
-        "stem": "Mezheplerin kendiliğinden ve birden gerçekleşen bir olgu olduğu",
-        "options": [
-          {
-            "key": "A",
-            "text": "İnsanın inanç ve tutumlarının oluşumunda o"
-          },
-          {
-            "key": "B",
-            "text": "Bir mezhebin ortaya çıkışının tek bir insana"
-          },
-          {
-            "key": "C",
-            "text": "Mezheplerin oluşumunda psiko-sosyal,"
-          },
-          {
-            "key": "D",
-            "text": "Mezheplerin din ile özdeş olduğu"
-          },
-          {
-            "key": "E",
-            "text": "Hz. Ebû Bekir’in halife olduktan sonra"
-          }
-        ]
-      },
-      {
-        "n": 8,
-        "stem": "Hz. Ali’yi ve Haşimoğulları’ndan bir kişiyi yardımcısı olarak atamak",
-        "options": [
-          {
-            "key": "A",
-            "text": "Yalancı peygamberlerle ve zekat vermeyen"
-          },
-          {
-            "key": "B",
-            "text": "Sa’d b. Ubâde’yi cezalandırmak"
-          },
-          {
-            "key": "C",
-            "text": "Hz. Ali’yi Kûfe valisi olarak atamak"
-          },
-          {
-            "key": "D",
-            "text": "Ensar’a kendisinden sonra halife"
-          },
-          {
-            "key": "E",
-            "text": "2023 GÜZ ARA - A"
-          }
-        ]
-      },
-      {
-        "n": 10,
-        "stem": "İmanın artıp eksilmesi meselesi",
-        "options": [
-          {
-            "key": "A",
-            "text": "Tevhid konusu"
-          },
-          {
-            "key": "B",
-            "text": "Allah’ın sıfatları meselesi"
-          },
-          {
-            "key": "C",
-            "text": "Büyük günah işleyenin durumu meselesi"
-          },
-          {
-            "key": "D",
-            "text": "Kulun fiillerinin yaratıcısı meselesi"
-          },
-          {
-            "key": "E",
-            "text": "Mu'tezile mezhebinin kurucusu"
-          }
-        ]
-      },
-      {
-        "n": 11,
-        "stem": "Bişr b. el-Mu'temir",
-        "options": [
-          {
-            "key": "A",
-            "text": "Cehm b. Safvân"
-          },
-          {
-            "key": "B",
-            "text": "Vâsıl b. Atâ"
-          },
-          {
-            "key": "C",
-            "text": "Ebû'l-Hüzeyl el-Allâf"
-          },
-          {
-            "key": "D",
-            "text": "Hasan-ı Basrî"
-          },
-          {
-            "key": "E",
-            "text": "Mürcie düşüncesinin doğuşunun arkasındaki"
-          }
-        ]
-      },
-      {
-        "n": 12,
-        "stem": "Muaviye’nin Hz. Ali’yi lanetleme ve Hz. Osman’ı övme kampanyasını başlatması",
-        "options": [
-          {
-            "key": "A",
-            "text": "Şiilik düşüncesinin ve imamet fikrinin"
-          },
-          {
-            "key": "B",
-            "text": "Reyci temayülün nakilci temayüle muhalif"
-          },
-          {
-            "key": "C",
-            "text": "Cebriyye’nin çıkması ve olaylarda kaderin"
-          },
-          {
-            "key": "D",
-            "text": "Kaderciliğin çıkması ve olaylarda kaderin"
-          },
-          {
-            "key": "E",
-            "text": "Mâtürîdîlerin; ilâhî sıfatlar, halku’l-Kur’ân,"
-          }
-        ]
-      },
-      {
-        "n": 14,
-        "stem": "Ehl-i Beyt",
-        "options": [
-          {
-            "key": "A",
-            "text": "Sevâd-ı a’zam"
-          },
-          {
-            "key": "B",
-            "text": "Ehl-i Cemaat"
-          },
-          {
-            "key": "C",
-            "text": "Ehl-i hak ve ehl-i hüdâ"
-          },
-          {
-            "key": "D",
-            "text": "Fırka-i nâciye"
-          },
-          {
-            "key": "E",
-            "text": "Selefiyye inancı, kim tarafından Vehhâbiyye"
-          }
-        ]
-      },
-      {
-        "n": 15,
-        "stem": "İbnü’l-Vezîr (v. 840/1436)",
-        "options": [
-          {
-            "key": "A",
-            "text": "Şevkânî (v. 1250/1834)"
-          },
-          {
-            "key": "B",
-            "text": "Ahmed b. Hanbel (v. 241/855)"
-          },
-          {
-            "key": "C",
-            "text": "İbn Kayyım el-Cevziyye (v. 751/1350)"
-          },
-          {
-            "key": "D",
-            "text": "Muhammed b. Abdülvahhâb (v. 1206/1792)"
-          },
-          {
-            "key": "E",
-            "text": "Aşağıdakilerden hangisi “Kitâbü't-Tevhîd” ve"
-          }
-        ]
-      },
-      {
-        "n": 16,
-        "stem": "Ebû Mansur el-Matürîdî (v. 333/944)",
-        "options": [
-          {
-            "key": "A",
-            "text": "Ebû’l-Hasan el-Eş‘arî (260/324-873/936)"
-          },
-          {
-            "key": "B",
-            "text": "İmam-ı A’zam Ebû Hanife (v. 150/"
-          },
-          {
-            "key": "C",
-            "text": "Ebû'l-Mu’în en-Nesefî (v. 508/1111)"
-          },
-          {
-            "key": "D",
-            "text": "Ebû Yûsuf (v. 182/798)"
-          },
-          {
-            "key": "E",
-            "text": "Aşağıdakilerden hangisi Şîa’nın günüzümüze"
-          }
-        ]
-      },
-      {
-        "n": 18,
-        "stem": "Kırtas hadisesi",
-        "options": [
-          {
-            "key": "A",
-            "text": "Gadir hum hadisesi"
-          },
-          {
-            "key": "B",
-            "text": "Hz. Peygamber'in vefatı"
-          },
-          {
-            "key": "C",
-            "text": "Hayber'in fethi"
-          },
-          {
-            "key": "D",
-            "text": "Haccın farziyetini tebliğ görevi"
-          },
-          {
-            "key": "E",
-            "text": "Şîa’yı diğer İslamî fırkalardan ayıran en"
-          }
-        ]
+        ],
+        "correct": "E"
       },
       {
         "n": 2,
-        "stem": "Bir mezhepteki batıl inançların nasıl tespit edileceği",
+        "stem": "------- dinin özündeki ve Müslüman toplumun bütünlüğündeki bozulmayı ifade eden kavramdır. Yukarıdaki cümlede boş bırakılan yeri aşağıdakilerden hangisi doğru şekilde tamamlar?",
         "options": [
           {
             "key": "A",
-            "text": "Bir mezhebin “kurtarıcı bekleme” inancı"
+            "text": "İttifak",
+            "isCorrect": false
           },
           {
             "key": "B",
-            "text": "Bir mezhebin kendine özgü ibadetlerini nasıl"
+            "text": "Tefrika",
+            "isCorrect": true
           },
           {
             "key": "C",
-            "text": "Bir mezhebin diğer dinlerden nasıl etkileşim"
+            "text": "Dalâlet",
+            "isCorrect": false
           },
           {
             "key": "D",
-            "text": "Bir mezhepte cemaatsel hiyerarşinin nasıl"
+            "text": "Makâlât",
+            "isCorrect": false
           },
           {
             "key": "E",
-            "text": "Aşağıdakilerden hangisi İslam mezhepleri"
+            "text": "Bid’at",
+            "isCorrect": false
           }
-        ]
+        ],
+        "correct": "B"
+      },
+      {
+        "n": 3,
+        "stem": "Din Fenomenolojisi disiplininin İslam Mezhepleri Tarihi açısından önemi aşağıdakilerden hangisidir?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Dini lider hezeyanlarını bir patoloji olarak incelemesi",
+            "isCorrect": false
+          },
+          {
+            "key": "B",
+            "text": "Hak kabul edilen inançları ispat etmesi",
+            "isCorrect": false
+          },
+          {
+            "key": "C",
+            "text": "Dinler ve mezhepler arasındaki ortak olguları tespit etmesi",
+            "isCorrect": true
+          },
+          {
+            "key": "D",
+            "text": "İslam kökenli bazı mezheplerin yeni bir dine evrilmeleri sürecini incelemesi",
+            "isCorrect": false
+          },
+          {
+            "key": "E",
+            "text": "Hilafet tartışmalarının mezheplerin doğuşuna etkisini ana kaynaklara dayalı olarak açıklaması",
+            "isCorrect": false
+          }
+        ],
+        "correct": "C"
+      },
+      {
+        "n": 4,
+        "stem": "I. el-Bâisü’l-Hasîs II. el-Fark beyne’l-Fırak III. Dürerü’l-Hukkâm IV. Makâlâtü’l-İslâmiyyîn Yukarıdakilerden hangileri İslam Mezhepleri Tarihi’nin klasik kaynakları arasındadır?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Yalnız I",
+            "isCorrect": false
+          },
+          {
+            "key": "B",
+            "text": "Yalnız II",
+            "isCorrect": false
+          },
+          {
+            "key": "C",
+            "text": "I ve II",
+            "isCorrect": false
+          },
+          {
+            "key": "D",
+            "text": "II ve IV",
+            "isCorrect": true
+          },
+          {
+            "key": "E",
+            "text": "III ve IV",
+            "isCorrect": false
+          }
+        ],
+        "correct": "D"
+      },
+      {
+        "n": 5,
+        "stem": "Haricilerin sert mizaçlı olmalarının din anlayışlarına doğrudan yansıması, mezheplerin oluşumunda etkili olan faktörlerden hangisine örnektir?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Hz. Ali’nin tahkime gitmesi",
+            "isCorrect": false
+          },
+          {
+            "key": "B",
+            "text": "Farklı din, kültür ve medeniyetlerle etkileşim",
+            "isCorrect": false
+          },
+          {
+            "key": "C",
+            "text": "Nasların tabiatı",
+            "isCorrect": false
+          },
+          {
+            "key": "D",
+            "text": "İnsanın tabiatı",
+            "isCorrect": true
+          },
+          {
+            "key": "E",
+            "text": "Ekonomik faktörler",
+            "isCorrect": false
+          }
+        ],
+        "correct": "D"
       },
       {
         "n": 6,
-        "stem": "Hz. Ali’yi Kûfe valisi olarak atamak",
+        "stem": "Hz. Ebû Bekir’in halife olduktan sonra yapması gereken ilk iş aşağıdakilerden hangisi olmuştur?",
         "options": [
           {
             "key": "A",
-            "text": "Sa’d b. Ubâde’yi cezalandırmak"
+            "text": "Yalancı peygamberlerle ve zekat vermeyen kabilelerle mücadele etmek",
+            "isCorrect": true
           },
           {
             "key": "B",
-            "text": "Yalancı peygamberlerle ve zekat vermeyen"
+            "text": "Ensar’a kendisinden sonra halife olabileceklerini bildirmek",
+            "isCorrect": false
           },
           {
             "key": "C",
-            "text": "Ensar’a kendisinden sonra halife"
+            "text": "Hz. Ali’yi Kûfe valisi olarak atamak",
+            "isCorrect": false
           },
           {
             "key": "D",
-            "text": "Hz. Ali’yi ve Haşimoğulları’ndan bir kişiyi"
+            "text": "Sa’d b. Ubâde’yi cezalandırmak",
+            "isCorrect": false
           },
           {
             "key": "E",
-            "text": "Mezheplerin “dinin anlaşılma biçimleri” ve"
+            "text": "Hz. Ali’yi ve Haşimoğulları’ndan bir kişiyi yardımcısı olarak atamak",
+            "isCorrect": false
           }
-        ]
+        ],
+        "correct": "A"
+      },
+      {
+        "n": 7,
+        "stem": "Tahkim olayında Hz. Ali’nin hakemliğini yapan sahabe aşağıdakilerden hangisidir?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Zübeyr b. Avvâm",
+            "isCorrect": false
+          },
+          {
+            "key": "B",
+            "text": "Abdullah b. Ömer",
+            "isCorrect": false
+          },
+          {
+            "key": "C",
+            "text": "Sa’d b. Ubâde",
+            "isCorrect": false
+          },
+          {
+            "key": "D",
+            "text": "Ebû Mûsa el-Eş’ârî",
+            "isCorrect": true
+          },
+          {
+            "key": "E",
+            "text": "Amr b. el-Âs",
+            "isCorrect": false
+          }
+        ],
+        "correct": "D"
       },
       {
         "n": 8,
-        "stem": "Mezhepler, din alanındaki farklılaşmaların birer ürünü olup içinde geliştikleri ortamın izlerini bünyelerinde taşırlar.",
+        "stem": "Aşağıdakilerden hangisi Hz. Osman’ın hilafetinin zayıflamasının sonuçlarından biri değildir?",
         "options": [
           {
             "key": "A",
-            "text": "Bir mezhebin doğru bir şekilde"
+            "text": "Abdullah b. Sebe gibi kişilerin ortaya çıkması",
+            "isCorrect": false
           },
           {
             "key": "B",
-            "text": "Din anlayışındaki farklılaşmalar, inananların"
+            "text": "Hâşimî-Emevî çekişmesi",
+            "isCorrect": true
           },
           {
             "key": "C",
-            "text": "Bir mezhebin ortaya çıkış sebebi tek bir"
+            "text": "Hz. Osman’ın otoritesinin sorgulanması",
+            "isCorrect": false
           },
           {
             "key": "D",
-            "text": "Mezheplerin oluşumunda politik ve"
+            "text": "Hz. Osman’ın önceki halifeler ile kıyaslanması",
+            "isCorrect": false
           },
           {
             "key": "E",
-            "text": "2023 GÜZ ARA - B"
+            "text": "Fetihlerin durması",
+            "isCorrect": false
           }
-        ]
+        ],
+        "correct": "B"
+      },
+      {
+        "n": 9,
+        "stem": "Aşağıdakilerden hangisi Mu’tezile mezhebi için söylenemez?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Çağdaş ihyacı hareketlerin bir kısmının Mu‘tezile’ye sempatiyle baktığı söylenebilir.",
+            "isCorrect": false
+          },
+          {
+            "key": "B",
+            "text": "Vâsıl b. Atâ'nın hocası Hasan-ı Basrî'den ayrılmasıyla oluşmuştur.",
+            "isCorrect": false
+          },
+          {
+            "key": "C",
+            "text": "Hiçbir İslam mezhebini etkileyemeden kısa sürede tarih sahnesinden silinmiştir.",
+            "isCorrect": true
+          },
+          {
+            "key": "D",
+            "text": "Mürtekib-i kebîrenin iman ile küfür arasında bulunduğunu savunur.",
+            "isCorrect": false
+          },
+          {
+            "key": "E",
+            "text": "Abbasilerin bir döneminde devlet mezhebi haline gelmiştir",
+            "isCorrect": false
+          }
+        ],
+        "correct": "C"
       },
       {
         "n": 10,
-        "stem": "Tevhid konusu",
+        "stem": "- 2022 Güz Dönemi Büyük günah işleyen kimse hakkında \"Tâatın kâfire bir faydası olmadığı gibi, günahın da imana bir zararı yoktur.\" ilkesini kabul eden fırka aşağıdakilerden hangisidir?",
         "options": [
           {
             "key": "A",
-            "text": "İmanın artıp eksilmesi meselesi"
+            "text": "Mürcie",
+            "isCorrect": true
           },
           {
             "key": "B",
-            "text": "Büyük günah işleyenin durumu meselesi"
+            "text": "Ehl-i Hak",
+            "isCorrect": false
           },
           {
             "key": "C",
-            "text": "Kulun fiillerinin yaratıcısı meselesi"
+            "text": "İsmailiyye",
+            "isCorrect": false
           },
           {
             "key": "D",
-            "text": "Allah’ın sıfatları meselesi"
+            "text": "Mu’tezile",
+            "isCorrect": false
           },
           {
             "key": "E",
-            "text": "Mu'tezile mezhebinin kurucusu"
+            "text": "İbâdiyye",
+            "isCorrect": false
           }
-        ]
+        ],
+        "correct": "A"
       },
       {
         "n": 11,
-        "stem": "Vâsıl b. Atâ",
+        "stem": "------- hakem tayinini, yani tahkimi kabul etmesinden dolayı Hz. Ali'yi suçlayıp ondan ayrılanların meydana getirdiği bir fırkadır. Yukarıdaki cümlede boş bırakılan yeri aşağıdakilerden hangisi doğru şekilde tamamlar?",
         "options": [
           {
             "key": "A",
-            "text": "Ebû'l-Hüzeyl el-Allâf"
+            "text": "Ahmediyye",
+            "isCorrect": false
           },
           {
             "key": "B",
-            "text": "Cehm b. Safvân"
+            "text": "Mu’tezile",
+            "isCorrect": false
           },
           {
             "key": "C",
-            "text": "Hasan-ı Basrî"
+            "text": "Haricîlik",
+            "isCorrect": true
           },
           {
             "key": "D",
-            "text": "Bişr b. el-Mu'temir"
+            "text": "Mürcie",
+            "isCorrect": false
           },
           {
             "key": "E",
-            "text": "Mürcie düşüncesinin doğuşunun arkasındaki"
+            "text": "Sünnîlik",
+            "isCorrect": false
           }
-        ]
+        ],
+        "correct": "C"
       },
       {
         "n": 12,
-        "stem": "Kaderciliğin çıkması ve olaylarda kaderin belirleyiciliğinin reddi",
+        "stem": "Mu'tezile mezhebinin kurucusu aşağıdakilerden hangisidir?",
         "options": [
           {
             "key": "A",
-            "text": "Muaviye’nin Hz. Ali’yi lanetleme ve Hz."
+            "text": "Vâsıl b. Atâ",
+            "isCorrect": true
           },
           {
             "key": "B",
-            "text": "Cebriyye’nin çıkması ve olaylarda kaderin"
+            "text": "Cehm b. Safvân",
+            "isCorrect": false
           },
           {
             "key": "C",
-            "text": "Şiilik düşüncesinin ve imamet fikrinin"
+            "text": "Abdullah b. İbâd",
+            "isCorrect": false
           },
           {
             "key": "D",
-            "text": "Reyci temayülün nakilci temayüle muhalif"
+            "text": "Ebû Mûsâ el-Eş'arî",
+            "isCorrect": false
           },
           {
             "key": "E",
-            "text": "Mâtürîdîlerin; ilâhî sıfatlar, halku’l-Kur’ân,"
+            "text": "Hasan-ı Basrî",
+            "isCorrect": false
           }
-        ]
+        ],
+        "correct": "A"
+      },
+      {
+        "n": 13,
+        "stem": "Aşağıdakilerden hangisi İmam Mâtüridî’nin imamet konusundaki görüşlerinden biri değildir?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Hz. Peygamberden sonra hilafete en layık olanlar Ehl-i beyt mensuplarıdır.",
+            "isCorrect": true
+          },
+          {
+            "key": "B",
+            "text": "Başkan âdil ve liyakatli olanlardan seçilir.",
+            "isCorrect": false
+          },
+          {
+            "key": "C",
+            "text": "Halifenin Kureyşîliği, ashâb döneminde problemin çözümünü kolaylaştırmaya yönelik bir prensiptir.",
+            "isCorrect": false
+          },
+          {
+            "key": "D",
+            "text": "Hz. Ali ve soyunun devlet başkanı olmasına dair nass bulunduğu iddiası asılsızdır.",
+            "isCorrect": false
+          },
+          {
+            "key": "E",
+            "text": "Müslümanlar bir devlet düzeni içinde yaşamalı ve mutlaka devlet başkanı seçmelidir.",
+            "isCorrect": false
+          }
+        ],
+        "correct": "A"
       },
       {
         "n": 14,
-        "stem": "Ebû Yûsuf (v. 182/798)",
+        "stem": "Hakkında nass bulunmayan herhangi bir meselede asla görüş belirtmeyen, sadece haberle (âsârla) yetinenlere ------- adı verilir. Yukarıdaki cümlede boş bırakılan yeri aşağıdakilerden hangisi doğru şekilde tamamlar?",
         "options": [
           {
             "key": "A",
-            "text": "Ebû Mansur el-Matürîdî (v. 333/944)"
+            "text": "Ehl-i Bid’at",
+            "isCorrect": false
           },
           {
             "key": "B",
-            "text": "İmam-ı A’zam Ebû Hanife (v. 150/"
+            "text": "Ehl-i Re’y",
+            "isCorrect": false
           },
           {
             "key": "C",
-            "text": "Ebû’l-Hasan el-Eş‘arî (260/324-873/936)"
+            "text": "Hadis ehli",
+            "isCorrect": true
           },
           {
             "key": "D",
-            "text": "Ebû'l-Mu’în en-Nesefî (v. 508/1111)"
+            "text": "Fırka-i Dâlle",
+            "isCorrect": false
           },
           {
             "key": "E",
-            "text": "Aşağıdakilerden hangisi Ehl-i Sünnet için"
+            "text": "Ehl-i Necat",
+            "isCorrect": false
           }
-        ]
+        ],
+        "correct": "C"
+      },
+      {
+        "n": 15,
+        "stem": "Aşağıdakilerden hangisi ile Mâtürîdiyye'nin ekolleşmesi tamamen belirgin hale gelmiştir?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Burhaneddîn Nesefî (v. 687/1289)",
+            "isCorrect": false
+          },
+          {
+            "key": "B",
+            "text": "Ömer Nesefî (v. 537/1142)",
+            "isCorrect": false
+          },
+          {
+            "key": "C",
+            "text": "Sadrü’l-İslâm Pezdevî (v. 493/1100)",
+            "isCorrect": false
+          },
+          {
+            "key": "D",
+            "text": "Hâkim Semerkandî (v. 342/953)",
+            "isCorrect": false
+          },
+          {
+            "key": "E",
+            "text": "Ebû'l-Mu’în en-Nesefî (v. 508/1111)",
+            "isCorrect": true
+          }
+        ],
+        "correct": "E"
+      },
+      {
+        "n": 16,
+        "stem": "Kur’ân’ın mahluk olmadığını vurgularlar; hayır ve şerrin bütünüyle Allah’tan olduğuna inanırlar; imanı tasdik-ikrar-amel olarak üçlü tarif ederler; ameli imanın bir parçası sayarlar; iman ile İslâm’ı birbirinden ayırırlar; büyük günah sahibini tekfir etmemekle beraber onun imandan çıktığını ama İslâm’dan çıkmadığını söylerler. Bu ifadeler aşağıdaki dini oluşumlardan hangisinin en dikkat çeken görü",
+        "options": [
+          {
+            "key": "A",
+            "text": "İbadiyye",
+            "isCorrect": false
+          },
+          {
+            "key": "B",
+            "text": "Şîa",
+            "isCorrect": false
+          },
+          {
+            "key": "C",
+            "text": "Mu’tezile",
+            "isCorrect": false
+          },
+          {
+            "key": "D",
+            "text": "Halefiyye",
+            "isCorrect": false
+          },
+          {
+            "key": "E",
+            "text": "Selefiyye",
+            "isCorrect": true
+          }
+        ],
+        "correct": "E"
+      },
+      {
+        "n": 17,
+        "stem": "İsmailiyye imamları, Ubeydullah el-Mehdî’nin Fâtımî devletini kurduğu 296/908 tarihine kadar -------, yani gizlenme dönemini devam ettirdiler. Yukarıdaki cümledeki boş bıakılan yeri aşağıdakilerden hangisi doğru şekilde tamamlar?",
+        "options": [
+          {
+            "key": "A",
+            "text": "hicâb",
+            "isCorrect": false
+          },
+          {
+            "key": "B",
+            "text": "setr",
+            "isCorrect": true
+          },
+          {
+            "key": "C",
+            "text": "perde",
+            "isCorrect": false
+          },
+          {
+            "key": "D",
+            "text": "bâb",
+            "isCorrect": false
+          },
+          {
+            "key": "E",
+            "text": "mektûm",
+            "isCorrect": false
+          }
+        ],
+        "correct": "B"
+      },
+      {
+        "n": 18,
+        "stem": "- 2022 Güz Dönemi Günümüzde Zeydiyye mensuplarına ev sahipliği yapan ve resmi mezhebi Zeydîlik olan ülke aşağıdakilerden hangisidir?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Azerbaycan",
+            "isCorrect": false
+          },
+          {
+            "key": "B",
+            "text": "Mısır",
+            "isCorrect": false
+          },
+          {
+            "key": "C",
+            "text": "Hindistan",
+            "isCorrect": false
+          },
+          {
+            "key": "D",
+            "text": "Türkiye",
+            "isCorrect": false
+          },
+          {
+            "key": "E",
+            "text": "Yemen",
+            "isCorrect": true
+          }
+        ],
+        "correct": "E"
+      },
+      {
+        "n": 19,
+        "stem": "-------, Şîa’yı diğer İslamî fırkalardan ayıran en önemli itikat esasıdır. Yukarıdaki cümlede boş bırakılan yeri aşağıdakilerden hangisi doğru şekilde tamamlar?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Meâd",
+            "isCorrect": false
+          },
+          {
+            "key": "B",
+            "text": "İmâmet",
+            "isCorrect": true
+          },
+          {
+            "key": "C",
+            "text": "Adâlet",
+            "isCorrect": false
+          },
+          {
+            "key": "D",
+            "text": "Tevhid",
+            "isCorrect": false
+          },
+          {
+            "key": "E",
+            "text": "Nübüvvet",
+            "isCorrect": false
+          }
+        ],
+        "correct": "B"
+      },
+      {
+        "n": 20,
+        "stem": "Aşağıdakilerden hangisi Şiiliğin ortaya çıkışı ve teşekkülüyle doğrudan ilişkili değildir?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Muhtar es-Sakafi hareketi",
+            "isCorrect": false
+          },
+          {
+            "key": "B",
+            "text": "Hucr b. Adiyy isyanı",
+            "isCorrect": false
+          },
+          {
+            "key": "C",
+            "text": "Kerbela hadisesi",
+            "isCorrect": false
+          },
+          {
+            "key": "D",
+            "text": "Ezrakiyye fırkası",
+            "isCorrect": true
+          },
+          {
+            "key": "E",
+            "text": "Tevvabun hareketi",
+            "isCorrect": false
+          }
+        ],
+        "correct": "D"
+      }
+    ]
+  },
+  {
+    "year": "2021-2022",
+    "term": "guz",
+    "exam_id": "20212022-guz-vize-b",
+    "group": "B",
+    "file": "İSLÂM MEZHEPLERİ TARİHİ - Çıkmış Sınav Soruları.pdf",
+    "answer_key": {
+      "1": "E",
+      "2": "D",
+      "3": "D",
+      "4": "B",
+      "5": "A",
+      "6": "D",
+      "7": "A",
+      "8": "E",
+      "9": "A",
+      "10": "E",
+      "11": "E",
+      "12": "B",
+      "13": "C",
+      "14": "D",
+      "15": "C",
+      "16": "B",
+      "17": "B",
+      "18": "C",
+      "19": "A",
+      "20": "C"
+    },
+    "questions": [
+      {
+        "n": 1,
+        "stem": "Aşağıdakilerden hangisi İslam mezhepleri tarihi disiplininin amaçlarından biri değildir?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Mezhep ve dini grupların tarihte bıraktıkları izleri sürmek",
+            "isCorrect": false
+          },
+          {
+            "key": "B",
+            "text": "Müslümanlar arasındaki mezhepsel ve grupsal çatışma ve sorunlara çözümler bulmak",
+            "isCorrect": false
+          },
+          {
+            "key": "C",
+            "text": "Müslüman toplumların sosyal ve psikolojik kuvvet ve zaafları hakkında verilere ulaşmak",
+            "isCorrect": false
+          },
+          {
+            "key": "D",
+            "text": "Mezheplerin İslam medeniyetine katkılarını gün yüzüne çıkartmak",
+            "isCorrect": false
+          },
+          {
+            "key": "E",
+            "text": "Hangi mezheplerin hak, hangilerinin batıl olduğunu tespit etmek",
+            "isCorrect": true
+          }
+        ],
+        "correct": "E"
+      },
+      {
+        "n": 2,
+        "stem": "I. el-Bâisü’l-Hasîs II. el-Fark beyne’l-Fırak III. Dürerü’l-Hukkâm IV. Makâlâtü’l-İslâmiyyîn Yukarıdakilerden hangileri İslam Mezhepleri Tarihi’nin klasik kaynakları arasındadır?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Yalnız I",
+            "isCorrect": false
+          },
+          {
+            "key": "B",
+            "text": "Yalnız II",
+            "isCorrect": false
+          },
+          {
+            "key": "C",
+            "text": "I ve II",
+            "isCorrect": false
+          },
+          {
+            "key": "D",
+            "text": "II ve IV",
+            "isCorrect": true
+          },
+          {
+            "key": "E",
+            "text": "III ve IV",
+            "isCorrect": false
+          }
+        ],
+        "correct": "D"
+      },
+      {
+        "n": 3,
+        "stem": "------- dinin özündeki ve Müslüman toplumun bütünlüğündeki bozulmayı ifade eden kavramdır. Yukarıdaki cümlede boş bırakılan yeri aşağıdakilerden hangisi doğru şekilde tamamlar?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Makâlât",
+            "isCorrect": false
+          },
+          {
+            "key": "B",
+            "text": "İttifak",
+            "isCorrect": false
+          },
+          {
+            "key": "C",
+            "text": "Bid’at",
+            "isCorrect": false
+          },
+          {
+            "key": "D",
+            "text": "Tefrika",
+            "isCorrect": true
+          },
+          {
+            "key": "E",
+            "text": "Dalâlet",
+            "isCorrect": false
+          }
+        ],
+        "correct": "D"
+      },
+      {
+        "n": 4,
+        "stem": "Din Fenomenolojisi disiplininin İslam Mezhepleri Tarihi açısından önemi aşağıdakilerden hangisidir?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Hak kabul edilen inançları ispat etmesi",
+            "isCorrect": false
+          },
+          {
+            "key": "B",
+            "text": "Dinler ve mezhepler arasındaki ortak olguları tespit etmesi",
+            "isCorrect": true
+          },
+          {
+            "key": "C",
+            "text": "Hilafet tartışmalarının mezheplerin doğuşuna etkisini ana kaynaklara dayalı olarak açıklaması",
+            "isCorrect": false
+          },
+          {
+            "key": "D",
+            "text": "İslam kökenli bazı mezheplerin yeni bir dine evrilmeleri sürecini incelemesi",
+            "isCorrect": false
+          },
+          {
+            "key": "E",
+            "text": "Dini lider hezeyanlarını bir patoloji olarak incelemesi",
+            "isCorrect": false
+          }
+        ],
+        "correct": "B"
+      },
+      {
+        "n": 5,
+        "stem": "Haricilerin sert mizaçlı olmalarının din anlayışlarına doğrudan yansıması, mezheplerin oluşumunda etkili olan faktörlerden hangisine örnektir?",
+        "options": [
+          {
+            "key": "A",
+            "text": "İnsanın tabiatı",
+            "isCorrect": true
+          },
+          {
+            "key": "B",
+            "text": "Farklı din, kültür ve medeniyetlerle etkileşim",
+            "isCorrect": false
+          },
+          {
+            "key": "C",
+            "text": "Ekonomik faktörler",
+            "isCorrect": false
+          },
+          {
+            "key": "D",
+            "text": "Nasların tabiatı",
+            "isCorrect": false
+          },
+          {
+            "key": "E",
+            "text": "Hz. Ali’nin tahkime gitmesi",
+            "isCorrect": false
+          }
+        ],
+        "correct": "A"
+      },
+      {
+        "n": 6,
+        "stem": "Aşağıdakilerden hangisi Hz. Osman’ın hilafetinin zayıflamasının sonuçlarından biri değildir?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Hz. Osman’ın önceki halifeler ile kıyaslanması",
+            "isCorrect": false
+          },
+          {
+            "key": "B",
+            "text": "Abdullah b. Sebe gibi kişilerin ortaya çıkması",
+            "isCorrect": false
+          },
+          {
+            "key": "C",
+            "text": "Fetihlerin durması",
+            "isCorrect": false
+          },
+          {
+            "key": "D",
+            "text": "Hâşimî-Emevî çekişmesi",
+            "isCorrect": true
+          },
+          {
+            "key": "E",
+            "text": "Hz. Osman’ın otoritesinin sorgulanması",
+            "isCorrect": false
+          }
+        ],
+        "correct": "D"
+      },
+      {
+        "n": 7,
+        "stem": "Tahkim olayında Hz. Ali’nin hakemliğini yapan sahabe aşağıdakilerden hangisidir?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Ebû Mûsa el-Eş’ârî",
+            "isCorrect": true
+          },
+          {
+            "key": "B",
+            "text": "Zübeyr b. Avvâm",
+            "isCorrect": false
+          },
+          {
+            "key": "C",
+            "text": "Abdullah b. Ömer",
+            "isCorrect": false
+          },
+          {
+            "key": "D",
+            "text": "Amr b. el-Âs",
+            "isCorrect": false
+          },
+          {
+            "key": "E",
+            "text": "Sa’d b. Ubâde",
+            "isCorrect": false
+          }
+        ],
+        "correct": "A"
+      },
+      {
+        "n": 8,
+        "stem": "- 2022 Güz Dönemi Hz. Ebû Bekir’in halife olduktan sonra yapması gereken ilk iş aşağıdakilerden hangisi olmuştur?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Sa’d b. Ubâde’yi cezalandırmak",
+            "isCorrect": false
+          },
+          {
+            "key": "B",
+            "text": "Hz. Ali’yi Kûfe valisi olarak atamak",
+            "isCorrect": false
+          },
+          {
+            "key": "C",
+            "text": "Ensar’a kendisinden sonra halife olabileceklerini bildirmek",
+            "isCorrect": false
+          },
+          {
+            "key": "D",
+            "text": "Hz. Ali’yi ve Haşimoğulları’ndan bir kişiyi yardımcısı olarak atamak",
+            "isCorrect": false
+          },
+          {
+            "key": "E",
+            "text": "Yalancı peygamberlerle ve zekat vermeyen kabilelerle mücadele etmek",
+            "isCorrect": true
+          }
+        ],
+        "correct": "E"
+      },
+      {
+        "n": 9,
+        "stem": "------- hakem tayinini, yani tahkimi kabul etmesinden dolayı Hz. Ali'yi suçlayıp ondan ayrılanların meydana getirdiği bir fırkadır. Yukarıdaki cümlede boş bırakılan yeri aşağıdakilerden hangisi doğru şekilde tamamlar?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Haricîlik",
+            "isCorrect": true
+          },
+          {
+            "key": "B",
+            "text": "Sünnîlik",
+            "isCorrect": false
+          },
+          {
+            "key": "C",
+            "text": "Mürcie",
+            "isCorrect": false
+          },
+          {
+            "key": "D",
+            "text": "Mu’tezile",
+            "isCorrect": false
+          },
+          {
+            "key": "E",
+            "text": "Ahmediyye",
+            "isCorrect": false
+          }
+        ],
+        "correct": "A"
+      },
+      {
+        "n": 10,
+        "stem": "Aşağıdakilerden hangisi Mu’tezile mezhebi için söylenemez?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Mürtekib-i kebîrenin iman ile küfür arasında bulunduğunu savunur.",
+            "isCorrect": false
+          },
+          {
+            "key": "B",
+            "text": "Abbasilerin bir döneminde devlet mezhebi haline gelmiştir",
+            "isCorrect": false
+          },
+          {
+            "key": "C",
+            "text": "Vâsıl b. Atâ'nın hocası Hasan-ı Basrî'den ayrılmasıyla oluşmuştur.",
+            "isCorrect": false
+          },
+          {
+            "key": "D",
+            "text": "Çağdaş ihyacı hareketlerin bir kısmının Mu‘tezile’ye sempatiyle baktığı söylenebilir.",
+            "isCorrect": false
+          },
+          {
+            "key": "E",
+            "text": "Hiçbir İslam mezhebini etkileyemeden kısa sürede tarih sahnesinden silinmiştir.",
+            "isCorrect": true
+          }
+        ],
+        "correct": "E"
+      },
+      {
+        "n": 11,
+        "stem": "Mu'tezile mezhebinin kurucusu aşağıdakilerden hangisidir?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Abdullah b. İbâd",
+            "isCorrect": false
+          },
+          {
+            "key": "B",
+            "text": "Hasan-ı Basrî",
+            "isCorrect": false
+          },
+          {
+            "key": "C",
+            "text": "Ebû Mûsâ el-Eş'arî",
+            "isCorrect": false
+          },
+          {
+            "key": "D",
+            "text": "Cehm b. Safvân",
+            "isCorrect": false
+          },
+          {
+            "key": "E",
+            "text": "Vâsıl b. Atâ",
+            "isCorrect": true
+          }
+        ],
+        "correct": "E"
+      },
+      {
+        "n": 12,
+        "stem": "Büyük günah işleyen kimse hakkında \"Tâatın kâfire bir faydası olmadığı gibi, günahın da imana bir zararı yoktur.\" ilkesini kabul eden fırka aşağıdakilerden hangisidir?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Ehl-i Hak",
+            "isCorrect": false
+          },
+          {
+            "key": "B",
+            "text": "Mürcie",
+            "isCorrect": true
+          },
+          {
+            "key": "C",
+            "text": "İbâdiyye",
+            "isCorrect": false
+          },
+          {
+            "key": "D",
+            "text": "Mu’tezile",
+            "isCorrect": false
+          },
+          {
+            "key": "E",
+            "text": "İsmailiyye",
+            "isCorrect": false
+          }
+        ],
+        "correct": "B"
+      },
+      {
+        "n": 13,
+        "stem": "Aşağıdakilerden hangisi ile Mâtürîdiyye'nin ekolleşmesi tamamen belirgin hale gelmiştir?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Ömer Nesefî (v. 537/1142)",
+            "isCorrect": false
+          },
+          {
+            "key": "B",
+            "text": "Sadrü’l-İslâm Pezdevî (v. 493/1100)",
+            "isCorrect": false
+          },
+          {
+            "key": "C",
+            "text": "Ebû'l-Mu’în en-Nesefî (v. 508/1111)",
+            "isCorrect": true
+          },
+          {
+            "key": "D",
+            "text": "Burhaneddîn Nesefî (v. 687/1289)",
+            "isCorrect": false
+          },
+          {
+            "key": "E",
+            "text": "Hâkim Semerkandî (v. 342/953)",
+            "isCorrect": false
+          }
+        ],
+        "correct": "C"
+      },
+      {
+        "n": 14,
+        "stem": "Aşağıdakilerden hangisi İmam Mâtüridî’nin imamet konusundaki görüşlerinden biri değildir?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Başkan âdil ve liyakatli olanlardan seçilir.",
+            "isCorrect": false
+          },
+          {
+            "key": "B",
+            "text": "Hz. Ali ve soyunun devlet başkanı olmasına dair nass bulunduğu iddiası asılsızdır.",
+            "isCorrect": false
+          },
+          {
+            "key": "C",
+            "text": "Müslümanlar bir devlet düzeni içinde yaşamalı ve mutlaka devlet başkanı seçmelidir.",
+            "isCorrect": false
+          },
+          {
+            "key": "D",
+            "text": "Hz. Peygamberden sonra hilafete en layık olanlar Ehl-i beyt mensuplarıdır.",
+            "isCorrect": true
+          },
+          {
+            "key": "E",
+            "text": "Halifenin Kureyşîliği, ashâb döneminde problemin çözümünü kolaylaştırmaya yönelik bir prensiptir.",
+            "isCorrect": false
+          }
+        ],
+        "correct": "D"
+      },
+      {
+        "n": 15,
+        "stem": "Kur’ân’ın mahluk olmadığını vurgularlar; hayır ve şerrin bütünüyle Allah’tan olduğuna inanırlar; imanı tasdik-ikrar-amel olarak üçlü tarif ederler; ameli imanın bir parçası sayarlar; iman ile İslâm’ı birbirinden ayırırlar; büyük günah sahibini tekfir etmemekle beraber onun imandan çıktığını ama İslâm’dan çıkmadığını söylerler. Bu ifadeler aşağıdaki dini oluşumlardan hangisinin en dikkat çeken görü",
+        "options": [
+          {
+            "key": "A",
+            "text": "Halefiyye",
+            "isCorrect": false
+          },
+          {
+            "key": "B",
+            "text": "Şîa",
+            "isCorrect": false
+          },
+          {
+            "key": "C",
+            "text": "Selefiyye",
+            "isCorrect": true
+          },
+          {
+            "key": "D",
+            "text": "İbadiyye",
+            "isCorrect": false
+          },
+          {
+            "key": "E",
+            "text": "Mu’tezile",
+            "isCorrect": false
+          }
+        ],
+        "correct": "C"
+      },
+      {
+        "n": 16,
+        "stem": "- 2022 Güz Dönemi Hakkında nass bulunmayan herhangi bir meselede asla görüş belirtmeyen, sadece haberle (âsârla) yetinenlere ------- adı verilir. Yukarıdaki cümlede boş bırakılan yeri aşağıdakilerden hangisi doğru şekilde tamamlar?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Fırka-i Dâlle",
+            "isCorrect": false
+          },
+          {
+            "key": "B",
+            "text": "Hadis ehli",
+            "isCorrect": true
+          },
+          {
+            "key": "C",
+            "text": "Ehl-i Bid’at",
+            "isCorrect": false
+          },
+          {
+            "key": "D",
+            "text": "Ehl-i Necat",
+            "isCorrect": false
+          },
+          {
+            "key": "E",
+            "text": "Ehl-i Re’y",
+            "isCorrect": false
+          }
+        ],
+        "correct": "B"
+      },
+      {
+        "n": 17,
+        "stem": "Günümüzde Zeydiyye mensuplarına ev sahipliği yapan ve resmi mezhebi Zeydîlik olan ülke aşağıdakilerden hangisidir?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Türkiye",
+            "isCorrect": false
+          },
+          {
+            "key": "B",
+            "text": "Yemen",
+            "isCorrect": true
+          },
+          {
+            "key": "C",
+            "text": "Azerbaycan",
+            "isCorrect": false
+          },
+          {
+            "key": "D",
+            "text": "Mısır",
+            "isCorrect": false
+          },
+          {
+            "key": "E",
+            "text": "Hindistan",
+            "isCorrect": false
+          }
+        ],
+        "correct": "B"
+      },
+      {
+        "n": 18,
+        "stem": "Aşağıdakilerden hangisi Şiiliğin ortaya çıkışı ve teşekkülüyle doğrudan ilişkili değildir?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Kerbela hadisesi",
+            "isCorrect": false
+          },
+          {
+            "key": "B",
+            "text": "Tevvabun hareketi",
+            "isCorrect": false
+          },
+          {
+            "key": "C",
+            "text": "Ezrakiyye fırkası",
+            "isCorrect": true
+          },
+          {
+            "key": "D",
+            "text": "Muhtar es-Sakafi hareketi",
+            "isCorrect": false
+          },
+          {
+            "key": "E",
+            "text": "Hucr b. Adiyy isyanı",
+            "isCorrect": false
+          }
+        ],
+        "correct": "C"
+      },
+      {
+        "n": 19,
+        "stem": "İsmailiyye imamları, Ubeydullah el-Mehdî’nin Fâtımî devletini kurduğu 296/908 tarihine kadar -------, yani gizlenme dönemini devam ettirdiler. Yukarıdaki cümledeki boş bıakılan yeri aşağıdakilerden hangisi doğru şekilde tamamlar?",
+        "options": [
+          {
+            "key": "A",
+            "text": "setr",
+            "isCorrect": true
+          },
+          {
+            "key": "B",
+            "text": "hicâb",
+            "isCorrect": false
+          },
+          {
+            "key": "C",
+            "text": "bâb",
+            "isCorrect": false
+          },
+          {
+            "key": "D",
+            "text": "mektûm",
+            "isCorrect": false
+          },
+          {
+            "key": "E",
+            "text": "perde",
+            "isCorrect": false
+          }
+        ],
+        "correct": "A"
+      },
+      {
+        "n": 20,
+        "stem": "-------, Şîa’yı diğer İslamî fırkalardan ayıran en önemli itikat esasıdır. Yukarıdaki cümlede boş bırakılan yeri aşağıdakilerden hangisi doğru şekilde tamamlar?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Tevhid",
+            "isCorrect": false
+          },
+          {
+            "key": "B",
+            "text": "Meâd",
+            "isCorrect": false
+          },
+          {
+            "key": "C",
+            "text": "İmâmet",
+            "isCorrect": true
+          },
+          {
+            "key": "D",
+            "text": "Adâlet",
+            "isCorrect": false
+          },
+          {
+            "key": "E",
+            "text": "Nübüvvet",
+            "isCorrect": false
+          }
+        ],
+        "correct": "C"
+      }
+    ]
+  },
+  {
+    "year": "2022-2023",
+    "term": "guz",
+    "exam_id": "20222023-guz-vize-a",
+    "group": "A",
+    "file": "İSLÂM MEZHEPLERİ TARİHİ - Çıkmış Sınav Soruları (1).pdf",
+    "answer_key": {
+      "1": "A",
+      "2": "E",
+      "3": "B",
+      "4": "E",
+      "5": "C",
+      "6": "C",
+      "7": "D",
+      "8": "B",
+      "9": "E",
+      "10": "D",
+      "11": "C",
+      "12": "A",
+      "13": "D",
+      "14": "A",
+      "15": "E",
+      "16": "A",
+      "17": "C",
+      "18": "B",
+      "19": "D",
+      "20": "B"
+    },
+    "questions": [
+      {
+        "n": 1,
+        "stem": "Aşağıdakilerden hangisi İslam mezhepleri tarihi disiplininin amaçlarından biri değildir?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Hangi mezheplerin hak, hangilerinin batıl olduğunu tespit etmek",
+            "isCorrect": true
+          },
+          {
+            "key": "B",
+            "text": "Mezhep ve dini grupların tarihte bıraktıkları izleri sürmek",
+            "isCorrect": false
+          },
+          {
+            "key": "C",
+            "text": "Mezheplerin İslam medeniyetine katkılarını gün yüzüne çıkartmak",
+            "isCorrect": false
+          },
+          {
+            "key": "D",
+            "text": "Müslümanlar arasındaki mezhepsel ve grupsal çatışma ve sorunlara çözümler bulmak",
+            "isCorrect": false
+          },
+          {
+            "key": "E",
+            "text": "Müslüman toplumların sosyal ve psikolojik kuvvet ve zaafları hakkında verilere ulaşmak",
+            "isCorrect": false
+          }
+        ],
+        "correct": "A"
+      },
+      {
+        "n": 2,
+        "stem": "Sözlükte ''önceden olmadığı halde icat edilen şey'' anlamına gelen kavram aşağıdakilerden hangisidir?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Dalâlet",
+            "isCorrect": false
+          },
+          {
+            "key": "B",
+            "text": "Celâdet",
+            "isCorrect": false
+          },
+          {
+            "key": "C",
+            "text": "Furkat",
+            "isCorrect": false
+          },
+          {
+            "key": "D",
+            "text": "Ehl-i Hevâ",
+            "isCorrect": false
+          },
+          {
+            "key": "E",
+            "text": "Bid’at",
+            "isCorrect": true
+          }
+        ],
+        "correct": "E"
+      },
+      {
+        "n": 3,
+        "stem": "Aşağıdakilerden hangisi İslam Mezhepleri Tarihi ile Din Sosyolojisi’nin ortak çalışma alanlarından biridir?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Bir mezhebin “kurtarıcı bekleme” inancı geliştirmesinin psikolojik sebepleri",
+            "isCorrect": false
+          },
+          {
+            "key": "B",
+            "text": "Bir mezhepte cemaatsel hiyerarşinin nasıl oluştuğu",
+            "isCorrect": true
+          },
+          {
+            "key": "C",
+            "text": "Bir mezhebin diğer dinlerden nasıl etkileşim aldığı",
+            "isCorrect": false
+          },
+          {
+            "key": "D",
+            "text": "Bir mezhepteki batıl inançların nasıl tespit edileceği",
+            "isCorrect": false
+          },
+          {
+            "key": "E",
+            "text": "Bir mezhebin kendine özgü ibadetlerini nasıl yerine getirdiği",
+            "isCorrect": false
+          }
+        ],
+        "correct": "B"
+      },
+      {
+        "n": 4,
+        "stem": "Nakşibendiyye tarikatının iki büyük kolunun kurucuları sayılan İmam Rabbânî ile Mevlâna Hâlid Bağdâdî’nin “hak mezhep ve kurtuluşa eren fırka” olarak Ehl-i Sünnet üzerinde yapmış oldukları kuvvetli vurgu ------- dönemi Mezhepler Tarihi eserlerine güçlü şekilde yansımıştır. Yukarıdaki cümlede boş bırakılan yeri aşağıdakilerden hangisi doğru şekilde tamamlar?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Safeviler",
+            "isCorrect": false
+          },
+          {
+            "key": "B",
+            "text": "Abbasiler",
+            "isCorrect": false
+          },
+          {
+            "key": "C",
+            "text": "Emeviler",
+            "isCorrect": false
+          },
+          {
+            "key": "D",
+            "text": "Cumhuriyet",
+            "isCorrect": false
+          },
+          {
+            "key": "E",
+            "text": "Osmanlılar",
+            "isCorrect": true
+          }
+        ],
+        "correct": "E"
+      },
+      {
+        "n": 5,
+        "stem": "Tahkim hadisesi neticesinde ortaya çıkan mezhep aşağıdakilerden hangisidir?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Mutezile",
+            "isCorrect": false
+          },
+          {
+            "key": "B",
+            "text": "Mürcie",
+            "isCorrect": false
+          },
+          {
+            "key": "C",
+            "text": "Haricilik",
+            "isCorrect": true
+          },
+          {
+            "key": "D",
+            "text": "İbadiyye",
+            "isCorrect": false
+          },
+          {
+            "key": "E",
+            "text": "Şia",
+            "isCorrect": false
+          }
+        ],
+        "correct": "C"
+      },
+      {
+        "n": 6,
+        "stem": "Mezhepler ile ilgili a şağıdaki ifadelerden hangisi doğrudur?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Mezheplerin oluşumunda politik ve ekonomik unsurlar yer almaz.",
+            "isCorrect": false
+          },
+          {
+            "key": "B",
+            "text": "Bir mezhebin ortaya çıkış sebebi tek bir insana veya olaya indirgenebilir.",
+            "isCorrect": false
+          },
+          {
+            "key": "C",
+            "text": "Mezhepler, din alanındaki farklılaşmaların birer ürünü olup içinde geliştikleri ortamın izlerini bünyelerinde taşırlar.",
+            "isCorrect": true
+          },
+          {
+            "key": "D",
+            "text": "Din anlayışındaki farklılaşmalar, inananların dinden çıkmasına sebep olmuştur.",
+            "isCorrect": false
+          },
+          {
+            "key": "E",
+            "text": "Bir mezhebin doğru bir şekilde anlaşılabilmesi o mezhebi ortaya çıkaran faktörlere doğrudan bağlı değildir.",
+            "isCorrect": false
+          }
+        ],
+        "correct": "C"
+      },
+      {
+        "n": 7,
+        "stem": "Mezheplerin “dinin anlaşılma biçimleri” ve “din alanındaki farklılaşmaların birer ürünü” olması ne anlam ifade etmektedir?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Mezheplerin kendiliğinden ve birden gerçekleşen bir olgu olduğu",
+            "isCorrect": false
+          },
+          {
+            "key": "B",
+            "text": "İnsanın inanç ve tutumlarının oluşumunda o insanın doğuştan sahip olduğu bireysel özelliklerin etkili olduğu",
+            "isCorrect": false
+          },
+          {
+            "key": "C",
+            "text": "Bir mezhebin ortaya çıkışının tek bir insana veya olaya ya da tek bir sebebe bağlı olduğu",
+            "isCorrect": false
+          },
+          {
+            "key": "D",
+            "text": "Mezheplerin oluşumunda psiko-sosyal, politik ve ekonomik pek çok unsurun etkili olduğu",
+            "isCorrect": true
+          },
+          {
+            "key": "E",
+            "text": "Mezheplerin din ile özdeş olduğu",
+            "isCorrect": false
+          }
+        ],
+        "correct": "D"
+      },
+      {
+        "n": 8,
+        "stem": "Hz. Ebû Bekir’in halife olduktan sonra yapması gereken ilk iş aşağıdakilerden hangisi olmuştur?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Hz. Ali’yi ve Haşimoğulları’ndan bir kişiyi yardımcısı olarak atamak",
+            "isCorrect": false
+          },
+          {
+            "key": "B",
+            "text": "Yalancı peygamberlerle ve zekat vermeyen kabilelerle mücadele etmek",
+            "isCorrect": true
+          },
+          {
+            "key": "C",
+            "text": "Sa’d b. Ubâde’yi cezalandırmak",
+            "isCorrect": false
+          },
+          {
+            "key": "D",
+            "text": "Hz. Ali’yi Kûfe valisi olarak atamak",
+            "isCorrect": false
+          },
+          {
+            "key": "E",
+            "text": "Ensar’a kendisinden sonra halife olabileceklerini bildirmek",
+            "isCorrect": false
+          }
+        ],
+        "correct": "B"
+      },
+      {
+        "n": 9,
+        "stem": "- 2023 Güz Dönemi Allah’ın belirlediği kader yerine insanın belirlediği bir kadere inanmalarıyla ve fiilleri Allah’a değil insana isnat etmeleriyle öne çıkan mezhep aşağıdakilerden hangisidir?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Mücessime",
+            "isCorrect": false
+          },
+          {
+            "key": "B",
+            "text": "İbâdiyye",
+            "isCorrect": false
+          },
+          {
+            "key": "C",
+            "text": "Mürcie",
+            "isCorrect": false
+          },
+          {
+            "key": "D",
+            "text": "Cebriyye",
+            "isCorrect": false
+          },
+          {
+            "key": "E",
+            "text": "Kaderiyye",
+            "isCorrect": true
+          }
+        ],
+        "correct": "E"
+      },
+      {
+        "n": 10,
+        "stem": "Mu‘tezile’nin el-Menzile beyne’l-Menzileteyn prensibi aşağıdaki tartışmalardan hangisiyle alakalıdır?",
+        "options": [
+          {
+            "key": "A",
+            "text": "İmanın artıp eksilmesi meselesi",
+            "isCorrect": false
+          },
+          {
+            "key": "B",
+            "text": "Tevhid konusu",
+            "isCorrect": false
+          },
+          {
+            "key": "C",
+            "text": "Allah’ın sıfatları meselesi",
+            "isCorrect": false
+          },
+          {
+            "key": "D",
+            "text": "Büyük günah işleyenin durumu meselesi",
+            "isCorrect": true
+          },
+          {
+            "key": "E",
+            "text": "Kulun fiillerinin yaratıcısı meselesi",
+            "isCorrect": false
+          }
+        ],
+        "correct": "D"
+      },
+      {
+        "n": 11,
+        "stem": "Mu'tezile mezhebinin kurucusu aşağıdakilerden hangisidir?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Bişr b. el-Mu'temir",
+            "isCorrect": false
+          },
+          {
+            "key": "B",
+            "text": "Cehm b. Safvân",
+            "isCorrect": false
+          },
+          {
+            "key": "C",
+            "text": "Vâsıl b. Atâ",
+            "isCorrect": true
+          },
+          {
+            "key": "D",
+            "text": "Ebû'l-Hüzeyl el-Allâf",
+            "isCorrect": false
+          },
+          {
+            "key": "E",
+            "text": "Hasan-ı Basrî",
+            "isCorrect": false
+          }
+        ],
+        "correct": "C"
+      },
+      {
+        "n": 12,
+        "stem": "Mürcie düşüncesinin doğuşunun arkasındaki gelişme aşağıdakilerden hangisidir?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Muaviye’nin Hz. Ali’yi lanetleme ve Hz. Osman’ı övme kampanyasını başlatması",
+            "isCorrect": true
+          },
+          {
+            "key": "B",
+            "text": "Şiilik düşüncesinin ve imamet fikrinin doğuşu",
+            "isCorrect": false
+          },
+          {
+            "key": "C",
+            "text": "Reyci temayülün nakilci temayüle muhalif şekilde yaygınlaşması",
+            "isCorrect": false
+          },
+          {
+            "key": "D",
+            "text": "Cebriyye’nin çıkması ve olaylarda kaderin mutlak belirleyiciliğinin savunulması",
+            "isCorrect": false
+          },
+          {
+            "key": "E",
+            "text": "Kaderciliğin çıkması ve olaylarda kaderin belirleyiciliğinin reddi",
+            "isCorrect": false
+          }
+        ],
+        "correct": "A"
+      },
+      {
+        "n": 13,
+        "stem": "Mâtürîdîlerin; ilâhî sıfatlar, halku’l-Kur’ân, insan fiilleri, kader ve kerâmet konularında nasları görmezlikten gelerek insanı yanıltan aşırı ve tutarsız yorumlara gittiği iddiasıyla eleştirdiği mezhep aşağıdakilerden hangisidir?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Eş‘arîyye",
+            "isCorrect": false
+          },
+          {
+            "key": "B",
+            "text": "Selefiyye",
+            "isCorrect": false
+          },
+          {
+            "key": "C",
+            "text": "Haşviyye",
+            "isCorrect": false
+          },
+          {
+            "key": "D",
+            "text": "Mu’tezile",
+            "isCorrect": true
+          },
+          {
+            "key": "E",
+            "text": "Şîa",
+            "isCorrect": false
+          }
+        ],
+        "correct": "D"
+      },
+      {
+        "n": 14,
+        "stem": "Aşağıdakilerden hangisi Ehl-i Sünnet için kullanılan isimlerden biri değildir?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Ehl-i Beyt",
+            "isCorrect": true
+          },
+          {
+            "key": "B",
+            "text": "Sevâd-ı a’zam",
+            "isCorrect": false
+          },
+          {
+            "key": "C",
+            "text": "Ehl-i Cemaat",
+            "isCorrect": false
+          },
+          {
+            "key": "D",
+            "text": "Ehl-i hak ve ehl-i hüdâ",
+            "isCorrect": false
+          },
+          {
+            "key": "E",
+            "text": "Fırka-i nâciye",
+            "isCorrect": false
+          }
+        ],
+        "correct": "A"
+      },
+      {
+        "n": 15,
+        "stem": "Selefiyye inancı, kim tarafından Vehhâbiyye adı altında yeniden seslendirilmiş; Selefîliğin siyasallaşması ve Suud hanedanı nezdinde bir devlet mezhebine dönüşmesi sağlanmıştır?",
+        "options": [
+          {
+            "key": "A",
+            "text": "İbnü’l-Vezîr (v. 840/1436)",
+            "isCorrect": false
+          },
+          {
+            "key": "B",
+            "text": "Şevkânî (v. 1250/1834)",
+            "isCorrect": false
+          },
+          {
+            "key": "C",
+            "text": "Ahmed b. Hanbel (v. 241/855)",
+            "isCorrect": false
+          },
+          {
+            "key": "D",
+            "text": "İbn Kayyım el-Cevziyye (v. 751/1350)",
+            "isCorrect": false
+          },
+          {
+            "key": "E",
+            "text": "Muhammed b. Abdülvahhâb (v. 1206/1792)",
+            "isCorrect": true
+          }
+        ],
+        "correct": "E"
+      },
+      {
+        "n": 16,
+        "stem": "Aşağıdakilerden hangisi “Kitâbü't-Tevhîd” ve “Te'vîlâtü'I-Kur'ân” adlı eserlerin yazarıdır?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Ebû Mansur el-Matürîdî (v. 333/944)",
+            "isCorrect": true
+          },
+          {
+            "key": "B",
+            "text": "Ebû’l-Hasan el-Eş‘arî (260/324-873/936)",
+            "isCorrect": false
+          },
+          {
+            "key": "C",
+            "text": "İmam-ı A’zam Ebû Hanife (v. 150/",
+            "isCorrect": false
+          },
+          {
+            "key": "D",
+            "text": "Ebû'l-Mu’în en-Nesefî (v. 508/1111)",
+            "isCorrect": false
+          },
+          {
+            "key": "E",
+            "text": "Ebû Yûsuf (v. 182/798)",
+            "isCorrect": false
+          }
+        ],
+        "correct": "A"
+      },
+      {
+        "n": 17,
+        "stem": "Aşağıdakilerden hangisi Şîa’nın günüzümüze kadar yaşamış büyük kollarından biridir?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Kerbiyye",
+            "isCorrect": false
+          },
+          {
+            "key": "B",
+            "text": "Seb‘iyye",
+            "isCorrect": false
+          },
+          {
+            "key": "C",
+            "text": "Zeydiyye",
+            "isCorrect": true
+          },
+          {
+            "key": "D",
+            "text": "Beyâniyye",
+            "isCorrect": false
+          },
+          {
+            "key": "E",
+            "text": "Muhammire",
+            "isCorrect": false
+          }
+        ],
+        "correct": "C"
+      },
+      {
+        "n": 18,
+        "stem": "- 2023 Güz Dönemi Şiiliğe göre Hz. Ali'nin imametinin belirlendiği olay aşağıdakilerden hangisidir?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Kırtas hadisesi",
+            "isCorrect": false
+          },
+          {
+            "key": "B",
+            "text": "Gadir hum hadisesi",
+            "isCorrect": true
+          },
+          {
+            "key": "C",
+            "text": "Hz. Peygamber'in vefatı",
+            "isCorrect": false
+          },
+          {
+            "key": "D",
+            "text": "Hayber'in fethi",
+            "isCorrect": false
+          },
+          {
+            "key": "E",
+            "text": "Haccın farziyetini tebliğ görevi",
+            "isCorrect": false
+          }
+        ],
+        "correct": "B"
+      },
+      {
+        "n": 19,
+        "stem": "Şîa’yı diğer İslamî fırkalardan ayıran en önemli itikat esası aşağıdakilerden hangisidir?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Meâd",
+            "isCorrect": false
+          },
+          {
+            "key": "B",
+            "text": "Tevhid",
+            "isCorrect": false
+          },
+          {
+            "key": "C",
+            "text": "Adâlet",
+            "isCorrect": false
+          },
+          {
+            "key": "D",
+            "text": "İmâmet",
+            "isCorrect": true
+          },
+          {
+            "key": "E",
+            "text": "Nübüvvet",
+            "isCorrect": false
+          }
+        ],
+        "correct": "D"
+      },
+      {
+        "n": 20,
+        "stem": "-------, Şîa’yı diğer İslamî fırkalardan ayıran en önemli itikat esasıdır. Yukarıdaki cümlede boş bırakılan yeri aşağıdakilerden hangisi doğru şekilde tamamlar?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Tevhid",
+            "isCorrect": false
+          },
+          {
+            "key": "B",
+            "text": "İmâmet",
+            "isCorrect": true
+          },
+          {
+            "key": "C",
+            "text": "Meâd",
+            "isCorrect": false
+          },
+          {
+            "key": "D",
+            "text": "Adâlet",
+            "isCorrect": false
+          },
+          {
+            "key": "E",
+            "text": "Nübüvvet",
+            "isCorrect": false
+          }
+        ],
+        "correct": "B"
+      }
+    ]
+  },
+  {
+    "year": "2022-2023",
+    "term": "guz",
+    "exam_id": "20222023-guz-vize-b",
+    "group": "B",
+    "file": "İSLÂM MEZHEPLERİ TARİHİ - Çıkmış Sınav Soruları (1).pdf",
+    "answer_key": {
+      "1": "E",
+      "2": "E",
+      "3": "A",
+      "4": "C",
+      "5": "C",
+      "6": "C",
+      "7": "D",
+      "8": "A",
+      "9": "D",
+      "10": "C",
+      "11": "A",
+      "12": "B",
+      "13": "E",
+      "14": "B",
+      "15": "A",
+      "16": "E",
+      "17": "D",
+      "18": "D",
+      "19": "B",
+      "20": "B"
+    },
+    "questions": [
+      {
+        "n": 1,
+        "stem": "Sözlükte ''önceden olmadığı halde icat edilen şey'' anlamına gelen kavram aşağıdakilerden hangisidir?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Furkat",
+            "isCorrect": false
+          },
+          {
+            "key": "B",
+            "text": "Dalâlet",
+            "isCorrect": false
+          },
+          {
+            "key": "C",
+            "text": "Celâdet",
+            "isCorrect": false
+          },
+          {
+            "key": "D",
+            "text": "Ehl-i Hevâ",
+            "isCorrect": false
+          },
+          {
+            "key": "E",
+            "text": "Bid’at",
+            "isCorrect": true
+          }
+        ],
+        "correct": "E"
+      },
+      {
+        "n": 2,
+        "stem": "Aşağıdakilerden hangisi İslam Mezhepleri Tarihi ile Din Sosyolojisi’nin ortak çalışma alanlarından biridir?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Bir mezhepteki batıl inançların nasıl tespit edileceği",
+            "isCorrect": false
+          },
+          {
+            "key": "B",
+            "text": "Bir mezhebin “kurtarıcı bekleme” inancı geliştirmesinin psikolojik sebepleri",
+            "isCorrect": false
+          },
+          {
+            "key": "C",
+            "text": "Bir mezhebin kendine özgü ibadetlerini nasıl yerine getirdiği",
+            "isCorrect": false
+          },
+          {
+            "key": "D",
+            "text": "Bir mezhebin diğer dinlerden nasıl etkileşim aldığı",
+            "isCorrect": false
+          },
+          {
+            "key": "E",
+            "text": "Bir mezhepte cemaatsel hiyerarşinin nasıl oluştuğu",
+            "isCorrect": true
+          }
+        ],
+        "correct": "E"
+      },
+      {
+        "n": 3,
+        "stem": "Aşağıdakilerden hangisi İslam mezhepleri tarihi disiplininin amaçlarından biri değildir?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Hangi mezheplerin hak, hangilerinin batıl olduğunu tespit etmek",
+            "isCorrect": true
+          },
+          {
+            "key": "B",
+            "text": "Mezhep ve dini grupların tarihte bıraktıkları izleri sürmek",
+            "isCorrect": false
+          },
+          {
+            "key": "C",
+            "text": "Mezheplerin İslam medeniyetine katkılarını gün yüzüne çıkartmak",
+            "isCorrect": false
+          },
+          {
+            "key": "D",
+            "text": "Müslümanlar arasındaki mezhepsel ve grupsal çatışma ve sorunlara çözümler bulmak",
+            "isCorrect": false
+          },
+          {
+            "key": "E",
+            "text": "Müslüman toplumların sosyal ve psikolojik kuvvet ve zaafları hakkında verilere ulaşmak",
+            "isCorrect": false
+          }
+        ],
+        "correct": "A"
+      },
+      {
+        "n": 4,
+        "stem": "Nakşibendiyye tarikatının iki büyük kolunun kurucuları sayılan İmam Rabbânî ile Mevlâna Hâlid Bağdâdî’nin “hak mezhep ve kurtuluşa eren fırka” olarak Ehl-i Sünnet üzerinde yapmış oldukları kuvvetli vurgu ------- dönemi Mezhepler Tarihi eserlerine güçlü şekilde yansımıştır. Yukarıdaki cümlede boş bırakılan yeri aşağıdakilerden hangisi doğru şekilde tamamlar?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Safeviler",
+            "isCorrect": false
+          },
+          {
+            "key": "B",
+            "text": "Cumhuriyet",
+            "isCorrect": false
+          },
+          {
+            "key": "C",
+            "text": "Osmanlılar",
+            "isCorrect": true
+          },
+          {
+            "key": "D",
+            "text": "Emeviler",
+            "isCorrect": false
+          },
+          {
+            "key": "E",
+            "text": "Abbasiler",
+            "isCorrect": false
+          }
+        ],
+        "correct": "C"
+      },
+      {
+        "n": 5,
+        "stem": "Tahkim hadisesi neticesinde ortaya çıkan mezhep aşağıdakilerden hangisidir?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Mürcie",
+            "isCorrect": false
+          },
+          {
+            "key": "B",
+            "text": "İbadiyye",
+            "isCorrect": false
+          },
+          {
+            "key": "C",
+            "text": "Haricilik",
+            "isCorrect": true
+          },
+          {
+            "key": "D",
+            "text": "Şia",
+            "isCorrect": false
+          },
+          {
+            "key": "E",
+            "text": "Mutezile",
+            "isCorrect": false
+          }
+        ],
+        "correct": "C"
+      },
+      {
+        "n": 6,
+        "stem": "Hz. Ebû Bekir’in halife olduktan sonra yapması gereken ilk iş aşağıdakilerden hangisi olmuştur?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Hz. Ali’yi Kûfe valisi olarak atamak",
+            "isCorrect": false
+          },
+          {
+            "key": "B",
+            "text": "Sa’d b. Ubâde’yi cezalandırmak",
+            "isCorrect": false
+          },
+          {
+            "key": "C",
+            "text": "Yalancı peygamberlerle ve zekat vermeyen kabilelerle mücadele etmek",
+            "isCorrect": true
+          },
+          {
+            "key": "D",
+            "text": "Ensar’a kendisinden sonra halife olabileceklerini bildirmek",
+            "isCorrect": false
+          },
+          {
+            "key": "E",
+            "text": "Hz. Ali’yi ve Haşimoğulları’ndan bir kişiyi yardımcısı olarak atamak",
+            "isCorrect": false
+          }
+        ],
+        "correct": "C"
+      },
+      {
+        "n": 7,
+        "stem": "Mezheplerin “dinin anlaşılma biçimleri” ve “din alanındaki farklılaşmaların birer ürünü” olması ne anlam ifade etmektedir?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Mezheplerin kendiliğinden ve birden gerçekleşen bir olgu olduğu",
+            "isCorrect": false
+          },
+          {
+            "key": "B",
+            "text": "Bir mezhebin ortaya çıkışının tek bir insana veya olaya ya da tek bir sebebe bağlı olduğu",
+            "isCorrect": false
+          },
+          {
+            "key": "C",
+            "text": "İnsanın inanç ve tutumlarının oluşumunda o insanın doğuştan sahip olduğu bireysel özelliklerin etkili olduğu",
+            "isCorrect": false
+          },
+          {
+            "key": "D",
+            "text": "Mezheplerin oluşumunda psiko-sosyal, politik ve ekonomik pek çok unsurun etkili olduğu",
+            "isCorrect": true
+          },
+          {
+            "key": "E",
+            "text": "Mezheplerin din ile özdeş olduğu",
+            "isCorrect": false
+          }
+        ],
+        "correct": "D"
+      },
+      {
+        "n": 8,
+        "stem": "Mezhepler ile ilgili a şağıdaki ifadelerden hangisi doğrudur?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Mezhepler, din alanındaki farklılaşmaların birer ürünü olup içinde geliştikleri ortamın izlerini bünyelerinde taşırlar.",
+            "isCorrect": true
+          },
+          {
+            "key": "B",
+            "text": "Bir mezhebin doğru bir şekilde anlaşılabilmesi o mezhebi ortaya çıkaran faktörlere doğrudan bağlı değildir.",
+            "isCorrect": false
+          },
+          {
+            "key": "C",
+            "text": "Din anlayışındaki farklılaşmalar, inananların dinden çıkmasına sebep olmuştur.",
+            "isCorrect": false
+          },
+          {
+            "key": "D",
+            "text": "Bir mezhebin ortaya çıkış sebebi tek bir insana veya olaya indirgenebilir.",
+            "isCorrect": false
+          },
+          {
+            "key": "E",
+            "text": "Mezheplerin oluşumunda politik ve ekonomik unsurlar yer almaz.",
+            "isCorrect": false
+          }
+        ],
+        "correct": "A"
+      },
+      {
+        "n": 9,
+        "stem": "- 2023 Güz Dönemi Allah’ın belirlediği kader yerine insanın belirlediği bir kadere inanmalarıyla ve fiilleri Allah’a değil insana isnat etmeleriyle öne çıkan mezhep aşağıdakilerden hangisidir?",
+        "options": [
+          {
+            "key": "A",
+            "text": "İbâdiyye",
+            "isCorrect": false
+          },
+          {
+            "key": "B",
+            "text": "Mürcie",
+            "isCorrect": false
+          },
+          {
+            "key": "C",
+            "text": "Cebriyye",
+            "isCorrect": false
+          },
+          {
+            "key": "D",
+            "text": "Kaderiyye",
+            "isCorrect": true
+          },
+          {
+            "key": "E",
+            "text": "Mücessime",
+            "isCorrect": false
+          }
+        ],
+        "correct": "D"
+      },
+      {
+        "n": 10,
+        "stem": "Mu‘tezile’nin el-Menzile beyne’l-Menzileteyn prensibi aşağıdaki tartışmalardan hangisiyle alakalıdır?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Tevhid konusu",
+            "isCorrect": false
+          },
+          {
+            "key": "B",
+            "text": "İmanın artıp eksilmesi meselesi",
+            "isCorrect": false
+          },
+          {
+            "key": "C",
+            "text": "Büyük günah işleyenin durumu meselesi",
+            "isCorrect": true
+          },
+          {
+            "key": "D",
+            "text": "Kulun fiillerinin yaratıcısı meselesi",
+            "isCorrect": false
+          },
+          {
+            "key": "E",
+            "text": "Allah’ın sıfatları meselesi",
+            "isCorrect": false
+          }
+        ],
+        "correct": "C"
+      },
+      {
+        "n": 11,
+        "stem": "Mu'tezile mezhebinin kurucusu aşağıdakilerden hangisidir?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Vâsıl b. Atâ",
+            "isCorrect": true
+          },
+          {
+            "key": "B",
+            "text": "Ebû'l-Hüzeyl el-Allâf",
+            "isCorrect": false
+          },
+          {
+            "key": "C",
+            "text": "Cehm b. Safvân",
+            "isCorrect": false
+          },
+          {
+            "key": "D",
+            "text": "Hasan-ı Basrî",
+            "isCorrect": false
+          },
+          {
+            "key": "E",
+            "text": "Bişr b. el-Mu'temir",
+            "isCorrect": false
+          }
+        ],
+        "correct": "A"
+      },
+      {
+        "n": 12,
+        "stem": "Mürcie düşüncesinin doğuşunun arkasındaki gelişme aşağıdakilerden hangisidir?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Kaderciliğin çıkması ve olaylarda kaderin belirleyiciliğinin reddi",
+            "isCorrect": false
+          },
+          {
+            "key": "B",
+            "text": "Muaviye’nin Hz. Ali’yi lanetleme ve Hz. Osman’ı övme kampanyasını başlatması",
+            "isCorrect": true
+          },
+          {
+            "key": "C",
+            "text": "Cebriyye’nin çıkması ve olaylarda kaderin mutlak belirleyiciliğinin savunulması",
+            "isCorrect": false
+          },
+          {
+            "key": "D",
+            "text": "Şiilik düşüncesinin ve imamet fikrinin doğuşu",
+            "isCorrect": false
+          },
+          {
+            "key": "E",
+            "text": "Reyci temayülün nakilci temayüle muhalif şekilde yaygınlaşması",
+            "isCorrect": false
+          }
+        ],
+        "correct": "B"
+      },
+      {
+        "n": 13,
+        "stem": "Mâtürîdîlerin; ilâhî sıfatlar, halku’l-Kur’ân, insan fiilleri, kader ve kerâmet konularında nasları görmezlikten gelerek insanı yanıltan aşırı ve tutarsız yorumlara gittiği iddiasıyla eleştirdiği mezhep aşağıdakilerden hangisidir?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Şîa",
+            "isCorrect": false
+          },
+          {
+            "key": "B",
+            "text": "Eş‘arîyye",
+            "isCorrect": false
+          },
+          {
+            "key": "C",
+            "text": "Selefiyye",
+            "isCorrect": false
+          },
+          {
+            "key": "D",
+            "text": "Haşviyye",
+            "isCorrect": false
+          },
+          {
+            "key": "E",
+            "text": "Mu’tezile",
+            "isCorrect": true
+          }
+        ],
+        "correct": "E"
+      },
+      {
+        "n": 14,
+        "stem": "Aşağıdakilerden hangisi “Kitâbü't-Tevhîd” ve “Te'vîlâtü'I-Kur'ân” adlı eserlerin yazarıdır?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Ebû Yûsuf (v. 182/798)",
+            "isCorrect": false
+          },
+          {
+            "key": "B",
+            "text": "Ebû Mansur el-Matürîdî (v. 333/944)",
+            "isCorrect": true
+          },
+          {
+            "key": "C",
+            "text": "İmam-ı A’zam Ebû Hanife (v. 150/",
+            "isCorrect": false
+          },
+          {
+            "key": "D",
+            "text": "Ebû’l-Hasan el-Eş‘arî (260/324-873/936)",
+            "isCorrect": false
+          },
+          {
+            "key": "E",
+            "text": "Ebû'l-Mu’în en-Nesefî (v. 508/1111)",
+            "isCorrect": false
+          }
+        ],
+        "correct": "B"
+      },
+      {
+        "n": 15,
+        "stem": "Aşağıdakilerden hangisi Ehl-i Sünnet için kullanılan isimlerden biri değildir?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Ehl-i Beyt",
+            "isCorrect": true
+          },
+          {
+            "key": "B",
+            "text": "Ehl-i Cemaat",
+            "isCorrect": false
+          },
+          {
+            "key": "C",
+            "text": "Ehl-i hak ve ehl-i hüdâ",
+            "isCorrect": false
+          },
+          {
+            "key": "D",
+            "text": "Sevâd-ı a’zam",
+            "isCorrect": false
+          },
+          {
+            "key": "E",
+            "text": "Fırka-i nâciye",
+            "isCorrect": false
+          }
+        ],
+        "correct": "A"
+      },
+      {
+        "n": 16,
+        "stem": "Selefiyye inancı, kim tarafından Vehhâbiyye adı altında yeniden seslendirilmiş; Selefîliğin siyasallaşması ve Suud hanedanı nezdinde bir devlet mezhebine dönüşmesi sağlanmıştır?",
+        "options": [
+          {
+            "key": "A",
+            "text": "İbnü’l-Vezîr (v. 840/1436)",
+            "isCorrect": false
+          },
+          {
+            "key": "B",
+            "text": "İbn Kayyım el-Cevziyye (v. 751/1350)",
+            "isCorrect": false
+          },
+          {
+            "key": "C",
+            "text": "Şevkânî (v. 1250/1834)",
+            "isCorrect": false
+          },
+          {
+            "key": "D",
+            "text": "Ahmed b. Hanbel (v. 241/855)",
+            "isCorrect": false
+          },
+          {
+            "key": "E",
+            "text": "Muhammed b. Abdülvahhâb (v. 1206/1792)",
+            "isCorrect": true
+          }
+        ],
+        "correct": "E"
+      },
+      {
+        "n": 17,
+        "stem": "Şîa’yı diğer İslamî fırkalardan ayıran en önemli itikat esası aşağıdakilerden hangisidir?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Tevhid",
+            "isCorrect": false
+          },
+          {
+            "key": "B",
+            "text": "Adâlet",
+            "isCorrect": false
+          },
+          {
+            "key": "C",
+            "text": "Nübüvvet",
+            "isCorrect": false
+          },
+          {
+            "key": "D",
+            "text": "İmâmet",
+            "isCorrect": true
+          },
+          {
+            "key": "E",
+            "text": "Meâd",
+            "isCorrect": false
+          }
+        ],
+        "correct": "D"
+      },
+      {
+        "n": 18,
+        "stem": "- 2023 Güz Dönemi -------, Şîa’yı diğer İslamî fırkalardan ayıran en önemli itikat esasıdır. Yukarıdaki cümlede boş bırakılan yeri aşağıdakilerden hangisi doğru şekilde tamamlar?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Adâlet",
+            "isCorrect": false
+          },
+          {
+            "key": "B",
+            "text": "Meâd",
+            "isCorrect": false
+          },
+          {
+            "key": "C",
+            "text": "Tevhid",
+            "isCorrect": false
+          },
+          {
+            "key": "D",
+            "text": "İmâmet",
+            "isCorrect": true
+          },
+          {
+            "key": "E",
+            "text": "Nübüvvet",
+            "isCorrect": false
+          }
+        ],
+        "correct": "D"
+      },
+      {
+        "n": 19,
+        "stem": "Şiiliğe göre Hz. Ali'nin imametinin belirlendiği olay aşağıdakilerden hangisidir?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Kırtas hadisesi",
+            "isCorrect": false
+          },
+          {
+            "key": "B",
+            "text": "Gadir hum hadisesi",
+            "isCorrect": true
+          },
+          {
+            "key": "C",
+            "text": "Hz. Peygamber'in vefatı",
+            "isCorrect": false
+          },
+          {
+            "key": "D",
+            "text": "Hayber'in fethi",
+            "isCorrect": false
+          },
+          {
+            "key": "E",
+            "text": "Haccın farziyetini tebliğ görevi",
+            "isCorrect": false
+          }
+        ],
+        "correct": "B"
+      },
+      {
+        "n": 20,
+        "stem": "Aşağıdakilerden hangisi Şîa’nın günüzümüze kadar yaşamış büyük kollarından biridir?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Muhammire",
+            "isCorrect": false
+          },
+          {
+            "key": "B",
+            "text": "Zeydiyye",
+            "isCorrect": true
+          },
+          {
+            "key": "C",
+            "text": "Beyâniyye",
+            "isCorrect": false
+          },
+          {
+            "key": "D",
+            "text": "Seb‘iyye",
+            "isCorrect": false
+          },
+          {
+            "key": "E",
+            "text": "Kerbiyye",
+            "isCorrect": false
+          }
+        ],
+        "correct": "B"
       }
     ]
   },
@@ -505,371 +2687,670 @@
     "year": "2023-2024",
     "term": "guz",
     "exam_id": "20232024-guz-vize",
+    "group": "A",
     "file": "İSLÂM MEZHEPLERİ TARİHİ - Çıkmış Sınav Soruları (2).pdf",
+    "answer_key": {
+      "1": "E",
+      "2": "C",
+      "3": "B",
+      "4": "D",
+      "5": "E",
+      "6": "D",
+      "7": "B",
+      "8": "C",
+      "9": "A",
+      "10": "B",
+      "11": "C",
+      "12": "A",
+      "13": "A",
+      "14": "A",
+      "15": "E",
+      "16": "B",
+      "17": "E",
+      "18": "C",
+      "19": "D",
+      "20": "D"
+    },
     "questions": [
       {
         "n": 1,
-        "stem": "Müslümanlar arasındaki sorunların çözümünde yeni fırsatlar ortaya çıkartmak",
+        "stem": "Aşağıdakilerden hangisi İslam mezhepleri tarihi biliminin amaçlarından biri değildir?",
         "options": [
           {
             "key": "A",
-            "text": "Günümüz Müslümanlarının sahip oldukları"
+            "text": "Müslümanlar arasındaki sorunların çözümünde yeni fırsatlar ortaya çıkartmak",
+            "isCorrect": false
           },
           {
             "key": "B",
-            "text": "Mezhep ve dinî grupların tarihte bıraktıkları"
+            "text": "Günümüz Müslümanlarının sahip oldukları değişik düşünce biçimlerini n daha iyi anlaşılmasını sağlamak",
+            "isCorrect": false
           },
           {
             "key": "C",
-            "text": "Mezhep ve gruplar arasındaki önyargıları"
+            "text": "Mezhep ve dinî grupların tarihte bıraktıkları olumlu ya da olumsuz izleri görünür kılmak",
+            "isCorrect": false
           },
           {
             "key": "D",
-            "text": "Hangi mezhebin hak olduğunu tespit etmek"
+            "text": "Mezhep ve gruplar arasındaki önyargıları giderici bir işlev görmek",
+            "isCorrect": false
           },
           {
             "key": "E",
-            "text": "------- dinin özündeki ve Müslüman toplumun"
+            "text": "Hangi mezhebin hak olduğunu tespit etmek",
+            "isCorrect": true
           }
-        ]
+        ],
+        "correct": "E"
+      },
+      {
+        "n": 2,
+        "stem": "------- dinin özündeki ve Müslüman toplumun bütünlüğündeki bozulmayı ifade eden kavramdır. Yukarıdaki cümlede boş bırakılan yeri aşağıdakilerden hangisi doğru şekilde tamamlar?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Bid’at",
+            "isCorrect": false
+          },
+          {
+            "key": "B",
+            "text": "İttifak",
+            "isCorrect": false
+          },
+          {
+            "key": "C",
+            "text": "Tefrika",
+            "isCorrect": true
+          },
+          {
+            "key": "D",
+            "text": "Makâlât",
+            "isCorrect": false
+          },
+          {
+            "key": "E",
+            "text": "Dalâlet",
+            "isCorrect": false
+          }
+        ],
+        "correct": "C"
       },
       {
         "n": 3,
-        "stem": "Bir mezhebin “kurtarıcı bekleme” inancı geliştirmesinin psikolojik sebepleri",
+        "stem": "Aşağıdakilerden hangisi İslam Mezhepleri Tarihi ile Din Sosyolojisi’nin ortak çalışma alanlarından biridir?",
         "options": [
           {
             "key": "A",
-            "text": "Bir mezhepte cemaatsel hiyerarşinin nasıl"
+            "text": "Bir mezhebin “kurtarıcı bekleme” inancı geliştirmesinin psikolojik sebepleri",
+            "isCorrect": false
           },
           {
             "key": "B",
-            "text": "Bir mezhebin kendine özgü ibadetlerini nasıl"
+            "text": "Bir mezhepte cemaatsel hiyerarşinin nasıl oluştuğu",
+            "isCorrect": true
           },
           {
             "key": "C",
-            "text": "Bir mezhepteki batıl inançların nasıl tespit"
+            "text": "Bir mezhebin kendine özgü ibadetlerini nasıl yerine getirdiği",
+            "isCorrect": false
           },
           {
             "key": "D",
-            "text": "Bir mezhebin diğer dinlerden nasıl etkileşim"
+            "text": "Bir mezhepteki batıl inançların nasıl tespit edileceği",
+            "isCorrect": false
           },
           {
             "key": "E",
-            "text": "Aşağıdakilerden hangisi İslam Mezhepleri"
+            "text": "Bir mezhebin diğer dinlerden nasıl etkileşim aldığı",
+            "isCorrect": false
           }
-        ]
+        ],
+        "correct": "B"
       },
       {
         "n": 4,
-        "stem": "Ehl-i kıblenin tekfir edilmesinin yol açtığı dar bakış açısı",
+        "stem": "Aşağıdakilerden hangisi İslam Mezhepleri tarihçisinin ana kaynakları okuyup anlamlandırırken karşılaştığı metodolojik problemlerden biridir?",
         "options": [
           {
             "key": "A",
-            "text": "Mezheplerin hak yahut batıl oluşu ile alakalı"
+            "text": "Ehl-i kıblenin tekfir edilmesinin yol açtığı dar bakış açısı",
+            "isCorrect": false
           },
           {
             "key": "B",
-            "text": "“Yetmiş iki millet” kavramının içerdiği"
+            "text": "Mezheplerin hak yahut batıl oluşu ile alakalı muğlaklık",
+            "isCorrect": false
           },
           {
             "key": "C",
-            "text": "Mezheplerin doğuş serüvenini tek bir sebep"
+            "text": "“Yetmiş iki millet” kavramının içerdiği kapsayıcı yaklaşım",
+            "isCorrect": false
           },
           {
             "key": "D",
-            "text": "Mezhep ve fırka kavramlarını birbirine"
+            "text": "Mezheplerin doğuş serüvenini tek bir sebep üzerinden açıklamak",
+            "isCorrect": true
           },
           {
             "key": "E",
-            "text": "Aşağıdakilerden hangisi Hz. Osman’ın"
+            "text": "Mezhep ve fırka kavramlarını birbirine karıştırmak",
+            "isCorrect": false
           }
-        ]
+        ],
+        "correct": "D"
       },
       {
         "n": 5,
-        "stem": "Hz. Osman’ın otoritesinin sorgulanması",
+        "stem": "Aşağıdakilerden hangisi Hz. Osman’ın hilafetinin zayıflamasının sonuçlarından biri değildir?",
         "options": [
           {
             "key": "A",
-            "text": "Abdullah b. Sebe gibi kişilerin ortaya"
+            "text": "Hz. Osman’ın otoritesinin sorgulanması",
+            "isCorrect": false
           },
           {
             "key": "B",
-            "text": "Hz. Osman’ın önceki halifeler ile"
+            "text": "Abdullah b. Sebe gibi kişilerin ortaya çıkması",
+            "isCorrect": false
           },
           {
             "key": "C",
-            "text": "Fetihlerin durması"
+            "text": "Hz. Osman’ın önceki halifeler ile kıyaslanması",
+            "isCorrect": false
           },
           {
             "key": "D",
-            "text": "Hâşimî-Emevî çekişmesi"
+            "text": "Fetihlerin durması",
+            "isCorrect": false
           },
           {
             "key": "E",
-            "text": "Mezhepler, bireysel ve toplumsal bir kişilik olarak"
+            "text": "Hâşimî-Emevî çekişmesi",
+            "isCorrect": true
           }
-        ]
+        ],
+        "correct": "E"
       },
       {
         "n": 6,
-        "stem": "Ekonomik faktörler",
+        "stem": "Mezhepler, bireysel ve toplumsal bir kişilik olarak insanın, dini anlama ve yorumlama biçimlerinin zamanla kurumsallaşması üzerine kuruludur. Yukarıdaki cümle mezheplerin doğuşu üzerinde etkisi olan faktörlerden hangisi hakkında bilgi içerir?",
         "options": [
           {
             "key": "A",
-            "text": "Fizîki faktörler"
+            "text": "Ekonomik faktörler",
+            "isCorrect": false
           },
           {
             "key": "B",
-            "text": "Politik faktörler"
+            "text": "Fizîki faktörler",
+            "isCorrect": false
           },
           {
             "key": "C",
-            "text": "Psiko-sosyal faktörler"
+            "text": "Politik faktörler",
+            "isCorrect": false
           },
           {
             "key": "D",
-            "text": "Dinî faktörler"
+            "text": "Psiko-sosyal faktörler",
+            "isCorrect": true
           },
           {
             "key": "E",
-            "text": "Mezhepler ile ilgili a şağıdaki ifadelerden"
+            "text": "Dinî faktörler",
+            "isCorrect": false
           }
-        ]
+        ],
+        "correct": "D"
       },
       {
         "n": 7,
-        "stem": "Mezheplerin oluşumunda politik ve ekonomik unsurlar yer almaz.",
+        "stem": "Mezhepler ile ilgili a şağıdaki ifadelerden hangisi doğrudur?",
         "options": [
           {
             "key": "A",
-            "text": "Mezhepler, din alanındaki farklılaşmaların"
+            "text": "Mezheplerin oluşumunda politik ve ekonomik unsurlar yer almaz.",
+            "isCorrect": false
           },
           {
             "key": "B",
-            "text": "Din anlayışındaki farklılaşmalar, inananların"
+            "text": "Mezhepler, din alanındaki farklılaşmaların birer ürünü olup içinde geliştikleri ortamın izlerini bünyelerinde taşırlar.",
+            "isCorrect": true
           },
           {
             "key": "C",
-            "text": "Bir mezhebin doğru bir şekilde"
+            "text": "Din anlayışındaki farklılaşmalar, inananların dinden çıkmasına sebep olmuştur.",
+            "isCorrect": false
           },
           {
             "key": "D",
-            "text": "Bir mezhebin ortaya çıkış sebebi tek bir"
+            "text": "Bir mezhebin doğru bir şekilde anlaşılabilmesi o mezhebi ortaya çıkaran faktörlere doğrudan bağlı değildir.",
+            "isCorrect": false
           },
           {
             "key": "E",
-            "text": "2023-2024 GÜZ ARA - A"
+            "text": "Bir mezhebin ortaya çıkış sebebi tek bir insana veya olaya indirgenebilir.",
+            "isCorrect": false
           }
-        ]
+        ],
+        "correct": "B"
       },
       {
         "n": 8,
-        "stem": "Mezheplerin din ile özdeş olduğu",
+        "stem": "- 2024 Güz Dönemi Mezheplerin “dinin anlaşılma biçimleri” ve “din alanındaki farklılaşmaların birer ürünü” olması ne anlam ifade etmektedir?",
         "options": [
           {
             "key": "A",
-            "text": "İnsanın inanç ve tutumlarının oluşumunda o"
+            "text": "Mezheplerin din ile özdeş olduğu",
+            "isCorrect": false
           },
           {
             "key": "B",
-            "text": "Mezheplerin oluşumunda psiko-sosyal,"
+            "text": "İnsanın inanç ve tutumlarının oluşumunda o insanın doğuştan sahip olduğu bireysel özelliklerin etkili olduğu",
+            "isCorrect": false
           },
           {
             "key": "C",
-            "text": "Mezheplerin kendiliğinden ve birden"
+            "text": "Mezheplerin oluşumunda psiko-sosyal, politik ve ekonomik pek çok unsurun etkili olduğu",
+            "isCorrect": true
           },
           {
             "key": "D",
-            "text": "Bir mezhebin ortaya çıkışının tek bir insana"
+            "text": "Mezheplerin kendiliğinden ve birden gerçekleşen bir olgu olduğu",
+            "isCorrect": false
           },
           {
             "key": "E",
-            "text": "Aşağıdakilerden hangisi Mu'tezile'nin beş"
+            "text": "Bir mezhebin ortaya çıkışının tek bir insana veya olaya ya da tek bir sebebe bağlı olduğu",
+            "isCorrect": false
           }
-        ]
+        ],
+        "correct": "C"
+      },
+      {
+        "n": 9,
+        "stem": "Aşağıdakilerden hangisi Mu'tezile'nin beş esasından biri değildir?",
+        "options": [
+          {
+            "key": "A",
+            "text": "İmamet",
+            "isCorrect": true
+          },
+          {
+            "key": "B",
+            "text": "Emir bi’l-Ma’rûf Nehiy ani’l-Münker",
+            "isCorrect": false
+          },
+          {
+            "key": "C",
+            "text": "Va’d ve Vaîd",
+            "isCorrect": false
+          },
+          {
+            "key": "D",
+            "text": "el-Menzile beyne’l-Menzileteyn",
+            "isCorrect": false
+          },
+          {
+            "key": "E",
+            "text": "Tevhid",
+            "isCorrect": false
+          }
+        ],
+        "correct": "A"
       },
       {
         "n": 10,
-        "stem": "Kulun fiillerinin yaratıcısı meselesi",
+        "stem": "Mu‘tezile’nin el-Menzile beyne’l-Menzileteyn prensibi aşağıdaki tartışmalardan hangisiyle alakalıdır?",
         "options": [
           {
             "key": "A",
-            "text": "Büyük günah işleyenin durumu meselesi"
+            "text": "Kulun fiillerinin yaratıcısı meselesi",
+            "isCorrect": false
           },
           {
             "key": "B",
-            "text": "Tevhid konusu"
+            "text": "Büyük günah işleyenin durumu meselesi",
+            "isCorrect": true
           },
           {
             "key": "C",
-            "text": "İmanın artıp eksilmesi meselesi"
+            "text": "Tevhid konusu",
+            "isCorrect": false
           },
           {
             "key": "D",
-            "text": "Allah’ın sıfatları meselesi"
+            "text": "İmanın artıp eksilmesi meselesi",
+            "isCorrect": false
           },
           {
             "key": "E",
-            "text": "Aşağıdakilerden hangisi hakem tayinini, yani"
+            "text": "Allah’ın sıfatları meselesi",
+            "isCorrect": false
           }
-        ]
+        ],
+        "correct": "B"
+      },
+      {
+        "n": 11,
+        "stem": "Aşağıdakilerden hangisi hakem tayinini, yani tahkimi kabul etmesinden dolayı Hz. Ali'yi suçlayıp, ondan ayrılanların meydana getirdiği bir fırkadır?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Mu’tezile",
+            "isCorrect": false
+          },
+          {
+            "key": "B",
+            "text": "Sünnîlik",
+            "isCorrect": false
+          },
+          {
+            "key": "C",
+            "text": "Haricîlik",
+            "isCorrect": true
+          },
+          {
+            "key": "D",
+            "text": "Mürcie",
+            "isCorrect": false
+          },
+          {
+            "key": "E",
+            "text": "Ahmediyye",
+            "isCorrect": false
+          }
+        ],
+        "correct": "C"
       },
       {
         "n": 12,
-        "stem": "Kuşatmacı tavrıyla Türklerin İslamlaşmasında müsbet bir tesir göstermiştir.",
+        "stem": "Mürcie hakkında aşağıdaki yargılardan hangisi doğrudur?",
         "options": [
           {
             "key": "A",
-            "text": "Tekfirci bir yaklaşımı benimsemiştir."
+            "text": "Kuşatmacı tavrıyla Türklerin İslamlaşmasında müsbet bir tesir göstermiştir.",
+            "isCorrect": true
           },
           {
             "key": "B",
-            "text": "İman dairesini hayli daraltmıştır."
+            "text": "Tekfirci bir yaklaşımı benimsemiştir.",
+            "isCorrect": false
           },
           {
             "key": "C",
-            "text": "İslam alimleri üzerinde ciddi bir etkisi"
+            "text": "İman dairesini hayli daraltmıştır.",
+            "isCorrect": false
           },
           {
             "key": "D",
-            "text": "Ameli imandan bir cüz/parça saymıştır."
+            "text": "İslam alimleri üzerinde ciddi bir etkisi olmamıştır.",
+            "isCorrect": false
           },
           {
             "key": "E",
-            "text": "Aşağıdakilerden hangisi Hanefî ekolünün"
+            "text": "Ameli imandan bir cüz/parça saymıştır.",
+            "isCorrect": false
           }
-        ]
+        ],
+        "correct": "A"
       },
       {
         "n": 13,
-        "stem": "Ebû Mansur el-Maturîdî (v. 333/944)",
+        "stem": "Aşağıdakilerden hangisi Hanefî ekolünün inanç esaslarını sistemleştirerek Maverâünnehir bölgesinde kendi kurmuş olduğu kelam ekolünü yaymıştır?",
         "options": [
           {
             "key": "A",
-            "text": "İmam-ı A’zam Ebû Hanife (v. 150/767)"
+            "text": "Ebû Mansur el-Maturîdî (v. 333/944)",
+            "isCorrect": true
           },
           {
             "key": "B",
-            "text": "Hâris el-Muhâsıbî (v. 243/857)"
+            "text": "İmam-ı A’zam Ebû Hanife (v. 150/767)",
+            "isCorrect": false
           },
           {
             "key": "C",
-            "text": "Ebû’l-Hasan el-Eş‘arî (v. 324/936)"
+            "text": "Hâris el-Muhâsıbî (v. 243/857)",
+            "isCorrect": false
           },
           {
             "key": "D",
-            "text": "Abdülkâhir Bağdâdî (v. 429/1037)"
+            "text": "Ebû’l-Hasan el-Eş‘arî (v. 324/936)",
+            "isCorrect": false
           },
           {
             "key": "E",
-            "text": "Hakkında nass bulunmayan herhangi bir"
+            "text": "Abdülkâhir Bağdâdî (v. 429/1037)",
+            "isCorrect": false
           }
-        ]
+        ],
+        "correct": "A"
       },
       {
         "n": 14,
-        "stem": "Hadis ehli",
+        "stem": "Hakkında nass bulunmayan herhangi bir meselede asla görüş belirtmeyen, sadece haberle (âsârla) yetinenlere ------- adı verilir. Yukarıdaki cümlede boş bırakılan yeri aşağıdakilerden hangisi doğru şekilde tamamlar?",
         "options": [
           {
             "key": "A",
-            "text": "Ehl-i Re’y"
+            "text": "Hadis ehli",
+            "isCorrect": true
           },
           {
             "key": "B",
-            "text": "Ehl-i Bid’at"
+            "text": "Ehl-i Re’y",
+            "isCorrect": false
           },
           {
             "key": "C",
-            "text": "Fırka-i Dâlle"
+            "text": "Ehl-i Bid’at",
+            "isCorrect": false
           },
           {
             "key": "D",
-            "text": "Ehl-i Necat"
+            "text": "Fırka-i Dâlle",
+            "isCorrect": false
           },
           {
             "key": "E",
-            "text": "Mâtürîdîlerin; ilâhî sıfatlar, halku’l-Kur’ân,"
+            "text": "Ehl-i Necat",
+            "isCorrect": false
           }
-        ]
+        ],
+        "correct": "A"
+      },
+      {
+        "n": 15,
+        "stem": "Mâtürîdîlerin; ilâhî sıfatlar, halku’l-Kur’ân, insan fiilleri, kader ve kerâmet konularında nasları görmezlikten gelerek insanı yanıltan aşırı ve tutarsız yorumlara gittiği iddiasıyla eleştirdiği mezhep aşağıdakilerden hangisidir?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Selefiyye",
+            "isCorrect": false
+          },
+          {
+            "key": "B",
+            "text": "Haşviyye",
+            "isCorrect": false
+          },
+          {
+            "key": "C",
+            "text": "Şîa",
+            "isCorrect": false
+          },
+          {
+            "key": "D",
+            "text": "Eş‘arîyye",
+            "isCorrect": false
+          },
+          {
+            "key": "E",
+            "text": "Mu’tezile",
+            "isCorrect": true
+          }
+        ],
+        "correct": "E"
       },
       {
         "n": 16,
-        "stem": "Duyular vasıtasıyla elde edilen bilgi, her türlü bilginin esası ve en açık olanıdır.",
+        "stem": "- 2024 Güz Dönemi Mâtürîdî'nin bilgi teorisine göre aşağıdakilerden hangisi yanlıştır?",
         "options": [
           {
             "key": "A",
-            "text": "Bilginin kaynakları Kur’an, Sünnet, icma, akıl"
+            "text": "Duyular vasıtasıyla elde edilen bilgi, her türlü bilginin esası ve en açık olanıdır.",
+            "isCorrect": false
           },
           {
             "key": "B",
-            "text": "Aklî bilgiler duyu alanının yanı sıra dinin de"
+            "text": "Bilginin kaynakları Kur’an, Sünnet, icma, akıl ve keşftir.",
+            "isCorrect": true
           },
           {
             "key": "C",
-            "text": "Akıl, duyular ve haber yoluyla bilgi"
+            "text": "Aklî bilgiler duyu alanının yanı sıra dinin de kaynağını teşkil eden doğru haber alanını da kuşatır ve her türlü bilginin kriterini oluşturur.",
+            "isCorrect": false
           },
           {
             "key": "D",
-            "text": "Duyular aracılığıyla görünen âlemi,"
+            "text": "Akıl, duyular ve haber yoluyla bilgi edinmenin zaruri şartıdır.",
+            "isCorrect": false
           },
           {
             "key": "E",
-            "text": "Şiiliğe göre Hz. Ali'nin imametinin"
+            "text": "Duyular aracılığıyla görünen âlemi, kavramlar ve deliller vasıtasıyla da görünmeyen alanı algılayan akıldır.",
+            "isCorrect": false
           }
-        ]
+        ],
+        "correct": "B"
       },
       {
         "n": 17,
-        "stem": "Hayber'in fethi",
+        "stem": "Şiiliğe göre Hz. Ali'nin imametinin belirlendiği olay aşağıdakilerden hangisidir?",
         "options": [
           {
             "key": "A",
-            "text": "Hz. Peygamber'in vefatı"
+            "text": "Hayber'in fethi",
+            "isCorrect": false
           },
           {
             "key": "B",
-            "text": "Haccın farziyetini tebliğ görevi"
+            "text": "Hz. Peygamber'in vefatı",
+            "isCorrect": false
           },
           {
             "key": "C",
-            "text": "Kırtas hadisesi"
+            "text": "Haccın farziyetini tebliğ görevi",
+            "isCorrect": false
           },
           {
             "key": "D",
-            "text": "Ğadir-i Hum hadisesi"
+            "text": "Kırtas hadisesi",
+            "isCorrect": false
           },
           {
             "key": "E",
-            "text": "Aşağıdakilerden hangisi Şiiliğin oluşmasında"
+            "text": "Ğadir-i Hum hadisesi",
+            "isCorrect": true
           }
-        ]
+        ],
+        "correct": "E"
       },
       {
         "n": 18,
-        "stem": "Cemel Vak’ası",
+        "stem": "Aşağıdakilerden hangisi Şiiliğin oluşmasında belirleyici bir rol oynamıştır?",
         "options": [
           {
             "key": "A",
-            "text": "Ridde Hadiseleri"
+            "text": "Cemel Vak’ası",
+            "isCorrect": false
           },
           {
             "key": "B",
-            "text": "Kerbela Savaşı"
+            "text": "Ridde Hadiseleri",
+            "isCorrect": false
           },
           {
             "key": "C",
-            "text": "Zeyd b. Ali’nin isyanı"
+            "text": "Kerbela Savaşı",
+            "isCorrect": true
           },
           {
             "key": "D",
-            "text": "Ebvâ Toplantısı"
+            "text": "Zeyd b. Ali’nin isyanı",
+            "isCorrect": false
           },
           {
             "key": "E",
-            "text": "Aşağıdakilerden hangisi Şîa’nın günümüze"
+            "text": "Ebvâ Toplantısı",
+            "isCorrect": false
           }
-        ]
+        ],
+        "correct": "C"
+      },
+      {
+        "n": 19,
+        "stem": "Aşağıdakilerden hangisi Şîa’nın günümüze kadar yaşamış büyük kollarından biridir?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Muhammire",
+            "isCorrect": false
+          },
+          {
+            "key": "B",
+            "text": "Beyâniyye",
+            "isCorrect": false
+          },
+          {
+            "key": "C",
+            "text": "Kerbiyye",
+            "isCorrect": false
+          },
+          {
+            "key": "D",
+            "text": "Zeydiyye",
+            "isCorrect": true
+          },
+          {
+            "key": "E",
+            "text": "Seb‘iyye",
+            "isCorrect": false
+          }
+        ],
+        "correct": "D"
+      },
+      {
+        "n": 20,
+        "stem": "Şia'yı diğer mezheplerden ayıran en temel görüşü aşağıdakilerden hangisidir?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Nübüvvet",
+            "isCorrect": false
+          },
+          {
+            "key": "B",
+            "text": "İmanda eşitlik",
+            "isCorrect": false
+          },
+          {
+            "key": "C",
+            "text": "Emr bi’l-ma‘rûf ve nehy ‘ani’l-münker",
+            "isCorrect": false
+          },
+          {
+            "key": "D",
+            "text": "İmamet",
+            "isCorrect": true
+          },
+          {
+            "key": "E",
+            "text": "Halku'l-Kur'an",
+            "isCorrect": false
+          }
+        ],
+        "correct": "D"
       }
     ]
   },
@@ -877,367 +3358,665 @@
     "year": "2024-2025",
     "term": "guz",
     "exam_id": "20242025-guz-vize",
+    "group": "A",
     "file": "İSLÂM MEZHEPLERİ TARİHİ - Çıkmış Sınav Soruları (3).pdf",
+    "answer_key": {
+      "1": "A",
+      "2": "C",
+      "3": "D",
+      "4": "B",
+      "5": "E",
+      "6": "E",
+      "7": "A",
+      "8": "B",
+      "9": "C",
+      "10": "D",
+      "11": "C",
+      "12": "A",
+      "13": "C",
+      "14": "A",
+      "15": "B",
+      "16": "D",
+      "17": "E",
+      "18": "B",
+      "19": "D",
+      "20": "E"
+    },
     "questions": [
       {
         "n": 1,
-        "stem": "Makâlâtü’l-İslâmiyyîn",
+        "stem": "Ebû’l-Hasan el-Eş‘arî 'nin İslâm mezheplerini ve onların görüşlerini tanıttığı meşhur eseri aşağıdakilerden hangisidir?",
         "options": [
           {
             "key": "A",
-            "text": "İlmu Makâlâti’l-Fırak"
+            "text": "Makâlâtü’l-İslâmiyyîn",
+            "isCorrect": true
           },
           {
             "key": "B",
-            "text": "el-Milel ve’n-Nihal"
+            "text": "İlmu Makâlâti’l-Fırak",
+            "isCorrect": false
           },
           {
             "key": "C",
-            "text": "Ashâbü’l- makâlât"
+            "text": "el-Milel ve’n-Nihal",
+            "isCorrect": false
           },
           {
             "key": "D",
-            "text": "el-Fark beyne’l-Fırak"
+            "text": "Ashâbü’l- makâlât",
+            "isCorrect": false
           },
           {
             "key": "E",
-            "text": "Aşağıdakilerden hangisi İslam mezhepleri"
+            "text": "el-Fark beyne’l-Fırak",
+            "isCorrect": false
           }
-        ]
+        ],
+        "correct": "A"
       },
       {
         "n": 2,
-        "stem": "Mezheplerin İslam düşüncesine yaptıkları katkılar",
+        "stem": "Aşağıdakilerden hangisi İslam mezhepleri tarihinin araştırma alanları arasında yer almaz?",
         "options": [
           {
             "key": "A",
-            "text": "Mezheplerin yayıldıkları coğrafya ile ilişkisi"
+            "text": "Mezheplerin İslam düşüncesine yaptıkları katkılar",
+            "isCorrect": false
           },
           {
             "key": "B",
-            "text": "Ehl-i sünnet dışı fırkaların batıl olduğunun"
+            "text": "Mezheplerin yayıldıkları coğrafya ile ilişkisi",
+            "isCorrect": false
           },
           {
             "key": "C",
-            "text": "Mezheplerin doğuşunda insan unsurunun"
+            "text": "Ehl-i sünnet dışı fırkaların batıl olduğunun ispatı",
+            "isCorrect": true
           },
           {
             "key": "D",
-            "text": "Mezhepler temsilcilerinin hayatları ve kelami"
+            "text": "Mezheplerin doğuşunda insan unsurunun etkisi",
+            "isCorrect": false
           },
           {
             "key": "E",
-            "text": "Aşağıdakilerden hangisi İslam mezhepleri"
+            "text": "Mezhepler temsilcilerinin hayatları ve kelami görüşleri",
+            "isCorrect": false
           }
-        ]
+        ],
+        "correct": "C"
       },
       {
         "n": 3,
-        "stem": "Bugün ve gelece k açısından mezheplerle ilgili önemli dersleri topluma ve bilhassa yetkili kişilere sunmak",
+        "stem": "Aşağıdakilerden hangisi İslam mezhepleri tarihinin amaçlarından biri değildir?",
         "options": [
           {
             "key": "A",
-            "text": "Günümüz Müslümanlarının sahip oldukları"
+            "text": "Bugün ve gelece k açısından mezheplerle ilgili önemli dersleri topluma ve bilhassa yetkili kişilere sunmak",
+            "isCorrect": false
           },
           {
             "key": "B",
-            "text": "Mezhepleri ve alt gruplarını geçmişe uzanan"
+            "text": "Günümüz Müslümanlarının sahip oldukları değişik düşünce biçimlerini daha iyi anlamayı sağlamak",
+            "isCorrect": false
           },
           {
             "key": "C",
-            "text": "Mezhebi kimliklerin dinî kimliklerden önde"
+            "text": "Mezhepleri ve alt gruplarını geçmişe uzanan bir perspektif içerisinde tüm yönleriyle araştırmak",
+            "isCorrect": false
           },
           {
             "key": "D",
-            "text": "Müslümanlar arasındaki sorunların"
+            "text": "Mezhebi kimliklerin dinî kimliklerden önde geldiği bilincini oluşturmak",
+            "isCorrect": true
           },
           {
             "key": "E",
-            "text": "------- dinin özündeki ve Müslüman toplumun"
+            "text": "Müslümanlar arasındaki sorunların çözümünde yeni fırsatlar ve öneriler sunmak",
+            "isCorrect": false
           }
-        ]
+        ],
+        "correct": "D"
+      },
+      {
+        "n": 4,
+        "stem": "------- dinin özündeki ve Müslüman toplumun bütünlüğündeki bozulmayı ifade eden kavramdır. Yukarıdaki cümlede boş bırakılan yeri aşağıdakilerden hangisi doğru şekilde tamamlar?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Makâlât",
+            "isCorrect": false
+          },
+          {
+            "key": "B",
+            "text": "Tefrika",
+            "isCorrect": true
+          },
+          {
+            "key": "C",
+            "text": "Dalâlet",
+            "isCorrect": false
+          },
+          {
+            "key": "D",
+            "text": "İttifak",
+            "isCorrect": false
+          },
+          {
+            "key": "E",
+            "text": "Bid’at",
+            "isCorrect": false
+          }
+        ],
+        "correct": "B"
       },
       {
         "n": 5,
-        "stem": "Hz. Osman’ın devlet görevlerinde kendi akrabalarını tercih etmesi, kökleri İslâm öncesine kadar geriye giden Ümeyyeoğulları-Haşimoğulları çekişmesini tetiklemiştir.",
+        "stem": "Hz. Osman dönemi olaylarıyla ilgili aşağıdaki ifadelerden hangisi yanlıştır?",
         "options": [
           {
             "key": "A",
-            "text": "Fetihlerin durmasıyla birlikte Hz. Osman’ın"
+            "text": "Hz. Osman’ın devlet görevlerinde kendi akrabalarını tercih etmesi, kökleri İslâm öncesine kadar geriye giden Ümeyyeoğulları-Haşimoğulları çekişmesini tetiklemiştir.",
+            "isCorrect": false
           },
           {
             "key": "B",
-            "text": "İslam sınırları Hz. Osman idaresinin ilk"
+            "text": "Fetihlerin durmasıyla birlikte Hz. Osman’ın otoritesi sorgulanmaya ve önceki halîfelerle kıyaslanmaya başlamıştır.",
+            "isCorrect": false
           },
           {
             "key": "C",
-            "text": "Hz. Osman’ın ölümü öncesinde Medine’de"
+            "text": "İslam sınırları Hz. Osman idaresinin ilk döneminde en ileri noktasına kadar genişleyerek büyük devletlerin kapısına kadar dayanmıştır.",
+            "isCorrect": false
           },
           {
             "key": "D",
-            "text": "Hz. Osman’ın on iki yıl süren hilafetinin"
+            "text": "Hz. Osman’ın ölümü öncesinde Medine’de yaşanan kargaşa, yeni halîfenin kim olacağı konusunda da kendisini göstermiştir.",
+            "isCorrect": false
           },
           {
             "key": "E",
-            "text": "Tarihte ortaya çıkan tüm mezheplerin kendi"
+            "text": "Hz. Osman’ın on iki yıl süren hilafetinin büyük çoğunluğu huzurlu geçmişken yalnızca son iki yılında sorunlar yaşanmıştır.",
+            "isCorrect": true
           }
-        ]
+        ],
+        "correct": "E"
       },
       {
         "n": 6,
-        "stem": "Farklı kültürlerle karşılaşma",
+        "stem": "Tarihte ortaya çıkan tüm mezheplerin kendi görüşlerini Kur’ân’a atıfta bulunarak doğrulamaya çalışmaları, mezheplerin ortaya çıkışında etkili olan sebeplerden hangisine örnek gösterilebilir?",
         "options": [
           {
             "key": "A",
-            "text": "İslam coğrafyasının genişlemesi"
+            "text": "Farklı kültürlerle karşılaşma",
+            "isCorrect": false
           },
           {
             "key": "B",
-            "text": "Sosyo-politik sebepler"
+            "text": "İslam coğrafyasının genişlemesi",
+            "isCorrect": false
           },
           {
             "key": "C",
-            "text": "İnsanın tabiatı"
+            "text": "Sosyo-politik sebepler",
+            "isCorrect": false
           },
           {
             "key": "D",
-            "text": "Nasların tabiatı"
+            "text": "İnsanın tabiatı",
+            "isCorrect": false
           },
           {
             "key": "E",
-            "text": "Aşağıdakilerden hangisi Cemel ve Sıffin"
+            "text": "Nasların tabiatı",
+            "isCorrect": true
           }
-        ]
+        ],
+        "correct": "E"
       },
       {
         "n": 7,
-        "stem": "İman-amel ilişkisi",
+        "stem": "Aşağıdakilerden hangisi Cemel ve Sıffin Savaşları sonrasında ortaya çıkan problemlerden biridir?",
         "options": [
           {
             "key": "A",
-            "text": "Hz. Ömer'in öldürülmesi"
+            "text": "İman-amel ilişkisi",
+            "isCorrect": true
           },
           {
             "key": "B",
-            "text": "C)"
+            "text": "Hz. Ömer'in öldürülmesi",
+            "isCorrect": false
+          },
+          {
+            "key": "C",
+            "text": "Hadislerin tedvini",
+            "isCorrect": false
           },
           {
             "key": "D",
-            "text": "Hadislerin yazılması"
-          },
-          {
-            "key": "E",
-            "text": "Çeşitli felsefi gelenekler İslam düşüncesine ve"
+            "text": "Hadislerin yazılması",
+            "isCorrect": false
           }
-        ]
+        ],
+        "correct": "A"
       },
       {
         "n": 8,
-        "stem": "Sosyo-politik faktörler",
+        "stem": "Çeşitli felsefi gelenekler İslam düşüncesine ve mezheplerin doğuşuna etki etmiştir. Yunan ve Mısır medeniyetlerine ait felsefi birikim Şiî mezhepler içerisinde de ğerlendirilen İsma ilîliğin görüşlerinin şekillenmesin i do ğrudan etkilemiştir. Özellikle Neo-Platonist ve Gnostik düşünme biçimi ve fikirler İsma ilîlik aracılığıyla İsl am düşüncesine taşınmıştır. Yukarıdaki paragrafta mezheple",
         "options": [
           {
             "key": "A",
-            "text": "Farklı din, inanç ve kültürlerle karşılaşma"
+            "text": "Sosyo-politik faktörler",
+            "isCorrect": false
           },
           {
             "key": "B",
-            "text": "İnsanın tabiatı"
+            "text": "Farklı din, inanç ve kültürlerle karşılaşma",
+            "isCorrect": true
           },
           {
             "key": "C",
-            "text": "İnsanın toplumsal bir varlık oluşu"
+            "text": "İnsanın tabiatı",
+            "isCorrect": false
           },
           {
             "key": "D",
-            "text": "Nassların tabiatı"
+            "text": "İnsanın toplumsal bir varlık oluşu",
+            "isCorrect": false
           },
           {
             "key": "E",
-            "text": "2024-2025 GÜZ ARA - A"
+            "text": "Nassların tabiatı",
+            "isCorrect": false
           }
-        ]
+        ],
+        "correct": "B"
+      },
+      {
+        "n": 9,
+        "stem": "- 2025 Güz Dönemi Ara Sınav Aşağıdakilerden hangisi “yönetim, iman-küfür ve kader” meseleleri etrafında oluşan ilk mezheplerden biri değildir?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Haricilik",
+            "isCorrect": false
+          },
+          {
+            "key": "B",
+            "text": "Mürcie",
+            "isCorrect": false
+          },
+          {
+            "key": "C",
+            "text": "Bahailik",
+            "isCorrect": true
+          },
+          {
+            "key": "D",
+            "text": "Kaderiyye",
+            "isCorrect": false
+          },
+          {
+            "key": "E",
+            "text": "Mu'tezile",
+            "isCorrect": false
+          }
+        ],
+        "correct": "C"
+      },
+      {
+        "n": 10,
+        "stem": "------- hakem tayinini, yani tahkimi kabul etmesinden dolayı Hz. Ali'yi suçlayıp ondan ayrılanların meydana getirdiği bir fırkadır. Yukarıdaki cümlede boş bırakılan yeri aşağıdakilerden hangisi doğru şekilde tamamlar?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Mürcie",
+            "isCorrect": false
+          },
+          {
+            "key": "B",
+            "text": "Sünnîlik",
+            "isCorrect": false
+          },
+          {
+            "key": "C",
+            "text": "Mu’tezile",
+            "isCorrect": false
+          },
+          {
+            "key": "D",
+            "text": "Haricîlik",
+            "isCorrect": true
+          },
+          {
+            "key": "E",
+            "text": "Ahmediyye",
+            "isCorrect": false
+          }
+        ],
+        "correct": "D"
       },
       {
         "n": 11,
-        "stem": "Kulun fiillerinin yaratıcısı meselesi",
+        "stem": "Mu‘tezile’nin \"el-Menzile beyne’l-Menzileteyn\" prensibi aşağıdaki tartışmalardan hangisiyle alakalıdır?",
         "options": [
           {
             "key": "A",
-            "text": "İmanın artıp eksilmesi meselesi"
+            "text": "Kulun fiillerinin yaratıcısı meselesi",
+            "isCorrect": false
           },
           {
             "key": "B",
-            "text": "Büyük günah işleyenin durumu meselesi"
+            "text": "İmanın artıp eksilmesi meselesi",
+            "isCorrect": false
           },
           {
             "key": "C",
-            "text": "Tevhid konusu"
+            "text": "Büyük günah işleyenin durumu meselesi",
+            "isCorrect": true
           },
           {
             "key": "D",
-            "text": "Allah’ın sıfatları meselesi"
+            "text": "Tevhid konusu",
+            "isCorrect": false
           },
           {
             "key": "E",
-            "text": "Aşağıdakilerden hangisi ilk Harici grupların"
+            "text": "Allah’ın sıfatları meselesi",
+            "isCorrect": false
           }
-        ]
+        ],
+        "correct": "C"
       },
       {
         "n": 12,
-        "stem": "Tâatın kâfire bir faydası olmadığı gibi, günahın da imana bir zararı yoktur.",
+        "stem": "Aşağıdakilerden hangisi ilk Harici grupların ortak görüşlerinden biri değildir?",
         "options": [
           {
             "key": "A",
-            "text": "Hz. Osman ve Hz. Ali’den ve onların"
+            "text": "Tâatın kâfire bir faydası olmadığı gibi, günahın da imana bir zararı yoktur.",
+            "isCorrect": true
           },
           {
             "key": "B",
-            "text": "Amel imandan bir parçadır."
+            "text": "Hz. Osman ve Hz. Ali’den ve onların taraftarlarından teberri edip uzaklaşmak gerekir.",
+            "isCorrect": false
           },
           {
             "key": "C",
-            "text": "İmam veya devlet başkanı sünnete aykırı"
+            "text": "Amel imandan bir parçadır.",
+            "isCorrect": false
           },
           {
             "key": "D",
-            "text": "Bütün büyük günah işleyenler küfre"
+            "text": "İmam veya devlet başkanı sünnete aykırı uygulamalarda bulunduğunda ona karşı ayaklanmak farzdır.",
+            "isCorrect": false
           },
           {
             "key": "E",
-            "text": "Aşağıdakilerden hangisi Hanefî ekolünün"
+            "text": "Bütün büyük günah işleyenler küfre düşmüşlerdir.",
+            "isCorrect": false
           }
-        ]
+        ],
+        "correct": "A"
       },
       {
         "n": 13,
-        "stem": "Hâris el-Muhâsıbî (v. 243/857)",
+        "stem": "Aşağıdakilerden hangisi Hanefî ekolünün inanç esaslarını sistemleştirerek Maverâünnehir bölgesinde kendi kurmuş olduğu kelam ekolünü yaymıştır?",
         "options": [
           {
             "key": "A",
-            "text": "İmam-ı A’zam Ebû Hanife (v. 150/767)"
+            "text": "Hâris el-Muhâsıbî (v. 243/857)",
+            "isCorrect": false
           },
           {
             "key": "B",
-            "text": "Ebû Mansur el-Maturîdî (v. 333/944)"
+            "text": "İmam-ı A’zam Ebû Hanife (v. 150/767)",
+            "isCorrect": false
           },
           {
             "key": "C",
-            "text": "Ebû’l-Hasan el-Eş‘arî (v. 324/936)"
+            "text": "Ebû Mansur el-Maturîdî (v. 333/944)",
+            "isCorrect": true
           },
           {
             "key": "D",
-            "text": "Abdülkâhir Bağdâdî (v. 429/1037)"
+            "text": "Ebû’l-Hasan el-Eş‘arî (v. 324/936)",
+            "isCorrect": false
           },
           {
             "key": "E",
-            "text": "Hicri 2. ve 3. yüzy ıllarda bir taraftan itikadî"
+            "text": "Abdülkâhir Bağdâdî (v. 429/1037)",
+            "isCorrect": false
           }
-        ]
+        ],
+        "correct": "C"
       },
       {
         "n": 14,
-        "stem": "Ehl-i Sünnet",
+        "stem": "Hicri 2. ve 3. yüzy ıllarda bir taraftan itikadî konularda naslara sımsıkı bağlanmayı zaruri ve yeterli gören İmam Mâlik, İmam Şâfiî ve Ahmed b. Hanbel gibi Ehl-i hadîs âlimlerinin oluşturduğu kesimce; diğer taraftan da nasları esas almakla birlikte itikadî meselelerin akıl ilkeleriyle desteklemesini gerekli bulan Ebû Hanîfe ve öğrencilerince temsil edilen ekol aşağıdakilerden hangisidir?",
         "options": [
           {
             "key": "A",
-            "text": "Matüridiyye"
+            "text": "Ehl-i Sünnet",
+            "isCorrect": true
           },
           {
             "key": "B",
-            "text": "Eş’ariyye"
+            "text": "Matüridiyye",
+            "isCorrect": false
           },
           {
             "key": "C",
-            "text": "Selefiyye"
+            "text": "Eş’ariyye",
+            "isCorrect": false
           },
           {
             "key": "D",
-            "text": "Mu’tezile"
+            "text": "Selefiyye",
+            "isCorrect": false
           },
           {
             "key": "E",
-            "text": "Mâtürîdîlerin; ilâhî sıfatlar, halku’l-Kur’ân,"
+            "text": "Mu’tezile",
+            "isCorrect": false
           }
-        ]
+        ],
+        "correct": "A"
+      },
+      {
+        "n": 15,
+        "stem": "Mâtürîdîlerin; ilâhî sıfatlar, halku’l-Kur’ân, insan fiilleri, kader ve kerâmet konularında nasları görmezlikten gelerek insanı yanıltan aşırı ve tutarsız yorumlara gittiği iddiasıyla eleştirdiği mezhep aşağıdakilerden hangisidir?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Eş‘arîyye",
+            "isCorrect": false
+          },
+          {
+            "key": "B",
+            "text": "Mu’tezile",
+            "isCorrect": true
+          },
+          {
+            "key": "C",
+            "text": "Haşviyye",
+            "isCorrect": false
+          },
+          {
+            "key": "D",
+            "text": "Şîa",
+            "isCorrect": false
+          },
+          {
+            "key": "E",
+            "text": "Selefiyye",
+            "isCorrect": false
+          }
+        ],
+        "correct": "B"
       },
       {
         "n": 16,
-        "stem": "Kur’ân mahluk değildir.",
+        "stem": "Aşağıdakilerden hangisi Selefiyye'nin benimsediği görüşlerden biri değildir?",
         "options": [
           {
             "key": "A",
-            "text": "İman, tasdik-ikrar-amel olarak bir bütündür."
+            "text": "Kur’ân mahluk değildir.",
+            "isCorrect": false
           },
           {
             "key": "B",
-            "text": "Hayır ve şerr bütünüyle Allah’tandır."
+            "text": "İman, tasdik-ikrar-amel olarak bir bütündür.",
+            "isCorrect": false
           },
           {
             "key": "C",
-            "text": "Rüyetullâh mümkün değildir."
+            "text": "Hayır ve şerr bütünüyle Allah’tandır.",
+            "isCorrect": false
           },
           {
             "key": "D",
-            "text": "Kıyamet alametleri ayet ve hadislerde"
+            "text": "Rüyetullâh mümkün değildir.",
+            "isCorrect": true
           },
           {
             "key": "E",
-            "text": "İsmailî düşüncenin en önemli unsuru"
+            "text": "Kıyamet alametleri ayet ve hadislerde geçtiği şekilde yorumsuz olarak kabul edilir.",
+            "isCorrect": false
           }
-        ]
+        ],
+        "correct": "D"
       },
       {
         "n": 17,
-        "stem": "İmamların masum olduğuna inanılması",
+        "stem": "İsmailî düşüncenin en önemli unsuru aşağıdakilerden hangisidir?",
         "options": [
           {
             "key": "A",
-            "text": "Gizlilik döneminde benimsenen görüşler"
+            "text": "İmamların masum olduğuna inanılması",
+            "isCorrect": false
           },
           {
             "key": "B",
-            "text": "İmametin gerekliliği düşüncesi"
+            "text": "Gizlilik döneminde benimsenen görüşler",
+            "isCorrect": false
           },
           {
             "key": "C",
-            "text": "Hz. Ebu Bekir ve Hz. Ömer'in hilafetini n"
+            "text": "İmametin gerekliliği düşüncesi",
+            "isCorrect": false
           },
           {
             "key": "D",
-            "text": "Kutsal kitap ve şer'i hükümlerin z ahir ve"
+            "text": "Hz. Ebu Bekir ve Hz. Ömer'in hilafetini n reddedilmesi",
+            "isCorrect": false
           },
           {
             "key": "E",
-            "text": "Aşağıdakilerden hangisi Şîa’nın günümüze"
+            "text": "Kutsal kitap ve şer'i hükümlerin z ahir ve batını arasında ayrıma gidilmesi",
+            "isCorrect": true
           }
-        ]
+        ],
+        "correct": "E"
+      },
+      {
+        "n": 18,
+        "stem": "Aşağıdakilerden hangisi Şîa’nın günümüze kadar yaşamış büyük kollarından biridir?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Muhammire",
+            "isCorrect": false
+          },
+          {
+            "key": "B",
+            "text": "Zeydiyye",
+            "isCorrect": true
+          },
+          {
+            "key": "C",
+            "text": "Seb‘iyye",
+            "isCorrect": false
+          },
+          {
+            "key": "D",
+            "text": "Kerbiyye",
+            "isCorrect": false
+          },
+          {
+            "key": "E",
+            "text": "Beyâniyye",
+            "isCorrect": false
+          }
+        ],
+        "correct": "B"
+      },
+      {
+        "n": 19,
+        "stem": "- 2025 Güz Dönemi Ara Sınav -------, Şîa’yı diğer İslamî fırkalardan ayıran en önemli itikat esasıdır. Yukarıdaki cümlede boş bırakılan yeri aşağıdakilerden hangisi doğru şekilde tamamlar?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Adâlet",
+            "isCorrect": false
+          },
+          {
+            "key": "B",
+            "text": "Meâd",
+            "isCorrect": false
+          },
+          {
+            "key": "C",
+            "text": "Nübüvvet",
+            "isCorrect": false
+          },
+          {
+            "key": "D",
+            "text": "İmâmet",
+            "isCorrect": true
+          },
+          {
+            "key": "E",
+            "text": "Tevhid",
+            "isCorrect": false
+          }
+        ],
+        "correct": "D"
       },
       {
         "n": 20,
-        "stem": "İmam Hz. Peygamber'den Hz. Ali yoluyla gelen vehbî ilme sahip olmalıdır.",
+        "stem": "Zeydiyye’nin imamet anlayışıyla ilgili aşağıdakilerden hangisi doğrudur?",
         "options": [
           {
             "key": "A",
-            "text": "İmam ismet sıfatına sahiptir."
+            "text": "İmam Hz. Peygamber'den Hz. Ali yoluyla gelen vehbî ilme sahip olmalıdır.",
+            "isCorrect": false
           },
           {
             "key": "B",
-            "text": "Her bir imam bir önceki imam tarafından"
+            "text": "İmam ismet sıfatına sahiptir.",
+            "isCorrect": false
           },
           {
             "key": "C",
-            "text": "Hz. Ebubekir ve Hz. Ömer, Hz. Ali’nin"
+            "text": "Her bir imam bir önceki imam tarafından tayin edilir.",
+            "isCorrect": false
           },
           {
             "key": "D",
-            "text": "Gâib imam fikri geçerli değildir; imam"
+            "text": "Hz. Ebubekir ve Hz. Ömer, Hz. Ali’nin hakkını gasp etmeleri sebebiyle tekfir edilir.",
+            "isCorrect": false
           },
           {
             "key": "E",
-            "text": "2024-2025 GÜZ ARA - A"
+            "text": "Gâib imam fikri geçerli değildir; imam imametini açıkça ilan eder.",
+            "isCorrect": true
           }
-        ]
+        ],
+        "correct": "E"
       }
     ]
   },
@@ -1245,1003 +4024,670 @@
     "year": "2025-2026",
     "term": "guz",
     "exam_id": "20252026-guz-vize",
+    "group": "A",
     "file": "İSLÂM MEZHEPLERİ TARİHİ - Çıkmış Sınav Soruları (4).pdf",
-    "questions": [
-      {
-        "n": 2,
-        "stem": "Hangi mezhebin hak, hangisinin batıl olduğunun ispatı",
-        "options": [
-          {
-            "key": "A",
-            "text": "Mezhebin isimlendirilmesi"
-          },
-          {
-            "key": "B",
-            "text": "Mezhebe giriş ve mensubiyet"
-          },
-          {
-            "key": "C",
-            "text": "Mezhep mensupları arasında grupsal"
-          },
-          {
-            "key": "D",
-            "text": "Bir mezhebin oluşumu ve cemaatsel"
-          },
-          {
-            "key": "E",
-            "text": "Aşağıdakilerden hangisi mezhepleri"
-          }
-        ]
-      },
-      {
-        "n": 3,
-        "stem": "Birçok mezhep isminin yapay olarak üretilmesi",
-        "options": [
-          {
-            "key": "A",
-            "text": "Mezhep isimlerinin bir kısmının muhalifler"
-          },
-          {
-            "key": "B",
-            "text": "Klâsik kaynaklarda Mu‘tezile, Râfıza gibi"
-          },
-          {
-            "key": "C",
-            "text": "Mezheplerin Hz. Muhammed'in vefatından"
-          },
-          {
-            "key": "D",
-            "text": "Bazı mezhep isimlerinin, ayet ve hadislerde"
-          },
-          {
-            "key": "E",
-            "text": "Aşağıdakilerden hangisi İslam mezhepleri"
-          }
-        ]
-      },
-      {
-        "n": 4,
-        "stem": "Hangi mezhebin hak olduğunu tespit etmek",
-        "options": [
-          {
-            "key": "A",
-            "text": "Müslümanlar arasındaki sorunların"
-          },
-          {
-            "key": "B",
-            "text": "Mezhep ve dinî grupların tarihte bıraktıkları"
-          },
-          {
-            "key": "C",
-            "text": "Mezhep ve gruplar arasındaki önyargıları"
-          },
-          {
-            "key": "D",
-            "text": "Günümüz Müslümanlarının sahip oldukları"
-          },
-          {
-            "key": "E",
-            "text": "Aşağıdaki tarihi gelişmelerden hangisi İslam"
-          }
-        ]
-      },
-      {
-        "n": 5,
-        "stem": "Tahkim olayı",
-        "options": [
-          {
-            "key": "A",
-            "text": "Hz. Osman'ın öldürülmesi"
-          },
-          {
-            "key": "B",
-            "text": "Sıffin savaşı"
-          },
-          {
-            "key": "C",
-            "text": "Cemel savaşı"
-          },
-          {
-            "key": "D",
-            "text": "Mekke'nin fethi"
-          },
-          {
-            "key": "E",
-            "text": "İslâm mezheplerinin oluşumunda etkili olan"
-          }
-        ]
-      },
-      {
-        "n": 6,
-        "stem": "Nassların tabiatı",
-        "options": [
-          {
-            "key": "A",
-            "text": "İnsanın tabiatı"
-          },
-          {
-            "key": "B",
-            "text": "Politik anlayışlar"
-          },
-          {
-            "key": "C",
-            "text": "Çevresel şartlar"
-          },
-          {
-            "key": "D",
-            "text": "Zaman-mekan değişimi"
-          },
-          {
-            "key": "E",
-            "text": "Mezhepler ile ilgili aşağıdaki ifadelerden"
-          }
-        ]
-      },
-      {
-        "n": 7,
-        "stem": "Mezhepler, din alanındaki farklılaşmaların birer ürünü olup içinde geliştikleri ortamın izlerini bünyelerinde taşırlar.",
-        "options": [
-          {
-            "key": "A",
-            "text": "Bir mezhebin ortaya çıkışı, tek bir insana"
-          },
-          {
-            "key": "B",
-            "text": "Mezheplerin oluşumunda politik ve"
-          },
-          {
-            "key": "C",
-            "text": "Mezhepler dinin farklı anlaşılma biçimleri"
-          },
-          {
-            "key": "D",
-            "text": "Mezhepler birer beşerî oluşumlardır."
-          },
-          {
-            "key": "E",
-            "text": "Aşağıdakilerden hangisi Emevi ve Abbasiler"
-          }
-        ]
-      },
-      {
-        "n": 8,
-        "stem": "Haricilerin tekfir ve şiddet yanlışı tutumları",
-        "options": [
-          {
-            "key": "A",
-            "text": "Muhkem kabul edilen Kur'an ayetlerinin"
-          },
-          {
-            "key": "B",
-            "text": "Mevaliye karşı uygulanan politikalar"
-          },
-          {
-            "key": "C",
-            "text": "Farklı din, kültür ve medeniyetlerle etkileşim"
-          },
-          {
-            "key": "D",
-            "text": "Ali oğullarının Emevi ve Abbasi karşıtlığı"
-          },
-          {
-            "key": "E",
-            "text": "2025-2026 GÜZ ARA - A"
-          }
-        ]
-      },
-      {
-        "n": 10,
-        "stem": "Abdullah b. İbâd",
-        "options": [
-          {
-            "key": "A",
-            "text": "Cehm b. Safvân"
-          },
-          {
-            "key": "B",
-            "text": "Vâsıl b. Atâ"
-          },
-          {
-            "key": "C",
-            "text": "Ebû Mûsâ el-Eş'arî"
-          },
-          {
-            "key": "D",
-            "text": "Hasan-ı Basrî"
-          },
-          {
-            "key": "E",
-            "text": "Ebû Hanîfe ve Mürcie ilişkisi bağlamında"
-          }
-        ]
-      },
-      {
-        "n": 11,
-        "stem": "Mürcie’de olduğu gibi Ebû Hanîfe’ye göre de iman değer bakımından amelden üstündür.",
-        "options": [
-          {
-            "key": "A",
-            "text": "Ebû Hanîfe tıpkı Mürcie gibi iman tanımında"
-          },
-          {
-            "key": "B",
-            "text": "Ebû Hanife “mürciî” vasfını kabul etmiştir."
-          },
-          {
-            "key": "C",
-            "text": "Ebû Hanîfe, amelin imanın zorunlu bir"
-          },
-          {
-            "key": "D",
-            "text": "Amel, imanın yanında ikinci sırada yer alır."
-          },
-          {
-            "key": "E",
-            "text": "Aşağıdakilerden hangisi Abbasi halifeleri"
-          }
-        ]
-      },
-      {
-        "n": 13,
-        "stem": "Hadis ehli",
-        "options": [
-          {
-            "key": "A",
-            "text": "Ehl-i Bid’at"
-          },
-          {
-            "key": "B",
-            "text": "Ehl-i Necat"
-          },
-          {
-            "key": "C",
-            "text": "Fırka-i Dâlle"
-          },
-          {
-            "key": "D",
-            "text": "Ehl-i Re’y"
-          },
-          {
-            "key": "E",
-            "text": "Mâtürîdîler’in; ilâhî sıfatlar, halku’l-Kur’ân,"
-          }
-        ]
-      },
-      {
-        "n": 16,
-        "stem": "Akıl hem zorunlu hem zorunlu olmayan bilgileri ürettiğinden, Eş‘arîyye’nin akıl tanımı yanlıştır.",
-        "options": [
-          {
-            "key": "A",
-            "text": "Duyulara ve akıl yürütmeye başvurularak"
-          },
-          {
-            "key": "B",
-            "text": "Duyuların ve aklın alanına giren konuların"
-          },
-          {
-            "key": "C",
-            "text": "Bilgi kaynakları duyular, akıl ve doğru"
-          },
-          {
-            "key": "D",
-            "text": "Âhâd haberler bağlayıcı olup haber-i sâdık"
-          },
-          {
-            "key": "E",
-            "text": "-------, Şîa’yı diğer İslamî fırkalardan ayıran en"
-          }
-        ]
-      },
-      {
-        "n": 18,
-        "stem": "Zeydiyye, kader anlayışında Cebriyye mezhebine yakındır.",
-        "options": [
-          {
-            "key": "A",
-            "text": "Zeydiyye, Ebû Hanîfe’ye yakınlığından"
-          },
-          {
-            "key": "B",
-            "text": "Zeydiyye, aklı reddeden literalist bir ekoldür."
-          },
-          {
-            "key": "C",
-            "text": "Zeydiyye, itikâdda Mu‘tezile mezhebine"
-          },
-          {
-            "key": "D",
-            "text": "Zeydiyye, itikâdda tamamen İmamiyye"
-          },
-          {
-            "key": "E",
-            "text": "Aşırı Şii fırkalar tarafından ileri sürülen ve"
-          }
-        ]
-      },
-      {
-        "n": 20,
-        "stem": "Gizlilik döneminde benimsenen görüşler",
-        "options": [
-          {
-            "key": "A",
-            "text": "Hz. Ebu Bekir ve Hz. Ömer'in hilafetini n"
-          },
-          {
-            "key": "B",
-            "text": "Kutsal kitap ve şer'i hükümlerin z ahir ve"
-          },
-          {
-            "key": "C",
-            "text": "İmametin gerekliliği düşüncesi"
-          },
-          {
-            "key": "D",
-            "text": "İmamların masum olduğuna inanılması"
-          },
-          {
-            "key": "E",
-            "text": "2025-2026 GÜZ ARA - A"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "year": "2021-2022",
-    "term": "guz",
-    "exam_id": "20212022-guz-vize",
-    "file": "İSLÂM MEZHEPLERİ TARİHİ - Çıkmış Sınav Soruları.pdf",
+    "answer_key": {
+      "1": "A",
+      "2": "A",
+      "3": "D",
+      "4": "A",
+      "5": "E",
+      "6": "B",
+      "7": "C",
+      "8": "D",
+      "9": "B",
+      "10": "C",
+      "11": "C",
+      "12": "E",
+      "13": "A",
+      "14": "E",
+      "15": "B",
+      "16": "E",
+      "17": "D",
+      "18": "D",
+      "19": "B",
+      "20": "C"
+    },
     "questions": [
       {
         "n": 1,
-        "stem": "Mezheplerin İslam medeniyetine katkılarını gün yüzüne çıkartmak",
+        "stem": "------- dinin özündeki ve Müslüman toplumun bütünlüğündeki bozulmayı ifade eden kavramdır. Yukarıdaki cümlede boş bırakılan yeri aşağıdakilerden hangisi doğru şekilde tamamlar?",
         "options": [
           {
             "key": "A",
-            "text": "Mezhep ve dini grupların tarihte bıraktıkları"
+            "text": "Tefrika",
+            "isCorrect": true
           },
           {
             "key": "B",
-            "text": "Müslümanlar arasındaki mezhepsel ve"
+            "text": "Bid’at",
+            "isCorrect": false
           },
           {
             "key": "C",
-            "text": "Müslüman toplumların sosyal ve psikolojik"
+            "text": "Dalâlet",
+            "isCorrect": false
           },
           {
             "key": "D",
-            "text": "Hangi mezheplerin hak, hangilerinin batıl"
+            "text": "İttifak",
+            "isCorrect": false
           },
           {
             "key": "E",
-            "text": "------- dinin özündeki ve Müslüman toplumun"
+            "text": "Makâlât",
+            "isCorrect": false
           }
-        ]
+        ],
+        "correct": "A"
+      },
+      {
+        "n": 2,
+        "stem": "Aşağıdakilerden hangisi İslam mezhepleri tarihi disiplini ile din sosyolojisinin ortak çalışma konuları arasında yer almaz?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Hangi mezhebin hak, hangisinin batıl olduğunun ispatı",
+            "isCorrect": true
+          },
+          {
+            "key": "B",
+            "text": "Mezhebin isimlendirilmesi",
+            "isCorrect": false
+          },
+          {
+            "key": "C",
+            "text": "Mezhebe giriş ve mensubiyet",
+            "isCorrect": false
+          },
+          {
+            "key": "D",
+            "text": "Mezhep mensupları arasında grupsal dayanışma ve ekonomik yardımlaşma",
+            "isCorrect": false
+          },
+          {
+            "key": "E",
+            "text": "Bir mezhebin oluşumu ve cemaatsel hiyerarşinin nasıl teşekkül ettiği",
+            "isCorrect": false
+          }
+        ],
+        "correct": "A"
       },
       {
         "n": 3,
-        "stem": "Dini lider hezeyanlarını bir patoloji olarak incelemesi",
+        "stem": "Aşağıdakilerden hangisi mezhepleri isimlendirme ve sınıflama konusunda ki metodolojik problemlerden biri değildir?",
         "options": [
           {
             "key": "A",
-            "text": "Hak kabul edilen inançları ispat etmesi"
+            "text": "Birçok mezhep isminin yapay olarak üretilmesi",
+            "isCorrect": false
           },
           {
             "key": "B",
-            "text": "Dinler ve mezhepler arasındaki ortak"
+            "text": "Mezhep isimlerinin bir kısmının muhalifler tarafından aşağılama kastıyla konulması",
+            "isCorrect": false
           },
           {
             "key": "C",
-            "text": "İslam kökenli bazı mezheplerin yeni bir dine"
+            "text": "Klâsik kaynaklarda Mu‘tezile, Râfıza gibi bazı mezhep isimleri ile ilgili bir takım uydurma hikâyeler nakledilmesi",
+            "isCorrect": false
           },
           {
             "key": "D",
-            "text": "Hilafet tartışmalarının mezheplerin"
+            "text": "Mezheplerin Hz. Muhammed'in vefatından sonra ortaya çıkmış olması",
+            "isCorrect": true
           },
           {
             "key": "E",
-            "text": "I. el-Bâisü’l-Hasîs"
+            "text": "Bazı mezhep isimlerinin, ayet ve hadislerde geçen isim ve kelimelerle irtibatlandırılması",
+            "isCorrect": false
           }
-        ]
+        ],
+        "correct": "D"
+      },
+      {
+        "n": 4,
+        "stem": "Aşağıdakilerden hangisi İslam mezhepleri tarihi biliminin amaçlarından biri değildir?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Hangi mezhebin hak olduğunu tespit etmek",
+            "isCorrect": true
+          },
+          {
+            "key": "B",
+            "text": "Müslümanlar arasındaki sorunların çözümünde yeni fırsatlar ortaya çıkartmak",
+            "isCorrect": false
+          },
+          {
+            "key": "C",
+            "text": "Mezhep ve dinî grupların tarihte bıraktıkları olumlu ya da olumsuz izleri görünür kılmak",
+            "isCorrect": false
+          },
+          {
+            "key": "D",
+            "text": "Mezhep ve gruplar arasındaki önyargıları giderici bir işlev görmek",
+            "isCorrect": false
+          },
+          {
+            "key": "E",
+            "text": "Günümüz Müslümanlarının sahip oldukları değişik düşünce biçimlerini n daha iyi anlaşılmasını sağlamak",
+            "isCorrect": false
+          }
+        ],
+        "correct": "A"
       },
       {
         "n": 5,
-        "stem": "Hz. Ali’nin tahkime gitmesi",
+        "stem": "Aşağıdaki tarihi gelişmelerden hangisi İslam mezheplerini doğuran sosyo-politik etkenler arasında sayılamaz?",
         "options": [
           {
             "key": "A",
-            "text": "Farklı din, kültür ve medeniyetlerle etkileşim"
+            "text": "Tahkim olayı",
+            "isCorrect": false
           },
           {
             "key": "B",
-            "text": "Nasların tabiatı"
+            "text": "Hz. Osman'ın öldürülmesi",
+            "isCorrect": false
           },
           {
             "key": "C",
-            "text": "İnsanın tabiatı"
+            "text": "Sıffin savaşı",
+            "isCorrect": false
           },
           {
             "key": "D",
-            "text": "Ekonomik faktörler"
+            "text": "Cemel savaşı",
+            "isCorrect": false
           },
           {
             "key": "E",
-            "text": "Hz. Ebû Bekir’in halife olduktan sonra"
+            "text": "Mekke'nin fethi",
+            "isCorrect": true
           }
-        ]
+        ],
+        "correct": "E"
       },
       {
         "n": 6,
-        "stem": "Yalancı peygamberlerle ve zekat vermeyen kabilelerle mücadele etmek",
+        "stem": "İslâm mezheplerinin oluşumunda etkili olan unsurların başında insanın kişisel özelliklerinden kaynaklanan farklılıklar gelmektedir . İnsanın yapısının diğer insanlardan farklı ve kendine özgü olması, kendisi ve kendisi dışındaki dünyayı algılama biçimlerini doğrudan etkiler. Yukarıdaki paragraf mezheplerin ortaya çıkış sebeplerinden hangisini açıklar?",
         "options": [
           {
             "key": "A",
-            "text": "Ensar’a kendisinden sonra halife"
+            "text": "Nassların tabiatı",
+            "isCorrect": false
           },
           {
             "key": "B",
-            "text": "Hz. Ali’yi Kûfe valisi olarak atamak"
+            "text": "İnsanın tabiatı",
+            "isCorrect": true
           },
           {
             "key": "C",
-            "text": "Sa’d b. Ubâde’yi cezalandırmak"
+            "text": "Politik anlayışlar",
+            "isCorrect": false
           },
           {
             "key": "D",
-            "text": "Hz. Ali’yi ve Haşimoğulları’ndan bir kişiyi"
+            "text": "Çevresel şartlar",
+            "isCorrect": false
           },
           {
             "key": "E",
-            "text": "Tahkim olayında Hz. Ali’nin hakemliğini"
+            "text": "Zaman-mekan değişimi",
+            "isCorrect": false
           }
-        ]
+        ],
+        "correct": "B"
       },
       {
         "n": 7,
-        "stem": "Zübeyr b. Avvâm",
+        "stem": "Mezhepler ile ilgili aşağıdaki ifadelerden hangisi yanlıştır?",
         "options": [
           {
             "key": "A",
-            "text": "Abdullah b. Ömer"
+            "text": "Mezhepler, din alanındaki farklılaşmaların birer ürünü olup içinde geliştikleri ortamın izlerini bünyelerinde taşırlar.",
+            "isCorrect": false
           },
           {
             "key": "B",
-            "text": "Sa’d b. Ubâde"
+            "text": "Bir mezhebin ortaya çıkışı, tek bir insana veya olaya ya da tek bir sebebe indirgenemez.",
+            "isCorrect": false
           },
           {
             "key": "C",
-            "text": "Ebû Mûsa el-Eş’ârî"
+            "text": "Mezheplerin oluşumunda politik ve ekonomik unsurlar yer almaz.",
+            "isCorrect": true
           },
           {
             "key": "D",
-            "text": "Amr b. el-Âs"
+            "text": "Mezhepler dinin farklı anlaşılma biçimleri olup, dinle özdeşleştirilemez.",
+            "isCorrect": false
           },
           {
             "key": "E",
-            "text": "Aşağıdakilerden hangisi Hz. Osman’ın"
+            "text": "Mezhepler birer beşerî oluşumlardır.",
+            "isCorrect": false
           }
-        ]
+        ],
+        "correct": "C"
       },
       {
         "n": 8,
-        "stem": "Abdullah b. Sebe gibi kişilerin ortaya çıkması",
+        "stem": "Aşağıdakilerden hangisi Emevi ve Abbasiler döneminde alemin yaratılması, Allah’ın sıfatları gibi felsefi ve kelami konulardaki tartışmaların hızlanmasının temel sebebi olarak değerlendirilir?",
         "options": [
           {
             "key": "A",
-            "text": "Hâşimî-Emevî çekişmesi"
+            "text": "Haricilerin tekfir ve şiddet yanlışı tutumları",
+            "isCorrect": false
           },
           {
             "key": "B",
-            "text": "Hz. Osman’ın otoritesinin sorgulanması"
+            "text": "Muhkem kabul edilen Kur'an ayetlerinin yapısı",
+            "isCorrect": false
           },
           {
             "key": "C",
-            "text": "Hz. Osman’ın önceki halifeler ile"
+            "text": "Mevaliye karşı uygulanan politikalar",
+            "isCorrect": false
           },
           {
             "key": "D",
-            "text": "Fetihlerin durması"
+            "text": "Farklı din, kültür ve medeniyetlerle etkileşim",
+            "isCorrect": true
           },
           {
             "key": "E",
-            "text": "Aşağıdakilerden hangisi Mu’tezile mezhebi"
+            "text": "Ali oğullarının Emevi ve Abbasi karşıtlığı",
+            "isCorrect": false
           }
-        ]
+        ],
+        "correct": "D"
       },
       {
         "n": 9,
-        "stem": "Çağdaş ihyacı hareketlerin bir kısmının Mu‘tezile’ye sempatiyle baktığı söylenebilir.",
+        "stem": "Aşağıdakilerden hangisi Mu‘tezile 'nin temel ilkelerinden biri değildir?",
         "options": [
           {
             "key": "A",
-            "text": "Vâsıl b. Atâ'nın hocası Hasan-ı Basrî'den"
+            "text": "Adl",
+            "isCorrect": false
           },
           {
             "key": "B",
-            "text": "Hiçbir İslam mezhebini etkileyemeden kısa"
+            "text": "İmamet",
+            "isCorrect": true
           },
           {
             "key": "C",
-            "text": "Mürtekib-i kebîrenin iman ile küfür arasında"
+            "text": "Va’d ve Vaîd",
+            "isCorrect": false
           },
           {
             "key": "D",
-            "text": "Abbasilerin bir döneminde devlet mezhebi"
+            "text": "el-Menzile beyne’l-Menzileteyn",
+            "isCorrect": false
           },
           {
             "key": "E",
-            "text": "2022 GÜZ ARA - A"
+            "text": "Tevhid",
+            "isCorrect": false
           }
-        ]
-      },
-      {
-        "n": 12,
-        "stem": "Vâsıl b. Atâ",
-        "options": [
-          {
-            "key": "A",
-            "text": "Cehm b. Safvân"
-          },
-          {
-            "key": "B",
-            "text": "Abdullah b. İbâd"
-          },
-          {
-            "key": "C",
-            "text": "Ebû Mûsâ el-Eş'arî"
-          },
-          {
-            "key": "D",
-            "text": "Hasan-ı Basrî"
-          },
-          {
-            "key": "E",
-            "text": "Aşağıdakilerden hangisi İmam Mâtüridî’nin"
-          }
-        ]
-      },
-      {
-        "n": 13,
-        "stem": "Hz. Peygamberden sonra hilafete en layık olanlar Ehl-i beyt mensuplarıdır.",
-        "options": [
-          {
-            "key": "A",
-            "text": "Başkan âdil ve liyakatli olanlardan seçilir."
-          },
-          {
-            "key": "B",
-            "text": "Halifenin Kureyşîliği, ashâb döneminde"
-          },
-          {
-            "key": "C",
-            "text": "Hz. Ali ve soyunun devlet başkanı olmasına"
-          },
-          {
-            "key": "D",
-            "text": "Müslümanlar bir devlet düzeni içinde"
-          },
-          {
-            "key": "E",
-            "text": "Hakkında nass bulunmayan herhangi bir"
-          }
-        ]
-      },
-      {
-        "n": 14,
-        "stem": "Ehl-i Bid’at",
-        "options": [
-          {
-            "key": "A",
-            "text": "Ehl-i Re’y"
-          },
-          {
-            "key": "B",
-            "text": "Hadis ehli"
-          },
-          {
-            "key": "C",
-            "text": "Fırka-i Dâlle"
-          },
-          {
-            "key": "D",
-            "text": "Ehl-i Necat"
-          },
-          {
-            "key": "E",
-            "text": "Aşağıdakilerden hangisi ile Mâtürîdiyye'nin"
-          }
-        ]
-      },
-      {
-        "n": 15,
-        "stem": "Burhaneddîn Nesefî (v. 687/1289)",
-        "options": [
-          {
-            "key": "A",
-            "text": "Ömer Nesefî (v. 537/1142)"
-          },
-          {
-            "key": "B",
-            "text": "Sadrü’l-İslâm Pezdevî (v. 493/1100)"
-          },
-          {
-            "key": "C",
-            "text": "Hâkim Semerkandî (v. 342/953)"
-          },
-          {
-            "key": "D",
-            "text": "Ebû'l-Mu’în en-Nesefî (v. 508/1111)"
-          },
-          {
-            "key": "E",
-            "text": "Kur’ân’ın mahluk olmadığını vurgularlar; hayır ve"
-          }
-        ]
-      },
-      {
-        "n": 18,
-        "stem": "Azerbaycan",
-        "options": [
-          {
-            "key": "A",
-            "text": "Mısır"
-          },
-          {
-            "key": "B",
-            "text": "Hindistan"
-          },
-          {
-            "key": "C",
-            "text": "Türkiye"
-          },
-          {
-            "key": "D",
-            "text": "Yemen"
-          },
-          {
-            "key": "E",
-            "text": "-------, Şîa’yı diğer İslamî fırkalardan ayıran en"
-          }
-        ]
-      },
-      {
-        "n": 20,
-        "stem": "Muhtar es-Sakafi hareketi",
-        "options": [
-          {
-            "key": "A",
-            "text": "Hucr b. Adiyy isyanı"
-          },
-          {
-            "key": "B",
-            "text": "Kerbela hadisesi"
-          },
-          {
-            "key": "C",
-            "text": "Ezrakiyye fırkası"
-          },
-          {
-            "key": "D",
-            "text": "Tevvabun hareketi"
-          },
-          {
-            "key": "E",
-            "text": "2022 GÜZ ARA - A"
-          }
-        ]
-      },
-      {
-        "n": 1,
-        "stem": "Mezhep ve dini grupların tarihte bıraktıkları izleri sürmek",
-        "options": [
-          {
-            "key": "A",
-            "text": "Müslümanlar arasındaki mezhepsel ve"
-          },
-          {
-            "key": "B",
-            "text": "Müslüman toplumların sosyal ve psikolojik"
-          },
-          {
-            "key": "C",
-            "text": "Mezheplerin İslam medeniyetine katkılarını"
-          },
-          {
-            "key": "D",
-            "text": "Hangi mezheplerin hak, hangilerinin batıl"
-          },
-          {
-            "key": "E",
-            "text": "I. el-Bâisü’l-Hasîs"
-          }
-        ]
-      },
-      {
-        "n": 4,
-        "stem": "Hak kabul edilen inançları ispat etmesi",
-        "options": [
-          {
-            "key": "A",
-            "text": "Dinler ve mezhepler arasındaki ortak"
-          },
-          {
-            "key": "B",
-            "text": "Hilafet tartışmalarının mezheplerin"
-          },
-          {
-            "key": "C",
-            "text": "İslam kökenli bazı mezheplerin yeni bir dine"
-          },
-          {
-            "key": "D",
-            "text": "Dini lider hezeyanlarını bir patoloji olarak"
-          },
-          {
-            "key": "E",
-            "text": "Haricilerin sert mizaçlı olmalarının din"
-          }
-        ]
-      },
-      {
-        "n": 5,
-        "stem": "İnsanın tabiatı",
-        "options": [
-          {
-            "key": "A",
-            "text": "Farklı din, kültür ve medeniyetlerle etkileşim"
-          },
-          {
-            "key": "B",
-            "text": "Ekonomik faktörler"
-          },
-          {
-            "key": "C",
-            "text": "Nasların tabiatı"
-          },
-          {
-            "key": "D",
-            "text": "Hz. Ali’nin tahkime gitmesi"
-          },
-          {
-            "key": "E",
-            "text": "Aşağıdakilerden hangisi Hz. Osman’ın"
-          }
-        ]
-      },
-      {
-        "n": 6,
-        "stem": "Hz. Osman’ın önceki halifeler ile kıyaslanması",
-        "options": [
-          {
-            "key": "A",
-            "text": "Abdullah b. Sebe gibi kişilerin ortaya"
-          },
-          {
-            "key": "B",
-            "text": "Fetihlerin durması"
-          },
-          {
-            "key": "C",
-            "text": "Hâşimî-Emevî çekişmesi"
-          },
-          {
-            "key": "D",
-            "text": "Hz. Osman’ın otoritesinin sorgulanması"
-          },
-          {
-            "key": "E",
-            "text": "Tahkim olayında Hz. Ali’nin hakemliğini"
-          }
-        ]
-      },
-      {
-        "n": 7,
-        "stem": "Ebû Mûsa el-Eş’ârî",
-        "options": [
-          {
-            "key": "A",
-            "text": "Zübeyr b. Avvâm"
-          },
-          {
-            "key": "B",
-            "text": "Abdullah b. Ömer"
-          },
-          {
-            "key": "C",
-            "text": "Amr b. el-Âs"
-          },
-          {
-            "key": "D",
-            "text": "Sa’d b. Ubâde"
-          },
-          {
-            "key": "E",
-            "text": "2022 GÜZ ARA - B"
-          }
-        ]
-      },
-      {
-        "n": 8,
-        "stem": "Sa’d b. Ubâde’yi cezalandırmak",
-        "options": [
-          {
-            "key": "A",
-            "text": "Hz. Ali’yi Kûfe valisi olarak atamak"
-          },
-          {
-            "key": "B",
-            "text": "Ensar’a kendisinden sonra halife"
-          },
-          {
-            "key": "C",
-            "text": "Hz. Ali’yi ve Haşimoğulları’ndan bir kişiyi"
-          },
-          {
-            "key": "D",
-            "text": "Yalancı peygamberlerle ve zekat vermeyen"
-          },
-          {
-            "key": "E",
-            "text": "------- hakem tayinini, yani tahkimi kabul"
-          }
-        ]
+        ],
+        "correct": "B"
       },
       {
         "n": 10,
-        "stem": "Mürtekib-i kebîrenin iman ile küfür arasında bulunduğunu savunur.",
+        "stem": "Mu'tezile mezhebinin kurucusu aşağıdakilerden hangisidir?",
         "options": [
           {
             "key": "A",
-            "text": "Abbasilerin bir döneminde devlet mezhebi"
+            "text": "Abdullah b. İbâd",
+            "isCorrect": false
           },
           {
             "key": "B",
-            "text": "Vâsıl b. Atâ'nın hocası Hasan-ı Basrî'den"
+            "text": "Cehm b. Safvân",
+            "isCorrect": false
           },
           {
             "key": "C",
-            "text": "Çağdaş ihyacı hareketlerin bir kısmının"
+            "text": "Vâsıl b. Atâ",
+            "isCorrect": true
           },
           {
             "key": "D",
-            "text": "Hiçbir İslam mezhebini etkileyemeden kısa"
+            "text": "Ebû Mûsâ el-Eş'arî",
+            "isCorrect": false
           },
           {
             "key": "E",
-            "text": "Mu'tezile mezhebinin kurucusu"
+            "text": "Hasan-ı Basrî",
+            "isCorrect": false
           }
-        ]
+        ],
+        "correct": "C"
       },
       {
         "n": 11,
-        "stem": "Abdullah b. İbâd",
+        "stem": "Ebû Hanîfe ve Mürcie ilişkisi bağlamında aşağıdakilerden hangisi yanlıştır?",
         "options": [
           {
             "key": "A",
-            "text": "Hasan-ı Basrî"
+            "text": "Mürcie’de olduğu gibi Ebû Hanîfe’ye göre de iman değer bakımından amelden üstündür.",
+            "isCorrect": false
           },
           {
             "key": "B",
-            "text": "Ebû Mûsâ el-Eş'arî"
+            "text": "Ebû Hanîfe tıpkı Mürcie gibi iman tanımında amele yer vermemiştir.",
+            "isCorrect": false
           },
           {
             "key": "C",
-            "text": "Cehm b. Safvân"
+            "text": "Ebû Hanife “mürciî” vasfını kabul etmiştir.",
+            "isCorrect": true
           },
           {
             "key": "D",
-            "text": "Vâsıl b. Atâ"
+            "text": "Ebû Hanîfe, amelin imanın zorunlu bir parçası olmadığı noktasında ilk Mürciîler’le aynı görüştedir.",
+            "isCorrect": false
           },
           {
             "key": "E",
-            "text": "Büyük günah işleyen kimse hakkında \"Tâatın"
+            "text": "Amel, imanın yanında ikinci sırada yer alır.",
+            "isCorrect": false
           }
-        ]
+        ],
+        "correct": "C"
+      },
+      {
+        "n": 12,
+        "stem": "Aşağıdakilerden hangisi Abbasi halifeleri Me'mun, Mu'tasım ve Vasık dönemlerinde Mu'tezili fikirleri kabul etmeyen kadılara ve âlimlere uygulanan baskıyı ifade etmektedir?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Teberra",
+            "isCorrect": false
+          },
+          {
+            "key": "B",
+            "text": "Huruc",
+            "isCorrect": false
+          },
+          {
+            "key": "C",
+            "text": "İrca",
+            "isCorrect": false
+          },
+          {
+            "key": "D",
+            "text": "İtizal",
+            "isCorrect": false
+          },
+          {
+            "key": "E",
+            "text": "Mihne",
+            "isCorrect": true
+          }
+        ],
+        "correct": "E"
       },
       {
         "n": 13,
-        "stem": "Ömer Nesefî (v. 537/1142)",
+        "stem": "Hakkında nass bulunmayan herhangi bir meselede asla görüş belirtmeyen, sadece haberle (âsârla) yetinenlere ------- adı verilir. Yukarıdaki cümlede boş bırakılan yeri aşağıdakilerden hangisi doğru şekilde tamamlar?",
         "options": [
           {
             "key": "A",
-            "text": "Sadrü’l-İslâm Pezdevî (v. 493/1100)"
+            "text": "Hadis ehli",
+            "isCorrect": true
           },
           {
             "key": "B",
-            "text": "Ebû'l-Mu’în en-Nesefî (v. 508/1111)"
+            "text": "Ehl-i Bid’at",
+            "isCorrect": false
           },
           {
             "key": "C",
-            "text": "Burhaneddîn Nesefî (v. 687/1289)"
+            "text": "Ehl-i Necat",
+            "isCorrect": false
           },
           {
             "key": "D",
-            "text": "Hâkim Semerkandî (v. 342/953)"
+            "text": "Fırka-i Dâlle",
+            "isCorrect": false
           },
           {
             "key": "E",
-            "text": "Aşağıdakilerden hangisi İmam Mâtüridî’nin"
+            "text": "Ehl-i Re’y",
+            "isCorrect": false
           }
-        ]
+        ],
+        "correct": "A"
       },
       {
         "n": 14,
-        "stem": "Başkan âdil ve liyakatli olanlardan seçilir.",
+        "stem": "Mâtürîdîler’in; ilâhî sıfatlar, halku’l-Kur’ân, insan fiilleri, kader ve kerâmet konularında; nasları görmezlikten gelerek insanı yanıltan aşırı ve tutarsız yorumlara gitmekle eleştirdiği mezhep aşağıdakilerden hangisidir?",
         "options": [
           {
             "key": "A",
-            "text": "Hz. Ali ve soyunun devlet başkanı olmasına"
+            "text": "Selefîlik",
+            "isCorrect": false
           },
           {
             "key": "B",
-            "text": "Müslümanlar bir devlet düzeni içinde"
+            "text": "Şî‘a",
+            "isCorrect": false
           },
           {
             "key": "C",
-            "text": "Hz. Peygamberden sonra hilafete en layık"
+            "text": "Eş‘arîlik",
+            "isCorrect": false
           },
           {
             "key": "D",
-            "text": "Halifenin Kureyşîliği, ashâb döneminde"
+            "text": "Hâricîler",
+            "isCorrect": false
           },
           {
             "key": "E",
-            "text": "Kur’ân’ın mahluk olmadığını vurgularlar; hayır ve"
+            "text": "Mu‘tezile",
+            "isCorrect": true
           }
-        ]
+        ],
+        "correct": "E"
+      },
+      {
+        "n": 15,
+        "stem": "Aşağıdakilerden hangisi “hilafet, iman-küfür ve kader” meseleleri etrafında oluşan ilk mezheplerden biri değildir?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Mürcie",
+            "isCorrect": false
+          },
+          {
+            "key": "B",
+            "text": "Kâdıyânîlik",
+            "isCorrect": true
+          },
+          {
+            "key": "C",
+            "text": "Haricilik",
+            "isCorrect": false
+          },
+          {
+            "key": "D",
+            "text": "Kaderiyye",
+            "isCorrect": false
+          },
+          {
+            "key": "E",
+            "text": "Mu'tezile",
+            "isCorrect": false
+          }
+        ],
+        "correct": "B"
       },
       {
         "n": 16,
-        "stem": "Fırka-i Dâlle",
+        "stem": "Mâtürîdî bilgi teorisine göre aşağıdaki ifadelerden hangisi yanlıştır?",
         "options": [
           {
             "key": "A",
-            "text": "Hadis ehli"
+            "text": "Akıl hem zorunlu hem zorunlu olmayan bilgileri ürettiğinden, Eş‘arîyye’nin akıl tanımı yanlıştır.",
+            "isCorrect": false
           },
           {
             "key": "B",
-            "text": "Ehl-i Bid’at"
+            "text": "Duyulara ve akıl yürütmeye başvurularak üretilemeyen konulardaki bilgiye ancak ‘doğru haber’ vasıtasıyla ulaşılabilir .",
+            "isCorrect": false
           },
           {
             "key": "C",
-            "text": "Ehl-i Necat"
+            "text": "Duyuların ve aklın alanına giren konuların bilinmesi ancak bilgi ile mümkündür.",
+            "isCorrect": false
           },
           {
             "key": "D",
-            "text": "Ehl-i Re’y"
+            "text": "Bilgi kaynakları duyular, akıl ve doğru haberden müteşekkildir.",
+            "isCorrect": false
           },
           {
             "key": "E",
-            "text": "Günümüzde Zeydiyye mensuplarına ev"
+            "text": "Âhâd haberler bağlayıcı olup haber-i sâdık kabul edilir.",
+            "isCorrect": true
           }
-        ]
+        ],
+        "correct": "E"
+      },
+      {
+        "n": 17,
+        "stem": "-------, Şîa’yı diğer İslamî fırkalardan ayıran en önemli itikat esasıdır. Yukarıdaki cümlede boş bırakılan yeri aşağıdakilerden hangisi doğru şekilde tamamlar?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Tevhid",
+            "isCorrect": false
+          },
+          {
+            "key": "B",
+            "text": "Adâlet",
+            "isCorrect": false
+          },
+          {
+            "key": "C",
+            "text": "Nübüvvet",
+            "isCorrect": false
+          },
+          {
+            "key": "D",
+            "text": "İmâmet",
+            "isCorrect": true
+          },
+          {
+            "key": "E",
+            "text": "Meâd",
+            "isCorrect": false
+          }
+        ],
+        "correct": "D"
       },
       {
         "n": 18,
-        "stem": "Kerbela hadisesi",
+        "stem": "Zeydiyye’nin itikâdî görüşleriyle ilgili aşağıdakilerden hangisi doğrudur?",
         "options": [
           {
             "key": "A",
-            "text": "Tevvabun hareketi"
+            "text": "Zeydiyye, kader anlayışında Cebriyye mezhebine yakındır.",
+            "isCorrect": false
           },
           {
             "key": "B",
-            "text": "Ezrakiyye fırkası"
+            "text": "Zeydiyye, Ebû Hanîfe’ye yakınlığından dolayı Mâtürîdî itikâdını esas alır.",
+            "isCorrect": false
           },
           {
             "key": "C",
-            "text": "Muhtar es-Sakafi hareketi"
+            "text": "Zeydiyye, aklı reddeden literalist bir ekoldür.",
+            "isCorrect": false
           },
           {
             "key": "D",
-            "text": "Hucr b. Adiyy isyanı"
+            "text": "Zeydiyye, itikâdda Mu‘tezile mezhebine yakın görüşleri savunur.",
+            "isCorrect": true
           },
           {
             "key": "E",
-            "text": "İsmailiyye imamları, Ubeydullah el-Mehdî’nin"
+            "text": "Zeydiyye, itikâdda tamamen İmamiyye çizgisindedir.",
+            "isCorrect": false
           }
-        ]
+        ],
+        "correct": "D"
+      },
+      {
+        "n": 19,
+        "stem": "Aşırı Şii fırkalar tarafından ileri sürülen ve ilâhî ruhun Hz. Peygamber’e, sonra da Ali ve evlatlarına intikal ettiği düşüncesini ifade eden kavram aşağıdakilerden hangisidir?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Tenâsüh",
+            "isCorrect": false
+          },
+          {
+            "key": "B",
+            "text": "Hulûl",
+            "isCorrect": true
+          },
+          {
+            "key": "C",
+            "text": "Rec‘at",
+            "isCorrect": false
+          },
+          {
+            "key": "D",
+            "text": "Bedâ",
+            "isCorrect": false
+          },
+          {
+            "key": "E",
+            "text": "Teşbîh",
+            "isCorrect": false
+          }
+        ],
+        "correct": "B"
+      },
+      {
+        "n": 20,
+        "stem": "İsmailî düşüncenin en önemli unsuru aşağıdakilerden hangisidir?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Gizlilik döneminde benimsenen görüşler",
+            "isCorrect": false
+          },
+          {
+            "key": "B",
+            "text": "Hz. Ebu Bekir ve Hz. Ömer'in hilafetini n reddedilmesi",
+            "isCorrect": false
+          },
+          {
+            "key": "C",
+            "text": "Kutsal kitap ve şer'i hükümlerin z ahir ve batını arasında ayrıma gidilmesi",
+            "isCorrect": true
+          },
+          {
+            "key": "D",
+            "text": "İmametin gerekliliği düşüncesi",
+            "isCorrect": false
+          },
+          {
+            "key": "E",
+            "text": "İmamların masum olduğuna inanılması",
+            "isCorrect": false
+          }
+        ],
+        "correct": "C"
       }
     ]
   }

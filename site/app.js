@@ -624,10 +624,10 @@
         kind: "vize",
         title: "Çıkmış vize arşivi",
         desc: totalPast
-          ? `${sessions.length} dönem · ${totalPast} soru. Cevap anahtarı yok; anımsayıp kendinizi not edin.`
+          ? `${sessions.length} oturum · ${totalPast} soru · cevap anahtarlı puanlı mod.`
           : "Bu ders için çıkmış vize arşivi henüz yok.",
         href: sessions.length ? `#/course/${c.slug}/past/${encodeURIComponent(sessions[0].exam_id)}` : null,
-        badge: totalPast ? "Anımsama" : "Yakında",
+        badge: totalPast ? "Puanlı" : "Yakında",
       },
       {
         kind: "yaz",
@@ -641,8 +641,8 @@
       const n = (s.questions || []).length;
       return `<li class="past-row">
         <div>
-          <a href="#/course/${c.slug}/past/${encodeURIComponent(s.exam_id)}"><strong>${esc(s.year || s.exam_id)}</strong> · ${esc((s.term || "guz").replace("guz", "Güz").replace("bahar", "Bahar").replace("yaz", "Yaz"))} vize</a>
-          <div class="muted" style="font-size:.82rem">${n} soru${s.file ? " · PDF arşiv" : ""}</div>
+          <a href="#/course/${c.slug}/past/${encodeURIComponent(s.exam_id)}"><strong>${esc(s.year || s.exam_id)}</strong>${s.group ? " · " + esc(s.group) + " grup" : ""} · ${esc(String(s.term || "guz").replace("guz", "Güz").replace("bahar", "Bahar").replace("yaz", "Yaz"))} vize</a>
+          <div class="muted" style="font-size:.82rem">${n} soru${s.hasAnswerKey === false ? "" : " · cevap anahtarı var"}</div>
         </div>
         <a class="btn ghost" href="#/course/${c.slug}/past/${encodeURIComponent(s.exam_id)}">Çöz</a>
       </li>`;
@@ -650,7 +650,7 @@
     return `<p class="crumbs"><a href="#/">Katalog</a> / <a href="#/course/${c.slug}">${esc(c.subject)}</a> / Sınavlar</p>
       <p class="eyebrow">Sınav modları</p>
       <h1>${esc(c.subject)}</h1>
-      <p class="muted">Final puanlanır; çıkmış vize arşivi anımsama pratiğidir (cevap anahtarı yok, kendiniz işaretlersiniz).</p>
+      <p class="muted">Cevap anahtarı PDF'in son sayfasından alınmıştır. Puan, süre ve seri anlık HUD'da izlenir.</p>
       <div class="exam-cards">
         ${cards.map((x) => `<a class="exam-card${x.href ? "" : " disabled"}" ${x.href ? `href="${x.href}"` : 'aria-disabled="true"'}>
           <span class="exam-badge">${esc(x.badge)}</span>
@@ -666,12 +666,14 @@
     const exam = sessions.find((s) => s.exam_id === examId) || sessions[0];
     if (!exam) return viewNotFound();
     const n = (exam.questions || []).length;
+    const hasKey = exam.hasAnswerKey !== false && (exam.questions || []).some((q) => q.correct || (q.options || []).some((o) => o.isCorrect));
+    const grp = exam.group && exam.group !== "A" ? ` · ${exam.group} grup` : "";
     return `<p class="crumbs"><a href="#/">Katalog</a> / <a href="#/course/${c.slug}">${esc(c.subject)}</a> / <a href="#/course/${c.slug}/exams">Sınavlar</a> / Çıkmış vize</p>
       <div class="quiz-head">
-        <div><p class="eyebrow">Çıkmış vize · anımsama</p><h1 style="margin:0">${esc(exam.year || exam.exam_id)}</h1></div>
-        <div class="muted" style="font-size:.9rem">${n} soru · cevap anahtarı yok · ünite etiketi var</div>
+        <div><p class="eyebrow">Çıkmış vize${hasKey ? " · puanlı" : " · anımsama"}</p><h1 style="margin:0">${esc(exam.year || exam.exam_id)}${esc(grp)}</h1></div>
+        <div class="muted" style="font-size:.9rem">${n} soru · ${hasKey ? "cevap anahtarı var (PDF son sayfa)" : "cevap anahtarı yok"}${exam.group ? " · grup " + esc(exam.group) : ""}</div>
       </div>
-      <p class="muted">Seçenekler PDF'ten OCR ile alınmış olabilir. Soruyu önce hatırlamayı deneyin, sonra ipucu gibi seçeneğe bakıp kendinizi işaretleyin.</p>
+      <p class="muted">${hasKey ? "Doğru cevap otomatik işaretlenir. Puan, süre ve seri anlık HUD'da." : "Seçenekler PDF OCR olabilir; kendinizi işaretleyin."}</p>
       <div id="game-root" data-course="${esc(c.slug)}" data-exam="${esc(exam.exam_id)}" data-mode="past">
         ${quizHudHtml(c, 0, n)}
         <div id="game-stage"></div>
@@ -697,7 +699,16 @@
     if (!root || !stage) return;
     const exam = pastFor(c.slug).find((s) => s.exam_id === examId) || pastFor(c.slug)[0];
     if (!exam) return;
-    const questions = (exam.questions || []).map((q) => ({ ...q, _slug: c.slug, type: "past_recall" }));
+    const questions = (exam.questions || []).map((q) => ({
+      ...q,
+      _slug: c.slug,
+      type: "past_mc",
+      answerOptions: (q.options || []).map((o) => ({
+        text: o.text,
+        isCorrect: !!(o.isCorrect || (q.correct && o.key === q.correct)),
+      })),
+    }));
+    const hasKey = questions.some((q) => q.answerOptions.some((o) => o.isCorrect));
     let idx = 0, right = 0, streak = 0, bestStreakRun = 0, xp = 0, gradedDone = 0, gradedRight = 0;
     const t0 = Date.now();
     let timer = null;
@@ -713,41 +724,44 @@
       if (bar) bar.style.width = (idx / questions.length) * 100 + "%";
     }
 
+    function advance(box, i) {
+      const next = document.createElement("div");
+      next.className = "btn-row game-actions";
+      const b = document.createElement("button");
+      b.className = "btn";
+      b.type = "button";
+      b.textContent = i < questions.length - 1 ? "Sonraki soru" : "Sonucu gör";
+      b.onclick = () => { idx++; showQuestion(idx); };
+      next.appendChild(b);
+      box.appendChild(next);
+      b.focus();
+      paintHud();
+      box.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    }
+
     function showQuestion(i) {
+      clearInterval(timer);
       const q = questions[i];
       if (!q) { finish(); return; }
-      stage.innerHTML = `<div class="q game-q" data-q="${i}">
-        ${pastQuestionHtml(q, i)}
-        <div class="btn-row game-actions">
-          <button class="btn" type="button" id="check-ans">Seçimi göster</button>
-          <button class="btn ghost" type="button" id="skip-q">Geç</button>
-        </div>
-        <div class="self-grade" id="self-grade" hidden>
-          <p class="muted" style="margin:.2rem 0 .5rem;font-size:.9rem">Bu sorunun cevap anahtarı yok. Kendinizi dürüstçe işaretleyin.</p>
-          <div class="btn-row">
-            <button class="btn" type="button" data-mark="ok">Bildim (+10 XP)</button>
-            <button class="btn ghost" type="button" data-mark="no">Bilemedim</button>
+      if (hasKey) {
+        stage.innerHTML = `<div class="q game-q" data-q="${i}">${questionHTML(q, i)}
+          <div class="btn-row game-actions">
+            <button class="btn" type="button" id="check-ans">Kontrol et</button>
+            <button class="btn ghost" type="button" id="skip-q">Geç</button>
           </div>
-        </div>
-      </div>`;
-      paintHud();
-      const box = stage.querySelector(".game-q");
-      const check = document.getElementById("check-ans");
-      const skip = document.getElementById("skip-q");
-      const self = document.getElementById("self-grade");
-      check.onclick = () => {
-        check.hidden = true;
-        skip.hidden = true;
-        self.hidden = false;
-        box.classList.add("revealed");
-        self.querySelector("[data-mark=ok]").focus();
-      };
-      skip.onclick = () => { streak = 0; paintHud(); idx++; showQuestion(idx); };
-      self.querySelectorAll("[data-mark]").forEach((btn) => {
-        btn.onclick = () => {
-          const ok = btn.dataset.mark === "ok";
+        </div>`;
+        paintHud();
+        const box = stage.querySelector(".game-q");
+        const check = document.getElementById("check-ans");
+        const skip = document.getElementById("skip-q");
+        check.focus();
+        check.onclick = () => {
+          const ok = grade(q, i, stage);
+          showFeedback(q, i, ok, box);
+          check.hidden = true;
+          skip.hidden = true;
           gradedDone++;
-          if (ok) {
+          if (ok === true) {
             gradedRight++;
             right++;
             streak++;
@@ -759,21 +773,59 @@
             streak = 0;
             box.classList.add("miss");
           }
-          self.hidden = true;
-          const next = document.createElement("div");
-          next.className = "btn-row game-actions";
-          const b = document.createElement("button");
-          b.className = "btn";
-          b.type = "button";
-          b.textContent = i < questions.length - 1 ? "Sonraki soru" : "Sonucu gör";
-          b.onclick = () => { idx++; showQuestion(idx); };
-          next.appendChild(b);
-          box.appendChild(next);
-          b.focus();
-          paintHud();
-          box.scrollIntoView({ behavior: "smooth", block: "nearest" });
+          advance(box, i);
         };
-      });
+        skip.onclick = () => { streak = 0; paintHud(); idx++; showQuestion(idx); };
+      } else {
+        // self-graded fallback
+        stage.innerHTML = `<div class="q game-q" data-q="${i}">
+          ${pastQuestionHtml(q, i)}
+          <div class="btn-row game-actions">
+            <button class="btn" type="button" id="check-ans">Seçimi göster</button>
+            <button class="btn ghost" type="button" id="skip-q">Geç</button>
+          </div>
+          <div class="self-grade" id="self-grade" hidden>
+            <p class="muted" style="margin:.2rem 0 .5rem;font-size:.9rem">Bu sorunun cevap anahtarı yok. Kendinizi dürüstçe işaretleyin.</p>
+            <div class="btn-row">
+              <button class="btn" type="button" data-mark="ok">Bildim (+10 XP)</button>
+              <button class="btn ghost" type="button" data-mark="no">Bilemedim</button>
+            </div>
+          </div>
+        </div>`;
+        paintHud();
+        const box = stage.querySelector(".game-q");
+        const check = document.getElementById("check-ans");
+        const skip = document.getElementById("skip-q");
+        const self = document.getElementById("self-grade");
+        check.onclick = () => {
+          check.hidden = true;
+          skip.hidden = true;
+          self.hidden = false;
+          box.classList.add("revealed");
+          self.querySelector("[data-mark=ok]").focus();
+        };
+        skip.onclick = () => { streak = 0; paintHud(); idx++; showQuestion(idx); };
+        self.querySelectorAll("[data-mark]").forEach((btn) => {
+          btn.onclick = () => {
+            const ok = btn.dataset.mark === "ok";
+            gradedDone++;
+            if (ok) {
+              gradedRight++;
+              right++;
+              streak++;
+              bestStreakRun = Math.max(bestStreakRun, streak);
+              const bonus = streak >= 3 ? streak * 2 : 0;
+              xp += 10 + bonus;
+              box.classList.add("hit");
+            } else {
+              streak = 0;
+              box.classList.add("miss");
+            }
+            self.hidden = true;
+            advance(box, i);
+          };
+        });
+      }
       timer = setInterval(paintHud, 500);
     }
 
