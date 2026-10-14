@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="pu-version" content="1791996741">
+<meta name="pu-version" content="1791997320">
 <title>Açık İlahiyat Üniversitesi</title>
 <meta name="description" content="4 ücretsiz ders; her biri kendi NotebookLM defterinden çalışma planı, infografikler ve bir sınavla hazırlanmıştır.">
 <meta name="robots" content="noindex">
@@ -14,15 +14,17 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Açık İlahiyat">
-<link rel="stylesheet" href="styles.css?v=1791996741">
+<link rel="stylesheet" href="styles.css?v=1791997320">
+<script>try{var t=localStorage.getItem("pu.theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 </head>
 <body>
+<a class="skip-link" href="#app">İçeriğe geç</a>
 <header class="masthead">
   <a class="brand" href="#/">
     <span class="crest" data-crest></span>
     <span class="brand-text"><span class="brand-name">Açık İlahiyat Üniversitesi</span><span class="brand-sub">AÖF İlahiyat ön lisans ücretsiz dersler</span></span>
   </a>
-  <nav class="nav">
+  <nav class="nav" aria-label="Ana menü">
     <a href="#/">Katalog</a>
     <a href="#/sinavlar">Sınavlar</a>
     <a href="#/calisma">Çalışma <span class="nav-badge" data-due-badge hidden></span></a>
@@ -32,9 +34,12 @@
     <a href="#/certificate">Belge</a>
     <a href="#/cevrimdisi">Çevrimdışı</a>
   </nav>
+  <div class="mast-tools">
+  <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Tema">Tema</button>
   <form class="nav-search" id="nav-search" role="search" autocomplete="off">
-    <input type="search" id="nav-q" placeholder="Derslerde ara… (Ctrl+K)" aria-label="CourseGraph arama">
+    <input type="search" id="nav-q" placeholder="Derslerde ara… (Ctrl+K)" aria-label="Derslerde ara">
   </form>
+  </div>
 </header>
 <main id="app" tabindex="-1"></main>
 <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
@@ -42,7 +47,7 @@
 <footer class="footer">
   <p>Açık İlahiyat Üniversitesi, Açık İlahiyat Üniversitesi tarafından hazırlanmış ücretsiz bir çalışma projesidir. Herhangi bir üniversite ile bağlantılı, onaylanan veya ilişkilendirilen değildir. Her ders ve belge kendi özgün sahibine aittir. Çalışma materyalleri NotebookLM ile bu kaynaklardan üretilmiştir.</p>
 </footer>
-<script src="data.js?v=1791996741" defer></script>
-<script src="app.js?v=1791996741" defer></script>
+<script src="data.js?v=1791997320" defer></script>
+<script src="app.js?v=1791997320" defer></script>
 </body>
 </html>

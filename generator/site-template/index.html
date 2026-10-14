@@ -15,14 +15,16 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="{{SHORT}}">
 <link rel="stylesheet" href="styles.css?v={{V}}">
+<script>try{var t=localStorage.getItem("pu.theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 </head>
 <body>
+<a class="skip-link" href="#app">İçeriğe geç</a>
 <header class="masthead">
   <a class="brand" href="#/">
     <span class="crest" data-crest></span>
     <span class="brand-text"><span class="brand-name">{{NAME}}</span><span class="brand-sub">{{TAGLINE}}</span></span>
   </a>
-  <nav class="nav">
+  <nav class="nav" aria-label="Ana menü">
     <a href="#/">Katalog</a>
     <a href="#/sinavlar">Sınavlar</a>
     <a href="#/calisma">Çalışma <span class="nav-badge" data-due-badge hidden></span></a>
@@ -32,9 +34,12 @@
     <a href="#/certificate">Belge</a>
     <a href="#/cevrimdisi">Çevrimdışı</a>
   </nav>
+  <div class="mast-tools">
+  <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Tema">Tema</button>
   <form class="nav-search" id="nav-search" role="search" autocomplete="off">
-    <input type="search" id="nav-q" placeholder="Derslerde ara… (Ctrl+K)" aria-label="CourseGraph arama">
+    <input type="search" id="nav-q" placeholder="Derslerde ara… (Ctrl+K)" aria-label="Derslerde ara">
   </form>
+  </div>
 </header>
 <main id="app" tabindex="-1"></main>
 <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
