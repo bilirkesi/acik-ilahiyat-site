@@ -1,5 +1,5 @@
 {
- "notebook_id": "",
+ "notebook_id": "18b3f791-a3cd-4d19-a002-ced4ebfe16ae",
  "sources": {
   "kitap-bolum-1": {
    "id": "osm1-kitap-1",
@@ -91,6 +91,20 @@
    "url": "https://www.youtube.com/watch?v=f_sPl7P0Lpw",
    "type": "youtube",
    "status": "ready"
+  },
+  "tO8LLK5-AkI": {
+   "id": "osm1-video-7",
+   "title": "AÖF Osmanlı Türkçesi I, Ünite 7 Özet videosu",
+   "url": "https://www.youtube.com/watch?v=tO8LLK5-AkI",
+   "type": "youtube",
+   "status": "ready"
+  },
+  "R-mD_GaXGeM": {
+   "id": "osm1-video-8",
+   "title": "AÖF Osmanlı Türkçesi I, Ünite 8 Özet videosu",
+   "url": "https://www.youtube.com/watch?v=R-mD_GaXGeM",
+   "type": "youtube",
+   "status": "ready"
   }
  },
  "order": [
@@ -103,5 +117,5 @@
   "kitap-bolum-7",
   "kitap-bolum-8"
  ],
- "note": "NotebookLM defteri yok. Bölümler AÖF ders kitabından (Anadolu Üniversitesi, 2018) elle hazırlandı."
+ "note": "Bölümler AÖF ders kitabından (Anadolu Üniversitesi, 2018) elle hazırlandı. Ayrıca kitap ve çıkmış sınav PDF'leriyle bir NotebookLM defteri oluşturuldu (notebook_id)."
 }
