@@ -5228,6 +5228,110 @@ document.getElementById("zin").focus();
       ${sections}`;
   }
 
+  // Kavram kartı ekleri: ders notlarından örnek kullanım ve kavramın geçtiği sınav sorusu.
+  // Çıkmış vize arşivinden (past_exams.js) eşleşen soru öncelikli; yoksa final quiz bankası.
+  // Kavramın bütün kelimeleri aranır; kısa olanlar ("a Ünlüsü") tam eşleşmeli, bağlaçlar atlanır.
+  const conceptKeys = (it) => fold(it.label).split(" ").filter((w) => w && !["ve", "ile", "veya"].includes(w));
+  const hasKeys = (text, keys) => {
+    const toks = fold(text).split(" ");
+    return keys.every((k) => toks.some((t) => t === k || (k.length >= 4 && t.startsWith(k))));
+  };
+  const noteSentences = {};
+  function chapterSentences(c, n) {
+    const id = c.slug + ":" + n;
+    if (noteSentences[id]) return noteSentences[id];
+    const ch = c.chapters[n - 1] || {};
+    // PDF satır kırılımlarını birleştir; madde işaretli satırlar kendi başına cümle sayılır, başlıklar atılır.
+    const blocks = [];
+    let para = [];
+    const flush = () => { if (para.length) blocks.push(para.join(" ")); para = []; };
+    for (const line of String(ch.notes || "").replace(/­\n?/g, "").replace(/⟦k⟧/g, "").split("\n")) {
+      const l = line.trim();
+      if (!l || /^#/.test(l) || /^\*[^*].*\*$/.test(l)) { flush(); continue; }
+      if (/^([-*•]|\d+[.)])\s+/.test(l)) { flush(); blocks.push(l.replace(/^([-*•]|\d+[.)])\s+/, "")); continue; }
+      para.push(l);
+    }
+    flush();
+    // Notlarda geçmeyen kavramlar için bölüm panelindeki metinler (öne çıkanlar, zaman çizelgesi, karşılaştırma).
+    const panel = (((INTERACTIVE()[c.slug] || {}).chapters) || {})[n] || {};
+    const walk = (v) => {
+      if (typeof v === "string") { if (v.length >= 30) blocks.push(v); return; }
+      if (Array.isArray(v)) { v.forEach(walk); return; }
+      if (v && typeof v === "object") {
+        const head = v.name || v.t || v.label || v.title;
+        const body = v.desc || v.d || v.def;
+        if (typeof head === "string" && typeof body === "string") { blocks.push(`${head}: ${body}`); return; }
+        Object.values(v).forEach(walk);
+      }
+    };
+    for (const [k, v] of Object.entries(panel)) if (!["concepts", "quiz", "labels", "title"].includes(k)) walk(v);
+    const tidy = (x) => x.replace(/\*\*|__|`/g, "").replace(/\[\d+(?:[,\-–]\s*\d+)*\]/g, "").replace(/\s+/g, " ").trim();
+    return (noteSentences[id] = blocks.flatMap((b) => tidy(b).split(/(?<=[.!?])\s+(?=[A-ZÇĞİÖŞÜ"“(])/)).map((x) => x.trim()).filter((x) => x.length >= 30 && x.length <= 300));
+  }
+  const conceptMemo = new Map();
+  function conceptExtras(c, it) {
+    const id = c.slug + ":" + it.unit + ":" + it.label;
+    if (conceptMemo.has(id)) return conceptMemo.get(id);
+    const keys = conceptKeys(it);
+    const out = { example: "", q: null };
+    if (keys.length) {
+      const defF = fold(it.def);
+      const units = it.unit ? [it.unit] : c.chapters.map((_, i) => i + 1);
+      const cand = [];
+      for (const n of units) for (const sen of chapterSentences(c, n)) {
+        if (!hasKeys(sen, keys) || fold(sen) === defF) continue;
+        cand.push({ sen, score: (/[>:]|örne|mesela|gibi/i.test(sen) ? 3 : 0) - Math.abs(sen.length - 150) / 60 });
+      }
+      cand.sort((a, b) => b.score - a.score);
+      if (cand[0]) out.example = cand[0].sen;
+      // Sınav sorusu: kavram doğru cevapta geçiyorsa daha iyi; aynı ünite tercih edilir.
+      let best = null;
+      const consider = (q, stem, opts, label) => {
+        const right = opts.filter((o) => o.isCorrect).map((o) => o.text || "").join(" ");
+        if (!right) return;
+        const inRight = hasKeys(right, keys), inStem = hasKeys(stem, keys);
+        if (!inRight && !inStem) return;
+        const sameUnit = it.unit && (q.unit === it.unit || (q.chapters || []).includes(it.unit));
+        const score = (inRight ? 4 : 0) + (inStem ? 2 : 0) + (sameUnit ? 3 : 0) - stem.length / 400;
+        if (!best || score > best.score) best = { score, stem, opts, label };
+      };
+      for (const ex of PAST()[c.slug] || []) (ex.questions || []).forEach((q) => {
+        if (q.stem && Array.isArray(q.options)) consider(q, q.stem, q.options, `${ex.year || ex.exam_id} ${termName(ex.term)} vizesi${ex.group && ex.group !== "A" ? ` (${ex.group} grubu)` : ""}, ${q.n}. soru`);
+      });
+      const lettered = (opts) => opts.map((o, j) => Object.assign({ key: "ABCDE"[j] }, o));
+      if (!best) for (const [u, uq] of Object.entries(unitQuizMap(c.slug))) (uq.questions || []).forEach((q, i) => {
+        if (q.question && Array.isArray(q.answerOptions)) consider({ unit: +u }, q.question, lettered(q.answerOptions), `Ünite ${u} quiz'i, ${i + 1}. soru (çıkmış vizelerden)`);
+      });
+      if (!best) (c.quiz || []).forEach((q, i) => {
+        if (q.question && Array.isArray(q.answerOptions)) consider(q, q.question, lettered(q.answerOptions), `Final deneme sorusu, ${i + 1}. soru`);
+      });
+      if (!best) for (const [u, ch] of Object.entries(((INTERACTIVE()[c.slug] || {}).chapters) || {})) (ch.quiz || []).forEach((q, i) => {
+        if (q.q && Array.isArray(q.options)) consider({ unit: +u }, q.q, lettered(q.options.map((t, j) => ({ text: t, isCorrect: j === q.answer }))), `${u}. bölüm pekiştirme testi, ${i + 1}. soru`);
+      });
+      out.q = best;
+    }
+    conceptMemo.set(id, out);
+    return out;
+  }
+  function conceptExtrasHtml(c, it) {
+    const x = conceptExtras(c, it);
+    const parts = [];
+    if (x.example) parts.push(`<p class="g-ex"><span class="g-k">Örnek kullanım</span>${txt(x.example)}</p>`);
+    if (x.q) {
+      const right = x.q.opts.find((o) => o.isCorrect);
+      parts.push(`<div class="g-q"><span class="g-k">Sınavda · ${esc(x.q.label)}</span><p>${txt(x.q.stem)}</p>
+        <ol class="g-opts">${x.q.opts.map((o) => `<li class="${o.isCorrect ? "ok" : ""}"><b>${esc(o.key || "")})</b> ${txt(o.text || "")}</li>`).join("")}</ol>
+        <p class="g-ans">Cevap: <b>${esc(right.key || "")}) ${txt(right.text || "")}</b></p></div>`);
+    }
+    return parts.join("");
+  }
+  // Oyun sonu özeti: tanım her zaman görünür, örnek ve sınav sorusu açılır kutuda.
+  function conceptRecapLi(c, it, cls) {
+    const more = conceptExtrasHtml(c, it);
+    return `<li${cls ? ` class="${cls}"` : ""}><b>${esc(it.label)}</b>: ${txt(it.def)}${more ? `<details class="g-more"><summary>Örnek ve sınav sorusu</summary>${more}</details>` : ""}</li>`;
+  }
+  const conceptCardHtml = (c, it) => `<b>${esc(it.label)}</b>: ${txt(it.def)}${conceptExtrasHtml(c, it)}`;
+
   function gameStripHtml(c, n) {
     if (gamePool(c, n).length < 3) return "";
     return `<div class="g-strip" data-noprint><span>Bu ünitenin kavramlarıyla oyna:</span>${Object.keys(GAME_KINDS).map((k) => `<a class="btn ghost sm-mini" href="#/oyunlar/${c.slug}/${n}/${k}">${GAME_KINDS[k].name}</a>`).join("")}</div>`;
@@ -5480,7 +5584,7 @@ document.getElementById("zin").focus();
       root.querySelector(".g-dock").hidden = true;
       root.querySelector(".g-end").innerHTML = gameWinHtml(stars,
         `<p>${cw.placed.length} kelimeyi ${fmtTime(ms)} içinde tamamladın${revealed ? `; ${revealed} harf açıldı` : ", hiç ipucu almadan"}.</p>
-        <ul class="g-recap">${cw.placed.map((p) => `<li><b>${esc(p.it.label)}</b>: ${txt(p.it.def)}</li>`).join("")}</ul>`, "Yeni bulmaca");
+        <ul class="g-recap">${cw.placed.map((p) => conceptRecapLi(c, p.it)).join("")}</ul>`, "Yeni bulmaca");
       root.querySelector("[data-g-again]").onclick = () => { gameCurSet(key, { seed: seed + 1 }); route(); };
       root.querySelector(".g-end").scrollIntoView({ behavior: "smooth", block: "start" });
     };
@@ -5624,7 +5728,7 @@ document.getElementById("zin").focus();
       results.push({ it, ok, shown });
       busy = true;
       const msg = root.querySelector(".an-msg");
-      msg.innerHTML = ok ? `<b class="ok-t">Doğru!</b> ${esc(it.label)}` : `Cevap: <b>${esc(it.label)}</b>`;
+      msg.innerHTML = (ok ? `<b class="ok-t">Doğru!</b> ` : "Cevap: ") + `<div class="g-card">${conceptCardHtml(c, it)}</div>`;
       root.querySelector(".an-slots").classList.add(ok ? "win" : "shown");
       const next = document.createElement("button");
       next.type = "button"; next.className = "btn"; next.textContent = i + 1 < items.length ? "Sonraki kavram" : "Sonucu gör";
@@ -5668,7 +5772,7 @@ document.getElementById("zin").focus();
       gameFinish(key, stars, score);
       root.innerHTML = gameWinHtml(stars,
         `<p>${items.length} kavramdan <b>${solved}</b> tanesini buldun${helped ? ` (${helped} tanesinde ipucu aldın)` : ""}. Puan: <b>${score}</b> · ${fmtTime(Date.now() - t0)}</p>
-        <ul class="g-recap">${results.map((r) => `<li class="${r.ok ? "ok" : "miss"}"><b>${esc(r.it.label)}</b>: ${txt(r.it.def)}</li>`).join("")}</ul>`, "Yeniden oyna");
+        <ul class="g-recap">${results.map((r) => conceptRecapLi(c, r.it, r.ok ? "ok" : "miss")).join("")}</ul>`, "Yeniden oyna");
       root.querySelector("[data-g-again]").onclick = () => route();
     };
     gameKeyHandler = {
@@ -5749,7 +5853,7 @@ document.getElementById("zin").focus();
       const li = root.querySelector(`.ws-words [data-w="${j}"]`);
       li.classList.add("ok", "f" + (j % 6));
       root.querySelector(".ws-n").textContent = foundN;
-      root.querySelector(".ws-def").innerHTML = `<b>${esc(w.it.label)}</b>: ${txt(w.it.def)}`;
+      root.querySelector(".ws-def").innerHTML = conceptCardHtml(c, w.it);
       if (foundN === words.length) win();
       return true;
     };
@@ -5795,7 +5899,7 @@ document.getElementById("zin").focus();
       const li = e.target.closest("[data-w]");
       if (!li) return;
       const w = words[+li.dataset.w];
-      root.querySelector(".ws-def").innerHTML = w.found ? `<b>${esc(w.it.label)}</b>: ${txt(w.it.def)}` : `<b>${esc(w.it.label)}</b> henüz bulunmadı. İpucu: ${txt(w.it.clue)}`;
+      root.querySelector(".ws-def").innerHTML = w.found ? conceptCardHtml(c, w.it) : `<b>${esc(w.it.label)}</b> henüz bulunmadı. İpucu: ${txt(w.it.clue)}`;
     });
     root.querySelector(".g-actions").addEventListener("click", (e) => {
       const b = e.target.closest("[data-a]");
@@ -5820,7 +5924,7 @@ document.getElementById("zin").focus();
       root.querySelector(".g-actions").hidden = true;
       root.querySelector(".g-end").innerHTML = gameWinHtml(stars,
         `<p>${words.length} kavramın hepsini ${fmtTime(ms)} içinde buldun${hints ? `; ${hints} ipucu aldın` : ""}.</p>
-        <ul class="g-recap">${words.map((w) => `<li><b>${esc(w.it.label)}</b>: ${txt(w.it.def)}</li>`).join("")}</ul>`, "Yeni tablo");
+        <ul class="g-recap">${words.map((w) => conceptRecapLi(c, w.it)).join("")}</ul>`, "Yeni tablo");
       root.querySelector("[data-g-again]").onclick = () => route();
     }
   }
@@ -5859,7 +5963,7 @@ document.getElementById("zin").focus();
     else if (parts[0] === "ozet") { need.add("interactive"); need.add("coursegraph"); needExamData(); }
     else if (parts[0] === "ara") need.add("coursegraph");
     else if (parts[0] === "kavram") need.add("interactive");
-    else if (parts[0] === "oyunlar") need.add("interactive");
+    else if (parts[0] === "oyunlar") { need.add("interactive"); if (parts[1]) needExamData(); }
     else if (parts[0] === "transcript" || parts[0] === "certificate" || parts[0] === "calisma") { /* data.js yeterli */ }
     else if (["tekrar", "hatalar", "karisik", "analiz", "plan"].includes(parts[0])) needExamData();
     else if (parts[0] === "course" && bySlug[parts[1]]) {
