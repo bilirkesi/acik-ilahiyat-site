@@ -207,13 +207,16 @@ def rev(path):
 def offline_packs(site, data):
     """Ders başına çevrimdışı paket: data.js'in andığı görseller (+ varsa -sm.jpg kopyaları)."""
     packs, small = {}, []
+    # Çıkmış sınav ve ünite testi görselleri (ör. Osmanlıca şıklar) data.js dışında durur.
+    extra = "".join((site / n).read_text(encoding="utf-8") for n in ("past_exams.js", "unit_quizzes.js")
+                    if (site / n).exists())
     for course in data:
         slug = course["slug"]
         paths = sorted(set(re.findall(r'assets/' + re.escape(slug) + r'/[^"\\]+?\.(?:jpg|jpeg|png|webp)',
-                                      json.dumps(course, ensure_ascii=False))))
+                                      json.dumps(course, ensure_ascii=False) + extra)))
         files = []
         for p in paths:
-            for q in (p, re.sub(r"\.jpg$", "-sm.jpg", p)):
+            for q in dict.fromkeys((p, re.sub(r"\.jpg$", "-sm.jpg", p))):  # png'de küçük kopya yok
                 f = site / q
                 if q != p and not f.exists():
                     continue

@@ -390,6 +390,29 @@ UNIT_KEYWORDS: dict[int, list[str]] = {
     ],
 }
 
+OSM_UNIT_TITLES = {
+    1: "Osmanlı Türkçesi Alfabesi",
+    2: "Türkçe Ünlü ve Ünsüzlerin Yazılışı",
+    3: "Türkçe Kelimelerin Yapısı, Türkçe Kiplerin ve Edatların Yazılışı",
+    4: "Türkçe Ek, Zamir, Zarf ve Sayıların Yazılışı",
+    5: "Arapça ve Farsça Kelimelerde Ünlüler ve Yazılışları",
+    6: "Arapça Kelimelerin Yapısı",
+    7: "Aksâm-ı Seb'a, Mücerred Masdarlar, İsm-i Fâ'il ve İsm-i Mef'ûl",
+    8: "Mezîdünfih Masdarlar (I)",
+}
+
+OSM_UNIT_TO_CHAPTERS = {i: [i] for i in range(1, 9)}
+
+# Osmanlıca soruların çoğu Arap harfli görseldir; ünite her soru için elle
+# data/osmanlica-1/past_exams_notes.json'da verilir. Anahtar kelimeler yalnızca yedektir.
+OSM_UNIT_KEYWORDS: dict[int, list[str]] = {
+    1: ["hareke", "esre", "ötre", "üstün", "tenvin", "şedde", "cezm", "med işaret", "bitiş", "alfabe"],
+    2: ["ünlüsünün yazı", "kalın", "ince", "nazal", "kâf-ı nûnî", "okunuşu"],
+    3: ["kip", "edat", "ünlem", "çekim eki", "yapım eki"],
+    4: ["zarf", "zamir", "çokluk", "çoğul", "rakam", "sayı", "hal ek"],
+    5: ["ayın", "hemze", "farsça", "arapça kelime"],
+}
+
 # slug -> konfigürasyon
 COURSE_UNIT_CONFIGS = {
     "islam-mezhepleri-tarihi": {
@@ -406,6 +429,11 @@ COURSE_UNIT_CONFIGS = {
         "titles": AIT_UNIT_TITLES,
         "chapters": AIT_UNIT_TO_CHAPTERS,
         "keywords": AIT_UNIT_KEYWORDS,
+    },
+    "osmanlica-1": {
+        "titles": OSM_UNIT_TITLES,
+        "chapters": OSM_UNIT_TO_CHAPTERS,
+        "keywords": OSM_UNIT_KEYWORDS,
     },
 }
 
@@ -543,6 +571,8 @@ def annotate_questions(slug: str) -> list[dict]:
             stem = q.get("stem") or q.get("question") or ""
             opts = " ".join(o.get("text", "") for o in q.get("options") or [])
             unit, scores = classify_unit(stem, opts, slug=slug)
+            if q.get("unit"):  # elle verilmiş ünite (ör. Osmanlıca) tahminden önce gelir
+                unit = q["unit"]
             kws = extract_keywords(stem)
             rows.append(
                 {

@@ -1,0 +1,410 @@
+{
+ "course": "OSMANLI TÜRKÇESİ I",
+ "source": "AÖF TAR111U Osmanlı Türkçesi I ders kitabı, bölüm özetleri",
+ "note": "AÖF bu ders için ünite infografiği yayınlamıyor. Bu görseller ders kitabının bölüm özetlerinden Açık İlahiyat için hazırlandı.",
+ "units": [
+  {
+   "unit": 1,
+   "title": "Osmanlı Türkçesi Alfabesi",
+   "chapter": 1,
+   "lead": "Osmanlı Türkçesi, Türkçenin 13. yüzyıldan 20. yüzyıl başına kadar Arap harfleriyle yazılan dönemidir.",
+   "sections": [
+    {
+     "heading": "Dönemler",
+     "points": [
+      "Eski Anadolu Türkçesi: İstanbul'un fethine kadar.",
+      "Klasik Osmanlı Türkçesi: 15. yy ortası - 19. yy.",
+      "Yeni Osmanlı Türkçesi: Tanzimat'tan 1908'e."
+     ]
+    },
+    {
+     "heading": "Alfabe",
+     "points": [
+      "Temeli 28 harfli Arap alfabesi.",
+      "İranlılar: پ چ ژ. Türkler: ڭ (kâf-ı nûnî).",
+      "Yumuşak g için گ, ayrıca لا lamelif."
+     ]
+    },
+    {
+     "heading": "Harekeler",
+     "points": [
+      "Üstün ـَ a/e · ötre ـُ o/ö/u/ü (üstte).",
+      "Esre ـِ harfin altında, ı/i okutur.",
+      "Tenvin: an/en, ın/in, un/ün (عموماً umûmen)."
+     ]
+    },
+    {
+     "heading": "Yardımcı işaretler",
+     "points": [
+      "Med آ: uzun â (آمر âmir).",
+      "Şedde ـّ: ikiz ünsüz (ملّت millet).",
+      "Cezm ـْ: ünsüz okutur (برْ bir)."
+     ]
+    },
+    {
+     "heading": "Harflerin bitişmesi",
+     "points": [
+      "Yazı sağdan sola, harfler bitişik.",
+      "Sonrakiyle bitişmeyenler: ا د ذ ر ز ژ و.",
+      "Benzer harfler noktalarla ayrılır: ب ت ث."
+     ]
+    }
+   ],
+   "keywords": [
+    "hareke",
+    "tenvin",
+    "med",
+    "şedde",
+    "cezm",
+    "kâf-ı nûnî",
+    "lamelif"
+   ]
+  },
+  {
+   "unit": 2,
+   "title": "Türkçe Ünlü ve Ünsüzlerin Yazılışı",
+   "chapter": 2,
+   "lead": "Türkçede her ünsüzün tek harfi vardır; Arapça harfli yazıda bazı seslerin kalın ve ince harfleri ayrıdır.",
+   "sections": [
+    {
+     "heading": "Kalın / ince harfler",
+     "points": [
+      "k: ق / ك · t: ط / ت",
+      "s: ص / س · z: ظ / ز · ğ: غ / گ",
+      "Kalın ünlülü kelimede kalın harf: اق ak, طاش taş."
+     ]
+    },
+    {
+     "heading": "Genizsi n ve l",
+     "points": [
+      "Genizsi ñ: kâf-ı nûnî ڭ (دڭز deñiz).",
+      "Kalın ve ince l için tek harf: lam ل."
+     ]
+    },
+    {
+     "heading": "Ünlü harfleri",
+     "points": [
+      "Ünlüleri gösteren harfler: ا و ى ه.",
+      "a: başta آ, ortada ا · e: sonda güzel he (دره).",
+      "ı/i: اي, ى · o/ö/u/ü: او, و."
+     ]
+    },
+    {
+     "heading": "Birden çok okunuş",
+     "points": [
+      "Ünlüler her zaman yazılmaz: ترلك terlik.",
+      "قوش kuş/koş, اولو ulu/ölü.",
+      "Doğru okunuş cümlenin anlamından çıkar."
+     ]
+    }
+   ],
+   "keywords": [
+    "kaf-kef",
+    "sad-sin",
+    "tı-te",
+    "kâf-ı nûnî",
+    "güzel he",
+    "ünlü harfleri"
+   ]
+  },
+  {
+   "unit": 3,
+   "title": "Kelime Yapısı, Kipler ve Edatlar",
+   "chapter": 3,
+   "lead": "Türkçe kelimeler kök ve eklerden oluşur; kip ekleri Arap harfleriyle çoğunlukla tek şekilli yazılır.",
+   "sections": [
+    {
+     "heading": "Kelime yapısı",
+     "points": [
+      "Kök + yapım eki + çekim eki: göz-lük-ler.",
+      "Yapım eki yeni kelime, çekim eki ilişki kurar.",
+      "Türkçe kelime iki ünsüzle başlamaz."
+     ]
+    },
+    {
+     "heading": "Kipler",
+     "points": [
+      "Dilek-şart -sa/-se: سه (كلمه سه كز gelmeseniz).",
+      "Gereklilik -malı/-meli: ملى (ايچملى içmeli).",
+      "Şimdiki zaman -makta: مقده / مكده."
+     ]
+    },
+    {
+     "heading": "Ön edatlar",
+     "points": [
+      "der-dest: elde · der-hâl: hemen.",
+      "der-âgûş: kucakta · ber-dâr: asılmış.",
+      "ez, bâ, be, ber, der, berây-ı, tâ."
+     ]
+    },
+    {
+     "heading": "Bağlama edatları",
+     "points": [
+      "fe-emmâ: amma, lâkin · vâkı'a: gerçi.",
+      "vaktâki: ne vakit ki · gerekse.",
+      "mâ-adâ: -den başka · kezâ: aynı şekilde."
+     ]
+    },
+    {
+     "heading": "Ünlemler",
+     "points": [
+      "hayf, efsûs, dirîğâ: ne yazık.",
+      "zinhâr: sakın · destûr: yol ver.",
+      "ahsentü, zihî: ne güzel · yâ: ey."
+     ]
+    }
+   ],
+   "keywords": [
+    "dilek-şart",
+    "gereklilik",
+    "ön edat",
+    "der-dest",
+    "vaktâki",
+    "zinhâr"
+   ]
+  },
+  {
+   "unit": 4,
+   "title": "Türkçe Ek, Zamir, Zarf ve Sayılar",
+   "chapter": 4,
+   "lead": "Türkçe ekler kalıplaşmış ve çoğunlukla ünlüsüz yazılır; okunuş bugünkü söyleyişe göredir.",
+   "sections": [
+    {
+     "heading": "Ekler",
+     "points": [
+      "Çokluk eki her zaman لر: كوزلر gözler.",
+      "-ıp/-ip/-up/-üp tek şekilli: آلوب alıp.",
+      "Bildirme ekleri isim cümlesinin yüklemini kurar."
+     ]
+    },
+    {
+     "heading": "Hâl ekleri",
+     "points": [
+      "Bulunma ده (جنتده) · ayrılma دن (اودن).",
+      "Vasıta ile/له: بزمله bizimle.",
+      "İlgi ڭ · eşitlik جه."
+     ]
+    },
+    {
+     "heading": "Zarflar",
+     "points": [
+      "fi'l-hâl: hemen · berren: kara yoluyla.",
+      "nice: nasıl · ayruk: başka · muhibbâne: dostça.",
+      "binâen alâ zâlik: buna göre."
+     ]
+    },
+    {
+     "heading": "Sayılar",
+     "points": [
+      "Rakamlar soldan sağa yazılır.",
+      "٤ dört · ٥ beş · ٦ altı · ٨ sekiz.",
+      "٥٠ elli · ٦٠ altmış · ٧٠ yetmiş · ٨٠ seksen."
+     ]
+    }
+   ],
+   "keywords": [
+    "çokluk eki",
+    "zarf fiil",
+    "hâl ekleri",
+    "zamir",
+    "zarf",
+    "rakam"
+   ]
+  },
+  {
+   "unit": 5,
+   "title": "Arapça ve Farsça Kelimelerde Ünlüler",
+   "chapter": 5,
+   "lead": "Arapça ve Farsçada uzun ünlüler harfle yazılır, kısalar yazılmaz; bu dillere özgü sesler Türkçede en yakın sesle okunur.",
+   "sections": [
+    {
+     "heading": "Uzun ünlüler",
+     "points": [
+      "â elif: والى vâlî.",
+      "û vav: بوسه bûse.",
+      "î ye: جميل cemîl."
+     ]
+    },
+    {
+     "heading": "Özgü harfler",
+     "points": [
+      "Arapça: ء ث ذ ح ص ض ط ظ ع.",
+      "Farsça: پ چ ژ گ.",
+      "ث → s · ذ ظ → z · ط → t · ح خ → h."
+     ]
+    },
+    {
+     "heading": "Ayın ve hemze",
+     "points": [
+      "Arapçaya özgü; kesme ile gösterilebilir.",
+      "Hemze içte diş üzerine: هيئت hey'et.",
+      "Sondaki hemze Türkçede okunmaz."
+     ]
+    },
+    {
+     "heading": "Takvim",
+     "points": [
+      "Hicrî ay kısaltmaları: م ص را ر جا ج ب ش ن ل ذا ذ.",
+      "gurre: ayın ilk günü · selh: son günü.",
+      "evâil 1-10 · evâsıt 11-20 · evâhir 21-30."
+     ]
+    }
+   ],
+   "keywords": [
+    "uzun ünlü",
+    "ayın",
+    "hemze",
+    "hicrî takvim",
+    "gurre",
+    "selh"
+   ]
+  },
+  {
+   "unit": 6,
+   "title": "Arapça Kelimelerin Yapısı",
+   "chapter": 6,
+   "lead": "Arapça bükünlü bir dildir; kelimeler köke harf eklenerek belli kalıplarla (vezin) türetilir.",
+   "sections": [
+    {
+     "heading": "Kelime türleri",
+     "points": [
+      "Fiil, isim, harf (edat).",
+      "İsm-i câmid ve ism-i müştak.",
+      "Zâid harfler: سألتمونيها."
+     ]
+    },
+    {
+     "heading": "Vezin",
+     "points": [
+      "Aslî harfler yerine ف ع ل yazılır.",
+      "شكران şükrân → fu'lân · اكرام ikrâm → if'âl.",
+      "كاتب kâtib → fâ'il · مكتوب → mef'ûl."
+     ]
+    },
+    {
+     "heading": "Müennes işaretleri",
+     "points": [
+      "Kapalı te: فاضله fâzıla.",
+      "Elif-i maksûre ى · elif-i memdûde اء.",
+      "Ma'nevî ve semâî müennesler."
+     ]
+    },
+    {
+     "heading": "Tesniye ve cem'",
+     "points": [
+      "Tesniye -eyn: vâlideyn.",
+      "Sâlim: -în/-ûn (müzekker), -ât (müennes).",
+      "Mükesser: ef'âl, fu'ûl, fu'alâ, mefâ'il."
+     ]
+    }
+   ],
+   "keywords": [
+    "vezin",
+    "aslî harf",
+    "zâid harf",
+    "müennes",
+    "tesniye",
+    "cem'-i mükesser"
+   ]
+  },
+  {
+   "unit": 7,
+   "title": "Aksâm-ı Seb'a, Masdarlar, Fâil ve Mef'ûl",
+   "chapter": 7,
+   "lead": "Arapça kelimeler aslî harflerine göre yedi kısma ayrılır; mücerred masdarlardan ism-i fâil ve ism-i mef'ûl türetilir.",
+   "sections": [
+    {
+     "heading": "Sahih",
+     "points": [
+      "Sâlim: شعر şi'r.",
+      "Mehmûz (hemzeli): ادب edeb.",
+      "Muzâaf (2. ve 3. harf aynı): قدّ kadd."
+     ]
+    },
+    {
+     "heading": "Mu'tel",
+     "points": [
+      "Misâl (1. harf illetli): وقت vakt.",
+      "Ecvef (2. harf illetli): كون kevn.",
+      "Nâkıs (3. harf): نهى nehy · Lefîf: وفا vefâ."
+     ]
+    },
+    {
+     "heading": "Masdarlar",
+     "points": [
+      "Mücerred masdarlar semâîdir.",
+      "Mimli: mef'al, mef'il, mef'ale, mef'ile.",
+      "Mec'ûl: -iyyet (mes'ûliyet)."
+     ]
+    },
+    {
+     "heading": "Fâil ve mef'ûl",
+     "points": [
+      "Fâil = yapan: fâ'il (kâtib, âlim).",
+      "Mef'ûl = yapılan: mef'ûl (mektûb, ma'lûm).",
+      "Rubâî: mufa'lil / mufa'lel (mütercim)."
+     ]
+    }
+   ],
+   "keywords": [
+    "aksâm-ı seb'a",
+    "sahih",
+    "mu'tel",
+    "masdar",
+    "ism-i fâil",
+    "ism-i mef'ûl"
+   ]
+  },
+  {
+   "unit": 8,
+   "title": "Mezîdünfih Masdarlar (I)",
+   "chapter": 8,
+   "lead": "Mezîdünfih bâblar mücerred masdara geçişlilik, dönüşlülük ya da işteşlik gibi anlamlar katar.",
+   "sections": [
+    {
+     "heading": "If'âl",
+     "points": [
+      "Geçişli: ihrâc (çıkarma), ikrâm.",
+      "Fâil muf'il: muhric · mef'ûl muf'al."
+     ]
+    },
+    {
+     "heading": "Tef'îl",
+     "points": [
+      "Geçişli, pekiştirme: ta'lîm, tebdîl.",
+      "Fâil mufa''il: muallim · mef'ûl muallem."
+     ]
+    },
+    {
+     "heading": "Tefa''ul",
+     "points": [
+      "Dönüşlü: teallüm, tekebbür, tahammül.",
+      "Fâil mütefa''il: mütekebbir."
+     ]
+    },
+    {
+     "heading": "Tefâ'ul",
+     "points": [
+      "İşteş: teâvün, tecâhül.",
+      "Fâil mütefâ'il · mef'ûl mütedâvel."
+     ]
+    },
+    {
+     "heading": "Müfâ'ale",
+     "points": [
+      "İşteş: mücâdele, muhârebe, mükâleme.",
+      "Fâil mufâ'il: mücâhid, muhârib."
+     ]
+    }
+   ],
+   "keywords": [
+    "if'âl",
+    "tef'îl",
+    "tefa''ul",
+    "tefâ'ul",
+    "müfâ'ale",
+    "i'lâl"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,107 @@
+{
+ "notebook_id": "",
+ "sources": {
+  "kitap-bolum-1": {
+   "id": "osm1-kitap-1",
+   "title": "Osmanlı Türkçesi I ders kitabı, Bölüm 1: Osmanlı Türkçesi Alfabesi",
+   "url": "",
+   "type": "book",
+   "status": "ready"
+  },
+  "kitap-bolum-2": {
+   "id": "osm1-kitap-2",
+   "title": "Osmanlı Türkçesi I ders kitabı, Bölüm 2: Türkçe Ünlü ve Ünsüzlerin Yazılışı",
+   "url": "",
+   "type": "book",
+   "status": "ready"
+  },
+  "kitap-bolum-3": {
+   "id": "osm1-kitap-3",
+   "title": "Osmanlı Türkçesi I ders kitabı, Bölüm 3: Türkçe Kelimelerin Yapısı, Türkçe Kiplerin ve Edatların Yazılışı",
+   "url": "",
+   "type": "book",
+   "status": "ready"
+  },
+  "kitap-bolum-4": {
+   "id": "osm1-kitap-4",
+   "title": "Osmanlı Türkçesi I ders kitabı, Bölüm 4: Türkçe Ek, Zamir, Zarf ve Sayıların Yazılışı",
+   "url": "",
+   "type": "book",
+   "status": "ready"
+  },
+  "kitap-bolum-5": {
+   "id": "osm1-kitap-5",
+   "title": "Osmanlı Türkçesi I ders kitabı, Bölüm 5: Arapça ve Farsça Kelimelerde Ünlüler ve Yazılışları",
+   "url": "",
+   "type": "book",
+   "status": "ready"
+  },
+  "kitap-bolum-6": {
+   "id": "osm1-kitap-6",
+   "title": "Osmanlı Türkçesi I ders kitabı, Bölüm 6: Arapça Kelimelerin Yapısı",
+   "url": "",
+   "type": "book",
+   "status": "ready"
+  },
+  "kitap-bolum-7": {
+   "id": "osm1-kitap-7",
+   "title": "Osmanlı Türkçesi I ders kitabı, Bölüm 7: Aksâm-ı Seb'a, Mücerred Masdarlar, İsm-i Fâil ve İsm-i Mef'ûl",
+   "url": "",
+   "type": "book",
+   "status": "ready"
+  },
+  "kitap-bolum-8": {
+   "id": "osm1-kitap-8",
+   "title": "Osmanlı Türkçesi I ders kitabı, Bölüm 8: Mezîdünfih Masdarlar (I)",
+   "url": "",
+   "type": "book",
+   "status": "ready"
+  },
+  "k4Cl5j777xs": {
+   "id": "osm1-video-1",
+   "title": "AÖF Osmanlı Türkçesi I, Ünite 1 Özet videosu",
+   "url": "https://www.youtube.com/watch?v=k4Cl5j777xs",
+   "type": "youtube",
+   "status": "ready"
+  },
+  "RjVpM8DAUPI": {
+   "id": "osm1-video-3",
+   "title": "AÖF Osmanlı Türkçesi I, Ünite 3 Özet videosu",
+   "url": "https://www.youtube.com/watch?v=RjVpM8DAUPI",
+   "type": "youtube",
+   "status": "ready"
+  },
+  "0vFS6f94LFA": {
+   "id": "osm1-video-4",
+   "title": "AÖF Osmanlı Türkçesi I, Ünite 4 Özet videosu",
+   "url": "https://www.youtube.com/watch?v=0vFS6f94LFA",
+   "type": "youtube",
+   "status": "ready"
+  },
+  "3HtOWWxmAD8": {
+   "id": "osm1-video-5",
+   "title": "AÖF Osmanlı Türkçesi I, Ünite 5 Özet videosu",
+   "url": "https://www.youtube.com/watch?v=3HtOWWxmAD8",
+   "type": "youtube",
+   "status": "ready"
+  },
+  "f_sPl7P0Lpw": {
+   "id": "osm1-video-6",
+   "title": "AÖF Osmanlı Türkçesi I, Ünite 6 Özet videosu",
+   "url": "https://www.youtube.com/watch?v=f_sPl7P0Lpw",
+   "type": "youtube",
+   "status": "ready"
+  }
+ },
+ "order": [
+  "kitap-bolum-1",
+  "kitap-bolum-2",
+  "kitap-bolum-3",
+  "kitap-bolum-4",
+  "kitap-bolum-5",
+  "kitap-bolum-6",
+  "kitap-bolum-7",
+  "kitap-bolum-8"
+ ],
+ "note": "NotebookLM defteri yok. Bölümler AÖF ders kitabından (Anadolu Üniversitesi, 2018) elle hazırlandı."
+}

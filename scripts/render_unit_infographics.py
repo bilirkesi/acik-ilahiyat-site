@@ -30,10 +30,10 @@ JPEG_QUALITY = 86
 ACCENTS = ["#b08d4a", "#3f6f8f", "#8a4b5c", "#4f7a55", "#6b5b95"]
 
 CSS = """
-@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500;600&family=Inter:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500;600&family=Inter:wght@400;500;600&family=Noto+Naskh+Arabic:wght@400;600&display=swap');
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body { width: %(w)dpx; background: #f8f4ea; color: #1f2633;
-  font-family: Inter, 'Segoe UI', 'Liberation Sans', Arial, sans-serif; }
+  font-family: Inter, 'Noto Naskh Arabic', 'Segoe UI', 'Liberation Sans', Arial, sans-serif; }
 .sheet { padding: 44px 46px 30px; }
 header { border-bottom: 2px solid #1b2a4a; padding-bottom: 18px; margin-bottom: 22px; }
 .course { font: 600 15px/1 Inter, sans-serif; letter-spacing: .14em; color: #b08d4a; }

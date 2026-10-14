@@ -16,7 +16,7 @@ sys.path.insert(0, str(ROOT))
 
 from coursegraph.past_exams import annotate_questions, unit_titles, unit_to_chapters  # noqa: E402
 
-SLUGS = ["ataturk-ilkeleri-1", "turk-dili-1", "islam-mezhepleri-tarihi"]
+SLUGS = ["ataturk-ilkeleri-1", "turk-dili-1", "islam-mezhepleri-tarihi", "osmanlica-1"]
 
 
 def load_plan(slug: str) -> dict:
@@ -41,6 +41,9 @@ def build_solution(q: dict, correct_opt: dict | None, unit_title: str | None, ch
     letter = q.get("correct") or (correct_opt or {}).get("key") or ""
     text = (correct_opt or {}).get("text") or ""
     parts = [f"Doğru cevap: {letter}) {text}".strip()]
+    if q.get("explanation"):
+        parts[0] = parts[0].rstrip(".") + "."
+        parts.append(q["explanation"])
     if unit_title:
         parts.append(f"Konu ünitesi: {unit_title}.")
     if ch_metas:
@@ -80,7 +83,8 @@ def main() -> int:
                     oi["isCorrect"] = is_c
                     if is_c:
                         oi["rationale"] = build_solution(
-                            {"correct": correct}, oi, titles.get(u) if u else None, ch_metas
+                            {"correct": correct, "explanation": q.get("explanation")}, oi,
+                            titles.get(u) if u else None, ch_metas
                         )
                     opts.append(oi)
                 unit_title = titles.get(u) if u else None
@@ -99,6 +103,8 @@ def main() -> int:
                         "keywords": (q.get("keywords") or [])[:6],
                     }
                 )
+                if q.get("stemParts"):  # Arap harfli gövde görselleri (Osmanlıca)
+                    qs[-1]["stemParts"] = q["stemParts"]
             has_key = any(q.get("correct") for q in qs)
             exams.append(
                 {
