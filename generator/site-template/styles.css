@@ -1137,3 +1137,17 @@ main:focus, main:focus-visible { outline: none; }
 @keyframes gShake { 25% { transform: translateX(-5px); } 75% { transform: translateX(5px); } }
 @media (prefers-reduced-motion: reduce) { .shake, .ws-cell.blink { animation: none; } }
 .ws-words u { text-decoration-thickness: 2px; text-underline-offset: 2px; font-weight: 700; }
+/* Oyunlarda kavram ekleri: örnek kullanım ve sınav sorusu */
+.g-k { display: block; font: 600 .68rem/1.2 var(--sans); letter-spacing: .1em; text-transform: uppercase; color: var(--gold-text); margin-bottom: .2rem; }
+.result .g-k { color: var(--chrome-soft); }
+.g-ex, .g-q { margin: .6rem 0 0; padding: .55rem .7rem; border-left: 3px solid var(--gold); background: color-mix(in srgb, var(--gold-soft) 35%, transparent); font-size: .9rem; line-height: 1.45; }
+.g-q p { margin: 0 0 .3rem; }
+.g-opts { list-style: none; padding: 0; margin: .2rem 0 .3rem; font-size: .86rem; }
+.g-opts li { margin: .15rem 0; opacity: .8; }
+.g-opts li.ok { opacity: 1; font-weight: 600; }
+.g-ans { margin: 0; }
+.g-more { margin: .3rem 0 .2rem; }
+.g-more > summary { cursor: pointer; font-size: .85rem; color: var(--gold-text); }
+.result .g-more > summary { color: var(--chrome-soft); }
+.g-card { margin-top: .4rem; color: var(--ink); }
+.ws-def .g-ex, .ws-def .g-q { color: var(--ink); }
