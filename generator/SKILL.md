@@ -61,6 +61,9 @@ python3 <skill>/scripts/new_project.py PROJECT --name "NAME" --issuer "ISSUER" -
 `university.json` also holds `colors` (primary, accent, paper: the crest and site palette), `codePrefix`
 (course codes like "AU 101"), `figureStyle` (the locked infographic palette), `showNotebookLinks`
 (set false if visitors cannot open the notebooks) and `plannedCourses` (shows "coming soon" cards).
+`exams` lists the exam calendar for the `#/plan` countdown: `[{id, name, date: "YYYY-MM-DD", end?, scope: "vize"|"final"}]`
+(vize defaults to the first half of each course's units, final to all; students can change both). Update it
+each term from the university's academic calendar.
 Edit the JSON directly if the user asks for any of these.
 
 ## Step 3. Sources (two modes)

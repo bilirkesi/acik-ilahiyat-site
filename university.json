@@ -25,5 +25,27 @@
   "figureStyle": "light ivory background, deep navy text and shapes, muted gold accents only, flat vector icons, two-column layout",
   "showNotebookLinks": true,
   "plannedCourses": 0,
-  "storageKey": "a-k-i-lahiyat-niversitesi"
+  "storageKey": "a-k-i-lahiyat-niversitesi",
+  "exams": [
+    {
+      "id": "2026-guz-vize",
+      "name": "Güz ara sınavı (vize)",
+      "date": "2026-12-05",
+      "end": "2026-12-06",
+      "scope": "vize"
+    },
+    {
+      "id": "2026-guz-final",
+      "name": "Güz dönem sonu sınavı (final)",
+      "date": "2027-01-16",
+      "end": "2027-01-17",
+      "scope": "final"
+    },
+    {
+      "id": "2027-yaz",
+      "name": "Yaz okulu sınavı",
+      "date": "2027-08-21",
+      "scope": "final"
+    }
+  ]
 }
