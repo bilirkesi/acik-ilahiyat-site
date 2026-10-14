@@ -1,0 +1,1497 @@
+{
+  "title": "Osmanlı Türkçesi I İnteraktif Paneli",
+  "subtitle": "AÖF TAR111U müfredatına uygun modüler analiz",
+  "labels": {},
+  "takeaways": [
+    {
+      "t": "Alfabenin Esası ve Türkçe Unsurlar",
+      "d": "Osmanlı Türkçesi, 28 Arap harfine pe, çe, je, nazal n, gef ve lamelif eklenerek oluşturulmuş bir alfabeyle yazılır. Türkçe kelimelerin okunuşunda okutucu harfler ve kalıplaşmış imla kuralları belirleyicidir."
+    },
+    {
+      "t": "Fiil Kipleri ve Gramer Yapıları",
+      "d": "Türkçe yapım ve çekim ekleri ile kipler kalıplaşmış harf dizilimleriyle gösterilir. Şahıs, iyelik ve yönelme eklerinde damaksı n (sağır kef) kullanımı öne çıkan imla özelliklerindendir."
+    },
+    {
+      "t": "Arapça ve Farsça Kelime Yapısı",
+      "d": "Arapça ve Farsça kökenli kelimelerde kısa ünlüler harfle yazılmazken uzun ünlüler elif, vav ve ye ile gösterilir. Arapça bükünlü bir yapıya sahip olup türetmeler aslî kök harfleri üzerinden yapılır."
+    },
+    {
+      "t": "Masdarlar, Vezinler ve Çatılar",
+      "d": "Arapça sülâsî mücerred masdarlar semâî iken mezîdünfih masdarlar kıyasî olarak türetilir. Mezîdünfih bablar ve türetilen ism-i fâil ile ism-i mef'ûl kalıpları kelimelere yeni anlamlar kazandırır."
+    }
+  ],
+  "concepts": [
+    {
+      "term": "Okutucu Harfler",
+      "def": "Türkçe kelimelerdeki ünlü sesleri göstermek için kullanılan elif (ا), he (ه), vav (و) ve ye (ى) harfleridir."
+    },
+    {
+      "term": "Genizsi n (Sağır Kef)",
+      "def": "Havanın geniz yolundan salınmasıyla çıkarılan ve Osmanlı imlasında kef (ك) harfiyle gösterilen Türkçe n sesidir."
+    },
+    {
+      "term": "Bitişmeyen Harfler",
+      "def": "Kendinden sonra gelen harfle birleşmeyen elif, dal, zel, rı, ze, je, vav ve sonda ünlü olan he harfleridir."
+    },
+    {
+      "term": "Uzun Ünlüler (Hurûf-ı Med)",
+      "def": "Arapça ve Farsça kelimelerde â, û ve î seslerini uzatarak okutan elif, vav ve ye harfleridir."
+    },
+    {
+      "term": "Aslî ve Zâid Harfler",
+      "def": "Arapça kelimelerde kökü oluşturan en az üç harf aslî, yeni kelime veya vezin türetmek için eklenen harfler ise zâid harflerdir."
+    },
+    {
+      "term": "Vezin Sistematiği",
+      "def": "Arapça kelimelerin aslî harflerinin yerine sırasıyla fe, ayn ve lam simgeleri konularak kelime kalıbının çıkarılmasıdır."
+    },
+    {
+      "term": "Aksâm-ı Seb'a",
+      "def": "Arapça kelimelerin kök harflerinin sahih veya illetli oluşuna göre sâlim, mehmûz, muzâaf, misâl, ecvef, nâkıs ve lefîf olarak yedi gruba ayrılmasıdır."
+    },
+    {
+      "term": "Sülâsî Mücerred Masdar",
+      "def": "Üç aslî harften oluşan ve yapısında ilave zâid harf barındırmayan kuralsız (semâî) masdarlardır."
+    },
+    {
+      "term": "Mezîdünfih Masdar",
+      "def": "Üç aslî harfli köklere zâid harfler eklenerek İf'âl, Tef'îl, Tefa''ul, Tefâ'ul ve Müfâ'ale gibi kalıplarla kurallı biçimde türetilen masdarlardır."
+    }
+  ],
+  "chapters": {
+    "1": {
+      "title": "Osmanlı Türkçesi Alfabesi",
+      "labels": {
+        "concepts": "Kavramlar",
+        "quiz": "Pekiştirme testi",
+        "compare": "Bitişme Özellikleri Karşılaştırması",
+        "matrix": "Harekeler ve İşaretler Tablosu"
+      },
+      "takeaways": [
+        {
+          "t": "Alfabenin Temeli ve İlave Harfler",
+          "d": "Osmanlı alfabesi 28 harfli Arap alfabesine dayanır. Türkler ve İranlılar pe, çe, je, nazal n, gef ve lamelif harflerini ekleyerek alfabeyi genişletmişlerdir."
+        },
+        {
+          "t": "Harekeler ve Yardımcı İşaretler",
+          "d": "Kısa ünlüleri okutmak için üstün, esre ve ötre kullanılır. Şedde harfi iki kez okuturken cezm sakin okutur, med ise uzatma sağlar."
+        },
+        {
+          "t": "Bitişen ve Bitişmeyen Harfler",
+          "d": "Osmanlı Türkçesinde yazım sağdan sola doğrudur. Harflerin çoğu iki tarafa da bitişirken sekiz harf kendinden sonrakiyle birleşmez."
+        },
+        {
+          "t": "Şekilce Benzer Harfler",
+          "d": "Alfabetik sırada birçok harf temel gövde olarak birbirine benzer. Bu harfler sadece altlarına veya üstlerine konan nokta sayılarıyla ayırt edilir."
+        }
+      ],
+      "concepts": [
+        {
+          "term": "Arap Alfabesi Temeli",
+          "def": "Osmanlı Türkçesi yazı sisteminin esasını oluşturan 28 harfli temel alfabedir."
+        },
+        {
+          "term": "İlave Harfler",
+          "def": "Arapçada bulunmayıp Farsça ve Türkçe sesleri karşılamak için eklenen pe, çe, je, nazal n, gef ve lamelif harfleridir."
+        },
+        {
+          "term": "Üstün (Fetha)",
+          "def": "Harfin üstüne konulan ve harfi a veya e sesiyle okutan hareke işaretidir."
+        },
+        {
+          "term": "Esre (Kesre)",
+          "def": "Harfin altına konulan ve harfi ı veya i sesiyle okutan hareke işaretidir."
+        },
+        {
+          "term": "Ötre (Damme)",
+          "def": "Harfin üstüne konulan ve harfi o, ö, u veya ü sesiyle okutan hareke işaretidir."
+        },
+        {
+          "term": "Şedde",
+          "def": "Harfin üzerine konularak yan yana gelen aynı ünsüzün iki defa okunmasını sağlayan işarettir."
+        },
+        {
+          "term": "Cezm (Sükun)",
+          "def": "Harfin üzerine konularak o harfi ünsüz ve duruk biçimde okutan yardımcı işarettir."
+        },
+        {
+          "term": "Bitişmeyen Harfler",
+          "def": "Sadece kendinden önceki harfle birleşip sonrasıyla birleşmeyen elif, dal, zel, rı, ze, je, vav ve sonda ünlü olan he harfleridir."
+        }
+      ],
+      "quiz": [
+        {
+          "q": "Aşağıdaki harflerden hangisi Arap alfabesinde bulunmayıp Farsça ve Türkçe sesler için alfabeye ilave edilen harflerden biridir?",
+          "options": [
+            "Sin",
+            "Cim",
+            "Çe (چ)",
+            "Fe"
+          ],
+          "answer": 2,
+          "why": "Çe (چ) harfi 28 harfli temel Arap alfabesinde bulunmaz; Farsça ve Türkçe sesleri karşılamak için alfabeye ilave edilmiştir."
+        },
+        {
+          "q": "Harfin üzerine konarak o harfin ünsüz (sakin) okunmasını sağlayan yardımcı işaret aşağıdakilerden hangisidir?",
+          "options": [
+            "Cezm",
+            "Şedde",
+            "Esre",
+            "Med"
+          ],
+          "answer": 0,
+          "why": "Cezm işareti harfin üstüne konur ve harfi duruk/sakin ünsüz olarak okutur."
+        },
+        {
+          "q": "Aşağıdaki harf gruplarının hangisinde yer alan harflerin tamamı kendisinden sonra gelen harfle bitişmeyen harflerdendir?",
+          "options": [
+            "be, te, se, cim",
+            "fe, kaf, kef, lam",
+            "sin, şın, sad, dad",
+            "elif, dal, rı, vav"
+          ],
+          "answer": 3,
+          "why": "Elif, dal, zel, rı, ze, je, vav ve sonda ünlü olan he harfleri kendisinden sonraki harfle bitişmeyen harflerdir."
+        }
+      ],
+      "compare": {
+        "left": {
+          "title": "Bitişen Harfler",
+          "points": [
+            {
+              "k": "Bitişme Yönü",
+              "v": "Hem kendinden önceki hem de kendinden sonraki harflerle birleşirler."
+            },
+            {
+              "k": "Şekil Değişimi",
+              "v": "Kelime başında ve ortasında değişime uğrar, sonda yalın yazılırlar."
+            },
+            {
+              "k": "Örnek Harfler",
+              "v": "be, te, se, cim, çim, ha, hı, sin, şın, sad, dad, tı, zı, ayın, gayın, fe, kaf, kef, lam, mim, nun, ye."
+            }
+          ]
+        },
+        "right": {
+          "title": "Bitişmeyen Harfler",
+          "points": [
+            {
+              "k": "Bitişme Yönü",
+              "v": "Kendinden önceki harflerle birleşir, sonrakilerle asla birleşmezler."
+            },
+            {
+              "k": "Şekil Değişimi",
+              "v": "Kelime başında, ortasında ve sonunda temel şekillerini korurlar."
+            },
+            {
+              "k": "Örnek Harfler",
+              "v": "elif (ا), dal (د), zel (ذ), rı (ر), ze (ز), je (ژ), vav (و) ve sonda ünlü olan he (ه)."
+            }
+          ]
+        }
+      },
+      "matrix": {
+        "rowTerm": "İşaret",
+        "hint": "Harfe etkisi ve metindeki işlevi",
+        "axes": [
+          "Konumu",
+          "Okutuluşu veya İşlevi"
+        ],
+        "rows": [
+          {
+            "label": "Üstün (Fetha)",
+            "cells": [
+              "Harfin üstünde",
+              "Harfi a veya e sesiyle okutur"
+            ]
+          },
+          {
+            "label": "Esre (Kesre)",
+            "cells": [
+              "Harfin altında",
+              "Harfi ı veya i sesiyle okutur"
+            ]
+          },
+          {
+            "label": "Ötre (Damme)",
+            "cells": [
+              "Harfin üstünde",
+              "Harfi o, ö, u veya ü sesiyle okutur"
+            ]
+          },
+          {
+            "label": "Şedde",
+            "cells": [
+              "Harfin üstünde",
+              "Harfi iki kez okutur"
+            ]
+          },
+          {
+            "label": "Cezm (Sükun)",
+            "cells": [
+              "Harfin üstünde",
+              "Harfi ünsüz (sakin) okutur"
+            ]
+          },
+          {
+            "label": "Med",
+            "cells": [
+              "Elif harfinin üstünde",
+              "Elif harfini uzun â sesiyle okutur"
+            ]
+          }
+        ]
+      }
+    },
+    "2": {
+      "title": "Türkçe Ünlü ve Ünsüzlerin Yazılışı",
+      "labels": {
+        "concepts": "Kavramlar",
+        "quiz": "Pekiştirme testi",
+        "compare": "Kalın ve İnce Karşılığı Olan Ünsüzler",
+        "matrix": "Okutucu Harfler Tablosu"
+      },
+      "takeaways": [
+        {
+          "t": "Arapça Kökenli Kalın ve İnce Harfler",
+          "d": "Türkçe ünsüzlerde kalınlık incelik ayrımı olmasa da k, t, z, s, ğ seslerinin Arapçada kaf/kef, tı/te, zı/ze, sad/sin ve gayın/gef gibi kalın ve ince çiftleri vardır."
+        },
+        {
+          "t": "Genizsi n (Sağır Kef)",
+          "d": "Türkçedeki genizden çıkarılan n sesi Osmanlı Türkçesinde sağır kef (ك) ile gösterilmiştir. Zamanla konuşma dilinde normal diş n sesine dönüşmüştür."
+        },
+        {
+          "t": "Okutucu Harfler ve Türkçe Ünlüler",
+          "d": "Türkçedeki 8 ünlü sesi göstermek için elif, he, vav ve ye okutucu harfleri kullanılır. Bu harfler ünlünün kelime başı, ortası veya sonundaki konumuna göre seçilir."
+        },
+        {
+          "t": "Kelime Başı s ve t Ünsüzleri",
+          "d": "Kelime başındaki s ve t seslerinden sonra kalın ünlü gelirse sad ve tı harfleri, ince ünlü gelirse sin ve te harfleri tercih edilir."
+        }
+      ],
+      "concepts": [
+        {
+          "term": "Kalın ve İnce Ünsüz Çiftleri",
+          "def": "Arap harfli Osmanlı alfabesinde k, t, z, s ve ğ sesleri için kaf/kef, tı/te, zı/ze, sad/sin, gayın/gef biçiminde ikişer harf bulunmasıdır."
+        },
+        {
+          "term": "Genizsi n (Sağır Kef)",
+          "def": "Havanın geniz yolundan salınmasıyla çıkarılan ve Osmanlı alfabesinde kef (ك) harfiyle yazılan Türkçe n sesidir."
+        },
+        {
+          "term": "Okutucu Harfler",
+          "def": "Türkçe kelimelerde ünlü sesleri göstermek için kullanılan elif (ا), he (ه), vav (و) ve ye (ى) harfleridir."
+        },
+        {
+          "term": "a Ünlüsünün Yazılışı",
+          "def": "Türkçe kelimelerde a sesi kelime başında medli elif (آ), kelime içinde elif (ا), kelime sonunda ise elif veya he (ه) ile gösterilir."
+        },
+        {
+          "term": "e Ünlüsünün Yazılışı",
+          "def": "Kelime başında elif (ا), kelime sonunda güzel he (ه) ile yazılan, kelime içinde ise kural olarak harfle gösterilmeyen ünlüdür."
+        },
+        {
+          "term": "ı ve i Ünlülerinin Yazılışı",
+          "def": "Kelime başında elif ve ye, kelime içinde ve sonunda ise ye (ى) okutucu harfi ile gösterilen düz ünlü grubudur."
+        },
+        {
+          "term": "o, ö, u, ü Ünlülerinin Yazılışı",
+          "def": "Kelime başında elif ve vav, kelime içinde ve sonunda vav (و) okutucu harfi ile ifade edilen yuvarlak ünlülerdir."
+        },
+        {
+          "term": "Kalın ve İnce l Sesi",
+          "def": "Türkçede kalmak kelimesindeki çukur l ve dilmek kelimesindeki düz l olmak üzere iki ayrı le sesi bulunmasına rağmen alfabede ikisi için tek lam harfi kullanılır."
+        }
+      ],
+      "quiz": [
+        {
+          "q": "Türkçe kelimelerde genizden çıkarılan 'n' sesi (sağır kef / kâf-ı nûnî) Osmanlı Türkçesinde hangi harfle gösterilmiştir?",
+          "options": [
+            "Nun",
+            "Gef",
+            "Kef (ك)",
+            "Mim"
+          ],
+          "answer": 2,
+          "why": "Genizsi n sesi Osmanlı Türkçesi alfabesinde sağır kef veya kâf-ı nûnî olarak anılan kef (ك) harfiyle gösterilmiştir."
+        },
+        {
+          "q": "Türkçe 'e' ünlüsünün kelime içindeki yazılışı ile ilgili aşağıdaki ifadelerden hangisi doğrudur?",
+          "options": [
+            "Kelime içinde kural olarak yazılmaz.",
+            "Kelime içinde daima medli elif ile gösterilir.",
+            "Kelime içinde her zaman vav harfiyle yazılır.",
+            "Kelime içinde daima çift ye harfiyle ifade edilir."
+          ],
+          "answer": 0,
+          "why": "Türkçe 'e' ünlüsü kelime başında elif ile, kelime sonunda güzel he ile yazılırken kelime içinde kural olarak gösterilmez."
+        },
+        {
+          "q": "Aşağıdaki harflerden hangisinin Osmanlı Türkçesi alfabesinde kalın ve ince hali için ayrı birer harf bulunur?",
+          "options": [
+            "b ünsüzü",
+            "s ünsüzü",
+            "m ünsüzü",
+            "r ünsüzü"
+          ],
+          "answer": 1,
+          "why": "Osmanlı alfabesinde s ünsüzünün kalını sad (ص), incesi sin (س) harfidir; b, m ve r harflerinin kalın-ince çifti yoktur."
+        }
+      ],
+      "compare": {
+        "left": {
+          "title": "Kalın Ünsüz Karşılıkları",
+          "points": [
+            {
+              "k": "Harf Çiftleri",
+              "v": "kaf (ق), tı (ط), zı (ظ), sad (ص), gayın (غ)"
+            },
+            {
+              "k": "Kullanım Amacı",
+              "v": "Hecenin veya kelimenin kalın ünlüsünü belirtmek için tercih edilir."
+            },
+            {
+              "k": "Kelime Başı Örneği",
+              "v": "Sat (sat), tat (tat), akça (akça)"
+            }
+          ]
+        },
+        "right": {
+          "title": "İnce Ünsüz Karşılıkları",
+          "points": [
+            {
+              "k": "Harf Çiftleri",
+              "v": "kef (ك), te (ت), ze (ز), sin (س), gef (گ)"
+            },
+            {
+              "k": "Kullanım Amacı",
+              "v": "Türkçe kelimelerin temel imlasında öncelikli ve yaygın olarak kullanılır."
+            },
+            {
+              "k": "Kelime Başı Örneği",
+              "v": "Ser (ser), ter (ter), ek (ek)"
+            }
+          ]
+        }
+      },
+      "matrix": {
+        "rowTerm": "Okutucu Harf",
+        "hint": "Türkçe ünlülerin kelime içi ve başı gösterimleri",
+        "axes": [
+          "Gösterdiği Ünlüler",
+          "Kelime Başı Yazılışı",
+          "Kelime İçinde/Sonda Yazılışı"
+        ],
+        "rows": [
+          {
+            "label": "Elif (ا)",
+            "cells": [
+              "a ünlüsü",
+              "Medli elif (آ)",
+              "Elif (ا) veya sonda he (ه)"
+            ]
+          },
+          {
+            "label": "He (ه)",
+            "cells": [
+              "e ünlüsü",
+              "Elif (ا)",
+              "Kelime içinde yazılmaz, sonda güzel he (ه)"
+            ]
+          },
+          {
+            "label": "Ye (ى)",
+            "cells": [
+              "ı ve i ünlüleri",
+              "Elif + Ye (ای)",
+              "Ye (ى) harfi ile"
+            ]
+          },
+          {
+            "label": "Vav (و)",
+            "cells": [
+              "o, ö, u, ü ünlüleri",
+              "Elif + Vav (او)",
+              "Vav (و) harfi ile"
+            ]
+          }
+        ]
+      }
+    },
+    "3": {
+      "title": "Türkçe Kelimelerin Yapısı, Türkçe Kiplerin ve Edatların Yazılışı",
+      "labels": {
+        "concepts": "Kavramlar",
+        "quiz": "Pekiştirme testi",
+        "compare": "Kipler ve Yazılış Özellikleri Karşılaştırması",
+        "matrix": "Edat Türleri ve Örnekler Tablosu"
+      },
+      "takeaways": [
+        {
+          "t": "Türkçe Kelime ve Hecelerin Yapısı",
+          "d": "Türkçe kelimeler bir kök ile yapım ve çekim eklerinden oluşur. Heceler açık ve kapalı hece olarak ayrılır; Türkçe kelimeler çift ünsüzle başlamaz ve sonda tonlu ünsüzler bulunmaz."
+        },
+        {
+          "t": "Fiil Kiplerinin İmlası",
+          "d": "Dilek şart kipi -sa/-se tek şekilli olarak 'se' (سه) biçiminde yazılır. Gereklilik kipi -malı/-meli ise 'mali' (ملى) şeklinde yazılır ve olumsuzu fiil kökü ile ek arasına ma/me getirilerek yapılır."
+        },
+        {
+          "t": "Şimdiki Zaman -makta/-mekte Eki",
+          "d": "Türkçede şimdiki zaman eki olarak kullanılan -makta/-mekte ekleri 'makda/mekde' (مقده / مكده) şeklinde fiil tabanına ilave edilerek yazılır."
+        },
+        {
+          "t": "Edat, Bağlaç ve Ünlemler",
+          "d": "Osmanlı Türkçesinde Türkçe edatların yanı sıra Farsça ez, ba, be, ber, der, beray-ı gibi ön edatlar ve ey, ya, zihi gibi ünlemler sıkça kullanılır."
+        }
+      ],
+      "concepts": [
+        {
+          "term": "Büyük Ünlü Uyumu",
+          "def": "Türkçe kelime kök ve eklerinde kalın ünlülerin kalın ünlülerle, ince ünlülerin ince ünlülerle takip etmesi kuralıdır."
+        },
+        {
+          "term": "Dilek ve Şart Kipi (-sa/-se)",
+          "def": "Osmanlı Türkçesinde tek şekilli olarak 'se' (سه) biçiminde yazılan ve ses uyumlarına göre okunan fiil kipidir."
+        },
+        {
+          "term": "İstek ve Emir Kipi",
+          "def": "Tarihi süreç içinde ekleri birleşerek günümüzde tek şekil haline gelmiş kip yapısıdır. Hangi kip olduğu cümledeki anlam ve şartlara göre belirlenir."
+        },
+        {
+          "term": "Gereklilik Kipi (-malı/-meli)",
+          "def": "Fiil tabanına birleşik olarak 'mali' (ملى) şeklinde yazılan ve şahıs ekleriyle (3. çoğul hariç) birleşmeyen kiptir."
+        },
+        {
+          "term": "Şimdiki Zaman Eki (-makta/-mekte)",
+          "def": "Fiil tabanına ilave edilerek 'makda/mekde' (مقده / مكده) şeklinde yazılan ve şimdiki zaman işlevi gören ektir."
+        },
+        {
+          "term": "Ön Edatlar",
+          "def": "Arapça harf-i cerler ile Farsça ez (از), ba (با), be (ب/به), ber (بر), der (در) ve beray-ı (براى) gibi kelime başına getirilen edatlardır."
+        },
+        {
+          "term": "Tekrarlı Bağlaçlar",
+          "def": "Cümle içinde iki defa tekrar edilerek kullanılan hem...hem (هم...هم), ne...ne (نه...نه), gerek...gerekse (كرك...كركسه) gibi bağlaçlardır."
+        },
+        {
+          "term": "Ünlemler",
+          "def": "Duygu, seslenme ve çağırma bildiren ey (ای), ya (يا), zihi (زهى), ah (آه) ve eyvah (ايواه) gibi kelimelerdir."
+        }
+      ],
+      "quiz": [
+        {
+          "q": "Osmanlı Türkçesinde dilek-şart kipi eki (-sa/-se) Arap harfleriyle nasıl yazılır?",
+          "options": [
+            "'se' (سه) şeklinde tek şekilli yazılır.",
+            "'mali' (ملى) şeklinde yazılır.",
+            "'makda' (مقده) şeklinde yazılır.",
+            "'di' (دی) şeklinde yazılır."
+          ],
+          "answer": 0,
+          "why": "Dilek-şart kipi eki -sa/-se Osmanlı Türkçesinde tek şekilli olarak 'se' (سه) biçiminde yazılır ve ses uyumuna göre okunur."
+        },
+        {
+          "q": "Türkçe gereklilik kipi (-malı/-meli) ekinin yazılışı ve şahıs ekleriyle birleşmesi ile ilgili aşağıdakilerden hangisi doğrudur?",
+          "options": [
+            "Kendisinden sonra gelen bütün şahıs ekleriyle daima birleşir.",
+            "Fiil tabanına birleşir ancak üçüncü çoğul şahıs hariç kendisinden sonraki eklere birleşmez.",
+            "Hiçbir zaman fiil tabanına birleşmez.",
+            "Yalnızca harekelerle gösterilir, harfle yazılmaz."
+          ],
+          "answer": 1,
+          "why": "Gereklilik kipi eki 'mali' (ملى) fiil tabanına birleşir; ancak kendisinden sonra gelen şahıs eklerine birleşmez, bu durum sadece üçüncü çoğul şahısta (örneğin bitirmeliler) istisna oluşturur."
+        },
+        {
+          "q": "Aşağıdaki edat ve anlam eşleştirmelerinden hangisi doğrudur?",
+          "options": [
+            "der-akab (در عقب): ne yazık ki",
+            "ez-can u dil (از جان و دل): candan ve gönülden",
+            "fe'emma (فاما): hemen o anda",
+            "vaktaki (وقتاكى): kucaklama"
+          ],
+          "answer": 1,
+          "why": "Farsça 'ez' ön edatıyla kurulan 'ez-can u dil' ifadesi 'candan ve gönülden' anlamına gelir; der-akab 'gecikmeksizin', fe'emma 'fakat/lakin', vaktaki ise 'ne vakit ki' demektir."
+        }
+      ],
+      "compare": {
+        "left": {
+          "title": "Dilek-Şart Kipi (-sa/-se)",
+          "points": [
+            {
+              "k": "Ek İmlası",
+              "v": "Tek şekilli olarak 'se' (سه) biçiminde yazılır."
+            },
+            {
+              "k": "Ek Birleşmesi",
+              "v": "Şahıs ekleriyle birleşerek yazılır (ör. anlasam - اكالسه م)."
+            },
+            {
+              "k": "Olumsuz Biçimi",
+              "v": "Fiil köküne ma/me getirilerek yapılır (ör. donmasa - دومناسه)."
+            }
+          ]
+        },
+        "right": {
+          "title": "Gereklilik Kipi (-malı/-meli)",
+          "points": [
+            {
+              "k": "Ek İmlası",
+              "v": "Temel olarak 'mali' (ملى) biçiminde yazılır."
+            },
+            {
+              "k": "Ek Birleşmesi",
+              "v": "Fiil tabanına birleşir ancak kendisinden sonraki şahıs eklerine (3. çoğul hariç) birleşmez."
+            },
+            {
+              "k": "Olumsuz Biçimi",
+              "v": "Fiil tabanı ile gereklilik eki arasına ma/me getirilir (ör. bakmamalısın - باقماماىل سك)."
+            }
+          ]
+        }
+      },
+      "matrix": {
+        "rowTerm": "Edat Grubu",
+        "hint": "Osmanlı Türkçesindeki edat çeşitleri ve örnek imlaları",
+        "axes": [
+          "İmla Şekli ve Yapısı",
+          "Örnek Kullanım ve Anlamı"
+        ],
+        "rows": [
+          {
+            "label": "Farsça Ön Edatlar",
+            "cells": [
+              "Kelime başına eklenir; ez (از), ba (با), ber (بر), der (در)",
+              "der-hal (در حال - hemen), ez-can u dil (از جان و دل - candan ve gönülden)"
+            ]
+          },
+          {
+            "label": "Bağlama Edatları",
+            "cells": [
+              "Tek kelime veya kalıplaşmış ifade; ancak (اجنق), çun (چون), ile (ايله)",
+              "vaktaki (وقتاكى - ne vakit ki), fe'emma (فاما - amma, lakin)"
+            ]
+          },
+          {
+            "label": "Tekrarlı Bağlaçlar",
+            "cells": [
+              "İki unsur arasında tekrarlanarak yazılır",
+              "hem...hem (هم...هم), gerek...gerekse (كرك...كركسه)"
+            ]
+          },
+          {
+            "label": "Ünlemler",
+            "cells": [
+              "Seslenme ve duygu belirten kelimeler; ey (ای), ya (يا)",
+              "efsus (افسوس - ne yazık, eyvah), zihi (زهى - ne güzel)"
+            ]
+          }
+        ]
+      }
+    },
+    "4": {
+      "title": "Türkçe Ek, Zamir, Zarf ve Sayıların Yazılışı",
+      "labels": {
+        "concepts": "Kavramlar",
+        "quiz": "Pekiştirme testi",
+        "compare": "Şahıs ve İşaret Zamirlerinin Çekimi",
+        "matrix": "Ekler ve İmla Kuralları Tablosu"
+      },
+      "takeaways": [
+        {
+          "t": "Eklerin İmla Yapısı",
+          "d": "Türkçe eklerin yazılışında kalıplaşmış imlalar esas alınır. Eklerdeki yardımcı ünlüler genellikle yazılmayarak seri yazım sağlanır."
+        },
+        {
+          "t": "Sağır Kef Kullanımı",
+          "d": "İkinci şahıs iyelik eklerinde, ilgi halinde ve zamir yönelme çekimlerinde damaksı n (sağır kef) kullanılır. Bana, sana, onun gibi sözcükler bu kurala örnektir."
+        },
+        {
+          "t": "Zamir ve Zarfların Yazılışı",
+          "d": "Şahıs ve işaret zamirleri kalıplaşmış biçimleriyle yazılır. Zarflar ise eylemleri ve sıfatları niteleyen zaman, yer ve miktar kelimelerinden oluşur."
+        },
+        {
+          "t": "Rakamlar ve Sayı İsimleri",
+          "d": "Sayı isimleri Türkçe sözcüklerle yazılırken rakamlar Arap alfabesindeki simgelerle soldan sağa doğru yazılır. 2 sağa, 6 sola bakarken 7 yukarı bakan v şeklindedir."
+        }
+      ],
+      "concepts": [
+        {
+          "term": "Eklerde Yardımcı Ünlüler",
+          "def": "Pratik yazımı sağlamak amacıyla eklerdeki yardımcı ünlülerin genel olarak yazılmaması kuralıdır."
+        },
+        {
+          "term": "İyelik Eklerinde Sağır Kef",
+          "def": "İkinci şahıs iyelik ve şahıs eklerinde damaksı n (sağır kef) harfinin kullanılmasıdır."
+        },
+        {
+          "term": "İlgi Hali Eki (-ın/-in)",
+          "def": "Ünlüyle biten kelimelerden sonra 'yin' (ين), ünsüzle bitenlerden sonra 'nin' (ن) şeklinde sağır kef ile yazılan ektir."
+        },
+        {
+          "term": "Şahıs Zamirleri",
+          "def": "Ben, sen, o, biz, siz, onlar kelimelerinin kalıplaşmış Arap harfli yazılışlarıdır."
+        },
+        {
+          "term": "Zamirlerde Yönelme Çekimi",
+          "def": "Bana (بكا), sana (سكا) ve ona (اوكا) örneklerinde olduğu gibi yönelme halinde sağır kef kullanılmasıdır."
+        },
+        {
+          "term": "Zarflar",
+          "def": "Fiil ve sıfatları nitelik, zaman, miktar ve yer yön bakımından tamamlayan kelimelerdir."
+        },
+        {
+          "term": "Rakam Yönü",
+          "def": "Osmanlı Türkçesi metinlerinin aksine rakam simgelerinin soldan sağa doğru yazılması kuralıdır."
+        },
+        {
+          "term": "Sayı İsimleri İmlası",
+          "def": "Bir, iki, üç, on, yirmi (يكرمی) gibi Türkçe sayıların kalıplaşmış harflerle yazılmasıdır."
+        }
+      ],
+      "quiz": [
+        {
+          "q": "Osmanlı Türkçesinde iyelik eklerinde ikinci şahıs eklerini göstermek için hangi harf kullanılır?",
+          "options": [
+            "Nun (ن)",
+            "Damaksı n / Sağır kef (ك)",
+            "Mim (م)",
+            "Ye (ى)"
+          ],
+          "answer": 1,
+          "why": "İkinci şahıs iyelik ve aitlik eklerinde damaksı n veya sağır kef (ك / ڭ) harfi kullanılır."
+        },
+        {
+          "q": "Aşağıdaki rakam simgelerinden hangisinin yönü veya biçimi ile ilgili bilgi doğrudur?",
+          "options": [
+            "Rakamlar metin gibi sağdan sola yazılır.",
+            "7 rakamı aşağı bakan v şeklindedir.",
+            "2 rakamı sağa, 6 rakamı sola bakar.",
+            "8 rakamı yukarı bakan v şeklindedir."
+          ],
+          "answer": 2,
+          "why": "Osmanlı Türkçesinde 2 rakamı sağa, 6 rakamı sola bakar; 7 yukarı bakan v, 8 ise aşağı bakan v şeklindedir ve rakamlar soldan sağa yazılır."
+        },
+        {
+          "q": "Şahıs ve işaret zamirlerinin yönelme halinde (bana, sana, buna, şuna) görülen ortak imla özelliği aşağıdakilerden hangisidir?",
+          "options": [
+            "Yönelme ekinde sağır kef (ك) harfinin kullanılması",
+            "Sadece elif okutucusu ile yazılmaları",
+            "Çekim sırasında kelime kökünün tamamen değişmesi",
+            "Eklerin kelimeden ayrı yazılması"
+          ],
+          "answer": 0,
+          "why": "Bana (بكا), sana (سكا), buna (بوكا) ve şuna (شوكا) örneklerinde görüldüğü gibi yönelme çekiminde sağır kef harfi kullanılır."
+        }
+      ],
+      "compare": {
+        "left": {
+          "title": "Şahıs Zamirleri",
+          "points": [
+            {
+              "k": "Yalın Hal İmlası",
+              "v": "ben (بن), sen (سن), o (او), biz (بز), siz (سز)"
+            },
+            {
+              "k": "Yönelme Hali",
+              "v": "bana (بكا), sana (سكا), ona (اوكا) sağır kef ile yazılır."
+            },
+            {
+              "k": "İlgi Hali",
+              "v": "benim (بنم), senin (سنك), onun (اونك) şeklinde çekimlenir."
+            }
+          ]
+        },
+        "right": {
+          "title": "İşaret Zamirleri",
+          "points": [
+            {
+              "k": "Yalın Hal İmlası",
+              "v": "bu (بو), şu (شو) kelimeleri kalıplaşmış yazılışa sahiptir."
+            },
+            {
+              "k": "Yönelme Hali",
+              "v": "buna (بوكا), şuna (شوكا) örneklerinde sağır kef yer alır."
+            },
+            {
+              "k": "İlgi Hali",
+              "v": "bunun (بونك), şunun (شونک) şeklinde çekimlenir."
+            }
+          ]
+        }
+      },
+      "matrix": {
+        "rowTerm": "Ek Türü",
+        "hint": "Türkçe eklerin Osmanlıca imla özellikleri",
+        "axes": [
+          "İmla Şekli",
+          "Örnek Kullanım"
+        ],
+        "rows": [
+          {
+            "label": "Çoğul Eki (-lar/-ler)",
+            "cells": [
+              "'lar/ler' (لر) şeklinde yazılır",
+              "kitaplar (کتابلر)"
+            ]
+          },
+          {
+            "label": "Ayrılma Hali (-dan/-den)",
+            "cells": [
+              "'dan/den' (دن) şeklinde yazılır",
+              "evden (اودن)"
+            ]
+          },
+          {
+            "label": "Bulunma Hali (-da/-de)",
+            "cells": [
+              "'da/de' (ده) şeklinde yazılır",
+              "şehirde (شهرده)"
+            ]
+          },
+          {
+            "label": "Gelecek Zaman (-acak/-ecek)",
+            "cells": [
+              "'acak' (اجق) veya 'ecek' (ه جك) şeklinde yazılır",
+              "gelecek (کله جک)"
+            ]
+          }
+        ]
+      }
+    },
+    "5": {
+      "title": "Arapça ve Farsça Kelimelerde Ünlüler ve Yazılışları",
+      "labels": {
+        "concepts": "Kavramlar",
+        "quiz": "Pekiştirme testi",
+        "compare": "Ünlü Yapıları Karşılaştırması",
+        "matrix": "Hicri Aylar ve Kısaltmalar Tablosu"
+      },
+      "takeaways": [
+        {
+          "t": "Kısa ve Uzun Ünlüler",
+          "d": "Arapça ve Farsça kelimelerde kısa ünlüler harfle gösterilmeyip gerekirse harekelerle belirtilir. Uzun ünlüler ise elif, vav ve ye harfleriyle yazılır."
+        },
+        {
+          "t": "Ayın ve Hemze Harfleri",
+          "d": "Türkçede özgün ses karşılığı olmayan ayın ve hemze harfleri Arapça kökenli kelimelere özgüdür. Ayın boğaz ünsüzüyken hemze durağı ve kesmeyi temsil eder."
+        },
+        {
+          "t": "Ünsüzlerin Kalınlık ve İnceliği",
+          "d": "Kelimenin okunuşundaki ünlü niteliğini Arapça ve Farsça kelimelerdeki kalın ve ince ünsüzler belirler. Kalın ünsüzler ünlüyü kalın, ince ünsüzler ise ince okutur."
+        },
+        {
+          "t": "Takvim ve Zaman İfadeleri",
+          "d": "Osmanlı Devleti'nde kullanılan Hicri ay adları, Farsça gün isimleri ve bunlara ait resmi yazışma kısaltmaları kalıplaşmış imlalara sahiptir."
+        }
+      ],
+      "concepts": [
+        {
+          "term": "Kısa Ünlüler",
+          "def": "Arapça ve Farsça kelimelerde harfle yazılmayan, sadece ihtiyaç duyulduğunda üstün, esre ve ötre harekeleriyle gösterilen seslerdir."
+        },
+        {
+          "term": "Uzun Ünlüler (Hurûf-ı Med)",
+          "def": "Arapça ve Farsça kelimelerde â, û ve î seslerini uzatarak okutan elif (ا), vav (و) ve ye (ى) harfleridir."
+        },
+        {
+          "term": "Ayın (ع) Harfi",
+          "def": "Arapçaya özgü bir boğaz ünsüzü olup kelime başında ünlüyle okutulan, hece sonunda ise kendinden önceki ünlüyü uzatan harftir."
+        },
+        {
+          "term": "Hemze (ء) Harfi",
+          "def": "Kelime başında elif üzerinde, kelime içinde bir diş üzerinde veya hece sonunda tek başına yazılan ses kesme ve durak harfidir."
+        },
+        {
+          "term": "Kalın Ünsüzler",
+          "def": "Ha, hı, sad, dad, tı, zı, ayın, gayın ve kaf harflerinden oluşan, bulundukları kelimedeki ünlüleri kalın okutan ünsüz grubudur."
+        },
+        {
+          "term": "Gurre ve Selh",
+          "def": "Hicri ayların ilk gününü ifade etmek için gurre, son gününü ifade etmek için kullanılan selh terimleridir."
+        },
+        {
+          "term": "Evâ'il, Evâsıt, Evâhir",
+          "def": "Hicri ayların sırasıyla ilk ten (1-10), ikinci ten (11-20) ve son ten (21-30) günlerini belirten resmi tarih terimleridir."
+        },
+        {
+          "term": "Farsça Gün İsimleri",
+          "def": "Haftanın günlerini ifade eden Yekşenbe, Düşenbe, Seşenbe, Çehârşenbe, Pençşenbe, Cum'a ve Şenbe kelimeleridir."
+        }
+      ],
+      "quiz": [
+        {
+          "q": "Arapça ve Farsça kelimelerdeki uzun ünlüler (â, û, î) Osmanlı alfabesinde hangi harflerle gösterilir?",
+          "options": [
+            "fetha, kesre ve damme harekeleriyle",
+            "elif (ا), vav (و) ve ye (ى) harfleriyle",
+            "sadece medli elif ve güzel he ile",
+            "aynı cins ünsüzlerin ikizleştirilmesiyle"
+          ],
+          "answer": 1,
+          "why": "Arapça ve Farsça kelimelerdeki uzun ünlüler hurûf-ı med denilen elif (ا), vav (و) ve ye (ى) harfleriyle gösterilir."
+        },
+        {
+          "q": "Arapça kelimelere özgü olan, kelime başında ünlüyle okunan ve hece sonunda kendinden önceki ünlüyü uzatan harf aşağıdakilerden hangisidir?",
+          "options": [
+            "Kef",
+            "Gef",
+            "Lam",
+            "Ayın (ع)"
+          ],
+          "answer": 3,
+          "why": "Ayın (ع) harfi Arapçaya özgü bir boğaz ünsüzüdür; kelime başında ünlü sesiyle okunurken hece sonunda kendinden önceki ünlüyü uzatır."
+        },
+        {
+          "q": "Hicri ayların ilk gününü ifade etmek için Osmanlı resmi belgelerinde ve tarihlerinde kullanılan terim aşağıdakilerden hangisidir?",
+          "options": [
+            "Gurre",
+            "Selh",
+            "Evâhir",
+            "Evâsıt"
+          ],
+          "answer": 0,
+          "why": "Hicri ayların ilk gününü belirtmek için gurre, son gününü belirtmek için selh terimi kullanılır."
+        }
+      ],
+      "compare": {
+        "left": {
+          "title": "Kısa Ünlüler",
+          "points": [
+            {
+              "k": "Harfle Gösterim",
+              "v": "Metinlerde harfle yazılmazlar."
+            },
+            {
+              "k": "İşaretler",
+              "v": "Gerekli durumlarda harekelerle (üstün, esre, ötre) gösterilir."
+            },
+            {
+              "k": "Örnek",
+              "v": "ilm (علم), fikr (فكر), hükm (حكم)"
+            }
+          ]
+        },
+        "right": {
+          "title": "Uzun Ünlüler (Hurûf-ı Med)",
+          "points": [
+            {
+              "k": "Harfle Gösterim",
+              "v": "Elif (ا), vav (و) ve ye (ى) harfleriyle yazılırlar."
+            },
+            {
+              "k": "Ses Değeri",
+              "v": "Sesi uzatarak â, û, î şeklinde okuturlar."
+            },
+            {
+              "k": "Örnek",
+              "v": "kitâb (كتاب), maktûb (مكتوب), mecîd (مجيد)"
+            }
+          ]
+        }
+      },
+      "matrix": {
+        "rowTerm": "Ay ve Dönem İfadesi",
+        "hint": "Hicri aylar ve resmi yazışma terimleri",
+        "axes": [
+          "İmla/Kısaltma Şekli",
+          "Anlamı veya Kullanım Alanı"
+        ],
+        "rows": [
+          {
+            "label": "Muharrem",
+            "cells": [
+              "'m' (م) kısaltması",
+              "Hicri senenin 1. ayı"
+            ]
+          },
+          {
+            "label": "Safer",
+            "cells": [
+              "'s' (ص) kısaltması",
+              "Hicri senenin 2. ayı"
+            ]
+          },
+          {
+            "label": "Receb",
+            "cells": [
+              "'re' (ر) kısaltması",
+              "Üç ayların ilki, 7. ay"
+            ]
+          },
+          {
+            "label": "Ramazân",
+            "cells": [
+              "'n' (ن) kısaltması",
+              "Oruç ayı, 9. ay"
+            ]
+          },
+          {
+            "label": "Gurre",
+            "cells": [
+              "Kelime imlası gurre",
+              "Ayın ilk günü"
+            ]
+          },
+          {
+            "label": "Selh",
+            "cells": [
+              "Kelime imlası selh",
+              "Ayın son günü"
+            ]
+          }
+        ]
+      }
+    },
+    "6": {
+      "title": "Arapça Kelimelerin Yapısı",
+      "labels": {
+        "concepts": "Kavramlar",
+        "quiz": "Pekiştirme testi",
+        "compare": "Sâlim ve Mükesser Çoğul Karşılaştırması",
+        "matrix": "Müenneslik Türleri Tablosu"
+      },
+      "takeaways": [
+        {
+          "t": "Tasrifli Diller Yapısı ve Kök Harfler",
+          "d": "Arapça bükünlü bir dildir ve yeni kelimeler kökün başına, ortasına veya sonuna sesler eklenerek türetilir. Kelimeler en az üç aslî harften oluşur ve eklenen zâid harflerle yeni anlamlar kazanır."
+        },
+        {
+          "t": "Vezin ve Kalıp Sistemi",
+          "d": "Kelimenin aslî harfleri sırasıyla fe, ayn ve lam simgeleriyle gösterilir. İlave edilen zâid harfler ve harekeler kalıba aktarılarak kelimenin vezni çıkarılır."
+        },
+        {
+          "t": "Müzekkerlik ve Müenneslik",
+          "d": "Arapça isimler dişil (müennes) ve eril (müzekker) olarak ayrılır. Müenneslik kapalı te, kısa elif veya uzun elif gibi alâmetlerle ya da manevî ve semâî özelliklerle belirlenir."
+        },
+        {
+          "t": "Sayı Kategorileri ve Çokluk Türleri",
+          "d": "Arapçada tekil (müfred), ikilik (tesniye) ve çoğul (cem') kategorileri vardır. Çoğullar eklerle yapılan cem'-i sâlim ve kalıplarla yapılan cem'-i mükesser olarak ikiye ayrılır."
+        }
+      ],
+      "concepts": [
+        {
+          "term": "Aslî Harfler",
+          "def": "Kelimede anlamın temelini oluşturan ve en az üç harften meydana gelen kök harflerdir."
+        },
+        {
+          "term": "Zâid Harfler",
+          "def": "Yeni kelimeler ve anlamlar türetmek amacıyla üç aslî kök harfine ilave edilen elif, te, sin, mim, nun, he, vav, ye harfleridir."
+        },
+        {
+          "term": "Vezin Çıkarma",
+          "def": "Kelimenin ilk aslî harfi yerine fe, ikincisine ayn, üçüncüsüne lam yazılıp zâid harf ve harekelerin kalıba taşınması işlemidir."
+        },
+        {
+          "term": "Tâ-i Merbûte (Kapalı Te)",
+          "def": "Müennes kelimelerin sonunda yer alan ve Osmanlı Türkçesinde açık te veya he ile yazılan temel dişilik alâmetidir."
+        },
+        {
+          "term": "Manevî ve Semâî Müennes",
+          "def": "Şekilsel dişilik alâmeti taşımadığı halde kadın isimleri veya çift organlar gibi nedenlerle yahut doğrudan sözlükten öğrenilerek dişil kabul edilen isimlerdir."
+        },
+        {
+          "term": "Tesniye (-eyn / -ân)",
+          "def": "Arapçaya özgü ikili çokluk yapısı olup kelime sonuna -eyn veya -ân eki getirilerek oluşturulur."
+        },
+        {
+          "term": "Cem'-i Sâlim",
+          "def": "Tekil kelimenin kök yapısı bozulmadan sonuna müzekkerlerde -în veya -ûn, müenneslerde -ât eki getirilerek yapılan kurallı çoğuldur."
+        },
+        {
+          "term": "Cem'-i Mükesser (Kırık Çoğul)",
+          "def": "Tekil kelimenin vezni ve kök dizilimi değiştirilerek ef'âl, fu'ûl, mefâ'il gibi çeşitli kalıplarla yapılan semâî çoğuldur."
+        }
+      ],
+      "quiz": [
+        {
+          "q": "Arapça kelimelerin veznini çıkarırken ilk aslî harf, ikinci aslî harf ve üçüncü aslî harf sırasıyla hangi simgelerle gösterilir?",
+          "options": [
+            "fe, ayn, lam (ف, ع, ل)",
+            "elif, vav, ye (ا, و, ى)",
+            "mim, nun, te (م, ن, ت)",
+            "sin, fe, lam (س, ف, ل)"
+          ],
+          "answer": 0,
+          "why": "Arapça kelimelerde vezin çıkarılırken ilk aslî harf fe (ف), ikinci aslî harf ayn (ع) ve üçüncü aslî harf lam (ل) simgesiyle temsil edilir."
+        },
+        {
+          "q": "Osmanlı Türkçesinde ikili çokluk yapmak için kullanılan tesniye eki aşağıdakilerden hangisidir?",
+          "options": [
+            "-ât (ات)",
+            "-în (ين)",
+            "-eyn (ين)",
+            "-ûn (ون)"
+          ],
+          "answer": 2,
+          "why": "Arapçada tesniye (ikilik) eki -eyn (ين) veya -ân (ان) şeklindedir; Osmanlı Türkçesinde metinlerde en yaygın kullanılan biçim -eyn ekidir."
+        },
+        {
+          "q": "Aşağıdaki kelimelerden hangisi cem'-i mükesser (kırık çoğul) yapısındadır?",
+          "options": [
+            "müminîn (مؤمنين)",
+            "teşkîlât (تشكيلات)",
+            "devleteyn (دولتين)",
+            "mecâlis (مجالس)"
+          ],
+          "answer": 3,
+          "why": "Mecâlis kelimesi meclis kelimesinin mefâ'il vezninde kırılmış (cem'-i mükesser) çoğuludur; müminîn cem'-i müzekker-i sâlim, teşkîlât cem'-i müennes-i sâlim, devleteyn ise tesniyedir."
+        }
+      ],
+      "compare": {
+        "left": {
+          "title": "Cem'-i Sâlim (Kurallı Çoğul)",
+          "points": [
+            {
+              "k": "Türetilme Biçimi",
+              "v": "Tekil kelimenin yapısı korunarak sonuna çoğul eki eklenir."
+            },
+            {
+              "k": "Müzekker Eki",
+              "v": "Kelime sonuna -în veya -ûn eklenir (ör. memûrîn)."
+            },
+            {
+              "k": "Müennes Eki",
+              "v": "Dişilik alâmeti kaldırılıp sonuna -ât eklenir (ör. kelimât)."
+            }
+          ]
+        },
+        "right": {
+          "title": "Cem'-i Mükesser (Kırık Çoğul)",
+          "points": [
+            {
+              "k": "Türetilme Biçimi",
+              "v": "Tekil kelimenin kök yapısı ve vezni değiştirilerek oluşturulur."
+            },
+            {
+              "k": "Kural Durumu",
+              "v": "Semâîdir; hangi kelimenin hangi kalıba gireceği sözlükten öğrenilir."
+            },
+            {
+              "k": "Örnek Vezinler",
+              "v": "ef'âl (akvâl), fu'ûl (ulûm), mefâ'il (mecâlis) kalıplarıdır."
+            }
+          ]
+        }
+      },
+      "matrix": {
+        "rowTerm": "Müenneslik Türü",
+        "hint": "Arapça isimlerde dişilik kategorileri ve belirleyici nitelikleri",
+        "axes": [
+          "Belirleyici Özellik veya Alâmet",
+          "Örnek Kelimeler"
+        ],
+        "rows": [
+          {
+            "label": "Kapalı Te (ة) İle Müennes",
+            "cells": [
+              "Kelime sonunda kapalı te (açık te veya he) bulunmasıdır",
+              "muallime (معلمه), katibe (كاتبه)"
+            ]
+          },
+          {
+            "label": "Elif-i Maksûre (ى) İle Müennes",
+            "cells": [
+              "Kelime sonunda zâid ve a sesi veren ye harfi bulunmasıdır",
+              "dava (دعوى), kübra (كبرى)"
+            ]
+          },
+          {
+            "label": "Elif-i Memdûde (اء) İle Müennes",
+            "cells": [
+              "Kelime sonunda uzun elif ve hemze grubunun yer almasıdır",
+              "sahra (صحراء), hamra (حمراء)"
+            ]
+          },
+          {
+            "label": "Manevî (İtibarî) Müennes",
+            "cells": [
+              "Kadın isimleri, ülke adları ve çift organ adlarıdır",
+              "Meryem (مريم), Mısır (مصر), ayn (عين)"
+            ]
+          },
+          {
+            "label": "Semâî Müennes",
+            "cells": [
+              "Biçimsel veya manevi kuralı olmayıp sözlükten öğrenilenlerdir",
+              "şems (شمس), arz (ارض), nar (نار)"
+            ]
+          }
+        ]
+      }
+    },
+    "7": {
+      "title": "Aksâm-ı Seb'a, Mücerred Masdarlar, İsm-i Fâil ve İsm-i Mef'ûl",
+      "labels": {
+        "concepts": "Kavramlar",
+        "quiz": "Pekiştirme testi",
+        "compare": "İsm-i Fâil ve İsm-i Mef'ûl Karşılaştırması",
+        "matrix": "Aksâm-ı Seb'a Sınıflandırması"
+      },
+      "takeaways": [
+        {
+          "t": "Aksâm-ı Seb'a Yedi Kısım",
+          "d": "Arapça kelimeler kök harflerinin sahih veya illetli oluşuna göre sâlim, mehmûz, muzâaf, misâl, ecvef, nâkıs ve lefîf olmak üzere yedi gruba ayrılır."
+        },
+        {
+          "t": "Masdar Çeşitleri",
+          "d": "Sülâsî mücerred masdarlar kırka yakın kalıpta semâî olarak gelir. Başına mim getirilenler mimli masdar, sonuna -iyyet eki getirilenler ise mec'ûl masdardır."
+        },
+        {
+          "t": "İsm-i Fâil Kalıbı",
+          "d": "Sülâsî mücerred masdarlardan işi yapanı gösteren etken yapıdaki ism-i fâil, fâil vezninde türetilir."
+        },
+        {
+          "t": "İsm-i Mef'ûl Kalıbı",
+          "d": "Yapılan işten etkileneni gösteren edilgen yapıdaki ism-i mef'ûl ise mef'ûl vezninde türetilir."
+        }
+      ],
+      "concepts": [
+        {
+          "term": "Aksâm-ı Seb'a",
+          "def": "Arapça isim ve fiillerin kök harflerinin niteliğine göre ayrıldığı yedi farklı kelime grubudur."
+        },
+        {
+          "term": "Sahih Kelimeler",
+          "def": "Kök harflerinde elif, vav veya ye illet harfleri bulunmayan sâlim, mehmûz ve muzâaf kelimelerdir."
+        },
+        {
+          "term": "İlletli (Mu'tell) Kelimeler",
+          "def": "Kök harflerinden en az biri elif, vav veya ye olan misâl, ecvef, nâkıs ve lefîf türü kelimelerdir."
+        },
+        {
+          "term": "Sülâsî Mücerred Masdar",
+          "def": "Üç aslî harften oluşan ve yapısına zâid harf katılmayan semâî karakterli masdarlardır."
+        },
+        {
+          "term": "Mimli Masdar",
+          "def": "Kök harflerinin başına zâid bir mim harfi getirilerek mef'al veya mef'il vezninde türetilen masdarlardır."
+        },
+        {
+          "term": "Mec'ûl Masdar",
+          "def": "Kelime sonuna -iyyet eki getirilerek yapılan ve Türkçedeki -lık/-lik ekine karşılık gelen yapma masdarlardır."
+        },
+        {
+          "term": "İsm-i Fâil",
+          "def": "Eylemi gerçekleştiren özneyi gösteren, sülâsî mücerredlerde fâil vezninde yapılan etken sıfat formudur."
+        },
+        {
+          "term": "İsm-i Mef'ûl",
+          "def": "Eylemden etkilenen nesneyi gösteren, sülâsî mücerredlerde mef'ûl vezninde yapılan edilgen sıfat formudur."
+        }
+      ],
+      "quiz": [
+        {
+          "q": "Kök harflerinde elif, vav veya ye illet harflerinden biri bulunmayan, hemze ve şedde de içermeyen kelime türü Aksâm-ı Seb'a sınıflamasında aşağıdakilerden hangisidir?",
+          "options": [
+            "Ecvef",
+            "Sâlim",
+            "Misâl",
+            "Nâkıs"
+          ],
+          "answer": 1,
+          "why": "Sâlim kelimeler kök harflerinde illet harfi, hemze ve aynı harfin tekrarı (şedde) bulunmayan sahih kelimelerdir."
+        },
+        {
+          "q": "Sülâsî mücerred masdarlardan türetilen 'kātil', 'âlim' ve 'âmil' kelimeleri hangi vezinde ve gramer kategorisindedir?",
+          "options": [
+            "fâil vezninde ism-i fâil",
+            "mef'ûl vezninde ism-i mef'ûl",
+            "mef'al vezninde mimli masdar",
+            "fa'lele vezninde rubâî masdar"
+          ],
+          "answer": 0,
+          "why": "Kātil, âlim ve âmil kelimeleri fâil vezninde olup eylemi gerçekleştireni gösteren ism-i fâil formundadır."
+        },
+        {
+          "q": "Sülâsî mücerred bir masdarın edilgen sıfatı olan ism-i mef'ûl formu aşağıdaki vezinlerden hangisiyle türetilir?",
+          "options": [
+            "fâil",
+            "mef'al",
+            "mef'ûl",
+            "fu'ûl"
+          ],
+          "answer": 2,
+          "why": "Sülâsî mücerred masdarların ism-i mef'ûlü mef'ûl vezninde yapılır; örneğin mahfûz, mektûb, meşrûb."
+        }
+      ],
+      "compare": {
+        "left": {
+          "title": "İsm-i Fâil (Etken Sıfat)",
+          "points": [
+            {
+              "k": "Anlam İşlevi",
+              "v": "Masdarın belirttiği eylemi yapanı veya durumu taşıyanı ifade eder."
+            },
+            {
+              "k": "Sülâsî Vezni",
+              "v": "Sülâsî mücerredlerde fâil vezninde türetilir."
+            },
+            {
+              "k": "Örnekler",
+              "v": "katl → kātil, amel → âmil, ilm → âlim"
+            }
+          ]
+        },
+        "right": {
+          "title": "İsm-i Mef'ûl (Edilgen Sıfat)",
+          "points": [
+            {
+              "k": "Anlam İşlevi",
+              "v": "Masdarın belirttiği eyleme maruz kalanı veya etkileneni ifade eder."
+            },
+            {
+              "k": "Sülâsî Vezni",
+              "v": "Sülâsî mücerredlerde mef'ûl vezninde türetilir."
+            },
+            {
+              "k": "Örnekler",
+              "v": "şürb → meşrûb, hıfz → mahfûz, katl → maktûl"
+            }
+          ]
+        }
+      },
+      "matrix": {
+        "rowTerm": "Aksâm-ı Seb'a Türü",
+        "hint": "Kök harflerinin özellikleri ve örnek kelimeler",
+        "axes": [
+          "Kök Harf Özelliği",
+          "Örnek Kelimeler"
+        ],
+        "rows": [
+          {
+            "label": "Sâlim",
+            "cells": [
+              "İllet harfi, hemze ve şedde içermeyen sahih kökler",
+              "ilm, fikr, adl"
+            ]
+          },
+          {
+            "label": "Mehmûz",
+            "cells": [
+              "Aslî harflerinden biri hemze olan kökler",
+              "emr, edeb, izn"
+            ]
+          },
+          {
+            "label": "Muzâaf",
+            "cells": [
+              "İkinci ve üçüncü kök harfi aynı olan şeddeli kelimeler",
+              "redd, fenn, hakk"
+            ]
+          },
+          {
+            "label": "Misâl",
+            "cells": [
+              "İlk kök harfi vav veya ye olan illetli kelimeler",
+              "vakt, vehm, yusr"
+            ]
+          },
+          {
+            "label": "Ecvef",
+            "cells": [
+              "Orta kök harfi illetli olan kelimeler",
+              "savm, kavm, leyl"
+            ]
+          },
+          {
+            "label": "Nâkıs",
+            "cells": [
+              "Son kök harfi illetli olan kelimeler",
+              "lağv, remy, meşy"
+            ]
+          },
+          {
+            "label": "Lefîf",
+            "cells": [
+              "Kök harflerinden ikisi illetli olan kelimeler",
+              "vefâ, hayy, velî"
+            ]
+          }
+        ]
+      }
+    },
+    "8": {
+      "title": "Mezîdünfih Masdarlar (I)",
+      "labels": {
+        "concepts": "Kavramlar",
+        "quiz": "Pekiştirme testi",
+        "compare": "İf'âl ve Tef'îl Babları Karşılaştırması",
+        "matrix": "Beş Mezîdünfih Bab Kalıpları Tablosu"
+      },
+      "takeaways": [
+        {
+          "t": "Mezîdünfih Masdar Kavramı",
+          "d": "Sülâsî mücerred masdarlara belirli zâid harfler eklenerek türetilen kıyasî masdar yapılarıdır. Kök kelimenin anlamını koruyarak yeni çatı ve anlamlar kazandırırlar."
+        },
+        {
+          "t": "İlk Beş Bâbın Yapısı",
+          "d": "Mezîdünfih masdarların ilk beşini İf'âl, Tef'îl, Tefa''ul, Tefâ'ul ve Müfâ'ale babları oluşturur. Her babın kendine özgü ek harfleri ve anlam özellikleri bulunur."
+        },
+        {
+          "t": "Kıyasî İsm-i Fâil ve İsm-i Mef'ûl",
+          "d": "Mezîdünfih bablarda etken ve edilgen sıfatlar tamamen kurallı olarak türetilir. Kural olarak kelime başına ötreli mim getirilir."
+        },
+        {
+          "t": "İ'lâl ve Ses Değişimleri",
+          "d": "Kök harflerinde illetli sesler bulunan kelimeler bu bablara nakledildiğinde uzama, düşme veya te ekleme gibi ses kuralları işler."
+        }
+      ],
+      "concepts": [
+        {
+          "term": "Mezîdünfih Masdar",
+          "def": "Üç aslî harfli sülâsî mücerred köklere zâid harfler eklenerek kurallı biçimde türetilen masdarlardır."
+        },
+        {
+          "term": "İf'âl Bâbı",
+          "def": "Başına hemze eklenerek yapılan, fiile geçişlilik ve ettirgenlik anlamı katan mezîdünfih masdar babıdır."
+        },
+        {
+          "term": "Tef'îl Bâbı",
+          "def": "Başına te ve ortasına ye eklenerek türetilen, geçişlilik ve çokluk veya şiddet anlamı kazandıran babdır."
+        },
+        {
+          "term": "Tefa''ul Bâbı",
+          "def": "Başına te eklenip orta harfi şeddelenerek yapılan, fiillere dönüşlülük ve yapmacıklık anlamı katan kalıptır."
+        },
+        {
+          "term": "Tefâ'ul Bâbı",
+          "def": "Başına te ve ilk harfinden sonra elif getirilerek kurulan, işteşlik ve tecâhül anlamı veren babdır."
+        },
+        {
+          "term": "Müfâ'ale Bâbı",
+          "def": "Başına mim ve ilk harfinden sonra elif eklenerek türetilen, eylemin karşılıklı yapıldığını gösteren işteşlik kalıbıdır."
+        },
+        {
+          "term": "Kıyasî İsm-i Fâil",
+          "def": "Mezîdünfih bablarda ötreli mim harfi ve sondan bir önceki harfin esresiyle yapılan etken sıfat formudur."
+        },
+        {
+          "term": "Kıyasî İsm-i Mef'ûl",
+          "def": "Mezîdünfih bablarda ötreli mim harfi ve sondan bir önceki harfin üstünüyle yapılan edilgen sıfat formudur."
+        }
+      ],
+      "quiz": [
+        {
+          "q": "Sülâsî mücerred 'kerem' kökünden İf'âl babında türetilen 'ikrâm' kelimesinin etken sıfatı (ism-i fâili) aşağıdakilerden hangisidir?",
+          "options": [
+            "mükerrem",
+            "mükrim",
+            "mütekerrim",
+            "mükerremât"
+          ],
+          "answer": 1,
+          "why": "İf'âl babının ism-i fâili müf'il veznindedir; kerem kökünden ikrâm masdarının ism-i fâili mükrim olur."
+        },
+        {
+          "q": "Eylemin iki veya daha fazla kişi arasında karşılıklı olarak yapıldığını gösteren ve 'muhâbere', 'mukâbele' gibi örneklere sahip olan mezîdünfih bab aşağıdakilerden hangisidir?",
+          "options": [
+            "Tef'îl babı",
+            "İf'âl babı",
+            "Tefa''ul babı",
+            "Müfâ'ale babı"
+          ],
+          "answer": 3,
+          "why": "Müfâ'ale babı (müfâ'ale vezni) eylemin karşılıklı yapıldığını bildiren işteşlik babıdır."
+        },
+        {
+          "q": "Tef'îl babında 'ta'lîm' (öğretmek) masdarının edilgen sıfatı (ism-i mef'ûlü) olan 'mu'allem' kelimesi hangi vezindedir?",
+          "options": [
+            "mufa''al vezninde",
+            "müf'il vezninde",
+            "mütefa''il vezninde",
+            "müfâ'al vezninde"
+          ],
+          "answer": 0,
+          "why": "Tef'îl babının edilgen sıfatı olan ism-i mef'ûlü mufa''al veznindedir."
+        }
+      ],
+      "compare": {
+        "left": {
+          "title": "İf'âl Bâbı (إفعال)",
+          "points": [
+            {
+              "k": "Ek Harfler",
+              "v": "Kökün başına hemze, ikinci harften sonra elif getirilir."
+            },
+            {
+              "k": "Temel Anlam",
+              "v": "Geçişsiz fiilleri geçişli yapar veya geçişliliği artırır."
+            },
+            {
+              "k": "Örnek Kelimeler",
+              "v": "ikrâm, ihsân, ihrâc, itmâm"
+            }
+          ]
+        },
+        "right": {
+          "title": "Tef'îl Bâbı (تفعيل)",
+          "points": [
+            {
+              "k": "Ek Harfler",
+              "v": "Kökün başına te, ikinci harften sonra ye getirilir."
+            },
+            {
+              "k": "Temel Anlam",
+              "v": "Geçişlilik, eylemde şiddet veya çokluk ve saymak anlamı katar."
+            },
+            {
+              "k": "Örnek Kelimeler",
+              "v": "ta'lîm, takdîm, tasvîb, takrîr"
+            }
+          ]
+        }
+      },
+      "matrix": {
+        "rowTerm": "Mezîdünfih Bâbı",
+        "hint": "Beş temel babın vezinleri, ism-i fâil ve ism-i mef'ûl formları",
+        "axes": [
+          "Masdar Vezni",
+          "İsm-i Fâil Vezni",
+          "İsm-i Mef'ûl Vezni"
+        ],
+        "rows": [
+          {
+            "label": "İf'âl",
+            "cells": [
+              "if'âl (إفعال)",
+              "müf'il (mükrim)",
+              "müf'al (mühkem)"
+            ]
+          },
+          {
+            "label": "Tef'îl",
+            "cells": [
+              "tef'îl (تفعيل)",
+              "mufa''il (mu'allim)",
+              "mufa''al (mürekkeb)"
+            ]
+          },
+          {
+            "label": "Tefa''ul",
+            "cells": [
+              "tefa''ul (تفعّل)",
+              "mütefa''il (müteşebbis)",
+              "mütefa''al (müteşebbes)"
+            ]
+          },
+          {
+            "label": "Tefâ'ul",
+            "cells": [
+              "tefâ'ul (تفاعل)",
+              "mütefâ'il (mütekâmil)",
+              "mütefâ'al (müte'âref)"
+            ]
+          },
+          {
+            "label": "Müfâ'ale",
+            "cells": [
+              "müfâ'ale (مفاعله)",
+              "müfâ'il (muhâfız)",
+              "müfâ'al (muhâtab)"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

@@ -2569,10 +2569,10 @@
       ["test", L.quiz || "Pekiştirme testi", (d.quiz || []).length > 0],
     ].filter((t) => t[2]);
     if (!tabs.length && !(d.takeaways || []).length) return "";
-    const tabbar = tabs.map(([id, label], i) => `<button class="sm-tab${i === 0 ? " active" : ""}" type="button" role="tab" aria-selected="${i === 0}" data-tab="${id}" aria-controls="${esc(prefix)}-${id}">${esc(label)}</button>`).join("");
+    const tabbar = tabs.map(([id, label], i) => `<button class="sm-tab${i === 0 ? " active" : ""}" type="button" role="tab" aria-selected="${i === 0}" data-tab="${id}" aria-controls="${esc(prefix)}-${id}">${txtPlain(label)}</button>`).join("");
 
     const takeaways = (d.takeaways || []).length
-      ? `<div class="sm-take"><p class="sm-label">Ana çıkarımlar</p><ul>${d.takeaways.map((k) => `<li><strong>${esc(k.t)}:</strong> ${esc(k.d)}</li>`).join("")}</ul></div>`
+      ? `<div class="sm-take"><p class="sm-label">Ana çıkarımlar</p><ul>${d.takeaways.map((k) => `<li><strong>${txtPlain(k.t)}:</strong> ${txtPlain(k.d)}</li>`).join("")}</ul></div>`
       : "";
 
     const first = tabs.length ? tabs[0][0] : "";
@@ -2581,30 +2581,30 @@
 
     const cards = (d.concepts || []).length
       ? pane("kavramlar", `<p class="sm-hint">Karta dokunup çevirin.</p>
-           <div class="sm-cards">${d.concepts.map((k) => `<button class="k-card" type="button" aria-label="${esc(k.term)} kartını çevir"><span class="k-inner"><span class="k-face k-front">${esc(k.term)}</span><span class="k-face k-back">${esc(k.def)}</span></span></button>`).join("")}</div>`)
+           <div class="sm-cards">${d.concepts.map((k) => `<button class="k-card" type="button" aria-label="${esc(k.term)} kartını çevir"><span class="k-inner"><span class="k-face k-front">${txtPlain(k.term)}</span><span class="k-face k-back">${txtPlain(k.def)}</span></span></button>`).join("")}</div>`)
       : "";
 
     const cmp = d.compare && d.compare.left && d.compare.right
       ? pane("karsilastirma", `<div class="sm-compare">
-           <div class="cmp-card cmp-a"><h4>${esc(d.compare.left.title || "Din")}</h4><ul>${(d.compare.left.points || []).map((p) => `<li><strong>${esc(p.k)}:</strong> ${esc(p.v)}</li>`).join("")}</ul></div>
-           <div class="cmp-card cmp-b"><h4>${esc(d.compare.right.title || "Mezhep")}</h4><ul>${(d.compare.right.points || []).map((p) => `<li><strong>${esc(p.k)}:</strong> ${esc(p.v)}</li>`).join("")}</ul></div>
+           <div class="cmp-card cmp-a"><h4>${txtPlain(d.compare.left.title || "Din")}</h4><ul>${(d.compare.left.points || []).map((p) => `<li><strong>${txtPlain(p.k)}:</strong> ${txtPlain(p.v)}</li>`).join("")}</ul></div>
+           <div class="cmp-card cmp-b"><h4>${txtPlain(d.compare.right.title || "Mezhep")}</h4><ul>${(d.compare.right.points || []).map((p) => `<li><strong>${txtPlain(p.k)}:</strong> ${txtPlain(p.v)}</li>`).join("")}</ul></div>
          </div>`)
       : "";
 
     const timeline = (d.timeline || []).length
       ? pane("akis", `<ol class="sm-timeline">${d.timeline.map((m, i) => `<li class="tl-item">
              <button class="tl-head" type="button" aria-expanded="false" aria-controls="tl-${esc(prefix)}-${i}">
-               <span class="tl-year">${esc(m.year)}</span><span class="tl-name">${esc(m.name)}</span><span class="sm-caret" aria-hidden="true"></span>
+               <span class="tl-year">${txtPlain(m.year)}</span><span class="tl-name">${txtPlain(m.name)}</span><span class="sm-caret" aria-hidden="true"></span>
              </button>
-             <div class="tl-desc" id="tl-${esc(prefix)}-${i}" hidden>${esc(m.desc)}</div>
+             <div class="tl-desc" id="tl-${esc(prefix)}-${i}" hidden>${txtPlain(m.desc)}</div>
            </li>`).join("")}</ol>`)
       : "";
 
     const matrix = d.matrix && (d.matrix.rows || []).length
-      ? pane("matris", `<p class="sm-hint">${esc(d.matrix.hint || "Karşılaştırmalı tablo. Mobilde tabloyu yana kaydırın.")}</p>
+      ? pane("matris", `<p class="sm-hint">${txtPlain(d.matrix.hint || "Karşılaştırmalı tablo. Mobilde tabloyu yana kaydırın.")}</p>
            <div class="table-wrap"><table class="sm-matrix">
-             <thead><tr><th>${esc(d.matrix.rowTerm || "Öğe")}</th>${d.matrix.axes.map((a) => `<th>${esc(a)}</th>`).join("")}</tr></thead>
-             <tbody>${d.matrix.rows.map((r) => `<tr><th scope="row">${esc(r.label || r.school || "")}</th>${r.cells.map((cell) => `<td>${esc(cell)}</td>`).join("")}</tr>`).join("")}</tbody>
+             <thead><tr><th>${txtPlain(d.matrix.rowTerm || "Öğe")}</th>${d.matrix.axes.map((a) => `<th>${txtPlain(a)}</th>`).join("")}</tr></thead>
+             <tbody>${d.matrix.rows.map((r) => `<tr><th scope="row">${txtPlain(r.label || r.school || "")}</th>${r.cells.map((cell) => `<td>${txtPlain(cell)}</td>`).join("")}</tr>`).join("")}</tbody>
            </table></div>`)
       : "";
 
@@ -2616,27 +2616,27 @@
            </div>
            <ul class="sm-factors">${d.factors.items.map((f) => `<li class="sf-item" data-side="${esc(f.side)}">
              <span class="sf-tag sf-${esc(f.side)}">${f.side === "ic" ? "İç" : "Dış"}</span>
-             <div><strong>${esc(f.t)}</strong><p>${esc(f.d)}</p></div>
+             <div><strong>${txtPlain(f.t)}</strong><p>${txtPlain(f.d)}</p></div>
            </li>`).join("")}</ul>`)
       : "";
 
     const tree = (d.tree || []).length
       ? pane("secere", `<p class="sm-hint">Detay için ekol kutusuna dokunun.</p>
-           <div class="sm-tree" role="group" aria-label="Ekoller">${d.tree.map((n, i) => `<button class="tree-node" type="button" data-node="${i}" aria-pressed="false">${esc(n.label)}</button>`).join("")}</div>
+           <div class="sm-tree" role="group" aria-label="Ekoller">${d.tree.map((n, i) => `<button class="tree-node" type="button" data-node="${i}" aria-pressed="false">${txtPlain(n.label)}</button>`).join("")}</div>
            <div class="tree-detail" data-tree-detail hidden></div>`)
       : "";
 
     const quiz = (d.quiz || []).length
       ? pane("test", (d.quiz).map((q, i) => `<div class="smq" data-smq="${i}">
-             <p class="smq-q"><strong>${i + 1}.</strong> ${esc(q.q)}</p>
-             ${(q.options || []).map((o, j) => `<label class="smq-opt"><input type="radio" name="${esc(prefix)}-q${i}" value="${j}"><span>${esc(o)}</span></label>`).join("")}
+             <p class="smq-q"><strong>${i + 1}.</strong> ${txtPlain(q.q)}</p>
+             ${(q.options || []).map((o, j) => `<label class="smq-opt"><input type="radio" name="${esc(prefix)}-q${i}" value="${j}"><span>${txtPlain(o)}</span></label>`).join("")}
              <div class="smq-actions"><button class="btn ghost sm-mini smq-check" type="button">Kontrol et</button></div>
              <div class="smq-fb" hidden></div>
            </div>`).join(""))
       : "";
 
     return `<div class="sm-panel" data-panel="${esc(prefix)}" data-json="${esc(JSON.stringify(d))}">
-      ${takeaways ? `<p class="sm-panel-title">${esc(d.title || "İnteraktif çalışma paneli")}</p>${takeaways}` : ""}
+      ${takeaways ? `<p class="sm-panel-title">${txtPlain(d.title || "İnteraktif çalışma paneli")}</p>${takeaways}` : ""}
       ${tabs.length > 1 ? `<div class="sm-tabs" role="tablist" aria-label="Panel görünümleri">${tabbar}</div>` : ""}
       ${cards}${cmp}${timeline}${matrix}${factors}${tree}${quiz}
     </div>`;
@@ -2762,7 +2762,7 @@
         }).join("")}</ol>
       </nav>` : "";
     const take = (data.takeaways || []).length
-      ? `<div class="rp-take"><p class="rp-label">Ana çıkarımlar</p><ul>${data.takeaways.map((k) => `<li><strong>${esc(k.t)}:</strong> ${esc(k.d)}</li>`).join("")}</ul></div>`
+      ? `<div class="rp-take"><p class="rp-label">Ana çıkarımlar</p><ul>${data.takeaways.map((k) => `<li><strong>${txtPlain(k.t)}:</strong> ${txtPlain(k.d)}</li>`).join("")}</ul></div>`
       : "";
     const body = sections.map((s, i) => {
       const text = notesHtmlWithCites({ notes: s.body }, cites, c.slug);
@@ -2874,8 +2874,8 @@
       node.classList.add("active");
       node.setAttribute("aria-pressed", "true");
       const detail = panel.querySelector("[data-tree-detail]");
-      detail.innerHTML = item ? `<h4>${esc(item.label)}</h4><p>${esc(item.desc)}</p>` +
-        ((item.branches || []).length ? `<ul class="tree-branches">${item.branches.map((b) => `<li><strong>${esc(b.label)}:</strong> ${esc(b.d)}</li>`).join("")}</ul>` : "") : "";
+      detail.innerHTML = item ? `<h4>${txtPlain(item.label)}</h4><p>${txtPlain(item.desc)}</p>` +
+        ((item.branches || []).length ? `<ul class="tree-branches">${item.branches.map((b) => `<li><strong>${txtPlain(b.label)}:</strong> ${txtPlain(b.d)}</li>`).join("")}</ul>` : "") : "";
       detail.hidden = !item;
       return;
     }
@@ -2903,7 +2903,7 @@
       const ok = +picked.value === item.answer;
       fb.hidden = false;
       fb.className = "smq-fb " + (ok ? "ok" : "no");
-      fb.innerHTML = `<strong>${ok ? "Doğru." : "Yanlış."}</strong> ${esc(item.why || "")}`;
+      fb.innerHTML = `<strong>${ok ? "Doğru." : "Yanlış."}</strong> ${txtPlain(item.why || "")}`;
       q.querySelectorAll("input").forEach((x) => (x.disabled = true));
       check.disabled = true;
       return;
