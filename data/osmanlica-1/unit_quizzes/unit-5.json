@@ -1,0 +1,358 @@
+{
+  "unit": 5,
+  "unitTitle": "Arapça ve Farsça Kelimelerde Ünlüler ve Yazılışları",
+  "title": "Osmanlı Türkçesi Testi",
+  "questions": [
+    {
+      "question": "Arapça ve Farsça kelimelerdeki uzun \"â\" ünlüsünü göstermek için metin içerisinde aşağıdaki harflerden hangisi kullanılır?",
+      "answerOptions": [
+        {
+          "text": "Elif (ا)",
+          "isCorrect": true,
+          "rationale": "Arapça ve Farsça kökenli sözcüklerde uzun \"â\" sesini temsil etmek için elif harfi bir uzatma harfi olarak görev yapar."
+        },
+        {
+          "text": "Vav (و)",
+          "isCorrect": false,
+          "rationale": "Bu harf uzun \"â\" sesini değil, uzun \"û\" ünlüsünü veya ünsüz olan \"v\" sesini göstermek için kullanılır."
+        },
+        {
+          "text": "Ye (ى)",
+          "isCorrect": false,
+          "rationale": "Bu harf kelime içinde veya sonunda uzun \"î\" ünlüsünü veya ünsüz olan \"y\" sesini karşılar."
+        },
+        {
+          "text": "Güzel he (ه)",
+          "isCorrect": false,
+          "rationale": "Bu harf genellikle kelime sonunda kısa \"e\" ünlüsünü veya ünsüz olan \"h\" sesini göstermek için tercih edilir."
+        }
+      ],
+      "hint": "Arapça ve Farsçada uzun ünlüleri göstermek için kullanılan üç ana harften ilkidir.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Arapça ve Farsça kökenli kelimelerin başında bulunan \"u\" veya uzun \"û\" sesini ifade etmek için elif (ا) harfi hangi hareke ile birlikte kullanılır?",
+      "answerOptions": [
+        {
+          "text": "Ötre",
+          "isCorrect": true,
+          "rationale": "Kelime başında \"u\" veya \"û\" sesini verebilmek için elif harfinin üzerine ötre harekesi konulur."
+        },
+        {
+          "text": "Üstün",
+          "isCorrect": false,
+          "rationale": "Elif harfi üzerine konulan üstün harekesi \"u\" sesini değil, \"a\" veya \"e\" seslerini üretir."
+        },
+        {
+          "text": "Esre",
+          "isCorrect": false,
+          "rationale": "Elif harfinin altına konulan esre harekesi \"u\" sesini değil, \"ı\" veya \"i\" seslerini verir."
+        },
+        {
+          "text": "Cezm",
+          "isCorrect": false,
+          "rationale": "Cezm bir ünlü harekesi olmayıp, harfin ünsüz ve harekesiz duraklama halini belirtir."
+        }
+      ],
+      "hint": "Sesin dudaklar büzülerek okunmasını sağlayan harekeyi hatırlayınız.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Farsların Arap alfabesini benimsedikten sonra eklediği ve Farsçaya özgü olan dört harfli grup aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "پ (pe), چ (çim), گ (gef), ژ (je)",
+          "isCorrect": true,
+          "rationale": "Arap alfabesinde bulunmayan bu dört harf Fars dili tarafından eklenerek alfabe 32 harfe çıkarılmıştır."
+        },
+        {
+          "text": "ث (se), ح (ha), ذ (zel), ض (dad)",
+          "isCorrect": false,
+          "rationale": "Bu harf grubu Farsçaya değil, doğrudan Arapça kelimelere özgü aslî ünsüzlerdir."
+        },
+        {
+          "text": "ص (sad), ض (dad), ط (tı), ظ (zı)",
+          "isCorrect": false,
+          "rationale": "Bu harfler Farsların eklediği harfler olmayıp Arapçadaki kalın ünsüz grubunu oluşturur."
+        },
+        {
+          "text": "ع (ayın), غ (gayn), خ (hı), ك (kaf)",
+          "isCorrect": false,
+          "rationale": "Bu harfler Arapçanın temel harfleridir ve Farsların alfabeye sonradan kazandırdığı sesler değildir."
+        }
+      ],
+      "hint": "Arap alfabesini 32 harfe çıkaran ek sesleri düşününüz.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Farsça kelimelerde \"خ\" (hı) harfinden sonra yazıldığı halde okunmayan \"و\" (vav) harfine ne ad verilir?",
+      "answerOptions": [
+        {
+          "text": "Vâv-ı ma'dûle",
+          "isCorrect": true,
+          "rationale": "Yazıda yer aldığı halde okunmayan veya özel bir sesle telaffuz edilmeyen bu vav harfi vâv-ı ma'dûle olarak adlandırılır."
+        },
+        {
+          "text": "Vâv-ı atıf",
+          "isCorrect": false,
+          "rationale": "Bu kavram kelimeleri veya cümleleri birbirine bağlayan bağlaç görevindeki vav için kullanılır."
+        },
+        {
+          "text": "Vâv-ı mef'ûl",
+          "isCorrect": false,
+          "rationale": "Arapça türetme kalıplarında yer alan ve nesne durumu bildiren bir terim olup yazılıp okunmayan vavı açıklamaz."
+        },
+        {
+          "text": "Vâv-ı nisbet",
+          "isCorrect": false,
+          "rationale": "Aitlik gösteren ekler veya yapısal durumlar için kullanılan bir kavramdır, okunmayan vav terimi değildir."
+        }
+      ],
+      "hint": "\"Uyku\" anlamına gelen \"خواب\" (hˇâb) ve \"sofra\" anlamına gelen \"خوان\" (hˇân) kelimelerindeki yazılıp okunmayan vavı hatırlayınız.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Aşağıdaki harflerden hangisi yalnızca Arapça kelimelerde bulunan ve Türkçede ses karşılığı olmadığı için genellikle \"z\" (nadiren \"d\") sesiyle okunan harftir?",
+      "answerOptions": [
+        {
+          "text": "ض (dad)",
+          "isCorrect": true,
+          "rationale": "Arapçaya özgü bir ses olan dad harfi, Türkçeye geçen kelimelerde z sesiyle telaffuz edilir."
+        },
+        {
+          "text": "پ (pe)",
+          "isCorrect": false,
+          "rationale": "Bu harf Arapçaya değil, Farsçaya özgüdür ve p sesiyle okunur."
+        },
+        {
+          "text": "چ (çim)",
+          "isCorrect": false,
+          "rationale": "Bu harf Farsça kökenli olup ç sesini karşılar, z veya d sesiyle okunmaz."
+        },
+        {
+          "text": "ژ (je)",
+          "isCorrect": false,
+          "rationale": "Farsça ve Batı dillerinden geçen kelimelerde görülen bu harf j sesini temsil eder."
+        }
+      ],
+      "hint": "Türkçeye geçen Arapça kelimelerde z sesiyle telaffuz edilen kalın ünsüz harfi düşününüz.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Bir kelimenin yapısında veya başında \"ژ\" (je) harfinin yer alması, o kelimenin kökeni hakkında aşağıdaki yargılardan hangisini kesinleştirir?",
+      "answerOptions": [
+        {
+          "text": "Kelimenin Farsça (veya Batı dillerinden geçmiş) olduğunu gösterir.",
+          "isCorrect": true,
+          "rationale": "Je harfi Arapçada ve öz Türkçe kelimelerde bulunmaz; yalnızca Farsça ve Batı kökenli sözcüklerde yer alır."
+        },
+        {
+          "text": "Kelimenin öz Türkçe bir kökten geldiğini doğrular.",
+          "isCorrect": false,
+          "rationale": "Öz Türkçe kelimelerin yapısında ve başında j sesi/harfi bulunmaz."
+        },
+        {
+          "text": "Kelimenin Arapça bükünlü bir kökten türediğini gösterir.",
+          "isCorrect": false,
+          "rationale": "Arap alfabesinde j (ژ) harfi yer almadığı için Arapça sözcüklerde bulunamaz."
+        },
+        {
+          "text": "Kelimenin Göktürkçe dönemine ait bir ek aldığını kanıtlar.",
+          "isCorrect": false,
+          "rationale": "Tarihî Türkçe dönemlerinde j sesi yer almamaktadır."
+        }
+      ],
+      "hint": "Arapçada bulunmayan, Fars alfabesine eklenip Osmanlıcaya geçen sesin kullanım alanını hatırlayınız.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Hicrî-Kamerî takvim sisteminde bir ayın ilk gününü ifade etmek için kullanılan kalıp terim aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Gurre",
+          "isCorrect": true,
+          "rationale": "Hicrî ayların ilk gününü belirtmek amacıyla resmî ve edebî metinlerde gurre terimi kullanılır."
+        },
+        {
+          "text": "Selh",
+          "isCorrect": false,
+          "rationale": "Selh terimi ayın ilk gününü değil, tam aksine ayın son gününü ifade etmek için tercih edilir."
+        },
+        {
+          "text": "Evâ'il",
+          "isCorrect": false,
+          "rationale": "Evâ'il terimi tek bir günü değil, ayın ilk on günlük (1-10) zaman dilimini kapsar."
+        },
+        {
+          "text": "Evâsıt",
+          "isCorrect": false,
+          "rationale": "Evâsıt kavramı ayın ikinci on günlük (11-20) dönemini ifade eder."
+        }
+      ],
+      "hint": "Ayın son günü olan \"selh\" veya ilk on günü olan \"evâ'il\" terimleri ile karıştırmayınız.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Hicrî takvimde ayın 11 ile 20. günleri arasındaki ikinci on günlük dönemi tanımlamak için kullanılan terim aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Evâsıt",
+          "isCorrect": true,
+          "rationale": "Arapçada \"orta\" kökünden gelen evâsıt terimi, ayın ortasındaki ikinci on günlük zaman dilimini ifade eder."
+        },
+        {
+          "text": "Evâ'il",
+          "isCorrect": false,
+          "rationale": "Evâ'il terimi ayın birinci on günlük (1-10) başlangıç dönemini kapsar."
+        },
+        {
+          "text": "Evâhir",
+          "isCorrect": false,
+          "rationale": "Evâhir terimi ayın son on günlük (21-30) bitiş dönemini tanımlar."
+        },
+        {
+          "text": "Gurre",
+          "isCorrect": false,
+          "rationale": "Gurre terimi on günlük bir dönemi değil, yalnızca ayın birinci gününü gösterir."
+        }
+      ],
+      "hint": "Arapçada \"orta\" anlamına gelen kökten türeyen kavrama odaklanınız.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Hicrî ay adlarının resmî belgelerde kullanılan rumuz veya kısaltmalarında \"رمضان\" (Ramazan) ayı hangi harf ile temsil edilir?",
+      "answerOptions": [
+        {
+          "text": "ن (nun)",
+          "isCorrect": true,
+          "rationale": "Ramazan ayının resmî belge ve yazışmalardaki geleneksel kısaltması kelimenin sonundaki \"ن\" harfidir."
+        },
+        {
+          "text": "ر (rı)",
+          "isCorrect": false,
+          "rationale": "Rı harfi Ramazan ayının değil, Rebî'ü'l-âhire ayının kısaltmasıdır."
+        },
+        {
+          "text": "ش (şın)",
+          "isCorrect": false,
+          "rationale": "Şın harfi Ramazan ayının değil, Şa'bân ayının resmî kısaltmasıdır."
+        },
+        {
+          "text": "ص (sad)",
+          "isCorrect": false,
+          "rationale": "Sad harfi Ramazan ayını değil, Safer ayını temsil eden kısaltmadır."
+        }
+      ],
+      "hint": "Ramazan kelimesinin son harfi olan işaretin kısaltma olarak kullanıldığını hatırlayınız.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Farsçada \"gün\" anlamına gelen \"şenbe\" kelimesinden hareketle, \"Düşenbe\" ifadesi günümüz Türkçesinde hangi güne karşılık gelmektedir?",
+      "answerOptions": [
+        {
+          "text": "Pazartesi",
+          "isCorrect": true,
+          "rationale": "Farsçada \"dü\" (iki) ve \"şenbe\" (gün) kelimelerinin birleşimiyle oluşan Düşenbe, haftanın ikinci günü kabul edilen Pazartesi günüdür."
+        },
+        {
+          "text": "Pazar",
+          "isCorrect": false,
+          "rationale": "Pazar günü Farsçada \"Yekşenbe\" (birinci gün) şeklinde adlandırılır."
+        },
+        {
+          "text": "Salı",
+          "isCorrect": false,
+          "rationale": "Salı günü Farsçada \"Seşenbe\" (üçüncü gün) ifadesiyle karşılanır."
+        },
+        {
+          "text": "Çarşamba",
+          "isCorrect": false,
+          "rationale": "Çarşamba günü Farsçada \"Çehârşenbe\" (dördüncü gün) olarak isim almaktadır."
+        }
+      ],
+      "hint": "Farsça sıra sayılarında \"dü\" iki demektir; haftanın ikinci günü olarak değerlendirilen günü seçiniz.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Osmanlı Türkçesinde metin içinde geçen \"خمسه و مائه والف\" (Hamse ve mi'e ve elf) ifadesinin rakamla gösterimi aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "١١٠٥",
+          "isCorrect": true,
+          "rationale": "Arapça sayılarda elf (1000) + mi'e (100) + hamse (5) toplamı 1105 eder ve rakamlar soldan sağa \"١١٠٥\" şeklinde yazılır."
+        },
+        {
+          "text": "١٢٠٨",
+          "isCorrect": false,
+          "rationale": "Bu rakam dizilimi (1208) \"semâniye ve mi'eteyn ve elf\" ifadesinin karşılığıdır."
+        },
+        {
+          "text": "١١١٨",
+          "isCorrect": false,
+          "rationale": "Bu rakam dizilimi (1118) \"semâniye ve aşara mi'e ve elf\" ifadesine karşılık gelir."
+        },
+        {
+          "text": "١٠٠٥",
+          "isCorrect": false,
+          "rationale": "Bu sayı 1005 olup yüzlük basamağı belirten \"mi'e\" sözcüğünü içermez."
+        }
+      ],
+      "hint": "Sayı isimleri soldan sağa basamak değerlerine göre çözümlenir: hamse (5), mi'e (100), elf (1000).",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Aşağıdaki harf çiftinden hangisi yabancı (Arapça veya Farsça) kökenli kelimeleri tanımada kullanılır ve birkaç istisna dışında öz Türkçe kelimelerde yer almaz?",
+      "answerOptions": [
+        {
+          "text": "خ (hı) ve ذ (zel)",
+          "isCorrect": true,
+          "rationale": "Hı ve zel harfleri Arapça ve Farsça kelimelere özgüdür; Türkçe kelimelerde birkaç istisna (\"han\" gibi) dışında kullanılmazlar."
+        },
+        {
+          "text": "ب (be) ve ت (te)",
+          "isCorrect": false,
+          "rationale": "Be ve te harfleri öz Türkçe sözcüklerin imlasında da sıkça kullanılan temel harflerdendir."
+        },
+        {
+          "text": "د (dal) ve ر (rı)",
+          "isCorrect": false,
+          "rationale": "Dal ve rı harfleri Türkçe kelimelerde geniş bir kullanım alanına sahiptir."
+        },
+        {
+          "text": "ك (kaf) ve ل (lam)",
+          "isCorrect": false,
+          "rationale": "Kef ve lam harfleri Türkçe kökenli sözcüklerin yazımında yaygın olarak yer alır."
+        }
+      ],
+      "hint": "Biri \"h\" sesine yakındır, diğeri ise peltek okunan ve Türkçe kökenli sözcüklerde bulunmayan harflerdendir.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Arapça ve Farsça kökenli kelimelerin sonunda yer alan kısa \"e\" sesini göstermek için aşağıdaki harflerden hangisi tercih edilir?",
+      "answerOptions": [
+        {
+          "text": "Güzel he (ه)",
+          "isCorrect": true,
+          "rationale": "Arapça ve Farsça kelimelerin sonunda yer alan kısa \"e\" ünlüsü güzel he harfi ile gösterilir (çeşme - چشمه gibi)."
+        },
+        {
+          "text": "Elif (ا)",
+          "isCorrect": false,
+          "rationale": "Kelime sonundaki elif harfi kısa \"e\" ünlüsünü değil, uzun \"â\" ünlüsünü temsil eder."
+        },
+        {
+          "text": "Ye (ى)",
+          "isCorrect": false,
+          "rationale": "Kelime sonundaki ye harfi kısa \"e\" sesini değil, uzun \"î\" veya kısa \"i\" seslerini karşılar."
+        },
+        {
+          "text": "Vav (و)",
+          "isCorrect": false,
+          "rationale": "Kelime sonundaki vav harfi \"e\" ünlüsünü değil, \"u/ü/o/ö\" veya uzun \"û\" seslerini gösterir."
+        }
+      ],
+      "hint": "\"Çeşme\" (چشمه) ve \"beyhûde\" (بيهوده) kelimelerinin son harfini düşününüz.",
+      "type": "multiple_choice"
+    }
+  ]
+}

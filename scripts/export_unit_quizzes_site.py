@@ -3,12 +3,22 @@
 """data/<slug>/unit_quizzes/unit-N.json -> site/unit_quizzes.js (window.UNIT_QUIZZES)"""
 from __future__ import annotations
 
+import hashlib
 import json
+import random
 import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-SLUGS = ["turk-dili-1", "ataturk-ilkeleri-1", "islam-mezhepleri-tarihi"]
+SLUGS = ["turk-dili-1", "ataturk-ilkeleri-1", "islam-mezhepleri-tarihi", "osmanlica-1"]
+
+
+def shuffle_options(q: dict) -> dict:
+    """NotebookLM doğru şıkkı hep başa koyuyor; şıkları soru metnine bağlı sabit bir sırayla karıştır."""
+    opts = list(q.get("answerOptions") or [])
+    seed = int(hashlib.sha256((q.get("question") or "").encode("utf-8")).hexdigest()[:16], 16)
+    random.Random(seed).shuffle(opts)
+    return {**q, "answerOptions": opts}
 
 
 def main() -> int:
@@ -28,6 +38,7 @@ def main() -> int:
             qs = data.get("questions") or []
             if not qs:
                 continue
+            data["questions"] = [shuffle_options(q) for q in qs]
             units[str(data.get("unit") or f.stem.split("-")[-1])] = data
             total_q += len(qs)
         if units:

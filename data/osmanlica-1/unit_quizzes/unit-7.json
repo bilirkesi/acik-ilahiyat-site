@@ -1,0 +1,331 @@
+{
+  "unit": 7,
+  "unitTitle": "Aksâm-ı Seb'a, Mücerred Masdarlar, İsm-i Fâil ve İsm-i Mef'ûl",
+  "title": "Arapça Dilbilgisi Testi",
+  "questions": [
+    {
+      "question": "Arapça kelime yapısında aslî harflerinde illet harfi (ا، و، ی), hemze veya şedde/harf tekrarı bulunmayan sahih kelimelere ne ad verilir?",
+      "answerOptions": [
+        {
+          "text": "Sâlim",
+          "isCorrect": true,
+          "rationale": "Aslî harflerinde illet harfi, hemze ve şeddeli harf tekrarı bulunmayan kelimeler sahih grubunun sâlim kısmını oluşturur."
+        },
+        {
+          "text": "Mehmûz",
+          "isCorrect": false,
+          "rationale": "Mehmûz kelimelerin aslî harflerinden biri hemze içerdiği için bu tanıma uymaz."
+        },
+        {
+          "text": "Muzâ'af",
+          "isCorrect": false,
+          "rationale": "Muzâ'af kelimelerde ikinci ve üçüncü aslî harfler aynı olup şeddeli tekrar oluşturur."
+        },
+        {
+          "text": "Misâl",
+          "isCorrect": false,
+          "rationale": "Misâl kelimeler sahih değil, ilk harfi illetli olan mu'tell kelimelerdendir."
+        }
+      ],
+      "hint": "Sahih kelimelerin herhangi bir illet, hemze veya harf tekrarı barındırmayan en yalın türünü düşünün.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Aksâm-ı seb'a sınıflandırmasına göre 'vakt' (وقت) kelimesi ilk aslî harfi illetli olduğu için hangi grupta yer almaktadır?",
+      "answerOptions": [
+        {
+          "text": "Misâl",
+          "isCorrect": true,
+          "rationale": "Kök harflerinden birincisi 'vav' veya 'ye' olan illetli kelimeler misâl kategorisindedir."
+        },
+        {
+          "text": "Ecvef",
+          "isCorrect": false,
+          "rationale": "Ecvef kelimelerin ilk harfi değil, orta (ikinci) aslî harfi illetlidir."
+        },
+        {
+          "text": "Nâkıs",
+          "isCorrect": false,
+          "rationale": "Nâkıs kelimelerde illet harfi birinci konumda değil, son (üçüncü) aslî harf konumundadır."
+        },
+        {
+          "text": "Lefîf",
+          "isCorrect": false,
+          "rationale": "Lefîf kelimelerde tek bir illet harfi değil, iki ayrı aslî illet harfi yer alır."
+        }
+      ],
+      "hint": "Kelimenin başındaki ilk kök harfin illetli olmasına odaklanın.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "'Edeb' (أدب) ve 'emr' (امر) kelimelerinde olduğu gibi kök harflerinden biri hemze olan sahih kelimeler aksâm-ı seb'ada nasıl adlandırılır?",
+      "answerOptions": [
+        {
+          "text": "Mehmûz",
+          "isCorrect": true,
+          "rationale": "Aslî harflerinden biri hemze olan sahih kelimeler mehmûz olarak adlandırılır."
+        },
+        {
+          "text": "Sâlim",
+          "isCorrect": false,
+          "rationale": "Sâlim kelimelerde hemze bulunmaması şartı vardır."
+        },
+        {
+          "text": "Muzâ'af",
+          "isCorrect": false,
+          "rationale": "Muzâ'af kelimeler kök harflerinin ikincisi ve üçüncüsü aynı olan kelimelerdir."
+        },
+        {
+          "text": "Ecvef",
+          "isCorrect": false,
+          "rationale": "Ecvef sınıfı sahih kelimeleri değil, orta harfi illetli kelimeleri kapsar."
+        }
+      ],
+      "hint": "Terimin kökeni Arapçada 'hemze' barındırma durumuna dayanmaktadır.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Aksâm-ı seb'a kurallarına göre 'nevm' (نوم) kelimesi orta harfi illetli ('vav') olduğu için hangi gruba girer?",
+      "answerOptions": [
+        {
+          "text": "Ecvef",
+          "isCorrect": true,
+          "rationale": "İkinci (orta) aslî harfi illetli olan kelimeler ecvef olarak sınıflandırılır."
+        },
+        {
+          "text": "Misâl",
+          "isCorrect": false,
+          "rationale": "Misâl grubunda illet harfi kelimenin ortasında değil ilk harfindedir."
+        },
+        {
+          "text": "Nâkıs",
+          "isCorrect": false,
+          "rationale": "Nâkıs grubundaki kelimelerin illet harfi son kök harfidir."
+        },
+        {
+          "text": "Sâlim",
+          "isCorrect": false,
+          "rationale": "Sâlim kelimelerde hiç illet harfi bulunmaz."
+        }
+      ],
+      "hint": "Kelimenin 'içi/ortası oyuk' anlamına da gelen, orta harfi illetli kelime türünü hatırlayın.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Aşağıdaki kelimelerden hangisi kökünün başına eklenen zâid 'mîm' (م) harfiyle oluşturulmuş bir mimli masdardır?",
+      "answerOptions": [
+        {
+          "text": "Maksad (مقصد)",
+          "isCorrect": true,
+          "rationale": "'Maksad' kelimesi kasd kökünün başına zâid mîm getirilerek yapılmış bir mimli masdardır."
+        },
+        {
+          "text": "Mükrim (مكرم)",
+          "isCorrect": false,
+          "rationale": "'Mükrim' kelimesi masdar değil, fâil (yapan) anlamı taşıyan ism-i fâildir."
+        },
+        {
+          "text": "Metrûk (متروك)",
+          "isCorrect": false,
+          "rationale": "'Metrûk' kelimesi masdar olmayıp mef'ûl vezninde bir ism-i mef'ûldür."
+        },
+        {
+          "text": "Müdâvemet (مداومت)",
+          "isCorrect": false,
+          "rationale": "'Müdâvemet' kelimesi mufâ'ale babından bir mezîdünfih masdardır."
+        }
+      ],
+      "hint": "Yalın kök harflerinin önüne eklenen mîm harfiyle masdarlaşan yapılara odaklanın.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Arapçada kelimelerin sonuna 'iyyet' (يت) eki getirilerek oluşturulan yapay masdarlara ne ad verilir?",
+      "answerOptions": [
+        {
+          "text": "Mec'ûl masdar",
+          "isCorrect": true,
+          "rationale": "Kelime sonuna 'iyyet' eki eklenerek sonradan yapılan mastarlara mec'ûl masdar denir."
+        },
+        {
+          "text": "Mimli masdar",
+          "isCorrect": false,
+          "rationale": "Mimli masdarlar kelimenin sonuna ekle değil, başına zâid mîm getirilerek yapılır."
+        },
+        {
+          "text": "Sülâsî mücerred masdar",
+          "isCorrect": false,
+          "rationale": "Sülâsî mücerred masdarlar ek almamış üç kök harfli yalın masdarlardır."
+        },
+        {
+          "text": "Rubâ'î masdar",
+          "isCorrect": false,
+          "rationale": "Rubâ'î masdarlar ekle değil, doğrudan dört kök harfle kurulan mastarlardır."
+        }
+      ],
+      "hint": "Yapay olarak sonradan oluşturulmuş, kurgulanmış masdar anlamındaki terimi hatırlayın.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "'Vaz'iyet' (وضعيت) kelimesi masdar yapısı bakımından aşağıdakilerden hangisine bir örnektir?",
+      "answerOptions": [
+        {
+          "text": "Mec'ûl masdar",
+          "isCorrect": true,
+          "rationale": "'Vaz'' kelimesine 'iyyet' eki eklenerek yapay masdar üretildiği için mec'ûl masdardır."
+        },
+        {
+          "text": "Mimli masdar",
+          "isCorrect": false,
+          "rationale": "Kelimenin başında zâid bir mîm harfi yer almadığı için mimli masdar değildir."
+        },
+        {
+          "text": "Sülâsî mücerred masdar",
+          "isCorrect": false,
+          "rationale": "Yalın üç harfli kök halinde kalmayıp ek aldığı için mücerred sayılmaz."
+        },
+        {
+          "text": "Rubâ'î masdar",
+          "isCorrect": false,
+          "rationale": "Dört aslî kök harfe sahip olmayıp ekle türetilmiştir."
+        }
+      ],
+      "hint": "Kelimenin sonundaki '-iyet / -iyyet' ekine dikkat edin.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Sülâsî mücerred masdarlardan işi yapanı gösteren 'ism-i fâ'il' türetilirken aşağıdaki vezinlerden hangisi kullanılır?",
+      "answerOptions": [
+        {
+          "text": "Fâ'il (فَاعِل)",
+          "isCorrect": true,
+          "rationale": "Üç kök harfli sülâsî mücerred masdarların etken özne biçimi (ism-i fâ'ili) fâ'il vezniyle yapılır."
+        },
+        {
+          "text": "Mef'ûl (مَفْعُول)",
+          "isCorrect": false,
+          "rationale": "Mef'ûl vezni işi yapanı değil, işten etkileneni (ism-i mef'ûlü) gösterir."
+        },
+        {
+          "text": "Mufa'lil (مُفَعْلِل)",
+          "isCorrect": false,
+          "rationale": "Mufa'lil vezni sülâsî değil, rubâ'î mücerred masdarların ism-i fâ'ilidir."
+        },
+        {
+          "text": "Mufa'lel (مُفَعْلَل)",
+          "isCorrect": false,
+          "rationale": "Mufa'lel vezni rubâ'î masdarların ism-i mef'ûlü için kullanılır."
+        }
+      ],
+      "hint": "'Kâtib', 'şâkir', 'hâfız' gibi kelimelerin ortak kalıbını düşünün.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Sülâsî mücerred bir masdardan yapılan işten etkilenen unsuru gösteren 'ism-i mef'ûl' hangi vezin ile elde edilir?",
+      "answerOptions": [
+        {
+          "text": "Mef'ûl (مَفْعُول)",
+          "isCorrect": true,
+          "rationale": "Üç harfli yalın masdarların edilgen nesne hali (ism-i mef'ûlü) mef'ûl kalıbıyla türetilir."
+        },
+        {
+          "text": "Fâ'il (فَاعِل)",
+          "isCorrect": false,
+          "rationale": "Fâ'il kalıbı edilgen nesneyi değil, etken özneyi türetmek için kullanılır."
+        },
+        {
+          "text": "Fu'ûl (فُعُول)",
+          "isCorrect": false,
+          "rationale": "Fu'ûl bir ism-i mef'ûl kalıbı değil, sülâsî masdar kalıplarından biridir."
+        },
+        {
+          "text": "Mufa'lel (مُفَعْلَل)",
+          "isCorrect": false,
+          "rationale": "Mufa'lel kalıbı üç harfli masdarların değil, dört kök harfli rubâ'î masdarların ism-i mef'ûlüdür."
+        }
+      ],
+      "hint": "'Mektûb', 'mahfûz', 'maktu'' gibi kelimelerin türetildiği standart kalıbı hatırlayın.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Dört kök harfli (rubâ'î) mücerred masdarların ism-i fâ'ilini türetmek için aşağıdaki vezinlerden hangisi kullanılır?",
+      "answerOptions": [
+        {
+          "text": "Mufa'lil (مُفَعْلِل)",
+          "isCorrect": true,
+          "rationale": "Rubâ'î mücerred masdarların etken yapanı (ism-i fâ'ili) mufa'lil vezni ile yapılır."
+        },
+        {
+          "text": "Mufa'lel (مُفَعْلَل)",
+          "isCorrect": false,
+          "rationale": "Mufa'lel vezni rubâ'î masdarların ism-i fâ'ili değil, ism-i mef'ûlüdür."
+        },
+        {
+          "text": "Fâ'il (فَاعِل)",
+          "isCorrect": false,
+          "rationale": "Fâ'il vezni rubâ'î masdarlar için değil, sülâsî (üç harfli) masdarlar için kullanılır."
+        },
+        {
+          "text": "Mef'ûl (مَفْعُول)",
+          "isCorrect": false,
+          "rationale": "Mef'ûl vezni sülâsî masdarların edilgen nesne halidir."
+        }
+      ],
+      "hint": "Başı 'mu-' ile başlayıp son harekesi esreli olan dört harfli kök kalıbını arayın.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Aşağıdaki kelimelerden hangisi dört aslî kök harften oluşan bir 'rubâ'î masdar' örneğidir?",
+      "answerOptions": [
+        {
+          "text": "Saltanat (سلطنت)",
+          "isCorrect": true,
+          "rationale": "'Saltanat' kelimesi bünyesinde dört aslî kök harf barındıran mücerred rubâ'î masdardır."
+        },
+        {
+          "text": "Maslahat (مصلحت)",
+          "isCorrect": false,
+          "rationale": "'Maslahat' mimli masdar yapısındadır, rubâ'î masdar değildir."
+        },
+        {
+          "text": "Vaz'iyet (وضعيت)",
+          "isCorrect": false,
+          "rationale": "'Vaz'iyet' türetilmiş bir mec'ûl masdardır."
+        },
+        {
+          "text": "Mansıb (منصب)",
+          "isCorrect": false,
+          "rationale": "'Mansıb' kelimesi zâid mîm içeren mimli masdardır."
+        }
+      ],
+      "hint": "Kökünde üç değil, dört asli harf bulunduran kelimeler grubunu düşünün.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Aksâm-ı seb'ada 'nâkıs' kelime grubu ile ilgili aşağıdaki ifadelerden hangisi doğrudur?",
+      "answerOptions": [
+        {
+          "text": "Kelimenin üçüncü (son) aslî harfi illetlidir.",
+          "isCorrect": true,
+          "rationale": "Nâkıs kelimelerde sonuncu kök harfi 'vav', 'ye' veya 'elif' olan illetli harftir."
+        },
+        {
+          "text": "Kelimenin birinci aslî harfi illetlidir.",
+          "isCorrect": false,
+          "rationale": "Birinci aslî harfi illetli olan kelimeler nâkıs değil, misâl kelimelerdir."
+        },
+        {
+          "text": "Kelimenin ikinci (orta) aslî harfi illetlidir.",
+          "isCorrect": false,
+          "rationale": "Orta harfi illetli olanlar nâkıs değil, ecvef kelimelerdir."
+        },
+        {
+          "text": "Kelimenin iki aslî harfi birden illetlidir.",
+          "isCorrect": false,
+          "rationale": "İki aslî harfi illetli olan kelimeler lefîf kategorisindedir."
+        }
+      ],
+      "hint": "İllet harfinin kelimenin en sonunda bulunması durumunu göz önüne alın.",
+      "type": "multiple_choice"
+    }
+  ]
+}

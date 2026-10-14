@@ -1,0 +1,331 @@
+{
+  "unit": 1,
+  "unitTitle": "Osmanlı Türkçesi Alfabesi",
+  "title": "Osmanlı Türkçesi Quiz",
+  "questions": [
+    {
+      "question": "Batı Türkçesinin 13. yüzyıldan İstanbul'un fethine (15. yüzyıl ortası) kadar süren ilk dönemine ne ad verilir?",
+      "answerOptions": [
+        {
+          "text": "Eski Anadolu Türkçesi",
+          "isCorrect": true,
+          "rationale": "Anadolu Selçukluları, Beylikler Çağı ve Osmanlı'nın İstanbul'un fethine kadar olan ilk evresi Eski Anadolu Türkçesi (Eski Osmanlıca) olarak adlandırılır."
+        },
+        {
+          "text": "Klâsik Osmanlı Türkçesi",
+          "isCorrect": false,
+          "rationale": "Klâsik dönem, İstanbul'un fethinden (15. yüzyıl ortası) 19. yüzyıla kadar süren ikinci ana evreyi ifade eder."
+        },
+        {
+          "text": "Yeni Osmanlı Türkçesi",
+          "isCorrect": false,
+          "rationale": "Yeni Osmanlı Türkçesi veya Türkiye Türkçesi dönemi Batı Türkçesinin üçüncü ve son aşamasını temsil eder."
+        },
+        {
+          "text": "Çağatay Türkçesi",
+          "isCorrect": false,
+          "rationale": "Çağatay Türkçesi Batı Türkçesi koluna değil, Doğu Türkçesi gelişme alanına aittir."
+        }
+      ],
+      "hint": "Bu dönem Anadolu Selçukluları ve Beylikler Çağı'nı kapsayan kuruluş evresidir.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Osmanlı Türkçesi alfabesi 28 harfli Arap alfabesine dayanmakla birlikte Türklerin ve İranlıların katkılarıyla genişletilmiştir. Aşağıdakilerden hangisi bu ilave edilen harflerden biridir?",
+      "answerOptions": [
+        {
+          "text": "pe (پ)",
+          "isCorrect": true,
+          "rationale": "Arap alfabesinde bulunmayan 'p' sesi için Türk ve İranlıların ilavesiyle 'pe' harfi alfabeye dahil edilmiştir."
+        },
+        {
+          "text": "te (ت)",
+          "isCorrect": false,
+          "rationale": "Te harfi asıl Arap alfabesinin 28 harfi arasında zaten yer almaktadır."
+        },
+        {
+          "text": "re (ر)",
+          "isCorrect": false,
+          "rationale": "Re harfi Arap alfabesinin temel harflerinden biridir."
+        },
+        {
+          "text": "fe (ف)",
+          "isCorrect": false,
+          "rationale": "Fe harfi Arap alfabesinin asıl kadrosunda bulunan bir ünsüzdür."
+        }
+      ],
+      "hint": "Arapça kökenli kelimelerde bulunmayan ve altına üç nokta konularak türetilen harfi hatırlayınız.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Harfin üstüne konulan ve ilgili harfi /o/, /ö/, /u/ veya /ü/ sesleriyle okutmaya yarayan hareke aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Ötre (damme)",
+          "isCorrect": true,
+          "rationale": "Ötre işareti harfin üstüne konur ve yuvarlak ünlü seslerini (/o/, /ö/, /u/, /ü/) temsil eder."
+        },
+        {
+          "text": "Üstün (fetha)",
+          "isCorrect": false,
+          "rationale": "Üstün işareti harfin üstüne konarak düz-geniş ünlüleri (/a/, /e/) okutur."
+        },
+        {
+          "text": "Esre (kesre)",
+          "isCorrect": false,
+          "rationale": "Esre işareti harfin altına konur ve düz-dar ünlüleri (/ı/, /i/) ifade eder."
+        },
+        {
+          "text": "Cezm (sükûn)",
+          "isCorrect": false,
+          "rationale": "Cezm işareti ünlü okutmaz, harfi harekesiz yani ünsüz (sakin) duruma getirir."
+        }
+      ],
+      "hint": "Arapça ismi 'damme' olan ve yuvarlak ünlülere karşılık gelen harekeyi düşününüz.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Kelime sonundaki harfi \"ın / in\" sesleriyle okutmayı sağlayan hareke/tenvin işareti aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Esreli tenvin",
+          "isCorrect": true,
+          "rationale": "Kelime sonundaki harfin altına çift çizgi şeklinde konan esreli tenvin, kelime sonunu 'ın/in' sesleriyle okutur."
+        },
+        {
+          "text": "Üstünlü tenvin",
+          "isCorrect": false,
+          "rationale": "Üstünlü tenvin harfin üstüne konur ve 'an/en' sesleriyle okunmasını sağlar."
+        },
+        {
+          "text": "Ötreli tenvin",
+          "isCorrect": false,
+          "rationale": "Ötreli tenvin harfin üstüne konur ve 'un/ün' seslerini üretir."
+        },
+        {
+          "text": "Şedde",
+          "isCorrect": false,
+          "rationale": "Şedde tenvin türü değildir; ünsüzün ikizleşmesini (iki defa okunmasını) sağlar."
+        }
+      ],
+      "hint": "Tek başına /ı/i/ sesi veren esre harekesinin kelime sonunda çift yazılmış hâlini değerlendiriniz.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Elif harfinin üzerine konularak kelimeye uzun \"â\" sesi kazandıran ve Türkçe kelimelerin başında da (örneğin \"ak\" kelimesinde) kullanılan yardımcı işaret aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Med",
+          "isCorrect": true,
+          "rationale": "Med işareti elif üzerine konarak harfin uzun 'â' şeklinde okunmasını sağlar ve Türkçe ilk sesi 'a' olan kelimelerde de kullanılır."
+        },
+        {
+          "text": "Cezm",
+          "isCorrect": false,
+          "rationale": "Cezm uzatma yapmaz, harfin sesini keserek ünsüz olarak kalmasını sağlar."
+        },
+        {
+          "text": "Şedde",
+          "isCorrect": false,
+          "rationale": "Şedde harfi uzatmaya değil, aynı ünsüzü iki kez okutmaya yarar."
+        },
+        {
+          "text": "Tenvin",
+          "isCorrect": false,
+          "rationale": "Tenvin kelime sonlarına genizcil 'n' sesi getiren çift harekedir."
+        }
+      ],
+      "hint": "Dalgalı bir çizgi şeklinde elifin üzerine yerleştirilen uzatma işaretini hatırla.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Arapça kelimelerde yan yana gelen aynı ünsüzü tek harfle yazıp iki defa okutmak için kullanılan yardımcı işaret aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Şedde",
+          "isCorrect": true,
+          "rationale": "Şedde işareti üzerine konduğu harfin çift ünsüz (ikiz) olarak okunmasını sağlar."
+        },
+        {
+          "text": "Cezm",
+          "isCorrect": false,
+          "rationale": "Cezm harfi ikizleştirmez, sadece durağan/sakin okutur."
+        },
+        {
+          "text": "Med",
+          "isCorrect": false,
+          "rationale": "Med işareti sesleri ikizleştirmek için değil, ünlüyü uzatmak için kullanılır."
+        },
+        {
+          "text": "Tenvin",
+          "isCorrect": false,
+          "rationale": "Tenvin kelime sonuna /n/ sesi ekleyen hareke biçimidir."
+        }
+      ],
+      "hint": "'Cennet' veya 'millet' gibi kelimelerde aynı ünsüzün tekrarlanmasını sağlayan işareti düşününüz.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Aşağıdaki harflerden hangisi kendisinden sonra gelen harfle bitişmeyen (birleşmeyen) harflerden biridir?",
+      "answerOptions": [
+        {
+          "text": "ز (ze)",
+          "isCorrect": true,
+          "rationale": "Elif, dal, zel, re, ze, je, vav ve hâ-i resmiye kendinden sonraki harflerle bitişmeyen gruptadır."
+        },
+        {
+          "text": "ب (be)",
+          "isCorrect": false,
+          "rationale": "Be harfi hem kendinden önceki hem de kendinden sonraki harfle bitişen bir harftir."
+        },
+        {
+          "text": "س (sin)",
+          "isCorrect": false,
+          "rationale": "Sin harfi hem sağındaki hem de solundaki harfe bağlanabilir."
+        },
+        {
+          "text": "ف (fe)",
+          "isCorrect": false,
+          "rationale": "Fe harfi iki tarafa da bitişme özelliğine sahiptir."
+        }
+      ],
+      "hint": "Sadece sağındaki harfe bağlanan ve soluna çizgi uzatmayan 8 temel harften birini seçiniz.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Aşağıdaki harflerden hangisi hem kendisinden önceki hem de kendisinden sonraki harfle birleşebilen (bitişen) harflerdendir?",
+      "answerOptions": [
+        {
+          "text": "ش (şin)",
+          "isCorrect": true,
+          "rationale": "Şin harfi kelime başında, ortasında ve sonunda formu değişerek iki taraftaki harflerle de bitişir."
+        },
+        {
+          "text": "د (dal)",
+          "isCorrect": false,
+          "rationale": "Dal harfi kendinden sonra gelen harfe bitiştirilmez."
+        },
+        {
+          "text": "ر (re)",
+          "isCorrect": false,
+          "rationale": "Re harfi solundaki (kendisinden sonraki) harfle birleşmez."
+        },
+        {
+          "text": "و (vav)",
+          "isCorrect": false,
+          "rationale": "Vav harfi kendisinden sonra gelen harfe bağlanmayan gruptadır."
+        }
+      ],
+      "hint": "Kendinden sonraki ile birleşmeyen 8 harf (ا, د, ذ, ر, ز, ژ, و, ه) dışındaki bir seçeneğe odaklanın.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Şekilce birbirine benzeyen harf grupları düşünüldüğünde, gövde yapısı aynı olup altındaki üç nokta ile \"ج\" (cim), \"ح\" (ha) ve \"خ\" (hı) harflerinden ayrılan harf hangisidir?",
+      "answerOptions": [
+        {
+          "text": "çe (چ)",
+          "isCorrect": true,
+          "rationale": "Cim ailesinde yer alan çe harfi, karın kısmına koyulan üç nokta ile diğer kardeş harflerden ayrılır."
+        },
+        {
+          "text": "pe (پ)",
+          "isCorrect": false,
+          "rationale": "Pe harfi üç noktalıdır ancak 'be' ailesine (yayvan gövdeli harflere) aittir."
+        },
+        {
+          "text": "se (ث)",
+          "isCorrect": false,
+          "rationale": "Peltek se harfi üç noktalıdır ancak 'be-te' grubuyla aynı gövde şekline sahiptir."
+        },
+        {
+          "text": "şin (ش)",
+          "isCorrect": false,
+          "rationale": "Şin harfi üç noktalıdır fakat 'sin' ailesine dahil bir harftir."
+        }
+      ],
+      "hint": "Cim harfinin ortasında tek nokta varken, bu harfin içinde/altında üç nokta bulunur.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Cezm (sakin/sükûn) işareti ile ilgili aşağıdaki ifadelerden hangisi doğrudur?",
+      "answerOptions": [
+        {
+          "text": "Harfin üstüne konur ve üzerine geldiği harfi ünsüz (sakin) okutur.",
+          "isCorrect": true,
+          "rationale": "Cezm işareti bir harfin üzerinde yer alarak o harfin ünlü almadan duraklayıp ünsüz sesiyle kapanmasını sağlar."
+        },
+        {
+          "text": "Harfin altına konur ve harfi /ı/ veya /i/ sesleriyle okutur.",
+          "isCorrect": false,
+          "rationale": "Harfin altına konup /ı/i/ sesi veren işaret esre (kesre) harekesidir."
+        },
+        {
+          "text": "Kelimenin son harfine konarak /an/ veya /en/ sesi ekler.",
+          "isCorrect": false,
+          "rationale": "Kelime sonuna /an/en/ sesi katan işaret üstünlü tenvindir."
+        },
+        {
+          "text": "Harfin üzerine konarak aynı ünsüzün iki kez tekrarlanmasını sağlar.",
+          "isCorrect": false,
+          "rationale": "Ünsüzü ikizleştiren işaret şeddendir."
+        }
+      ],
+      "hint": "Kelime içinde kapalı hecelerin sonundaki ünsüzün Harekeksiz (sakin) okunduğunu belirten simgedir.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Osmanlı Türkçesinde kelime sonunda ünlü (e/a) yerine kullanıldığında kendisinden sonraki ekle bitişmeyen ve \"hâ-i resmiye\" olarak adlandırılan harf aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "ه (he)",
+          "isCorrect": true,
+          "rationale": "Kelime sonunda okutucu/ünlü görevi üstlenen 'he' harfine hâ-i resmiye denir ve bu işlevdeyken kendinden sonrakine bitişmez."
+        },
+        {
+          "text": "ى (ye)",
+          "isCorrect": false,
+          "rationale": "Ye harfi dar ünlüler için kullanılır ve kelime sonunda sonrakiyle bitişme kuralı farklı değerlendirilir."
+        },
+        {
+          "text": "ك (kef)",
+          "isCorrect": false,
+          "rationale": "Kef harfi ünsüz işaretler; okutucu hâ-i resmiye adını almaz."
+        },
+        {
+          "text": "ت (te)",
+          "isCorrect": false,
+          "rationale": "Te harfi asli ünsüzdür, okutucu he ile karıştırılmamalıdır."
+        }
+      ],
+      "hint": "Şekilce 'he' olup Türkçe kelimelerin sonunda e/a ünlüsünü göstermeye yarayan harfi hatırlayınız.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Türkçeye özgü genizsil \"n\" sesini (kâf-ı nûnî / sağır kef) göstermek için Osmanlı Türkçesi alfabesinde kullanılan özel harf aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "ڭ",
+          "isCorrect": true,
+          "rationale": "Üzerinde üç nokta bulunan kef biçimindeki 'kâf-ı nûnî' (ڭ) harfi genizden gelen 'n' sesini gösterir."
+        },
+        {
+          "text": "گ",
+          "isCorrect": false,
+          "rationale": "Üzerinde çizgi bulunan 'kâf-ı fârisî' (گ) 'g' ve 'ğ' sesleri için kullanılır."
+        },
+        {
+          "text": "ك",
+          "isCorrect": false,
+          "rationale": "Yalın kef (ك) öncelikle 'k' sesini temsil eder."
+        },
+        {
+          "text": "ق",
+          "isCorrect": false,
+          "rationale": "Kaf (ق) harfi kalın 'k' seslerini ifade etmek için kullanılır."
+        }
+      ],
+      "hint": "Kef harfinin üzerine üç nokta konularak oluşturulan ve genizsel n sesini veren işareti arayınız.",
+      "type": "multiple_choice"
+    }
+  ]
+}

@@ -1,0 +1,331 @@
+{
+  "unit": 4,
+  "unitTitle": "Türkçe Ek, Zamir, Zarf ve Sayıların Yazılışı",
+  "title": "Osmanlı Türkçesi Testi",
+  "questions": [
+    {
+      "question": "Osmanlı Türkçesinde şahıs zamirlerinin yönelme (yaklaşma) hâli çekiminde belirgin bir imlâ kuralı uygulanmaktadır. Buna göre \"bana\" ve \"sana\" kelimelerinin doğru yazılışı aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "بكا / سکا",
+          "isCorrect": true,
+          "rationale": "Şahıs zamirlerinin yönelme hâlinde kökteki genizsi/damaksı 'n' sesi 'ك' (kef/sağır nun) harfi kullanılarak yazılır."
+        },
+        {
+          "text": "بنا / سنا",
+          "isCorrect": false,
+          "rationale": "Standart 'nun' harfiyle yazım, günümüz okunuşuna uygun görünse de klasik Osmanlı Türkçesi zamir imlâ kalıbına uymamaktadır."
+        },
+        {
+          "text": "بگا / سگا",
+          "isCorrect": false,
+          "rationale": "'Gef' harfi yumuşak 'g' veya 'g' seslerini temsil ettiğinden zamir yönelme çekimindeki damaksı 'n' sesini karşılamaz."
+        },
+        {
+          "text": "بيا / سيا",
+          "isCorrect": false,
+          "rationale": "'Ye' harfi yönelme ekindeki kaynaştırma sesiyle karıştırılmış olup kökteki damaksı 'n' yapısını yansıtmamaktadır."
+        }
+      ],
+      "hint": "Zamirlerde yönelme hâli eki getirilirken kökte damaksı/genizsi n (sağır nun) harfi tercih edilir.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Osmanlı Türkçesi metinlerinde geçen \"fi'l-hâl\" (فى الحال) zarfının Türkçe karşılığı aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Hemen, o anda",
+          "isCorrect": true,
+          "rationale": "Arapça kökenli 'fi'l-hal' birleşik zarfı metinlerde 'o anda, hemen, gecikmeksizin' anlamında kullanılır."
+        },
+        {
+          "text": "Arada sırada",
+          "isCorrect": false,
+          "rationale": "'Arada sırada' anlamı Osmanlı Türkçesinde 'akîbinde' veya benzeri zaman zarflarıyla ifade edilir."
+        },
+        {
+          "text": "Yıldan yıla",
+          "isCorrect": false,
+          "rationale": "'Yıldan yıla' ifadesinin Osmanlı Türkçesindeki karşılığı 'sal be-sâl' zarfıdır."
+        },
+        {
+          "text": "Kara yoluyla",
+          "isCorrect": false,
+          "rationale": "'Kara yoluyla' anlamını taşıyan zarf 'berren' kelimesidir."
+        }
+      ],
+      "hint": "Bu zarf, 'hal' (mevcut durum/an) kelimesiyle bağlantılı olup eylemin anındalığını ifade eder.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Osmanlı Türkçesinde \"başka\" anlamında kullanılan Türkçe kökenli zarf aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "ايرق (ayrık)",
+          "isCorrect": true,
+          "rationale": "Eski Türkçe kökenli 'ayrık' kelimesi Osmanlı metinlerinde 'başka, ayrı, diğer' anlamında zarf olarak kullanılır."
+        },
+        {
+          "text": "بولدر (boldur)",
+          "isCorrect": false,
+          "rationale": "'Boldur' veya 'bıldır' kelimesi zaman zarfı olup 'geçen yıl' anlamına gelir."
+        },
+        {
+          "text": "قنده (kanda)",
+          "isCorrect": false,
+          "rationale": "'Kanda' kelimesi yer-yön/soru zarfı olup 'nerede' anlamında kullanılır."
+        },
+        {
+          "text": "اشته (işte)",
+          "isCorrect": false,
+          "rationale": "'İşte' kelimesi bir gösterme edatıdır, 'başka' anlamına gelmez."
+        }
+      ],
+      "hint": "'Ayrı' kökünden türemiş, günümüz Türkiye Türkçesinde yerini 'başka' kelimesine bırakmış tarihî bir kelimedir.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Osmanlı Türkçesinde \"yirmi\" ve \"bin\" sayılarının imlâsı kalıplaşmış özel yapılara sahiptir. Aşağıdakilerin hangisinde bu iki sayının yazılışı doğru sıralanmıştır?",
+      "answerOptions": [
+        {
+          "text": "يكرمی – بيك",
+          "isCorrect": true,
+          "rationale": "'Yirmi' kelimesi 'يكرمی' ve 'bin' kelimesi 'بيك' biçiminde kalıplaşmış tarihî imlâlarıyla yazılır."
+        },
+        {
+          "text": "يرمى – بين",
+          "isCorrect": false,
+          "rationale": "'Bin' kelimesinde 'nun' harfi kullanımı Arapça 'bint/bin' kelimeleriyle karıştırılmasından kaynaklanır; Türkçe 'bin' kelimesi kef (sağır nun) ile yazılır."
+        },
+        {
+          "text": "يرمى – بيك",
+          "isCorrect": false,
+          "rationale": "'Yirmi' kelimesinde ortadaki 'kef' harfinin yazılmaması kalıplaşmış imlâ kuralının ihlal edilmesine yol açar."
+        },
+        {
+          "text": "يكرمی – بين",
+          "isCorrect": false,
+          "rationale": "'Yirmi' doğru yazılmasına rağmen 'bin' kelimesinin son harfi 'nun' değil damaksı n temsilcisi olan 'kef' olmalıdır."
+        }
+      ],
+      "hint": "Her iki kelimede de günümüzde 'n' veya sesli olan yerlerde tarihî imlâ gereği 'kef' (ك) harfi bulunur.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Osmanlı Türkçesinde rakamların yazılışı ve biçimsel özellikleri ile ilgili aşağıdaki ifadelerden hangisi doğrudur?",
+      "answerOptions": [
+        {
+          "text": "Metinler sağdan sola yazılmasına rağmen rakamlar soldan sağa doğru yazılır.",
+          "isCorrect": true,
+          "rationale": "Osmanlı Türkçesi yazısı sağdan sola doğru akarken sayısal rakamlar soldan sağa dizilir."
+        },
+        {
+          "text": "İki (۲) ve altı (٦) rakamları aynı yöne bakar.",
+          "isCorrect": false,
+          "rationale": "İki rakamı sağa bakarken, altı rakamı sola bakacak şekilde yazılır."
+        },
+        {
+          "text": "Yedi (٧) rakamı ters v harfine, sekiz (٨) ise düz v harfine benzer.",
+          "isCorrect": false,
+          "rationale": "Yedi rakamı düz 'v' harfine benzerken, sekiz rakamı 'v' harfinin ters dönmüş biçimine benzer."
+        },
+        {
+          "text": "Çok basamaklı rakamlar yazılırken önce birler sonra onlar basamağı sağdan sola dizilir.",
+          "isCorrect": false,
+          "rationale": "Basamaklar soldan sağa doğru sıralanır ve okuma düzeni buna göre gerçekleşir."
+        }
+      ],
+      "hint": "Arap alfabesi temelli metin akış yönü ile sayısal dizilim yönünün birbirinden farklı olduğunu hatırlayınız.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Osmanlı Türkçesinde \"bu\" ve \"şu\" işaret zamirlerinin yükleme (belirtme) hâlindeki doğru yazılışları aşağıdakilerin hangisinde birlikte verilmiştir?",
+      "answerOptions": [
+        {
+          "text": "بونى – شونى",
+          "isCorrect": true,
+          "rationale": "İşaret zamirlerinin yükleme hâli 'بونى' (bunu) ve 'شونى' (şunu) biçiminde yazılır."
+        },
+        {
+          "text": "بوندن – شوندن",
+          "isCorrect": false,
+          "rationale": "Bu yazım yükleme değil ayrılma hâlindeki 'bundan, şundan' biçimidir."
+        },
+        {
+          "text": "بونك – شونك",
+          "isCorrect": false,
+          "rationale": "'بونك' ve 'شونك' biçimleri yükleme değil, ilgi (tamlayan) hâli çekimleridir."
+        },
+        {
+          "text": "بونده – شونده",
+          "isCorrect": false,
+          "rationale": "'بونده' ve 'شونده' biçimleri bulunma hâli çekimleridir."
+        }
+      ],
+      "hint": "İşaret zamirlerinin yükleme hâli kalıplaşmış kısa yazımlara sahiptir ve ek kelimeye bitişik durur.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Osmanlı Türkçesinde isimlere getirilen bildirme eklerinden 2. tekil şahıs eki (örneğin \"talebesin\", \"boşsun\") imlâda hangi harf birleşimiyle temsil edilir?",
+      "answerOptions": [
+        {
+          "text": "سک",
+          "isCorrect": true,
+          "rationale": "2. şahıs bildirme ekleri 'sin/sun' imlâda 'sin' ve damaksı n olan 'kef' harflerinin birleşimiyle (سک) yazılır."
+        },
+        {
+          "text": "سن",
+          "isCorrect": false,
+          "rationale": "Günümüz Türkçesindeki 'sen' kelimesi 'سن' şeklinde yazılsa da şahıs bildirme eki imlâda 'سک' olarak kalıplaşmıştır."
+        },
+        {
+          "text": "سم",
+          "isCorrect": false,
+          "rationale": "'سم' harf birleşimi 1. tekil şahıs ekinin veya şart kipinin çekimlerinde yer alır."
+        },
+        {
+          "text": "سز",
+          "isCorrect": false,
+          "rationale": "'سز' harf birleşimi 2. çoğul şahıs ekini temsil eder."
+        }
+      ],
+      "hint": "İkinci şahıs eklerinde genellikle kullanılan damaksı n (kef) harfini düşününüz.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Osmanlı Türkçesi metinlerinde sıklıkla karşılaşılan \"berren\" (برًا) zarfının anlamı aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Kara yoluyla",
+          "isCorrect": true,
+          "rationale": "Arapça 'berr' (kara) kökünden tenvin ile türetilen 'berren' zarfı metinlerde 'kara yoluyla' anlamına gelmektedir."
+        },
+        {
+          "text": "Gecikmeksizin",
+          "isCorrect": false,
+          "rationale": "'Gecikmeksizin' anlamı 'der-akab' zarfı ile karşılanır."
+        },
+        {
+          "text": "Bilerek",
+          "isCorrect": false,
+          "rationale": "'Bilerek, kasten' anlamı 'bi'l-iltizâm' zarfı ile ifade edilir."
+        },
+        {
+          "text": "Dostça",
+          "isCorrect": false,
+          "rationale": "'Dostça' anlamını veren zarf 'muhibbâne' kelimesidir."
+        }
+      ],
+      "hint": "Kelimenin kökü deniz veya hava yolunun zıttı olan coğrafi mekânı ifade eder.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Metinlerde geçen \"vakı'a\" (واقعا) zarfı Türkçe cümle içinde hangi anlama gelmektedir?",
+      "answerOptions": [
+        {
+          "text": "Gerçi",
+          "isCorrect": true,
+          "rationale": "'Vakı'a' kelimesi zarf olarak kullanıldığında 'gerçi, nitekim, her ne kadar' anlamını taşır."
+        },
+        {
+          "text": "Ne kadar",
+          "isCorrect": false,
+          "rationale": "'Ne kadar' miktar sorusu Osmanlı Türkçesinde 'niçe' ile gösterilir."
+        },
+        {
+          "text": "Dışarı",
+          "isCorrect": false,
+          "rationale": "'Dışarı' anlamındaki zarf 'bîrûn' kelimesidir."
+        },
+        {
+          "text": "Aceleyle",
+          "isCorrect": false,
+          "rationale": "'Aceleyle' anlamı 'ber-vech-i ta'cîl' veya 'ale'l-acele' ifadeleriyle sağlanır."
+        }
+      ],
+      "hint": "Cümlede bir durumu kabullenip ardından zıt bir düşünceye geçiş yaparken kullanılan 'gerçi' bağlamını düşününüz.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Osmanlı Türkçesinde görülen geçmiş zaman 1. çoğul şahıs fiil çekiminde (örneğin \"bulduk\") fiil gövdesine getirilen eklerin yazılışı aşağıdakilerin hangisinde doğru verilmiştir?",
+      "answerOptions": [
+        {
+          "text": "بولدق",
+          "isCorrect": true,
+          "rationale": "Görülen geçmiş zaman eki 'dal' harfi ve 1. çoğul şahıs eki olan 'kaf' (kalın fiillerde) birleşimiyle 'بولدق' biçiminde yazılır."
+        },
+        {
+          "text": "بولدك",
+          "isCorrect": false,
+          "rationale": "'بولدك' kelimesi 1. çoğul değil, 2. tekil şahıs ('buldun') çekimidir."
+        },
+        {
+          "text": "بولدم",
+          "isCorrect": false,
+          "rationale": "'بولدم' kelimesi 1. tekil şahıs ('buldum') çekimidir."
+        },
+        {
+          "text": "بولديلر",
+          "isCorrect": false,
+          "rationale": "'بولديلر' kelimesi 3. çoğul şahıs ('buldular') çekimidir."
+        }
+      ],
+      "hint": "1. çoğul şahıs ekinde kalın fiillere 'kaf' (ق), ince fiillere 'kef' (ك) getirilir.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Osmanlı Türkçesinde zaman bildiren zarflardan \"boldur\" (veya \"bıldır\") kelimesi ne anlama gelmektedir?",
+      "answerOptions": [
+        {
+          "text": "Geçen yıl",
+          "isCorrect": true,
+          "rationale": "Eski Türkçe ve halk ağzında yaşayan 'boldur/bıldır' zarfı 'bir önceki yıl, geçen yıl' anlamında kullanılır."
+        },
+        {
+          "text": "Daha önce",
+          "isCorrect": false,
+          "rationale": "'Daha önce' anlamını karşılayan zarf 'akdemce' kelimesidir."
+        },
+        {
+          "text": "Yıldan yıla",
+          "isCorrect": false,
+          "rationale": "'Yıldan yıla' anlamını veren ifade Farsça kökenli 'sal be-sâl' birleşiğidir."
+        },
+        {
+          "text": "Nerede",
+          "isCorrect": false,
+          "rationale": "'Nerede' anlamı soru zarfı olan 'kanda' ile sağlanır."
+        }
+      ],
+      "hint": "Bir önceki seneyi ifade eden geleneksel zaman zarfını hatırlayınız.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Osmanlı alfabesinde kullanılan rakamlar incelendiğinde, birbirinin zıttı yönlere bakan 7 ve 8 rakamlarının doğru gösterimi sırasıyla aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "٧ – ٨",
+          "isCorrect": true,
+          "rationale": "7 rakamı 'v' harfi biçiminde (٧), 8 rakamı ise onun ters çevrilmiş hâli biçiminde (٨) yazılır."
+        },
+        {
+          "text": "٨ – ٧",
+          "isCorrect": false,
+          "rationale": "Bu seçenekte rakamların sırası karıştırılmış olup ilk sembol 8, ikinci sembol 7'dir."
+        },
+        {
+          "text": "٦ – ۲",
+          "isCorrect": false,
+          "rationale": "Bu semboller sırasıyla 6 ve 2 rakamlarını temsil etmektedir."
+        },
+        {
+          "text": "٤ – ٥",
+          "isCorrect": false,
+          "rationale": "Bu semboller sırasıyla 4 ve 5 rakamlarını temsil etmektedir."
+        }
+      ],
+      "hint": "Yedi rakamı Latin alfabesindeki 'v' harfine benzer, sekiz ise onun tepe noktası yukarıda olan hâlidir.",
+      "type": "multiple_choice"
+    }
+  ]
+}
