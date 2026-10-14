@@ -2,7 +2,7 @@
   "id": "./",
   "name": "Açık İlahiyat Üniversitesi",
   "short_name": "Açık İlahiyat",
-  "description": "4 ücretsiz ders; her biri kendi NotebookLM defterinden çalışma planı, infografikler ve bir sınavla hazırlanmıştır.",
+  "description": "4 ücretsiz ders: çalışma notları, infografikler, ders videoları, çıkmış sorular ve deneme sınavları. Telefona kurulur, internetsiz de çalışır.",
   "lang": "tr",
   "dir": "ltr",
   "start_url": "./",

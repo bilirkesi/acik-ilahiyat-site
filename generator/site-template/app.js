@@ -356,6 +356,7 @@
 
   function viewCourse(c) {
     const s = courseStatus(c.slug);
+    const vids = courseVideos(c);
     const chapters = c.chapters.map((ch, i) => `<li>
         <div class="ch-text">
           <h3><a href="#/course/${c.slug}/chapter/${i + 1}">${esc(ch.title)}</a></h3>
@@ -388,6 +389,7 @@
           </dl>
           <div class="btn-row">
             ${notebookButton(c)}
+            ${vids.length ? `<a class="btn ghost" href="#/course/${c.slug}/videolar">Ders videoları (${vids.length})</a>` : ""}
             <a class="btn ghost" href="#/ozet">Ders özeti</a>
             <a class="btn ghost" href="#/course/${c.slug}/quiz">Final (oyun)</a>
             <a class="btn ghost" href="#/course/${c.slug}/exams">Çıkmış / sınavlar</a>
@@ -522,11 +524,13 @@
     // Bir kaynağı yalnızca URL'si varsa bağla. Belgelerin, PDF'lerin ve yapıştırılmış metinlerin çoğu URL taşımaz.
     const lectures = ch.lectures.map((l, i) => {
       const inner = `<span class="n">${i + 1}</span><span>${esc(l.title)}</span>`;
-      return `<li>${l.url ? `<a href="${esc(l.url)}" target="_blank" rel="noopener">${inner}</a>` : `<span class="src">${inner}</span>`}</li>`;
+      const yt = ytId(l.url);
+      return `<li>${l.url ? `<a href="${esc(l.url)}" target="_blank" rel="noopener"${yt ? ` data-yt="${yt}"` : ""}>${inner}</a>` : `<span class="src">${inner}</span>`}</li>`;
     }).join("");
     const prev = n > 1 ? `<a class="btn ghost" href="#/course/${c.slug}/chapter/${n - 1}">Önceki bölüm</a>` : `<a class="btn ghost" href="#/course/${c.slug}">Ders planına dön</a>`;
     const next = n < c.chapters.length ? `<a class="btn" href="#/course/${c.slug}/chapter/${n + 1}">Sonraki bölüm</a>` : `<a class="btn" href="#/course/${c.slug}/quiz">Sınavı çöz</a>`;
     const nb = notebookButton(c);
+    const allVids = courseVideos(c), chVids = allVids.filter((v) => v.ch === n);
     return `<p class="crumbs"><a href="#/">Katalog</a> / <a href="#/course/${c.slug}">${esc(c.subject)}</a> / ${n}. Bölüm</p>
       <p class="eyebrow">${esc(c.course)} · ${n}. Bölüm</p>
       <h1>${esc(ch.title)}</h1>
@@ -541,6 +545,7 @@
         chapter: n,
         preferId: "panel-chapters",
       })}
+      ${chVids.length ? `<h2 id="videolar">Bu bölümün videoları</h2>${videoPlayerHtml(c, chVids, { chapter: n })}${allVids.length > chVids.length ? `<p class="muted small" data-noprint><a href="#/course/${c.slug}/videolar">Dersin tüm videoları (${allVids.length})</a></p>` : ""}` : ""}
       <div class="two-col">
         <div>
           <h2>Çalışma notları</h2>
@@ -1331,7 +1336,7 @@
   function loadStudy() {
     let s = {};
     try { s = JSON.parse(localStorage.getItem(STUDY_KEY)) || {}; } catch (e) { s = {}; }
-    return Object.assign({ v: 1, cards: {}, days: {}, frozen: [], goal: 20, newPerDay: 10, courses: null, goalDone: "", log: [], mocks: [] }, s);
+    return Object.assign({ v: 1, cards: {}, days: {}, frozen: [], goal: 20, newPerDay: 10, courses: null, goalDone: "", log: [], mocks: [], videos: {}, vrate: 1 }, s);
   }
   function saveStudy() {
     try { localStorage.setItem(STUDY_KEY, JSON.stringify(study)); } catch (e) { /* özel mod */ }
@@ -1348,7 +1353,7 @@
   function dayRec(key) {
     return study.days[key] || (study.days[key] = { n: 0, ok: 0, rev: 0, fresh: 0, read: 0 });
   }
-  const isActive = (key) => { const r = study.days[key]; return !!(r && (r.n || r.read)) || study.frozen.includes(key); };
+  const isActive = (key) => { const r = study.days[key]; return !!(r && (r.n || r.read || r.vid)) || study.frozen.includes(key); };
 
   // Seri: bugünden (bugün henüz çalışılmadıysa dünden) geriye kesintisiz aktif gün sayısı.
   function streakInfo() {
@@ -1605,9 +1610,9 @@
         const k = dayKey(t);
         if (t > today) { cells += `<i class="hm-cell future"></i>`; continue; }
         const r = study.days[k];
-        const n = r ? r.n + r.read * 3 : 0;
+        const n = r ? r.n + r.read * 3 + (r.vid || 0) * 3 : 0;
         const lvl = study.frozen.includes(k) && !n ? "frz" : n === 0 ? 0 : n < 10 ? 1 : n < 25 ? 2 : n < 50 ? 3 : 4;
-        cells += `<i class="hm-cell l${lvl}" title="${fmtDay(k)}: ${r ? `${r.n} soru, ${r.read} bölüm` : lvl === "frz" ? "seri donduruldu" : "çalışılmadı"}"></i>`;
+        cells += `<i class="hm-cell l${lvl}" title="${fmtDay(k)}: ${r ? `${r.n} soru, ${r.read} bölüm${r.vid ? `, ${r.vid} video` : ""}` : lvl === "frz" ? "seri donduruldu" : "çalışılmadı"}"></i>`;
       }
     }
     return `<div class="heatmap" style="--weeks:${weeks}" role="img" aria-label="Son ${weeks} haftanın çalışma takvimi">${cells}</div>
@@ -1657,7 +1662,7 @@
           <div>
             <h3>Bugünkü hedef</h3>
             <p class="muted">${day.n >= study.goal ? "Hedef tamam. Ekstra her soru bir sonraki tekrarı kolaylaştırır." : `Hedefe ${study.goal - day.n} soru kaldı.`}</p>
-            <p class="desk-meta">${day.ok} doğru · ${day.rev} tekrar · ${day.read} bölüm okundu</p>
+            <p class="desk-meta">${day.ok} doğru · ${day.rev} tekrar · ${day.read} bölüm okundu${day.vid ? ` · ${day.vid} video` : ""}</p>
           </div>
         </section>
         <a class="desk-card desk-action" href="#/tekrar">
@@ -1674,6 +1679,7 @@
         </a>
       </div>
       <div class="btn-row desk-links"><a class="btn ghost" href="#/karisik">Karışık test</a><a class="btn ghost" href="#/karisik?mod=deneme">Deneme sınavı</a><a class="btn ghost" href="#/analiz">Gelişim analizi</a></div>
+      ${resumeVideoHtml()}
       <h2>Bu hafta</h2>
       <div class="week-grid">
         <div class="stat"><b>${w.n}</b><span>soru</span> ${trend(w.n, pw.n)}</div>
@@ -2943,7 +2949,8 @@
     return `<p class="eyebrow">Tamamlama Belgesi</p><h1>${total === 1 ? "Dersi tamamladınız." : `Tüm ${total} dersi tamamladınız.`}</h1>
       <div class="field"><label for="cname">Belgede görünecek isim</label><input id="cname" maxlength="48" placeholder="Adınız soyadınız"></div>
       <div class="cert-wrap"><canvas id="cert" width="2000" height="1414" hidden></canvas><img id="cert-img" alt="Tamamlama Belgeniz"></div>
-      <p class="muted" style="font-size:.88rem">Kaydetmek için belgeye sağ tıklayıp Görsele Kaydet'i seçin veya telefonda uzun basın.</p>`;
+      <div class="btn-row"><button class="btn" type="button" id="cert-share">Belgeyi paylaş</button><a class="btn ghost" id="cert-dl" download="tamamlama-belgesi.png" href="#">PNG olarak indir</a></div>
+      <p class="muted" style="font-size:.88rem">Paylaş düğmesi telefonunda WhatsApp, Instagram gibi uygulamaları açar. Bilgisayarda belge indirilir.</p>`;
   }
 
   function certId(name, date) {
@@ -3006,6 +3013,21 @@
     input.value = saved;
     drawCert(saved);
     input.addEventListener("input", () => { try { localStorage.setItem(CONFIG.storageKey + ".name", input.value); } catch (e) {} drawCert(input.value.trim()); });
+    const dl = document.getElementById("cert-dl");
+    dl.addEventListener("click", () => { dl.href = document.getElementById("cert").toDataURL("image/png"); });
+    document.getElementById("cert-share").onclick = () => {
+      document.getElementById("cert").toBlob(async (blob) => {
+        if (!blob) return;
+        const file = new File([blob], "tamamlama-belgesi.png", { type: "image/png" });
+        const text = `${CONFIG.name} çalışma programını tamamladım.`;
+        if (navigator.canShare && navigator.canShare({ files: [file] })) {
+          try { await navigator.share({ files: [file], title: "Tamamlama Belgesi", text }); return; } catch (e) { if (e && e.name === "AbortError") return; }
+        }
+        dl.href = URL.createObjectURL(blob);
+        dl.click();
+        showToast("Belge indirildi.");
+      }, "image/png");
+    };
   }
 
   function viewGate(feature) {
@@ -3536,6 +3558,13 @@ document.getElementById("zin").focus();
     const byT = (list) => Array.from(new Map(list.map((x) => [Array.isArray(x) ? x[0] + x[1] : x.t, x])).values()).sort((x, y) => (x.t || x[0]) - (y.t || y[0]));
     study.log = byT(study.log.concat(b.log || [])).slice(-3000);
     study.mocks = byT(study.mocks.concat(b.mocks || [])).slice(-100);
+    // Videolar: konumda en son izlenen kayıt kazanır, notlar birleşir.
+    for (const [id, v] of Object.entries(b.videos || {})) {
+      const a = study.videos[id];
+      if (!v || typeof v !== "object") continue;
+      const notes = Array.from(new Map(((a && a.notes) || []).concat(v.notes || []).map((n) => [n.t + "|" + n.s, n])).values()).sort((x, y) => x.t - y.t);
+      study.videos[id] = Object.assign({}, !a || (v.at || 0) > (a.at || 0) ? v : a, { done: !!((a && a.done) || v.done), notes });
+    }
     saveStudy();
   }
 
@@ -3670,6 +3699,579 @@ document.getElementById("zin").focus();
     }).catch(() => { /* kayıt başarısız: site yine çalışır */ });
   }
 
+  // ---- ders videoları: tıklayınca yüklenen YouTube oynatıcısı ----------------------
+  // Sayfa açılırken yalnızca kapak resmi gelir; oynatıcı ancak "Oynat"a basınca yüklenir
+  // (youtube-nocookie). Kaldığın yer, hız ve zaman damgalı notlar study.videos içinde, yedeğe dahil.
+  const ytId = (u) => { const m = String(u || "").match(/(?:[?&]v=|youtu\.be\/|\/embed\/|\/shorts\/)([\w-]{11})/); return m ? m[1] : ""; };
+  function ytStart(u) {
+    const m = String(u || "").match(/[?&#](?:t|start)=([0-9hms]+)/);
+    if (!m) return 0;
+    if (/^\d+$/.test(m[1])) return +m[1];
+    const p = m[1].match(/(?:(\d+)h)?(?:(\d+)m)?(?:(\d+)s)?/) || [];
+    return (+p[1] || 0) * 3600 + (+p[2] || 0) * 60 + (+p[3] || 0);
+  }
+  function fmtClock(sec) {
+    sec = Math.max(0, Math.floor(sec || 0));
+    const h = Math.floor(sec / 3600), m = Math.floor((sec % 3600) / 60), s = sec % 60;
+    return (h ? h + ":" + String(m).padStart(2, "0") : m) + ":" + String(s).padStart(2, "0");
+  }
+  // Dersin YouTube videoları, bölüm sırasıyla (aynı video iki bölümde geçiyorsa bir kez).
+  function courseVideos(c) {
+    const seen = new Set(), out = [];
+    c.chapters.forEach((ch, i) => (ch.lectures || []).forEach((l) => {
+      const id = ytId(l.url);
+      if (!id || seen.has(id)) return;
+      seen.add(id);
+      out.push({ id, title: l.title || "Video", url: l.url, ch: i + 1, chTitle: ch.title, start: ytStart(l.url) });
+    }));
+    return out;
+  }
+  const vidRec = (id) => (study.videos[id] || (study.videos[id] = { t: 0, d: 0, done: false, at: 0, notes: [] }));
+  const vidPeek = (id) => study.videos[id] || null;
+  const vidFrac = (r) => (r && r.done ? 1 : r && r.d ? Math.min(1, r.t / r.d) : 0);
+  const VID_RATES = [1, 1.25, 1.5, 1.75, 2];
+  const PLAY_SVG = `<svg viewBox="0 0 68 48" aria-hidden="true"><path d="M66.5 7.7a8.5 8.5 0 0 0-6-6C55.2.3 34 .3 34 .3s-21.2 0-26.5 1.4a8.5 8.5 0 0 0-6 6C.1 13 .1 24 .1 24s0 11 1.4 16.3a8.5 8.5 0 0 0 6 6C12.8 47.7 34 47.7 34 47.7s21.2 0 26.5-1.4a8.5 8.5 0 0 0 6-6C67.9 35 67.9 24 67.9 24s0-11-1.4-16.3z" fill="currentColor"/><path d="M45 24 27 14v20z" fill="#fff"/></svg>`;
+
+  function videoListHtml(list, current, grouped) {
+    let lastCh = 0;
+    return list.map((v, i) => {
+      const r = vidPeek(v.id), f = vidFrac(r);
+      const head = grouped && v.ch !== lastCh ? `<li class="vid-group">${v.ch}. bölüm · ${esc(v.chTitle)}</li>` : "";
+      lastCh = v.ch;
+      const state = r && r.done ? "izlendi" : f > 0.02 ? fmtClock(r.t) + " / " + fmtClock(r.d) : "";
+      return `${head}<li><button type="button" class="vid-item${v.id === current ? " on" : ""}${r && r.done ? " done" : ""}" data-pick="${v.id}"${v.id === current ? ' aria-current="true"' : ""}>
+        <span class="vid-n" aria-hidden="true">${r && r.done ? "✓" : i + 1}</span>
+        <span class="vid-t">${esc(v.title)}${state ? `<small>${state}</small>` : ""}<i class="vid-prog" style="--p:${Math.round(f * 100)}%"></i></span>
+      </button></li>`;
+    }).join("");
+  }
+
+  function videoNotesHtml(id) {
+    const r = vidPeek(id);
+    const notes = (r && r.notes) || [];
+    return notes.length
+      ? `<ul class="vid-notes">${notes.map((n, i) => `<li><button type="button" class="vid-stamp" data-seek="${n.t}" aria-label="${fmtClock(n.t)} anına git">${fmtClock(n.t)}</button><span>${txt(n.s)}</span><button type="button" class="vid-del" data-del-note="${i}" aria-label="Notu sil">×</button></li>`).join("")}</ul>`
+      : `<p class="muted small">Henüz not yok. Video oynarken bir şey yazıp "Not ekle"ye bas; not o saniyeyle kaydedilir, dokununca videoda oraya gidersin.</p>`;
+  }
+
+  // Oynatıcı kutusu: önce yalnızca kapak (thumbnail + oynat düğmesi), iframe tıklamada gelir.
+  function videoPlayerHtml(c, list, opts) {
+    if (!list.length) return "";
+    opts = opts || {};
+    const cur = list.find((v) => v.id === opts.current) || list.find((v) => !(vidPeek(v.id) || {}).done) || list[0];
+    const r = vidPeek(cur.id);
+    const resume = opts.t != null ? opts.t : r && !r.done && r.t > 5 ? r.t : cur.start;
+    const watched = list.filter((v) => (vidPeek(v.id) || {}).done).length;
+    return `<section class="vid" data-vid-root data-course="${c.slug}"${opts.chapter ? ` data-chapter="${opts.chapter}"` : ""} data-current="${cur.id}" data-start="${Math.floor(resume || 0)}"${opts.page ? " data-page" : ""}>
+      <div class="vid-main">
+        <div class="vid-frame" data-vid-frame>${videoFacadeHtml(cur, resume)}</div>
+        <div class="vid-bar">
+          <p class="vid-title" data-vid-title>${esc(cur.title)}</p>
+          <div class="vid-ctl">
+            <div class="pill-group vid-rate" role="group" aria-label="Oynatma hızı">${VID_RATES.map((x) => `<button type="button" data-rate="${x}" aria-pressed="${x === (study.vrate || 1)}">${String(x).replace(".", ",")}×</button>`).join("")}</div>
+            <a class="btn ghost sm-mini" data-vid-yt href="https://www.youtube.com/watch?v=${cur.id}" target="_blank" rel="noopener">YouTube'da aç</a>
+          </div>
+          <form class="vid-note-form" data-vid-note autocomplete="off">
+            <label class="sr-only" for="vid-note-in">Bu ana not</label>
+            <input id="vid-note-in" maxlength="200" placeholder="Bu ana not yaz…">
+            <button class="btn sm-mini" type="submit">Not ekle <span data-vid-now>${fmtClock(resume)}</span></button>
+          </form>
+          <div data-vid-notes>${videoNotesHtml(cur.id)}</div>
+        </div>
+      </div>
+      <div class="vid-side">
+        <p class="vid-sum"><b>${watched}/${list.length}</b> video izlendi${list.length > 1 ? `<label class="chk-inline"><input type="checkbox" data-autonext${study.vauto !== false ? " checked" : ""}> sonrakine otomatik geç</label>` : ""}</p>
+        <ol class="vid-list" data-vid-list>${videoListHtml(list, cur.id, opts.page)}</ol>
+      </div>
+    </section>`;
+  }
+
+  function videoFacadeHtml(v, t) {
+    return `<button type="button" class="vid-facade" data-vid-play aria-label="${esc(v.title)} videosunu oynat${t > 5 ? ", " + fmtClock(t) + " anından devam" : ""}">
+      <img src="https://i.ytimg.com/vi/${v.id}/hqdefault.jpg" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer">
+      <span class="vid-play">${PLAY_SVG}</span>
+      <span class="vid-cap">${t > 5 ? `Kaldığın yerden devam · ${fmtClock(t)}` : "Oynat"}</span>
+    </button>`;
+  }
+
+  let vp = null; // etkin oynatıcı: { root, iframe, id, t, d, state, ready, lastSave }
+  function vpPost(func, args) {
+    if (!vp || !vp.iframe || !vp.iframe.contentWindow) return;
+    vp.iframe.contentWindow.postMessage(JSON.stringify(func === "listening" ? { event: "listening", id: 1, channel: "widget" } : { event: "command", func, args: args || [] }), "*");
+  }
+  function vidSave(force) {
+    if (!vp || !vp.id) return;
+    const now = Date.now();
+    if (!force && now - (vp.lastSave || 0) < 5000) return;
+    vp.lastSave = now;
+    const r = vidRec(vp.id);
+    if (vp.d > 0) r.d = Math.round(vp.d);
+    r.t = Math.round(vp.t || 0);
+    r.at = now;
+    if (r.d && r.t >= r.d * 0.9 && !r.done) {
+      r.done = true;
+      const key = todayKey(), wasActive = isActive(key);
+      dayRec(key).vid = (dayRec(key).vid || 0) + 1;
+      saveStudy();
+      showToast("Video tamamlandı, izlediklerine eklendi.");
+      afterActivity(wasActive, key);
+      refreshVidList();
+      return;
+    }
+    if (r.d && r.t > r.d - 20) r.t = 0; // sonuna gelmiş: bir dahaki sefere baştan
+    saveStudy();
+  }
+  function refreshVidList() {
+    if (!vp || !vp.root || !document.body.contains(vp.root)) return;
+    const c = bySlug[vp.root.dataset.course];
+    const list = vp.list || [];
+    const box = vp.root.querySelector("[data-vid-list]");
+    if (box) box.innerHTML = videoListHtml(list, vp.id, vp.root.hasAttribute("data-page"));
+    const sum = vp.root.querySelector(".vid-sum b");
+    if (sum) sum.textContent = list.filter((v) => (vidPeek(v.id) || {}).done).length + "/" + list.length;
+    if (c) paintVideoLinks(c);
+  }
+  function vidLoad(root, v, start) {
+    const frame = root.querySelector("[data-vid-frame]");
+    if (navigator.onLine === false) {
+      frame.innerHTML = `<div class="vid-offline"><b>Video için internet gerekiyor.</b><span>Notların ve kaldığın yer bu cihazda duruyor; bağlanınca buradan devam edersin.</span><button type="button" class="btn ghost sm-mini" data-vid-play>Yeniden dene</button></div>`;
+      return;
+    }
+    vidSave(true);
+    const q = new URLSearchParams({ enablejsapi: "1", rel: "0", modestbranding: "1", playsinline: "1", autoplay: "1", start: String(Math.floor(start || 0)) });
+    if (/^https?:/.test(location.origin)) q.set("origin", location.origin);
+    frame.innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${v.id}?${q}" title="${esc(v.title)}" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>`;
+    const iframe = frame.querySelector("iframe");
+    vp = { root, iframe, id: v.id, t: start || 0, d: (vidPeek(v.id) || {}).d || 0, state: -1, ready: false, lastSave: Date.now(), list: root._vidList };
+    iframe.addEventListener("load", () => {
+      // YouTube oynatıcısı "listening" mesajını alınca durumunu (süre, konum) göndermeye başlar.
+      let n = 0;
+      const ping = setInterval(() => { if (!vp || vp.iframe !== iframe || vp.ready || ++n > 20) return clearInterval(ping); vpPost("listening"); }, 250);
+    });
+  }
+  window.addEventListener("message", (e) => {
+    if (!vp || !vp.iframe || e.source !== vp.iframe.contentWindow) return;
+    if (!/^https:\/\/www\.youtube(-nocookie)?\.com$/.test(String(e.origin))) return;
+    let d;
+    try { d = typeof e.data === "string" ? JSON.parse(e.data) : e.data; } catch (_) { return; }
+    if (!d || typeof d !== "object") return;
+    if (d.event === "onReady" || (d.event === "infoDelivery" && !vp.ready)) {
+      vp.ready = true;
+      if ((study.vrate || 1) !== 1) vpPost("setPlaybackRate", [study.vrate]);
+    }
+    const info = d.info || {};
+    if (typeof info.currentTime === "number") vp.t = info.currentTime;
+    if (typeof info.duration === "number" && info.duration > 0) vp.d = info.duration;
+    const now = vp.root.querySelector("[data-vid-now]");
+    if (now) now.textContent = fmtClock(vp.t);
+    if (typeof info.playerState === "number") {
+      const was = vp.state;
+      vp.state = info.playerState;
+      if (vp.state === 2 && was !== 2) vidSave(true);
+      if (vp.state === 0 && was !== 0) { vp.t = vp.d || vp.t; vidSave(true); vidNext(); }
+    }
+    vidSave(false);
+  });
+  function vidNext() {
+    if (!vp || study.vauto === false) return;
+    const list = vp.list || [];
+    const i = list.findIndex((v) => v.id === vp.id);
+    const next = list.slice(i + 1).find((v) => !(vidPeek(v.id) || {}).done) || list[i + 1];
+    if (next) setTimeout(() => vidPick(vp.root, next.id, true), 1200);
+  }
+  function vidPick(root, id, play, t) {
+    const list = root._vidList || [];
+    const v = list.find((x) => x.id === id);
+    if (!v) return;
+    root.dataset.current = id;
+    const r = vidPeek(id);
+    const start = t != null ? t : r && !r.done && r.t > 5 ? r.t : v.start;
+    root.dataset.start = Math.floor(start || 0);
+    root.querySelector("[data-vid-title]").textContent = v.title;
+    root.querySelector("[data-vid-yt]").href = "https://www.youtube.com/watch?v=" + id;
+    root.querySelector("[data-vid-notes]").innerHTML = videoNotesHtml(id);
+    const now = root.querySelector("[data-vid-now]");
+    if (now) now.textContent = fmtClock(start);
+    if (play) vidLoad(root, v, start);
+    else {
+      vidSave(true);
+      if (vp && vp.root === root) vp = null;
+      root.querySelector("[data-vid-frame]").innerHTML = videoFacadeHtml(v, start);
+    }
+    if (vp && vp.root === root) vp.list = list;
+    const box = root.querySelector("[data-vid-list]");
+    if (box) box.innerHTML = videoListHtml(list, id, root.hasAttribute("data-page"));
+  }
+  function bindVideos(c) {
+    const root = document.querySelector("[data-vid-root]");
+    if (!root) return;
+    const ch = +root.dataset.chapter || 0;
+    const list = ch ? courseVideos(c).filter((v) => v.ch === ch) : courseVideos(c);
+    root._vidList = list;
+    if (parseLoc().query.oynat) vidPick(root, root.dataset.current, true, +root.dataset.start);
+    root.addEventListener("click", (e) => {
+      const t = e.target.closest("button, a");
+      if (!t || !root.contains(t)) return;
+      if (t.matches("[data-vid-play]")) { const v = list.find((x) => x.id === root.dataset.current); if (v) vidLoad(root, v, +root.dataset.start || 0); }
+      else if (t.matches("[data-pick]")) { vidPick(root, t.dataset.pick, true); root.scrollIntoView({ behavior: "smooth", block: "start" }); }
+      else if (t.matches("[data-rate]")) {
+        study.vrate = +t.dataset.rate; saveStudy();
+        root.querySelectorAll("[data-rate]").forEach((b) => b.setAttribute("aria-pressed", String(b === t)));
+        if (vp && vp.root === root) vpPost("setPlaybackRate", [study.vrate]);
+      }
+      else if (t.matches("[data-seek]")) {
+        const s = +t.dataset.seek;
+        if (vp && vp.root === root && vp.id === root.dataset.current) { vpPost("seekTo", [s, true]); vpPost("playVideo"); }
+        else vidPick(root, root.dataset.current, true, s);
+      }
+      else if (t.matches("[data-del-note]")) {
+        const r = vidRec(root.dataset.current);
+        r.notes.splice(+t.dataset.delNote, 1); saveStudy();
+        root.querySelector("[data-vid-notes]").innerHTML = videoNotesHtml(root.dataset.current);
+      }
+    });
+    root.addEventListener("change", (e) => {
+      if (e.target.matches("[data-autonext]")) { study.vauto = e.target.checked; saveStudy(); }
+    });
+    const form = root.querySelector("[data-vid-note]");
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const input = form.querySelector("input");
+      const s = input.value.trim();
+      if (!s) { input.focus(); return; }
+      const id = root.dataset.current;
+      const t = vp && vp.root === root && vp.id === id ? vp.t : +root.dataset.start || 0;
+      const r = vidRec(id);
+      r.notes.push({ t: Math.floor(t), s });
+      r.notes.sort((a, b) => a.t - b.t);
+      r.at = r.at || Date.now();
+      saveStudy();
+      input.value = "";
+      root.querySelector("[data-vid-notes]").innerHTML = videoNotesHtml(id);
+    });
+    // Bölüm sayfasındaki kaynak listesi: YouTube bağlantısı sitedeki oynatıcıda açılır (Ctrl/orta tık yine YouTube'a gider).
+    document.querySelectorAll(".lectures a[data-yt]").forEach((a) => {
+      a.addEventListener("click", (e) => {
+        if (e.ctrlKey || e.metaKey || e.shiftKey || e.button) return;
+        e.preventDefault();
+        vidPick(root, a.dataset.yt, true);
+        root.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    });
+    paintVideoLinks(c);
+  }
+  // Kaynak listesindeki videoların yanına izlenme durumunu yaz.
+  function paintVideoLinks() {
+    document.querySelectorAll(".lectures a[data-yt]").forEach((a) => {
+      const r = vidPeek(a.dataset.yt);
+      a.classList.toggle("watched", !!(r && r.done));
+      const n = a.querySelector(".n");
+      if (n && r && r.done) n.textContent = "✓";
+    });
+  }
+  document.addEventListener("error", (e) => {
+    if (e.target && e.target.matches && e.target.matches(".vid-facade img")) e.target.remove(); // çevrimdışı: kapak resmi yok
+  }, true);
+  document.addEventListener("visibilitychange", () => { if (document.visibilityState === "hidden") vidSave(true); });
+  window.addEventListener("pagehide", () => vidSave(true));
+
+  // Çalışma masası: yarıda kalan son video.
+  function resumeVideoHtml() {
+    let best = null;
+    for (const c of COURSES) for (const v of courseVideos(c)) {
+      const r = vidPeek(v.id);
+      if (r && !r.done && r.t > 30 && (!best || r.at > best.r.at)) best = { c, v, r };
+    }
+    if (!best) return "";
+    const { c, v, r } = best;
+    return `<a class="desk-card vid-resume" href="#/course/${c.slug}/videolar?v=${v.id}">
+      <span class="vid-resume-ic">${PLAY_SVG}</span>
+      <span><b>Kaldığın videoya devam et</b><small>${esc(c.subject)} · ${esc(v.title)}</small><i class="vid-prog" style="--p:${Math.round(vidFrac(r) * 100)}%"></i><small>${fmtClock(r.t)} / ${fmtClock(r.d)}</small></span>
+    </a>`;
+  }
+
+  function viewVideos(c, query) {
+    const list = courseVideos(c);
+    if (!list.length) return viewNotFound();
+    const watched = list.filter((v) => (vidPeek(v.id) || {}).done).length;
+    const noteCount = list.reduce((n, v) => n + (((vidPeek(v.id) || {}).notes || []).length), 0);
+    const cur = list.find((v) => v.id === query.v) ? query.v : null;
+    const t = query.t != null && /^\d+$/.test(query.t) ? +query.t : null;
+    return `<p class="crumbs"><a href="#/">Katalog</a> / <a href="#/course/${c.slug}">${esc(c.subject)}</a> / Ders videoları</p>
+      <div class="quiz-head">
+        <div><p class="eyebrow">Ders videoları</p><h1 style="margin:0">${esc(c.course)}</h1></div>
+        <div class="muted" style="font-size:.9rem">${list.length} video · ${watched} izlendi${noteCount ? ` · ${noteCount} not` : ""}</div>
+      </div>
+      <p class="muted">Videolar sitede açılır ve kaldığın yeri hatırlar. Hızı ayarlayabilir, izlerken o saniyeye not düşebilirsin. Oynatıcı yalnızca dokununca yüklenir; video izlemek için internet gerekir.</p>
+      ${videoPlayerHtml(c, list, { current: cur, t, page: true })}
+      ${c.playlist ? `<p class="muted small">Kaynak: <a href="${esc(c.playlist)}" target="_blank" rel="noopener">YouTube oynatma listesi</a>. Videoların tüm hakları sahiplerine aittir.</p>` : ""}`;
+  }
+
+  // ---- yazdırma: bu sayfa, sınav kâğıdı (cevap anahtarıyla) ve ders notları kitapçığı ----
+  const PRINT_KEY = CONFIG.storageKey + ".print";
+  function printPrefs() {
+    let p = {};
+    try { p = JSON.parse(localStorage.getItem(PRINT_KEY)) || {}; } catch (e) { p = {}; }
+    return Object.assign({ img: true, big: false, answers: "end" }, p);
+  }
+  const LETTERS = ["A", "B", "C", "D", "E", "F", "G", "H"];
+
+  // Soruyu yazdırmaya uygun tek biçime getirir: kök, şıklar, doğru şık(lar), çözüm.
+  function printQ(q) {
+    const opts = Array.isArray(q.answerOptions) ? q.answerOptions : null;
+    const right = opts ? opts.map((o, j) => (o.isCorrect ? j : -1)).filter((j) => j >= 0) : [];
+    const keyText = right.length ? right.map((j) => LETTERS[j]).join(", ")
+      : q.type === "fill_in_the_blank" ? String(q.bestAnswer || "")
+      : q.grading && q.grading.modelAnswer ? "Örnek cevap" : "";
+    const why = q.solution || (right.length && opts[right[0]].rationale) || q.rationale || (q.grading && q.grading.modelAnswer) || "";
+    return { q, opts, right, keyText, why };
+  }
+  function printQuestionHtml(x, i, mode, meta) {
+    const { q, opts, right } = x;
+    let body = "";
+    if (opts) body = `<ol class="ps-opts">${opts.map((o, j) => `<li class="${mode === "inline" && right.includes(j) ? "ps-right" : ""}"><b>${LETTERS[j]})</b> ${optHtml(o)}</li>`).join("")}</ol>`;
+    else if (q.type === "fill_in_the_blank") body = `<p class="ps-line">Cevap: ______________________________</p>`;
+    else body = `<div class="ps-lines"><span></span><span></span><span></span></div>`;
+    const sol = mode === "inline" && (x.keyText || x.why)
+      ? `<div class="ps-sol"><b>Cevap: ${esc(x.keyText || "-")}</b>${x.why ? " · " + txt(x.why) : ""}</div>` : "";
+    return `<li class="ps-q">${meta ? `<p class="ps-meta">${esc(meta)}</p>` : ""}<div class="ps-stem">${stemHtml(q)}</div>${body}${sol}</li>`;
+  }
+  function printSheetHtml(o) {
+    const items = o.questions.map((q) => printQ(q));
+    const date = new Date().toLocaleDateString("tr-TR", { year: "numeric", month: "long", day: "numeric" });
+    const mc = items.filter((x) => x.opts).length;
+    const maxOpts = Math.max(4, ...items.map((x) => (x.opts ? x.opts.length : 0)));
+    const grid = o.answers !== "inline" && mc
+      ? `<section class="ps-form"><h2>Cevap formu</h2><p class="ps-note">Cevabını yuvarlağı karalayarak işaretle. Çözdükten sonra ${o.answers === "end" ? "son sayfadaki anahtarla" : "sitede"} kontrol et.</p>
+        <ol class="ps-bubbles">${items.map((x, i) => `<li><b>${i + 1}</b>${x.opts ? LETTERS.slice(0, x.opts.length || maxOpts).map((l) => `<span>${l}</span>`).join("") : "<em>yazılı</em>"}</li>`).join("")}</ol></section>` : "";
+    const key = o.answers === "end"
+      ? `<section class="ps-key"><h2>Cevap anahtarı</h2>
+        <ol class="ps-key-grid">${items.map((x, i) => `<li><b>${i + 1}</b> ${esc(x.keyText || "-")}</li>`).join("")}</ol>
+        ${items.some((x) => x.why) ? `<h3>Kısa çözümler</h3><ol class="ps-whys">${items.map((x, i) => `<li value="${i + 1}"><b>${esc(x.keyText || "-")}.</b> ${x.why ? txt(x.why) : ""}</li>`).join("")}</ol>` : ""}
+      </section>` : "";
+    const score = o.scoring ? `<span>Doğru: ____</span><span>Yanlış: ____</span><span>Net: ____</span>` : `<span>Doğru: ____ / ${items.length}</span>`;
+    return `<article class="ps">
+      <header class="ps-head">
+        <p class="ps-brand">${esc(CONFIG.name)}</p>
+        <h1>${esc(o.title)}</h1>
+        <p class="ps-sub">${esc(o.sub || "")}${o.sub ? " · " : ""}${items.length} soru${o.minutes ? ` · ${o.minutes} dakika` : ""} · ${date}</p>
+        <div class="ps-fields"><span>Ad Soyad: ______________________</span>${score}</div>
+      </header>
+      <ol class="ps-qs">${items.map((x, i) => printQuestionHtml(x, i, o.answers, o.metas ? o.metas[i] : "")).join("")}</ol>
+      ${grid}${key}
+      <p class="ps-foot">${esc(CONFIG.name)} · ${esc(location.href.split("#")[0])}</p>
+    </article>`;
+  }
+  function printBookletHtml(c, prefs) {
+    const date = new Date().toLocaleDateString("tr-TR", { year: "numeric", month: "long", day: "numeric" });
+    const chapters = c.chapters.map((ch, i) => {
+      const notes = (ch.notes ? md(ch.notes) : `<p class="muted">Bu bölümün notları henüz hazır değil.</p>`).replace(/⟦(\d+)⟧/g, "");
+      const vids = (ch.lectures || []).map((l) => `<li>${esc(l.title)}</li>`).join("");
+      return `<section class="pb-ch">
+        <p class="pb-eyebrow">${i + 1}. Bölüm</p>
+        <h2>${esc(ch.title)}</h2>
+        <p class="pb-sum">${esc(ch.summary)}</p>
+        ${ch.objectives && ch.objectives.length ? `<div class="pb-obj"><b>Öğrenme amaçları</b><ul>${ch.objectives.map((o) => `<li>${esc(o)}</li>`).join("")}</ul></div>` : ""}
+        ${prefs.img && ch.image ? `<figure class="pb-fig">${imgTag(ch.image, ch.title + " infografiği", "")}</figure>` : ""}
+        <div class="pb-notes">${notes}</div>
+        ${vids ? `<p class="pb-src-h">Kaynaklar</p><ol class="pb-src">${vids}</ol>` : ""}
+      </section>`;
+    }).join("");
+    return `<article class="pb">
+      <section class="pb-cover">
+        <div class="pb-crest">${crest()}</div>
+        <p class="ps-brand">${esc(CONFIG.name)}</p>
+        <h1>${esc(c.course)}</h1>
+        <p class="pb-kind">Ders notları kitapçığı</p>
+        ${byline(c) ? `<p class="pb-by">${esc(byline(c))}</p>` : ""}
+        <p class="pb-date">${c.chapters.length} bölüm · ${date}</p>
+        <p class="pb-url">${esc(location.href.split("#")[0])}</p>
+      </section>
+      <section class="pb-toc"><h2>İçindekiler</h2><ol>${c.chapters.map((ch) => `<li>${esc(ch.title)}</li>`).join("")}</ol></section>
+      ${chapters}
+      <p class="ps-foot">Notlar NotebookLM ile ders kaynaklarından üretilmiştir. Kaynakların tüm hakları sahiplerine aittir.</p>
+    </article>`;
+  }
+
+  // Bulunulan sayfaya göre yazdırılabilecek şeyler.
+  function printTargets() {
+    const { parts, query } = parseLoc();
+    const out = { sheet: null, booklet: null };
+    const c = parts[0] === "course" ? bySlug[parts[1]] : null;
+    if (c) {
+      if (parts[2] === "quiz") out.sheet = { title: c.course + " · Final", sub: "Final deneme sınavı", questions: (c.quiz || []).filter((q) => GRADED.has(q.type)) };
+      else if (parts[2] === "unit-quiz" && +parts[3]) {
+        const set = unitQuizMap(c.slug)[String(+parts[3])];
+        if (set) out.sheet = { title: `${c.subject} · Ünite ${+parts[3]}`, sub: set.unitTitle || "Ünite quiz'i", questions: set.questions || [] };
+      } else if (parts[2] === "past") {
+        const exam = pastFor(c.slug).find((s) => s.exam_id === decodeURIComponent(parts[3] || "")) || pastFor(c.slug)[0];
+        if (exam) out.sheet = {
+          title: `${c.subject} · ${exam.year || exam.exam_id} ${termName(exam.term)} vize${exam.group && exam.group !== "A" ? " " + exam.group + " grup" : ""}`,
+          sub: "Çıkmış sınav", minutes: Math.round((exam.questions || []).length * MOCK_MIN_PER_Q), scoring: true,
+          questions: (exam.questions || []).map((q, i) => pastToQuiz(q, c.slug, exam, i)),
+        };
+      }
+      if (["chapter", undefined, "videolar"].includes(parts[2])) out.booklet = c;
+    }
+    if (parts[0] === "hatalar") {
+      const bank = questionBank();
+      const slug = bySlug[query.ders] ? query.ders : "";
+      const ids = openMistakes().filter(([id]) => bank.has(id) && (!slug || courseOfId(id) === slug)).map(([id]) => id);
+      if (ids.length) out.sheet = {
+        title: "Hatalarım" + (slug ? " · " + bySlug[slug].subject : ""), sub: "Yanlış çözdüğün sorular",
+        questions: ids.map((id) => bank.get(id).q), metas: ids.map((id) => { const x = bank.get(id); return bySlug[x.slug].subject + " · " + x.label; }),
+      };
+    }
+    if (out.sheet && !out.sheet.questions.length) out.sheet = null;
+    return out;
+  }
+
+  function printDialogHtml(t, p) {
+    const what = [["page", "Bu sayfa", "Ekranda gördüğün içerik, menüler olmadan."]];
+    if (t.sheet) what.push(["sheet", `Sınav kâğıdı (${t.sheet.questions.length} soru)`, "Tüm sorular alt alta, cevap formu ile."]);
+    if (t.booklet) what.push(["booklet", "Ders notları kitapçığı", `${t.booklet.chapters.length} bölümün notları, kapak ve içindekilerle.`]);
+    const def = t.sheet ? "sheet" : "page";
+    return `<form method="dialog" class="pd" id="print-form">
+      <h2 id="pd-h">Yazdır</h2>
+      <fieldset><legend>Ne yazdırılsın?</legend>
+        ${what.map(([v, l, d]) => `<label class="pd-opt"><input type="radio" name="what" value="${v}"${v === def ? " checked" : ""}><span><b>${l}</b><small>${d}</small></span></label>`).join("")}
+      </fieldset>
+      ${t.sheet ? `<fieldset data-for="sheet"><legend>Cevaplar</legend>
+        <div class="pill-group">${[["none", "Cevapsız"], ["end", "Sonda anahtar"], ["inline", "Soru altında"]].map(([v, l]) => `<label><input type="radio" name="answers" value="${v}"${p.answers === v ? " checked" : ""}><span>${l}</span></label>`).join("")}</div>
+      </fieldset>` : ""}
+      <fieldset><legend>Seçenekler</legend>
+        <label class="chk-inline"><input type="checkbox" name="img"${p.img ? " checked" : ""}><span>Görselleri dahil et<small class="muted">Kapatırsan mürekkep ve kâğıt tasarrufu olur.</small></span></label>
+        <label class="chk-inline"><input type="checkbox" name="big"${p.big ? " checked" : ""}><span>Büyük yazı</span></label>
+      </fieldset>
+      <p class="muted small">PDF olarak kaydetmek için yazıcı listesinden "PDF olarak kaydet"i seç.</p>
+      <div class="btn-row"><button class="btn" value="ok">Yazdır</button><button class="btn ghost" value="cancel" formnovalidate>Vazgeç</button></div>
+    </form>`;
+  }
+
+  function openPrintDialog() {
+    cleanupPrint();
+    const t = printTargets(), p = printPrefs();
+    let dlg = document.getElementById("print-dlg");
+    if (!dlg) {
+      dlg = document.createElement("dialog");
+      dlg.id = "print-dlg";
+      dlg.className = "dlg";
+      dlg.setAttribute("aria-labelledby", "pd-h");
+      document.body.appendChild(dlg);
+      dlg.addEventListener("click", (e) => { if (e.target === dlg) dlg.close("cancel"); }); // dışına dokununca kapan
+    }
+    dlg.innerHTML = printDialogHtml(t, p);
+    const form = dlg.querySelector("form");
+    const sync = () => {
+      const what = form.what.value;
+      form.querySelectorAll("[data-for]").forEach((f) => (f.hidden = f.dataset.for !== what));
+    };
+    form.addEventListener("change", sync);
+    sync();
+    dlg.onclose = () => {
+      if (dlg.returnValue !== "ok") return;
+      const prefs = { img: form.img.checked, big: form.big.checked, answers: form.answers ? form.answers.value : p.answers };
+      try { localStorage.setItem(PRINT_KEY, JSON.stringify(prefs)); } catch (e) { /* yok */ }
+      runPrint(form.what.value, t, prefs);
+    };
+    if (typeof dlg.showModal === "function") dlg.showModal(); else runPrint("page", t, p);
+  }
+
+  let printPrep = null;
+  function preparePrint(kind, t, prefs) {
+    if (printPrep) return;
+    const body = document.body;
+    printPrep = { opened: [], kind };
+    body.classList.toggle("print-noimg", !prefs.img);
+    body.classList.toggle("print-big", !!prefs.big);
+    if (kind === "sheet" || kind === "booklet") {
+      let root = document.getElementById("print-root");
+      if (!root) { root = document.createElement("div"); root.id = "print-root"; body.appendChild(root); }
+      root.innerHTML = kind === "sheet" ? printSheetHtml(Object.assign({ answers: prefs.answers }, t.sheet)) : printBookletHtml(t.booklet, prefs);
+      body.classList.add("print-doc");
+      typeset(root);
+    } else {
+      // Bu sayfa: kapalı açılır kutular, "Devamını yükle" sayfaları ve tembel görseller de kâğıda girsin.
+      app.querySelectorAll("details:not([open])").forEach((d) => { d.open = true; printPrep.opened.push(d); });
+      if (prefs.img) app.querySelectorAll("[data-more-pages]").forEach((b) => b.click());
+      const h1 = app.querySelector("h1");
+      const head = document.createElement("div");
+      head.className = "print-head";
+      head.innerHTML = `<b>${esc(CONFIG.name)}</b><span>${esc(h1 ? h1.textContent.trim() : "")}</span><span>${esc(new Date().toLocaleDateString("tr-TR"))} · ${esc(location.href)}</span>`;
+      app.prepend(head);
+      printPrep.head = head;
+    }
+    document.querySelectorAll(kind === "page" ? "#app img" : "#print-root img").forEach((img) => { img.loading = "eager"; });
+  }
+  function cleanupPrint() {
+    if (!printPrep) return;
+    printPrep.opened.forEach((d) => { d.open = false; });
+    if (printPrep.head) printPrep.head.remove();
+    document.body.classList.remove("print-doc", "print-noimg", "print-big");
+    const root = document.getElementById("print-root");
+    if (root) root.innerHTML = "";
+    printPrep = null;
+  }
+  async function runPrint(kind, t, prefs) {
+    preparePrint(kind, t, prefs);
+    const scope = kind === "page" ? app : document.getElementById("print-root");
+    const imgs = prefs.img ? [...scope.querySelectorAll("img")].filter((i) => !i.complete) : [];
+    if (imgs.length) {
+      showToast("Görseller hazırlanıyor…");
+      await Promise.race([
+        Promise.all(imgs.map((i) => new Promise((r) => { i.addEventListener("load", r, { once: true }); i.addEventListener("error", r, { once: true }); }))),
+        new Promise((r) => setTimeout(r, 6000)),
+      ]);
+    }
+    window.print(); // temizlik afterprint'te; göndermeyen mobil tarayıcılarda bir sonraki sayfa geçişinde
+  }
+  // Tarayıcının kendi menüsünden (Ctrl+P) yazdırınca da sayfa düzgün çıksın.
+  window.addEventListener("beforeprint", () => preparePrint("page", {}, printPrefs()));
+  window.addEventListener("afterprint", () => setTimeout(cleanupPrint, 100));
+
+  // ---- paylaşım: sistem paylaşım menüsü, yoksa bağlantıyı kopyala ----
+  async function shareCurrent() {
+    let url = location.href;
+    // Video sayfasında paylaşılan bağlantı o videonun o saniyesine açılır.
+    if (vp && vp.root && document.body.contains(vp.root) && vp.root.hasAttribute("data-page")) {
+      url = location.href.split("#")[0] + `#/course/${vp.root.dataset.course}/videolar?v=${vp.id}&t=${Math.floor(vp.t || 0)}`;
+    }
+    const h1 = app.querySelector("h1");
+    const title = (h1 ? h1.textContent.trim() + " · " : "") + CONFIG.name;
+    const data = { title, text: title, url };
+    if (navigator.share) {
+      try { await navigator.share(data); return; } catch (e) { if (e && e.name === "AbortError") return; }
+    }
+    try { await navigator.clipboard.writeText(url); showToast("Bağlantı kopyalandı."); }
+    catch (e) { window.prompt("Bağlantıyı kopyala:", url); }
+  }
+
+  function pageToolsHtml() {
+    return `<div class="page-tools" data-noprint>
+      <button type="button" class="tool-btn" data-print aria-haspopup="dialog"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" d="M7 9V3h10v6M7 17H4.5A1.5 1.5 0 0 1 3 15.5v-5A1.5 1.5 0 0 1 4.5 9h15a1.5 1.5 0 0 1 1.5 1.5v5a1.5 1.5 0 0 1-1.5 1.5H17M7 14h10v7H7z"/></svg><span>Yazdır</span></button>
+      <button type="button" class="tool-btn" data-share><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" d="M12 3v12M7.5 7.5 12 3l4.5 4.5M5 12v7.5A1.5 1.5 0 0 0 6.5 21h11a1.5 1.5 0 0 0 1.5-1.5V12"/></svg><span>Paylaş</span></button>
+    </div>`;
+  }
+  document.addEventListener("click", (e) => {
+    const b = e.target.closest("[data-print], [data-share]");
+    if (!b) return;
+    if (b.hasAttribute("data-print")) openPrintDialog(); else shareCurrent();
+  });
+
+  // Sayfa değişince paylaşım önizlemesi için başlık/açıklama etiketlerini güncelle.
+  function updateMeta(parts) {
+    const h1 = app.querySelector("h1");
+    const lead = app.querySelector(".lead, .quiz-head + p.muted, h1 + p");
+    const title = (h1 && parts.length ? h1.textContent.trim() + " · " : "") + CONFIG.name;
+    const desc = (lead && lead.textContent.trim().replace(/\s+/g, " ").slice(0, 200)) || (document.querySelector('meta[name="description"]') || {}).content || "";
+    const set = (sel, v) => { const m = document.querySelector(sel); if (m && v) m.setAttribute("content", v); };
+    set('meta[property="og:title"]', title);
+    set('meta[name="twitter:title"]', title);
+    set('meta[property="og:description"]', desc);
+    set('meta[name="twitter:description"]', desc);
+    set('meta[property="og:url"]', location.href);
+  }
+
   // ---- yönlendirici ---------------------------------------------------------------
   function parseLoc() {
     const raw = location.hash.replace(/^#\/?/, "");
@@ -3691,6 +4293,9 @@ document.getElementById("zin").focus();
   let routeSeq = 0, routed = false;
   async function route() {
     const seq = ++routeSeq;
+    vidSave(true);
+    vp = null;
+    cleanupPrint();
     const { parts, query } = parseLoc();
     const need = new Set();
     const needExamData = () => { need.add("past_exams"); need.add("unit_quizzes"); };
@@ -3729,7 +4334,8 @@ document.getElementById("zin").focus();
     else if (parts[0] === "analiz") { html = viewAnalysis(query); bind = () => {}; }
     else if (parts[0] === "course" && bySlug[parts[1]]) {
       const c = bySlug[parts[1]];
-      if (parts[2] === "chapter") { html = viewChapter(c, +parts[3]); bind = bindMindmaps; }
+      if (parts[2] === "chapter") { html = viewChapter(c, +parts[3]); bind = () => { bindMindmaps(); bindVideos(c); }; }
+      else if (parts[2] === "videolar") { html = viewVideos(c, query); bind = () => bindVideos(c); }
       else if (parts[2] === "quiz") { html = viewQuiz(c); bind = () => bindQuiz(c); }
       else if (parts[2] === "unit-quiz") {
         const n = +parts[3];
@@ -3746,7 +4352,7 @@ document.getElementById("zin").focus();
     } else html = viewNotFound();
     if (missing.length) html = `<div class="notice warn" role="alert"><b>Bu sayfanın bir kısmı yüklenemedi.</b> ${navigator.onLine === false ? "İnternet bağlantınız yok ve bu içerik henüz cihaza kaydedilmemiş." : "Bağlantı sorunu olabilir."} İnternete bağlanınca sayfayı yenileyin. Bir kez çevrimiçi açtıktan sonra site çevrimdışı da çalışır.</div>` + html;
     if (!parts.length) html = installBannerHtml() + todayStripHtml() + html;
-    app.innerHTML = html;
+    app.innerHTML = pageToolsHtml() + html;
     bind();
     paintPacks();
     paintStudyBadges();
@@ -3761,6 +4367,7 @@ document.getElementById("zin").focus();
     // Sayfa değişince başlığı güncelle ve odağı içeriğe taşı (ekran okuyucu yeni sayfayı okusun).
     const h1 = app.querySelector("h1");
     document.title = (h1 && parts.length ? h1.textContent.trim() + " · " : "") + CONFIG.name;
+    updateMeta(parts);
     if (routed) app.focus({ preventScroll: true });
     routed = true;
     window.scrollTo(0, 0);

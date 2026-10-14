@@ -261,6 +261,84 @@ def offline_packs(site, data, images):
     return {"packs": packs, "images": images}
 
 
+# Paylaşım önizlemesi (og:image) için kullanılabilecek yazı tipleri; ilk bulunan kullanılır.
+OG_FONTS = {
+    "serif": ["/usr/share/fonts/truetype/dejavu/DejaVuSerif.ttf", "C:/Windows/Fonts/georgia.ttf",
+              "/System/Library/Fonts/Supplemental/Georgia.ttf", "/Library/Fonts/Georgia.ttf"],
+    "serif-bold": ["/usr/share/fonts/truetype/dejavu/DejaVuSerif-Bold.ttf", "C:/Windows/Fonts/georgiab.ttf",
+                   "/System/Library/Fonts/Supplemental/Georgia Bold.ttf", "/Library/Fonts/Georgia Bold.ttf"],
+    "sans": ["/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", "C:/Windows/Fonts/segoeui.ttf",
+             "C:/Windows/Fonts/arial.ttf", "/System/Library/Fonts/Supplemental/Arial.ttf", "/Library/Fonts/Arial.ttf"],
+}
+
+
+def og_image(site, uni, data):
+    """1200x630 paylaşım görseli: site adı, slogan ve dersler. Pillow veya yazı tipi yoksa eskisi korunur."""
+    try:
+        from PIL import Image, ImageDraw, ImageFont
+    except ImportError:
+        return
+    def font(kind, size):
+        for f in OG_FONTS[kind]:
+            if Path(f).exists():
+                return ImageFont.truetype(f, size)
+        return None
+    if not font("serif", 10) or not font("sans", 10):
+        print("warning: og-image.png not regenerated (no TTF font found)", file=sys.stderr)
+        return
+    colors = uni.get("colors") or {}
+    navy, gold, paper = colors.get("primary", "#1b2a4a"), colors.get("accent", "#b08d4a"), colors.get("paper", "#f8f4ea")
+    W, H = 1200, 630
+    im = Image.new("RGB", (W, H), navy)
+    d = ImageDraw.Draw(im)
+    d.rectangle([24, 24, W - 25, H - 25], outline=gold, width=3)
+    d.rectangle([36, 36, W - 37, H - 37], outline=gold, width=1)
+    # Arma: kalkan + on uçlu yıldız + açık kitap (crest() ile aynı motif).
+    import math
+    ox, oy, k = 92, 150, 1.45
+    sx = lambda x: ox + x * k
+    sy = lambda y: oy + y * k
+    shield = [(sx(8), sy(6)), (sx(112), sy(6)), (sx(112), sy(68))]
+    shield += [(sx(60 + 52 * math.cos(a / 20 * math.pi)), sy(68 + 72 * math.sin(a / 20 * math.pi))) for a in range(0, 21)]
+    shield += [(sx(8), sy(68))]
+    d.polygon(shield, fill=navy, outline=gold, width=4)
+    star = []
+    for i in range(20):
+        r = 7 if i % 2 else 16
+        a = math.pi / 10 * i - math.pi / 2
+        star.append((sx(60 + r * math.cos(a)), sy(40 + r * math.sin(a))))
+    d.polygon(star, fill=gold)
+    d.polygon([(sx(26), sy(80)), (sx(58), sy(76)), (sx(58), sy(110)), (sx(26), sy(114))], fill=paper)
+    d.polygon([(sx(94), sy(80)), (sx(62), sy(76)), (sx(62), sy(110)), (sx(94), sy(114))], fill="#efe6d2")
+
+    def fit(text, kind, size, maxw):
+        while size > 14:
+            f = font(kind, size)
+            if d.textlength(text, font=f) <= maxw:
+                return f
+            size -= 2
+        return font(kind, size)
+    x, maxw = 330, W - 330 - 80
+    sans = font("sans", 22)
+    d.text((x, 130), (uni.get("shortName") or uni["name"]).upper(), font=sans, fill=gold)
+    title = fit(uni["name"], "serif-bold" if font("serif-bold", 10) else "serif", 68, maxw)
+    d.text((x, 168), uni["name"], font=title, fill=paper)
+    tag = uni.get("tagline", "")
+    y = 268
+    if tag:
+        d.text((x, y), tag, font=fit(tag, "serif", 34, maxw), fill="#e9dcbf")
+        y += 62
+    d.line([(x, y + 8), (x + 120, y + 8)], fill=gold, width=3)
+    y += 34
+    small = font("sans", 25)
+    for c in data[:5]:
+        d.text((x, y), "•  " + c["subject"], font=small, fill=paper)
+        y += 38
+    foot = "Çalışma notları · Çıkmış sorular · Deneme sınavları · İnternetsiz çalışır"
+    d.text((x, H - 92), foot, font=fit(foot, "sans", 22, maxw), fill=gold)
+    im.save(site / "og-image.png", optimize=True)
+
+
 # Kurulumda önbelleğe alınan uygulama kabuğu (görseller hariç; onlar ders paketlerinde).
 SHELL_FILES = ["index.html", "styles.css", "app.js", "data.js", "interactive.js", "coursegraph.js", "mindmaps.js",
                "past_exams.js", "unit_quizzes.js", "manifest.webmanifest", "favicon.svg"]
@@ -311,8 +389,13 @@ if __name__ == "__main__":
     if uni.get("issuerUrl"):
         issuer = f'<a href="{html.escape(uni["issuerUrl"])}" target="_blank" rel="noopener">{issuer}</a>'
     n = len(data)
-    desc = (f"{n} ücretsiz ders; her biri kendi NotebookLM defterinden çalışma planı, infografikler ve bir sınavla "
-            "hazırlanmıştır.")
+    has_past = (site / "past_exams.js").exists() and (site / "past_exams.js").stat().st_size > 200
+    desc = (f"{n} ücretsiz ders: çalışma notları, infografikler, ders videoları"
+            + (", çıkmış sorular" if has_past else "") + " ve deneme sınavları. Telefona kurulur, internetsiz de çalışır.")
+    og_image(site, uni, data)
+    site_url = (proj.uni.get("siteUrl") or "").strip()
+    if site_url and not site_url.endswith("/"):
+        site_url += "/"
     colors = uni.get("colors") or {}
     primary = colors.get("primary", "#1b2a4a")
     paper = colors.get("paper", "#f8f4ea")
@@ -320,8 +403,10 @@ if __name__ == "__main__":
     page = (TEMPLATE_DIR / "index.html").read_text()
     for k, val in {"{{NAME}}": html.escape(uni["name"]), "{{TAGLINE}}": html.escape(uni.get("tagline", "")),
                    "{{DESCRIPTION}}": html.escape(desc), "{{ISSUER}}": issuer, "{{V}}": v,
-                   "{{PRIMARY}}": primary, "{{SHORT}}": html.escape(short)}.items():
+                   "{{PRIMARY}}": primary, "{{SHORT}}": html.escape(short), "{{URL}}": html.escape(site_url)}.items():
         page = page.replace(k, val)
+    if not site_url:  # adres bilinmiyorsa mutlak adres isteyen etiketleri at (görsel göreli kalır)
+        page = re.sub(r'<link rel="canonical" href="">\n|<meta property="og:url" content="">\n', "", page)
     (site / "index.html").write_text(page)
     # PWA: manifest + service worker (aynı {{V}} ile önbellek kırılır).
     manifest = (TEMPLATE_DIR / "manifest.webmanifest").read_text()
