@@ -168,8 +168,25 @@
 
   // Arap harfli (Osmanlıca) metin: kaçışlı HTML içindeki Arapça dizileri sağdan sola bir span'e sarar.
   const OTA_RUN = /[\u0600-\u06FF\u0750-\u077F\uFB50-\uFDFF\uFE70-\uFEFF]+(?:[\s\u0600-\u06FF\u0750-\u077F\uFB50-\uFDFF\uFE70-\uFEFF]*[\u0600-\u06FF\u0750-\u077F\uFB50-\uFDFF\uFE70-\uFEFF])?/g;
-  const ota = (html) => String(html).replace(OTA_RUN, (m) => `<span class="ota" lang="ota" dir="rtl">${m}</span>`);
+  // Sesli okunuş: data/<slug>/okunus.json (Arap harfli dizi → Latin okunuş). Okunuşu bilinen dizi
+  // dokunulabilir olur; cihazın Türkçe metin okuma sesiyle okunur (ek dosya indirmez, internetsiz çalışır).
+  const otaKey = (s) => String(s).replace(/ی/g, "ى").replace(/ک/g, "ك").replace(/\s+/g, " ").trim();
+  const otaBare = (s) => s.replace(/[\u064B-\u0652\u0670]/g, "");
+  const OKUNUS = new Map();
+  for (const c of COURSES) for (const [k, v] of Object.entries(c.okunus || {})) {
+    OKUNUS.set(otaKey(k), v);
+    if (!OKUNUS.has(otaBare(otaKey(k)))) OKUNUS.set(otaBare(otaKey(k)), v);
+  }
+  const otaSay = (m) => { const k = otaKey(m); return OKUNUS.get(k) || OKUNUS.get(otaBare(k)) || ""; };
+  const ota = (html) => String(html).replace(OTA_RUN, (m) => {
+    const say = "speechSynthesis" in window ? otaSay(m) : "";
+    return say
+      ? `<span class="ota say" lang="ota" dir="rtl" data-say="${esc(say)}" role="button" tabindex="0" title="Dinle: ${esc(say)}">${m}</span>`
+      : `<span class="ota" lang="ota" dir="rtl">${m}</span>`;
+  });
   const txt = (s) => ota(esc(s));
+  // Düğme/etiket içinde iç içe dokunulabilir öğe olmasın: okunuşsuz sarma.
+  const txtPlain = (s) => esc(s).replace(OTA_RUN, (m) => `<span class="ota" lang="ota" dir="rtl">${m}</span>`);
   // Sınav kâğıdından kırpılmış Osmanlıca görsel; boyut [genişlik, yükseklik] 2x çözünürlüktedir.
   function otaImg(src, size, alt, scale) {
     if (!src) return "";
@@ -183,8 +200,8 @@
     const src = q.stemParts.map((p) => (p.img ? otaImg(p.img, [p.w, p.h], "", 0.5) : txt(p.text))).join(" ");
     return `${txt(q.question || q.stem || "")}<details class="ota-src"><summary>Sınav kâğıdındaki hâli</summary><div>${src}</div></details>`;
   }
-  function optHtml(o) {
-    return (o.image ? otaImg(o.image, o.imageSize, "", 0.62) + (o.text ? " " : "") : "") + txt(o.text || "");
+  function optHtml(o, plain) {
+    return (o.image ? otaImg(o.image, o.imageSize, "", 0.62) + (o.text ? " " : "") : "") + (plain ? txtPlain : txt)(o.text || "");
   }
 
   function load() {
@@ -527,7 +544,7 @@
     const head = `<div class="qn">Soru ${i + 1}${GRADED.has(q.type) ? "" : " · Tartışma, puanlanmaz"}</div><div class="qt">${stemHtml(q)}</div>`;
     if ((q.type === "multiple_choice" || q.type === "multiple_select") && Array.isArray(q.answerOptions)) {
       const type = q.type === "multiple_choice" ? "radio" : "checkbox";
-      const opts = q.answerOptions.map((o, j) => `<label class="opt" data-opt="${j}"><input type="${type}" name="q${i}" value="${j}"><span>${optHtml(o)}</span></label><div class="rationale" data-rat="${j}" hidden>${txt(o.rationale || "")}</div>`).join("");
+      const opts = q.answerOptions.map((o, j) => `<label class="opt" data-opt="${j}"><input type="${type}" name="q${i}" value="${j}"><span>${optHtml(o, true)}</span></label><div class="rationale" data-rat="${j}" hidden>${txt(o.rationale || "")}</div>`).join("");
       return head + (q.type === "multiple_select" ? `<p class="muted" style="font-size:.85rem;margin-top:-.4rem">Doğru olan tüm seçenekleri işaretleyin.</p>` : "") + opts + (q.hint ? `<details class="hint"><summary>İpucu</summary>${esc(q.hint)}</details>` : "");
     }
     if (q.type === "fill_in_the_blank") {
@@ -1023,7 +1040,7 @@
 
   function pastQuestionHtml(q, i) {
     const letters = ["A", "B", "C", "D", "E", "F"];
-    const opts = (q.options || []).map((o, j) => `<label class="opt" data-opt="${j}"><input type="radio" name="q${i}" value="${j}"><span><b>${esc(o.key || letters[j])})</b> ${optHtml(o)}</span></label>`).join("");
+    const opts = (q.options || []).map((o, j) => `<label class="opt" data-opt="${j}"><input type="radio" name="q${i}" value="${j}"><span><b>${esc(o.key || letters[j])})</b> ${optHtml(o, true)}</span></label>`).join("");
     const chLinks = (q.chapters || []).map((n) => `<a href="#/course/${q._slug}/chapter/${n}">${n}. bölüm</a>`).join(" · ");
     const kw = (q.keywords || []).map((k) => `<span class="chip">${esc(k)}</span>`).join("");
     return `<div class="qn">Soru ${i + 1}${q.unit ? ` · Ünite ${q.unit}` : ""}</div>
@@ -2741,7 +2758,7 @@
         <p class="rp-label">Ana hatlar</p>
         <ol>${sections.map((s, i) => {
           const k = actsIn(i).length;
-          return `<li><button type="button" class="rp-goto" data-goto="${id(i)}"><span>${ota(esc(title(s, i)))}</span>${k ? `<span class="rp-count">${k} etkinlik</span>` : ""}</button></li>`;
+          return `<li><button type="button" class="rp-goto" data-goto="${id(i)}"><span>${txtPlain(title(s, i))}</span>${k ? `<span class="rp-count">${k} etkinlik</span>` : ""}</button></li>`;
         }).join("")}</ol>
       </nav>` : "";
     const take = (data.takeaways || []).length
@@ -2757,6 +2774,7 @@
       <div class="rp-head">
         <h2>Bölüm raporu</h2>
         <p class="muted rp-lead">Çalışma notları kısımlara ayrıldı${total ? `; ${total} etkinlik ilgili kısmın altında. Açmak için karta dokunun.` : "."}</p>
+        ${c.okunus && "speechSynthesis" in window ? `<p class="muted rp-lead ota-hint">Altı noktalı Osmanlıca kelimelere dokununca okunuşunu dinleyebilirsin.</p>` : ""}
         ${total ? `<div class="rp-progress" aria-live="polite"><span class="rp-bar"><span style="width:0%"></span></span><span class="rp-done">0/${total} etkinlik açıldı</span></div>` : ""}
       </div>
       ${take}${toc}${body}
@@ -2785,6 +2803,47 @@
       h.focus({ preventScroll: true });
     });
   }
+
+  // Osmanlıca okunuş: .ota.say öğesine dokununca cihazın Türkçe sesiyle okur.
+  // Önce cihazda kurulu (localService) Türkçe ses seçilir; o, internetsiz de çalışır.
+  function trVoice() {
+    const all = speechSynthesis.getVoices().filter((v) => /^tr\b/i.test(v.lang.replace("_", "-")));
+    return all.find((v) => v.localService) || all[0] || null;
+  }
+  // Çeviriyazı işaretlerini sese uygun hâle getirir: ñ → n, ez-ber → ezber, çık- → çık.
+  const sayText = (s) => s.replace(/ñ/g, "n").replace(/Ñ/g, "N").replace(/(\p{L})-(?=\p{L})/gu, "$1").replace(/-/g, "");
+  let saying = null;
+  function speakOta(el) {
+    const synth = window.speechSynthesis;
+    if (!synth) return;
+    synth.cancel();
+    if (saying) saying.classList.remove("speaking");
+    if (saying === el) { saying = null; return; }
+    const u = new SpeechSynthesisUtterance(sayText(el.dataset.say));
+    u.lang = "tr-TR";
+    u.rate = 0.85;
+    const v = trVoice();
+    if (v) u.voice = v;
+    else if (synth.getVoices().length) showToast("Bu cihazda Türkçe okuma sesi bulunamadı. Telefon ayarlarındaki Metin okuma (TTS) bölümünden Türkçe sesi indirebilirsin.");
+    const done = () => { el.classList.remove("speaking"); if (saying === el) saying = null; };
+    u.onend = done;
+    u.onerror = done;
+    el.classList.add("speaking");
+    saying = el;
+    synth.speak(u);
+  }
+  if ("speechSynthesis" in window) speechSynthesis.getVoices();
+  document.addEventListener("click", (e) => {
+    const el = e.target.closest(".ota.say");
+    if (!el || el.closest("button, label, a, summary")) return;
+    e.preventDefault();
+    speakOta(el);
+  });
+  document.addEventListener("keydown", (e) => {
+    if ((e.key !== "Enter" && e.key !== " ") || !e.target.matches || !e.target.matches(".ota.say")) return;
+    e.preventDefault();
+    speakOta(e.target);
+  });
 
   // Panel etkileşimleri: tek global delegation; bölüm sayfasında da özet sekmesinde de çalışır.
   document.addEventListener("click", (e) => {

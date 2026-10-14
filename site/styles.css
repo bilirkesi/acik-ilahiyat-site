@@ -613,6 +613,9 @@ picture { display: block; }
 
 /* Osmanlı Türkçesi: Arap harfli metin ve sınavdaki görsel şıklar */
 .ota { font-family: "Noto Naskh Arabic", serif; font-size: 1.25em; line-height: 1.6; unicode-bidi: isolate; }
+.ota.say { cursor: pointer; text-decoration: underline dotted var(--gold); text-decoration-thickness: 1px; text-underline-offset: .35em; border-radius: 4px; -webkit-tap-highlight-color: transparent; }
+.ota.say:hover, .ota.say:focus-visible { background: var(--gold-soft); outline: none; }
+.ota.say.speaking { background: var(--gold-soft); box-shadow: 0 0 0 2px var(--gold); text-decoration-style: solid; }
 .ota-img { height: auto; max-width: 100%; vertical-align: middle; }
 .ota-src { margin-top: .5em; font-size: .8rem; }
 .ota-src summary { cursor: pointer; color: var(--muted); }
@@ -890,6 +893,7 @@ main:focus, main:focus-visible { outline: none; }
 /* ---- yazdırma ---- */
 @page { size: A4; margin: 14mm 13mm 16mm; @bottom-right { content: counter(page) " / " counter(pages); font: 8.5pt Inter, sans-serif; color: #666; } }
 @media print {
+  .ota.say { text-decoration: none; }
   :root:root:root { color-scheme: light; --ivory: #fff; --paper: #fff; --navy: #1b2a4a; --navy-2: #2c3e66; --ink: #000; --muted: #444; --gold: #8a6a2c; --gold-text: #6b5120;
     --gold-soft: #eee; --line: #ccc; --line-strong: #888; --ok: #1f5a3d; --bad: #8a2d26; --surface: #fff; --surface-2: #fff; --surface-3: #f2f2f2;
     --ok-bg: #fff; --ok-bg-2: #fff; --bad-bg: #fff; --bad-bg-2: #fff; --chrome: #fff; --chrome-ink: #000; --chrome-soft: #444; --shadow: transparent; }

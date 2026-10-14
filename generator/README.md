@@ -15,6 +15,10 @@ Source PNGs in `assets/` are git-ignored; when they are missing, the build reuse
 already in `site/assets/<slug>/`. Python 3.8+ with the standard library is enough for that;
 Pillow is only needed to compress new PNGs.
 
+Audio pronunciation: if `data/<slug>/okunus.json` exists (Arabic-script run → Latin reading), the build
+puts it in `data.js` and every matching `.ota` run becomes tappable; the site reads the Latin reading
+with the device's Turkish text-to-speech voice (no audio files, works offline).
+
 Offline (PWA): `build.py` also writes `sw.js` with a list of app-shell files and their content hashes,
 and appends `window.OFFLINE` (per-course image packs with sizes) to `data.js`. The shell (HTML, CSS, all
 JS data bundles, fonts in `fonts/`, icons in `icons/`) is cached on the first
@@ -87,6 +91,7 @@ If NotebookLM says stop, the run saves its place. Run it again later and it cont
 | `scripts/redo.py` | Regenerates chosen chapter infographics. Old files move to `rejected/` |
 | `scripts/build.py` | Builds the static site in `PROJECT/site/` |
 | `scripts/qa.py` | Checks the built site before you share it |
+| `scripts/okunus.py` | Lists Ottoman (Arabic-script) words missing from `data/<slug>/okunus.json`, with a guessed reading |
 
 Preview the site: `cd my-university/site && python3 -m http.server 8000`, then open http://localhost:8000.
 

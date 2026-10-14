@@ -166,6 +166,10 @@ def course_data(proj, slug):
     book_units = book_unit_images(proj, slug, out_dir)
     if book_units:
         course["bookUnits"] = book_units
+    # Osmanlıca sesli okunuş sözlüğü (Arap harfli dizi → Latin okunuş); site cihazın TTS'iyle okur.
+    okunus = d / "okunus.json"
+    if okunus.exists():
+        course["okunus"] = json.loads(okunus.read_text(encoding="utf-8"))
     return course
 
 
