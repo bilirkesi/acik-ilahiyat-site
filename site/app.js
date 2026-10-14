@@ -118,7 +118,8 @@
         <p class="muted">${esc(o.lead || "Bölümler, kavramlar ve ilişkiler. Düğüm tıklayınca ilgili bölüme geçin.")}</p>
       </div>
       ${mapTabsHtml(slug, active.id)}
-      <div class="mm-canvas" id="mm-canvas" aria-label="Zihin haritası"></div>
+      <div class="mm-canvas" id="mm-canvas" role="img" aria-label="Zihin haritası; aynı içerik aşağıda liste olarak da var"></div>
+      <details class="mm-outline" id="mm-outline"><summary>Haritayı liste olarak göster</summary><div></div></details>
       <p class="mm-detail muted" id="mm-detail">Düğüm seçin.</p>
     </section>`;
   }
@@ -496,7 +497,7 @@
       const ct = cites[idx];
       if (!ct) return "";
       const title = (ct.stem || "").replace(/"/g, "&quot;");
-      return `<a class="inline-cite" href="${citeHref(slug, ct)}" title="${esc(title)}"><sup>[${k}]</sup></a>`;
+      return `<a class="inline-cite" href="${citeHref(slug, ct)}" title="${esc(title)}" aria-label="Kaynak ${k}: ${esc(title)}"><sup>[${k}]</sup></a>`;
     });
   }
 
@@ -613,6 +614,7 @@
     if (fb || ok !== null) {
       const d = document.createElement("div");
       d.className = "feedback " + (ok === true ? "ok" : ok === false ? "no" : "");
+      d.setAttribute("role", "status");
       d.innerHTML = (ok === true ? "<strong>Doğru.</strong> " : ok === false ? "<strong>Tam değil.</strong> " : "") + fb;
       box.appendChild(d);
       typeset(d);
@@ -671,7 +673,7 @@
 
   function quizHudHtml(c, idx, total) {
     const g = gameStats(c.slug);
-    return `<div class="hud" id="quiz-hud" aria-live="polite">
+    return `<div class="hud" id="quiz-hud">
       <div class="hud-item"><span class="hud-k">Soru</span><span class="hud-v" id="hud-idx">${idx + 1}/${total}</span></div>
       <div class="hud-item"><span class="hud-k">Doğru</span><span class="hud-v" id="hud-right">0</span></div>
       <div class="hud-item"><span class="hud-k">Seri</span><span class="hud-v" id="hud-streak">0</span></div>
@@ -810,7 +812,7 @@
       const isRecord = xp >= g.bestXp && xp > 0;
       const box = document.getElementById("result");
       box.innerHTML = `<div class="result ${passed ? "pass" : "fail"} game-result">
-        <p class="eyebrow" style="color:var(--gold-soft)">${passed ? "Geçti" : "Henüz geçemedi"}${isRecord ? " · Yeni rekor!" : ""}</p>
+        <p class="eyebrow">${passed ? "Geçti" : "Henüz geçemedi"}${isRecord ? " · Yeni rekor!" : ""}</p>
         <h2>${xp} XP · ${gradedRight}/${gradedDone} doğru · ${pct(score)}</h2>
         <ul class="game-stats">
           <li><b>${bestStreakRun}</b> en uzun seri</li>
@@ -819,8 +821,8 @@
           <li><b>${g.bestXp}</b> rekor XP (${g.runs} deneme)</li>
         </ul>
         <p>${passed ? "Bu ders artık transkriptinizde." : `Geçmek için ${pct(CONFIG.passMark)} gerekir. Özet sayfasından tekrar edin.`}</p>
-        <div class="btn-row"><a class="btn ghost" style="color:var(--ivory);border-color:var(--gold)" href="#/transcript">Transkript</a>
-        <button class="btn ghost" style="color:var(--ivory);border-color:var(--gold)" type="button" id="retry">Tekrar oyna</button></div></div>`;
+        <div class="btn-row"><a class="btn ghost on-dark" href="#/transcript">Transkript</a>
+        <button class="btn ghost on-dark" type="button" id="retry">Tekrar oyna</button></div></div>`;
       document.getElementById("retry").onclick = () => route();
       const hudBar = document.getElementById("hud-bar");
       if (hudBar) hudBar.style.width = "100%";
@@ -899,6 +901,7 @@
           <p>${esc(x.desc)}</p>
         </a>`).join("")}
         ${unitQuizCard(c)}
+        <a class="exam-card" href="#/karisik?ders=${c.slug}"><span class="exam-badge">Karışık</span><h3>Karışık test</h3><p>Bu dersten ünite seçerek alıştırma ya da süreli deneme sınavı.</p></a>
       </div>
       ${sessions.length ? `<h2>Çıkmış vize dönemleri</h2><ul class="past-list">${pastList}</ul>` : ""}`;
   }
@@ -1017,6 +1020,12 @@
         <span><b>${totalPastQ}</b>arşiv sorusu</span>
         <span><b>${passedN}/${COURSES.length}</b>geçilen ders</span>
       </div>
+      <div class="exam-cards">
+        <a class="exam-card" href="#/karisik?mod=deneme"><span class="exam-badge">AÖF formatı</span><h3>Deneme sınavı</h3><p>Seçtiğin derslerden 20 soru, 30 dakika. Sonunda net ve puan; 4 yanlış 1 doğruyu götürür.</p></a>
+        <a class="exam-card" href="#/karisik?mod=alistirma"><span class="exam-badge">Karışık</span><h3>Karışık test</h3><p>Ders, kaynak ve ünite seçerek kendi testini oluştur; yanlışlarından ya da hiç çözmediklerinden.</p></a>
+        <a class="exam-card" href="#/analiz"><span class="exam-badge">Analiz</span><h3>Gelişim paneli</h3><p>Ünite ünite doğruluk, en zayıf 10 konu ve deneme puanlarının gelişimi.</p></a>
+      </div>
+      <h2>Dersler</h2>
       <ul class="past-list">${rows}</ul>`;
   }
 
@@ -1286,7 +1295,7 @@
       const g = saveGameStats(c.slug, run);
       const isRecord = xp >= g.bestXp && xp > 0;
       document.getElementById("result").innerHTML = `<div class="result ${score >= 0.7 ? "pass" : "fail"} game-result">
-        <p class="eyebrow" style="color:var(--gold-soft)">Çıkmış vize tamamlandı${isRecord ? " · Yeni rekor!" : ""}</p>
+        <p class="eyebrow">Çıkmış vize tamamlandı${isRecord ? " · Yeni rekor!" : ""}</p>
         <h2>${xp} XP · ${gradedRight}/${gradedDone} bildim · ${pct(score)}</h2>
         <ul class="game-stats">
           <li><b>${bestStreakRun}</b> en uzun seri</li>
@@ -1295,8 +1304,8 @@
           <li><b>${g.bestXp}</b> rekor XP</li>
         </ul>
         <div class="btn-row">
-          <a class="btn ghost" style="color:var(--ivory);border-color:var(--gold)" href="#/course/${c.slug}/exams">Sınavlar</a>
-          <button class="btn ghost" style="color:var(--ivory);border-color:var(--gold)" type="button" id="retry">Tekrar oyna</button>
+          <a class="btn ghost on-dark" href="#/course/${c.slug}/exams">Sınavlar</a>
+          <button class="btn ghost on-dark" type="button" id="retry">Tekrar oyna</button>
         </div></div>`;
       document.getElementById("retry").onclick = () => route();
       const bar = document.getElementById("hud-bar");
@@ -1322,7 +1331,7 @@
   function loadStudy() {
     let s = {};
     try { s = JSON.parse(localStorage.getItem(STUDY_KEY)) || {}; } catch (e) { s = {}; }
-    return Object.assign({ v: 1, cards: {}, days: {}, frozen: [], goal: 20, newPerDay: 10, courses: null, goalDone: "" }, s);
+    return Object.assign({ v: 1, cards: {}, days: {}, frozen: [], goal: 20, newPerDay: 10, courses: null, goalDone: "", log: [], mocks: [] }, s);
   }
   function saveStudy() {
     try { localStorage.setItem(STUDY_KEY, JSON.stringify(study)); } catch (e) { /* özel mod */ }
@@ -1497,6 +1506,9 @@
     if (ok && prev && prev.ok === false) card.fixedAt = now;
     card.ok = !!ok;
     study.cards[id] = card;
+    // Son cevaplar (karışık testte "son 50 cevapta yanlışlarım" süzgeci için), en fazla 3000 kayıt.
+    study.log.push([now, id, ok ? 1 : 0]);
+    if (study.log.length > 3000) study.log.splice(0, study.log.length - 3000);
     const day = dayRec(key);
     day.n++;
     if (ok) day.ok++;
@@ -1661,6 +1673,7 @@
           <span class="btn ghost">${mist ? "Yanlışlarımı çöz" : "Listeye bak"}</span>
         </a>
       </div>
+      <div class="btn-row desk-links"><a class="btn ghost" href="#/karisik">Karışık test</a><a class="btn ghost" href="#/karisik?mod=deneme">Deneme sınavı</a><a class="btn ghost" href="#/analiz">Gelişim analizi</a></div>
       <h2>Bu hafta</h2>
       <div class="week-grid">
         <div class="stat"><b>${w.n}</b><span>soru</span> ${trend(w.n, pw.n)}</div>
@@ -1832,7 +1845,7 @@
 
     function hudHtml() {
       const left = queue.length;
-      return `<div class="hud session-hud" aria-live="polite">
+      return `<div class="hud session-hud">
         <div class="hud-item"><span class="hud-k">Kalan</span><span class="hud-v">${left}</span></div>
         <div class="hud-item"><span class="hud-k">Çözülen</span><span class="hud-v">${tally.done}</span></div>
         <div class="hud-item"><span class="hud-k">Doğru</span><span class="hud-v">${tally.ok}</span></div>
@@ -1929,7 +1942,7 @@
       const tomorrow = Object.values(study.cards).filter((c) => c.due < addDays(dayStart(Date.now()), 2)).length;
       const left = openMistakes().filter(([id]) => inScope(id)).length;
       root.innerHTML = `<div class="result pass game-result">
-        <p class="eyebrow" style="color:var(--gold-soft)">${mode === "tekrar" ? "Tekrar oturumu bitti" : "Hata turu bitti"}</p>
+        <p class="eyebrow">${mode === "tekrar" ? "Tekrar oturumu bitti" : "Hata turu bitti"}</p>
         <h2>${tally.done} soru · ${tally.ok} doğru · ${tally.done ? pct(tally.ok / tally.done) : "0%"}</h2>
         <ul class="game-stats">
           <li><b>${mins} dk</b> süre</li>
@@ -1938,9 +1951,9 @@
           <li><b>${mode === "tekrar" ? tomorrow : left}</b> ${mode === "tekrar" ? "kart yarına kadar" : "hata kaldı"}</li>
         </ul>
         <div class="btn-row">
-          <a class="btn ghost" style="color:var(--ivory);border-color:var(--gold)" href="#/calisma">Çalışma masası</a>
-          ${mode === "tekrar" && openMistakes().length ? `<a class="btn ghost" style="color:var(--ivory);border-color:var(--gold)" href="#/hatalar">Hatalarım</a>` : ""}
-          ${mode === "hatalar" && left ? `<button class="btn ghost" style="color:var(--ivory);border-color:var(--gold)" type="button" id="again">Kalanları yeniden çöz</button>` : ""}
+          <a class="btn ghost on-dark" href="#/calisma">Çalışma masası</a>
+          ${mode === "tekrar" && openMistakes().length ? `<a class="btn ghost on-dark" href="#/hatalar">Hatalarım</a>` : ""}
+          ${mode === "hatalar" && left ? `<button class="btn ghost on-dark" type="button" id="again">Kalanları yeniden çöz</button>` : ""}
         </div></div>`;
       const again = document.getElementById("again");
       if (again) again.onclick = () => route();
@@ -1955,6 +1968,560 @@
   }
 
   applyFreeze();
+
+  // ---- karışık test ve AÖF formatı deneme sınavı (#/karisik) ------------------------
+  // Havuz: soru bankası (final, ünite quiz'i, çıkmış vize) ders, kaynak, ünite ve geçmişe göre süzülür.
+  // Alıştırma: her sorudan sonra açıklama. Deneme: süre, soru gezgini, sonda puan (4 yanlış 1 doğruyu götürür).
+  const MIX_SOURCES = [["p", "Çıkmış vize"], ["f", "Final"], ["u", "Ünite quiz'i"]];
+  const MIX_POOLS = [
+    ["hepsi", "Tüm sorular"],
+    ["yeni", "Hiç çözmediklerim"],
+    ["hata", "Yanlışlarım"],
+    ["zayif", "Zorlandıklarım"],
+    ["son", "Son 50 cevapta yanlışlarım"],
+  ];
+  const MIX_COUNTS = [10, 20, 30, 50];
+  const MOCK_MIN_PER_Q = 1.5; // AÖF vize: 20 soru 30 dakika
+  const sourceOf = (id) => id.split(":")[0];
+
+  function mixDefaults(query) {
+    const saved = study.mix || {};
+    const courses = query.ders && bySlug[query.ders] ? [query.ders] : (saved.courses || []).filter((s) => bySlug[s]);
+    return {
+      mode: query.mod === "deneme" || query.mod === "alistirma" ? query.mod : saved.mode || "alistirma",
+      courses: courses.length ? courses : COURSES.map((c) => c.slug),
+      sources: saved.sources && saved.sources.length ? saved.sources : ["p", "f", "u"],
+      units: query.unite ? [+query.unite] : [],
+      pool: MIX_POOLS.some(([k]) => k === query.havuz) ? query.havuz : (query.ders || query.unite ? "hepsi" : saved.pool || "hepsi"),
+      count: MIX_COUNTS.includes(+query.n) ? +query.n : saved.count || 20,
+    };
+  }
+
+  function recentWrong(limit) {
+    const out = new Set();
+    for (const [, id, ok] of (study.log || []).slice(-limit)) if (!ok) out.add(id);
+    return out;
+  }
+
+  function mixPool(o) {
+    const bank = questionBank();
+    const recent = o.pool === "son" ? recentWrong(50) : null;
+    const courses = new Set(o.courses), sources = new Set(o.sources), units = new Set(o.units);
+    const out = [];
+    for (const [id, x] of bank) {
+      if (!courses.has(x.slug) || !sources.has(sourceOf(id))) continue;
+      if (units.size && !units.has(x.unit)) continue;
+      const card = study.cards[id];
+      if (o.pool === "yeni" && card) continue;
+      if (o.pool === "hata" && !(card && card.ok === false)) continue;
+      if (o.pool === "zayif" && !(card && (card.wrong > card.right || card.lapses > 0 || card.s < 3))) continue;
+      if (o.pool === "son" && !recent.has(id)) continue;
+      out.push(id);
+    }
+    return out;
+  }
+
+  // Ünitelere dengeli dağıtarak seç: her üniteden sırayla birer soru (ünite içi karışık).
+  function stratifiedPick(ids, n) {
+    const bank = questionBank();
+    const groups = new Map();
+    for (const id of shuffle(ids.slice())) {
+      const x = bank.get(id);
+      const k = x.slug + ":" + x.unit;
+      if (!groups.has(k)) groups.set(k, []);
+      groups.get(k).push(id);
+    }
+    const lists = shuffle([...groups.values()]);
+    const out = [];
+    for (let i = 0; out.length < n && lists.some((l) => i < l.length); i++) {
+      for (const l of lists) if (i < l.length && out.length < n) out.push(l[i]);
+    }
+    return shuffle(out);
+  }
+
+  function unitsFor(courses) {
+    const bank = questionBank();
+    const m = new Map();
+    for (const [, x] of bank) {
+      if (!courses.includes(x.slug) || !x.unit) continue;
+      if (!m.has(x.unit)) m.set(x.unit, x.q.unitTitle || "");
+      else if (!m.get(x.unit) && x.q.unitTitle) m.set(x.unit, x.q.unitTitle);
+    }
+    return [...m.entries()].sort((a, b) => a[0] - b[0]);
+  }
+
+  function viewMix(query) {
+    const o = mixDefaults(query);
+    return `<p class="crumbs"><a href="#/sinavlar">Sınavlar</a> / Karışık test</p>
+      <p class="eyebrow">Karışık test</p><h1>Kendi testini oluştur</h1>
+      <p class="lead muted">Dersleri, kaynakları ve üniteleri seç; havuzdan ünitelere dengeli dağılmış sorular gelsin. Alıştırma modunda her sorudan sonra açıklamayı görürsün, deneme modunda gerçek sınav gibi süreyle çözüp sonunda puanını alırsın.</p>
+      <form class="mix-form desk-card" id="mix-form">
+        <fieldset class="seg"><legend>Mod</legend>
+          <label class="seg-opt"><input type="radio" name="mode" value="alistirma"${o.mode === "alistirma" ? " checked" : ""}><span><b>Alıştırma</b><small>Anında geri bildirim, süre yok</small></span></label>
+          <label class="seg-opt"><input type="radio" name="mode" value="deneme"${o.mode === "deneme" ? " checked" : ""}><span><b>Deneme sınavı</b><small>AÖF vize formatı: süreli, 4 yanlış 1 doğruyu götürür</small></span></label>
+        </fieldset>
+        <fieldset><legend>Dersler</legend><div class="chk-row">
+          ${COURSES.map((c) => `<label class="chk-chip"><input type="checkbox" name="course" value="${esc(c.slug)}"${o.courses.includes(c.slug) ? " checked" : ""}><span>${esc(c.subject)}</span></label>`).join("")}
+        </div></fieldset>
+        <fieldset><legend>Kaynak</legend><div class="chk-row">
+          ${MIX_SOURCES.map(([k, label]) => `<label class="chk-chip"><input type="checkbox" name="source" value="${k}"${o.sources.includes(k) ? " checked" : ""}><span>${label}</span></label>`).join("")}
+        </div></fieldset>
+        <fieldset id="mix-units"><legend>Üniteler</legend><div class="chk-row" data-units></div></fieldset>
+        <div class="mix-row">
+          <label>Soru havuzu
+            <select name="pool">${MIX_POOLS.map(([k, label]) => `<option value="${k}"${o.pool === k ? " selected" : ""}>${label}</option>`).join("")}</select>
+          </label>
+          <label>Soru sayısı
+            <select name="count">${MIX_COUNTS.map((n) => `<option value="${n}"${o.count === n ? " selected" : ""}>${n} soru</option>`).join("")}</select>
+          </label>
+        </div>
+        <p class="mix-info" id="mix-info" aria-live="polite"></p>
+        <div class="btn-row"><button class="btn" type="submit" id="mix-go">Teste başla</button></div>
+      </form>
+      ${mockHistoryHtml()}
+      <div id="mix-root"></div>`;
+  }
+
+  function mockHistoryHtml() {
+    const mocks = (study.mocks || []).slice(-5).reverse();
+    if (!mocks.length) return "";
+    return `<section class="mock-hist"><h2>Son denemelerin</h2><ul class="past-list">${mocks.map((m) => `<li class="past-row"><div>
+        <strong>${Math.round(m.score)} puan</strong> · net ${m.net.toFixed(2)} · ${m.d} D / ${m.y} Y / ${m.b} B
+        <div class="muted" style="font-size:.82rem">${fmtDay(dayKey(m.t))} · ${m.n} soru · ${fmtMs(m.dur)} · ${(m.courses || []).map((s) => bySlug[s] ? esc(bySlug[s].subject) : "").filter(Boolean).join(", ")}</div>
+      </div></li>`).join("")}</ul><p class="muted small"><a href="#/analiz">Tüm gelişimini analiz sayfasında gör</a>.</p></section>`;
+  }
+
+  function readMixForm(f) {
+    return {
+      mode: (f.querySelector("[name=mode]:checked") || {}).value || "alistirma",
+      courses: [...f.querySelectorAll("[name=course]:checked")].map((x) => x.value),
+      sources: [...f.querySelectorAll("[name=source]:checked")].map((x) => x.value),
+      units: [...f.querySelectorAll("[name=unit]:checked")].map((x) => +x.value),
+      pool: f.pool.value,
+      count: +f.count.value,
+    };
+  }
+
+  function bindMix() {
+    const f = document.getElementById("mix-form");
+    if (!f) return;
+    const query = parseLoc().query;
+    let preUnits = query.unite ? [+query.unite] : [];
+    const paintUnits = () => {
+      const o = readMixForm(f);
+      const box = f.querySelector("[data-units]");
+      const wrap = document.getElementById("mix-units");
+      if (o.courses.length !== 1) {
+        wrap.hidden = true;
+        box.innerHTML = "";
+        return;
+      }
+      const keep = new Set(box.innerHTML ? o.units : preUnits);
+      preUnits = [];
+      const units = unitsFor(o.courses);
+      wrap.hidden = !units.length;
+      box.innerHTML = units.map(([u, title]) => `<label class="chk-chip" title="${esc(title)}"><input type="checkbox" name="unit" value="${u}"${keep.has(u) ? " checked" : ""}><span>Ünite ${u}</span></label>`).join("")
+        + `<p class="muted small" style="flex-basis:100%;margin:.3rem 0 0">Hiçbirini seçmezsen tüm üniteler katılır.</p>`;
+    };
+    const paintInfo = () => {
+      const o = readMixForm(f);
+      const pool = mixPool(o);
+      const info = document.getElementById("mix-info");
+      const go = document.getElementById("mix-go");
+      const n = Math.min(o.count, pool.length);
+      if (!o.courses.length || !o.sources.length) info.textContent = "En az bir ders ve bir kaynak seç.";
+      else if (!pool.length) info.textContent = o.pool === "hata" ? "Bu seçimde açık hatan yok." : o.pool === "son" ? "Son 50 cevabında bu seçimde yanlış yok." : "Bu seçimde soru yok.";
+      else info.innerHTML = `Havuzda <b>${pool.length}</b> soru. Test <b>${n}</b> sorudan oluşacak${o.mode === "deneme" ? `, süre <b>${Math.round(n * MOCK_MIN_PER_Q)} dakika</b>` : ""}.`;
+      go.disabled = !pool.length || !o.courses.length || !o.sources.length;
+      go.textContent = o.mode === "deneme" ? "Denemeyi başlat" : "Alıştırmaya başla";
+    };
+    paintUnits();
+    paintInfo();
+    f.addEventListener("change", (e) => {
+      if (e.target.name === "course") paintUnits();
+      paintInfo();
+    });
+    f.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const o = readMixForm(f);
+      study.mix = { mode: o.mode, courses: o.courses, sources: o.sources, pool: o.pool, count: o.count };
+      saveStudy();
+      const ids = stratifiedPick(mixPool(o), o.count);
+      if (!ids.length) return;
+      f.hidden = true;
+      const hist = document.querySelector(".mock-hist");
+      if (hist) hist.hidden = true;
+      const root = document.getElementById("mix-root");
+      (o.mode === "deneme" ? runMock : runPractice)(root, ids, o);
+    });
+  }
+
+  // Sonuç: üniteye göre doğru/yanlış/boş tablosu + soru soru inceleme.
+  function unitBreakdownHtml(ids, answers) {
+    const bank = questionBank();
+    const rows = new Map();
+    ids.forEach((id, i) => {
+      const x = bank.get(id);
+      const k = x.slug + ":" + x.unit;
+      if (!rows.has(k)) rows.set(k, { slug: x.slug, unit: x.unit, title: x.q.unitTitle || "", d: 0, y: 0, b: 0 });
+      const r = rows.get(k);
+      const a = answers[i];
+      if (a.ok === true) r.d++; else if (a.ok === false) r.y++; else r.b++;
+    });
+    const list = [...rows.values()].sort((a, b) => (a.d / (a.d + a.y + a.b)) - (b.d / (b.d + b.y + b.b)));
+    return `<div class="table-wrap"><table class="transcript unit-table"><thead><tr><th>Ders · ünite</th><th>D</th><th>Y</th><th>B</th><th>Başarı</th><th></th></tr></thead><tbody>
+      ${list.map((r) => {
+        const tot = r.d + r.y + r.b;
+        const p = tot ? r.d / tot : 0;
+        return `<tr><td>${esc(bySlug[r.slug].subject)}${r.unit ? ` · Ünite ${r.unit}` : " · Final"}${r.title ? `<div class="muted" style="font-size:.8rem">${esc(r.title)}</div>` : ""}</td>
+          <td>${r.d}</td><td>${r.y}</td><td>${r.b}</td><td><span class="acc-bar" style="--p:${Math.round(p * 100)}"><i></i></span> ${pct(p)}</td>
+          <td>${r.unit ? `<a href="#/karisik?ders=${r.slug}&unite=${r.unit}">Çalış</a>` : ""}</td></tr>`;
+      }).join("")}
+    </tbody></table></div>`;
+  }
+
+  function reviewListHtml(ids) {
+    return `<div class="chip-row filter-row" id="rv-filter">
+        <button class="chip active" type="button" data-f="all">Tüm sorular</button>
+        <button class="chip" type="button" data-f="y">Yanlışlar</button>
+        <button class="chip" type="button" data-f="b">Boşlar</button>
+      </div>
+      <div id="rv-list">${ids.map((id, i) => `<div class="q review-item" data-i="${i}"></div>`).join("")}</div>`;
+  }
+  function paintReviewList(ids, answers) {
+    const bank = questionBank();
+    document.querySelectorAll("#rv-list .review-item").forEach((box) => {
+      const i = +box.dataset.i;
+      const x = bank.get(ids[i]);
+      const a = answers[i];
+      box.dataset.state = a.ok === true ? "d" : a.ok === false ? "y" : "b";
+      box.innerHTML = `<p class="review-src"><span class="chip">${esc(bySlug[x.slug].subject)}</span> <span>${esc(x.label)}</span> <span class="badge ${a.ok === true ? "pass" : a.ok === false ? "fail" : "none"}">${a.ok === true ? "Doğru" : a.ok === false ? "Yanlış" : "Boş"}</span></p>${questionHTML(x.q, i)}`;
+      (a.picked || []).forEach((j) => { const inp = box.querySelector(`[name=q${i}][value="${j}"]`); if (inp) inp.checked = true; });
+      showFeedback(x.q, i, a.ok === undefined ? null : a.ok, box);
+    });
+    const filter = document.getElementById("rv-filter");
+    if (filter) filter.onclick = (e) => {
+      const b = e.target.closest("[data-f]");
+      if (!b) return;
+      filter.querySelectorAll(".chip").forEach((c) => c.classList.toggle("active", c === b));
+      document.querySelectorAll("#rv-list .review-item").forEach((box) => { box.hidden = b.dataset.f !== "all" && box.dataset.state !== b.dataset.f; });
+    };
+    typeset(document.getElementById("rv-list"));
+  }
+
+  function pickedOf(root, i) {
+    return [...root.querySelectorAll(`[name=q${i}]:checked`)].map((x) => +x.value);
+  }
+
+  function runPractice(root, ids, o) {
+    const bank = questionBank();
+    const answers = ids.map(() => ({}));
+    let idx = 0;
+    const t0 = Date.now();
+    const show = () => {
+      if (idx >= ids.length) return done();
+      const x = bank.get(ids[idx]);
+      const right = answers.filter((a) => a.ok === true).length;
+      root.innerHTML = `<div class="hud session-hud">
+          <div class="hud-item"><span class="hud-k">Soru</span><span class="hud-v">${idx + 1}/${ids.length}</span></div>
+          <div class="hud-item"><span class="hud-k">Doğru</span><span class="hud-v">${right}</span></div>
+          <div class="hud-item"><span class="hud-k">Bugün</span><span class="hud-v">${(study.days[todayKey()] || { n: 0 }).n}/${study.goal}</span></div>
+          <div class="hud-bar" aria-hidden="true"><i style="width:${(idx / ids.length) * 100}%"></i></div>
+        </div>
+        <div class="q game-q" data-q="${idx}">
+          <p class="review-src"><span class="chip">${esc(bySlug[x.slug].subject)}</span> <span>${esc(x.label)}</span></p>
+          ${questionHTML(x.q, idx)}
+          <div class="btn-row game-actions" id="px-actions">
+            <button class="btn" type="button" id="px-check">Kontrol et</button>
+            <button class="btn ghost" type="button" id="px-skip">Boş bırak</button>
+          </div>
+        </div>`;
+      typeset(root);
+      const box = root.querySelector(".game-q");
+      const actions = root.querySelector("#px-actions");
+      const after = (ok) => {
+        showFeedback(x.q, idx, ok, box);
+        box.classList.add(ok === true ? "hit" : ok === false ? "miss" : "skip-note");
+        actions.innerHTML = `<button class="btn" type="button" id="px-next">${idx < ids.length - 1 ? "Sonraki soru" : "Sonucu gör"}</button>`;
+        const nx = root.querySelector("#px-next");
+        nx.onclick = () => { idx++; show(); };
+        nx.focus();
+        box.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      };
+      root.querySelector("#px-check").onclick = () => {
+        const picked = pickedOf(root, idx);
+        if (!picked.length) { root.querySelector("#px-check").textContent = "Önce bir seçenek işaretle"; return; }
+        const ok = grade(x.q, idx, root);
+        answers[idx] = { ok, picked };
+        recordAnswer(ids[idx], ok, null, "exam");
+        after(ok);
+      };
+      root.querySelector("#px-skip").onclick = () => { answers[idx] = { picked: [] }; after(undefined); };
+    };
+    const done = () => {
+      const d = answers.filter((a) => a.ok === true).length, y = answers.filter((a) => a.ok === false).length;
+      const b = ids.length - d - y;
+      root.innerHTML = `<div class="result ${d / ids.length >= CONFIG.passMark ? "pass" : "fail"} game-result">
+          <p class="eyebrow">Alıştırma bitti</p>
+          <h2>${d}/${ids.length} doğru · ${pct(d / ids.length)}</h2>
+          <ul class="game-stats"><li><b>${y}</b> yanlış</li><li><b>${b}</b> boş</li><li><b>${fmtMs(Date.now() - t0)}</b> süre</li></ul>
+          <div class="btn-row"><button class="btn ghost on-dark" type="button" id="mx-again">Yeni test</button><a class="btn ghost on-dark" href="#/analiz">Analiz</a>${y ? `<a class="btn ghost on-dark" href="#/hatalar">Hatalarım</a>` : ""}</div>
+        </div>
+        <h2>Ünitelere göre</h2>${unitBreakdownHtml(ids, answers)}`;
+      root.querySelector("#mx-again").onclick = () => route();
+      root.scrollIntoView({ behavior: "smooth", block: "start" });
+    };
+    show();
+  }
+
+  function runMock(root, ids, o) {
+    const bank = questionBank();
+    const answers = ids.map(() => ({ picked: [] }));
+    const flags = new Set();
+    let idx = 0;
+    const t0 = Date.now();
+    const limit = Math.round(ids.length * MOCK_MIN_PER_Q) * 60000;
+    let timer = null, finished = false;
+    root.classList.add("mock");
+    root.innerHTML = `<div class="hud mock-hud">
+        <div class="hud-item"><span class="hud-k">Soru</span><span class="hud-v" id="mk-idx"></span></div>
+        <div class="hud-item"><span class="hud-k">Cevaplanan</span><span class="hud-v" id="mk-done"></span></div>
+        <div class="hud-item"><span class="hud-k">Kalan süre</span><span class="hud-v" id="mk-time" role="timer"></span></div>
+        <button class="btn mock-finish" type="button" id="mk-finish">Sınavı bitir</button>
+        <div class="hud-bar" aria-hidden="true"><i id="mk-bar"></i></div>
+      </div>
+      <nav class="mock-nav" aria-label="Soru gezgini" id="mk-nav">${ids.map((_, i) => `<button type="button" data-go="${i}" aria-label="${i + 1}. soru">${i + 1}</button>`).join("")}</nav>
+      <div id="mk-stage"></div>
+      <p class="sr-only" id="mk-live" aria-live="polite"></p>`;
+    const stage = root.querySelector("#mk-stage");
+    const save = () => { answers[idx].picked = pickedOf(stage, idx); };
+    const paintNav = () => {
+      root.querySelectorAll("#mk-nav [data-go]").forEach((b) => {
+        const i = +b.dataset.go;
+        b.classList.toggle("done", answers[i].picked.length > 0);
+        b.classList.toggle("flag", flags.has(i));
+        b.classList.toggle("cur", i === idx);
+        if (i === idx) b.setAttribute("aria-current", "step"); else b.removeAttribute("aria-current");
+      });
+      const doneN = answers.filter((a) => a.picked.length).length;
+      root.querySelector("#mk-idx").textContent = `${idx + 1}/${ids.length}`;
+      root.querySelector("#mk-done").textContent = `${doneN}/${ids.length}`;
+      root.querySelector("#mk-bar").style.width = (doneN / ids.length) * 100 + "%";
+    };
+    const tick = () => {
+      if (!document.body.contains(root)) return clearInterval(timer);
+      const left = Math.max(0, limit - (Date.now() - t0));
+      const el = root.querySelector("#mk-time");
+      const m = Math.floor(left / 60000), s = Math.floor((left % 60000) / 1000);
+      el.textContent = `${m}:${String(s).padStart(2, "0")}`;
+      el.classList.toggle("warn", left < 5 * 60000);
+      if (left < 5 * 60000 && !root.dataset.warned) { root.dataset.warned = "1"; root.querySelector("#mk-live").textContent = "Son 5 dakika."; }
+      if (!left) finish(true);
+    };
+    const show = (i) => {
+      if (finished) return;
+      save();
+      idx = Math.max(0, Math.min(ids.length - 1, i));
+      const x = bank.get(ids[idx]);
+      stage.innerHTML = `<div class="q game-q mock-q" data-q="${idx}">
+          <p class="review-src"><span class="chip">${esc(bySlug[x.slug].subject)}</span>${x.unit ? ` <span>Ünite ${x.unit}</span>` : ""}</p>
+          ${questionHTML(x.q, idx)}
+          <div class="btn-row mock-actions">
+            <button class="btn ghost" type="button" id="mk-prev"${idx ? "" : " disabled"}>Önceki</button>
+            <button class="btn ghost" type="button" id="mk-flag" aria-pressed="${flags.has(idx)}">${flags.has(idx) ? "İşareti kaldır" : "Sonra bak"}</button>
+            <button class="btn ghost" type="button" id="mk-clear">Cevabı sil</button>
+            <button class="btn" type="button" id="mk-next">${idx < ids.length - 1 ? "Sonraki" : "Bitir"}</button>
+          </div>
+        </div>`;
+      answers[idx].picked.forEach((j) => { const inp = stage.querySelector(`[name=q${idx}][value="${j}"]`); if (inp) inp.checked = true; });
+      typeset(stage);
+      stage.querySelector("#mk-prev").onclick = () => show(idx - 1);
+      stage.querySelector("#mk-next").onclick = () => (idx < ids.length - 1 ? show(idx + 1) : finish(false));
+      stage.querySelector("#mk-flag").onclick = () => { flags.has(idx) ? flags.delete(idx) : flags.add(idx); show(idx); };
+      stage.querySelector("#mk-clear").onclick = () => { stage.querySelectorAll(`[name=q${idx}]`).forEach((x) => (x.checked = false)); save(); paintNav(); };
+      stage.onchange = () => { save(); paintNav(); };
+      paintNav();
+    };
+    root.querySelector("#mk-nav").onclick = (e) => { const b = e.target.closest("[data-go]"); if (b) show(+b.dataset.go); };
+    root.querySelector("#mk-finish").onclick = () => finish(false);
+    const keys = (e) => {
+      if (finished || !document.body.contains(root)) return document.removeEventListener("keydown", keys);
+      if (e.target.tagName === "INPUT" && e.target.type === "text") return;
+      if (/^[1-6]$/.test(e.key)) {
+        const inp = stage.querySelectorAll(`[name=q${idx}]`)[+e.key - 1];
+        if (inp) { inp.checked = inp.type === "checkbox" ? !inp.checked : true; save(); paintNav(); e.preventDefault(); }
+      } else if (e.key === "ArrowRight" && e.target.tagName !== "SELECT") { show(idx + 1); e.preventDefault(); }
+      else if (e.key === "ArrowLeft" && e.target.tagName !== "SELECT") { show(idx - 1); e.preventDefault(); }
+    };
+    document.addEventListener("keydown", keys);
+
+    function finish(timeUp) {
+      if (finished) return;
+      save();
+      const blanks = answers.filter((a) => !a.picked.length).length;
+      if (!timeUp && !window.confirm(blanks ? `${blanks} soru boş. Sınavı bitirmek istiyor musun?` : "Sınavı bitirmek istiyor musun?")) return;
+      finished = true;
+      clearInterval(timer);
+      document.removeEventListener("keydown", keys);
+      // Puanla: soruları görünmez bir kapta işaretleyip ortak grade() ile değerlendir.
+      const tmp = document.createElement("div");
+      ids.forEach((id, i) => {
+        const a = answers[i];
+        if (!a.picked.length) { a.ok = undefined; return; }
+        const x = bank.get(id);
+        tmp.innerHTML = questionHTML(x.q, i);
+        a.picked.forEach((j) => { const inp = tmp.querySelector(`[name=q${i}][value="${j}"]`); if (inp) inp.checked = true; });
+        a.ok = grade(x.q, i, tmp);
+        recordAnswer(id, a.ok, null, "exam");
+      });
+      const d = answers.filter((a) => a.ok === true).length, y = answers.filter((a) => a.ok === false).length, b = ids.length - d - y;
+      const net = d - y / 4;
+      const score = Math.max(0, (net / ids.length) * 100);
+      const dur = Math.min(limit, Date.now() - t0);
+      study.mocks = (study.mocks || []).concat([{ t: Date.now(), n: ids.length, d, y, b, net, score, dur, courses: o.courses }]).slice(-100);
+      saveStudy();
+      const prev = (study.mocks || []).slice(-2, -1)[0];
+      root.classList.remove("mock");
+      root.innerHTML = `<div class="result ${score >= 50 ? "pass" : "fail"} game-result">
+          <p class="eyebrow">${timeUp ? "Süre doldu · " : ""}Deneme sınavı sonucu</p>
+          <h2>${Math.round(score)} puan · net ${net.toFixed(2)}</h2>
+          <ul class="game-stats"><li><b>${d}</b> doğru</li><li><b>${y}</b> yanlış</li><li><b>${b}</b> boş</li><li><b>${fmtMs(dur)}</b> süre</li>${prev ? `<li><b>${score >= prev.score ? "▲" : "▼"} ${Math.abs(Math.round(score - prev.score))}</b> önceki denemeye göre</li>` : ""}</ul>
+          <p>Puan, AÖF'deki gibi net üzerinden hesaplandı: her 4 yanlış 1 doğruyu götürür, boşlar puan kaybettirmez. Yanlışların Hatalarım listesine eklendi.</p>
+          <div class="btn-row"><button class="btn ghost on-dark" type="button" id="mx-again">Yeni deneme</button><a class="btn ghost on-dark" href="#/analiz">Analiz</a>${y ? `<a class="btn ghost on-dark" href="#/hatalar">Hatalarım</a>` : ""}</div>
+        </div>
+        <h2>Ünitelere göre</h2>${unitBreakdownHtml(ids, answers)}
+        <h2>Soru soru inceleme</h2>${reviewListHtml(ids)}`;
+      paintReviewList(ids, answers);
+      root.querySelector("#mx-again").onclick = () => route();
+      window.scrollTo(0, 0);
+    }
+    show(0);
+    tick();
+    timer = setInterval(tick, 1000);
+  }
+
+  // ---- analiz paneli (#/analiz) ---------------------------------------------------
+  function accuracyOf(list) {
+    let r = 0, w = 0;
+    for (const c of list) { r += c.right || 0; w += c.wrong || 0; }
+    return { r, w, n: r + w, p: r + w ? r / (r + w) : 0 };
+  }
+  // Günlük sütun (çözülen) + doğruluk çizgisi, saf SVG.
+  function dailyChartSvg(days) {
+    const W = 640, H = 200, P = { l: 30, r: 34, t: 14, b: 26 };
+    const keys = Array.from({ length: days }, (_, i) => dayKey(addDays(Date.now(), i - days + 1)));
+    const rows = keys.map((k) => study.days[k] || { n: 0, ok: 0 });
+    const max = Math.max(5, ...rows.map((r) => r.n));
+    const bw = (W - P.l - P.r) / days;
+    const y = (v) => P.t + (H - P.t - P.b) * (1 - v / max);
+    const yp = (p) => P.t + (H - P.t - P.b) * (1 - p);
+    const bars = rows.map((r, i) => r.n ? `<rect class="ch-bar" x="${(P.l + i * bw + bw * 0.15).toFixed(1)}" y="${y(r.n).toFixed(1)}" width="${(bw * 0.7).toFixed(1)}" height="${(H - P.b - y(r.n)).toFixed(1)}"><title>${fmtDay(keys[i])}: ${r.n} soru, ${r.ok} doğru</title></rect>` : "").join("");
+    const pts = rows.map((r, i) => (r.n ? `${(P.l + i * bw + bw / 2).toFixed(1)},${yp(r.ok / r.n).toFixed(1)}` : null)).filter(Boolean);
+    const dots = rows.map((r, i) => (r.n ? `<circle class="ch-dot" cx="${(P.l + i * bw + bw / 2).toFixed(1)}" cy="${yp(r.ok / r.n).toFixed(1)}" r="2.6"/>` : "")).join("");
+    const step = days <= 7 ? 1 : days <= 30 ? 5 : 15;
+    const labels = keys.map((k, i) => ((days - 1 - i) % step === 0 ? `<text class="ch-lbl" x="${(P.l + i * bw + bw / 2).toFixed(1)}" y="${H - 8}" text-anchor="middle">${fmtDay(k).replace(/ (\S{3})\S*/, " $1")}</text>` : "")).join("");
+    const total = rows.reduce((a, r) => a + r.n, 0);
+    return `<svg class="chart" viewBox="0 0 ${W} ${H}" role="img" aria-label="Son ${days} gün: toplam ${total} soru">
+      <line class="ch-grid" x1="${P.l}" x2="${W - P.r}" y1="${y(max)}" y2="${y(max)}"/><line class="ch-grid" x1="${P.l}" x2="${W - P.r}" y1="${y(max / 2)}" y2="${y(max / 2)}"/><line class="ch-axis" x1="${P.l}" x2="${W - P.r}" y1="${H - P.b}" y2="${H - P.b}"/>
+      <text class="ch-lbl" x="${P.l - 6}" y="${y(max) + 4}" text-anchor="end">${max}</text><text class="ch-lbl" x="${P.l - 6}" y="${y(max / 2) + 4}" text-anchor="end">${Math.round(max / 2)}</text>
+      <text class="ch-lbl ch-acc" x="${W - P.r + 6}" y="${yp(1) + 4}">%100</text><text class="ch-lbl ch-acc" x="${W - P.r + 6}" y="${yp(0.5) + 4}">%50</text>
+      ${bars}${pts.length > 1 ? `<polyline class="ch-line" points="${pts.join(" ")}"/>` : ""}${dots}${labels}
+    </svg>
+    <p class="chart-legend"><span class="lg-bar"></span> Çözülen soru <span class="lg-line"></span> Doğruluk</p>`;
+  }
+  function mockChartSvg(mocks) {
+    const W = 640, H = 170, P = { l: 30, r: 12, t: 14, b: 22 };
+    const n = mocks.length;
+    const x = (i) => P.l + (n === 1 ? (W - P.l - P.r) / 2 : (i * (W - P.l - P.r)) / (n - 1));
+    const y = (v) => P.t + (H - P.t - P.b) * (1 - v / 100);
+    const pts = mocks.map((m, i) => `${x(i).toFixed(1)},${y(m.score).toFixed(1)}`);
+    return `<svg class="chart" viewBox="0 0 ${W} ${H}" role="img" aria-label="Deneme puanları: ${mocks.map((m) => Math.round(m.score)).join(", ")}">
+      ${[0, 50, 100].map((v) => `<line class="ch-grid" x1="${P.l}" x2="${W - P.r}" y1="${y(v)}" y2="${y(v)}"/><text class="ch-lbl" x="${P.l - 6}" y="${y(v) + 4}" text-anchor="end">${v}</text>`).join("")}
+      ${n > 1 ? `<polyline class="ch-line" points="${pts.join(" ")}"/>` : ""}
+      ${mocks.map((m, i) => `<circle class="ch-dot" cx="${x(i).toFixed(1)}" cy="${y(m.score).toFixed(1)}" r="4"><title>${fmtDay(dayKey(m.t))}: ${Math.round(m.score)} puan, net ${m.net.toFixed(2)}</title></circle>`).join("")}
+    </svg>`;
+  }
+
+  function unitStats() {
+    const bank = questionBank();
+    const units = new Map();
+    for (const [id, card] of Object.entries(study.cards)) {
+      const x = bank.get(id);
+      if (!x || !x.unit) continue;
+      const k = x.slug + ":" + x.unit;
+      if (!units.has(k)) units.set(k, { slug: x.slug, unit: x.unit, title: "", chapter: 0, cards: [] });
+      const u = units.get(k);
+      u.cards.push(card);
+      if (!u.title && x.q.unitTitle) u.title = x.q.unitTitle;
+      if (!u.chapter && Array.isArray(x.q.chapters) && x.q.chapters.length) u.chapter = x.q.chapters[0];
+    }
+    for (const u of units.values()) Object.assign(u, accuracyOf(u.cards), { open: u.cards.filter((c) => c.ok === false).length });
+    return [...units.values()];
+  }
+  const accClass = (p) => (p >= 0.8 ? "a4" : p >= 0.65 ? "a3" : p >= 0.5 ? "a2" : "a1");
+
+  function viewAnalysis(query) {
+    const range = [7, 30, 90].includes(+query.gun) ? +query.gun : 30;
+    const cards = Object.entries(study.cards).filter(([id]) => bySlug[courseOfId(id)]);
+    const all = accuracyOf(cards.map(([, c]) => c));
+    if (!all.n) {
+      return `<p class="eyebrow">Analiz</p><h1>Gelişim paneli</h1>
+        <div class="desk-card empty-state"><h3>Henüz veri yok</h3><p class="muted">Soru çözdükçe burada derslere ve ünitelere göre doğruluk, zayıf konular ve gelişim grafikleri oluşur.</p>
+        <div class="btn-row"><a class="btn" href="#/karisik">Karışık test çöz</a><a class="btn ghost" href="#/tekrar">Tekrar et</a></div></div>`;
+    }
+    const keys = Array.from({ length: range }, (_, i) => dayKey(addDays(Date.now(), -i)));
+    const inRange = keys.map((k) => study.days[k]).filter(Boolean);
+    const rN = inRange.reduce((a, r) => a + r.n, 0), rOk = inRange.reduce((a, r) => a + r.ok, 0);
+    const activeDays = keys.filter(isActive).length;
+    const mature = cards.filter(([, c]) => c.s >= 21).length;
+    const units = unitStats();
+    const weakest = units.filter((u) => u.n >= 3).sort((a, b) => a.p - b.p || b.open - a.open).slice(0, 10);
+    const perCourse = COURSES.map((c) => {
+      const cs = cards.filter(([id]) => courseOfId(id) === c.slug).map(([, x]) => x);
+      const bankN = [...questionBank().values()].filter((x) => x.slug === c.slug).length;
+      return { c, ...accuracyOf(cs), seen: cs.length, bankN, open: cs.filter((x) => x.ok === false).length, lv: { m: cs.filter((x) => x.s >= 21).length, y: cs.filter((x) => x.ok !== false && x.s >= 3 && x.s < 21).length } };
+    }).filter((r) => r.seen);
+    const bySource = MIX_SOURCES.map(([k, label]) => ({ label, ...accuracyOf(cards.filter(([id]) => sourceOf(id) === k).map(([, c]) => c)) })).filter((s) => s.n);
+    const mocks = (study.mocks || []).slice(-20);
+    const tabs = [7, 30, 90].map((d) => `<a class="chip${d === range ? " active" : ""}" href="#/analiz?gun=${d}">${d} gün</a>`).join("");
+    return `<p class="eyebrow">Analiz</p><h1>Gelişim paneli</h1>
+      <p class="lead muted">Hangi derste ve ünitede güçlü, nerede zayıf olduğunu gör; zayıf konulara tek dokunuşla karışık test başlat.</p>
+      <div class="chip-row filter-row">${tabs}</div>
+      <div class="kpi-grid">
+        <div class="desk-card kpi"><span class="desk-k">Çözülen soru</span><b>${rN}</b><span class="muted small">son ${range} gün · toplam ${all.n}</span></div>
+        <div class="desk-card kpi"><span class="desk-k">Doğruluk</span><b>${rN ? pct(rOk / rN) : "-"}</b><span class="muted small">son ${range} gün · genel ${pct(all.p)}</span></div>
+        <div class="desk-card kpi"><span class="desk-k">Aktif gün</span><b>${activeDays}/${range}</b><span class="muted small">günde ort. ${activeDays ? Math.round(rN / activeDays) : 0} soru</span></div>
+        <div class="desk-card kpi"><span class="desk-k">Oturmuş bilgi</span><b>${mature}</b><span class="muted small">${cards.length} karttan, 3+ hafta aralıklı</span></div>
+      </div>
+      <section class="desk-card chart-card"><h3>Günlük çalışma ve doğruluk</h3>${dailyChartSvg(range)}</section>
+      <h2>En zayıf 10 konu</h2>
+      ${weakest.length ? `<ol class="weak-list">${weakest.map((u) => `<li>
+          <div><b>${esc(bySlug[u.slug].subject)} · Ünite ${u.unit}</b>${u.title ? ` <span class="muted">${esc(u.title)}</span>` : ""}
+            <div class="muted small"><span class="acc-bar" style="--p:${Math.round(u.p * 100)}"><i></i></span> ${pct(u.p)} doğru · ${u.n} cevap · ${u.open} açık hata</div></div>
+          <div class="weak-actions"><a class="btn sm-mini" href="#/karisik?ders=${u.slug}&unite=${u.unit}&mod=alistirma">Bu üniteden test</a>${u.chapter || u.unit <= bySlug[u.slug].chapters.length ? `<a class="btn ghost sm-mini" href="#/course/${u.slug}/chapter/${u.chapter || u.unit}">Konu anlatımı</a>` : ""}</div>
+        </li>`).join("")}</ol>` : `<p class="muted">Zayıf konu çıkarmak için ünite başına en az 3 cevap gerekiyor.</p>`}
+      <h2>Derslere göre</h2>
+      <div class="table-wrap"><table class="transcript"><thead><tr><th>Ders</th><th>Görülen soru</th><th>Doğruluk</th><th>Açık hata</th><th>Kart durumu</th></tr></thead><tbody>
+        ${perCourse.map((r) => `<tr><td><a href="#/course/${r.c.slug}">${esc(r.c.subject)}</a></td>
+          <td>${r.seen}<span class="muted small"> / ${r.bankN}</span></td>
+          <td><span class="acc-bar" style="--p:${Math.round(r.p * 100)}"><i></i></span> ${pct(r.p)}</td>
+          <td>${r.open ? `<a href="#/hatalar?ders=${r.c.slug}">${r.open}</a>` : 0}</td>
+          <td><span class="stack-bar" role="img" aria-label="${r.lv.m} oturmuş, ${r.lv.y} pekişiyor, ${r.seen - r.lv.m - r.lv.y} öğreniliyor"><i class="m" style="flex:${r.lv.m}"></i><i class="y" style="flex:${r.lv.y}"></i><i class="l" style="flex:${r.seen - r.lv.m - r.lv.y}"></i></span></td></tr>`).join("")}
+      </tbody></table></div>
+      <p class="muted small"><span class="lg-sq m"></span> oturmuş <span class="lg-sq y"></span> pekişiyor <span class="lg-sq l"></span> öğreniliyor</p>
+      <h2>Ünite haritası</h2>
+      <p class="muted">Her kutu bir ünite; renk doğruluk oranını gösterir. Kutuya dokununca o üniteden test başlar.</p>
+      ${perCourse.map((r) => {
+        const us = units.filter((u) => u.slug === r.c.slug).sort((a, b) => a.unit - b.unit);
+        if (!us.length) return "";
+        return `<div class="unit-map"><h3>${esc(r.c.subject)}</h3><div class="unit-grid">${us.map((u) => `<a class="unit-cell ${accClass(u.p)}" href="#/karisik?ders=${u.slug}&unite=${u.unit}&mod=alistirma" title="${esc(u.title)}"><b>${u.unit}</b><span>${pct(u.p)}</span><small>${u.n} cevap</small></a>`).join("")}</div></div>`;
+      }).join("")}
+      <p class="muted small acc-legend"><span class="unit-cell a1"></span> %50 altı <span class="unit-cell a2"></span> %50-65 <span class="unit-cell a3"></span> %65-80 <span class="unit-cell a4"></span> %80 üstü</p>
+      ${bySource.length > 1 ? `<h2>Kaynağa göre</h2><div class="week-grid">${bySource.map((s) => `<div class="stat"><b>${pct(s.p)}</b><span>${esc(s.label)} · ${s.n} cevap</span></div>`).join("")}</div>` : ""}
+      <h2>Deneme sınavları</h2>
+      ${mocks.length ? `<section class="desk-card chart-card">${mockChartSvg(mocks)}<p class="desk-meta">Son ${mocks.length} deneme · en yüksek ${Math.round(Math.max(...mocks.map((m) => m.score)))} puan · ortalama ${Math.round(mocks.reduce((a, m) => a + m.score, 0) / mocks.length)} puan</p></section>`
+        : `<p class="muted">Henüz deneme sınavı çözmedin. <a href="#/karisik?mod=deneme">AÖF formatında bir deneme başlat</a>.</p>`}`;
+  }
 
   // ---- transkript ------------------------------------------------------------
   function viewTranscript() {
@@ -1975,7 +2542,7 @@
     const b = document.getElementById("reset");
     if (!b) return;
     b.onclick = () => {
-      if (b.dataset.armed) { progress = {}; save(progress); study = loadStudy(); study.cards = {}; study.days = {}; study.frozen = []; saveStudy(); route(); return; }
+      if (b.dataset.armed) { progress = {}; save(progress); study = loadStudy(); study.cards = {}; study.days = {}; study.frozen = []; study.log = []; study.mocks = []; saveStudy(); route(); return; }
       b.dataset.armed = "1";
       b.textContent = "Tüm sonuçları silmek için tekrar tıklayın";
       setTimeout(() => { if (document.body.contains(b)) { delete b.dataset.armed; b.textContent = "İlerlememi sıfırla"; } }, 4000);
@@ -2543,6 +3110,22 @@
       for (const e of map.edges || []) {
         elements.push({ group: "edges", data: { source: e.source, target: e.target } });
       }
+      // Ekran okuyucu ve klavye için aynı haritanın iç içe liste hâli.
+      const outline = root.querySelector("#mm-outline > div");
+      if (outline) {
+        const kids = {};
+        for (const e of map.edges || []) (kids[e.source] = kids[e.source] || []).push(e.target);
+        const seen = new Set();
+        const li = (id) => {
+          if (seen.has(id) || !nodeById[id]) return "";
+          seen.add(id);
+          const n = nodeById[id];
+          const sub = (kids[id] || []).map(li).join("");
+          return `<li>${n.href ? `<a href="${esc(n.href)}">${esc(n.label)}</a>` : esc(n.label)}${n.desc ? ` <span class="muted">${esc(n.desc)}</span>` : ""}${sub ? `<ul>${sub}</ul>` : ""}</li>`;
+        };
+        const roots = (map.nodes || []).filter((n) => (n.depth || 0) === 0);
+        outline.innerHTML = `<ul>${(roots.length ? roots : map.nodes || []).map((n) => li(n.id)).join("")}</ul>`;
+      }
       ensureCytoscape().then((cytoscape) => {
         if (cy) { cy.destroy(); cy = null; }
         cy = cytoscape({
@@ -2695,6 +3278,8 @@ document.addEventListener("keydown",function(e){
   else if(e.key==="0"){s=1;ap()}
 });
 img.ondblclick=function(e){e.preventDefault();var r=img.getBoundingClientRect();var f=s>1?1:2;s=f;ap()};
+document.addEventListener("keydown",function(e){if(e.key==="Escape")window.close()});
+document.getElementById("zin").focus();
 </script></body></html>`);
     win.document.close();
   }
@@ -2948,6 +3533,9 @@ img.ondblclick=function(e){e.preventDefault();var r=img.getBoundingClientRect();
     }
     for (const [k, day] of Object.entries(b.days || {})) study.days[k] = study.days[k] ? mergeRecord(study.days[k], day) : day;
     study.frozen = Array.from(new Set(study.frozen.concat(b.frozen || []))).sort();
+    const byT = (list) => Array.from(new Map(list.map((x) => [Array.isArray(x) ? x[0] + x[1] : x.t, x])).values()).sort((x, y) => (x.t || x[0]) - (y.t || y[0]));
+    study.log = byT(study.log.concat(b.log || [])).slice(-3000);
+    study.mocks = byT(study.mocks.concat(b.mocks || [])).slice(-100);
     saveStudy();
   }
 
@@ -3100,7 +3688,7 @@ img.ondblclick=function(e){e.preventDefault();var r=img.getBoundingClientRect();
     return { parts, query, path: parts.join("/") };
   }
 
-  let routeSeq = 0;
+  let routeSeq = 0, routed = false;
   async function route() {
     const seq = ++routeSeq;
     const { parts, query } = parseLoc();
@@ -3111,7 +3699,7 @@ img.ondblclick=function(e){e.preventDefault();var r=img.getBoundingClientRect();
     else if (parts[0] === "ozet") { need.add("interactive"); need.add("coursegraph"); needExamData(); }
     else if (parts[0] === "ara") need.add("coursegraph");
     else if (parts[0] === "transcript" || parts[0] === "certificate" || parts[0] === "calisma") { /* data.js yeterli */ }
-    else if (parts[0] === "tekrar" || parts[0] === "hatalar") needExamData();
+    else if (["tekrar", "hatalar", "karisik", "analiz"].includes(parts[0])) needExamData();
     else if (parts[0] === "course" && bySlug[parts[1]]) {
       if (parts[2] === "chapter") { need.add("mindmaps"); need.add("interactive"); need.add("past_exams"); }
       else if (parts[2] === "quiz") { /* data.js quiz yeterli */ }
@@ -3137,6 +3725,8 @@ img.ondblclick=function(e){e.preventDefault();var r=img.getBoundingClientRect();
     else if (parts[0] === "calisma") { html = viewStudyDesk(); bind = bindStudyDesk; }
     else if (parts[0] === "tekrar") { html = viewReview(query); bind = bindReview; }
     else if (parts[0] === "hatalar") { html = viewMistakes(query); bind = bindMistakes; }
+    else if (parts[0] === "karisik") { html = viewMix(query); bind = bindMix; }
+    else if (parts[0] === "analiz") { html = viewAnalysis(query); bind = () => {}; }
     else if (parts[0] === "course" && bySlug[parts[1]]) {
       const c = bySlug[parts[1]];
       if (parts[2] === "chapter") { html = viewChapter(c, +parts[3]); bind = bindMindmaps; }
@@ -3164,8 +3754,15 @@ img.ondblclick=function(e){e.preventDefault();var r=img.getBoundingClientRect();
     document.querySelectorAll(".nav a").forEach((a) => {
       const href = a.getAttribute("href");
       const key = parts[0] || "";
-      a.classList.toggle("active", href === "#/" + key || (href === "#/calisma" && (key === "tekrar" || key === "hatalar")));
+      const on = href === "#/" + key || (href === "#/calisma" && ["tekrar", "hatalar", "analiz"].includes(key)) || (href === "#/sinavlar" && key === "karisik");
+      a.classList.toggle("active", on);
+      if (on) a.setAttribute("aria-current", "page"); else a.removeAttribute("aria-current");
     });
+    // Sayfa değişince başlığı güncelle ve odağı içeriğe taşı (ekran okuyucu yeni sayfayı okusun).
+    const h1 = app.querySelector("h1");
+    document.title = (h1 && parts.length ? h1.textContent.trim() + " · " : "") + CONFIG.name;
+    if (routed) app.focus({ preventScroll: true });
+    routed = true;
     window.scrollTo(0, 0);
   }
   window.addEventListener("hashchange", route);
@@ -3173,6 +3770,35 @@ img.ondblclick=function(e){e.preventDefault();var r=img.getBoundingClientRect();
 
   // ---- PWA: service worker kaydı ve güncelleme bildirimi (offline.js bölümü yukarıda) ----
   setupServiceWorker();
+
+  // ---- tema: sistem / açık / koyu (index.html'deki küçük betik ilk boyamadan önce uygular) ----
+  const THEME_KEY = "pu.theme";
+  const THEME_LABEL = { "": "Tema: sistem", light: "Tema: açık", dark: "Tema: koyu" };
+  const THEME_ICON = {
+    "": `<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3a9 9 0 1 0 0 18V3z"/><circle cx="12" cy="12" r="8.2" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>`,
+    light: `<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5" fill="currentColor"/><path stroke="currentColor" stroke-width="1.8" stroke-linecap="round" d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg>`,
+    dark: `<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>`,
+  };
+  function currentTheme() { try { return localStorage.getItem(THEME_KEY) || ""; } catch (e) { return ""; } }
+  function applyTheme(t) {
+    if (t) document.documentElement.dataset.theme = t; else delete document.documentElement.dataset.theme;
+    const dark = t === "dark" || (!t && window.matchMedia("(prefers-color-scheme: dark)").matches);
+    const meta = document.querySelector('meta[name="theme-color"]');
+    if (meta) meta.content = dark ? "#0d121d" : CONFIG.colors.primary;
+    const btn = document.getElementById("theme-toggle");
+    if (btn) { btn.innerHTML = THEME_ICON[t] + `<span>${THEME_LABEL[t].replace("Tema: ", "")}</span>`; btn.setAttribute("aria-label", THEME_LABEL[t] + ". Değiştirmek için dokun."); }
+  }
+  (function setupTheme() {
+    const btn = document.getElementById("theme-toggle");
+    applyTheme(currentTheme());
+    if (btn) btn.onclick = () => {
+      const next = { "": "light", light: "dark", dark: "" }[currentTheme()];
+      try { if (next) localStorage.setItem(THEME_KEY, next); else localStorage.removeItem(THEME_KEY); } catch (e) { /* yok */ }
+      applyTheme(next);
+      showToast(THEME_LABEL[next] + (next ? "" : " (cihazın ayarını izler)"));
+    };
+    window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => applyTheme(currentTheme()));
+  })();
 
   // ---- bağlantı rozeti: çevrimdışıyken köşede "Çevrimdışı çalışıyorsun" ----
   function updateNetBadge() {
