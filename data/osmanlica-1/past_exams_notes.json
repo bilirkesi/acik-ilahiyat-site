@@ -1,0 +1,613 @@
+{
+ "20252026-guz-vize-a": {
+  "1": {
+   "unit": 1,
+   "stem": "مِلّتْ (millet) kelimesindeki harekeler aşağıdakilerden hangisinde sırasıyla ve doğru olarak verilmiştir?",
+   "explanation": "Mim'in altındaki esre \"i\" okutur, lam'ın üstündeki şedde iki \"l\" okutur (mil-let), sondaki te'nin üstündeki cezm (sükûn) ise onu ünlüsüz okutur. Sıra: esre, şedde, cezm."
+  },
+  "2": {
+   "unit": 1,
+   "explanation": "ژ (je) harfi Arap alfabesinde yoktur; İranlılar tarafından eklenmiştir. ط, ك, ض ve ع ise asıl Arap harfleridir."
+  },
+  "3": {
+   "unit": 2,
+   "explanation": "Genizden gelen nazal ñ, Osmanlı Türkçesinde üç noktalı kef (ڭ) ile gösterilir. Bu harfe kâf-ı nûnî ya da sağır kef denir."
+  },
+  "4": {
+   "unit": 1,
+   "explanation": "Çift esre (esreli tenvin) kelimenin son harfini \"ın/in\" okutur. Üstünlü tenvin \"an/en\", ötreli tenvin \"un/ün\" okutur."
+  },
+  "5": {
+   "unit": 1,
+   "explanation": "Kendinden sonraki harfle bitişmeyen harfler elif, dal, zel, re, ze, je, vav ve he'dir (ا د ذ ر ز ژ و ه). Seçeneklerde bunlardan yalnızca vav (و) vardır."
+  },
+  "6": {
+   "unit": 2,
+   "explanation": "پاپا kelimesi iki pe (پ) harfiyle yazılmıştır ve \"papa\" okunur. \"Baba\" için iki be (ب) gerekir: بابا."
+  },
+  "7": {
+   "unit": 2,
+   "explanation": "Kelime başındaki ı/i ünlüsü elif ve ye (اي) ile yazılır: ايت (it). أش ve اش gibi yazılışlarda ye yoktur; آ ise \"a\" okutur."
+  },
+  "8": {
+   "unit": 2,
+   "explanation": "S sesinin incesi sin (س), kalını sad (ص) ile yazılır. K (ك/ق), t (ت/ط), z (ز/ظ) ve ğ (گ/غ) de böyledir; b, c, v ve y'nin tek harfi vardır."
+  },
+  "9": {
+   "unit": 2,
+   "explanation": "سوركو harfleri s-v-r-g-v'dir. Vav'lar ü okutur: sürgü. Sargı, sergi ve saygı yazılışlarında elif/ye bulunurdu.",
+   "stem": "سوركو kelimesinin doğru okunuşu aşağıdakilerden hangisindedir?"
+  },
+  "10": {
+   "unit": 2,
+   "explanation": "Türkçe kelimelerde \"e\" ünlüsü kelime içinde genellikle yazılmaz (bazen güzel he ile gösterilir). Bu yüzden \"mutlaka gösterilir\" ifadesi yanlıştır."
+  },
+  "11": {
+   "unit": 4,
+   "explanation": "Fi'l-hakîka \"gerçekte, hakikatte\" demektir; \"lâkin\" anlamı yoktur. Diğer eşleştirmeler doğrudur."
+  },
+  "12": {
+   "unit": 3,
+   "explanation": "چیق (çık-) köküne gereklilik eki -malı (مالى) gelmiştir: çıkmalı. Kökte re olmadığı için \"çıkarmalı\" okunamaz.",
+   "stem": "چيقمالى kelimesinin doğru okunuşu aşağıdakilerden hangisidir?"
+  },
+  "13": {
+   "unit": 3,
+   "explanation": "ايچملى \"içmeli\" okunur. Sondaki ملى (-meli) gereklilik kipi ekidir.",
+   "stem": "ايچملى kelimesindeki ek aşağıdakilerden hangisine örnektir?"
+  },
+  "14": {
+   "unit": 3,
+   "explanation": "Dilek-şart kipi eki -sa/-se tek şekilli olarak سه ile yazılır: كلسه (gelse), اوقوسه (okusa)."
+  },
+  "15": {
+   "unit": 3,
+   "explanation": "Vaktâki \"ne vakit ki, -dığı zaman\" anlamında bir bağlama edatıdır.",
+   "stem": "وقتاكي (vaktâki) bağlama edatının anlamı aşağıdakilerden hangisidir?"
+  },
+  "16": {
+   "unit": 4,
+   "explanation": "Fi'l-hâl \"hemen, o anda\" anlamına gelen bir zarftır. Ba'de \"sonra\", berü \"beri\", ne gûne \"ne şekilde\" demektir."
+  },
+  "17": {
+   "unit": 4,
+   "explanation": "Berren \"kara yoluyla\", bahren \"deniz yoluyla\" demektir. Der-akab ise \"hemen arkasından\" anlamındadır."
+  },
+  "18": {
+   "unit": 4,
+   "explanation": "-ıp, -ip, -up, -üp zarf fiil eki ünlü uyumuna bakılmaksızın tek şekilde (ب) yazılır: كلوب (gelip), آلوب (alıp)."
+  },
+  "19": {
+   "unit": 4,
+   "explanation": "Rakamlar soldan sağa yazılır: ٥ beştir, ٥٠ de \"elli\"dir. ٢٠ yirmi, ٦٠ altmış, ٣٠ otuz, ١٠ ondur."
+  },
+  "20": {
+   "unit": 4,
+   "explanation": "Çokluk eki -lar/-ler ünlüsü yazılmadan tek şekilde لر ile yazılır. اغاچلار yazımında araya elif konduğu için yanlıştır; doğrusu اغاچلر'dir."
+  }
+ },
+ "20242025-guz-vize-a": {
+  "1": {
+   "unit": 4,
+   "explanation": "Bekleşirken kelimesindeki -(ı)rken eki zarf fiil (gerindium) ekidir. Yazışmak'ta mastar, dördüncü'de sıra sayı, kadıncağız'da küçültme, kolayca'da -ca eki vardır."
+  },
+  "2": {
+   "unit": 4,
+   "stem": "كورمك (görmek) fiilinin gelecek zaman çokluk 3. şahıs çekimi aşağıdakilerden hangisidir?",
+   "explanation": "Gelecek zaman eki -acak/-ecek جق/جك ile yazılır; çokluk 3. şahısta sona لر eklenir: كوره جكلر (görecekler)."
+  },
+  "3": {
+   "unit": 3,
+   "explanation": "Gereklilik kipi eki -malı/-meli ملى (kalın ünlülü fiillerde bazen مالى) ile yazılır. مقده şimdiki zaman, سه dilek-şart, سين emir kipi ekidir."
+  },
+  "4": {
+   "unit": 3,
+   "explanation": "كركسه (gerekse) kelimesinde ön edat yoktur. بدوش (be-dûş: omuzda), درحال (der-hâl), ازبر (ez-ber) ve باوقار (bâ-vakâr) kelimeleri be, der, ez ve bâ ön edatlarıyla kurulmuştur."
+  },
+  "5": {
+   "unit": 1,
+   "stem": "آمِرْ (âmir) kelimesindeki harekeler aşağıdakilerin hangisinde sırasıyla ve doğru olarak verilmiştir?",
+   "explanation": "Elifin üstündeki med uzun â okutur, mim'in altındaki esre \"i\" okutur, re'nin üstündeki cezm onu ünlüsüz bırakır: âmir. Sıra: med, esre, cezm."
+  },
+  "6": {
+   "unit": 1,
+   "explanation": "Şirret kelimesinde re harfi şeddelidir (şir-ret), ilk hecedeki re ise cezimlidir. Hakkı'da şedde var ama cezm gerekmez; terk'te şedde yoktur."
+  },
+  "7": {
+   "unit": 5,
+   "stem": "صداقت kelimesinin doğru okunuşu aşağıdakilerden hangisidir?",
+   "explanation": "صداقت: sad-dal-elif-kaf-te. Elif uzun â okutur, ilk hece kısadır: sadâkat (fa'âlet vezni)."
+  },
+  "8": {
+   "unit": 2,
+   "explanation": "Türkçe kelimelerin sonundaki \"e\" ünlüsü güzel he (ه) ile yazılır: دره (dere). Kelime içinde ise çoğunlukla yazılmaz."
+  },
+  "9": {
+   "unit": 3,
+   "stem": "ييقامقده kelimesinin doğru okunuşu aşağıdakilerden hangisidir?",
+   "explanation": "ييقا (yıka-) kökünden sonra gelen مقده -makta ekidir. Kökte elif bulunduğu için \"yıkmakta\" değil \"yıkamakta\" okunur."
+  },
+  "10": {
+   "unit": 2,
+   "stem": "سوز - سوك - صوص kelimelerinin okunuşları aşağıdakilerin hangisinde sırasıyla (sağdan sola) ve doğru olarak verilmiştir?",
+   "explanation": "Sağdan sola: سوز süz, سوك sök, صوص sus. İnce sin ve kef ince ünlüyü, kalın sad kalın ünlüyü gösterir."
+  },
+  "11": {
+   "unit": 4,
+   "explanation": "Fi'l-hâl \"hemen, o anda\" demektir. Ba'de \"sonra\", berü \"beri\", ne gûne \"ne şekilde\" anlamındadır."
+  },
+  "12": {
+   "unit": 1,
+   "explanation": "Cezm (sükûn) harfin üstüne konur ve o harfi ünlüsüz okutur. Med uzun â, şedde harfi iki kez okutur."
+  },
+  "13": {
+   "unit": 1,
+   "explanation": "Ye (ى) hem önceki hem sonraki harfle bitişir. Elif, dal, vav ve ze kendinden sonraki harfle bitişmez."
+  },
+  "14": {
+   "unit": 2,
+   "explanation": "k (ك/ق), t (ت/ط), s (س/ص) ve z (ز/ظ) seslerinin Osmanlı alfabesinde ayrı ince ve kalın harfleri vardır."
+  },
+  "15": {
+   "unit": 2,
+   "stem": "اكلمق (anlamak) kelimesindeki \"n\" harfinin karşılığı Osmanlı Türkçesi'nde aşağıdakilerden hangisi ile ifade edilmektedir?",
+   "explanation": "Anlamak (eski söyleyişle añlamak) kelimesindeki genizsi ñ, kâf-ı nûnî (ڭ, sağır kef) ile yazılır."
+  },
+  "16": {
+   "unit": 3,
+   "explanation": "Evde kelimesindeki -de bulunma hâli ekidir, yani çekim ekidir. Gözlük, işsiz ve Türkçe kelimelerindeki -lük, -siz, -çe ise yapım ekleridir."
+  },
+  "17": {
+   "unit": 5,
+   "explanation": "Hı (خ) Türkçe kelimelerde bulunmaz; Farsça kelimelerde ve bazı Anadolu ağızlarında görülür. ر, د, ق ve ب Türkçe kelimelerde de kullanılır."
+  },
+  "18": {
+   "unit": 4,
+   "stem": "Osmanlı Türkçesinde kullanılan ٨٠ sayısının günümüz Türkçesindeki doğru karşılığı aşağıdakilerden hangisidir?",
+   "explanation": "٨ sekizdir; yanındaki ٠ sıfırdır. Rakamlar soldan sağa yazıldığı için ٨٠ \"seksen\" (80) okunur."
+  },
+  "19": {
+   "unit": 4,
+   "explanation": "Bildirme ekleri (-dır/-dir, -ım/-im vb.) isim cümlesinin yüklemini kurar: \"Bu ev güzeldir.\""
+  },
+  "20": {
+   "unit": 3,
+   "stem": "ايشچى kelimesinin niteliği ile ilgili aşağıdaki ifadelerden hangisi yanlıştır?",
+   "explanation": "ايشچى \"işçi\" okunur: tek heceli iş kökü ve -çi yapım ekinden oluşur. Kelimede çekim eki yoktur."
+  }
+ },
+ "20232024-guz-vize-a": {
+  "1": {
+   "unit": 3,
+   "explanation": "Der-dest \"elde, elde etme\" demektir (der: içinde, dest: el). Der-hâl \"hemen\", ber-dâr \"asılmış\", fi'l-hakîka \"gerçekte\", ber-kemâl \"tam olarak\" anlamındadır."
+  },
+  "2": {
+   "unit": 1,
+   "explanation": "Med (آ) elif harfinin üstüne konur ve uzun â sesi verir: آمر (âmir). İlk sesi a olan Türkçe kelimelerde de kullanılır: آت (at)."
+  },
+  "3": {
+   "unit": 3,
+   "stem": "چيقمالى kelimesinin doğru okunuşu aşağıdakilerden hangisidir?",
+   "explanation": "چیق (çık-) köküne gereklilik eki -malı (مالى) gelmiştir: çıkmalı. Kökte re olmadığı için \"çıkarmalı\" okunamaz."
+  },
+  "4": {
+   "unit": 2,
+   "explanation": "اولو yazılışı birden fazla kelimeyi karşılar: ulu ve ölü. Vav harfi o/ö/u/ü seslerinin hepsini gösterdiği için anlam bağlamdan çıkarılır."
+  },
+  "5": {
+   "unit": 4,
+   "explanation": "Nice (نیجه) \"nasıl\" anlamında kullanılan bir zarftır. Kanda (قنده) \"nerede\", ayruk (آیرق) \"başka\" demektir."
+  },
+  "6": {
+   "unit": 4,
+   "explanation": "Ayruk (آیرق) \"başka, ayrı\" anlamına gelen eski Türkçe bir kelimedir. Nice \"nasıl\", kanda \"nerede\" demektir."
+  },
+  "7": {
+   "unit": 3,
+   "explanation": "Hayfâ (حيفا), hayf (حيف), dirîgâ (دريغا) ve efsûs (افسوس) \"yazık, ne yazık\" anlamında ünlemlerdir. İmdi (امدى) ise \"şimdi, öyleyse\" anlamında bir bağlama edatıdır."
+  },
+  "8": {
+   "unit": 1,
+   "explanation": "Esreli tenvin (çift esre) kelimenin son harfini \"ın/in\" okutur. Üstünlü tenvin \"an/en\", ötreli tenvin \"un/ün\" okutur."
+  },
+  "9": {
+   "unit": 4,
+   "stem": "بزمله (bizimle) kelimesinde zamirin görevi aşağıdakilerden hangisidir?",
+   "explanation": "Biz zamirine gelen -le (ile) eki vasıta hâlidir: bizimle = bizim ile."
+  },
+  "10": {
+   "unit": 2,
+   "explanation": "Ünlü yerine kullanılan harfler elif (ا), vav (و), ye (ى) ve güzel he'dir (ه). غ ص ق grubunda bunlardan hiçbiri yoktur."
+  },
+  "11": {
+   "unit": 2,
+   "explanation": "Atkı kelimesi kalın ünlülü olduğu için kalın kaf ile yazılır; ilk a medli eliftir: آتقی."
+  },
+  "12": {
+   "unit": 4,
+   "explanation": "٦ altıdır; ٦٠ \"altmış\" okunur. ٧٠ yetmiş, ٣٠ otuz, ٥٠ elli, ٩٠ doksandır."
+  },
+  "13": {
+   "unit": 1,
+   "explanation": "Vav (و) kendinden sonraki harfle bitişmez. ح, ش, ص ve ق her iki taraftan bitişebilir."
+  },
+  "14": {
+   "unit": 5,
+   "stem": "آمل kelimesinin doğru okunuşu aşağıdakilerden hangisidir?",
+   "explanation": "آمل: medli elif uzun â okutur, ardından mim ve lam gelir. fâ'il vezninde \"âmil\" (amel eden, etken) okunur."
+  },
+  "15": {
+   "unit": 5,
+   "explanation": "Zel (ذ) Arapçaya özgü bir harftir, Türkçe kelimelerin yazımında kullanılmaz. ق, ن, ب ve ر Türkçe kelimelerde de geçer."
+  },
+  "16": {
+   "unit": 4,
+   "explanation": "Muhibbâne \"dostça\" demektir (-âne eki \"-ca, -ce\" anlamı katar). Dâimen \"daima\", berren \"kara yoluyla\" demektir."
+  },
+  "17": {
+   "unit": 3,
+   "explanation": "Yâ (يا) bir ünlemdir (\"ey\"). Be (به), ber (بر), ez (از) ve bâ (با) ise Farsça ön edatlardır."
+  },
+  "18": {
+   "unit": 3,
+   "explanation": "Der-âgûş (درآغوش) \"kucakta, kucaklama\" demektir. Der-dest \"elde\", be-dûş \"omuzda\", ale'l-husûs \"özellikle\" anlamındadır."
+  },
+  "19": {
+   "unit": 2,
+   "explanation": "Irmak kalın ünlülü bir kelimedir, sonundaki k kalın kaf (ق) ile yazılır: ایرماق. ایرمك yazımı ince kef kullandığı için yanlıştır."
+  },
+  "20": {
+   "unit": 5,
+   "stem": "ولايت kelimesinin doğru okunuşu aşağıdakilerden hangisidir?",
+   "explanation": "ولايت: vav-lamelif-ye-te. fi'âlet vezninde \"vilâyet\" okunur."
+  }
+ },
+ "20222023-guz-vize-b": {
+  "1": {
+   "unit": 1,
+   "explanation": "İlk sesi uzun ya da kısa \"a\" olan kelimelerin başındaki elifin üstüne med (آ) konur: آت (at), آلتون (altun)."
+  },
+  "2": {
+   "unit": 1,
+   "stem": "سالم (sâlim) kelimesinin sonuna üstünlü tenvin getirilirse aşağıdaki okumalardan hangisi elde edilir?",
+   "explanation": "Üstünlü tenvin kelimenin son harfini \"an/en\" okutur: sâlim + en = sâlimen. Esreli tenvin sâlimin, ötreli tenvin sâlimun okutur."
+  },
+  "3": {
+   "unit": 5,
+   "explanation": "Hı (خ) Türkçe kelimelerde bulunmaz; Farsça kelimelerde ve bazı Anadolu ağızlarında görülür. د, ب, ر ve ق Türkçe kelimelerde de kullanılır."
+  },
+  "4": {
+   "unit": 2,
+   "explanation": "Ünlü yerine kullanılan harfler elif (ا), vav (و), ye (ى) ve güzel he'dir (ه). غ ص ق grubunda bunlardan hiçbiri yoktur."
+  },
+  "5": {
+   "unit": 1,
+   "explanation": "ژیر (jîr) kelimesindeki je (ژ) Arap alfabesinde yoktur; İranlıların eklediği bir harftir."
+  },
+  "6": {
+   "unit": 3,
+   "stem": "در (der) ön edatı yardımıyla \"kucaklama\" anlamına gelen kelime aşağıdakilerden hangisidir?",
+   "explanation": "Der-âgûş \"kucakta, kucaklama\" demektir (âgûş: kucak). Der-dest \"elde\", der-gâh \"tekke, kapı\", der-hâl \"hemen\" anlamındadır."
+  },
+  "7": {
+   "unit": 2,
+   "stem": "Bazı kelimeler birkaç türlü okunabilir. Bunların hangi kelime olduğu ve ne tür okunacağı metin içinde anlama dikkat edilerek belirlenir. ------- kelimesi de bunlardan biridir. Yukarıdaki cümlede boş bırakılan yeri aşağıdaki kelimelerden hangisi doğru olarak tamamlar?",
+   "explanation": "قوش hem \"kuş\" hem \"koş\" okunabilir, çünkü vav o ve u seslerinin ikisini de gösterir. Hangisinin kastedildiği cümledeki anlamdan anlaşılır."
+  },
+  "8": {
+   "unit": 4,
+   "explanation": "Vâkı'a \"gerçi, aslında\" anlamında kullanılan bir zarftır. Fi'l-hâl \"hemen\", der-akab \"hemen ardından\", muhibbâne \"dostça\", dâimen \"daima\" demektir."
+  },
+  "9": {
+   "unit": 4,
+   "explanation": "Çokluk eki -lar/-ler her zaman ünlüsü yazılmadan لر olarak yazılır: آغاچلر (ağaçlar). Diğer seçeneklerde ekte fazladan elif ya da ayrı yazım vardır."
+  },
+  "10": {
+   "unit": 2,
+   "explanation": "S sesinin incesi sin (س), kalını sad (ص) ile yazılır. m, v, l ve b için tek harf vardır."
+  },
+  "11": {
+   "unit": 4,
+   "stem": "Osmanlı Türkçesinde \"نيجه\" zarfı ------- anlamında kullanılır. Yukarıdaki cümlede boş bırakılan yeri aşağıdakilerden hangisi doğru olarak tamamlar?",
+   "explanation": "Nice (نیجه) zarfı Osmanlı Türkçesinde \"nasıl\" anlamında kullanılır."
+  },
+  "12": {
+   "unit": 3,
+   "stem": "\"كلمه سكز\" çekimli fiilinin doğru okunuşu aşağıdakilerden hangisidir?",
+   "explanation": "كل (gel-) + مه (-me, olumsuzluk) + سه (-se, dilek-şart) + كز (-niz): gelmeseniz."
+  },
+  "13": {
+   "unit": 1,
+   "explanation": "Millet (ملّت) ve şiddet (شدّت) kelimelerinde aynı ünsüz yan yana geldiği için şedde kullanılır. Külfet ve nedamet'te ikiz ünsüz yoktur."
+  },
+  "14": {
+   "unit": 3,
+   "stem": "زينهار - zinhâr (sakın, dikkat) kelimesi tür bakımından aşağıdakilerden hangisine örnektir?",
+   "explanation": "Zinhâr \"sakın, aman\" anlamında bir ünlemdir; uyarı bildirir."
+  },
+  "15": {
+   "unit": 1,
+   "explanation": "Esre (kesre) harfin altına konur ve harfi \"ı/i\" okutur. Üstün harfin üstünde \"a/e\", ötre harfin üstünde \"o/ö/u/ü\" okutur."
+  },
+  "16": {
+   "unit": 3,
+   "stem": "وقتاكي (vaktâki) bağlama edatının anlamı aşağıdakilerden hangisidir?",
+   "explanation": "Vaktâki \"ne vakit ki, -dığı zaman\" anlamında bir bağlama edatıdır."
+  },
+  "17": {
+   "unit": 4,
+   "stem": "Osmanlı Türkçesindeki (٧٠) rakamının karşılığı aşağıdakilerden hangisidir?",
+   "explanation": "٧ yedidir, ٠ sıfırdır; rakamlar soldan sağa okunduğundan ٧٠ \"yetmiş\" (70) olur."
+  },
+  "18": {
+   "unit": 4,
+   "explanation": "Bulunma hâli eki -da/-de, ünlüsü yazılmadan ده ile yazılır: جنتده (cennette). جنتته yazımı bu yüzden yanlıştır."
+  },
+  "19": {
+   "unit": 2,
+   "explanation": "قوراق kalın kaf ve elifle yazıldığı için \"kurak\" okunur. Sülük, çürük ve sorgu yazılışları seçeneklerde verilen harflerle uyuşmaz; بوروون da \"boran\" okunamaz."
+  },
+  "20": {
+   "unit": 3,
+   "explanation": "Şimdiki zamanın -makta/-mekte ekleri مقده (kalın) ve مكده (ince) olarak fiil tabanına eklenir: چالیشمقده (çalışmakta), بكلمكده (beklemekte)."
+  }
+ },
+ "20222023-guz-vize-a": {
+  "1": {
+   "unit": 1,
+   "explanation": "Esre (kesre) harfin altına konur ve harfi \"ı/i\" okutur. Üstün harfin üstünde \"a/e\", ötre harfin üstünde \"o/ö/u/ü\" okutur."
+  },
+  "2": {
+   "unit": 4,
+   "explanation": "Bulunma hâli eki -da/-de, ünlüsü yazılmadan ده ile yazılır: جنتده (cennette). جنتته yazımı bu yüzden yanlıştır."
+  },
+  "3": {
+   "unit": 3,
+   "explanation": "Şimdiki zamanın -makta/-mekte ekleri مقده (kalın) ve مكده (ince) olarak fiil tabanına eklenir: چالیشمقده (çalışmakta), بكلمكده (beklemekte)."
+  },
+  "4": {
+   "unit": 4,
+   "explanation": "Vâkı'a \"gerçi, aslında\" anlamında kullanılan bir zarftır. Fi'l-hâl \"hemen\", der-akab \"hemen ardından\", muhibbâne \"dostça\", dâimen \"daima\" demektir."
+  },
+  "5": {
+   "unit": 2,
+   "stem": "Bazı kelimeler birkaç türlü okunabilir. Bunların hangi kelime olduğu ve ne tür okunacağı metin içinde anlama dikkat edilerek belirlenir. ------- kelimesi de bunlardan biridir. Yukarıdaki cümlede boş bırakılan yeri aşağıdaki kelimelerden hangisi doğru olarak tamamlar?",
+   "explanation": "قوش hem \"kuş\" hem \"koş\" okunabilir, çünkü vav o ve u seslerinin ikisini de gösterir. Hangisinin kastedildiği cümledeki anlamdan anlaşılır."
+  },
+  "6": {
+   "unit": 1,
+   "explanation": "Millet (ملّت) ve şiddet (شدّت) kelimelerinde aynı ünsüz yan yana geldiği için şedde kullanılır. Külfet ve nedamet'te ikiz ünsüz yoktur."
+  },
+  "7": {
+   "unit": 1,
+   "stem": "سالم (sâlim) kelimesinin sonuna üstünlü tenvin getirilirse aşağıdaki okumalardan hangisi elde edilir?",
+   "explanation": "Üstünlü tenvin kelimenin son harfini \"an/en\" okutur: sâlim + en = sâlimen. Esreli tenvin sâlimin, ötreli tenvin sâlimun okutur."
+  },
+  "8": {
+   "unit": 4,
+   "explanation": "Çokluk eki -lar/-ler her zaman ünlüsü yazılmadan لر olarak yazılır: آغاچلر (ağaçlar). Diğer seçeneklerde ekte fazladan elif ya da ayrı yazım vardır."
+  },
+  "9": {
+   "unit": 3,
+   "stem": "در (der) ön edatı yardımıyla \"kucaklama\" anlamına gelen kelime aşağıdakilerden hangisidir?",
+   "explanation": "Der-âgûş \"kucakta, kucaklama\" demektir (âgûş: kucak). Der-dest \"elde\", der-gâh \"tekke, kapı\", der-hâl \"hemen\" anlamındadır."
+  },
+  "10": {
+   "unit": 5,
+   "explanation": "Hı (خ) Türkçe kelimelerde bulunmaz; Farsça kelimelerde ve bazı Anadolu ağızlarında görülür. د, ب, ر ve ق Türkçe kelimelerde de kullanılır."
+  },
+  "11": {
+   "unit": 3,
+   "stem": "وقتاكي (vaktâki) bağlama edatının anlamı aşağıdakilerden hangisidir?",
+   "explanation": "Vaktâki \"ne vakit ki, -dığı zaman\" anlamında bir bağlama edatıdır."
+  },
+  "12": {
+   "unit": 2,
+   "explanation": "S sesinin incesi sin (س), kalını sad (ص) ile yazılır. b, l, m ve v için tek harf vardır."
+  },
+  "13": {
+   "unit": 3,
+   "stem": "زينهار - zinhâr (sakın, dikkat) kelimesi tür bakımından aşağıdakilerden hangisine örnektir?",
+   "explanation": "Zinhâr \"sakın, aman\" anlamında bir ünlemdir; uyarı bildirir."
+  },
+  "14": {
+   "unit": 3,
+   "stem": "\"كلمه سكز\" çekimli fiilinin doğru okunuşu aşağıdakilerden hangisidir?",
+   "explanation": "كل (gel-) + مه (-me, olumsuzluk) + سه (-se, dilek-şart) + كز (-niz): gelmeseniz."
+  },
+  "15": {
+   "unit": 2,
+   "explanation": "قوراق kalın kaf ve elifle yazıldığı için \"kurak\" okunur. Sülük, çürük ve sorgu yazılışları seçeneklerde verilen harflerle uyuşmaz; بوروون da \"boran\" okunamaz."
+  },
+  "16": {
+   "unit": 2,
+   "explanation": "Ünlü yerine kullanılan harfler elif (ا), vav (و), ye (ى) ve güzel he'dir (ه). غ ص ق grubunda bunlardan hiçbiri yoktur."
+  },
+  "17": {
+   "unit": 4,
+   "stem": "Osmanlı Türkçesindeki (٧٠) rakamının karşılığı aşağıdakilerden hangisidir?",
+   "explanation": "٧ yedidir, ٠ sıfırdır; rakamlar soldan sağa okunduğundan ٧٠ \"yetmiş\" (70) olur."
+  },
+  "18": {
+   "unit": 1,
+   "explanation": "İlk sesi uzun ya da kısa \"a\" olan kelimelerin başındaki elifin üstüne med (آ) konur: آت (at), آلتون (altun)."
+  },
+  "19": {
+   "unit": 4,
+   "stem": "Osmanlı Türkçesinde \"نيجه\" zarfı ------- anlamında kullanılır. Yukarıdaki cümlede boş bırakılan yeri aşağıdakilerden hangisi doğru olarak tamamlar?",
+   "explanation": "Nice (نیجه) zarfı Osmanlı Türkçesinde \"nasıl\" anlamında kullanılır."
+  },
+  "20": {
+   "unit": 1,
+   "explanation": "ژیر (jîr) kelimesindeki je (ژ) Arap alfabesinde yoktur; İranlıların eklediği bir harftir."
+  }
+ },
+ "20212022-guz-vize-b": {
+  "1": {
+   "unit": 2,
+   "explanation": "ترلك (terlik) yazımında e ve i ünlüleri gösterilmemiştir. Diğer kelimelerde ünlüler vav, elif ya da ye ile yazılmıştır."
+  },
+  "2": {
+   "unit": 2,
+   "explanation": "كيجه \"gece\" okunur; buradaki ye (ى), bugün \"e\" olarak söylenen eski \"i/é\" sesini karşılar. Diğer kelimelerde ye \"ı/i\" okutur."
+  },
+  "3": {
+   "unit": 1,
+   "explanation": "Pe (پ) Arap alfabesinde yoktur; İranlılar ekledi. Çe (چ), je (ژ) ve gef (گ) de böyledir. ح, ق, ش ve غ asıl Arap harfleridir."
+  },
+  "4": {
+   "unit": 1,
+   "explanation": "Med (آ) elif harfinin üstüne konur ve uzun â okutur. A şeddeyi, B üstünü, E cezmi tanımlar."
+  },
+  "5": {
+   "unit": 1,
+   "explanation": "Mekke kelimesinde iki kef yan yana geldiği için tek kef yazılıp üstüne şedde konur: مكّه."
+  },
+  "6": {
+   "unit": 3,
+   "stem": "وقتاكي \"vaktâki\" bağlama edatının anlamı aşağıdakilerden hangisidir?",
+   "explanation": "Vaktâki \"ne vakit ki, -dığı zaman\" anlamında bir bağlama edatıdır."
+  },
+  "7": {
+   "unit": 1,
+   "explanation": "15. yüzyılın ortasından 19. yüzyıla kadar süren döneme Klasik Osmanlı Türkçesi denir. Öncesi Eski Anadolu Türkçesi, sonrası Yeni Osmanlı Türkçesidir."
+  },
+  "8": {
+   "unit": 2,
+   "explanation": "Zafer Arapça bir kelimedir ve kalın zı (ظ) ile yazılır: ظفر. Gezi, sevgi, gelin ve bekler ince ünlülü Türkçe kelimelerdir."
+  },
+  "9": {
+   "unit": 2,
+   "explanation": "Diğer dört yazım doğrudur. Ünitedeki kurala göre kalın ünlülü bir kelimenin başındaki t, kalın tı (ط) ile yazılır: طات. Cevap anahtarı bu yüzden تات yazımını yanlış sayar."
+  },
+  "10": {
+   "unit": 1,
+   "explanation": "Esre (kesre) harfin altına konur ve \"ı/i\" okutur. Üstün, ötre, cezm ve med harfin üstüne konur."
+  },
+  "11": {
+   "unit": 3,
+   "explanation": "Fe-emmâ \"amma, lâkin, fakat\" anlamında bir bağlama edatıdır. Mâ-adâ \"-den başka\", kezâ \"aynı şekilde\", velev \"-se bile\", vâkı'a \"gerçi\" demektir."
+  },
+  "12": {
+   "unit": 2,
+   "explanation": "S sesinin incesi sin (س), kalını sad (ص) ile yazılır. m, v, l ve b için tek harf vardır."
+  },
+  "13": {
+   "unit": 4,
+   "explanation": "-ıp, -ip, -up, -üp zarf fiil eki ünlü uyumuna bakılmaksızın tek şekilde yazılır: آلوب (alıp), كلوب (gelip)."
+  },
+  "14": {
+   "unit": 3,
+   "stem": "قوشمالى سك (koşmalısın) fiilinin niteliğiyle ilgili aşağıdakilerden hangisi doğrudur?",
+   "explanation": "قوش (koş-) + مالى (-malı, gereklilik) + سك (-sın, teklik 2. şahıs). Yani fiil + gereklilik kipi, teklik ikinci şahıstır."
+  },
+  "15": {
+   "unit": 3,
+   "explanation": "Gereklilik kipi eki -malı/-meli ملى ile yazılır. سين emir, سك dilek-şart, مقده şimdiki zaman, سه dilek-şart ekidir."
+  },
+  "16": {
+   "unit": 4,
+   "explanation": "Ayruk (آیرق) \"başka\" demektir. Gey \"çok\", nice \"nasıl\", ne makûle \"ne türlü\", her kaçan \"ne zaman ki\" anlamındadır."
+  },
+  "17": {
+   "unit": 4,
+   "explanation": "Çokluk eki her zaman ünlüsü yazılmadan لر ile yazılır: كوزلر (gözler). Diğer seçeneklerde eke elif eklenmiş ya da ek ayrı yazılmıştır."
+  },
+  "18": {
+   "unit": 3,
+   "explanation": "Destûr \"izin verin, müsaade, savulun\" anlamında bir ünlemdir; \"kimse yok mu?\" anlamı yanlıştır."
+  },
+  "19": {
+   "unit": 4,
+   "explanation": "٤ rakamı \"dört\"tür; \"altı\" ٦ ile yazılır. Diğer rakam-okunuş eşleştirmeleri doğrudur."
+  },
+  "20": {
+   "unit": 4,
+   "explanation": "Binâen alâ zâlik (بناءً على ذالك) \"buna göre, bundan dolayı\" demektir. Ale'l-acele \"aceleyle\", vâkı'a \"gerçi\", der-akab \"hemen ardından\", fevka'l-hadd \"son derece\" anlamındadır."
+  }
+ },
+ "20212022-guz-vize-a": {
+  "1": {
+   "unit": 2,
+   "explanation": "كيجه \"gece\" okunur; buradaki ye (ى), bugün \"e\" olarak söylenen eski \"i/é\" sesini karşılar. Diğer kelimelerde ye \"ı/i\" okutur."
+  },
+  "2": {
+   "unit": 2,
+   "explanation": "Zafer Arapça bir kelimedir ve kalın zı (ظ) ile yazılır: ظفر. Gezi, sevgi, gelin ve bekler ince ünlülü Türkçe kelimelerdir."
+  },
+  "3": {
+   "unit": 1,
+   "explanation": "Pe (پ) Arap alfabesinde yoktur; İranlılar ekledi. Çe (چ), je (ژ) ve gef (گ) de böyledir. ح, ق, ش ve غ asıl Arap harfleridir."
+  },
+  "4": {
+   "unit": 2,
+   "explanation": "S sesinin incesi sin (س), kalını sad (ص) ile yazılır. m, v, l ve b için tek harf vardır."
+  },
+  "5": {
+   "unit": 1,
+   "explanation": "Mekke kelimesinde iki kef yan yana geldiği için tek kef yazılıp üstüne şedde konur: مكّه."
+  },
+  "6": {
+   "unit": 1,
+   "explanation": "Med (آ) elif harfinin üstüne konur ve uzun â okutur. A şeddeyi, B üstünü, E cezmi tanımlar."
+  },
+  "7": {
+   "unit": 1,
+   "explanation": "15. yüzyılın ortasından 19. yüzyıla kadar süren döneme Klasik Osmanlı Türkçesi denir. Öncesi Eski Anadolu Türkçesi, sonrası Yeni Osmanlı Türkçesidir."
+  },
+  "8": {
+   "unit": 4,
+   "explanation": "Binâen alâ zâlik (بناءً على ذالك) \"buna göre, bundan dolayı\" demektir. Ale'l-acele \"aceleyle\", vâkı'a \"gerçi\", der-akab \"hemen ardından\", fevka'l-hadd \"son derece\" anlamındadır."
+  },
+  "9": {
+   "unit": 1,
+   "explanation": "Esre (kesre) harfin altına konur ve \"ı/i\" okutur. Üstün, ötre, cezm ve med harfin üstüne konur."
+  },
+  "10": {
+   "unit": 3,
+   "explanation": "Gereklilik kipi eki -malı/-meli ملى ile yazılır. سين emir, سك dilek-şart, مقده şimdiki zaman, سه dilek-şart ekidir."
+  },
+  "11": {
+   "unit": 4,
+   "explanation": "٤ rakamı \"dört\"tür; \"altı\" ٦ ile yazılır. Diğer rakam-okunuş eşleştirmeleri doğrudur."
+  },
+  "12": {
+   "unit": 2,
+   "explanation": "ترلك (terlik) yazımında e ve i ünlüleri gösterilmemiştir. Diğer kelimelerde ünlüler vav, elif ya da ye ile yazılmıştır."
+  },
+  "13": {
+   "unit": 4,
+   "explanation": "-ıp, -ip, -up, -üp zarf fiil eki ünlü uyumuna bakılmaksızın tek şekilde yazılır: آلوب (alıp), كلوب (gelip)."
+  },
+  "14": {
+   "unit": 3,
+   "stem": "قوشمالى سك (koşmalısın) fiilinin niteliğiyle ilgili aşağıdakilerden hangisi doğrudur?",
+   "explanation": "قوش (koş-) + مالى (-malı, gereklilik) + سك (-sın, teklik 2. şahıs). Yani fiil + gereklilik kipi, teklik ikinci şahıstır."
+  },
+  "15": {
+   "unit": 2,
+   "explanation": "Diğer dört yazım doğrudur. Ünitedeki kurala göre kalın ünlülü bir kelimenin başındaki t, kalın tı (ط) ile yazılır: طات. Cevap anahtarı bu yüzden تات yazımını yanlış sayar."
+  },
+  "16": {
+   "unit": 4,
+   "explanation": "Çokluk eki her zaman ünlüsü yazılmadan لر ile yazılır: كوزلر (gözler). Diğer seçeneklerde eke elif eklenmiş ya da ek ayrı yazılmıştır."
+  },
+  "17": {
+   "unit": 4,
+   "explanation": "Ayruk (آیرق) \"başka\" demektir. Gey \"çok\", nice \"nasıl\", ne makûle \"ne türlü\", her kaçan \"ne zaman ki\" anlamındadır."
+  },
+  "18": {
+   "unit": 3,
+   "explanation": "Destûr \"izin verin, müsaade, savulun\" anlamında bir ünlemdir; \"kimse yok mu?\" anlamı yanlıştır."
+  },
+  "19": {
+   "unit": 3,
+   "stem": "وقتاكي \"vaktâki\" bağlama edatının anlamı aşağıdakilerden hangisidir?",
+   "explanation": "Vaktâki \"ne vakit ki, -dığı zaman\" anlamında bir bağlama edatıdır."
+  },
+  "20": {
+   "unit": 3,
+   "explanation": "Fe-emmâ \"amma, lâkin, fakat\" anlamında bir bağlama edatıdır. Mâ-adâ \"-den başka\", kezâ \"aynı şekilde\", velev \"-se bile\", vâkı'a \"gerçi\" demektir."
+  }
+ }
+}

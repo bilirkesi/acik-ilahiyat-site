@@ -189,6 +189,27 @@
     return `<img src="${esc(src)}"${srcset} alt="${esc(alt)}" loading="lazy" decoding="async"${extra || ""}>`;
   }
 
+  // Arap harfli (Osmanlıca) metin: kaçışlı HTML içindeki Arapça dizileri sağdan sola bir span'e sarar.
+  const OTA_RUN = /[\u0600-\u06FF\u0750-\u077F\uFB50-\uFDFF\uFE70-\uFEFF]+(?:[\s\u0600-\u06FF\u0750-\u077F\uFB50-\uFDFF\uFE70-\uFEFF]*[\u0600-\u06FF\u0750-\u077F\uFB50-\uFDFF\uFE70-\uFEFF])?/g;
+  const ota = (html) => String(html).replace(OTA_RUN, (m) => `<span class="ota" lang="ota" dir="rtl">${m}</span>`);
+  const txt = (s) => ota(esc(s));
+  // Sınav kâğıdından kırpılmış Osmanlıca görsel; boyut [genişlik, yükseklik] 2x çözünürlüktedir.
+  function otaImg(src, size, alt, scale) {
+    if (!src) return "";
+    const w = size && size[0] ? ` width="${Math.round(size[0] * (scale || 0.4))}"` : "";
+    return `<img class="ota-img" src="${esc(src)}"${w} alt="${esc(alt || "Osmanlıca ifade")}" loading="lazy" decoding="async">`;
+  }
+  // Soru gövdesi: stemParts varsa (metin + görsel parçaları) onları, yoksa düz metni basar.
+  function stemHtml(q) {
+    if (!Array.isArray(q.stemParts) || !q.stemParts.length) return txt(q.question || q.stem || "");
+    // Sınav PDF'inde soru gövdesi resim: okunur olsun diye çeviriyazıyı göster, aslını açılır kutuda ver.
+    const src = q.stemParts.map((p) => (p.img ? otaImg(p.img, [p.w, p.h], "", 0.5) : txt(p.text))).join(" ");
+    return `${txt(q.question || q.stem || "")}<details class="ota-src"><summary>Sınav kâğıdındaki hâli</summary><div>${src}</div></details>`;
+  }
+  function optHtml(o) {
+    return (o.image ? otaImg(o.image, o.imageSize, "", 0.62) + (o.text ? " " : "") : "") + txt(o.text || "");
+  }
+
   function load() {
     try { return JSON.parse(localStorage.getItem(CONFIG.storageKey)) || {}; } catch (e) { return {}; }
   }
@@ -233,7 +254,7 @@
 
   // NotebookLM notları için en küçük markdown: başlıklar, madde imleri, kalın.
   function md(text) {
-    const inline = (s) => esc(s).replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
+    const inline = (s) => ota(esc(s).replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>"));
     let html = "", inList = false;
     for (const raw of String(text || "").split("\n")) {
       const line = raw.trim();
@@ -530,10 +551,10 @@
   const norm = (s) => String(s || "").replace(/[çÇğĞıİIöÖşŞüÜâÂîÎûÛ]/g, (ch) => TR_FOLD[ch]).toLowerCase().replace(/\$/g, "").replace(/[^a-z0-9.%-]+/g, " ").trim();
 
   function questionHTML(q, i) {
-    const head = `<div class="qn">Soru ${i + 1}${GRADED.has(q.type) ? "" : " · Tartışma, puanlanmaz"}</div><p class="qt">${esc(q.question || q.stem || "")}</p>`;
+    const head = `<div class="qn">Soru ${i + 1}${GRADED.has(q.type) ? "" : " · Tartışma, puanlanmaz"}</div><div class="qt">${stemHtml(q)}</div>`;
     if ((q.type === "multiple_choice" || q.type === "multiple_select") && Array.isArray(q.answerOptions)) {
       const type = q.type === "multiple_choice" ? "radio" : "checkbox";
-      const opts = q.answerOptions.map((o, j) => `<label class="opt" data-opt="${j}"><input type="${type}" name="q${i}" value="${j}"><span>${esc(o.text)}</span></label><div class="rationale" data-rat="${j}" hidden>${esc(o.rationale || "")}</div>`).join("");
+      const opts = q.answerOptions.map((o, j) => `<label class="opt" data-opt="${j}"><input type="${type}" name="q${i}" value="${j}"><span>${optHtml(o)}</span></label><div class="rationale" data-rat="${j}" hidden>${txt(o.rationale || "")}</div>`).join("");
       return head + (q.type === "multiple_select" ? `<p class="muted" style="font-size:.85rem;margin-top:-.4rem">Doğru olan tüm seçenekleri işaretleyin.</p>` : "") + opts + (q.hint ? `<details class="hint"><summary>İpucu</summary>${esc(q.hint)}</details>` : "");
     }
     if (q.type === "fill_in_the_blank") {
@@ -572,7 +593,7 @@
         (q.grading.requiredAttributes ? `<ul style="margin:.5rem 0 0">${q.grading.requiredAttributes.map((a) => `<li>${esc(a)}</li>`).join("")}</ul>` : "");
     }
     if ((q.type === "multiple_choice" || q.type === "multiple_select") && q.solution) {
-      fb = esc(q.solution);
+      fb = txt(q.solution);
     }
     if (fb || ok !== null) {
       const d = document.createElement("div");
@@ -689,6 +710,7 @@
 
     const hud = (id) => document.getElementById(id);
     function paintHud() {
+      if (!hud("hud-idx")) return clearInterval(timer); // başka sayfaya geçildi
       hud("hud-idx").textContent = `${Math.min(idx + 1, questions.length)}/${questions.length}`;
       hud("hud-right").textContent = String(right);
       hud("hud-streak").textContent = String(streak);
@@ -1018,11 +1040,11 @@
 
   function pastQuestionHtml(q, i) {
     const letters = ["A", "B", "C", "D", "E", "F"];
-    const opts = (q.options || []).map((o, j) => `<label class="opt" data-opt="${j}"><input type="radio" name="q${i}" value="${j}"><span><b>${esc(o.key || letters[j])})</b> ${esc(o.text || "")}</span></label>`).join("");
+    const opts = (q.options || []).map((o, j) => `<label class="opt" data-opt="${j}"><input type="radio" name="q${i}" value="${j}"><span><b>${esc(o.key || letters[j])})</b> ${optHtml(o)}</span></label>`).join("");
     const chLinks = (q.chapters || []).map((n) => `<a href="#/course/${q._slug}/chapter/${n}">${n}. bölüm</a>`).join(" · ");
     const kw = (q.keywords || []).map((k) => `<span class="chip">${esc(k)}</span>`).join("");
     return `<div class="qn">Soru ${i + 1}${q.unit ? ` · Ünite ${q.unit}` : ""}</div>
-      <p class="qt">${esc(q.stem)}</p>
+      <div class="qt">${stemHtml(q)}</div>
       ${opts ? opts : `<p class="muted">Bu soru için okunabilir seçenek metni yok. Aklınızdaki cevabı düşünüp alttaki butonla işaretleyin.</p>`}
       ${q.unitTitle ? `<p class="muted" style="font-size:.85rem;margin:.6rem 0 0">İlgili ünite: <strong>${esc(q.unitTitle)}</strong>${chLinks ? " · " + chLinks : ""}</p>` : ""}
       ${kw ? `<div class="chip-row">${kw}</div>` : ""}`;
@@ -1035,7 +1057,7 @@
       const letter = o.key || letters[j];
       const cls = j === correctIdx ? "opt sol-correct" : "opt";
       const mark = j === correctIdx ? " · doğru" : "";
-      return `<div class="${cls}"><span><b>${esc(letter)})</b> ${esc(o.text || "")}${mark}</span></div>`;
+      return `<div class="${cls}"><span><b>${esc(letter)})</b> ${optHtml(o)}${mark}</span></div>`;
     }).join("");
     const link = "#/course/" + c.slug + "/past/" + encodeURIComponent(examId) + "?mod=rehber&soru=" + (i + 1);
     const metas = Array.isArray(q.chapterMeta) && q.chapterMeta.length
@@ -1046,14 +1068,14 @@
       return `<a class="solution-link" href="#/course/${c.slug}/chapter/${m.n}">${esc(m.n)}. ${esc(m.title || "")}${sum}</a>`;
     }).join("");
     const solHtml = q.solution
-      ? `<div class="feedback ok sol-feedback"><strong>Çözüm.</strong> ${esc(q.solution)}</div>`
+      ? `<div class="feedback ok sol-feedback"><strong>Çözüm.</strong> ${txt(q.solution)}</div>`
       : "";
     return `<article class="q sol-item" id="soru-${i + 1}" data-soru="${i + 1}">
       <div class="sol-item-head">
         <div class="qn">Soru ${i + 1}${q.unit ? ` · Ünite ${q.unit}` : ""}</div>
         <button type="button" class="sol-copy" data-link="${esc(link)}" title="Bu sorunun linkini kopyala">Linki kopyala</button>
       </div>
-      <p class="qt">${esc(q.stem || q.question || "")}</p>
+      <div class="qt">${stemHtml(q)}</div>
       ${opts}
       ${solHtml}
       <div class="solution-links">
@@ -1118,6 +1140,8 @@
       chapterMeta: q.chapterMeta || [],
       answerOptions: (q.options || []).map((o) => ({
         text: o.text,
+        image: o.image,
+        imageSize: o.imageSize,
         rationale: o.rationale || "",
         isCorrect: !!(o.isCorrect || (q.correct && o.key === q.correct)),
       })),
@@ -1130,6 +1154,7 @@
     const hud = (id) => document.getElementById(id);
 
     function paintHud() {
+      if (!hud("hud-idx")) return clearInterval(timer); // başka sayfaya geçildi
       hud("hud-idx").textContent = `${Math.min(idx + 1, questions.length)}/${questions.length}`;
       hud("hud-right").textContent = String(right);
       hud("hud-streak").textContent = String(streak);

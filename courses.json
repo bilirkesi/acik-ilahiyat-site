@@ -98,5 +98,14 @@
     "course_code": "TAR201U",
     "course_name": "Atatürk İlkeleri ve İnkılap Tarihi I",
     "status": "active"
+  },
+  "osmanlica-1": {
+    "mode": "sources",
+    "subject": "Osmanlı Türkçesi I",
+    "course": "TAR111U - Osmanlı Türkçesi I",
+    "professor": "Prof. Dr. Nihat Öztoprak, Doç. Dr. Recep Ahıshalı",
+    "school": "Anadolu Üniversitesi Açıköğretim Fakültesi",
+    "note": "Bu dersin bölümleri AÖF ders kitabından (Anadolu Üniversitesi, 2018) hazırlandı; NotebookLM defteri ve video dersi yoktur. Arap harfli örnekler metin olarak, çıkmış sınavlardaki Osmanlıca şıklar ise sınav kâğıdındaki görüntüsüyle verilmiştir.",
+    "playlist": ""
   }
 }

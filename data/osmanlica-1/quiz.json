@@ -1,0 +1,680 @@
+{
+ "title": "Osmanlı Türkçesi I Testi",
+ "questions": [
+  {
+   "question": "Osmanlı Türkçesinin 15. yüzyılın ortasından 19. yüzyıla kadar süren dönemine ne ad verilir?",
+   "answerOptions": [
+    {
+     "text": "Eski Anadolu Türkçesi",
+     "isCorrect": false,
+     "rationale": "Eski Anadolu Türkçesi İstanbul'un fethine kadarki dönemdir."
+    },
+    {
+     "text": "Klasik Osmanlı Türkçesi",
+     "isCorrect": true,
+     "rationale": "Doğru. Klasik dönem 15. yüzyıl ortasından 19. yüzyıla kadar sürer."
+    },
+    {
+     "text": "Yeni Osmanlı Türkçesi",
+     "isCorrect": false,
+     "rationale": "Yeni Osmanlı Türkçesi Tanzimat'tan 1908'e kadardır."
+    },
+    {
+     "text": "Yeni Türkiye Türkçesi",
+     "isCorrect": false,
+     "rationale": "Yeni Türkiye Türkçesi 1908 sonrasıdır."
+    }
+   ],
+   "hint": "Dönemler: kuruluş, klasik, Tanzimat sonrası.",
+   "type": "multiple_choice"
+  },
+  {
+   "question": "Aşağıdaki harflerden hangisi Arap alfabesine İranlılar tarafından eklenmiştir?",
+   "answerOptions": [
+    {
+     "text": "ح",
+     "isCorrect": false,
+     "rationale": "Ha (ح) asıl Arap harfidir."
+    },
+    {
+     "text": "ع",
+     "isCorrect": false,
+     "rationale": "Ayın (ع) Arapçaya özgü bir harftir."
+    },
+    {
+     "text": "چ",
+     "isCorrect": true,
+     "rationale": "Doğru. Çe (چ), pe (پ) ve je (ژ) İranlılarca eklenmiştir."
+    },
+    {
+     "text": "ق",
+     "isCorrect": false,
+     "rationale": "Kaf (ق) asıl Arap harfidir."
+    }
+   ],
+   "hint": "İranlıların eklediği harfler pe, çe ve je'dir.",
+   "type": "multiple_choice"
+  },
+  {
+   "question": "Harfin altına konup onu \"ı/i\" okutan hareke hangisidir?",
+   "answerOptions": [
+    {
+     "text": "Üstün",
+     "isCorrect": false,
+     "rationale": "Üstün harfin üstüne konur ve a/e okutur."
+    },
+    {
+     "text": "Ötre",
+     "isCorrect": false,
+     "rationale": "Ötre harfin üstüne konur ve o/ö/u/ü okutur."
+    },
+    {
+     "text": "Esre",
+     "isCorrect": true,
+     "rationale": "Doğru. Esre (kesre) harfin altına konur."
+    },
+    {
+     "text": "Cezm",
+     "isCorrect": false,
+     "rationale": "Cezm harfi ünsüz okutur."
+    }
+   ],
+   "hint": "Harfin altına konan tek hareke.",
+   "type": "multiple_choice"
+  },
+  {
+   "question": "عموماً (umûmen) kelimesinin sonundaki işaret hangisidir?",
+   "answerOptions": [
+    {
+     "text": "Üstünlü tenvin",
+     "isCorrect": true,
+     "rationale": "Doğru. Üstünlü tenvin son harfi an/en okutur ve sona tenvin elifi yazılır."
+    },
+    {
+     "text": "Esreli tenvin",
+     "isCorrect": false,
+     "rationale": "Esreli tenvin ın/in okutur."
+    },
+    {
+     "text": "Ötreli tenvin",
+     "isCorrect": false,
+     "rationale": "Ötreli tenvin un/ün okutur."
+    },
+    {
+     "text": "Şedde",
+     "isCorrect": false,
+     "rationale": "Şedde harfi iki kez okutur."
+    }
+   ],
+   "hint": "Kelimenin sonunu \"en\" diye okutuyor.",
+   "type": "multiple_choice"
+  },
+  {
+   "question": "\"Millet\" kelimesinde iki lam yerine tek lam yazılıp iki kez okunmasını sağlayan işaret hangisidir?",
+   "answerOptions": [
+    {
+     "text": "Med",
+     "isCorrect": false,
+     "rationale": "Med elifin üstünde uzun â okutur."
+    },
+    {
+     "text": "Şedde",
+     "isCorrect": true,
+     "rationale": "Doğru: ملّت."
+    },
+    {
+     "text": "Cezm",
+     "isCorrect": false,
+     "rationale": "Cezm harfi ünlüsüz okutur."
+    },
+    {
+     "text": "Tenvin",
+     "isCorrect": false,
+     "rationale": "Tenvin kelime sonunda an/en, ın/in, un/ün okutur."
+    }
+   ],
+   "hint": "Arapça kelimelerde yan yana gelen aynı ünsüzler.",
+   "type": "multiple_choice"
+  },
+  {
+   "question": "Aşağıdaki harflerden hangisi kendinden sonraki harfle bitişmez?",
+   "answerOptions": [
+    {
+     "text": "ب",
+     "isCorrect": false,
+     "rationale": "Be her iki yandan bitişir."
+    },
+    {
+     "text": "س",
+     "isCorrect": false,
+     "rationale": "Sin her iki yandan bitişir."
+    },
+    {
+     "text": "ر",
+     "isCorrect": true,
+     "rationale": "Doğru. Re kendinden sonrakiyle bitişmez."
+    },
+    {
+     "text": "ك",
+     "isCorrect": false,
+     "rationale": "Kef her iki yandan bitişir."
+    }
+   ],
+   "hint": "Bitişmeyen harfler: ا د ذ ر ز ژ و.",
+   "type": "multiple_choice"
+  },
+  {
+   "question": "Genizsi ñ sesini gösteren kâf-ı nûnî hangisidir?",
+   "answerOptions": [
+    {
+     "text": "ڭ",
+     "isCorrect": true,
+     "rationale": "Doğru. Kâf-ı nûnî (sağır kef): دڭز deñiz."
+    },
+    {
+     "text": "گ",
+     "isCorrect": false,
+     "rationale": "Gef (kâf-ı fârisî) yumuşak g'yi gösterir."
+    },
+    {
+     "text": "غ",
+     "isCorrect": false,
+     "rationale": "Gayın kalın ğ'yi gösterir."
+    },
+    {
+     "text": "ق",
+     "isCorrect": false,
+     "rationale": "Kaf kalın k'yi gösterir."
+    }
+   ],
+   "hint": "Sağır kef ya da nun kefi de denir.",
+   "type": "multiple_choice"
+  },
+  {
+   "question": "Aşağıdaki seslerden hangisinin Osmanlı alfabesinde ayrı bir kalın ve ince harfi yoktur?",
+   "answerOptions": [
+    {
+     "text": "k",
+     "isCorrect": false,
+     "rationale": "k: kaf ق / kef ك."
+    },
+    {
+     "text": "t",
+     "isCorrect": false,
+     "rationale": "t: tı ط / te ت."
+    },
+    {
+     "text": "s",
+     "isCorrect": false,
+     "rationale": "s: sad ص / sin س."
+    },
+    {
+     "text": "m",
+     "isCorrect": true,
+     "rationale": "Doğru. m için yalnızca mim (م) vardır."
+    }
+   ],
+   "hint": "Kalın-ince çiftleri: ق/ك, ط/ت, ص/س, ظ/ز.",
+   "type": "multiple_choice"
+  },
+  {
+   "question": "Türkçe kelimelerin sonundaki \"e\" ünlüsü genellikle hangi harfle yazılır?",
+   "answerOptions": [
+    {
+     "text": "Elif",
+     "isCorrect": false,
+     "rationale": "Elif kelime başında e için de kullanılır ama sondaki e için değil."
+    },
+    {
+     "text": "Güzel he",
+     "isCorrect": true,
+     "rationale": "Doğru: دره dere, بكله bekle."
+    },
+    {
+     "text": "Vav",
+     "isCorrect": false,
+     "rationale": "Vav o/ö/u/ü ünlülerini gösterir."
+    },
+    {
+     "text": "Ye",
+     "isCorrect": false,
+     "rationale": "Ye ı/i ünlülerini gösterir."
+    }
+   ],
+   "hint": "دره (dere) örneğini düşünün.",
+   "type": "multiple_choice"
+  },
+  {
+   "question": "قوش yazılışı hangi iki kelime olarak okunabilir?",
+   "answerOptions": [
+    {
+     "text": "kış / kaş",
+     "isCorrect": false,
+     "rationale": "Kış ve kaş için vav kullanılmaz."
+    },
+    {
+     "text": "kuş / koş",
+     "isCorrect": true,
+     "rationale": "Doğru. Hangisi olduğu cümlenin anlamından anlaşılır."
+    },
+    {
+     "text": "koç / kuç",
+     "isCorrect": false,
+     "rationale": "Sonda şın (ش) vardır, ç değil."
+    },
+    {
+     "text": "kuş / kış",
+     "isCorrect": false,
+     "rationale": "Kış için vav yazılmaz."
+    }
+   ],
+   "hint": "Vav o, ö, u, ü seslerini gösterir; kaf kalındır.",
+   "type": "multiple_choice"
+  },
+  {
+   "question": "Gereklilik kipi eki (-malı/-meli) Osmanlı Türkçesinde nasıl yazılır?",
+   "answerOptions": [
+    {
+     "text": "سه",
+     "isCorrect": false,
+     "rationale": "سه dilek-şart ekidir."
+    },
+    {
+     "text": "ملى",
+     "isCorrect": true,
+     "rationale": "Doğru. Bazı kalın ünlülü fiillerde مالى de görülür."
+    },
+    {
+     "text": "مقده",
+     "isCorrect": false,
+     "rationale": "مقده -makta ekidir."
+    },
+    {
+     "text": "جق",
+     "isCorrect": false,
+     "rationale": "جق gelecek zaman ekidir."
+    }
+   ],
+   "hint": "ايچملى içmeli.",
+   "type": "multiple_choice"
+  },
+  {
+   "question": "كلسه (gelse) kelimesindeki ek hangi kiptir?",
+   "answerOptions": [
+    {
+     "text": "Dilek-şart",
+     "isCorrect": true,
+     "rationale": "Doğru. سه dilek-şart ekidir."
+    },
+    {
+     "text": "Gereklilik",
+     "isCorrect": false,
+     "rationale": "Gereklilik eki ملى'dir."
+    },
+    {
+     "text": "İstek",
+     "isCorrect": false,
+     "rationale": "İstek kipinde -a/-e eki olur."
+    },
+    {
+     "text": "Şimdiki zaman",
+     "isCorrect": false,
+     "rationale": "Şimdiki zaman -yor ya da -makta ekiyle yapılır."
+    }
+   ],
+   "hint": "-sa/-se eki tek şekilli سه ile yazılır.",
+   "type": "multiple_choice"
+  },
+  {
+   "question": "\"Kucakta, kucaklama\" anlamına gelen kelime hangisidir?",
+   "answerOptions": [
+    {
+     "text": "der-dest",
+     "isCorrect": false,
+     "rationale": "Der-dest \"elde, elde etme\" demektir."
+    },
+    {
+     "text": "der-hâl",
+     "isCorrect": false,
+     "rationale": "Der-hâl \"hemen\" demektir."
+    },
+    {
+     "text": "der-âgûş",
+     "isCorrect": true,
+     "rationale": "Doğru: درآغوش."
+    },
+    {
+     "text": "der-kenâr",
+     "isCorrect": false,
+     "rationale": "Der-kenâr \"kenarda\" demektir."
+    }
+   ],
+   "hint": "Âgûş Farsçada \"kucak\" demektir.",
+   "type": "multiple_choice"
+  },
+  {
+   "question": "Aşağıdakilerden hangisi \"yazık, ne yazık\" anlamında bir ünlemdir?",
+   "answerOptions": [
+    {
+     "text": "zinhâr",
+     "isCorrect": false,
+     "rationale": "Zinhâr \"sakın, dikkat\" demektir."
+    },
+    {
+     "text": "efsûs",
+     "isCorrect": true,
+     "rationale": "Doğru. Efsûs \"ne yazık, eyvah\" demektir."
+    },
+    {
+     "text": "destûr",
+     "isCorrect": false,
+     "rationale": "Destûr \"çekil, yol ver\" demektir."
+    },
+    {
+     "text": "ahsentü",
+     "isCorrect": false,
+     "rationale": "Ahsentü \"ne güzel\" demektir."
+    }
+   ],
+   "hint": "Hayf, hayfâ, dirîğâ ve efsûs aynı anlamdadır.",
+   "type": "multiple_choice"
+  },
+  {
+   "question": "Çokluk eki -lar/-ler Osmanlı Türkçesinde nasıl yazılır?",
+   "answerOptions": [
+    {
+     "text": "Ünlüsü yazılmadan, tek şekilde لر",
+     "isCorrect": true,
+     "rationale": "Doğru. Çokluk eki her zaman لر yazılır."
+    },
+    {
+     "text": "Kalınlarda لار, incelerde لر",
+     "isCorrect": false,
+     "rationale": "Ekin ünlüsü yazılmaz; لار yanlıştır."
+    },
+    {
+     "text": "Her zaman لار",
+     "isCorrect": false,
+     "rationale": "Elifli yazım yanlıştır."
+    },
+    {
+     "text": "Kelimeden ayrı ve ünlüsüyle",
+     "isCorrect": false,
+     "rationale": "Ek kelimeye bitişik ve ünlüsüz yazılır."
+    }
+   ],
+   "hint": "كتابلر kitaplar, كوزلر gözler.",
+   "type": "multiple_choice"
+  },
+  {
+   "question": "٧٠ rakamı nasıl okunur?",
+   "answerOptions": [
+    {
+     "text": "Yedi",
+     "isCorrect": false,
+     "rationale": "Yedi yalnızca ٧ ile yazılır."
+    },
+    {
+     "text": "Yetmiş",
+     "isCorrect": true,
+     "rationale": "Doğru: ٧ ve ٠ yan yana \"yetmiş\" olur."
+    },
+    {
+     "text": "Yediyüz",
+     "isCorrect": false,
+     "rationale": "Yediyüz ٧٠٠ olurdu."
+    },
+    {
+     "text": "On yedi",
+     "isCorrect": false,
+     "rationale": "On yedi ١٧ olurdu."
+    }
+   ],
+   "hint": "Rakamlar soldan sağa okunur; ٧ yedidir.",
+   "type": "multiple_choice"
+  },
+  {
+   "question": "Osmanlı Türkçesinde \"hemen, o anda\" anlamına gelen zarf hangisidir?",
+   "answerOptions": [
+    {
+     "text": "berren",
+     "isCorrect": false,
+     "rationale": "Berren \"kara yoluyla\" demektir."
+    },
+    {
+     "text": "muhibbâne",
+     "isCorrect": false,
+     "rationale": "Muhibbâne \"dostça\" demektir."
+    },
+    {
+     "text": "fi'l-hâl",
+     "isCorrect": true,
+     "rationale": "Doğru: في الحال."
+    },
+    {
+     "text": "vâkı'a",
+     "isCorrect": false,
+     "rationale": "Vâkı'a \"gerçi\" demektir."
+    }
+   ],
+   "hint": "Hâl \"şimdiki durum\" demektir.",
+   "type": "multiple_choice"
+  },
+  {
+   "question": "Aşağıdaki harflerden hangisi Türkçe kelimelerde bulunmaz, Arapçaya özgüdür?",
+   "answerOptions": [
+    {
+     "text": "ذ",
+     "isCorrect": true,
+     "rationale": "Doğru. Zel (ذ) Arapçaya özgüdür; Türkçede z okunur."
+    },
+    {
+     "text": "ب",
+     "isCorrect": false,
+     "rationale": "Be Türkçe kelimelerde de geçer."
+    },
+    {
+     "text": "ر",
+     "isCorrect": false,
+     "rationale": "Re Türkçe kelimelerde de geçer."
+    },
+    {
+     "text": "ق",
+     "isCorrect": false,
+     "rationale": "Kaf Türkçe kelimelerde kalın k için kullanılır."
+    }
+   ],
+   "hint": "Peltek z sesi.",
+   "type": "multiple_choice"
+  },
+  {
+   "question": "Hicrî takvimde ayın ilk gününe ne ad verilir?",
+   "answerOptions": [
+    {
+     "text": "Selh",
+     "isCorrect": false,
+     "rationale": "Selh ayın son günüdür."
+    },
+    {
+     "text": "Gurre",
+     "isCorrect": true,
+     "rationale": "Doğru. Gurre ayın ilk günüdür."
+    },
+    {
+     "text": "Evâsıt",
+     "isCorrect": false,
+     "rationale": "Evâsıt ayın 11-20. günleridir."
+    },
+    {
+     "text": "Evâhir",
+     "isCorrect": false,
+     "rationale": "Evâhir ayın son on günüdür."
+    }
+   ],
+   "hint": "غرّه.",
+   "type": "multiple_choice"
+  },
+  {
+   "question": "شكران (şükrân) kelimesinin vezni hangisidir?",
+   "answerOptions": [
+    {
+     "text": "fa'al",
+     "isCorrect": false,
+     "rationale": "Fa'al vezninde zâid harf yoktur."
+    },
+    {
+     "text": "fu'lân",
+     "isCorrect": true,
+     "rationale": "Doğru: ş → fe, k → ayın, r → lam; -ân aynen kalır: فعلان."
+    },
+    {
+     "text": "if'âl",
+     "isCorrect": false,
+     "rationale": "If'âl başta elif ve ortada elif taşır."
+    },
+    {
+     "text": "fâ'il",
+     "isCorrect": false,
+     "rationale": "Fâ'il ism-i fâil veznidir."
+    }
+   ],
+   "hint": "Aslî harfler ş-k-r; zâid harfler elif ve nun.",
+   "type": "multiple_choice"
+  },
+  {
+   "question": "Osmanlı Türkçesinde Arapça ikilik (tesniye) eki hangisidir?",
+   "answerOptions": [
+    {
+     "text": "-ât",
+     "isCorrect": false,
+     "rationale": "-ât müennes çokluk ekidir."
+    },
+    {
+     "text": "-în",
+     "isCorrect": false,
+     "rationale": "-în müzekker çokluk ekidir."
+    },
+    {
+     "text": "-eyn",
+     "isCorrect": true,
+     "rationale": "Doğru. -eyn tesniye ekidir."
+    },
+    {
+     "text": "-ûn",
+     "isCorrect": false,
+     "rationale": "-ûn müzekker çokluk ekidir."
+    }
+   ],
+   "hint": "Vâlideyn, Haremeyn.",
+   "type": "multiple_choice"
+  },
+  {
+   "question": "Aslî harflerinin ikincisi illet harfi olan kelimelere ne ad verilir?",
+   "answerOptions": [
+    {
+     "text": "Misâl",
+     "isCorrect": false,
+     "rationale": "Misâlde birinci aslî harf illetlidir (وقت vakt)."
+    },
+    {
+     "text": "Ecvef",
+     "isCorrect": true,
+     "rationale": "Doğru. Ecvef: ortası illetli."
+    },
+    {
+     "text": "Nâkıs",
+     "isCorrect": false,
+     "rationale": "Nâkısta üçüncü aslî harf illetlidir (نهى nehy)."
+    },
+    {
+     "text": "Mehmûz",
+     "isCorrect": false,
+     "rationale": "Mehmûzda aslî harflerde hemze vardır."
+    }
+   ],
+   "hint": "كون kevn örneği.",
+   "type": "multiple_choice"
+  },
+  {
+   "question": "مكتوب (mektûb) hangi kelime türüne örnektir?",
+   "answerOptions": [
+    {
+     "text": "İsm-i fâil",
+     "isCorrect": false,
+     "rationale": "İsm-i fâil kâtib (yazan) olurdu."
+    },
+    {
+     "text": "İsm-i mef'ûl",
+     "isCorrect": true,
+     "rationale": "Doğru. mef'ûl vezni: yazılmış."
+    },
+    {
+     "text": "Mimli masdar",
+     "isCorrect": false,
+     "rationale": "Mimli masdar mef'al gibi kalıplardır ama hareket ismidir."
+    },
+    {
+     "text": "Mec'ûl masdar",
+     "isCorrect": false,
+     "rationale": "Mec'ûl masdar -iyyet ile yapılır."
+    }
+   ],
+   "hint": "\"Yazılmış\" anlamı.",
+   "type": "multiple_choice"
+  },
+  {
+   "question": "Aşağıdaki mezîdünfih bâblarından hangisi kelimeye işteşlik anlamı katar?",
+   "answerOptions": [
+    {
+     "text": "If'âl",
+     "isCorrect": false,
+     "rationale": "If'âl geçişlilik katar."
+    },
+    {
+     "text": "Tef'îl",
+     "isCorrect": false,
+     "rationale": "Tef'îl geçişlilik ve çokluk katar."
+    },
+    {
+     "text": "Tefâ'ul",
+     "isCorrect": true,
+     "rationale": "Doğru. Tefâ'ul işteşlik bildirir (müfâ'ale de öyle)."
+    },
+    {
+     "text": "Tefa''ul",
+     "isCorrect": false,
+     "rationale": "Tefa''ul dönüşlülük bildirir."
+    }
+   ],
+   "hint": "تعاون teâvün: yardımlaşma.",
+   "type": "multiple_choice"
+  },
+  {
+   "question": "معلّم (muallim, öğreten) kelimesi hangi bâbın ism-i fâilidir?",
+   "answerOptions": [
+    {
+     "text": "If'âl",
+     "isCorrect": false,
+     "rationale": "If'âl'in fâili muf'il: mükrim."
+    },
+    {
+     "text": "Tef'îl",
+     "isCorrect": true,
+     "rationale": "Doğru. Tef'îl'in fâili mufa''il: muallim."
+    },
+    {
+     "text": "Tefa''ul",
+     "isCorrect": false,
+     "rationale": "Tefa''ul'ün fâili mütefa''il: müteallim."
+    },
+    {
+     "text": "Müfâ'ale",
+     "isCorrect": false,
+     "rationale": "Müfâ'ale'nin fâili mufâ'il: mücâhid."
+    }
+   ],
+   "hint": "Masdarı تعليم ta'lîm.",
+   "type": "multiple_choice"
+  }
+ ]
+}

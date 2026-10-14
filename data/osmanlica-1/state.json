@@ -1,0 +1,72 @@
+{
+ "notebook_id": "",
+ "sources": {
+  "kitap-bolum-1": {
+   "id": "osm1-kitap-1",
+   "title": "Osmanlı Türkçesi I ders kitabı, Bölüm 1: Osmanlı Türkçesi Alfabesi",
+   "url": "",
+   "type": "book",
+   "status": "ready"
+  },
+  "kitap-bolum-2": {
+   "id": "osm1-kitap-2",
+   "title": "Osmanlı Türkçesi I ders kitabı, Bölüm 2: Türkçe Ünlü ve Ünsüzlerin Yazılışı",
+   "url": "",
+   "type": "book",
+   "status": "ready"
+  },
+  "kitap-bolum-3": {
+   "id": "osm1-kitap-3",
+   "title": "Osmanlı Türkçesi I ders kitabı, Bölüm 3: Türkçe Kelimelerin Yapısı, Türkçe Kiplerin ve Edatların Yazılışı",
+   "url": "",
+   "type": "book",
+   "status": "ready"
+  },
+  "kitap-bolum-4": {
+   "id": "osm1-kitap-4",
+   "title": "Osmanlı Türkçesi I ders kitabı, Bölüm 4: Türkçe Ek, Zamir, Zarf ve Sayıların Yazılışı",
+   "url": "",
+   "type": "book",
+   "status": "ready"
+  },
+  "kitap-bolum-5": {
+   "id": "osm1-kitap-5",
+   "title": "Osmanlı Türkçesi I ders kitabı, Bölüm 5: Arapça ve Farsça Kelimelerde Ünlüler ve Yazılışları",
+   "url": "",
+   "type": "book",
+   "status": "ready"
+  },
+  "kitap-bolum-6": {
+   "id": "osm1-kitap-6",
+   "title": "Osmanlı Türkçesi I ders kitabı, Bölüm 6: Arapça Kelimelerin Yapısı",
+   "url": "",
+   "type": "book",
+   "status": "ready"
+  },
+  "kitap-bolum-7": {
+   "id": "osm1-kitap-7",
+   "title": "Osmanlı Türkçesi I ders kitabı, Bölüm 7: Aksâm-ı Seb'a, Mücerred Masdarlar, İsm-i Fâil ve İsm-i Mef'ûl",
+   "url": "",
+   "type": "book",
+   "status": "ready"
+  },
+  "kitap-bolum-8": {
+   "id": "osm1-kitap-8",
+   "title": "Osmanlı Türkçesi I ders kitabı, Bölüm 8: Mezîdünfih Masdarlar (I)",
+   "url": "",
+   "type": "book",
+   "status": "ready"
+  }
+ },
+ "order": [
+  "kitap-bolum-1",
+  "kitap-bolum-2",
+  "kitap-bolum-3",
+  "kitap-bolum-4",
+  "kitap-bolum-5",
+  "kitap-bolum-6",
+  "kitap-bolum-7",
+  "kitap-bolum-8"
+ ],
+ "note": "NotebookLM defteri yok. Bölümler AÖF ders kitabından (Anadolu Üniversitesi, 2018) elle hazırlandı."
+}
