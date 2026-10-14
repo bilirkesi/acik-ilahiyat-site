@@ -1,5 +1,6 @@
 {
   "name": "Açık İlahiyat Üniversitesi",
+  "shortName": "Açık İlahiyat",
   "tagline": "AÖF İlahiyat ön lisans ücretsiz dersler",
   "issuer": "Açık İlahiyat Üniversitesi",
   "issuerUrl": "",
@@ -22,5 +23,6 @@
   },
   "figureStyle": "light ivory background, deep navy text and shapes, muted gold accents only, flat vector icons, two-column layout",
   "showNotebookLinks": true,
-  "plannedCourses": 0
+  "plannedCourses": 0,
+  "storageKey": "a-k-i-lahiyat-niversitesi"
 }

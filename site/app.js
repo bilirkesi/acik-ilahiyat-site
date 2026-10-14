@@ -4,9 +4,31 @@
 
   const U = window.UNIVERSITY || {};
   const COURSES = window.COURSES || [];
-  const INTERACTIVE = window.INTERACTIVE || {};
-  const CG = window.CG || { items: [], edges: {} };
-  const MINDMAPS = window.MINDMAPS || {};
+  // Ağır veri paketleri (interactive/coursegraph/mindmaps/past_exams/unit_quizzes) rota
+  // bazlı olarak sonradan yüklenir; bu yüzden window'dan her seferinde okunur.
+  const INTERACTIVE = () => window.INTERACTIVE || {};
+  const CG = () => window.CG || { items: [], edges: {} };
+  const MINDMAPS = () => window.MINDMAPS || {};
+  const VERSION = (document.querySelector('meta[name="pu-version"]') || {}).content || "";
+  const LAZY_BUNDLES = {
+    interactive: "interactive.js",
+    coursegraph: "coursegraph.js",
+    mindmaps: "mindmaps.js",
+    past_exams: "past_exams.js",
+    unit_quizzes: "unit_quizzes.js",
+  };
+  const loadedBundles = {};
+  function ensureBundle(name) {
+    if (loadedBundles[name]) return loadedBundles[name];
+    loadedBundles[name] = new Promise((resolve, reject) => {
+      const s = document.createElement("script");
+      s.src = LAZY_BUNDLES[name] + (VERSION ? "?v=" + VERSION : "");
+      s.onload = () => resolve();
+      s.onerror = () => { loadedBundles[name] = null; reject(new Error("bundle: " + name)); };
+      document.head.appendChild(s);
+    });
+    return loadedBundles[name];
+  }
   const DEFAULT_COLORS = { primary: "#1b2a4a", accent: "#b08d4a", paper: "#f8f4ea" };
   const slugify = (s) => String(s || "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 
@@ -21,7 +43,8 @@
     colors: Object.assign({}, DEFAULT_COLORS, U.colors || {}),
     showNotebookLinks: U.showNotebookLinks !== false,
     totalCourses: Math.max(COURSES.length, U.plannedCourses || 0),
-    storageKey: "pu." + (slugify(U.name) || "university") + ".v1",
+    // Sabit anahtar (university.json storageKey): site adı değişse de öğrencinin ilerlemesi kaybolmaz.
+    storageKey: "pu." + (U.storageKey || slugify(U.name) || "university") + ".v1",
   };
 
   // Kapı kancası. Herkese true döner. Dersleri veya belgeyi üyelere özel
@@ -66,7 +89,7 @@
 
   // ---- zihin haritası (mindmaps.js) ------------------------------------------
   function courseMaps(slug) {
-    const d = MINDMAPS[slug];
+    const d = MINDMAPS()[slug];
     return (d && d.mindmaps) || [];
   }
   function pickMap(slug, preferId) {
@@ -123,7 +146,7 @@
     if (!terms.length) return [];
     const limit = o.limit || 40;
     const hits = [];
-    for (const it of CG.items || []) {
+    for (const it of CG().items || []) {
       if (o.type && it.type !== o.type) continue;
       if (o.course && it.course !== o.course) continue;
       const s = scoreItem(it, terms, raw);
@@ -135,13 +158,14 @@
 
   function cgRelated(id, limit) {
     const n = limit || 6;
-    const ids = (CG.edges && CG.edges[id]) || [];
+    const cg = CG();
+    const ids = (cg.edges && cg.edges[id]) || [];
     const out = [];
     const seen = new Set();
     for (const other of ids) {
       if (seen.has(other)) continue;
       seen.add(other);
-      const it = (CG.items || []).find((x) => x.id === other);
+      const it = (cg.items || []).find((x) => x.id === other);
       if (it) out.push(it);
       if (out.length >= n) break;
     }
@@ -156,6 +180,14 @@
   const noun = (c, n) => (c.kind === "sources" ? "kaynak" : "ders");
   const byline = (c) => [c.professor, c.school].filter(Boolean).join(", ");
   const isYouTube = (u) => /youtube\.com|youtu\.be/.test(u || "");
+  // Görsel srcset: varsa -sm.jpg (640w) küçük varyant; img etiketine lazy+async ekler.
+  const SMALL_IMAGES = new Set((window.OFFLINE && window.OFFLINE.small) || []);
+  function imgTag(src, alt, extra) {
+    if (!src) return "";
+    const sm = String(src).replace(/\.jpg$/i, "-sm.jpg");
+    const srcset = SMALL_IMAGES.has(src) ? ` srcset="${esc(sm)} 640w, ${esc(src)} 1536w" sizes="(max-width: 760px) 100vw, 720px"` : "";
+    return `<img src="${esc(src)}"${srcset} alt="${esc(alt)}" loading="lazy" decoding="async"${extra || ""}>`;
+  }
 
   function load() {
     try { return JSON.parse(localStorage.getItem(CONFIG.storageKey)) || {}; } catch (e) { return {}; }
@@ -172,15 +204,31 @@
   }
   const passedCount = () => COURSES.filter((c) => progress[c.slug] && progress[c.slug].passed).length;
 
+  let katexP = null;
+  function ensureKatex() {
+    if (window.renderMathInElement) return Promise.resolve();
+    if (katexP) return katexP;
+    const base = "https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/";
+    katexP = Promise.all([
+      new Promise((res, rej) => { const s = document.createElement("script"); s.src = base + "katex.min.js"; s.onload = res; s.onerror = rej; document.head.appendChild(s); }),
+      new Promise((res, rej) => { const s = document.createElement("script"); s.src = base + "contrib/auto-render.min.js"; s.onload = res; s.onerror = rej; document.head.appendChild(s); }),
+    ]).catch(() => { katexP = null; });
+    return katexP;
+  }
+
   function typeset(el) {
-    if (window.renderMathInElement) {
-      window.renderMathInElement(el, {
-        delimiters: [{ left: "$$", right: "$$", display: true }, { left: "\\[", right: "\\]", display: true },
-          { left: "\\(", right: "\\)", display: false }, { left: "$", right: "$", display: false }],
-        throwOnError: false,
-        output: "mathml", // yerel MathML: KaTeX stil sayfası veya font gerekmez
-      });
-    }
+    // KaTeX yalnızca metinde formül işareti varsa yüklenir (dış sunucuya gereksiz istek ve çevrimdışı hata olmasın).
+    if (!/\$|\\\(|\\\[/.test(el.textContent || "")) return;
+    ensureKatex().then(() => {
+      if (window.renderMathInElement) {
+        window.renderMathInElement(el, {
+          delimiters: [{ left: "$$", right: "$$", display: true }, { left: "\\[", right: "\\]", display: true },
+            { left: "\\(", right: "\\)", display: false }, { left: "$", right: "$", display: false }],
+          throwOnError: false,
+          output: "mathml",
+        });
+      }
+    });
   }
 
   // NotebookLM notları için en küçük markdown: başlıklar, madde imleri, kalın.
@@ -277,7 +325,7 @@
           <p class="count">${ch.lectures.length} ${noun(c, ch.lectures.length)}</p>
           <p>${esc(ch.summary)}</p>
           <ul class="objectives">${ch.objectives.map((o) => `<li>${esc(o)}</li>`).join("")}</ul>
-          ${ch.image ? `<figure class="plate"><img src="${esc(ch.image)}" alt="${esc(ch.title)} infografiği" data-zoom loading="lazy"><figcaption><b>Şekil ${i + 1}.</b> ${esc(ch.title)}. Bu bölümün ${ch.lectures.length} ${noun(c, ch.lectures.length)}ından NotebookLM ile üretildi.</figcaption></figure>` : ""}
+          ${ch.image ? `<figure class="plate">${imgTag(ch.image, ch.title + " infografiği", " data-zoom")}<figcaption><b>Şekil ${i + 1}.</b> ${esc(ch.title)}. Bu bölümün ${ch.lectures.length} ${noun(c, ch.lectures.length)}ından NotebookLM ile üretildi.</figcaption></figure>` : ""}
           ${aofFiguresHtml(ch, i + 1, "plate")}
           ${bookUnitFiguresHtml(c, i + 1, "plate")}
         </div>
@@ -310,23 +358,11 @@
           ${credit}
         </aside>
       </section>
+      ${offlineCourseCardHtml(c)}
       ${mindmapSectionHtml(c.slug, { title: "Ders zihin haritası", lead: "Bölüm başlıkları ve alt kavramlar. Bölüm düğümüne tıklayınca o bölüme geçilir." })}
       <h2>Bölümler</h2>
       <ol class="syllabus">${chapters}</ol>
       ${bookUnitsExtraHtml(c)}`;
-  }
-
-  function aofFiguresHtml(ch, n, cls) {
-    const raw = ch.aofInfographic;
-    if (!raw) return "";
-    const list = Array.isArray(raw) ? raw : [raw];
-    if (!list.length) return "";
-    return list.map((src, j) => {
-      const cap = list.length > 1
-        ? `<b>AÖF infografik ${j + 1}/${list.length}.</b> Anadolu Üniversitesi ünite özeti (yüksek çözünürlük).`
-        : `<b>AÖF infografik.</b> Anadolu Üniversitesi ünite özeti (yüksek çözünürlük).`;
-      return `<figure class="${cls} aof-figure"><img src="${esc(src)}" alt="${esc(ch.title)} AÖF infografiği ${j + 1}" data-zoom loading="lazy"><figcaption>${cap}</figcaption></figure>`;
-    }).join("");
   }
 
   // Ders kitabı ünite özetlerinden üretilen infografikler (AÖF'ün yayınlamadığı dersler için).
@@ -346,6 +382,103 @@
       ${rest.map((u) => bookUnitFigure(c, u, "plate")).join("")}`;
   }
 
+  function aofFiguresHtml(ch, n, cls) {
+    const raw = ch.aofInfographic;
+    const nlmRaw = ch.nlmInfographic;
+    if (!raw && !nlmRaw) return "";
+    const aofList = raw ? (Array.isArray(raw) ? raw : [raw]) : [];
+    const nlmList = nlmRaw ? (Array.isArray(nlmRaw) ? nlmRaw : [nlmRaw]) : [];
+    if (!aofList.length && !nlmList.length) return "";
+    const uid = `inf-${n}-${Math.random().toString(36).slice(2, 7)}`;
+    const tabs = [];
+    const panes = [];
+    if (nlmList.length) {
+      tabs.push(`<button type="button" class="inf-tab is-active" data-pane="${uid}-nlm">Düzeltilmiş Infografik</button>`);
+      panes.push(`<div class="inf-pane is-active" id="${uid}-nlm">${nlmList.map((src, j) => infFigureHtml(src, ch, n, j, nlmList.length, cls, "nlm")).join("")}</div>`);
+    }
+    if (aofList.length) {
+      tabs.push(`<button type="button" class="inf-tab${nlmList.length ? "" : " is-active"}" data-pane="${uid}-aof">AÖF Infografik</button>`);
+      panes.push(`<div class="inf-pane${nlmList.length ? "" : " is-active"}" id="${uid}-aof">${aofList.map((src, j) => infFigureHtml(src, ch, n, j, aofList.length, cls, "aof")).join("")}</div>`);
+    }
+    if (tabs.length < 2) return panes.join("");
+    return `<div class="inf-toggle" data-uid="${uid}"><div class="inf-tabs">${tabs.join("")}</div>${panes.join("")}</div>`;
+  }
+
+  function infFigureHtml(src, ch, n, j, total, cls, kind) {
+    const label = kind === "nlm" ? "Düzeltilmiş infografik" : "AÖF infografik";
+    const cap = total > 1
+      ? `<b>${label} ${j + 1}/${total}.</b> Ünite özet grafiği (yüksek çözünürlük).`
+      : `<b>${label}.</b> Ünite özet grafiği (yüksek çözünürlük).`;
+    return `<figure class="${cls} aof-figure">${imgTag(src, `${ch.title} ${label} ${j + 1}`, ` data-zoom data-download="${esc(src)}"`)}<figcaption>${cap}</figcaption></figure>`;
+  }
+
+  // Konu anlatımındaki citation için: bu bölüme bağlı çıkmış vize soruları.
+  function chapterPastCites(c, n, limit) {
+    const ch = (c.chapters || [])[n - 1];
+    if (Array.isArray(ch && ch.cites) && ch.cites.length) {
+      return ch.cites.slice(0, limit || 14).map((ct) => ({
+        examId: ct.exam_id || ct.examId,
+        year: ct.year,
+        num: ct.num,
+        stem: ct.stem || "",
+      }));
+    }
+    const max = limit || 14;
+    const out = [];
+    for (const exam of pastFor(c.slug)) {
+      if (out.length >= max) break;
+      (exam.questions || []).forEach((q, i) => {
+        if (out.length >= max) return;
+        const chs = Array.isArray(q.chapters) && q.chapters.length
+          ? q.chapters
+          : (q.chapterMeta || []).map((m) => m.n);
+        if (chs.indexOf(n) >= 0) {
+          out.push({
+            examId: exam.exam_id,
+            year: exam.year || exam.exam_id,
+            num: i + 1,
+            stem: q.stem || q.question || "",
+          });
+        }
+      });
+    }
+    return out;
+  }
+
+  function citeHref(slug, ct) {
+    return `#/course/${slug}/past/${encodeURIComponent(ct.examId || ct.exam_id)}?mod=rehber&soru=${ct.num}&hl=sol`;
+  }
+
+  // Not gövdesindeki ⟦k⟧ marker'ları satır içi citation linklerine çevirir.
+  function notesHtmlWithCites(ch, cites, slug) {
+    let html = ch.notes ? md(ch.notes) : `<p class="muted">Bu bölümün çalışma notları henüz hazır değil.</p>`;
+    if (!cites.length) {
+      return html.replace(/⟦(\d+)⟧/g, "");
+    }
+    return html.replace(/⟦(\d+)⟧/g, (_, k) => {
+      const idx = parseInt(k, 10) - 1;
+      const ct = cites[idx];
+      if (!ct) return "";
+      const title = (ct.stem || "").replace(/"/g, "&quot;");
+      return `<a class="inline-cite" href="${citeHref(slug, ct)}" title="${esc(title)}"><sup>[${k}]</sup></a>`;
+    });
+  }
+
+  function chapterCiteHtml(c, n) {
+    const cites = chapterPastCites(c, n);
+    if (!cites.length) return "";
+    const items = cites.map((ct, j) => {
+      const href = citeHref(c.slug, ct);
+      const short = ct.stem.length > 88 ? ct.stem.slice(0, 85).trimEnd() + "…" : ct.stem;
+      return `<li class="cite-item"><a class="cite-link" href="${href}" title="${esc(ct.stem)}"><sup class="cite-num">[${j + 1}]</sup> <span class="cite-year">${esc(ct.year)}</span> · Soru ${ct.num}<span class="cite-stem">${esc(short)}</span></a></li>`;
+    }).join("");
+    return `<section class="cite-block">
+      <h2>Çıkmış vize alıntıları</h2>
+      <p class="muted" style="margin-top:-.3rem">Notlar içindeki <sup>[n]</sup> işaretleri bu listeye açılır. Alıntıya tıklayın; çözüm rehberinde soru açılır ve çözümü vurgulanır.</p>
+      <ol class="cite-list">${items}</ol>
+    </section>`;
+  }
+
   function viewChapter(c, n) {
     const ch = c.chapters[n - 1];
     if (!ch) return viewNotFound();
@@ -361,7 +494,7 @@
       <p class="eyebrow">${esc(c.course)} · ${n}. Bölüm</p>
       <h1>${esc(ch.title)}</h1>
       <p class="lead muted" style="font:1.15rem/1.6 var(--serif)">${esc(ch.summary)}</p>
-      ${ch.image ? `<figure class="figure"><img src="${esc(ch.image)}" alt="${esc(ch.title)} infografiği" data-zoom><figcaption><b>Şekil ${n}.</b> Yalnızca bu bölümün ${noun(c, 2)}lerinden NotebookLM ile üretildi.</figcaption></figure>` : ""}
+      ${ch.image ? `<figure class="figure">${imgTag(ch.image, ch.title + " infografiği", " data-zoom")}<figcaption><b>Şekil ${n}.</b> Yalnızca bu bölümün ${noun(c, 2)}lerinden NotebookLM ile üretildi.</figcaption></figure>` : ""}
       ${aofFiguresHtml(ch, n, "figure")}
       ${bookUnitFiguresHtml(c, n, "figure")}
       ${chapterPanel(c, n)}
@@ -374,7 +507,8 @@
       <div class="two-col">
         <div>
           <h2>Çalışma notları</h2>
-          <div class="notes">${ch.notes ? md(ch.notes) : `<p class="muted">Bu bölümün çalışma notları henüz hazır değil.</p>`}</div>
+          <div class="notes">${notesHtmlWithCites(ch, chapterPastCites(c, n), c.slug)}</div>
+          ${chapterCiteHtml(c, n)}
         </div>
         <aside>
           <div class="panel">
@@ -512,30 +646,36 @@
     </div>`;
   }
 
-  function viewQuiz(c) {
+  function viewQuiz(c, opts) {
     if (!canAccess("quiz")) return viewGate("quiz");
-    const graded = c.quiz.filter((q) => GRADED.has(q.type)).length;
+    const o = opts || {};
+    const questions = o.questions || c.quiz;
+    const title = o.title || "Final";
+    const eyebrow = o.eyebrow || "Oyun modu · Final";
+    const graded = questions.filter((q) => GRADED.has(q.type)).length;
     const r = progress[c.slug];
     const g = gameStats(c.slug);
-    return `<p class="crumbs"><a href="#/">Katalog</a> / <a href="#/course/${c.slug}">${esc(c.subject)}</a> / Sınav</p>
+    return `<p class="crumbs">${o.crumbs || `<a href="#/">Katalog</a> / <a href="#/course/${c.slug}">${esc(c.subject)}</a> / Sınav`}</p>
       <div class="quiz-head">
-        <div><p class="eyebrow">Oyun modu · Final</p><h1 style="margin:0">${esc(c.course)}</h1></div>
+        <div><p class="eyebrow">${esc(eyebrow)}</p><h1 style="margin:0">${esc(o.heading || c.course)}</h1></div>
         <div class="muted" style="font-size:.9rem">${graded} puanlı soru · geçme ${pct(CONFIG.passMark)}${r ? ` · en iyi ${pct(r.best)}` : ""}</div>
       </div>
-      <p class="muted">Sorular sırayla gelir. Her doğru <strong>+10</strong>; seri katlayarak bonus verir. Yanlış seriyi sıfırlar.</p>
+      <p class="muted">${o.lead || "Sorular sırayla gelir. Her doğru <strong>+10</strong>; seri katlayarak bonus verir. Yanlış seriyi sıfırlar."}</p>
       <div id="game-root" data-course="${esc(c.slug)}">
-        ${quizHudHtml(c, 0, c.quiz.length)}
+        ${quizHudHtml(c, 0, questions.length)}
         <div id="game-stage"></div>
         <div id="result"></div>
       </div>`;
   }
 
-  function bindQuiz(c) {
+  function bindQuiz(c, opts) {
+    const o = opts || {};
     const root = document.getElementById("game-root");
     const stage = document.getElementById("game-stage");
     if (!root || !stage) return;
 
-    const questions = c.quiz;
+    const questions = o.questions || c.quiz;
+    const gameKey = o.gameKey || c.slug;
     let idx = 0;
     let right = 0;
     let streak = 0;
@@ -628,7 +768,7 @@
       const timeMs = Date.now() - t0;
       const avgMs = gradedDone ? Math.round(timeMs / Math.max(1, idx)) : 0;
       const run = { xp, streak: bestStreakRun, score, passed, timeMs, right: gradedRight, total: gradedDone };
-      const g = saveGameStats(c.slug, run);
+      const g = saveGameStats(gameKey, run);
       const isRecord = xp >= g.bestXp && xp > 0;
       const box = document.getElementById("result");
       box.innerHTML = `<div class="result ${passed ? "pass" : "fail"} game-result">
@@ -720,8 +860,125 @@
           <h3>${esc(x.title)}</h3>
           <p>${esc(x.desc)}</p>
         </a>`).join("")}
+        ${unitQuizCard(c)}
       </div>
       ${sessions.length ? `<h2>Çıkmış vize dönemleri</h2><ul class="past-list">${pastList}</ul>` : ""}`;
+  }
+
+  // ---- ünite quiz'leri (NotebookLM çıkmış soru üretimi) --------------------
+  const UQ = () => (window.UNIT_QUIZZES || {});
+
+  function unitQuizMap(slug) {
+    return UQ()[slug] || {};
+  }
+
+  function viewUnitQuizList(c) {
+    const map = unitQuizMap(c.slug);
+    const units = Object.keys(map).map((k) => +k).sort((a, b) => a - b);
+    if (!units.length) return viewNotFound();
+    const rows = units.map((u) => {
+      const q = map[String(u)];
+      const n = (q.questions || []).length;
+      return `<li class="past-row">
+        <div>
+          <a href="#/course/${c.slug}/unit-quiz/${u}"><strong>Ünite ${u}</strong> · ${esc(q.unitTitle || q.title || "")}</a>
+          <div class="muted" style="font-size:.82rem">${n} soru · çıkmış vize kaynaklı · oyun modu</div>
+        </div>
+        <div class="btn-row" style="margin:0">
+          <a class="btn ghost" href="#/course/${c.slug}/unit-quiz/${u}">Çöz</a>
+          <a class="btn ghost" href="#/course/${c.slug}/chapter/${u}">Konu anlatımı</a>
+        </div>
+      </li>`;
+    }).join("");
+    const total = units.reduce((n, u) => n + ((map[String(u)].questions || []).length), 0);
+    return `<p class="crumbs"><a href="#/">Katalog</a> / <a href="#/course/${c.slug}">${esc(c.subject)}</a> / <a href="#/course/${c.slug}/exams">Sınavlar</a> / Ünite quiz'leri</p>
+      <div class="quiz-head">
+        <div><p class="eyebrow">Ünite quiz'leri</p><h1 style="margin:0">${esc(c.course)}</h1></div>
+        <div class="muted" style="font-size:.9rem">${units.length} ünite · ${total} soru · NotebookLM çıkmış vize kaynaklı</div>
+      </div>
+      <p class="muted">Her ünite için 10-15 soruluk oyun modu. Sorular NotebookLM'de yüklenen çıkmış vize PDF'lerinden üretildi.</p>
+      <ul class="past-list">${rows}</ul>`;
+  }
+
+  function viewUnitQuiz(c, n) {
+    const q = unitQuizMap(c.slug)[String(n)];
+    if (!q || !(q.questions || []).length) return viewNotFound();
+    const questions = q.questions;
+    const eyebrow = `Ünite quiz · ${n}`;
+    const heading = q.unitTitle || `Ünite ${n}`;
+    return viewQuiz(c, {
+      questions,
+      eyebrow,
+      heading,
+      crumbs: `<a href="#/">Katalog</a> / <a href="#/course/${c.slug}">${esc(c.subject)}</a> / <a href="#/course/${c.slug}/unit-quiz">Ünite quiz'leri</a> / Ünite ${n}`,
+      lead: `${questions.length} soru · çıkmış vize kaynaklı. Her doğru <strong>+10</strong>; seri bonusu verir.`,
+    });
+  }
+
+  function bindUnitQuiz(c, n) {
+    const q = unitQuizMap(c.slug)[String(n)];
+    if (!q) return;
+    bindQuiz(c, { questions: q.questions, gameKey: `${c.slug}:u${n}` });
+  }
+
+  function unitQuizCard(c) {
+    const units = Object.keys(unitQuizMap(c.slug)).length;
+    if (!units) return "";
+    const total = Object.values(unitQuizMap(c.slug)).reduce((n, x) => n + ((x.questions || []).length), 0);
+    return `<a class="exam-card" href="#/course/${c.slug}/unit-quiz">
+      <span class="exam-badge">Yeni</span>
+      <h3>Ünite quiz'leri</h3>
+      <p>${units} ünite · ${total} soru · çıkmış vize kaynaklı, her ünite 10-15 soru.</p>
+    </a>`;
+  }
+
+  // ---- global sınav sayfası (tüm dersler tek yerde) -------------------------
+  function viewSinavlar() {
+    if (!COURSES.length) return `<p class="eyebrow">Sınavlar</p><h1>Sınav merkezi</h1><p class="muted">Henüz ders eklenmemiş.</p>`;
+    const rows = COURSES.map((c) => {
+      const sessions = pastFor(c.slug);
+      const totalPast = sessions.reduce((n, s) => n + (s.questions || []).length, 0);
+      const uq = unitQuizMap(c.slug);
+      const unitKeys = Object.keys(uq).map((k) => +k).sort((a, b) => a - b);
+      const unitQ = unitKeys.reduce((n, u) => n + ((uq[String(u)].questions || []).length), 0);
+      const quizN = (c.quiz || []).length;
+      const r = progress[c.slug];
+      const g = gameStats(c.slug);
+      const chips = [
+        quizN ? `<a class="btn ghost sm-mini" href="#/course/${c.slug}/quiz">Final (${quizN})</a>` : "",
+        unitKeys.length ? `<a class="btn ghost sm-mini" href="#/course/${c.slug}/unit-quiz">Ünite quiz (${unitKeys.length} · ${unitQ})</a>` : "",
+        totalPast ? `<a class="btn ghost sm-mini" href="#/course/${c.slug}/exams">Çıkmış vize (${sessions.length} · ${totalPast})</a>` : "",
+      ].filter(Boolean).join("");
+      return `<li class="past-row">
+        <div>
+          <a href="#/course/${c.slug}/exams"><strong>${esc(c.subject)}</strong></a>
+          <div class="muted" style="font-size:.82rem">
+            ${quizN ? `final ${quizN} soru` : ""}
+            ${unitKeys.length ? ` · ${unitKeys.length} ünite quiz (${unitQ} soru)` : ""}
+            ${totalPast ? ` · ${sessions.length} çıkmış oturum (${totalPast} soru)` : ""}
+            ${r && r.best ? ` · en iyi ${pct(r.best)}` : ""}
+            ${g.runs ? ` · ${g.bestXp} XP rekor` : ""}
+          </div>
+        </div>
+        <div class="btn-row" style="margin:0;flex-wrap:wrap;justify-content:flex-end">${chips}</div>
+      </li>`;
+    }).join("");
+    const totalSessions = COURSES.reduce((n, c) => n + pastFor(c.slug).length, 0);
+    const totalPastQ = COURSES.reduce((n, c) => n + pastFor(c.slug).reduce((m, s) => m + (s.questions || []).length, 0), 0);
+    const totalUnits = COURSES.reduce((n, c) => n + Object.keys(unitQuizMap(c.slug)).length, 0);
+    const totalQuizQ = COURSES.reduce((n, c) => n + COURSES.find((x) => x.slug === c.slug).quiz.length, 0);
+    const passedN = passedCount();
+    return `<p class="eyebrow">Sınav merkezi</p><h1>Tüm sınavlar</h1>
+      <p class="lead muted">Final quiz'leri, ünite quiz'leri ve çıkmış vize arşivleri tek listede. Puan, XP ve seri ilerlemesi bu tarayıcıda saklanır.</p>
+      <div class="stat" style="display:flex;gap:1.5rem;flex-wrap:wrap;margin:.5rem 0 1.4rem">
+        <span><b>${COURSES.length}</b>ders</span>
+        <span><b>${totalQuizQ}</b>final sorusu</span>
+        <span><b>${totalUnits}</b>ünite quiz</span>
+        <span><b>${totalSessions}</b>çıkmış oturum</span>
+        <span><b>${totalPastQ}</b>arşiv sorusu</span>
+        <span><b>${passedN}/${COURSES.length}</b>geçilen ders</span>
+      </div>
+      <ul class="past-list">${rows}</ul>`;
   }
 
   function viewPastExam(c, examId, query) {
@@ -831,10 +1088,15 @@
     });
     const qraw = parseLoc().query.soru;
     const qnum = parseInt(String(qraw || "").split("#")[0], 10);
+    const hl = String(parseLoc().query.hl || "") === "sol";
     if (qnum >= 1 && qnum <= questions.length) {
       const el = root.querySelector(`#soru-${qnum}`);
       if (el) {
         el.classList.add("sol-focus");
+        if (hl) {
+          const sol = el.querySelector(".sol-feedback");
+          if (sol) sol.classList.add("sol-highlight");
+        }
         requestAnimationFrame(() => el.scrollIntoView({ behavior: "smooth", block: "start" }));
       }
     }
@@ -1026,7 +1288,7 @@
         <td>${r ? pct(r.best) : "-"}</td><td>${r ? r.attempts : 0}</td><td><span class="badge ${s.cls}">${r ? (r.passed ? "Geçti" : "Devam ediyor") : "Başlanmadı"}</span></td></tr>`;
     }).join("");
     return `<p class="eyebrow">Akademik kayıt</p><h1>Transkriptiniz</h1>
-      <p class="muted">İlerleme yalnızca bu tarayıcıda saklanır. Site verilerini temizlerseniz sıfırlanır.</p>
+      <p class="muted">İlerleme yalnızca bu tarayıcıda saklanır. Site verilerini temizlerseniz sıfırlanır. <a href="#/cevrimdisi?b=yedek">İlerlemenizi yedekleyin</a>.</p>
       <div class="progress" aria-label="${total} dersten ${done} geçildi"><i style="width:${total ? (done / total) * 100 : 0}%"></i></div>
       <p><strong>${total} dersten ${done}</strong> ders geçildi. ${done >= total && total ? `<a href="#/certificate">Belgenizi alın.</a>` : `Belgenizi açmak için ${total === 1 ? "bu dersi" : `tüm ${total} dersi`} geçin.`}</p>
       <div class="table-wrap"><table class="transcript"><thead><tr><th>Kod</th><th>Ders</th><th>En iyi puan</th><th>Deneme</th><th>Durum</th></tr></thead><tbody>${rows}</tbody></table></div>
@@ -1151,11 +1413,11 @@
   }
 
   function interactivePanel(c) {
-    const d = INTERACTIVE[c.slug];
+    const d = INTERACTIVE()[c.slug];
     return d ? panelHTML(d, "pnl-" + c.slug) : "";
   }
   function chapterPanel(c, n) {
-    const d = INTERACTIVE[c.slug];
+    const d = INTERACTIVE()[c.slug];
     const ch = d && d.chapters && d.chapters[String(n)];
     return ch ? panelHTML(ch, `chp-${c.slug}-${n}`) : "";
   }
@@ -1227,6 +1489,42 @@
 
   function viewSummary() {
     if (!COURSES.length) return `<p class="eyebrow">Hızlı tekrar</p><h1>Ders özetleri</h1><p class="muted">Henüz ders eklenmemiş.</p>`;
+
+    // Not gövdesinden düz metin alıntı: markdown işaretlerini temizler, uzunlukta keser.
+    function notesExcerpt(ch, max) {
+      const raw = String(ch.notes || "").replace(/⟦\d+⟧/g, "");
+      const lines = raw.split(/\n+/)
+        .map((l) => l.replace(/^#{1,6}\s*/, "").replace(/\*\*/g, "").replace(/^\s*[-*]\s+/, "").trim())
+        .filter((l) => l.length > 24); // başlık/etiket kısayollarını at
+      let out = lines.join(" · ");
+      if (!out) return "";
+      if (out.length > (max || 520)) out = out.slice(0, max || 520).replace(/\s+\S*$/, "") + "…";
+      return out;
+    }
+
+    // Açılan bölümün altını dolduran içerik: not alıntısı, çıkmış vize linkleri, ünite quiz.
+    function bodyFooter(c, n) {
+      const ch = c.chapters[n - 1];
+      const excerpt = notesExcerpt(ch, 520);
+      const cites = chapterPastCites(c, n, 4);
+      const uq = unitQuizMap(c.slug)[String(n)];
+      const bits = [];
+      if (excerpt) bits.push(`<p class="sm-label">Çalışma notundan</p><p class="sm-note-excerpt">${esc(excerpt)}</p>`);
+      if (cites.length) {
+        const items = cites.map((ct, j) => {
+          const short = ct.stem.length > 92 ? ct.stem.slice(0, 89).trimEnd() + "…" : ct.stem;
+          return `<li class="cite-item"><a class="cite-link" href="${citeHref(c.slug, ct)}" title="${esc(ct.stem)}"><sup class="cite-num">[${j + 1}]</sup> <span class="cite-year">${esc(ct.year)}</span> · Soru ${ct.num}<span class="cite-stem">${esc(short)}</span></a></li>`;
+        }).join("");
+        bits.push(`<p class="sm-label">Çıkmış vize alıntıları</p><ul class="cite-list">${items}</ul>`);
+      }
+      const links = [
+        uq ? `<a class="btn ghost" href="#/course/${c.slug}/unit-quiz/${n}">Ünite ${n} quiz (${(uq.questions || []).length} soru)</a>` : "",
+        cites.length ? `<a class="btn ghost" href="${citeHref(c.slug, cites[0])}">Çıkmış vize çöz</a>` : "",
+        (c.quiz || []).length ? `<a class="btn ghost" href="#/course/${c.slug}/quiz">Final sınavı</a>` : "",
+      ].filter(Boolean);
+      return bits.join("") + (links.length ? `<div class="btn-row sm-quick">${links.join("")}</div>` : "");
+    }
+
     const totalCh = COURSES.reduce((n, c) => n + c.chapters.length, 0);
     const done = COURSES.reduce((n, c) => n + readCount(c), 0);
     const chips = COURSES.map((c, i) => `<button class="chip${i === 0 ? " active" : ""}" type="button" data-filter="${esc(c.slug)}" aria-pressed="${i === 0}">${esc(c.subject)}</button>`).join("");
@@ -1234,7 +1532,7 @@
       const rs = readSet(c.slug);
       const items = c.chapters.map((ch, i) => {
         const n = i + 1, isRead = rs.has(n);
-        const hay = norm([ch.title, ch.summary, (ch.objectives || []).join(" ")].join(" "));
+        const hay = norm([ch.title, ch.summary, (ch.objectives || []).join(" "), String(ch.notes || "").replace(/⟦\d+⟧/g, "")].join(" "));
         return `<div class="sm-item${isRead ? " is-read" : ""}" data-course="${esc(c.slug)}" data-n="${n}" data-hay="${esc(hay)}">
           <button class="sm-head" type="button" aria-expanded="false" aria-controls="sm-${esc(c.slug)}-${n}">
             <span class="sm-num">${n}</span>
@@ -1246,6 +1544,7 @@
             <p class="sm-sum">${esc(ch.summary)}</p>
             ${chapterPanel(c, n)}
             ${(ch.objectives || []).length ? `<p class="sm-label">Öğrenme amaçları</p><ul class="objectives">${ch.objectives.map((o) => `<li>${esc(o)}</li>`).join("")}</ul>` : ""}
+            ${bodyFooter(c, n)}
             <div class="btn-row">
               <button class="btn ghost sm-read" type="button" data-read="${n}" aria-pressed="${isRead}">${isRead ? "Okundu, geri al" : "Okundu olarak işaretle"}</button>
               <a class="btn" href="#/course/${esc(c.slug)}/chapter/${n}">Bölümü aç</a>
@@ -1365,6 +1664,14 @@
     };
 
     wrap.addEventListener("click", (e) => {
+      const head = e.target.closest(".sm-head");
+      if (head) {
+        const open = head.getAttribute("aria-expanded") === "true";
+        head.setAttribute("aria-expanded", String(!open));
+        const body = document.getElementById(head.getAttribute("aria-controls"));
+        if (body) body.hidden = open;
+        return;
+      }
       const readBtn = e.target.closest(".sm-read");
       if (!readBtn) return;
       const item = readBtn.closest(".sm-item");
@@ -1520,7 +1827,7 @@
     if (window.__cyPromise) return window.__cyPromise;
     window.__cyPromise = new Promise((resolve, reject) => {
       const s = document.createElement("script");
-      s.src = "https://unpkg.com/cytoscape@3.30.2/dist/cytoscape.min.js";
+      s.src = "vendor/cytoscape.min.js";
       s.onload = () => resolve(window.cytoscape);
       s.onerror = reject;
       document.head.appendChild(s);
@@ -1667,21 +1974,416 @@
     });
   })();
 
-  // ---- zoom ------------------------------------------------------
-  const zoom = document.createElement("div");
-  zoom.className = "zoom";
-  zoom.hidden = true;
-  zoom.setAttribute("role", "dialog");
-  zoom.setAttribute("aria-label", "Büyütülmüş şekil. Kapatmak için tıklayın veya Escape tuşuna basın.");
-  zoom.innerHTML = "<img alt=\"\">";
-  document.body.appendChild(zoom);
-  const closeZoom = () => { zoom.hidden = true; document.body.style.overflow = ""; };
+  // ---- zoom (popup pencere) --------------------------------------
+  function openZoomPopup(src, alt) {
+    const w = 1100, h = 900;
+    const left = Math.max(0, (screen.width - w) / 2);
+    const top = Math.max(0, (screen.height - h) / 2);
+    const win = window.open("", "infografik_zoom", `width=${w},height=${h},left=${left},top=${top},scrollbars=yes,resizable=yes`);
+    if (!win) return;
+    const dl = esc(src);
+    const safeAlt = esc(alt || "İnfografik");
+    win.document.write(`<!doctype html><html lang="tr"><head><meta charset="utf-8"><title>${safeAlt}</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:system-ui,-apple-system,sans-serif;background:#1a1f2e;color:#e8ecf4;min-height:100vh}
+.bar{position:sticky;top:0;z-index:10;display:flex;align-items:center;gap:8px;padding:10px 16px;background:#232a3b;border-bottom:1px solid #36405a}
+.bar .title{flex:1;font-size:13px;font-weight:600;opacity:.85;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+button,a.btn{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:8px;border:1px solid #4a5570;background:#2d3548;color:#e8ecf4;font-size:13px;font-weight:600;cursor:pointer;text-decoration:none}
+button:hover,a.btn:hover{background:#39435c}
+a.btn{background:#2563eb;border-color:#2563eb}
+a.btn:hover{background:#1d4ed8}
+.wrap{display:flex;justify-content:center;padding:20px;overflow:auto}
+img{max-width:none;transform-origin:top center;transition:transform .12s ease;border-radius:4px;box-shadow:0 8px 32px rgba(0,0,0,.5)}
+</style></head><body>
+<div class="bar">
+  <span class="title">${safeAlt}</span>
+  <button type="button" id="zout" title="Uzaklaştır">−</button>
+  <span id="pct" style="min-width:44px;text-align:center;font-size:13px;font-weight:700">100%</span>
+  <button type="button" id="zin" title="Yakınlaştır">+</button>
+  <button type="button" id="zreset" title="Sıfırla">1:1</button>
+  <a class="btn" href="${dl}" download>İndir</a>
+</div>
+<div class="wrap"><img id="zimg" src="${dl}" alt="${safeAlt}"></div>
+<script>
+var s=1,img=document.getElementById("zimg"),pct=document.getElementById("pct");
+function ap(){img.style.transform="scale("+s+")";pct.textContent=Math.round(s*100)+"%"}
+document.getElementById("zin").onclick=function(){s=Math.min(6,s*1.25);ap()};
+document.getElementById("zout").onclick=function(){s=Math.max(.2,s/1.25);ap()};
+document.getElementById("zreset").onclick=function(){s=1;ap()};
+document.addEventListener("keydown",function(e){
+  if(e.key==="+"||e.key==="="){s=Math.min(6,s*1.25);ap()}
+  else if(e.key==="-"||e.key==="_"){s=Math.max(.2,s/1.25);ap()}
+  else if(e.key==="0"){s=1;ap()}
+});
+img.ondblclick=function(e){e.preventDefault();var r=img.getBoundingClientRect();var f=s>1?1:2;s=f;ap()};
+</script></body></html>`);
+    win.document.close();
+  }
+
   document.addEventListener("click", (e) => {
     const img = e.target.closest("img[data-zoom]");
-    if (img) { zoom.querySelector("img").src = img.src; zoom.querySelector("img").alt = img.alt; zoom.hidden = false; document.body.style.overflow = "hidden"; return; }
-    if (!zoom.hidden && e.target.closest(".zoom")) closeZoom();
+    if (img) {
+      e.preventDefault();
+      openZoomPopup(img.getAttribute("data-download") || img.src, img.alt);
+      return;
+    }
+    const tab = e.target.closest(".inf-tab");
+    if (tab) {
+      const group = tab.closest(".inf-toggle");
+      if (!group) return;
+      group.querySelectorAll(".inf-tab").forEach((b) => b.classList.remove("is-active"));
+      group.querySelectorAll(".inf-pane").forEach((p) => p.classList.remove("is-active"));
+      tab.classList.add("is-active");
+      const pane = group.querySelector("#" + CSS.escape(tab.dataset.pane));
+      if (pane) pane.classList.add("is-active");
+    }
   });
-  document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !zoom.hidden) closeZoom(); });
+
+  // ---- çevrimdışı kullanım: ders paketleri, kurulum, yedek ---------------------------
+  // Görseller ders başına "pu-pack-<ders>" önbelleğine indirilir; sw.js oradan sunar.
+  // Paket listesi (yol, içerik özeti, bayt) build.py tarafından window.OFFLINE içine yazılır.
+  const PACKS = (window.OFFLINE && window.OFFLINE.packs) || {};
+  const PACK_PREFIX = "pu-pack-";
+  const REV_HEADER = "X-PU-Rev";
+  const canCache = "caches" in window && /^https?:$/.test(location.protocol);
+  const packUrl = (path) => new URL(path, location.origin + location.pathname).href;
+  const mb = (bytes) => (bytes / 1048576).toLocaleString("tr-TR", { maximumFractionDigits: 1, minimumFractionDigits: 1 }) + " MB";
+  const isStandalone = () => window.matchMedia("(display-mode: standalone)").matches || navigator.standalone === true;
+  const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+  let installEvent = null;
+  const activeDownloads = {}; // slug -> { done, total }
+
+  async function packStatus(slug) {
+    const pack = PACKS[slug];
+    if (!pack || !canCache) return null;
+    const files = pack.files.length;
+    if (!(await caches.has(PACK_PREFIX + slug))) return { ready: 0, files, missingBytes: pack.bytes };
+    const cache = await caches.open(PACK_PREFIX + slug);
+    let ready = 0, missingBytes = 0;
+    for (const [path, rev, bytes] of pack.files) {
+      const hit = await cache.match(packUrl(path));
+      if (hit && hit.headers.get(REV_HEADER) === rev) ready++;
+      else missingBytes += bytes;
+    }
+    return { ready, files, missingBytes };
+  }
+
+  async function requestPersist() {
+    try {
+      if (navigator.storage && navigator.storage.persist && !(await navigator.storage.persisted())) await navigator.storage.persist();
+    } catch (e) { /* desteklenmiyor */ }
+  }
+
+  async function downloadPack(slug, onProgress) {
+    const pack = PACKS[slug];
+    const cache = await caches.open(PACK_PREFIX + slug);
+    const queue = [];
+    let total = 0, done = 0;
+    for (const f of pack.files) {
+      const hit = await cache.match(packUrl(f[0]));
+      if (!(hit && hit.headers.get(REV_HEADER) === f[1])) { queue.push(f); total += f[2]; }
+    }
+    onProgress(0, total);
+    const worker = async () => {
+      while (queue.length) {
+        const [path, rev, bytes] = queue.shift();
+        const res = await fetch(path + "?v=" + rev, { cache: "no-store" });
+        if (!res.ok) throw new Error("İndirilemedi: " + path);
+        const headers = new Headers(res.headers);
+        headers.set(REV_HEADER, rev);
+        await cache.put(packUrl(path), new Response(await res.blob(), { status: 200, headers }));
+        done += bytes;
+        onProgress(done, total);
+      }
+    };
+    await Promise.all([worker(), worker(), worker()]);
+    const keep = new Set(pack.files.map((f) => packUrl(f[0])));
+    for (const req of await cache.keys()) if (!keep.has(req.url)) await cache.delete(req);
+    await requestPersist();
+  }
+
+  function packRowHtml(c) {
+    const pack = PACKS[c.slug];
+    if (!pack) return "";
+    return `<div class="pack" data-pack="${esc(c.slug)}">
+        <div class="pack-text"><b>${esc(c.subject)}</b><span class="muted" data-pack-info>${pack.files.length} görsel · ${mb(pack.bytes)}</span></div>
+        <div class="pack-bar" hidden><i></i></div>
+        <div class="pack-actions" data-pack-actions></div>
+      </div>`;
+  }
+
+  function offlineCourseCardHtml(c) {
+    if (!PACKS[c.slug] || !canCache) return "";
+    return `<section class="offline-card"><p class="eyebrow">Çevrimdışı</p>
+      <p>Ders notları, testler ve çıkmış sorular siteyi bir kez açınca bu cihaza kaydedilir. Görselleri de internetsiz görmek için dersi indirin.</p>
+      ${packRowHtml(c)}
+      <p class="muted small"><a href="#/cevrimdisi">Tüm dersler, yedek ve kurulum</a></p></section>`;
+  }
+
+  async function paintPack(el) {
+    const slug = el.dataset.pack;
+    const info = el.querySelector("[data-pack-info]");
+    const actions = el.querySelector("[data-pack-actions]");
+    const bar = el.querySelector(".pack-bar");
+    const pack = PACKS[slug];
+    const dl = activeDownloads[slug];
+    if (dl) {
+      bar.hidden = false;
+      bar.querySelector("i").style.width = (dl.total ? (dl.done / dl.total) * 100 : 0) + "%";
+      info.textContent = `İndiriliyor: ${mb(dl.done)} / ${mb(dl.total)}`;
+      actions.innerHTML = "";
+      return;
+    }
+    bar.hidden = true;
+    let st = null;
+    try { st = await packStatus(slug); } catch (e) { st = null; }
+    if (!st) { info.textContent = "Bu tarayıcı indirmeyi desteklemiyor."; actions.innerHTML = ""; return; }
+    if (st.ready === st.files) {
+      info.innerHTML = `<span class="badge pass">İndirildi</span> ${pack.files.length} görsel · ${mb(pack.bytes)}`;
+      actions.innerHTML = `<button class="btn ghost" data-pack-del>Sil</button>`;
+    } else if (st.ready > 0) {
+      info.innerHTML = `<span class="badge fail">Güncelleme var</span> ${mb(st.missingBytes)} indirilecek`;
+      actions.innerHTML = `<button class="btn" data-pack-get>Güncelle</button><button class="btn ghost" data-pack-del>Sil</button>`;
+    } else {
+      info.textContent = `${pack.files.length} görsel · ${mb(pack.bytes)}`;
+      actions.innerHTML = `<button class="btn" data-pack-get>İndir</button>`;
+    }
+  }
+
+  function paintPacks() {
+    document.querySelectorAll("[data-pack]").forEach((el) => { paintPack(el); });
+  }
+
+  document.addEventListener("click", async (e) => {
+    const get = e.target.closest("[data-pack-get]");
+    const del = e.target.closest("[data-pack-del]");
+    if (!get && !del) return;
+    const slug = e.target.closest("[data-pack]").dataset.pack;
+    if (del) {
+      await caches.delete(PACK_PREFIX + slug);
+      paintPacks();
+      paintStorage();
+      return;
+    }
+    if (activeDownloads[slug]) return;
+    if (navigator.onLine === false) { showToast("İndirmek için internet bağlantısı gerekiyor."); return; }
+    activeDownloads[slug] = { done: 0, total: 0 };
+    paintPacks();
+    try {
+      await downloadPack(slug, (done, total) => { activeDownloads[slug] = { done, total }; paintPacks(); });
+      delete activeDownloads[slug];
+      showToast(`${bySlug[slug] ? bySlug[slug].subject : "Ders"} indirildi. Görseller artık internetsiz de açılır.`);
+    } catch (err) {
+      delete activeDownloads[slug];
+      const full = err && (err.name === "QuotaExceededError" || /quota/i.test(String(err.message)));
+      showToast(full ? "Cihazda yer kalmadı. Başka bir dersi silip tekrar deneyin."
+        : "İndirme yarıda kaldı. Bağlantı gelince tekrar dokunun; indirilenler korunur.");
+    }
+    paintPacks();
+    paintStorage();
+  });
+
+  async function paintStorage() {
+    const el = document.getElementById("storage-info");
+    if (!el) return;
+    const parts = [];
+    try {
+      if (navigator.storage && navigator.storage.estimate) {
+        const est = await navigator.storage.estimate();
+        parts.push(`Bu site cihazınızda ${mb(est.usage || 0)} yer kullanıyor.`);
+      }
+      if (navigator.storage && navigator.storage.persisted) {
+        parts.push((await navigator.storage.persisted())
+          ? "Tarayıcı bu verileri kalıcı olarak saklıyor."
+          : "Tarayıcı yer açmak için bu verileri silebilir; ana ekrana eklemek bunu önler.");
+      }
+    } catch (e) { /* bilgi yok */ }
+    el.textContent = parts.join(" ");
+  }
+
+  function installHtml() {
+    if (isStandalone()) return `<p><span class="badge pass">Kurulu</span> Site uygulama olarak açık.</p>`;
+    if (installEvent) return `<p>Siteyi telefonunuza uygulama gibi kurun. Ana ekrandan tek dokunuşla, internetsiz açılır.</p>
+      <div class="btn-row"><button class="btn" id="install-btn">Uygulamayı yükle</button></div>`;
+    if (isIOS) return `<p>iPhone ve iPad'de siteyi ana ekrana ekleyin. Safari, ana ekrana eklenmemiş sitelerin kayıtlı verilerini bir süre girilmeyince silebiliyor; ana ekrandaki uygulama bundan korunur.</p>
+      <ol class="steps"><li>Safari'de alttaki <b>Paylaş</b> düğmesine dokunun.</li><li><b>Ana Ekrana Ekle</b>'yi seçin.</li><li>Sonra siteyi ana ekrandaki simgeden açın ve dersleri oradan indirin.</li></ol>`;
+    return `<p>Tarayıcı menüsünden <b>Uygulamayı yükle</b> ya da <b>Ana ekrana ekle</b>'yi seçerek siteyi uygulama gibi kurabilirsiniz.</p>`;
+  }
+
+  function viewOffline() {
+    const rows = COURSES.map(packRowHtml).join("");
+    return `<p class="eyebrow">İnternetsiz çalışma</p><h1>Çevrimdışı kullanım</h1>
+      <p class="lead muted">Siteyi bir kez açtığınızda ders notları, testler, çıkmış sorular ve arama bu cihaza kaydedilir. İnfografikler büyük olduğu için ders ders indirilir.</p>
+      <p id="shell-state" class="muted">${canCache ? "Kontrol ediliyor…" : "Bu tarayıcı çevrimdışı kaydı desteklemiyor."}</p>
+      <h2>Ders görselleri</h2>
+      ${canCache ? `<div class="packs">${rows}</div><p class="muted small" id="storage-info"></p>` : ""}
+      <h2>Uygulama olarak kurun</h2>
+      <div id="install-box">${installHtml()}</div>
+      <h2 id="yedek">İlerleme yedeği</h2>
+      <p>Test sonuçlarınız ve okuduğunuz bölümler yalnızca bu tarayıcıda durur. Telefon değiştirirken ya da tarayıcı verileri silinmeden önce yedek alın.</p>
+      <div class="btn-row"><button class="btn" id="backup-dl">Yedek dosyası indir</button><button class="btn ghost" id="backup-copy">Yedek kodunu kopyala</button></div>
+      <details class="backup-in"><summary>Yedeği geri yükle</summary>
+        <p class="muted small">Yedek dosyasını seçin ya da kopyaladığınız kodu yapıştırın. Mevcut ilerlemenizle birleştirilir; hiçbir sonuç silinmez.</p>
+        <input type="file" id="backup-file" accept="application/json,.json">
+        <textarea id="backup-text" rows="4" placeholder="Yedek kodunu buraya yapıştırın"></textarea>
+        <div class="btn-row"><button class="btn" id="backup-restore">Geri yükle</button></div>
+        <p id="backup-msg" class="muted small" role="status"></p>
+      </details>`;
+  }
+
+  function backupJson() {
+    let name = "";
+    try { name = localStorage.getItem(CONFIG.storageKey + ".name") || ""; } catch (e) { /* yok */ }
+    return JSON.stringify({ app: CONFIG.storageKey, savedAt: new Date().toISOString(), progress, name });
+  }
+
+  // Aynı dersin iki kaydını birleştirir: sayılarda büyük olan, listelerde birleşim; bestTimeMs'te küçük olan.
+  function mergeRecord(a, b) {
+    if (Array.isArray(a) && Array.isArray(b)) return Array.from(new Set(a.concat(b))).sort((x, y) => x - y);
+    if (a && b && typeof a === "object" && typeof b === "object") {
+      const out = Object.assign({}, a);
+      for (const k of Object.keys(b)) {
+        if (!(k in a)) out[k] = b[k];
+        else if (k === "bestTimeMs" && typeof a[k] === "number" && typeof b[k] === "number") out[k] = Math.min(a[k] || b[k], b[k] || a[k]);
+        else if (typeof a[k] === "number" && typeof b[k] === "number") out[k] = Math.max(a[k], b[k]);
+        else if (typeof a[k] === "boolean") out[k] = a[k] || !!b[k];
+        else out[k] = mergeRecord(a[k], b[k]);
+      }
+      return out;
+    }
+    return a === undefined ? b : a;
+  }
+
+  function restoreBackup(text) {
+    let data;
+    try { data = JSON.parse(String(text).trim()); } catch (e) { return "Bu bir yedek kodu değil. Kodun tamamını yapıştırdığınızdan emin olun."; }
+    if (!data || typeof data.progress !== "object" || data.progress === null) return "Yedekte ilerleme bilgisi bulunamadı.";
+    for (const [slug, rec] of Object.entries(data.progress)) {
+      if (!rec || typeof rec !== "object") continue;
+      progress[slug] = progress[slug] ? mergeRecord(progress[slug], rec) : rec;
+    }
+    save(progress);
+    try {
+      if (data.name && !localStorage.getItem(CONFIG.storageKey + ".name")) localStorage.setItem(CONFIG.storageKey + ".name", data.name);
+    } catch (e) { /* yok */ }
+    return "";
+  }
+
+  function bindOffline() {
+    paintPacks();
+    paintStorage();
+    const shell = document.getElementById("shell-state");
+    if (shell && canCache && "serviceWorker" in navigator) {
+      navigator.serviceWorker.getRegistration().then((reg) => {
+        shell.innerHTML = reg && reg.active
+          ? `<span class="badge pass">Hazır</span> Notlar, testler ve çıkmış sorular bu cihazda kayıtlı.`
+          : "Site bu cihaza kaydediliyor. Birkaç saniye sonra bu sayfayı yeniden açın.";
+      });
+    }
+    const ib = document.getElementById("install-btn");
+    if (ib) ib.onclick = async () => {
+      if (!installEvent) return;
+      installEvent.prompt();
+      try { await installEvent.userChoice; } catch (e) { /* kapatıldı */ }
+      installEvent = null;
+      const box = document.getElementById("install-box");
+      if (box) box.innerHTML = installHtml();
+    };
+    const dl = document.getElementById("backup-dl");
+    if (dl) dl.onclick = () => {
+      const blob = new Blob([backupJson()], { type: "application/json" });
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = "acik-ilahiyat-yedek-" + new Date().toISOString().slice(0, 10) + ".json";
+      document.body.appendChild(a);
+      a.click();
+      setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 1000);
+    };
+    const cp = document.getElementById("backup-copy");
+    if (cp) cp.onclick = async () => {
+      const text = backupJson();
+      try { await navigator.clipboard.writeText(text); showToast("Yedek kodu kopyalandı. Kendinize WhatsApp'tan ya da e-postayla gönderebilirsiniz."); }
+      catch (e) { const t = document.getElementById("backup-text"); t.value = text; t.closest("details").open = true; t.select(); showToast("Kod aşağıda seçili; kopyalayın."); }
+    };
+    const file = document.getElementById("backup-file");
+    if (file) file.onchange = () => {
+      const f = file.files && file.files[0];
+      if (!f) return;
+      f.text().then((t) => { document.getElementById("backup-text").value = t; });
+    };
+    const rs = document.getElementById("backup-restore");
+    if (rs) rs.onclick = () => {
+      const msg = document.getElementById("backup-msg");
+      const err = restoreBackup(document.getElementById("backup-text").value);
+      msg.textContent = err || "Yedek yüklendi. Transkriptinizde görebilirsiniz.";
+    };
+    const q = parseLoc().query;
+    if (q.b) { const t = document.getElementById(q.b); if (t) setTimeout(() => t.scrollIntoView(), 0); }
+  }
+
+  // Katalogda bir kez gösterilen kurulum ipucu (iOS'ta veri silinmesine karşı en etkili önlem).
+  function installBannerHtml() {
+    let dismissed = false;
+    try { dismissed = localStorage.getItem(CONFIG.storageKey + ".installHint") === "0"; } catch (e) { /* yok */ }
+    if (dismissed || isStandalone() || !(isIOS || installEvent)) return "";
+    return `<div class="notice" id="install-hint"><span>Siteyi ana ekrana ekleyin: internetsiz açılır, ilerlemeniz korunur.</span>
+      <a class="btn" href="#/cevrimdisi">Nasıl?</a><button class="btn ghost" id="install-hint-x" aria-label="İpucunu kapat">Kapat</button></div>`;
+  }
+  document.addEventListener("click", (e) => {
+    if (!e.target.closest("#install-hint-x")) return;
+    try { localStorage.setItem(CONFIG.storageKey + ".installHint", "0"); } catch (err) { /* yok */ }
+    const h = document.getElementById("install-hint");
+    if (h) h.remove();
+  });
+
+  window.addEventListener("beforeinstallprompt", (e) => {
+    e.preventDefault();
+    installEvent = e;
+    const box = document.getElementById("install-box");
+    if (box) { box.innerHTML = installHtml(); bindOffline(); }
+  });
+  window.addEventListener("appinstalled", () => { installEvent = null; });
+
+  let toastTimer = null;
+  function showToast(message, actionLabel, action) {
+    const t = document.getElementById("toast");
+    if (!t) return;
+    t.innerHTML = `<span>${esc(message)}</span>${actionLabel ? `<button class="btn" type="button">${esc(actionLabel)}</button>` : ""}<button class="toast-x" type="button" aria-label="Kapat">×</button>`;
+    t.hidden = false;
+    const btn = t.querySelector(".btn");
+    if (btn) btn.onclick = () => { t.hidden = true; action(); };
+    t.querySelector(".toast-x").onclick = () => { t.hidden = true; };
+    clearTimeout(toastTimer);
+    if (!actionLabel) toastTimer = setTimeout(() => { t.hidden = true; }, 6000);
+  }
+
+  function setupServiceWorker() {
+    if (!("serviceWorker" in navigator) || !/^https?:$/.test(location.protocol)) return;
+    let updating = false;
+    navigator.serviceWorker.addEventListener("controllerchange", () => {
+      if (updating) location.reload();
+    });
+    navigator.serviceWorker.register("sw.js", { updateViaCache: "none" }).then((reg) => {
+      const offer = (w) => showToast("Sitenin yeni sürümü hazır.", "Yenile", () => {
+        updating = true;
+        w.postMessage({ type: "SKIP_WAITING" });
+      });
+      if (reg.waiting && navigator.serviceWorker.controller) offer(reg.waiting);
+      reg.addEventListener("updatefound", () => {
+        const w = reg.installing;
+        if (!w) return;
+        w.addEventListener("statechange", () => {
+          if (w.state !== "installed") return;
+          if (navigator.serviceWorker.controller) offer(w);
+          else showToast("Site bu cihaza kaydedildi; artık internet olmadan da açılır.", "Görseller", () => { location.hash = "#/cevrimdisi"; });
+        });
+      });
+      document.addEventListener("visibilitychange", () => {
+        if (document.visibilityState === "visible") reg.update().catch(() => {});
+      });
+    }).catch(() => { /* kayıt başarısız: site yine çalışır */ });
+  }
 
   // ---- yönlendirici ---------------------------------------------------------------
   function parseLoc() {
@@ -1701,18 +2403,48 @@
     return { parts, query, path: parts.join("/") };
   }
 
-  function route() {
+  let routeSeq = 0;
+  async function route() {
+    const seq = ++routeSeq;
     const { parts, query } = parseLoc();
+    const need = new Set();
+    const needExamData = () => { need.add("past_exams"); need.add("unit_quizzes"); };
+    if (!parts.length) { /* katalog: yalnızca data.js */ }
+    else if (parts[0] === "sinavlar") needExamData();
+    else if (parts[0] === "ozet") { need.add("interactive"); need.add("coursegraph"); needExamData(); }
+    else if (parts[0] === "ara") need.add("coursegraph");
+    else if (parts[0] === "transcript" || parts[0] === "certificate") { /* data.js yeterli */ }
+    else if (parts[0] === "course" && bySlug[parts[1]]) {
+      if (parts[2] === "chapter") { need.add("mindmaps"); need.add("interactive"); need.add("past_exams"); }
+      else if (parts[2] === "quiz") { /* data.js quiz yeterli */ }
+      else if (parts[2] === "unit-quiz") need.add("unit_quizzes");
+      else if (parts[2] === "exams") needExamData();
+      else if (parts[2] === "past") need.add("past_exams");
+      else need.add("mindmaps");
+    }
+    let missing = [];
+    if (need.size) {
+      const results = await Promise.allSettled([...need].map(ensureBundle));
+      missing = results.filter((r) => r.status === "rejected");
+      if (seq !== routeSeq) return;
+    }
     let html, bind = () => {};
     if (!parts.length) html = viewCatalog();
+    else if (parts[0] === "sinavlar") { html = viewSinavlar(); bind = () => {}; }
     else if (parts[0] === "ozet") { html = viewSummary(); bind = bindSummary; }
     else if (parts[0] === "ara") { html = viewSearch(); bind = bindSearch; }
     else if (parts[0] === "transcript") { html = viewTranscript(); bind = bindTranscript; }
     else if (parts[0] === "certificate") { html = viewCertificate(); bind = bindCertificate; }
+    else if (parts[0] === "cevrimdisi") { html = viewOffline(); bind = bindOffline; }
     else if (parts[0] === "course" && bySlug[parts[1]]) {
       const c = bySlug[parts[1]];
       if (parts[2] === "chapter") { html = viewChapter(c, +parts[3]); bind = bindMindmaps; }
       else if (parts[2] === "quiz") { html = viewQuiz(c); bind = () => bindQuiz(c); }
+      else if (parts[2] === "unit-quiz") {
+        const n = +parts[3];
+        if (n >= 1) { html = viewUnitQuiz(c, n); bind = () => bindUnitQuiz(c, n); }
+        else { html = viewUnitQuizList(c); bind = () => {}; }
+      }
       else if (parts[2] === "exams") { html = viewExamHub(c); bind = () => {}; }
       else if (parts[2] === "past") {
         const id = decodeURIComponent(parts[3] || "");
@@ -1721,9 +2453,11 @@
       }
       else { html = viewCourse(c); bind = bindMindmaps; }
     } else html = viewNotFound();
-    closeZoom();
+    if (missing.length) html = `<div class="notice warn" role="alert"><b>Bu sayfanın bir kısmı yüklenemedi.</b> ${navigator.onLine === false ? "İnternet bağlantınız yok ve bu içerik henüz cihaza kaydedilmemiş." : "Bağlantı sorunu olabilir."} İnternete bağlanınca sayfayı yenileyin. Bir kez çevrimiçi açtıktan sonra site çevrimdışı da çalışır.</div>` + html;
+    if (!parts.length) html = installBannerHtml() + html;
     app.innerHTML = html;
     bind();
+    paintPacks();
     typeset(app);
     document.querySelectorAll(".nav a").forEach((a) => {
       const href = a.getAttribute("href");
@@ -1734,4 +2468,7 @@
   }
   window.addEventListener("hashchange", route);
   route();
+
+  // ---- PWA: service worker kaydı ve güncelleme bildirimi (offline.js bölümü yukarıda) ----
+  setupServiceWorker();
 })();

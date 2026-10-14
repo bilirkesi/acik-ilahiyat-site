@@ -1,4 +1,11 @@
 /* Personal University: one deliberate light look. Colors come from university.json (primary, accent, paper) and are set at runtime. */
+/* Fontlar sitenin içinden gelir (çevrimdışı çalışsın diye); SIL OFL lisansları fonts/ altında. */
+@font-face { font-family: "EB Garamond"; font-style: normal; font-weight: 400 800; font-display: swap; src: url(fonts/eb-garamond-latin-ext-wght-normal.woff2) format("woff2"); unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF; }
+@font-face { font-family: "EB Garamond"; font-style: normal; font-weight: 400 800; font-display: swap; src: url(fonts/eb-garamond-latin-wght-normal.woff2) format("woff2"); unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+@font-face { font-family: "EB Garamond"; font-style: italic; font-weight: 400 800; font-display: swap; src: url(fonts/eb-garamond-latin-ext-wght-italic.woff2) format("woff2"); unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF; }
+@font-face { font-family: "EB Garamond"; font-style: italic; font-weight: 400 800; font-display: swap; src: url(fonts/eb-garamond-latin-wght-italic.woff2) format("woff2"); unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+@font-face { font-family: "Inter"; font-style: normal; font-weight: 100 900; font-display: swap; src: url(fonts/inter-latin-ext-wght-normal.woff2) format("woff2"); unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF; }
+@font-face { font-family: "Inter"; font-style: normal; font-weight: 100 900; font-display: swap; src: url(fonts/inter-latin-wght-normal.woff2) format("woff2"); unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
 :root {
   color-scheme: light;
   --ivory: #f8f4ea;
@@ -464,3 +471,34 @@ table.transcript { width: 100%; border-collapse: collapse; background: var(--pap
 .sol-self span { word-break: break-all; }
 .chip-row { display: flex; flex-wrap: wrap; gap: .35rem; margin-top: .55rem; }
 .chip { font: 500 .72rem/1 var(--sans); padding: .28rem .45rem; border: 1px solid var(--line); border-radius: 999px; color: var(--muted); }
+
+/* çevrimdışı: ders paketleri, bildirimler, kurulum, yedek */
+.notice { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem 1rem; background: var(--paper); border: 1px solid var(--line); border-left: 3px solid var(--gold); padding: .8rem 1rem; margin: 0 0 1.4rem; }
+.notice span { flex: 1 1 16rem; }
+.notice.warn { border-left-color: var(--bad); }
+.small { font-size: .88rem; }
+.offline-card { background: var(--paper); border: 1px solid var(--line); padding: 1.1rem 1.2rem; margin: 1.6rem 0; }
+.offline-card p { margin: 0 0 .7rem; }
+.packs { display: grid; gap: .7rem; margin: 0 0 .8rem; }
+.pack { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: .5rem 1rem; background: var(--paper); border: 1px solid var(--line); padding: .8rem 1rem; }
+.offline-card .pack { background: #fff; }
+.pack-text { display: grid; gap: .15rem; min-width: 0; }
+.pack-text .badge { margin-right: .3rem; }
+.pack-actions { display: flex; gap: .5rem; }
+.pack-actions .btn { min-height: 44px; }
+.pack-bar { grid-column: 1 / -1; height: 6px; background: var(--gold-soft); overflow: hidden; }
+.pack-bar i { display: block; height: 100%; width: 0; background: var(--navy); transition: width .2s; }
+.steps { padding-left: 1.3rem; }
+.steps li { margin: .3rem 0; }
+.backup-in { margin: 1rem 0 0; }
+.backup-in summary { cursor: pointer; font-weight: 600; color: var(--navy); min-height: 44px; display: flex; align-items: center; }
+.backup-in input[type=file] { display: block; margin: .6rem 0; max-width: 100%; }
+.backup-in textarea { width: 100%; font: .85rem/1.4 ui-monospace, Menlo, Consolas, monospace; padding: .6rem; border: 1px solid var(--line); background: #fff; }
+.toast { position: fixed; left: 50%; transform: translateX(-50%); bottom: calc(16px + env(safe-area-inset-bottom, 0px)); z-index: 50;
+  display: flex; align-items: center; gap: .8rem; width: min(560px, calc(100% - 32px)); background: var(--navy); color: var(--ivory);
+  padding: .75rem .9rem .75rem 1.1rem; box-shadow: 0 10px 30px rgba(0, 0, 0, .25); font-size: .95rem; }
+.toast span { flex: 1; }
+.toast .btn { background: var(--gold); color: var(--navy); white-space: nowrap; }
+.toast-x { appearance: none; border: 0; background: transparent; color: inherit; font-size: 1.4rem; line-height: 1; padding: .2rem .4rem; cursor: pointer; min-width: 44px; min-height: 44px; }
+@media (max-width: 560px) { .pack { grid-template-columns: minmax(0, 1fr); } }
+[hidden] { display: none !important; }

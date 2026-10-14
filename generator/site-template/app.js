@@ -43,7 +43,8 @@
     colors: Object.assign({}, DEFAULT_COLORS, U.colors || {}),
     showNotebookLinks: U.showNotebookLinks !== false,
     totalCourses: Math.max(COURSES.length, U.plannedCourses || 0),
-    storageKey: "pu." + (slugify(U.name) || "university") + ".v1",
+    // Sabit anahtar (university.json storageKey): site adı değişse de öğrencinin ilerlemesi kaybolmaz.
+    storageKey: "pu." + (U.storageKey || slugify(U.name) || "university") + ".v1",
   };
 
   // Kapı kancası. Herkese true döner. Dersleri veya belgeyi üyelere özel
@@ -180,10 +181,11 @@
   const byline = (c) => [c.professor, c.school].filter(Boolean).join(", ");
   const isYouTube = (u) => /youtube\.com|youtu\.be/.test(u || "");
   // Görsel srcset: varsa -sm.jpg (640w) küçük varyant; img etiketine lazy+async ekler.
+  const SMALL_IMAGES = new Set((window.OFFLINE && window.OFFLINE.small) || []);
   function imgTag(src, alt, extra) {
     if (!src) return "";
     const sm = String(src).replace(/\.jpg$/i, "-sm.jpg");
-    const srcset = ` srcset="${esc(sm)} 640w, ${esc(src)} 1536w" sizes="(max-width: 760px) 100vw, 720px"`;
+    const srcset = SMALL_IMAGES.has(src) ? ` srcset="${esc(sm)} 640w, ${esc(src)} 1536w" sizes="(max-width: 760px) 100vw, 720px"` : "";
     return `<img src="${esc(src)}"${srcset} alt="${esc(alt)}" loading="lazy" decoding="async"${extra || ""}>`;
   }
 
@@ -215,6 +217,8 @@
   }
 
   function typeset(el) {
+    // KaTeX yalnızca metinde formül işareti varsa yüklenir (dış sunucuya gereksiz istek ve çevrimdışı hata olmasın).
+    if (!/\$|\\\(|\\\[/.test(el.textContent || "")) return;
     ensureKatex().then(() => {
       if (window.renderMathInElement) {
         window.renderMathInElement(el, {
@@ -354,6 +358,7 @@
           ${credit}
         </aside>
       </section>
+      ${offlineCourseCardHtml(c)}
       ${mindmapSectionHtml(c.slug, { title: "Ders zihin haritası", lead: "Bölüm başlıkları ve alt kavramlar. Bölüm düğümüne tıklayınca o bölüme geçilir." })}
       <h2>Bölümler</h2>
       <ol class="syllabus">${chapters}</ol>
@@ -1283,7 +1288,7 @@
         <td>${r ? pct(r.best) : "-"}</td><td>${r ? r.attempts : 0}</td><td><span class="badge ${s.cls}">${r ? (r.passed ? "Geçti" : "Devam ediyor") : "Başlanmadı"}</span></td></tr>`;
     }).join("");
     return `<p class="eyebrow">Akademik kayıt</p><h1>Transkriptiniz</h1>
-      <p class="muted">İlerleme yalnızca bu tarayıcıda saklanır. Site verilerini temizlerseniz sıfırlanır.</p>
+      <p class="muted">İlerleme yalnızca bu tarayıcıda saklanır. Site verilerini temizlerseniz sıfırlanır. <a href="#/cevrimdisi?b=yedek">İlerlemenizi yedekleyin</a>.</p>
       <div class="progress" aria-label="${total} dersten ${done} geçildi"><i style="width:${total ? (done / total) * 100 : 0}%"></i></div>
       <p><strong>${total} dersten ${done}</strong> ders geçildi. ${done >= total && total ? `<a href="#/certificate">Belgenizi alın.</a>` : `Belgenizi açmak için ${total === 1 ? "bu dersi" : `tüm ${total} dersi`} geçin.`}</p>
       <div class="table-wrap"><table class="transcript"><thead><tr><th>Kod</th><th>Ders</th><th>En iyi puan</th><th>Deneme</th><th>Durum</th></tr></thead><tbody>${rows}</tbody></table></div>
@@ -1822,7 +1827,7 @@
     if (window.__cyPromise) return window.__cyPromise;
     window.__cyPromise = new Promise((resolve, reject) => {
       const s = document.createElement("script");
-      s.src = "https://unpkg.com/cytoscape@3.30.2/dist/cytoscape.min.js";
+      s.src = "vendor/cytoscape.min.js";
       s.onload = () => resolve(window.cytoscape);
       s.onerror = reject;
       document.head.appendChild(s);
@@ -2035,6 +2040,351 @@ img.ondblclick=function(e){e.preventDefault();var r=img.getBoundingClientRect();
     }
   });
 
+  // ---- çevrimdışı kullanım: ders paketleri, kurulum, yedek ---------------------------
+  // Görseller ders başına "pu-pack-<ders>" önbelleğine indirilir; sw.js oradan sunar.
+  // Paket listesi (yol, içerik özeti, bayt) build.py tarafından window.OFFLINE içine yazılır.
+  const PACKS = (window.OFFLINE && window.OFFLINE.packs) || {};
+  const PACK_PREFIX = "pu-pack-";
+  const REV_HEADER = "X-PU-Rev";
+  const canCache = "caches" in window && /^https?:$/.test(location.protocol);
+  const packUrl = (path) => new URL(path, location.origin + location.pathname).href;
+  const mb = (bytes) => (bytes / 1048576).toLocaleString("tr-TR", { maximumFractionDigits: 1, minimumFractionDigits: 1 }) + " MB";
+  const isStandalone = () => window.matchMedia("(display-mode: standalone)").matches || navigator.standalone === true;
+  const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+  let installEvent = null;
+  const activeDownloads = {}; // slug -> { done, total }
+
+  async function packStatus(slug) {
+    const pack = PACKS[slug];
+    if (!pack || !canCache) return null;
+    const files = pack.files.length;
+    if (!(await caches.has(PACK_PREFIX + slug))) return { ready: 0, files, missingBytes: pack.bytes };
+    const cache = await caches.open(PACK_PREFIX + slug);
+    let ready = 0, missingBytes = 0;
+    for (const [path, rev, bytes] of pack.files) {
+      const hit = await cache.match(packUrl(path));
+      if (hit && hit.headers.get(REV_HEADER) === rev) ready++;
+      else missingBytes += bytes;
+    }
+    return { ready, files, missingBytes };
+  }
+
+  async function requestPersist() {
+    try {
+      if (navigator.storage && navigator.storage.persist && !(await navigator.storage.persisted())) await navigator.storage.persist();
+    } catch (e) { /* desteklenmiyor */ }
+  }
+
+  async function downloadPack(slug, onProgress) {
+    const pack = PACKS[slug];
+    const cache = await caches.open(PACK_PREFIX + slug);
+    const queue = [];
+    let total = 0, done = 0;
+    for (const f of pack.files) {
+      const hit = await cache.match(packUrl(f[0]));
+      if (!(hit && hit.headers.get(REV_HEADER) === f[1])) { queue.push(f); total += f[2]; }
+    }
+    onProgress(0, total);
+    const worker = async () => {
+      while (queue.length) {
+        const [path, rev, bytes] = queue.shift();
+        const res = await fetch(path + "?v=" + rev, { cache: "no-store" });
+        if (!res.ok) throw new Error("İndirilemedi: " + path);
+        const headers = new Headers(res.headers);
+        headers.set(REV_HEADER, rev);
+        await cache.put(packUrl(path), new Response(await res.blob(), { status: 200, headers }));
+        done += bytes;
+        onProgress(done, total);
+      }
+    };
+    await Promise.all([worker(), worker(), worker()]);
+    const keep = new Set(pack.files.map((f) => packUrl(f[0])));
+    for (const req of await cache.keys()) if (!keep.has(req.url)) await cache.delete(req);
+    await requestPersist();
+  }
+
+  function packRowHtml(c) {
+    const pack = PACKS[c.slug];
+    if (!pack) return "";
+    return `<div class="pack" data-pack="${esc(c.slug)}">
+        <div class="pack-text"><b>${esc(c.subject)}</b><span class="muted" data-pack-info>${pack.files.length} görsel · ${mb(pack.bytes)}</span></div>
+        <div class="pack-bar" hidden><i></i></div>
+        <div class="pack-actions" data-pack-actions></div>
+      </div>`;
+  }
+
+  function offlineCourseCardHtml(c) {
+    if (!PACKS[c.slug] || !canCache) return "";
+    return `<section class="offline-card"><p class="eyebrow">Çevrimdışı</p>
+      <p>Ders notları, testler ve çıkmış sorular siteyi bir kez açınca bu cihaza kaydedilir. Görselleri de internetsiz görmek için dersi indirin.</p>
+      ${packRowHtml(c)}
+      <p class="muted small"><a href="#/cevrimdisi">Tüm dersler, yedek ve kurulum</a></p></section>`;
+  }
+
+  async function paintPack(el) {
+    const slug = el.dataset.pack;
+    const info = el.querySelector("[data-pack-info]");
+    const actions = el.querySelector("[data-pack-actions]");
+    const bar = el.querySelector(".pack-bar");
+    const pack = PACKS[slug];
+    const dl = activeDownloads[slug];
+    if (dl) {
+      bar.hidden = false;
+      bar.querySelector("i").style.width = (dl.total ? (dl.done / dl.total) * 100 : 0) + "%";
+      info.textContent = `İndiriliyor: ${mb(dl.done)} / ${mb(dl.total)}`;
+      actions.innerHTML = "";
+      return;
+    }
+    bar.hidden = true;
+    let st = null;
+    try { st = await packStatus(slug); } catch (e) { st = null; }
+    if (!st) { info.textContent = "Bu tarayıcı indirmeyi desteklemiyor."; actions.innerHTML = ""; return; }
+    if (st.ready === st.files) {
+      info.innerHTML = `<span class="badge pass">İndirildi</span> ${pack.files.length} görsel · ${mb(pack.bytes)}`;
+      actions.innerHTML = `<button class="btn ghost" data-pack-del>Sil</button>`;
+    } else if (st.ready > 0) {
+      info.innerHTML = `<span class="badge fail">Güncelleme var</span> ${mb(st.missingBytes)} indirilecek`;
+      actions.innerHTML = `<button class="btn" data-pack-get>Güncelle</button><button class="btn ghost" data-pack-del>Sil</button>`;
+    } else {
+      info.textContent = `${pack.files.length} görsel · ${mb(pack.bytes)}`;
+      actions.innerHTML = `<button class="btn" data-pack-get>İndir</button>`;
+    }
+  }
+
+  function paintPacks() {
+    document.querySelectorAll("[data-pack]").forEach((el) => { paintPack(el); });
+  }
+
+  document.addEventListener("click", async (e) => {
+    const get = e.target.closest("[data-pack-get]");
+    const del = e.target.closest("[data-pack-del]");
+    if (!get && !del) return;
+    const slug = e.target.closest("[data-pack]").dataset.pack;
+    if (del) {
+      await caches.delete(PACK_PREFIX + slug);
+      paintPacks();
+      paintStorage();
+      return;
+    }
+    if (activeDownloads[slug]) return;
+    if (navigator.onLine === false) { showToast("İndirmek için internet bağlantısı gerekiyor."); return; }
+    activeDownloads[slug] = { done: 0, total: 0 };
+    paintPacks();
+    try {
+      await downloadPack(slug, (done, total) => { activeDownloads[slug] = { done, total }; paintPacks(); });
+      delete activeDownloads[slug];
+      showToast(`${bySlug[slug] ? bySlug[slug].subject : "Ders"} indirildi. Görseller artık internetsiz de açılır.`);
+    } catch (err) {
+      delete activeDownloads[slug];
+      const full = err && (err.name === "QuotaExceededError" || /quota/i.test(String(err.message)));
+      showToast(full ? "Cihazda yer kalmadı. Başka bir dersi silip tekrar deneyin."
+        : "İndirme yarıda kaldı. Bağlantı gelince tekrar dokunun; indirilenler korunur.");
+    }
+    paintPacks();
+    paintStorage();
+  });
+
+  async function paintStorage() {
+    const el = document.getElementById("storage-info");
+    if (!el) return;
+    const parts = [];
+    try {
+      if (navigator.storage && navigator.storage.estimate) {
+        const est = await navigator.storage.estimate();
+        parts.push(`Bu site cihazınızda ${mb(est.usage || 0)} yer kullanıyor.`);
+      }
+      if (navigator.storage && navigator.storage.persisted) {
+        parts.push((await navigator.storage.persisted())
+          ? "Tarayıcı bu verileri kalıcı olarak saklıyor."
+          : "Tarayıcı yer açmak için bu verileri silebilir; ana ekrana eklemek bunu önler.");
+      }
+    } catch (e) { /* bilgi yok */ }
+    el.textContent = parts.join(" ");
+  }
+
+  function installHtml() {
+    if (isStandalone()) return `<p><span class="badge pass">Kurulu</span> Site uygulama olarak açık.</p>`;
+    if (installEvent) return `<p>Siteyi telefonunuza uygulama gibi kurun. Ana ekrandan tek dokunuşla, internetsiz açılır.</p>
+      <div class="btn-row"><button class="btn" id="install-btn">Uygulamayı yükle</button></div>`;
+    if (isIOS) return `<p>iPhone ve iPad'de siteyi ana ekrana ekleyin. Safari, ana ekrana eklenmemiş sitelerin kayıtlı verilerini bir süre girilmeyince silebiliyor; ana ekrandaki uygulama bundan korunur.</p>
+      <ol class="steps"><li>Safari'de alttaki <b>Paylaş</b> düğmesine dokunun.</li><li><b>Ana Ekrana Ekle</b>'yi seçin.</li><li>Sonra siteyi ana ekrandaki simgeden açın ve dersleri oradan indirin.</li></ol>`;
+    return `<p>Tarayıcı menüsünden <b>Uygulamayı yükle</b> ya da <b>Ana ekrana ekle</b>'yi seçerek siteyi uygulama gibi kurabilirsiniz.</p>`;
+  }
+
+  function viewOffline() {
+    const rows = COURSES.map(packRowHtml).join("");
+    return `<p class="eyebrow">İnternetsiz çalışma</p><h1>Çevrimdışı kullanım</h1>
+      <p class="lead muted">Siteyi bir kez açtığınızda ders notları, testler, çıkmış sorular ve arama bu cihaza kaydedilir. İnfografikler büyük olduğu için ders ders indirilir.</p>
+      <p id="shell-state" class="muted">${canCache ? "Kontrol ediliyor…" : "Bu tarayıcı çevrimdışı kaydı desteklemiyor."}</p>
+      <h2>Ders görselleri</h2>
+      ${canCache ? `<div class="packs">${rows}</div><p class="muted small" id="storage-info"></p>` : ""}
+      <h2>Uygulama olarak kurun</h2>
+      <div id="install-box">${installHtml()}</div>
+      <h2 id="yedek">İlerleme yedeği</h2>
+      <p>Test sonuçlarınız ve okuduğunuz bölümler yalnızca bu tarayıcıda durur. Telefon değiştirirken ya da tarayıcı verileri silinmeden önce yedek alın.</p>
+      <div class="btn-row"><button class="btn" id="backup-dl">Yedek dosyası indir</button><button class="btn ghost" id="backup-copy">Yedek kodunu kopyala</button></div>
+      <details class="backup-in"><summary>Yedeği geri yükle</summary>
+        <p class="muted small">Yedek dosyasını seçin ya da kopyaladığınız kodu yapıştırın. Mevcut ilerlemenizle birleştirilir; hiçbir sonuç silinmez.</p>
+        <input type="file" id="backup-file" accept="application/json,.json">
+        <textarea id="backup-text" rows="4" placeholder="Yedek kodunu buraya yapıştırın"></textarea>
+        <div class="btn-row"><button class="btn" id="backup-restore">Geri yükle</button></div>
+        <p id="backup-msg" class="muted small" role="status"></p>
+      </details>`;
+  }
+
+  function backupJson() {
+    let name = "";
+    try { name = localStorage.getItem(CONFIG.storageKey + ".name") || ""; } catch (e) { /* yok */ }
+    return JSON.stringify({ app: CONFIG.storageKey, savedAt: new Date().toISOString(), progress, name });
+  }
+
+  // Aynı dersin iki kaydını birleştirir: sayılarda büyük olan, listelerde birleşim; bestTimeMs'te küçük olan.
+  function mergeRecord(a, b) {
+    if (Array.isArray(a) && Array.isArray(b)) return Array.from(new Set(a.concat(b))).sort((x, y) => x - y);
+    if (a && b && typeof a === "object" && typeof b === "object") {
+      const out = Object.assign({}, a);
+      for (const k of Object.keys(b)) {
+        if (!(k in a)) out[k] = b[k];
+        else if (k === "bestTimeMs" && typeof a[k] === "number" && typeof b[k] === "number") out[k] = Math.min(a[k] || b[k], b[k] || a[k]);
+        else if (typeof a[k] === "number" && typeof b[k] === "number") out[k] = Math.max(a[k], b[k]);
+        else if (typeof a[k] === "boolean") out[k] = a[k] || !!b[k];
+        else out[k] = mergeRecord(a[k], b[k]);
+      }
+      return out;
+    }
+    return a === undefined ? b : a;
+  }
+
+  function restoreBackup(text) {
+    let data;
+    try { data = JSON.parse(String(text).trim()); } catch (e) { return "Bu bir yedek kodu değil. Kodun tamamını yapıştırdığınızdan emin olun."; }
+    if (!data || typeof data.progress !== "object" || data.progress === null) return "Yedekte ilerleme bilgisi bulunamadı.";
+    for (const [slug, rec] of Object.entries(data.progress)) {
+      if (!rec || typeof rec !== "object") continue;
+      progress[slug] = progress[slug] ? mergeRecord(progress[slug], rec) : rec;
+    }
+    save(progress);
+    try {
+      if (data.name && !localStorage.getItem(CONFIG.storageKey + ".name")) localStorage.setItem(CONFIG.storageKey + ".name", data.name);
+    } catch (e) { /* yok */ }
+    return "";
+  }
+
+  function bindOffline() {
+    paintPacks();
+    paintStorage();
+    const shell = document.getElementById("shell-state");
+    if (shell && canCache && "serviceWorker" in navigator) {
+      navigator.serviceWorker.getRegistration().then((reg) => {
+        shell.innerHTML = reg && reg.active
+          ? `<span class="badge pass">Hazır</span> Notlar, testler ve çıkmış sorular bu cihazda kayıtlı.`
+          : "Site bu cihaza kaydediliyor. Birkaç saniye sonra bu sayfayı yeniden açın.";
+      });
+    }
+    const ib = document.getElementById("install-btn");
+    if (ib) ib.onclick = async () => {
+      if (!installEvent) return;
+      installEvent.prompt();
+      try { await installEvent.userChoice; } catch (e) { /* kapatıldı */ }
+      installEvent = null;
+      const box = document.getElementById("install-box");
+      if (box) box.innerHTML = installHtml();
+    };
+    const dl = document.getElementById("backup-dl");
+    if (dl) dl.onclick = () => {
+      const blob = new Blob([backupJson()], { type: "application/json" });
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = "acik-ilahiyat-yedek-" + new Date().toISOString().slice(0, 10) + ".json";
+      document.body.appendChild(a);
+      a.click();
+      setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 1000);
+    };
+    const cp = document.getElementById("backup-copy");
+    if (cp) cp.onclick = async () => {
+      const text = backupJson();
+      try { await navigator.clipboard.writeText(text); showToast("Yedek kodu kopyalandı. Kendinize WhatsApp'tan ya da e-postayla gönderebilirsiniz."); }
+      catch (e) { const t = document.getElementById("backup-text"); t.value = text; t.closest("details").open = true; t.select(); showToast("Kod aşağıda seçili; kopyalayın."); }
+    };
+    const file = document.getElementById("backup-file");
+    if (file) file.onchange = () => {
+      const f = file.files && file.files[0];
+      if (!f) return;
+      f.text().then((t) => { document.getElementById("backup-text").value = t; });
+    };
+    const rs = document.getElementById("backup-restore");
+    if (rs) rs.onclick = () => {
+      const msg = document.getElementById("backup-msg");
+      const err = restoreBackup(document.getElementById("backup-text").value);
+      msg.textContent = err || "Yedek yüklendi. Transkriptinizde görebilirsiniz.";
+    };
+    const q = parseLoc().query;
+    if (q.b) { const t = document.getElementById(q.b); if (t) setTimeout(() => t.scrollIntoView(), 0); }
+  }
+
+  // Katalogda bir kez gösterilen kurulum ipucu (iOS'ta veri silinmesine karşı en etkili önlem).
+  function installBannerHtml() {
+    let dismissed = false;
+    try { dismissed = localStorage.getItem(CONFIG.storageKey + ".installHint") === "0"; } catch (e) { /* yok */ }
+    if (dismissed || isStandalone() || !(isIOS || installEvent)) return "";
+    return `<div class="notice" id="install-hint"><span>Siteyi ana ekrana ekleyin: internetsiz açılır, ilerlemeniz korunur.</span>
+      <a class="btn" href="#/cevrimdisi">Nasıl?</a><button class="btn ghost" id="install-hint-x" aria-label="İpucunu kapat">Kapat</button></div>`;
+  }
+  document.addEventListener("click", (e) => {
+    if (!e.target.closest("#install-hint-x")) return;
+    try { localStorage.setItem(CONFIG.storageKey + ".installHint", "0"); } catch (err) { /* yok */ }
+    const h = document.getElementById("install-hint");
+    if (h) h.remove();
+  });
+
+  window.addEventListener("beforeinstallprompt", (e) => {
+    e.preventDefault();
+    installEvent = e;
+    const box = document.getElementById("install-box");
+    if (box) { box.innerHTML = installHtml(); bindOffline(); }
+  });
+  window.addEventListener("appinstalled", () => { installEvent = null; });
+
+  let toastTimer = null;
+  function showToast(message, actionLabel, action) {
+    const t = document.getElementById("toast");
+    if (!t) return;
+    t.innerHTML = `<span>${esc(message)}</span>${actionLabel ? `<button class="btn" type="button">${esc(actionLabel)}</button>` : ""}<button class="toast-x" type="button" aria-label="Kapat">×</button>`;
+    t.hidden = false;
+    const btn = t.querySelector(".btn");
+    if (btn) btn.onclick = () => { t.hidden = true; action(); };
+    t.querySelector(".toast-x").onclick = () => { t.hidden = true; };
+    clearTimeout(toastTimer);
+    if (!actionLabel) toastTimer = setTimeout(() => { t.hidden = true; }, 6000);
+  }
+
+  function setupServiceWorker() {
+    if (!("serviceWorker" in navigator) || !/^https?:$/.test(location.protocol)) return;
+    let updating = false;
+    navigator.serviceWorker.addEventListener("controllerchange", () => {
+      if (updating) location.reload();
+    });
+    navigator.serviceWorker.register("sw.js", { updateViaCache: "none" }).then((reg) => {
+      const offer = (w) => showToast("Sitenin yeni sürümü hazır.", "Yenile", () => {
+        updating = true;
+        w.postMessage({ type: "SKIP_WAITING" });
+      });
+      if (reg.waiting && navigator.serviceWorker.controller) offer(reg.waiting);
+      reg.addEventListener("updatefound", () => {
+        const w = reg.installing;
+        if (!w) return;
+        w.addEventListener("statechange", () => {
+          if (w.state !== "installed") return;
+          if (navigator.serviceWorker.controller) offer(w);
+          else showToast("Site bu cihaza kaydedildi; artık internet olmadan da açılır.", "Görseller", () => { location.hash = "#/cevrimdisi"; });
+        });
+      });
+      document.addEventListener("visibilitychange", () => {
+        if (document.visibilityState === "visible") reg.update().catch(() => {});
+      });
+    }).catch(() => { /* kayıt başarısız: site yine çalışır */ });
+  }
+
   // ---- yönlendirici ---------------------------------------------------------------
   function parseLoc() {
     const raw = location.hash.replace(/^#\/?/, "");
@@ -2072,8 +2422,10 @@ img.ondblclick=function(e){e.preventDefault();var r=img.getBoundingClientRect();
       else if (parts[2] === "past") need.add("past_exams");
       else need.add("mindmaps");
     }
+    let missing = [];
     if (need.size) {
-      try { await Promise.all([...need].map(ensureBundle)); } catch (_) { /* boş stub ile devam */ }
+      const results = await Promise.allSettled([...need].map(ensureBundle));
+      missing = results.filter((r) => r.status === "rejected");
       if (seq !== routeSeq) return;
     }
     let html, bind = () => {};
@@ -2083,6 +2435,7 @@ img.ondblclick=function(e){e.preventDefault();var r=img.getBoundingClientRect();
     else if (parts[0] === "ara") { html = viewSearch(); bind = bindSearch; }
     else if (parts[0] === "transcript") { html = viewTranscript(); bind = bindTranscript; }
     else if (parts[0] === "certificate") { html = viewCertificate(); bind = bindCertificate; }
+    else if (parts[0] === "cevrimdisi") { html = viewOffline(); bind = bindOffline; }
     else if (parts[0] === "course" && bySlug[parts[1]]) {
       const c = bySlug[parts[1]];
       if (parts[2] === "chapter") { html = viewChapter(c, +parts[3]); bind = bindMindmaps; }
@@ -2100,8 +2453,11 @@ img.ondblclick=function(e){e.preventDefault();var r=img.getBoundingClientRect();
       }
       else { html = viewCourse(c); bind = bindMindmaps; }
     } else html = viewNotFound();
+    if (missing.length) html = `<div class="notice warn" role="alert"><b>Bu sayfanın bir kısmı yüklenemedi.</b> ${navigator.onLine === false ? "İnternet bağlantınız yok ve bu içerik henüz cihaza kaydedilmemiş." : "Bağlantı sorunu olabilir."} İnternete bağlanınca sayfayı yenileyin. Bir kez çevrimiçi açtıktan sonra site çevrimdışı da çalışır.</div>` + html;
+    if (!parts.length) html = installBannerHtml() + html;
     app.innerHTML = html;
     bind();
+    paintPacks();
     typeset(app);
     document.querySelectorAll(".nav a").forEach((a) => {
       const href = a.getAttribute("href");
@@ -2113,10 +2469,6 @@ img.ondblclick=function(e){e.preventDefault();var r=img.getBoundingClientRect();
   window.addEventListener("hashchange", route);
   route();
 
-  // ---- PWA: service worker (yalnızca http/https; file:// atlanır) ------------
-  if ("serviceWorker" in navigator && /^https?:$/.test(location.protocol)) {
-    window.addEventListener("load", () => {
-      navigator.serviceWorker.register("sw.js").catch(() => { /* kayıt başarısız: site yine çalışır */ });
-    });
-  }
+  // ---- PWA: service worker kaydı ve güncelleme bildirimi (offline.js bölümü yukarıda) ----
+  setupServiceWorker();
 })();
