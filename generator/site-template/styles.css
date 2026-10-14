@@ -502,6 +502,11 @@ table.transcript { width: 100%; border-collapse: collapse; background: var(--pap
 .toast .btn { background: var(--gold); color: var(--navy); white-space: nowrap; }
 .toast-x { appearance: none; border: 0; background: transparent; color: inherit; font-size: 1.4rem; line-height: 1; padding: .2rem .4rem; cursor: pointer; min-width: 44px; min-height: 44px; }
 @media (max-width: 560px) { .pack { grid-template-columns: minmax(0, 1fr); } }
+picture { display: block; }
+.more-pages { margin-top: .7rem; width: 100%; min-height: 44px; }
+.net-badge { position: fixed; right: calc(10px + env(safe-area-inset-right, 0px)); top: calc(10px + env(safe-area-inset-top, 0px)); z-index: 49;
+  padding: .35rem .8rem; border-radius: 999px; background: var(--gold); color: var(--navy); font: 600 .8rem/1.3 var(--sans);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, .25); pointer-events: none; }
 [hidden] { display: none !important; }
 
 /* Osmanlı Türkçesi: Arap harfli metin ve sınavdaki görsel şıklar */

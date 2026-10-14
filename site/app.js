@@ -180,13 +180,28 @@
   const noun = (c, n) => (c.kind === "sources" ? "kaynak" : "ders");
   const byline = (c) => [c.professor, c.school].filter(Boolean).join(", ");
   const isYouTube = (u) => /youtube\.com|youtu\.be/.test(u || "");
-  // Görsel srcset: varsa -sm.jpg (640w) küçük varyant; img etiketine lazy+async ekler.
-  const SMALL_IMAGES = new Set((window.OFFLINE && window.OFFLINE.small) || []);
+  // Görseller: build.py her JPG için boyutu ve WebP kopyalarını (tam boy + varsa 640px -sm)
+  // window.OFFLINE.images içine yazar. WebP'yi destekleyen tarayıcı onu, diğerleri JPG'yi alır;
+  // width/height sayfa kaymasını önler. data-full yakınlaştırmada açılacak tam boy dosyadır.
+  const IMAGES = (window.OFFLINE && window.OFFLINE.images) || {};
+  const fullImage = (src) => (IMAGES[src] ? String(src).replace(/\.jpg$/i, ".webp") : src);
   function imgTag(src, alt, extra) {
     if (!src) return "";
-    const sm = String(src).replace(/\.jpg$/i, "-sm.jpg");
-    const srcset = SMALL_IMAGES.has(src) ? ` srcset="${esc(sm)} 640w, ${esc(src)} 1536w" sizes="(max-width: 760px) 100vw, 720px"` : "";
-    return `<img src="${esc(src)}"${srcset} alt="${esc(alt)}" loading="lazy" decoding="async"${extra || ""}>`;
+    const info = IMAGES[src];
+    const img = (attrs) => `<img src="${esc(src)}"${attrs} alt="${esc(alt)}" loading="lazy" decoding="async" data-full="${esc(fullImage(src))}"${extra || ""}>`;
+    if (!info) return img("");
+    const [w, h, hasSmall] = info;
+    const base = String(src).replace(/\.jpg$/i, "");
+    const set = (hasSmall ? `${base}-sm.webp 640w, ` : "") + `${base}.webp ${w}w`;
+    return `<picture><source type="image/webp" srcset="${esc(set)}" sizes="(max-width: 760px) 100vw, 720px">${img(` width="${w}" height="${h}"`)}</picture>`;
+  }
+
+  // Çok sayfalı infografik setleri: ilk sayfa hemen, kalanlar "Devamını yükle" ile (template içinde
+  // durdukları için o ana kadar indirilmezler).
+  function pagedHtml(items) {
+    if (items.length < 2) return items.join("");
+    const rest = items.length - 1;
+    return `${items[0]}<template>${items.slice(1).join("")}</template><button type="button" class="btn ghost more-pages" data-more-pages>Devamını yükle (${rest} sayfa daha)</button>`;
   }
 
   // Arap harfli (Osmanlıca) metin: kaçışlı HTML içindeki Arapça dizileri sağdan sola bir span'e sarar.
@@ -388,7 +403,7 @@
 
   // Ders kitabı ünite özetlerinden üretilen infografikler (AÖF'ün yayınlamadığı dersler için).
   function bookUnitFigure(c, u, cls) {
-    return `<figure class="${cls} aof-figure"><img src="${esc(u.image)}" alt="${esc(u.title)} ünite infografiği" data-zoom loading="lazy"><figcaption><b>Ünite ${u.unit} özeti.</b> ${esc(u.title)}. AÖF ders kitabının ünite özetinden bu site için hazırlandı; resmî AÖF infografiği değildir.</figcaption></figure>`;
+    return `<figure class="${cls} aof-figure">${imgTag(u.image, `${u.title} ünite infografiği`, " data-zoom")}<figcaption><b>Ünite ${u.unit} özeti.</b> ${esc(u.title)}. AÖF ders kitabının ünite özetinden bu site için hazırlandı; resmî AÖF infografiği değildir.</figcaption></figure>`;
   }
 
   function bookUnitFiguresHtml(c, n, cls) {
@@ -415,11 +430,11 @@
     const panes = [];
     if (nlmList.length) {
       tabs.push(`<button type="button" class="inf-tab is-active" data-pane="${uid}-nlm">Düzeltilmiş Infografik</button>`);
-      panes.push(`<div class="inf-pane is-active" id="${uid}-nlm">${nlmList.map((src, j) => infFigureHtml(src, ch, n, j, nlmList.length, cls, "nlm")).join("")}</div>`);
+      panes.push(`<div class="inf-pane is-active" id="${uid}-nlm">${pagedHtml(nlmList.map((src, j) => infFigureHtml(src, ch, n, j, nlmList.length, cls, "nlm")))}</div>`);
     }
     if (aofList.length) {
       tabs.push(`<button type="button" class="inf-tab${nlmList.length ? "" : " is-active"}" data-pane="${uid}-aof">AÖF Infografik</button>`);
-      panes.push(`<div class="inf-pane${nlmList.length ? "" : " is-active"}" id="${uid}-aof">${aofList.map((src, j) => infFigureHtml(src, ch, n, j, aofList.length, cls, "aof")).join("")}</div>`);
+      panes.push(`<div class="inf-pane${nlmList.length ? "" : " is-active"}" id="${uid}-aof">${pagedHtml(aofList.map((src, j) => infFigureHtml(src, ch, n, j, aofList.length, cls, "aof")))}</div>`);
     }
     if (tabs.length < 2) return panes.join("");
     return `<div class="inf-toggle" data-uid="${uid}"><div class="inf-tabs">${tabs.join("")}</div>${panes.join("")}</div>`;
@@ -430,7 +445,7 @@
     const cap = total > 1
       ? `<b>${label} ${j + 1}/${total}.</b> Ünite özet grafiği (yüksek çözünürlük).`
       : `<b>${label}.</b> Ünite özet grafiği (yüksek çözünürlük).`;
-    return `<figure class="${cls} aof-figure">${imgTag(src, `${ch.title} ${label} ${j + 1}`, ` data-zoom data-download="${esc(src)}"`)}<figcaption>${cap}</figcaption></figure>`;
+    return `<figure class="${cls} aof-figure">${imgTag(src, `${ch.title} ${label} ${j + 1}`, ` data-zoom`)}<figcaption>${cap}</figcaption></figure>`;
   }
 
   // Konu anlatımındaki citation için: bu bölüme bağlı çıkmış vize soruları.
@@ -2050,7 +2065,14 @@ img.ondblclick=function(e){e.preventDefault();var r=img.getBoundingClientRect();
     const img = e.target.closest("img[data-zoom]");
     if (img) {
       e.preventDefault();
-      openZoomPopup(img.getAttribute("data-download") || img.src, img.alt);
+      openZoomPopup(img.getAttribute("data-full") || img.src, img.alt);
+      return;
+    }
+    const more = e.target.closest("[data-more-pages]");
+    if (more) {
+      const tpl = more.previousElementSibling;
+      if (tpl && tpl.tagName === "TEMPLATE") tpl.replaceWith(tpl.content);
+      more.remove();
       return;
     }
     const tab = e.target.closest(".inf-tab");
@@ -2496,4 +2518,13 @@ img.ondblclick=function(e){e.preventDefault();var r=img.getBoundingClientRect();
 
   // ---- PWA: service worker kaydı ve güncelleme bildirimi (offline.js bölümü yukarıda) ----
   setupServiceWorker();
+
+  // ---- bağlantı rozeti: çevrimdışıyken köşede "Çevrimdışı çalışıyorsun" ----
+  function updateNetBadge() {
+    const badge = document.getElementById("net-badge");
+    if (badge) badge.hidden = navigator.onLine !== false;
+  }
+  window.addEventListener("online", updateNetBadge);
+  window.addEventListener("offline", updateNetBadge);
+  updateNetBadge();
 })();
