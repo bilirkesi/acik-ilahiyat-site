@@ -1,0 +1,331 @@
+{
+  "unit": 5,
+  "unitTitle": "Cümle Bilgisi",
+  "title": "Türkçe Testi",
+  "questions": [
+    {
+      "question": "Cümle türleri yapısına göre incelendiğinde aşağıdakilerden hangisi 'Basit Cümle' türüne örnektir?",
+      "answerOptions": [
+        {
+          "text": "Benim gecem yeni bir umutla başladı.",
+          "isCorrect": true,
+          "rationale": "Tek bir eylem ve tek bir yargı bildiren, içinde fiilimsi veya başka tümce barındırmayan yapılar basit cümle oluşturur."
+        },
+        {
+          "text": "Onu seviyorsan bunu ona açıkça söylemelisin.",
+          "isCorrect": false,
+          "rationale": "İçinde şart ekiyle kurulmuş yan yargı barındıran cümleler birleşik cümle yapısındadır."
+        },
+        {
+          "text": "Bir öğrenci geldi sınıfa, etrafa bakıp arka sıraya geçti.",
+          "isCorrect": false,
+          "rationale": "Virgülle birbirinden ayrılmış birden fazla bağımsız yüklem barındıran yapılar sıralı cümle örneğidir."
+        },
+        {
+          "text": "Belki onlar seviyorlar da ben farkına varmıyorum.",
+          "isCorrect": false,
+          "rationale": "Ayrı yargıların bağlaçla birbirine bağlandığı yapılar bağlı cümle sınıfına girer."
+        }
+      ],
+      "hint": "İçinde yan yargı, fiilimsi veya ek bir bağlaç bulunmayan tek yargılı yapıyı arayın.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Cümlenin ögeleri değerlendirildiğinde, öznenin yaptığı işten doğrudan etkilenen ve geçişli eylemleri tamlayan öge aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Nesne",
+          "isCorrect": true,
+          "rationale": "Geçişli fiillerin doğrudan etkilediği ve yükleme sorulan 'ne, neyi, kimi' sorularına yanıt veren öge nesnedir."
+        },
+        {
+          "text": "Dolaylı tümleç",
+          "isCorrect": false,
+          "rationale": "Yüklemin bildirdiği hareketin gerçekleştiği yeri veya yönü yaklaşma, bulunma ve uzaklaşma ekleriyle bildiren ögedir."
+        },
+        {
+          "text": "Zarf tümleci",
+          "isCorrect": false,
+          "rationale": "Eylemin zaman, tarz, miktar veya sebep yönünden sınırlarını belirleyen tümleç türüdür."
+        },
+        {
+          "text": "Yüklem",
+          "isCorrect": false,
+          "rationale": "Cümledeki işi, hareketi, yargıyı veya durumu üstlenen temel ögedir."
+        }
+      ],
+      "hint": "Geçişli fiillere sorulan 'neyi' veya 'kimi' sorularının yanıtı olan ögeyi düşünün.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "'Sıcak güneş' ve 'mavi deniz' kelime öbekleri tamlama ilişkisi bakımından aşağıdakilerden hangisine örnektir?",
+      "answerOptions": [
+        {
+          "text": "Sıfat tamlaması",
+          "isCorrect": true,
+          "rationale": "Bir ismin rengini, durumunu veya niteliğini gösteren niteleme sözcükleriyle oluşturulan öbeklerdir."
+        },
+        {
+          "text": "Belirtili ad tamlaması",
+          "isCorrect": false,
+          "rationale": "Hem tamlayanın ilgi eki hem de tamlananın iyelik eki aldığı tamlama yapısıdır."
+        },
+        {
+          "text": "Takısız ad tamlaması",
+          "isCorrect": false,
+          "rationale": "Bir şeyin neyden yapıldığını veya neye benzediğini ek almadan belirten ad tamlaması türüdür."
+        },
+        {
+          "text": "Edat öbeği",
+          "isCorrect": false,
+          "rationale": "İsim ya da isim soylu sözcüklerin edatlar aracılığıyla oluşturduğu öbek yapısıdır."
+        }
+      ],
+      "hint": "İsme sorulan 'Nasıl?' sorusuna yanıt veren nitelik belirten yapıyı göz önüne getirin.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Cümlede yüklemin bildirdiği hareket, iş veya oluşun yerini ve yönünü belirten; yaklaşma, bulunma ya da uzaklaşma durumu eklerini alan öge hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Dolaylı Tümleç (Yer Tamlayıcısı)",
+          "isCorrect": true,
+          "rationale": "İsmin -e, -de ve -den hâl eklerini alarak yüklemin yöneldiği, bulunduğu veya ayrıldığı yeri belirten ögedir."
+        },
+        {
+          "text": "Zarf Tümleci",
+          "isCorrect": false,
+          "rationale": "Durum, zaman, tarz ve miktar bildirerek yüklemi tamamlayan ögedir."
+        },
+        {
+          "text": "Özne",
+          "isCorrect": false,
+          "rationale": "Yüklemin bildirdiği işi yapan veya durumu üstlenen temel unsur olup hâl ekleri ile yer bildirmez."
+        },
+        {
+          "text": "Nesne",
+          "isCorrect": false,
+          "rationale": "Eylemden etkilenen öge olup yaklaşma veya uzaklaşma durumu ekleriyle yer göstermez."
+        }
+      ],
+      "hint": "İsmin durum eklerinden (-e, -de, -den) yararlanarak mekan belirten ögeyi arayın.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "'On yedi' ve 'beş bin iki yüz otuz' ifadeleri tamlama ilişkisi bulunmayan sözcük öbeklerinden hangisine örnektir?",
+      "answerOptions": [
+        {
+          "text": "Sayı öbeği",
+          "isCorrect": true,
+          "rationale": "Basamak isimlerinin ve sayıların yan yana gelmesiyle oluşan karmaşık sayı ifadeleridir."
+        },
+        {
+          "text": "Tekrar öbeği",
+          "isCorrect": false,
+          "rationale": "Aynı veya yakın anlamlı sözcüklerin yinelenmesiyle oluşan ikileme yapılarıdır."
+        },
+        {
+          "text": "Unvan öbeği",
+          "isCorrect": false,
+          "rationale": "Kişi adlarına getirilen makam, meslek veya saygı sözcüklerinin oluşturduğu öbeklerdir."
+        },
+        {
+          "text": "Kısaltma öbeği",
+          "isCorrect": false,
+          "rationale": "Eklerin düşmesi veya kalıplaşmasıyla oluşan basitleşmiş söz öbekleridir."
+        }
+      ],
+      "hint": "Birden fazla sözcükten oluşan matematiksel nicelik bildiren öbek türünü düşünün.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "'Onun gibi benimsenmiş bir lider yoktur bu coğrafyada.' cümlesi yüklemin türüne göre hangi cümle grubunda yer alır?",
+      "answerOptions": [
+        {
+          "text": "Ad cümlesi",
+          "isCorrect": true,
+          "rationale": "Yüklemi isim köklü bir sözcük ('yok') olan ve ek eylem alarak yüklemleşen cümleler ad cümlesidir."
+        },
+        {
+          "text": "Eylem cümlesi",
+          "isCorrect": false,
+          "rationale": "Yüklemi çekimlenmiş bir fiilden oluşan cümle türüdür."
+        },
+        {
+          "text": "Devrik cümle",
+          "isCorrect": false,
+          "rationale": "Yüklemin türünü değil, yüklemin cümle içerisindeki yerini ifade eden bir sınıflandırmadır."
+        },
+        {
+          "text": "Bağlı cümle",
+          "isCorrect": false,
+          "rationale": "Cümlenin yüklem türünü değil, yapısını belirten bir tanımdır."
+        }
+      ],
+      "hint": "Cümlenin yükleminin fiil kökenli mi yoksa isim kökenli mi olduğuna dikkat edin.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Yüklemin anlamını zaman, sebep, tarz, yön, ölçü veya şart gibi yönlerden tamamlayan ve sınırlayan cümlenin ögesi aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Zarf tümleci (Belirteç tümleci)",
+          "isCorrect": true,
+          "rationale": "Eylemin nasıl, ne zaman, ne kadar ve ne sebeple yapıldığını belirten ögedir."
+        },
+        {
+          "text": "Dolaylı tümleç",
+          "isCorrect": false,
+          "rationale": "Yüklemi yer ve mekân ilişkisi yönünden tamamlayan ögedir."
+        },
+        {
+          "text": "Özne",
+          "isCorrect": false,
+          "rationale": "Eylemi gerçekleştiren veya durumu taşıyan ana ögedir."
+        },
+        {
+          "text": "Nesne",
+          "isCorrect": false,
+          "rationale": "Eylemden etkilenen ögedir ve eylemin tarzını veya zamanını bildirmez."
+        }
+      ],
+      "hint": "Yükleme sorulan 'Nasıl?', 'Ne zaman?' ve 'Ne kadar?' sorularına yanıt veren ögeyi hatırlayın.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "'Ertuğrul Gazi' ve 'Selin Hanım' ifadeleri sözcük öbekleri bakımından aşağıdakilerden hangisine örnektir?",
+      "answerOptions": [
+        {
+          "text": "Unvan öbeği",
+          "isCorrect": true,
+          "rationale": "Özel adlara eklenen saygı, derece, san veya meslek adlarının oluşturduğu öbektir."
+        },
+        {
+          "text": "Aitlik öbeği",
+          "isCorrect": false,
+          "rationale": "Aitlik eki (-ki) kullanılarak kurulan söz öbeğidir."
+        },
+        {
+          "text": "Ünlem öbeği",
+          "isCorrect": false,
+          "rationale": "Seslenme ve duygu belirten ünlemlerin isimlerle oluşturduğu yapıdır."
+        },
+        {
+          "text": "Bağlama öbeği",
+          "isCorrect": false,
+          "rationale": "Bağlaçlar aracılığıyla birbirine tutturulmuş kelime grubudur."
+        }
+      ],
+      "hint": "Kişi isimlerine eşlik eden saygı ve makam sözcüklerinin oluşturduğu grubu değerlendirin.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Yüklemi sonda bulunan cümleler, ögelerin dizilişine (yüklemin yerine) göre nasıl adlandırılır?",
+      "answerOptions": [
+        {
+          "text": "Kurallı (Düz) Cümle",
+          "isCorrect": true,
+          "rationale": "Türkçenin standart söz dizimine uygun olarak yüklemi sonda yer alan yapılar kurallı cümledir."
+        },
+        {
+          "text": "Devrik Cümle",
+          "isCorrect": false,
+          "rationale": "Yüklemi sonda olmayan, başında veya ortasında yer alan cümle türüdür."
+        },
+        {
+          "text": "Basit Cümle",
+          "isCorrect": false,
+          "rationale": "Yüklemin konumunu değil, cümlenin yargı sayısını ve yapısını belirten kavramdır."
+        },
+        {
+          "text": "Sıralı Cümle",
+          "isCorrect": false,
+          "rationale": "Birden çok yüklemin noktalama işaretleriyle dizilmesini ifade eder."
+        }
+      ],
+      "hint": "Türkçe dil bilgisinde yüklemin standart ve doğal yerinde olduğu cümle türünü düşünün.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "'Hazırlanan öğrenci', 'yaşanacak günler' ve 'gördüğü güzellik' örnekleri tamlama ilişkisi bulunmayan öbeklerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Sıfat-fiil öbeği",
+          "isCorrect": true,
+          "rationale": "Fiil tabanlarına getirilen -an, -acak, -dık gibi sıfat-fiil ekleriyle kurulan söz öbekleridir."
+        },
+        {
+          "text": "İsim-fiil öbeği",
+          "isCorrect": false,
+          "rationale": "Fiillere getirilen -me, -mak, -ış gibi eklerle oluşturulan eylemsi öbeğidir."
+        },
+        {
+          "text": "Zarf-fiil öbeği",
+          "isCorrect": false,
+          "rationale": "Fiillere eklenen -erek, -ip, -meden gibi eklerle yapılan zarf yapısındaki öbektir."
+        },
+        {
+          "text": "Birleşik eylem öbeği",
+          "isCorrect": false,
+          "rationale": "Yardımcı eylem veya deyimleşme yoluyla oluşan eylem gruplarıdır."
+        }
+      ],
+      "hint": "Fiillere getirilen eklerle isimleri niteleme görevi üstlenen eylemsi grubunu arayın.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Birden fazla yüklemi bulunan ve bu yüklemleri 've, fakat, ama, de' gibi ögelerle bağlanan cümle türü aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Bağlı Cümle",
+          "isCorrect": true,
+          "rationale": "Ayrı cümlelerin veya yargıların bağlaçlar vasıtasıyla bir araya getirildiği yapıdır."
+        },
+        {
+          "text": "Sıralı Cümle",
+          "isCorrect": false,
+          "rationale": "Yargıların bağlaç yerine virgül veya noktalı virgülle sıralandığı yapıdır."
+        },
+        {
+          "text": "Birleşik Cümle",
+          "isCorrect": false,
+          "rationale": "Tek bir temel yüklem ve ona bağlı yan cümleciklerden oluşan yapıdır."
+        },
+        {
+          "text": "Basit Cümle",
+          "isCorrect": false,
+          "rationale": "İçinde yalnızca tek bir yargı ve yüklem barındıran yapıdır."
+        }
+      ],
+      "hint": "Yargıları birbirine kavuşturan dil bilgisi bağlama ögelerine odaklanın.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "'Vişne reçeli' ve 'gül kokusu' örnekleri tamlama ilişkisi bulunan öbeklerden hangisine girmektedir?",
+      "answerOptions": [
+        {
+          "text": "Belirtisiz ad tamlaması",
+          "isCorrect": true,
+          "rationale": "Tamlayanın ilgi eki almadığı, yalnızca tamlananın iyelik eki aldığı ad tamlaması türüdür."
+        },
+        {
+          "text": "Belirtili ad tamlaması",
+          "isCorrect": false,
+          "rationale": "Tamlayanın da ilgi eki (-ın/-in) aldığı tamlama türüdür."
+        },
+        {
+          "text": "Takısız ad tamlaması",
+          "isCorrect": false,
+          "rationale": "Hem tamlayanın hem tamlananın ek almadığı ad tamlaması yapısıdır."
+        },
+        {
+          "text": "Sıfat tamlaması",
+          "isCorrect": false,
+          "rationale": "Bir ismin sıfat tarafından nitelendiği ve iyelik eki içermeyen yapıdır."
+        }
+      ],
+      "hint": "Tamlayan ögenin yalın kaldığı, tamlanan ögenin ise iyelik eki aldığı tamlama yapısını düşünün.",
+      "type": "multiple_choice"
+    }
+  ]
+}

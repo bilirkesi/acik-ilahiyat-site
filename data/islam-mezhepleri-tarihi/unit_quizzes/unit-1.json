@@ -1,0 +1,331 @@
+{
+  "unit": 1,
+  "unitTitle": "Din, Mezhep İlişkisi ve Mezhepleşme Süreci",
+  "title": "İslam Mezhepleri Tarihi Quiz",
+  "questions": [
+    {
+      "question": "Dinî anlayışlardaki farklılaşmaların zamanla kurumsallaşmasıyla ortaya çıkan mezheplerin yapısı göz önüne alındığında, aşağıdakilerden hangisi mezhepler hakkında doğru bir değerlendirmedir?",
+      "answerOptions": [
+        {
+          "text": "Mezhepler, ilahî vahyin kendisiyle birebir özdeş kabul edilmelidir.",
+          "isCorrect": false,
+          "rationale": "Mezhepler dinin değişmez metinlerinin kendisi değil, insanların bu metinleri anlama ve yorumlama biçimleridir."
+        },
+        {
+          "text": "Bir mezhebin teşekkülü yalnızca tek bir tarihî olaya veya şahsa indirgenebilir.",
+          "isCorrect": false,
+          "rationale": "Mezheplerin ortaya çıkışında politik, sosyal, ekonomik ve insani birçok etken birlikte rol oynar."
+        },
+        {
+          "text": "Mezhepler, oluştukları coğrafi, kültürel ve siyasi vasatın izlerini bünyelerinde barındıran beşerî yapılardır.",
+          "isCorrect": true,
+          "rationale": "Mezhepler dinin sabit ilkelerinden ziyade insanların onu algılama biçimlerinin zamanla kurumlaşmasıyla şekillenen tarihsel ve beşerî oluşumlardır."
+        },
+        {
+          "text": "Din anlayışındaki farklılaşmalar zorunlu olarak mensuplarının dinden çıkmasıyla sonuçlanır.",
+          "isCorrect": false,
+          "rationale": "Din anlayışındaki yorum farklılıkları dinden çıkış anlamına gelmeyip düşünsel zenginliği ve zihniyet çeşitliliğini ifade eder."
+        }
+      ],
+      "hint": "Dinin sabit ilkeleri ile bu ilkelerin insanlar tarafından zaman ve mekâna bağlı olarak yorumlanması arasındaki nitelik farkını düşününüz.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "İslam Mezhepleri Tarihi araştırmalarında betimleyici (tasviri) yöntem esastır. Buna göre aşağıdakilerden hangisi bu disiplinin temel amaçları arasında yer almaz?",
+      "answerOptions": [
+        {
+          "text": "Mezheplerin tarihî süreç içerisinde İslam medeniyetine sağladığı katkıları ortaya koymak",
+          "isCorrect": false,
+          "rationale": "Mezheplerin düşünsel ve kültürel mirasa katkılarını incelemek disiplinin ana hedeflerindendir."
+        },
+        {
+          "text": "İncelenen dinî grupların hangilerinin 'hak', hangilerinin 'batıl' olduğunu hükme bağlamak",
+          "isCorrect": true,
+          "rationale": "Mezhepler Tarihi normatif değer yargılarında bulunmayı ve mezhepleri hak/batıl diye sınıflandırmayı Kelâm gibi kelamî/teolojik disiplinlere bırakır."
+        },
+        {
+          "text": "Müslüman toplumların sosyal ve psikolojik dinamiklerine dair verilere ulaşmak",
+          "isCorrect": false,
+          "rationale": "Toplumsal yapıyı ve grup davranışlarını anlamaya dönük veri toplamak mezhepler tarihçisinin görevlerindendir."
+        },
+        {
+          "text": "Dinî grupların zaman içerisinde tarihte bıraktıkları izleri tarafsızca görünür kılmak",
+          "isCorrect": false,
+          "rationale": "Tarihsel süreçteki izleri ve değişimleri tespit etmek araştırmacının temel sorumlulukları arasında bulunur."
+        }
+      ],
+      "hint": "Mezhepler Tarihi'nin tarafsız ve betimleyici bir bilim dalı olduğunu, yargılayıcı olmadığını hatırlayınız.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Sözlük anlamı itibarıyla 'daha önce benzeri olmayıp sonradan ortaya konulan şey' anlamına gelen, dinî bir terim olarak ise dinin aslından olmayan inanç veya uygulamaların dine eklenmesini ifade eden kavram aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Tefrika",
+          "isCorrect": false,
+          "rationale": "Tefrika, toplumdaki birlik ve beraberliğin bozulması ve gruplaşmaların meydana gelmesi anlamını taşır."
+        },
+        {
+          "text": "Bid’at",
+          "isCorrect": true,
+          "rationale": "Bid'at, dinin aslî kaynaklarında yer almadığı halde sonradan ihdas edilen ve dinî bir gereklilik gibi sunulan yenilikleri tanımlar."
+        },
+        {
+          "text": "Makâlât",
+          "isCorrect": false,
+          "rationale": "Makâlât, mezheplerin görüş ve düşüncelerinin derlendiği klasik eser türlerine verilen addır."
+        },
+        {
+          "text": "İttifak",
+          "isCorrect": false,
+          "rationale": "İttifak, uyuşma ve görüş birliği sağlama durumunu ifade eden olumlu bir kavramdır."
+        }
+      ],
+      "hint": "Dinin aslî yapısına sonradan eklenen ve geleneksel dokuyu bozan yenilikleri tanımlayan terimi düşününüz.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "İslam Mezhepleri Tarihi ile Din Sosyolojisi disiplinlerinin ortak inceleme alanları dikkate alındığında, aşağıdakilerden hangisi her iki disiplinin kesiştiği konulardan biri olamaz?",
+      "answerOptions": [
+        {
+          "text": "Bir dinî grupta cemaatsel hiyerarşinin ve örgütlenme yapısının teşekkülü",
+          "isCorrect": false,
+          "rationale": "Toplumsal hiyerarşi ve cemaatleşme süreçleri hem sosyolojinin hem de mezhepler tarihinin ortak konusudur."
+        },
+        {
+          "text": "Mezhep mensupları arasındaki grupsal dayanışma ve sosyal bağlar",
+          "isCorrect": false,
+          "rationale": "Grup içi bütünleşme ve dayanışma mekanizmaları sosyal bilim araştırmalarında ortaklaşa incelenir."
+        },
+        {
+          "text": "İncelenen bir mezhebin inanç esaslarının mutlak doğruluğunun teolojik olarak kanıtlanması",
+          "isCorrect": true,
+          "rationale": "Bir mezhebin inançlarının doğruluğunu kanıtlamaya çalışmak normatif bir çaba olup betimleyici sosyal bilimlerin amacına aykırıdır."
+        },
+        {
+          "text": "Toplumsal kriz dönemlerinde ortaya çıkan 'kurtarıcı bekleme' (mehdilik) fikrinin psiko-sosyal nedenleri",
+          "isCorrect": false,
+          "rationale": "Toplumsal beklentiler ve psiko-sosyal tepkiler her iki disiplinin de ortaklaşa odaklandığı alanlardandır."
+        }
+      ],
+      "hint": "Sosyal bilimlerin betimleyici yaklaşımı ile teolojinin doğrulama çabası arasındaki sınırı göz önüne alınız.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Her insanın zihinsel kapasitesi, algılama biçimi, mizaç ve karakter yapısının birbirinden farklı olması dinî metinleri yorumlarken çeşitliliğe yol açar. Bu durum mezheplerin ortaya çıkış sebeplerinden hangisine doğrudan örnektir?",
+      "answerOptions": [
+        {
+          "text": "Nassların tabiatı",
+          "isCorrect": false,
+          "rationale": "Nassların tabiatı, dinî metinlerin dilsel özellikleri ve anlam katmanlarıyla ilişkilidir."
+        },
+        {
+          "text": "İnsanın tabiatı",
+          "isCorrect": true,
+          "rationale": "İnsanın kişisel, psikolojik ve zihinsel farkları metinleri anlama ve dünyayı algılama biçimlerini doğrudan yönlendirir."
+        },
+        {
+          "text": "Coğrafi ve çevresel şartlar",
+          "isCorrect": false,
+          "rationale": "Coğrafi şartlar, fiziki çevre ve iklim gibi dış unsurlarla bağlantılıdır."
+        },
+        {
+          "text": "Sosyo-politik gelişmeler",
+          "isCorrect": false,
+          "rationale": "Sosyo-politik gelişmeler iktidar, yönetim ve toplumsal olayları kapsar."
+        }
+      ],
+      "hint": "Bireyin kendi kişisel psikolojisi ve zihinsel yapısının algı üzerindeki rolünü değerlendiriniz.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Kur'an-ı Kerim'de yer alan bazı ayetlerin muhkem, bazılarının müteşâbih olması veya dilsel açıdan farklı anlamlara gelmeye elverişli yapısı mezhepleşme sürecini hızlandırmıştır. Bu durum hangi temel sebeple açıklanır?",
+      "answerOptions": [
+        {
+          "text": "Farklı kültürlerle karşılaşılması",
+          "isCorrect": false,
+          "rationale": "Farklı kültürlerle karşılaşma, dış düşünce sistemlerinin İslam coğrafyasına girmesiyle ilgilidir."
+        },
+        {
+          "text": "İnsanın toplumsal bir varlık olması",
+          "isCorrect": false,
+          "rationale": "Toplumsal varlık olmak cemaatleşme ve kurumlaşma olgusunu açıklar."
+        },
+        {
+          "text": "Nassların tabiatı",
+          "isCorrect": true,
+          "rationale": "Dinî metinlerin açık, kapalı, mecaz veya yorumlanmaya elverişli dilsel özellikleri farklı içtihatların doğmasını sağlar."
+        },
+        {
+          "text": "Ekonomik faktörler",
+          "isCorrect": false,
+          "rationale": "Ekonomik faktörler ganimet, vergi ve gelir dağılımı gibi maddi süreçlerle ilişkilidir."
+        }
+      ],
+      "hint": "Kutsal metinlerin anlamsal ve dilsel özelliklerinin yorum çeşitliliğine imkân tanımasını düşününüz.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Din Fenomenolojisi yaklaşımının İslam Mezhepleri Tarihi araştırmalarına sağladığı en belirgin katkı aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Hangi mezhebin inanç ilkelerinin ayetlere daha uygun olduğunu ispatlaması",
+          "isCorrect": false,
+          "rationale": "Din fenomenolojisi normatif doğruluk veya yanlışlık değerlendirmesinde bulunmaz."
+        },
+        {
+          "text": "Dinler ve mezhepler arasındaki ortak olguları, sembolleri ve tezahürleri tespit etmesi",
+          "isCorrect": true,
+          "rationale": "Din fenomenolojisi, dinî olgu ve tecrübeleri önyargısız bir şekilde tanımlayıp ortak sembol ve yapıları ortaya çıkarmayı sağlar."
+        },
+        {
+          "text": "Siyasi mücadelelerin mezhepleşmeye etkisini belgelere dayanarak açıklaması",
+          "isCorrect": false,
+          "rationale": "Tarihsel belgeleri analiz etmek genel tarih metodolojisinin konusudur."
+        },
+        {
+          "text": "Yalnızca fıkhi mezheplerin içtihat usullerini incelemesi",
+          "isCorrect": false,
+          "rationale": "Fenomenoloji belirli bir fıkhi usulle sınırlı olmayıp geniş çaplı dinî tezahürlerle ilgilenir."
+        }
+      ],
+      "hint": "İnançların özündeki yapısal benzerlikleri ve ortak dinsel tecrübe biçimlerini inceleyen yöntemi düşününüz.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Dinin özünde yer alan birlik ruhunun ve toplumsal bütünlüğün bozulmasını, Müslümanlar arasında fikirsel ve siyasal ayrılıkların baş göstermesini ifade eden kavram aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Makâlât",
+          "isCorrect": false,
+          "rationale": "Makâlât, mezhep görüşlerini derleyen literatür türüdür."
+        },
+        {
+          "text": "İttifak",
+          "isCorrect": false,
+          "rationale": "İttifak görüş birliği ve uzlaşma anlamı taşır."
+        },
+        {
+          "text": "Tefrika",
+          "isCorrect": true,
+          "rationale": "Tefrika, Müslüman toplum bünyesinde meydana gelen bölünmeleri ve anlaşmazlıkları tanımlayan temel kavramdır."
+        },
+        {
+          "text": "Celâdet",
+          "isCorrect": false,
+          "rationale": "Celâdet kahramanlık ve cesaret anlamına gelen bir sözcüktür."
+        }
+      ],
+      "hint": "Birlik ve beraberliğin zıddı olan bölünme ve gruplaşma durumunu ifade eden terimi hatırlayınız.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "İslam Mezhepleri Tarihi araştırmalarında bir mezhebin doğuşunu tek bir olaya veya şahsa indirgemek metodolojik bir hata olarak kabul edilir. Buna göre mezhepleşme süreciyle ilgili en doğru yaklaşım aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Mezhepler; psiko-sosyal, politik, ekonomik ve dinî etkenlerin zamanla birleşmesiyle oluşan süreçsel yapılardır.",
+          "isCorrect": true,
+          "rationale": "Mezhepleşme birdenbire değil, çok boyutlu unsurların uzun süreli etkileşimi sonucu kademeli olarak gerçekleşir."
+        },
+        {
+          "text": "Mezhepler, Hz. Peygamber'in vefatının hemen ardından eksiksiz birer sistem olarak ortaya çıkmıştır.",
+          "isCorrect": false,
+          "rationale": "Mezhepler kısa sürede değil, tarihsel süreçte kurumsallaşarak oluşmuştur."
+        },
+        {
+          "text": "Politik çekişmeler mezheplerin teşekkülünde hiçbir rol oynamamıştır.",
+          "isCorrect": false,
+          "rationale": "Siyasal iktidar ve liderlik mücadeleleri mezhepleşmeyi tetikleyen ana unsurlardandır."
+        },
+        {
+          "text": "Dinin anlaşılma biçimleri yaşanılan zaman ve coğrafyadan tamamen bağımsızdır.",
+          "isCorrect": false,
+          "rationale": "İnsanların dini algılama tarzları içinde bulundukları zamandan ve sosyo-kültürel ortamdan doğrudan etkilenir."
+        }
+      ],
+      "hint": "Mezheplerin oluşumundaki çok faktörlü ve zamana yayılan kurumsallaşma karakterini göz önüne alınız.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Mezhepler Tarihi kaynakları incelenirken mezheplerin birbirini tekfir etmesi veya suçlayıcı bir dil kullanması araştırmacı açısından bir zorluk oluşturur. Bu durum aşağıdakilerden hangisine yol açar?",
+      "answerOptions": [
+        {
+          "text": "Ana kaynaklardaki verilerin nesnel ve tarafsız biçimde analiz edilmesini zorlaştırır.",
+          "isCorrect": true,
+          "rationale": "Eserlerdeki tarafgir ve ötekileştirici ifadeler, olguların tarafsız bir gözle tespit edilmesini ve doğru verilere ulaşılmasını güçleştirir."
+        },
+        {
+          "text": "Farklı gruplar arasında bilimsel diyalog kurulmasını kolaylaştırır.",
+          "isCorrect": false,
+          "rationale": "Suçlayıcı ve tekfirci üslup diyalog imkânlarını ortadan kaldırır."
+        },
+        {
+          "text": "Mezheplerin tarihsel açıdan haklılığının bilimsel olarak kanıtlanmasını sağlar.",
+          "isCorrect": false,
+          "rationale": "Suçlayıcı ifadeler bilimsel kanıt sunmaz, aksine önyargı oluşturur."
+        },
+        {
+          "text": "Metinlerin tek bir mutlak doğru yorumunun yapılmasına katkı sunar.",
+          "isCorrect": false,
+          "rationale": "Tarafgir üslup yorum zenginliğini objektif şekilde değerlendirmeyi engeller."
+        }
+      ],
+      "hint": "Tarafgir kaynakların nesnellik ve bilimsel tarafsızlık üzerindeki olumsuz etkisini düşününüz.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Hz. Peygamber'in vefatının ardından yaşanan halife seçimi tartışmaları, Sıffîn Savaşı ve Tahkim Olayı gibi tarihî gelişmeler mezheplerin ortaya çıkışında öncelikle hangi faktörün etkili olduğunu gösterir?",
+      "answerOptions": [
+        {
+          "text": "İnsanın tabiatı",
+          "isCorrect": false,
+          "rationale": "İnsanın tabiatı bireysel psikolojik ve zihinsel farklılıklarla ilgilidir."
+        },
+        {
+          "text": "Nassların tabiatı",
+          "isCorrect": false,
+          "rationale": "Nassların tabiatı metinsel yorum imkânlarını kapsar."
+        },
+        {
+          "text": "Sosyo-politik faktörler",
+          "isCorrect": true,
+          "rationale": "Yönetim, hilafet ve iktidar mücadeleleri toplumsal ve siyasal nitelikte olup mezhepleşmeyi tetikleyen ana olaylardandır."
+        },
+        {
+          "text": "Farklı din ve kültürlerle temas",
+          "isCorrect": false,
+          "rationale": "Kültürel temas fetihler sonrasında dış dünyayla kurulan ilişkileri kapsar."
+        }
+      ],
+      "hint": "Devlet yönetimi, iktidar ve liderlik mücadelelerinin hangi alanla ilgili olduğunu hatırlayınız.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Aşağıdakilerden hangisi 'mezhep' kavramının 'din' kavramı ile olan ilişkisini en doğru şekilde ifade eder?",
+      "answerOptions": [
+        {
+          "text": "Mezhep dinin bizzat kendisidir ve hiçbir şekilde değiştirilemez.",
+          "isCorrect": false,
+          "rationale": "Mezhep dinin kendisi değil, insanların onu anlama ve uygulama biçimidir."
+        },
+        {
+          "text": "Mezhepler, dinin sabit metinlerinin insanlar tarafından zamana ve mekâna göre yapılan farklı anlayış ve yorum biçimleridir.",
+          "isCorrect": true,
+          "rationale": "Din vahye dayalı ilahi ilkeler bütünü iken mezhep bu ilkelerin beşerî düzlemde algılanış ve uygulanış şeklidir."
+        },
+        {
+          "text": "Belli bir mezhebe mensup olmak dine inanmanın mutlak şartıdır.",
+          "isCorrect": false,
+          "rationale": "Dinin temeli ilahi nasslardır; belirli bir beşerî ekolü benimsemek dinin varlık şartı değildir."
+        },
+        {
+          "text": "Mezhepler dinin aslına hiçbir katkısı olmayan yapay oluşumlardır.",
+          "isCorrect": false,
+          "rationale": "Mezhepler dinin farklı coğrafyalarda ve kültürlerde yaşanmasına imkân tanıyan düşünsel zenginliklerdir."
+        }
+      ],
+      "hint": "İlahî olan 'din' ile beşerî olan 'din anlayışı' arasındaki temel farkı göz önüne alınız.",
+      "type": "multiple_choice"
+    }
+  ]
+}

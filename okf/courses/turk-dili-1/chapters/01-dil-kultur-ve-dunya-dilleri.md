@@ -53,30 +53,100 @@ Bu bölümün içinde yaşadığı ders paneli: [Türk Dili paneli](/courses/tur
 
 # Kaynak Temellendirme
 
-Aşağıda, ders kaynakları doğrultusunda belirlenen üç temel öğrenme hedefi kapsamında öğrencilerin edineceği kazanımlar açıklanmıştır:
+## 1. Dil, Kültür ve Dünya Dilleri
 
-### 1. Dilin Tanımı, Temel Bilimsel Özellikleri ve Düşünce ile İlişkisi
-Öğrenci bu hedef kapsamında ilk olarak dilin ne olduğunu kavrar. Dil; insanların kendi aralarında anlaşmasını sağlayan **sesli bir işaretler sistemi**, somut dünyanın söz dizgeleri düzeyinde yeniden oluşturulması ve temeli bilinmeyen zamanlarda atılmış **gizli bir antlaşmalar sistemi** olarak tanımlanmaktadır [1, 2].
+Bu bölümde dilin temel özellikleri, doğuşu, toplum ve kültürle olan köklü ilişkisi ayrıntılı biçimde ele alınmaktadır. Ayrıca dünya dillerinin yapı ve köken bakımından sınıflandırılması açıklanarak Türkçenin Altay dil ailesi içindeki yeri incelenmektedir. Öğrencilerin dilin toplumsal işlevini ve kültür aktarımındaki rolünü kavramaları amaçlanmaktadır.
 
-Öğrenci, dilin bilimsel özelliklerini incelerken dilin kuralları olan ve öğrenilebilir bir **sistem** niteliği taşıdığını görür [3]. Yansıma kelimeler dışındaki sözcükler ile onların temsil ettiği nesneler arasında doğrudan bir nedensellik ilişkisi bulunmadığını [3], hiçbir dilin yapısı gereği bir diğerine üstün olmadığını [3] ve dilin belirli kurallarla **sonsuz sayıda cümle** üretilmesine imkan tanıdığını öğrenir [3]. Ayrıca dilin coğrafyaya, yaşa, cinsiyete ve meslek gruplarına göre farklılık gösterdiğini; argo, jargon, diyalekt ve kod değiştirme gibi dil içi değişkenlikleri keşfeder [4-6].
+### Öğrenme hedefleri
+- Dilin tanımını, temel bilimsel özelliklerini ve düşünce ile ilişkisini açıklayabilme.
+- Dünya dillerini köken ve yapı bakımından sınıflandırarak Türkçenin bu sınıflamadaki yerini belirleyebilme.
+- Dil, kültür ve toplum arasındaki etkileşimi ve dilin kültürel mirası aktarma işlevini değerlendirebilme.
 
-Dil ve düşünce ilişkisi bağlamında ise iki temel görüşü değerlendirir: **Safir-Whorf varsayımı** doğrultusunda dilin insanın dünyayı algılama ve düşünme biçimini şekillendirdiğini öğrenirken; **Eflatun ve Aristo** gibi filozofların yaklaşımıyla düşüncenin dili belirlediği ve dilin yalnızca bir aktarım aracı olduğu görüşünü analiz eder [7].
+### Ünite 1: Dil ve Kültür
+*AÖF ders kitabı, Ünite 1, PDF sayfa ~17-43.*
 
-### 2. Dünya Dillerinin Köken ve Yapı Bakımından Sınıflandırılması ve Türkçenin Yeri
-Öğrenci bu hedef doğrultusunda dünya dillerinin bilimsel ölçütlere göre nasıl gruplandırıldığını ve Türkçenin bu sistemdeki konumunu öğrenir. Diller köken, yapı (biçim bilgisi) ve söz dizimi olmak üzere üç temel ölçüte göre sınıflandırılmaktadır [8].
+**Bilimsel Bakımdan Dilin Özellikleri**
 
-Köken bakımından sınıflandırmada genetik akrabalıklar esas alınır; diller **Altay dilleri**, **Hami-Sami dilleri**, **Hint-Avrupa dilleri**, **Çin-Tibet dilleri**, **Ural dilleri** ve **Kafkas dilleri** gibi ailelere ayrılır [9, 10]. Yapı bakımından sınıflandırmada diller **eklemeli diller**, **çekimli (bükümlü) diller** ve **yalınlayan diller** olarak üçe ayrılır [10]. Söz dizimi bakımından ise ögelerin dizilişine göre sınıflama yapılır [11].
+Yukarıdaki tanımlar bir arada değerlendirildiğinde dilin nitelikleri ile ilgili olarak öncelik
+sıralaması bulunmaksızın bazı hususların altını çizebiliriz:
+Dil, bir sistemdir: Dil konuşma ve dinleme işlevlerini gerçekleştirmek üzere birbirle­
+riyle bağlantılı ses, biçim, söz dizimi, anlam vb. alt sistemlerin oluşturduğu, üzerinde in­
+celeme yapılabilen bir bütündür. Dil bir sistem olmasaydı, insanlar tarafından edinilemez
+ya da öğrenilemezdi. Dil sisteminin işleyişi yalnızca kendi yasalarına bağlıdır. İnsan, dilin
+tek bir zaman ekini, tek bir kişi ekini değiştiremez, dilin üretim yollarının dışına çıkamaz.
+Dilin temeli sestir, doğal olarak öncelikle sözlü anlatım aracıdır: Konuşma seslerinin
+tek başlarına bir anlamı yoktur ancak dilin temeli seslerin belirli dizilişlerde oluşturduğu
+yapılara dayalıdır. Tarihî gelişim bakımından söz, yazıdan çok daha eskidir. Sözlü dili ka­
+yıt ve kontrol altına almak; duygu, düşünce ve mesajları zamandan ve çevreden bağımsız
+biçimde aktarmak üzere yazı keşfedilmiştir. Dil öncelikle söz, konuşma olmakla birlikte,
+dilin sözlü ve yazılı biçimleri arasında üstünlük hiyerarşisi yoktur; sözlü dil yazılı dilden
+veya yazılı dil sözlü dilden üstün değildir.
+Dilde nedensizlik ilkesi esastır: Anlam bakımından, doğadaki ağaç, gönderge;
+“a.ğ.a.ç.” sözcüğü, gösteren; gösterenin zihinde uyandırdığı kavram; bunların tümü de
+göstergedir. Bütün dillerde gösterge nedensizlik ilkesine dayalıdır. Ağaç sözcüğü ile doğa­
+daki ağaç arasında hiçbir nedensellik ilişkisi yoktur. Pat, çat, çatlamak, şırıldamak vb. dilin
+söz varlığının yüzde beşini aşmayan yansıma sözcüklerin dışında, gösterilen, varlık, nesne
+ve kavramlar ile gösteren, sözcükler arasında ilişki yoktur.
+İlkel dil, gelişmiş dil ayrımı yoktur: Yeryüzünün tarihî veya modern bütün dilleri
+gerçek anlamda çok gelişmiş sistemlerdir. İlk yazılı belgelerin ait olduğu dil olan Sümer­
+ce, Hititçe vd. pek çok antik dilin gramerleri yazılmıştır. Bunların hiçbiri modern diller­
+den ‘geri’ değildir. Bazı dillerin grameri karmaşık, bazı dillerin ise daha basittir. Gramer
+bakımından basit ya da karmaşık bütün diller, bugün itibarıyla her türlü ileri teknoloji
+araçlarından çok daha gelişmiştir. Şu ana değin kendiliğinden en basit cümleyi üretebilen
+makine ya da program yapılamamıştır.
+Dilin üretim yetisi sınırsızdır: Dilin üretim gücü, konuşurların sınırlı sayıda yolla sı­
+nırsız sözcük oluşturma, cümle kurma ve anlama yetisidir. Matematikte on temel sayı ile
+sonsuz işlem yapabilme niteliğine benzer biçimde dilin ses, biçim, söz dizimi vb. kuralları
+çerçevesinde yeni sözcükler ve cümleler üretilebilir, üretilenler anlaşılabilir.
+Her dil, ait olduğu toplumun gereksinimlerine cevap verebilecek yeterliktedir: Yeryü­
+zündeki her dil, sınırsız üretim yetisine sahip olması itibarıyla konuşurlarının değişen ih­
+tiyaçlarına karşılık verebilecek, ait oldukları toplumun gereksinimlerini karşılayabilecek,
+kültürel mirasını sonraki kuşaklara aktarabilecek nitelikte ve yeterliktedir. Dil, zamanın
+ve koşulların değişmesine kolaylıkla uyum sağlar. Örneğin, Türkçe bir sözlü ve yazılı dil
+olarak yüzlerce yıldır bugünkü Moğolistan’dan Avrupa içlerine değin tarihî ve modern… ⟦1⟧
 
-Bu sınıflandırmalar ışığında öğrenci, Türkçenin köken bakımından **Altay dilleri** ailesinin en önemli üyesi olduğunu [9, 11]; biçim bilgisi bakımından köklerin sonuna ekler getirilerek kelime türetilen **sondan eklemeli bir dil** yapısına sahip olduğunu [10, 11]; söz dizimi bakımından **Özne-Nesne-Yüklem** sırasını izlediğini [11] ve 8. yüzyıldan itibaren kesintisiz yazılı metinlere sahip köklü bir devlet ve kültür dili olduğunu öğrenir [11].
+**TÜRKÇENİN DÜNYA DİLLERİ ARASINDAKİ YERİ**
 
-### 3. Dil, Kültür ve Toplum Arasındaki Etkileşim ve Kültürel Mirası Aktarma İşlevi
-Öğrenci bu hedef çerçevesinde dilin yalnızca bir iletişim aracı değil, kültürün ve toplumsal yapının temel direği olduğunu kavrar. Kültür, toplumun ürettiği ve miras aldığı maddi ile manevi unsurların bütünüdür [12, 13]. Dil ise manevi kültür ögelerinin en önemli taşıyıcısıdır ve **kolektif bilinci** oluşturur [12, 13].
+On sekizinci yüzyılın başında Poltava savaşında (1709) Ruslara esir düşen ve 1711-1722
+yılları arasında Sibirya’da kalan Alman kökenli İsveçli subay ve kâşif J. von Strahlenberg
+(1676-1747) Fin-Ogur, Türk ve Moğol dilleri arasındaki ortak özellikleri ve runik yazılı
+metinleri 1730 yılında İsveç’in Stockholm şehrinde yayımlanan eseriyle ilk kez dile geti­
+ren bilim insanlarından biriydi. Bu kuram yakın dönemlere değin benimsenmişti ancak
+araştırmaların gelişmesiyle bilim çevrelerinde Ural dilleri ile Altay dilleri arasındaki ilişki­
+ye dayalı yakınlıklar ve kimi yapısal benzerlikler ve ortaklıklar bulunmakla birlikte her iki
+ailenin genetik bakımdan aynı ata dilden gelişmediği kabul edilmektedir. Ancak Türkçe,
+Macarca, Fince vd. bir bölümü tarihî ve modern dil temaslarına dayalı, bir bölümü te­
+maslardan bağımsız olarak erillik-dişillik bulunmaması, kişi zamirlerindeki benzerlikler,
+ünlü uyumları, sayı sıfatlarında nitelenen ismin çokluk eki alması, söz diziminde (özne) +
+(nesne) + esas fiil + (yardımcı fiil) vb. ortak özelliklere sahiptir.
+Türk Yazı Dillerinin ve Lehçelerinin Sınıflandırılması
+Avrasya coğrafyasına yayılan Türk dillerinin sınıflandırılması ile ilgili genetik, coğrafi,
+etnik, tipolojik birçok ölçüt ve sınıflandırma girişimi vardır. Johanson ve Csató (2006)
+coğrafi, genetik ve tipolojik ölçütleri esas alarak yaptığı sınıflandırmada Türk dillerini altı
+gruba ayırır:
+1.	 Güneybatı (GB), Oğuz Türkçesi: Bu grup kendi içinde batı (b) ve doğu (d) ol­
+mak üzere ikiye ayrılır. GBb grubunda Gagauzca, Türkiye Türkçesi ve Azerice; GBd
+grubunda ise Türkmence yer alır. Salırca (Salarca) tarihî olarak Oğuz grubundan
+gelişmiştir.
+2.	 Kuzeybatı (KB), Kıpçak Türkçesi: Kıpçak grubu batı (b), kuzey (k) ve güney (g) alt
+gruplarından oluşur. KBb grubunda Kumukça, Karaçay Balkarca, Kırım Tatarcası
+ve Karayca; KBk veya Volga (İdil) grubunda Kazan Tatarcası ve Başkurtça; KBg veya
+Aral-Hazar grubunda Kazakça, Karakalpakça, Kıpçak-Özbek ve Nogayca bulunur.… ⟦2⟧ ⟦3⟧ ⟦4⟧ ⟦5⟧ ⟦6⟧
 
-Öğrenci, dilin **kültürel hafıza** olma işlevini incelerken destan, masal, türkü, mani gibi halk edebiyatı ürünlerinin ve **Göktürk Yazıtları** gibi tarihi metinlerin dil sayesinde kuşaktan kuşağa aktarılarak günümüze ulaştığını öğrenir [14, 15]. Ayrıca kültür değişimleri, din tercihleri ve tercüme faaliyetlerinin dildeki yankılarını (örneğin Uygurlar döneminde dini metinlerin Türkçeye çevrilmesiyle dilde yaşanan gelişmeleri) değerlendirir [16].
-
-Toplum ve dil etkileşiminde ise dil kullanımının toplumsal statüye, ortama, cinsiyete ve yaşa göre biçimlendiğini öğrenir [17, 18]. Toplumsal normların, durumsal dil türlerinin, konuşma bağdaşmasının ve kadın ile erkeğin dil kullanımındaki farkların iletişimi ve sosyal ilişkileri nasıl yönlendirdiğini kavrar [17, 18].
-
-💡 Birinci ünitenin bu temel kavramlarını pekiştirmek için özgün soru ve cevaplardan oluşan bir alıştırma testi hazırlamamı ister misiniz?
+### İlgili çıkmış vize soruları
+Metindeki ⟦n⟧ işaretleri bu listeye açılır. Alıntıya tıklayınca çözüm rehberinde soru açılır ve çözümü vurgulanır.
+- [1] **2025/2026 · Soru 3**: Aşağıdakilerden hangisi İlk Türkçe döneminde Türk dillerinden ayrılan yazı dilidir?
+- [2] **2025/2026 · Soru 12**: “Kültürün en temel taşıyıcısı ve aktarım aracı” aşağıdakilerden hangisidir?
+- [3] **2025/2026 · Soru 15**: Orhun Yazıtları’nda kullanılan dilin özellikleriyle ilgili aşağıdakilerden hangisi yanlıştır?
+- [4] **2025/2026 · Soru 16**: Çağdaş Türkiye Türkçesi’nin temel kaynağı hangi lehçedir?
+- [5] **2025/2026 · Soru 26**: Aynı meslek veya toplumsal gruptaki insanların, temel kavramları itibarıyla ortak dilden ayrı olarak kullandıkları özel dil veya söz dağarcı
+- [6] **2025/2026 · Soru 50**: Aşağıdakilerden hangisi dilin üretim gücünün sınırsızlığı özelliği ile ilgilidir?
+- [7] **2025/2026 · Soru 53**: “Bir toplumun bireyleri tarafından ilk öğrenilen, kuşaktan kuşağa aktarılan dil” hangi dil türüdür?
+- [8] **2024/2025 · Soru 10**: Türk lehçe ve yazı dillerinin sınıflandırılmasında Türkiye Türkçesi, Güneybatı ya da Batı Türkçesi olarak adlandırılan gruba girer. Bu, yönl
+- [9] **2024/2025 · Soru 13**: Aynı meslek veya toplumsal gruptaki insanların, temel kavramları itibarıyla ortak dilden ayrı olarak kullandıkları özel dil veya söz dağarcı
+- [10] **2024/2025 · Soru 32**: Aşağıdakilerden hangisi İlk Türkçe döneminde Türk dillerinden ayrılan yazı dilidir?
+- [11] **2024/2025 · Soru 47**: Aşağıdakilerden hangisi Kafkas dilleri içinde yer alır?
+- [12] **2023/2024 · Soru 5**: Aşağıdakilerden hangisi Kafkas dilleri içinde yer alır?
 
 # Kaynaklar
 

@@ -1,0 +1,331 @@
+{
+  "unit": 5,
+  "unitTitle": "Türk İstiklal Harbi",
+  "title": "İnkılap Tarihi Testi",
+  "questions": [
+    {
+      "question": "Osmanlı Mebusan Meclisinde 28 Ocak 1920 tarihinde kabul edilen ve Türk vatanının sınırları ile siyasi ve ekonomik bağımsızlığın asgari şartlarını belirleyen bildiri aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Misak-ı Milli",
+          "isCorrect": true,
+          "rationale": "Son Osmanlı Mebusan Meclisi tarafından kabul edilen bu metin, vatanın bölünmez bütünlüğünü ve tam bağımsızlık esaslarını ilan eden temel belgedir."
+        },
+        {
+          "text": "Amasya Genelgesi",
+          "isCorrect": false,
+          "rationale": "Millî Mücadele'nin amaç, gerekçe ve yöntemini ilk kez açıklayan ihtilal bildirisi niteliğindedir ancak Mebusan Meclisi kararı değildir."
+        },
+        {
+          "text": "Sened-i İttifak",
+          "isCorrect": false,
+          "rationale": "1808 yılında Ayanlar ile padişah II. Mahmud arasında yapılan ve padişahın yetkilerini ilk kez kısıtlayan bir sözleşmedir."
+        },
+        {
+          "text": "Kanun-i Esasi",
+          "isCorrect": false,
+          "rationale": "1876 yılında ilan edilen ve Osmanlı Devleti'nin anayasal düzene geçişini sağlayan ilk temel anayasadır."
+        }
+      ],
+      "hint": "Ahd-ı Milli veya Milli And olarak da bilinen bu metin, Kurtuluş Savaşı'nın hedeflerini çizen nihai belgedir.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Millî Mücadele Dönemi'nde Ankara'da TBMM Hükûmetinin yarı resmî yayın organı işlevini üstlenen ve 1934 yılından itibaren 'Ulus' adıyla yayımlanan gazete aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Hâkimiyet-i Milliye",
+          "isCorrect": true,
+          "rationale": "Ankara'da çıkarılan ve Millî Mücadele'nin kamuoyuna duyurulmasında TBMM'nin sözcüsü konumunda olan temel yayın organıdır."
+        },
+        {
+          "text": "İrade-i Milliye",
+          "isCorrect": false,
+          "rationale": "Sivas Kongresi'nin ardından mücadelenin sesini duyurmak amacıyla Sivas'ta çıkarılmaya başlanan ilk gazetedir."
+        },
+        {
+          "text": "Minber",
+          "isCorrect": false,
+          "rationale": "Mütareke döneminde İstanbul'da Mustafa Kemal Paşa ve Ali Fethi Bey tarafından ortaklaşa çıkarılan gazetedir."
+        },
+        {
+          "text": "Tasvir-i Efkâr",
+          "isCorrect": false,
+          "rationale": "Şinasi tarafından Tanzimat döneminde İstanbul'da yayımlanmaya başlayan klasik Osmanlı gazetelerinden biridir."
+        }
+      ],
+      "hint": "İsmi milli egemenlik vurgusu taşıyan ve Ankara merkezli yürütülen haberciliğin simgesi olan yayın organını düşününüz.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "I. TBMM açıldıktan sonra iç huzuru sağlamak, bozgunculuğu önlemek ve TBMM'ye karşı çıkan ayaklanmaları bastırmak amacıyla 29 Nisan 1920'de kabul edilen yasal düzenleme aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Hıyanet-i Vataniye Kanunu",
+          "isCorrect": true,
+          "rationale": "TBMM'nin otoritesini korumak ve vatana ihanet eden isyancıları cezalandırmak için çıkarılan ilk sert önlem kanunudur."
+        },
+        {
+          "text": "Takrir-i Sükûn Kanunu",
+          "isCorrect": false,
+          "rationale": "Şeyh Sait İsyanı sonrasında 1925 yılında ülke genelinde asayişi yeniden kurmak amacıyla çıkarılmıştır."
+        },
+        {
+          "text": "Nisab-ı Müzakere Kanunu",
+          "isCorrect": false,
+          "rationale": "TBMM'nin çalışma usul ve esaslarını, iç tüzüğünü belirlemek üzere çıkarılan ilk düzenlemedir."
+        },
+        {
+          "text": "Men-i Müskirat Kanunu",
+          "isCorrect": false,
+          "rationale": "Savaş dönemi bütçesine katkı sağlamak ve içki kullanımını yasaklamak amacıyla çıkarılan kanundur."
+        }
+      ],
+      "hint": "Meclisin varlığına ve meşruiyetine kasteden hareketleri vatan hainliği kapsamında değerlendiren yasayı hatırlayınız.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Mondros Mütarekesi'nin ardından İstanbul'da siyasi faaliyetlerini sürdüren Mustafa Kemal Paşa'nın Ali Fethi (Okyar) Bey ile birlikte çıkardığı gazete aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Minber",
+          "isCorrect": true,
+          "rationale": "Mütareke İstanbul'unda halkı bilinçlendirmek ve fikirlerini yaymak amacıyla iki yakın arkadaşın sermayesiyle kurulan gazetedir."
+        },
+        {
+          "text": "Tercüman-ı Ahvâl",
+          "isCorrect": false,
+          "rationale": "Şinasi ve Agâh Efendi tarafından çıkarılan ilk özel Türkçe gazetedir."
+        },
+        {
+          "text": "Ceride-i Havadis",
+          "isCorrect": false,
+          "rationale": "İngiliz William Churchill tarafından çıkarılan yarı resmî Osmanlı gazetesidir."
+        },
+        {
+          "text": "Sabah",
+          "isCorrect": false,
+          "rationale": "Mütareke döneminde İstanbul'da yayımlanan ve genellikle Millî Mücadele karşıtı tutumuyla bilinen basın organlarından biridir."
+        }
+      ],
+      "hint": "Camiilerde hatiplerin konuşma yaptığı yüksekçe yeri ifade eden kelime ile aynı adı taşıyan gazeteyi arayınız.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "I. Dünya Savaşı sonunda Bulgaristan'ın İttifak Devletleri yanında yer alması nedeniyle kaybettiği toprakları düzenleyen ve Bulgaristan'ın Ege Denizi ile bağlantısını kesen barış antlaşması aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Neuilly (Nöyi) Antlaşması",
+          "isCorrect": true,
+          "rationale": "Bulgaristan ile müttefikler arasında imzalanarak ülkenin Ege Denizi kıyılarını Yunanistan'a bırakan ağır şartlı antlaşmadır."
+        },
+        {
+          "text": "Versailles (Versay) Antlaşması",
+          "isCorrect": false,
+          "rationale": "I. Dünya Savaşı sonunda Almanya ile İtilaf Devletleri arasında imzalanan barış antlaşmasıdır."
+        },
+        {
+          "text": "St. Germen Antlaşması",
+          "isCorrect": false,
+          "rationale": "Savaş sonrasında Avusturya İmparatorluğu'nun parçalanmasını ve yeni sınırlarını belirleyen antlaşmadır."
+        },
+        {
+          "text": "Trianon Antlaşması",
+          "isCorrect": false,
+          "rationale": "I. Dünya Savaşı sonucunda Macaristan ile İtilaf Devletleri arasında imzalanan barış antlaşmasıdır."
+        }
+      ],
+      "hint": "Balkan Savaşları'nda elde edilen toprakların bir kısmının kaybedilmesine ve Trakya sınırlarının daralmasına yol açan antlaşmadır.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Bütün bölgesel yararlı cemiyetlerin 'Anadolu ve Rumeli Müdafaa-i Hukuk Cemiyeti' adı altında tek bir çatı altında birleştirildiği ve Manda-Himaye fikrinin kesin olarak reddedildiği kongre aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Sivas Kongresi",
+          "isCorrect": true,
+          "rationale": "4-11 Eylül 1919 tarihlerinde toplanarak Millî Mücadele'yi ulusal çapta tek bir merkezden yönetme kararı alan kongredir."
+        },
+        {
+          "text": "Erzurum Kongresi",
+          "isCorrect": false,
+          "rationale": "Toplanış bakımından bölgesel, aldığı kararlar bakımından milli bir kongre olup bölgesel birleşmeyi sağlamıştır."
+        },
+        {
+          "text": "Balıkesir Kongresi",
+          "isCorrect": false,
+          "rationale": "Batı Cephesi'ni örgütlemek amacıyla toplanan ancak Mustafa Kemal Paşa'nın liderliğini henüz doğrudan tanımayan bölgesel bir kongredir."
+        },
+        {
+          "text": "Alaşehir Kongresi",
+          "isCorrect": false,
+          "rationale": "Yunan işgaline karşı Batı Anadolu'da direnişi organize etmek için toplanan bölgesel nitelikli toplantılardan biridir."
+        }
+      ],
+      "hint": "Anadolu'nun her bakımdan en güvenli yeri olarak görülen ve ulusal ölçekte temsilcilerin katıldığı merkezdeki kongredir.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Millî Mücadele sürecinde düzenli ordunun kurulması kararına karşı çıkarak kendi otoritesini korumak amacıyla I. TBMM'ye karşı ayaklanan Kuvayı Milliye lideri aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Demirci Mehmet Efe",
+          "isCorrect": true,
+          "rationale": "Güneybatı Anadolu'da direniş gösteren ancak emir altına girmek istemeyerek düzenli ordu kararına karşı isyan eden milis komutanıdır."
+        },
+        {
+          "text": "Çopur Musa",
+          "isCorrect": false,
+          "rationale": "Afyon bölgesinde Yunan teşviki ve hilafet yanlısı propaganda ile çıkarılan yerel bir ayaklanmanın lideridir."
+        },
+        {
+          "text": "Anzavur Ahmet",
+          "isCorrect": false,
+          "rationale": "Marmara bölgesinde Doğrudan İstanbul Hükûmeti tarafından desteklenen Kuvayı İnzibatiye kökenli bir isyancıdır."
+        },
+        {
+          "text": "Milli Aşiret",
+          "isCorrect": false,
+          "rationale": "Doğu ve Güneydoğu Anadolu bölgesinde Fransız kışkırtmasıyla TBMM'ye karşı ayaklanan bir aşirettir."
+        }
+      ],
+      "hint": "Ege bölgesinde işgale karşı milis birlikleri yöneten ancak disiplinli ordu yapısına geçişi kabullenmeyen efe liderlerinden biridir.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "I. Dünya Savaşı sırasında Osmanlı ordusunun Britanya birliklerine karşı büyük bir başarı elde ederek General Townshend ve birliklerini esir aldığı muharebe aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Kutü'l-Amâre Muharebesi",
+          "isCorrect": true,
+          "rationale": "Irak Cephesi'nde Halil Paşa komutasındaki Osmanlı kuvvetlerinin İngiliz ordusunu kuşatarak büyük bir zafer kazandığı muharebedir."
+        },
+        {
+          "text": "Kirte Muharebeleri",
+          "isCorrect": false,
+          "rationale": "Çanakkale Kara Savaşları sırasında Gelibolu Yarımadası'nda gerçekleşen savunma muharebelerindendir."
+        },
+        {
+          "text": "Sarıkamış Harekâtı",
+          "isCorrect": false,
+          "rationale": "Kafkas Cephesi'nde Rus iklim ve arazi koşulları nedeniyle büyük kayıpların verildiği taarruz harekâtıdır."
+        },
+        {
+          "text": "Kerevizdere Muharebesi",
+          "isCorrect": false,
+          "rationale": "Çanakkale Cephesi'nde Fransız ve İngiliz kuvvetlerine karşı verilen çetin kanat savunmalarından biridir."
+        }
+      ],
+      "hint": "Irak Cephesi'nde gerçekleşen ve İngiliz kuvvetlerinin ağır bir mağlubiyet aldığı tarihi zaferi hatırlayınız.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Rumi takvimle 31 Mart 1325 (13 Nisan 1909) tarihinde meşrutiyet düzenine ve İttihat ve Terakki Cemiyetine karşı bir tepki olarak İstanbul'da patlak veren ayaklanma aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "31 Mart Vakası",
+          "isCorrect": true,
+          "rationale": "Osmanlı tarihinde mevcut anayasal rejimi değiştirmeye yönelik gerçekleşen ilk gerici (irticai) nitelikli isyandır."
+        },
+        {
+          "text": "Patrona Halil İsyanı",
+          "isCorrect": false,
+          "rationale": "1730 yılında Lale Devri'ne ve III. Ahmed'in saltanatına son veren ayaklanmadır."
+        },
+        {
+          "text": "Kabakçı Mustafa İsyanı",
+          "isCorrect": false,
+          "rationale": "1807 yılında Nizam-ı Cedit yeniliklerine karşı çıkıp III. Selim'i tahtından indiren ayaklanmadır."
+        },
+        {
+          "text": "Bab-ı Ali Baskını",
+          "isCorrect": false,
+          "rationale": "1913 yılında İttihat ve Terakki üyelerinin Hükûmet darbesi yaparak iktidarı tamamen ele geçirdiği askerî olaydır."
+        }
+      ],
+      "hint": "Selanik'ten gelen Hareket Ordusu tarafından bastırılan ve II. Abdülhamit'in tahttan indirilmesine yol açan olaydır.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "23 Aralık 1876 tarihinde ilan edilen, Batılı devletlerin iç işlerine karışmasını önlemeyi hedefleyen ve Osmanlı Devleti'nin ilk anayasası olan belge aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Kanun-i Esasi",
+          "isCorrect": true,
+          "rationale": "I. Meşrutiyet ile birlikte yürürlüğe giren ve Osmanlı halkına kısıtlı da olsa ilk kez seçme-seçilme hakkı tanıyan anayasadır."
+        },
+        {
+          "text": "Tanzimat Fermanı",
+          "isCorrect": false,
+          "rationale": "1839'da ilan edilen, kanun üstünlüğünü ve tüm vatandaşların can, mal, namus güvenliğini devlet güvencesine alan fermandır."
+        },
+        {
+          "text": "Islahat Fermanı",
+          "isCorrect": false,
+          "rationale": "1856'da Paris Antlaşması öncesinde özellikle gayrimüslim tebaaya ekstra haklar sağlayan mülki düzenlemedir."
+        },
+        {
+          "text": "Teşkilat-ı Esasiye",
+          "isCorrect": false,
+          "rationale": "1921 yılında I. TBMM tarafından kabul edilen yeni Türk devletinin ilk kurucu anayasasıdır."
+        }
+      ],
+      "hint": "Tersane (İstanbul) Konferansı toplandığı gün ilan edilen meşrutiyet dönemi anayasasını düşününüz.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Millî Mücadele Dönemi'nde işgalcilerin kendi düşmanı olması ve kendi sınırları içindeki Türk-Müslüman halka sempatik görünmek amacıyla Ankara Hükûmetine maddi yardım sağlayan dış güç aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Sovyet Rusya",
+          "isCorrect": true,
+          "rationale": "İtilaf Devletleri'nin Doğu Avrupa ve Kafkaslar üzerindeki baskısını kırmak ve dostça ilişkiler kurmak amacıyla mali ve askerî destek veren devlettir."
+        },
+        {
+          "text": "Almanya",
+          "isCorrect": false,
+          "rationale": "I. Dünya Savaşı'ndan yenik ayrılıp Versay Antlaşması ile ağır kısıtlamalar altına girdiğinden Millî Mücadele'ye yardım edecek durumda değildir."
+        },
+        {
+          "text": "Fransa",
+          "isCorrect": false,
+          "rationale": "Güney Anadolu topraklarını bizzat işgal eden İtilaf devletlerinden biri olup Ankara Antlaşması'na kadar mücadele edilen taraftır."
+        },
+        {
+          "text": "Bulgaristan",
+          "isCorrect": false,
+          "rationale": "Savaş sonrası kendi iç meseleleri ve toprak kayıplarıyla uğraşan, mali yardım yapabilecek konumda olmayan bir Balkan ülkesidir."
+        }
+      ],
+      "hint": "1917 Bolşevik İhtilali sonrası Çarlık rejimini yıkarak İtilaf Devletleri ile bağlarını koparan yönetimi düşününüz.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "XVII. yüzyıl Osmanlı ıslahat düşünürlerinden Kâtip Çelebi'nin, devlet adamlarının yetersizliğini eleştirerek bozulan devlet düzenine çözüm yolları aradığı eseri aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Düstûrü'l-Amel li Islahı'l-Halel",
+          "isCorrect": true,
+          "rationale": "Kâtip Çelebi'nin devlet bütçesindeki açıkları, askerî ve idari bozulmaları analiz edip çözüm tavsiyeleri sunduğu risalesidir."
+        },
+        {
+          "text": "Asafnâme",
+          "isCorrect": false,
+          "rationale": "XVI. yüzyılda Kanuni Sultan Süleyman'ın sadrazamı Lûtfi Paşa tarafından yazılan devlet yönetimi risalesidir."
+        },
+        {
+          "text": "Keşfü'z-Zünûn",
+          "isCorrect": false,
+          "rationale": "Kâtip Çelebi'ye ait olmakla birlikte, binlerce eseri ve yazarı tanıtan devasa bir biyografik-bibliyografik ansiklopedidir."
+        },
+        {
+          "text": "Cihannüma",
+          "isCorrect": false,
+          "rationale": "Kâtip Çelebi'nin coğrafya alanında kaleme aldığı dünya coğrafyasını ve haritaları inceleyen eseridir."
+        }
+      ],
+      "hint": "'Bozuklukların düzeltilmesi için çalışma düsturu' anlamına gelen idari eleştiri risalesini hatırlayınız.",
+      "type": "multiple_choice"
+    }
+  ]
+}

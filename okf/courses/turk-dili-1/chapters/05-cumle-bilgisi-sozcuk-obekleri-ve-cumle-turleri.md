@@ -47,31 +47,141 @@ Bu bölümün içinde yaşadığı ders paneli: [Türk Dili paneli](/courses/tur
 
 # Kaynak Temellendirme
 
-Beşinci ünite ders kaynakları doğrultusunda, belirtilen üç öğrenme hedefi kapsamında öğrencilerin edineceği bilgi ve beceriler aşağıda açıklanmıştır:
+## 5. Cümle Bilgisi, Sözcük Öbekleri ve Cümle Türleri
 
-### 1. İsim ve Sıfat Tamlamaları gibi Sözcük Öbeklerinin Yapısal Özelliklerini Belirleyebilme
-Öğrenci bu öğrenme hedefi kapsamında ilk olarak sözcük öbeğinin tanımını ve genel niteliklerini kavrar. Sözcük öbekleri; birden fazla sözcüğün cümle içinde tek bir işlev görecek şekilde yan yana gelmesiyle oluşan, kendi başına yargı bildirmeyen dil birimleridir [1, 2]. Sözcüklerin bir öbek oluşturup oluşturmadığını anlamak için cümledeki öge dizilişi değiştirildiğinde bu sözcüklerin birlikte hareket ettiği görülür [2]. Öbeklerde asıl ögenin genellikle sonda bulunduğu ve bu yapıların cümleye eklenerek anlatım sınırlarını genişlettiği öğrenilir [1, 2].
+Bu bölümde söz diziminin temel ögeleri olan sözcük öbekleri ve tamlamaların yapısı ele alınmaktadır. Cümlenin temel ögeleri olan yüklem ve özne ile tümleçlerin cümle içindeki görevleri açıklanmaktadır. Cümleler yapısına, yükleminin türüne, öge dizilişine ve anlamına göre farklı kriterler açısından sınıflandırılmaktadır.
 
-Öğrenci, tamlayan ile tamlanan arasında ilişki kuran öbek türlerini detaylarıyla inceler:
-* **Ad Tamlamaları**: Tamlayan ve tamlanan eklerinin kullanımına göre üçe ayrılır. Her iki ögenin de ek aldığı yapılar belirtili ad tamlaması [3]; yalnızca ikinci ögenin iyelik eki aldığı ve iki öge arasına başka sözcük giremeyen yapılar belirtisiz ad tamlaması [4]; her iki ögenin de ek almadığı, tamlananın neden yapıldığını veya niteliğini gösteren yapılar ise takısız ad tamlamasıdır [4].
-* **Sıfat Tamlamaları ve Aitlik Öbekleri**: Bir adı nitelemek veya belirtmek amacıyla oluşturulan öbekler ile "-ki" aitlik ekiyle kurulan öbeklerin yapısı kavranır [4].
-* **Diğer Öbek Türleri**: Tamlayan-tamlanan ilişkisi barındırmayan ancak cümle içinde bir bütün olarak hareket eden unvan öbekleri, edat öbekleri, bağlama öbekleri, sayı öbekleri, ikilemeler, birleşik sözcükler ve birleşik eylem öbekleri (ad veya eylemle yapılan) öğrenilir [5, 6].
-* **Eylemsi Öbekleri**: İsim-fiil, sıfat-fiil ve zarf-fiil ekleriyle kurulan eylemsi öbeklerinin cümlede üstlendikleri görevler ve söz dizimindeki yapısal rolleri çözümlenir [7].
+### Öğrenme hedefleri
+- İsim ve sıfat tamlamaları gibi sözcük öbeklerinin yapısal özelliklerini belirleyebilme.
+- Cümlenin temel, tamamlayıcı ve bağımsız ögelerini doğru bir şekilde ayırabilme.
+- Cümleleri yapısına, yükleminin türüne, öge dizilişine ve anlamına göre sınıflandırabilme.
 
-### 2. Cümlenin Temel, Tamamlayıcı ve Bağımsız Ögelerini Doğru bir Şekilde Ayırabilme
-Öğrenci bu hedef doğrultusunda, sözcüklerin cümle içinde anlam ve değer kazandığını, bağımsız dil bilgisel bir yapı olan cümlenin ögelerine nasıl ayrıldığını öğrenir [8]:
-* **Temel Ögeler**: Cümlenin iki temel ögesi **yüklem** ve **özne**dir [8]. Yüklem; iş, oluş, hareket veya yargı bildiren çekimli ögedir [9]. Çekimli bir eylem olabileceği gibi ek eylem almış ad ve ad soylu sözcüklerden de oluşabilir [9, 10]. Özne ise yüklemde belirtilen kılış, iş veya durumu gerçekleştiren ya da üstlenen ögedir [10]. Öznenin yalın halde bulunduğu, pekiştirme ekleriyle veya farklı sözcük öbekleriyle kurulabileceği, yüklemle kişi ve teklik-çoğulluk bakımlarından uyum içinde olması gerektiği öğrenilir [11-14].
-* **Tamamlayıcı Ögeler**: Yüklemi çeşitli yönlerden tamamlayan **nesne**, **yer tamlayıcısı (dolaylı tümleç)** ve **zarf tümleci**dir [14]. Yükleme sorulan sorular vasıtasıyla eylemden doğrudan etkilenen belirtili veya belirtisiz nesne [14, 15]; eylemin yöneldiği, bulunduğu veya ayrıldığı yeri gösteren yer tamlayıcısı [15]; eylemin zamanını, tarzını, miktarını ve sebebini bildiren zarf tümleci cümleden ayırt edilir [15, 16].
-* **Bağımsız (Cümle Dışı) Ögeler**: Yüklemin doğrudan tamamlayıcısı olmayan ancak açıklama, pekiştirme ve duygusal vurgu sağlayan ünlemler, hitap sözcükleri ve bağlama öbekleri cümlenin ana öge yapısından ayrıştırılır [16].
+### Ünite 5: Cümle Bilgisi
+*AÖF ders kitabı, Ünite 5, PDF sayfa ~137-167.*
 
-### 3. Cümleleri Yapısına, Yükleminin Türüne, Öge Dizilişine ve Anlamına Göre Sınıflandırabilme
-Öğrenci bu hedef çerçevesinde, Türkçe cümlelerin geleneksel dil bilgisi ölçütlerine göre dört temel başlık altında nasıl sınıflandırıldığını kavrar [17, 18]:
-* **Yapısına Göre Cümleler**: Cümledeki yargı sayısı esas alınır. Tek çekimli yükleme ve tek yargıya sahip cümleler eylemsi içerseler dahi **basit cümle**dir [17, 19]. Bir temel cümle ile onu tamamlayan yan cümlelerden oluşan yapılar **birleşik cümle**dir (şartlı, iç içe ve ki'li birleşik) [20]. Anlamca birbirine bağlı birden fazla cümlenin virgülle sıralanmasıyla **sıralı cümle** (öge ortaklığı varsa bağımlı, yoksa bağımsız sıralı); bağlaçlarla bağlanmasıyla **bağlı cümle** oluşur [21, 22].
-* **Yükleminin Türüne Göre Cümleler**: Yüklemi çekimli bir eylem olan cümleler **eylem cümlesi**; yüklemi ad veya ad soylu sözcük olup ek eylemle çekimlenen cümleler ise **ad cümlesi** olarak ayrılır [22, 23].
-* **Öge Dizilişine (Söz Dizimine) Göre Cümleler**: Yüklemi sonda yer alan cümleler **kurallı cümle**; şiirsel anlatım, vurgu veya atasözü kullanımı gibi sebeplerle yüklemi sonda bulunmayan cümleler **devrik cümle** olarak adlandırılır [23, 24].
-* **Anlamına Göre Cümleler**: Yüklemin gösterdiği işin gerçekleştiğini bildiren cümleler **olumlu**; işin gerçekleşmediğini veya yokluğu bildiren cümleler **olumsuz** cümledir [24, 25]. Bilgi edinme amaçlı **soru cümleleri**, duygu aktaran **ünlem cümleleri** ve eylemin yapılmasını isteyen **emir cümleleri** anlamsal özelliklerine göre kategorize edilir [25, 26].
+5. Ünite - Cümle Bilgisi
+Sözcük öbekleri ile ilgili ek bilgi edinmek için Hürriyet Gökdayı’nın Türki-
+ye Türkçesinde Öbekler adlı çalışmasını Genel Ağ’daki turkishstudies.net/
+Makaleler/637152171_61gökdayı_hürriyet.pdf adresinden okuyabilirsiniz.
+Tamlayan-Tamlanan İlişkisi Bulunan Sözcük Öbekleri
+Tamlayan tamlanan sözcük öbeklerinde önce gelen öge, kendinden sonra gelen ögeyi
+farklı yönlerden belirtir ya da niteler. Bu tür sözcük öbeğinde tamlayan ve tamlanan öge
+birer sözcükten oluşabileceği gibi genişlemiş sözcük öbeklerinden de oluşabilir. Aşağıdaki
+tabloda bu grup içinde yer alan sözcük öbekleri yapısı ve örnekleriyle birlikte gösteril-
+mektedir. ⟦1⟧
 
-💡 Cümle bilgisi konularını pekiştirmek amacıyla örnek cümle çözümleri veya sınav odaklı çalışma soruları hazırlamamı ister misiniz?
+Tamlayan-Tamlanan İlişkisi Bulunan Sözcük Öbekleri
+Sözcük Öbeği
+Yapı
+Örnek
+Belirtili ad tamlaması
+ad-(n)In + ad-(s)I
+Arabanın kapısı
+Belirtisiz ad tamlaması
+ad + ad-(s)I
+araba kapısı
+Takısız ad tamlaması
+ad + ad
+demir kapı
+Sıfat tamlaması
+sıfat + ad
+büyük okul, bir adam birkaç ev,
+anlamsız söz
+Aitlik öbeği
+ad +ki eki; + ad + -dA + -ki, nIn+ki
+sabahki, evdeki, bizimki
+Ünlem öbeği
+ünlem + ad/ ad grubu
+Ey Türk gençliği, Değerli konuklar
+Ad Tamlamaları
+İyelik ekli bir adın (tamlayan), iyeliğin belirttiği başka bir adla (tamlanan) aitlik, içinde
+bulunma, sınırlandırma, belirtme vb. anlam ilgileriyle bağlandığı sözcük öbeğidir (Kara-
+han,2006). Ad tamlamaları cümlede ad, sıfat ve zarf görevlerinde, cümlenin her ögesi ola-
+rak bulunabilirler. Belirtili, belirtisiz ve takısız ad tamlaması olmak üzere üç türü vardır.
+1.	 Belirtili ad tamlaması: İlk sözcüğün ilgi eki –(n)In + ikinci sözcüğün iyelik eki –sI
+almasıyla oluşan ad tamlamasıdır.
+Örnek: İşinin değişmesi şansını da değiştirmişti. ⟦2⟧
+
+Esra, odanın pencerelerini sıkıca kapattı.
+              Selma’nın sesi çok güzeldir.
+Belirtili ad tamlamasında tamlayan öge ile tamlanan öge kimi zaman, genellikle şiir-
+lerde yer değiştirebilir. Örneğin; Kimse bilmez dertlerini anaların. Tamlayan öge ile
+tamlanan öge arasına başka sözcükler girebilir. Örneğin; Ayşe masal anlatırken çocuk-
+ların yorgunluktan gözleri kapanırdı.
+Pek çok kaynakta “zincirleme ad tamlaması” olarak verilen yapı, belirtili ad tamlama-
+sının tamlayan ögesinin de ad tamlaması biçimindeki iç içe girmiş tamlama türüdür.
+Örneğin; kardeşimin resim defteri, evin duvarının boyası, Türkçe öğretmeninin not
+defteri vb.
+Tablo 5.1
+Tamlayan-Tamlanan İlişkisi Bulunan Sözcük Öbekleri
+Alanda “ad tamlaması” terimi
+yerine “ad takımı” ya da “isim
+tamlaması” terimleri de kullanılır.
+Belirtili ad tamlamalarında,
+tamlayan eki (n)In yerine -dAn
+durum eki de kullanılabilir.
+Örneğin; kardeşlerimden ikisi gibi. ⟦3⟧
+
+Bazı belirtili ad tamlamaları kalıplaşmaya uğrar. Elinin körü, kaçın kurası, sözün kı-
+sası vb.
+2.	 Belirtisiz ad tamlaması: İlk sözcüğün ek almayıp ikinci sözcüğün iyelik eki –sI
+almasıyla oluşan ad tamlamasıdır.
+Örnek: Vişne reçelini çok severdi.
+Odanın içini gül kokusu kaplamıştı.
+Dedem tam bir insan sarrafıydı.
+Belirtisiz ad tamlamalarında tamlayan ve tamlanan arasında süreklilik/belirtisizlik
+vardır. Sürekliliğin gereği olarak tamlayan ve tamlanan arasında başka bir sözcük gir-
+mez. Örneğin; limon ağacı, badem şekeri, Porsuk nehri vb.… ⟦4⟧
+
+**CÜMLENİN ÖGELERİ**
+
+Sözcük gruplarından daha geniş, bağımsız dil bilgisel bir yapı olan cümle (Eker, 2006),
+sözcüklerin rastgele yan yana gelmesiyle değil, belli kurallara göre birleşmesinden olu-
+şan bir bütündür. Örneğin; “büyük ev” biçimindeki sıfat tamlaması, sözcüklerin yerlerinin
+değiştirilmesiyle “ev büyük” şeklinde ad cümlesi olur. Dolayısıyla sözcükler, ancak cümle
+içinde anlam ve değer kazanır.
+Cümle, değişik işlevlerdeki parçalardan oluşan bir bütündür. Bu bütünün parçaları
+da işlevlerine göre özne, yüklem, nesne, yer tamlayıcısı, zarf tamlayıcısı olarak adlandı-
+“-a/-e, -Ip, -ArAk, -ArAktAn, -Inca,
+-Alı, -AlIndan, -mAdAn, -ken,
+-dIkçA, -mAksIzIn, -dIğIndAn,
+-AndA” ekleri ile oluşturulan zarf-
+fiil öbeği cümle yapısına yakınsa
+da yargı bildirme özelliğine sahip
+değildir. ⟦5⟧
+
+rılan cümle ögeleridir. Türkçenin cümle ögelerinin sıralanışı, özne- tümleç (nesne, yer
+tamlayıcısı, zarf tamlayıcısı)-yüklem sırasına göredir. Cümlede, cümle dışı ögeler olarak
+adlandırılan başka sözcükler de yer alabilir. Bunlar cümlenin ögesi sayılmazlar. Cümlenin
+ögeleri; Cümlenin Temel Ögeleri ve Cümlenin Tamamlayıcı Ögeleri başlıkları altında daha
+ayrıntılı olarak ele alınmaktadır.
+Cümlenin Temel Ögeleri
+Yeryüzündeki bütün dillerde cümlenin temel ögeleri yüklem ve öznedir (Eker, 2006).
+Cümle içindeki sözcükler yüklemle ilişkileri, cümle içinde ona uzak ya da yakın oluşları
+açısından değişik değer ve görev kazanırlar (Atabay, Özel, Çam, 1981). Cümlenin temel
+ögelerini daha ayrıntılı ele alalım.
+Yüklem
+Cümlenin yargı taşıyan en temel öğesi durumundaki yüklemi Gencan (1979) cümle-
+de iş, oluş, kılış, düşünce, duygu, imge, yargı anlatan sözcük olarak tanımlamaktadır.
+Yüklem, cümlede yargı bildiren çekimli öğedir. (Atabay, Özel, Çam, 1981). Cümledeki
+diğer ögeler, yüklemin anlamını çeşitli yönlerden tamamlamak ve onu daha belirgin
+duruma getirmek üzere cümlede yer alır. Tanımlardan da anlaşılacağı gibi yüklem,
+cümlede bitmişliği ifade eder. Yüklemin temel özelliklerini şöyle sıralayabiliriz (Ata-… ⟦6⟧
+
+### İlgili çıkmış vize soruları
+Metindeki ⟦n⟧ işaretleri bu listeye açılır. Alıntıya tıklayınca çözüm rehberinde soru açılır ve çözümü vurgulanır.
+- [1] **2025/2026 · Soru 1**: Aşağıdakilerin hangisi ‘örnekseme’ yoluyla üretilmiş bir sözcük değildir?
+- [2] **2025/2026 · Soru 4**: Dil konuşma ve dinleme işlevlerini gerçekleştirmek üzere birbirleriyle bağlantılı ses, biçim, söz dizimi, anlam vb. alt sistemlerin oluşturd
+- [3] **2025/2026 · Soru 7**: Aşağıdaki cümlelerde altı çizili sözcüklerden hangisi mecaz anlamda kullanılmıştır?
+- [4] **2025/2026 · Soru 8**: Aktarma: Sözcüğün dile getirdiği kavramla, bir başka kavram arasında çoğu kez benzetme yoluyla bir ilişki kurarak sözcüğün anlamını o kavram
+- [5] **2025/2026 · Soru 14**: Dil Ailesi’ne dahil değildir?
+- [6] **2025/2026 · Soru 19**: Türkçenin ses özellikleri düşünüldüğünde aşağıdaki sözcüklerden hangisi Türkçedir?
+- [7] **2025/2026 · Soru 24**: Aşağıdaki cümlelerin hangisinde yüklem "dönüşlü" bir eylemdir?
+- [8] **2025/2026 · Soru 25**: Aşağıdakilerin hangisi ‘birleştirme’ yoluyla üretilmiş bir sözcük değildir?
+- [9] **2025/2026 · Soru 39**: Aşağıdakilerden hangisi parçalar üstü ses birimi değildir?
+- [10] **2025/2026 · Soru 41**: Aşağıdakilerin hangisinde, “geri” sözcüğü “Bakkalın biraz ilerisindeydi bizim evimiz. ” cümlesindeki “ileri” sözcüğünün anlamca karşıtıdır?
+- [11] **2025/2026 · Soru 42**: Zamirler, bir adın veya ad öbeğinin yerini tutabilen ad soylu sözcüklerdir. Aşağıdaki cümlelerin hangisinde zamir kullanılmamıştır?
+- [12] **2025/2026 · Soru 43**: Aşağıdakilerden hangisinde "güzel" sözcüğü zarf görevinde kullanılmıştır?
 
 # Kaynaklar
 

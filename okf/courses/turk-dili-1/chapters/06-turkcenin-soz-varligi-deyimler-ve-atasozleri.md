@@ -37,28 +37,105 @@ Bu bölümün içinde yaşadığı ders paneli: [Türk Dili paneli](/courses/tur
 
 # Kaynak Temellendirme
 
-Altıncı ünite ders kaynakları doğrultusunda, belirtilen üç öğrenme hedefi kapsamında öğrencilerin edineceği bilgi ve kazanımlar aşağıda açıklanmıştır:
+## 6. Türkçenin Söz Varlığı, Deyimler ve Atasözleri
 
-### 1. Deyimler ve Atasözlerinin Kalıplaşmış Yapısı ve Anlatım Gücü
-Öğrenci bu öğrenme hedefi kapsamında, Türk dilinin söz varlığında ve anlatım gücünde büyük yeri olan deyim ve atasözlerinin özelliklerini öğrenir:
-* **Deyimlerin Yapısı ve Gücü**: Deyimlerin iki veya daha fazla sözcükten oluşan, anlatıma açıklık ve renk katmak amacıyla gerçek anlamından uzaklaşarak ilgi çekici anlamlar yüklenen kalıplaşmış söz grupları olduğunu kavrar [1, 2]. Deyimler kesin bir yargı bildirmeyip durumları açıklamak ve dikkati konu üzerine çekmek amacıyla kullanılır [3].
-* **Atasözlerinin Yapısı ve İşlevi**: Atasözlerinin uzun gözlem ve deneyimlere dayanan, topluma ders ve öğüt verme amacı taşıyan, kesin bir yargı bildiren kalıplaşmış bilgece sözler olduğunu öğrenir [3-5].
-* **Kalıplaşma ve Farklar**: Atasözlerinde tek bir sözcük dahi değiştirildiğinde veya söz dizimi bozulduğunda keskin ifade gücünün kaybolduğunu görür [5, 6]. Deyimlerin de kalıplaşmış ifadeler olmakla birlikte bazı durumlarda farklı sözcüklerle veya değişen yapılarla kullanılabildiğini ve atasözlerinden yargı bildirmemeleri yönüyle ayrıldığını kavrar [3].
+Bu bölümde Türk dilinin zengin söz varlığını oluşturan deyimler, atasözleri ve ikilemelerin kültürel değeri anlatılmaktadır. Ağız, argo, ilişki sözleri ile alkış ve kargış gibi farklı ifade biçimlerinin toplumsal işlevleri incelenmektedir. Ayrıca Türkçenin yapım ekleri ve kök birleştirmelerle sağladığı güçlü sözcük türetme kapasitesi vurgulanmaktadır.
 
-### 2. Ağız, Argo, İlişki Sözleri ve İkilemelerin İletişimdeki İşlevleri
-Öğrenci bu hedef doğrultusunda, Türkçedeki farklı anlatım olanaklarını ve sosyal iletişim kalıplarını değerlendirir:
-* **Ağız**: Bir dilin ülke veya bölge sınırları içinde ses ve biçim farklılıklarıyla ayrılan kolları olduğunu ve ölçünlü dilin sözcük ihtiyacını karşılamada önemli bir iç alıntı kaynağı oluşturduğunu öğrenir [7-9].
-* **Argo**: Belirli toplumsal grupların başkalarınca anlaşılmamak ve kendilerini gizlemek amacıyla oluşturdukları; sözcüklere yeni anlamlar yükleyerek, benzetme ve mecazlarla anlatıma renk, mizah, abartı ve ince alay katan özel ve sanatlı bir dil yapısı olduğunu kavrar [10-12].
-* **İlişki Sözleri, Alkış ve Kargış**: İnsanlar arasında sıcaklık kuran ve toplumsal gelenekleri yansıtan nezaket ifadelerinin ("gözün aydın", "yolun açık olsun" gibi) kültürel kodları taşıdığını görür [12, 13]. Ayrıca dua anlamına gelen "alkış" ile beddua anlamına gelen "kargış" kalıplarının, manevi arzu ve istekleri dile getirmedeki işlevini öğrenir [13].
-* **İkilemeler**: Anlatımı pekiştirmek, ifadeyi etkili kılmak ve dile müzikal bir ahenk katmak amacıyla oluşturulan ikilemelerin, atasözleri ve deyimlerin kolayca ezberlenmesine katkı sağladığını kavrar [6, 14].
+### Öğrenme hedefleri
+- Deyimler ve atasözlerinin kalıplaşmış yapısını ve anlatım gücünü açıklayabilme.
+- Ağız, argo, ilişki sözleri ve ikilemelerin iletişimdeki işlevlerini değerlendirebilme.
+- Türkçenin sözcük türetme yollarını ve söz varlığının zenginliğini çözümleyebilme.
 
-### 3. Türkçenin Sözcük Türetme Yolları ve Söz Varlığının Zenginliği
-Öğrenci bu hedef çerçevesinde, Türk dilinin kelime türetme imkanlarını ve söz varlığını inceler:
-* **Sözcük Türetme Yolları**: Türkçenin yapı bakımından eklemeli bir dil olduğunu; sabit kelime köklerine yapım ekleri getirilerek (ekleme) veya köklerin birleştirilmesiyle (birleştirme) yeni kavramları karşılayan sözcüklerin türetildiğini öğrenir [9, 15].
-* **Söz Varlığının Zenginliği**: Bir dilin zenginliğinin sadece kelime sayısıyla değil; sözcük türetme gücü, mecaz dünyası, deyimler, atasözleri ve çeşitli anlatım kalıplarıyla ölçüldüğünü kavrar [1, 15-17].
-* **Diller Arası Etkileşim**: Türkçenin tarih boyunca farklı medeniyetlerle temas kurarak Arapça, Farsça, Fransızca ve İngilizce gibi dillerden alıntılarla söz varlığını genişlettiğini, aynı zamanda kendi ağızlarından yaptığı alıntılarla da anlatım gücünü sürekli taze tuttuğunu öğrenir [8, 18, 19].
+### Ünite 6: Türkçenin Söz Varlığı
+*AÖF ders kitabı, Ünite 6, PDF sayfa ~173-199.*
 
-💡 Altıncı ünitenin bu konularını daha iyi kavramak adına deyimler, atasözleri ve söz varlığıyla ilgili örnek soru çözümleri içeren bir çalışma testi hazırlamamı ister misiniz?
+**TÜRKÇE SÖZ VARLIĞI**
+
+Deyimler
+Deyimler anlatıma açıklık kazandıran ve renk katan söz varlığı ögeleridir. Her dilin söz
+varlığında deyimler vardır. Kimi deyimler belirli dillere özgü olsa da bunların benzerleri
+başka dillerde de görülebilir. Konuyla ilgili çalışma yapanların tanımlarından hareketle
+şöyle bir deyim tanımı yapılabilir: İki veya daha fazla sözcükten oluşan, anlatım gücünü
+artırmak için az çok mantık dışına kayan, gerçek anlamından uzak, ilgi çekici bir anlam
+yüküne sahip, bazı sözcükleri değişmeyip bazıları değişebilen, toplum tarafından ortak­
+laşa benimsenen kalıplaşmış söz gruplarına deyim denir. Deyimler, anlam ögesi olarak
+incelendiğinde, içerisindeki sözcükler ayrı ayrı değil hepsi bir bütün olarak değerlendiril­
+melidir.  Bu yönüyle deyimler, tıpkı sözcükler gibi bir dilin sözlüğünün içerisinde madde
+başı olarak yer almalıdırlar. Yani bir başka anlatımla deyimler, sözcükler gibi, sözlük mad­
+desi olan anlam birimleridir.
+Deyim kavramını karşılamak üzere Osmanlı Türkçesinde darbımesel, tabir, ıstılah, temsil
+vb. terimler kullanılmış; ancak darbımesel zamanla yalnız atasözü kavramı için kullanılır
+olmuştur. Cumhuriyet döneminde ise tabir ile deyim sözcükleri kullanılmış, zaman geçtikçe
+deyim sözcüğü yerleşmiş ve bu kavram için tek sözcük durumuna gelmiştir.
+Deyimlerle Atasözleri Arasındaki Farklar
+Deyimler ve atasözleri zaman zaman birbirine karıştırılmaktadır. Bu iki kalıplaşmış yapı
+arasında biçime ve anlama bağlı birtakım farklar vardır. Bunlar:
+1.	 Deyimler yargı bildirmezler. Deyimler; bir durumu, olayı ya da varlığı tasvir et­
+mek, açıklamak, ifade etmek amacıyla etkili anlatımından yararlanılan kalıplaşmış
+söz gruplarıdır. Atasözü ise, bir gözlem ve tecrübenin sonucunda ortaya çıkmış ve
+zamanla herkesçe benimsenmiş bir yargıyı dile getirir. Yaşanmış birtakım olaylar­
+dan, sonraki kuşakların ders almasını sağlamaya çalışır, bir öğüt verir. Bazı deyim­
+lerde yargı bulunsa da genelde deyimler yargısız ifadelerdir. Kısaca deyimler daha
+çok benzetme, kıyaslama yoluyla bir durumu açıklamak; atasözleri ise bir durum
+veya olayı tecrübeye dayalı bir yargıya bağlamak amacıyla kullanılırlar.
+2.	 Atasözleri de deyimler gibi kalıplaşmış ifadelerdir. Ancak kalıplaşmanın biçimin­
+de bazı farklılıklar vardır. Atasözlerindeki kalıplaşma deyimlere göre daha sıkıdır.
+Deyimlerde yer alan sözcükler başta, ortada ve sonda birtakım değişiklikler göste­
+rebilirler.
+3.	 Deyimler amaç bakımından da atasözlerinden farklıdır. Deyimlerin amacı bir du­
+rumu ya da kavramı özel bir kalıp içinde çekici ve etkili bir anlatımla belirtmek
+iken atasözleri öğüt verme, yol gösterme ya da tecrübe aktarma amacı güderler. Bu
+yönüyle bazı kalıp sözler her iki gruba da dâhil edilebilirler (Sinan, 2001).
+Deyimler ve Birleşik Sözler Arasındaki Farklar
+Deyimlerle birleşik sözler yapı bakımından birbirine benzedikleri için zaman zaman karış­
+tırılabilmektedirler. Bu karışma daha çok iki sözcükten oluşan deyimlerle birleşik sözlerde
+olmaktadır. Deyimler ve birleşik sözler biçim özellikleri bakımından farklıdırlar:
+1.	 Deyimi oluşturan iki sözcük kesinlikle bitişik yazılmazken, birleşik sözlerin bir
+kısmı bitişik yazılır.… ⟦1⟧
+
+**Atasözlerinin Dil ve Üslup Özellikleri**
+
+Sözlü kültür ortamlarının ürünü olarak ortaya çıkan atasözleri, yoğun bir bilgiyi hatırda
+tutmak ve aktarmakla görevlidirler. Bu yüzden atasözlerinde kısalık, düşünceyi en az söz­
+cük ile ve keskin bir anlatımla vermek için belirgin bir kuraldır. Atasözlerinde gereksiz
+görülecek bir sözcüğe rastlanmaz. Az sözcükle çok şey anlatma, atasözlerinin en belirgin
+yapı ve anlam özelliğidir denebilir. Bu özellikten dolayı atasözleri genellikle bir ya da iki
+cümledir.
+Atasözleri ağızdan ağza nakledilmekten dolayı kalıplaşırlar ve hiçbir sözcüğü değişti­
+rilemez ve atılamaz duruma gelirler. Eş anlamlısı bile olsa atasözünün bir sözcüğü değişti­
+ğinde üslubunun değiştiği ve etkisinin azaldığı görülür: “Pişirdiği aş olaydı, başımı yaran
+taş olaydı” atasözünde aş sözcüğü eş anlamlısı olan yemek ile değiştirilirse sözün büyüsü
+kaybolacaktır. ⟦2⟧
+
+6. Ünite - Türkçenin Söz Varlığı
+Atasözlerinde de deyimlerde olduğu gibi hece, ses ve sözcük tekrarlarından, şiir ögelerinden
+yararlanılarak etkili bir üslup oluşturulmaktadır.
+Atasözlerinin genel özellikleri nelerdir?
+İkilemeler
+İkileme, anlatım gücünü artırmak, anlamı pekiştirmek, kavramı zenginleştirmek amacıy­
+la aynı sözcüğün tekrar edilmesi veya anlamları birbirine yakın veya karşıt olan ya da ses­
+leri birbirini andıran iki sözcüğün yan yana kullanılmasıdır (Hatiboğlu, 1981). Türkçenin
+bir zenginliği ve Türk beyninin yaşatma gücünün ürünleri olan ikilemeler, Türk düşünce­
+sindeki anlam zenginliğini ve kavram inceliklerini ortaya koymak üzere türlü şekillerde
+birbiriyle ilgili sözcüklerin yan yana getirilmesi ve bu yan yana getirilen sözcüklerde yeni
+bir anlatım inceliği sergilenmesiyle oluşturulur.İkileme, aslında anlamı etkili kılmak ama­
+cıyla oluşturulan psikolojiyle ilgili ve dilin müzik yönüne katkı sağlayan bir yapıdır.
+Atasözleri ve deyimlerin içlerinde yer alan ikilemeler, bu dil varlıklarının belleklere
+kolay yerleşmelerini ve ezberlenmelerini sağlar. Deyimlerimizin büyük bir çoğunluğunda
+ikilemelere rastlanır ki bu durum, deyimlerin uzun anlatımlardan daha etkili olmalarını… ⟦3⟧ ⟦4⟧ ⟦5⟧ ⟦6⟧
+
+### İlgili çıkmış vize soruları
+Metindeki ⟦n⟧ işaretleri bu listeye açılır. Alıntıya tıklayınca çözüm rehberinde soru açılır ve çözümü vurgulanır.
+- [1] **2025/2026 · Soru 32**: Argo ile ilgili aşağıdaki ifadelerden hangisi doğrudur?
+- [2] **2025/2026 · Soru 40**: “p-b”, “t-d” ve “k-g” karşıtlıkları Türkçede hangi sesbilimsel ölçüte göre sınıflandırılır?
+- [3] **2021/2022 · Soru 18**: “Evrakları ararken masanın gözüne bakmamış.” Cümlesinde hangi sözcük yan anlamlıdır?
+- [4] **2021/2022 · Soru 38**: “Aradığın çorap komodinin gözünden çıktı.” Cümlesinde hangi sözcük yan anlamlıdır?
+- [5] **2021/2022 · Soru 58**: “Aradığın kitapları dolabın gözüne bıraktım.” Cümlesinde hangi sözcük yan anlamlıdır?
+- [6] **2021/2022 · Soru 78**: “Arabanın anahtarını çekmecenin gözüne koydum.” Cümlesinde hangi sözcük yan anlamlıdır?
+- [7] **2021/2022 · Soru 18**: “Evrakları ararken masanın gözüne bakmamış.” Cümlesinde hangi sözcük yan anlamlıdır?
+- [8] **2021/2022 · Soru 38**: “Aradığın çorap komodinin gözünden çıktı.” Cümlesinde hangi sözcük yan anlamlıdır?
+- [9] **2021/2022 · Soru 58**: “Aradığın kitapları dolabın gözüne bıraktım.” Cümlesinde hangi sözcük yan anlamlıdır?
+- [10] **2021/2022 · Soru 78**: “Arabanın anahtarını çekmecenin gözüne koydum.” Cümlesinde hangi sözcük yan anlamlıdır?
 
 # Kaynaklar
 

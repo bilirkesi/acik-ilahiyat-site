@@ -1,0 +1,358 @@
+{
+  "unit": 7,
+  "unitTitle": "Diller Arası Etkileşim ve Türkçe",
+  "title": "Türk Dili Quiz",
+  "questions": [
+    {
+      "question": "Aşağıdakilerden hangisi 'Türkçenin Gücü ve İç Zenginliği' başlığı altında incelenen konulardan biri değildir?",
+      "answerOptions": [
+        {
+          "text": "Akrabalık Adlarında Çeşitlilik",
+          "isCorrect": false,
+          "rationale": "Türkçenin aile ve akrabalık bağlarını ifade eden zengin kavram dünyasını gösteren ana başlıklardan biridir."
+        },
+        {
+          "text": "Atasözleri ve Anlatım Gücü",
+          "isCorrect": false,
+          "rationale": "Türk dilinin tarihsel süreçte biriktirdiği derin mecaz ve anlatım gücünü temsil eder."
+        },
+        {
+          "text": "İlişki ve Nezaket Sözleri",
+          "isCorrect": false,
+          "rationale": "Toplumsal yaşamda kullanılan zengin nezaket ve selamlaşma kaliplarını kapsar."
+        },
+        {
+          "text": "Eğitim ve Öğretim Dilinin Yabancılaştırılması",
+          "isCorrect": true,
+          "rationale": "Bu konu Türkçenin gücü ve iç zenginliği başlığında değil, dilin karşı karşıya olduğu güncel sorunlar arasında değerlendirilir."
+        }
+      ],
+      "hint": "Dilin olumlu nitelikleri ve derinlikleri yerine dilde yaşanan olumsuz bir gelişmeye odaklanan seçeneği arayın.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Türk dilinin yayılma alanları dikkate alındığında, hem Halaçça hem de Horasan Türkçesinin konuşulduğu ülke aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "İran",
+          "isCorrect": true,
+          "rationale": "Her iki Türk yazı dili ve değişkesi de İran sınırları içerisinde varlığını sürdürmektedir."
+        },
+        {
+          "text": "Afganistan",
+          "isCorrect": false,
+          "rationale": "Afganistan'da Özbekçe ve Türkmence gibi diller konuşulsa da Halaçça ve Horasan Türkçesinin ana coğrafyası değildir."
+        },
+        {
+          "text": "Özbekistan",
+          "isCorrect": false,
+          "rationale": "Özbek ve Karakalpak Türklerinin yoğun yaşadığı temel ülkedir."
+        },
+        {
+          "text": "Rusya Federasyonu",
+          "isCorrect": false,
+          "rationale": "Tatar, Başkurt ve Hakas gibi pek çok grubun yaşadığı ülke olmasına rağmen Halaçça burada yer almaz."
+        }
+      ],
+      "hint": "Orta Doğu'da Afşar ve Kaşgay Türkçelerinin de yoğun olarak görüldüğü ülkeyi düşünün.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Türk dilinin coğrafi yayılma alanları incelendiğinde, Salar Türkçesi ve Sarı Uygur Türkçesinin ortak yayılma alanı aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Çin",
+          "isCorrect": true,
+          "rationale": "Hem Salar hem de Sarı Uygur Türkçesi Çin sınırları içerisinde varlığını sürdüren Türk yazı dillerindendir."
+        },
+        {
+          "text": "Moğolistan",
+          "isCorrect": false,
+          "rationale": "Tuva ve Kazak Türkçesi konuşurlarına ev sahipliği yapsa da bu iki dilin ana vatanı değildir."
+        },
+        {
+          "text": "Kazakistan",
+          "isCorrect": false,
+          "rationale": "Kazak, Ahıska, Uygur ve Karakalpak topluluklarının bulunduğu Orta Asya ülkesidir."
+        },
+        {
+          "text": "Rusya Federasyonu",
+          "isCorrect": false,
+          "rationale": "Sibirya ve Volga bölgesindeki birçok Türk boyunun yaşadığı ancak Salar ve Sarı Uygurların bulunmadığı ülkedir."
+        }
+      ],
+      "hint": "Doğu Asya'da Uygur Türkçesinin de konuşulduğu geniş coğrafyayı anımsayın.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Gagavuz Türkçesinin özerk bir bölge olarak resmîleştiği ve yoğun biçimde konuşulduğu ülke aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Moldova",
+          "isCorrect": true,
+          "rationale": "Gagavuz Yeri Özerk Bölgesi Moldova sınırları içerisinde hukuki statüye sahiptir."
+        },
+        {
+          "text": "Ukrayna",
+          "isCorrect": false,
+          "rationale": "Gagavuz nüfusun yaşadığı ülkelerden biri olmakla birlikte özerk bölgenin bulunduğu yer değildir."
+        },
+        {
+          "text": "Romanya",
+          "isCorrect": false,
+          "rationale": "Balkanlar'da Gagavuz Türklerinin yerleştiği ancak özerk idarenin kurulmadığı bir ülkedir."
+        },
+        {
+          "text": "Bulgaristan",
+          "isCorrect": false,
+          "rationale": "Gagavuz konuşurlarının bulunduğu bir diğer Balkan ülkesidir."
+        }
+      ],
+      "hint": "Gagavuz Yeri Özerk Bölgesi'ne ev sahipliği yapan Doğu Avrupa ülkesini hatırlayın.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Yakutça (Saha Türkçesi) Türk dilinin yayılma alanları içinde temelde hangi özerk cumhuriyet ve ülke sınırlarında konuşulmaktadır?",
+      "answerOptions": [
+        {
+          "text": "Rusya Federasyonu (Yakutistan Cumhuriyeti)",
+          "isCorrect": true,
+          "rationale": "Yakutça, Rusya Federasyonu'na bağlı Yakutistan Özerk Cumhuriyeti'nde konuşulmaktadır."
+        },
+        {
+          "text": "Çin Halk Cumhuriyeti",
+          "isCorrect": false,
+          "rationale": "Uygur, Salar ve Kazakh topluluklarının yaşadığı Doğu Asya coğrafyasıdır."
+        },
+        {
+          "text": "Kırgızistan",
+          "isCorrect": false,
+          "rationale": "Kırgız Türkçesinin ana yayılma merkezidir."
+        },
+        {
+          "text": "Özbekistan",
+          "isCorrect": false,
+          "rationale": "Özbekçe ve Karakalpakçanın yaygın olduğu bağımsız Orta Asya devletidir."
+        }
+      ],
+      "hint": "Sibirya'nın kuzeydoğusunda yer alan ve Rusya'ya bağlı olan özerk bölgeyi göz önüne getirin.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Karayim Türkçesinin konuşulduğu Doğu Avrupa ülkeleri arasında aşağıdakilerden hangisi yer alır?",
+      "answerOptions": [
+        {
+          "text": "Litvanya",
+          "isCorrect": true,
+          "rationale": "Karayim Türkçesi Litvanya, Polonya ve Rusya Federasyonu'nda konuşulan Türk dillerindendir."
+        },
+        {
+          "text": "Çin",
+          "isCorrect": false,
+          "rationale": "Salar ve Sarı Uygur gibi Türk topluluklarının yer aldığı Asya ülkesidir."
+        },
+        {
+          "text": "İran",
+          "isCorrect": false,
+          "rationale": "Afşar, Halaç, Kaşgay ve Horasan Türkçesinin konuşulduğu coğrafyadır."
+        },
+        {
+          "text": "Gürcistan",
+          "isCorrect": false,
+          "rationale": "Ahıska ve Azerbaycan Türkçesinin görüldüğü Kafkasya ülkesidir."
+        }
+      ],
+      "hint": "Baltık bölgesinde yer alan ve Polonya ile komşu olan ülkeyi düşünün.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "İlgili ders materyalindeki 'Türkçedeki Alıntı Sözcüklerin Kaynağı Diller' listesinde yer alan Doğu Asya dili aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Japonca",
+          "isCorrect": true,
+          "rationale": "Türkçe söz varlığına etki eden diller şemasında Japonca açıkça belirtilmiştir."
+        },
+        {
+          "text": "Portekizce",
+          "isCorrect": false,
+          "rationale": "Listelenen alıntı sözcük kaynakları arasında bu dil bulunmamaktadır."
+        },
+        {
+          "text": "İsveççe",
+          "isCorrect": false,
+          "rationale": "Ders dokümanındaki alıntı diller şemasında yer almayan bir İskandinav dilidir."
+        },
+        {
+          "text": "Norveççe",
+          "isCorrect": false,
+          "rationale": "Alıntı sözcük kaynakları tablosuna dahil edilmemiştir."
+        }
+      ],
+      "hint": "Uzak Doğu kültüründen Türkçeye giren sözcüklerin kaynağı olan ada ülkesi dilini anımsayın.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Ders materyalinde yer alan 'Türkçedeki Alıntı Sözcüklerin Kaynağı Diller' listesine göre aşağıdaki dillerden hangisi Türkçeye sözcük veren Slav dillerindendir?",
+      "answerOptions": [
+        {
+          "text": "Bulgarca",
+          "isCorrect": true,
+          "rationale": "Türkçenin alıntı sözcük aldığı kaynak diller şemasında Bulgarca yer almaktadır."
+        },
+        {
+          "text": "Sırpça",
+          "isCorrect": false,
+          "rationale": "Listede Türkçeye sözcük aktaran diller arasında sayılmamıştır."
+        },
+        {
+          "text": "Makedonca",
+          "isCorrect": false,
+          "rationale": "İlgili ünitedeki alıntı diller tablosunda yer almaz."
+        },
+        {
+          "text": "Çekçe",
+          "isCorrect": false,
+          "rationale": "Kaynak diller tablosuna girmeyen bir Batı Slav dilidir."
+        }
+      ],
+      "hint": "Türkiye'nin batı komşularından biri olan ve Slav dil ailesine mensup dili düşünün.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Karakalpak Türkçesinin özerk cumhuriyet olarak bünyesinde bulunduğu ülke aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Özbekistan",
+          "isCorrect": true,
+          "rationale": "Karakalpakistan Özerk Cumhuriyeti Özbekistan sınırları içinde idari yapıya sahiptir."
+        },
+        {
+          "text": "Kazakistan",
+          "isCorrect": false,
+          "rationale": "Karakalpak nüfusu barındırmakla birlikte özerk cumhuriyet idaresini içermez."
+        },
+        {
+          "text": "Türkmenistan",
+          "isCorrect": false,
+          "rationale": "Karakalpakların yaşadığı ancak özerk bölge statüsünün bulunmadığı komşu ülkedir."
+        },
+        {
+          "text": "Tacikistan",
+          "isCorrect": false,
+          "rationale": "Orta Asya'da Karakalpak azınlığın yer aldığı fakat özerk yapının bulunmadığı devlettir."
+        }
+      ],
+      "hint": "Aril Gölü yakınlarında kurulan Karakalpakistan Özerk Cumhuriyeti'ni barındıran Orta Asya ülkesini anımsayın.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Türk dillerinin yayılma alanları dikkate alındığında hem Afşar hem de Kaşgay Türkçesinin konuşulduğu ortak ülke aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "İran",
+          "isCorrect": true,
+          "rationale": "Afşar, Kaşgay, Halaç ve Horasan Türkçeleri İran coğrafyasında konuşulmaktadır."
+        },
+        {
+          "text": "Rusya Federasyonu",
+          "isCorrect": false,
+          "rationale": "Altay, Hakas, Başkurt ve Tuva gibi dillerin yaygın olduğu coğrafyadır."
+        },
+        {
+          "text": "Çin",
+          "isCorrect": false,
+          "rationale": "Salar, Uygur ve Sarı Uygur Türkçesinin konuşulduğu bölgedir."
+        },
+        {
+          "text": "Ukrayna",
+          "isCorrect": false,
+          "rationale": "Gagavuz, Kırım Tatarı ve Karaçay gruplarının yaşadığı Doğu Avrupa ülkesidir."
+        }
+      ],
+      "hint": "Güneybatı Oğuz grubuna ait birçok topluluğun yaşadığı komşu Orta Doğu ülkesini düşünün.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Türkçenin iç zenginliği açıklanırken akrabalık adlarındaki çeşitlilik önemli bir örnek olarak gösterilir. Aşağıdakilerden hangisi bu zenginliği doğrudan kanıtlar?",
+      "answerOptions": [
+        {
+          "text": "Anne ve baba tarafındaki akrabalar için ayrı kavramların bulunması",
+          "isCorrect": true,
+          "rationale": "Amca, dayı, hala, teyze gibi kavramların her biri için ayrı sözcüklerin kullanılması akrabalık adlarındaki anlam derinliğini ve çeşitliliği gösterir."
+        },
+        {
+          "text": "Tüm akrabalar için tek bir genel sözcüğün tercih edilmesi",
+          "isCorrect": false,
+          "rationale": "Genel sözcük kullanımı dildeki kavramsal çeşitliliği değil, genellemeyi ifade eder."
+        },
+        {
+          "text": "Akrabalık isimlerinin yabancı dillerden kopyalanması",
+          "isCorrect": false,
+          "rationale": "Dış etkileşimi gösterir, dilin kendi iç zenginliğini temsil etmez."
+        },
+        {
+          "text": "Sadece çekirdek aile üyelerine isim verilmiş olması",
+          "isCorrect": false,
+          "rationale": "Sınırlı bir söz varlığına işaret eder."
+        }
+      ],
+      "hint": "Ebeveynlerin kardeşlerini tanımlarken kullanılan farklı kelimeleri göz önüne getirin.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "'Türkçedeki Alıntı Sözcüklerin Kaynağı Diller' şemasında yer alan ve Ural dil ailesine mensup olan Avrupa dili aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Fince",
+          "isCorrect": true,
+          "rationale": "Fince, Türkçe söz varlığını besleyen Ural dil ailesine ait dillerden biri olarak şemada gösterilmiştir."
+        },
+        {
+          "text": "İspanyolca",
+          "isCorrect": false,
+          "rationale": "Hint-Avrupa dil ailesinin Roman koluna mensuptur."
+        },
+        {
+          "text": "Almanca",
+          "isCorrect": false,
+          "rationale": "Hint-Avrupa dil ailesinin Cermen koluna aittir."
+        },
+        {
+          "text": "Fransızca",
+          "isCorrect": false,
+          "rationale": "Hint-Avrupa dil ailesine bağlı bir Roman dilidir."
+        }
+      ],
+      "hint": "Kuzey Avrupa'da (İskandinavya bölgesinde) konuşulan Ural kökenli dili anımsayın.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Şor Türkçesi, Türk dilinin coğrafi yayılma alanları çerçevesinde Rusya Federasyonu'nun hangi idari bölgesinde konuşulmaktadır?",
+      "answerOptions": [
+        {
+          "text": "Kemerovo bölgesi",
+          "isCorrect": true,
+          "rationale": "Şor ve Teleüt Türkçesi Rusya Federasyonu'nun Kemerovo bölgesinde konuşulmaktadır."
+        },
+        {
+          "text": "Dağıstan Cumhuriyeti",
+          "isCorrect": false,
+          "rationale": "Kumuk ve Nogay Türkçesinin yaygın olduğu özerk cumhuriyettir."
+        },
+        {
+          "text": "Kabartay-Balkar Cumhuriyeti",
+          "isCorrect": false,
+          "rationale": "Balkar Türkçesinin ana merkezidir."
+        },
+        {
+          "text": "Gagavuz Yeri",
+          "isCorrect": false,
+          "rationale": "Moldova sınırlarında yer alan Gagavuz bölgesidir."
+        }
+      ],
+      "hint": "Sibirya bölgesinde Teleüt Türkçesiyle aynı coğrafi alanda yer alan bölgeyi düşünün.",
+      "type": "multiple_choice"
+    }
+  ]
+}

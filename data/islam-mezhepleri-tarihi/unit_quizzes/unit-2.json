@@ -1,0 +1,331 @@
+{
+  "unit": 2,
+  "unitTitle": "Mezheplerin Ortaya Çıkış Nedenleri",
+  "title": "İslam Mezhepleri Testi",
+  "questions": [
+    {
+      "question": "Mezheplerin doğuşunda etkili olan bireysel unsurlar göz önüne alındığında, insanların aynı nassı veya olayı farklı şekillerde algılayıp yorumlamalarının temel sebebi aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "İnsanın doğuştan gelen mizaç, zihinsel kapasite ve kişilik yapısının farklı olması",
+          "isCorrect": true,
+          "rationale": "İnsanın yapısının kendine özgü olması, kendisini ve dış dünyayı algılama ve yorumlama biçimlerini doğrudan etkiler."
+        },
+        {
+          "text": "Siyasi otoritenin toplumda tek tip düşünce yapısını zorunlu kılması",
+          "isCorrect": false,
+          "rationale": "Siyasi baskılar farklı yorumları bastırabilir ancak bireysel algı farklılıklarının temel nedeni insani mizaç ve kişisel yapıdır."
+        },
+        {
+          "text": "Dini metinlerin sadece tek bir somut anlama izin verecek şekilde yazılması",
+          "isCorrect": false,
+          "rationale": "Nassların yapısında yorumlanmaya açık veya müteşâbih ifadelerin bulunması çeşitliliğe imkân tanır, bireysel farklılıklar ise bunu belirler."
+        },
+        {
+          "text": "Ekonomik gelir düzeyinin bireylerin mezhepsel tercihlerini tamamen belirlemesi",
+          "isCorrect": false,
+          "rationale": "Ekonomik faktörler toplumsal süreçlerde etkili olsa da bireysel algı ve yorum farkının öz kaynağı insanın mizaç ve kişilik yapısıdır."
+        }
+      ],
+      "hint": "İnsanların düşünce ve tutumlarının oluşumunda doğuştan sahip oldukları bireysel özellikleri dikkate alınız.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Tarihte ortaya çıkan farklı mezheplerin kendi görüşlerini temellendirmek için Kur'an-ı Kerim ayetlerine başvurması, mezheplerin ortaya çıkışındaki hangi faktöre örnek teşkil eder?",
+      "answerOptions": [
+        {
+          "text": "Nassların tabiatı",
+          "isCorrect": true,
+          "rationale": "Ayetlerin yorumlanmaya elverişli yapısı ve farklı anlam boyutları barındırması (müteşâbih/muhkem niteliği), mezheplerin kendi fikirlerini metne dayandırmasına imkân tanır."
+        },
+        {
+          "text": "Farklı din ve kültürlerle karşılaşma",
+          "isCorrect": false,
+          "rationale": "Bu durum dış felsefi geleneklerle etkileşimi ifade eder, metinlerin kendi iç yapısıyla ilgili değildir."
+        },
+        {
+          "text": "Coğrafi ve fiziki şartlar",
+          "isCorrect": false,
+          "rationale": "İklim ve coğrafya yaşam tarzını etkiler ancak dini metinlerin farklı yorumlanmasıyla doğrudan ilgili değildir."
+        },
+        {
+          "text": "Toplumsal tabakalaşma ve ekonomik dinamikler",
+          "isCorrect": false,
+          "rationale": "Ekonomik etkenler sosyal gruplaşmayı açıklayabilir ancak nasslara atıfta bulunarak görüş meşrulaştırma nassların yapısıyla ilgilidir."
+        }
+      ],
+      "hint": "Kutsal metinlerin dilsel, yorumsal ve anlamsal özelliklerini göz önünde bulundurunuz.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Neo-Platonist ve Gnostik felsefi düşüncelerin İsmailîlik aracılığıyla İslam düşüncesine taşınması, mezheplerin doğuşuna etki eden hangi unsurun sonucudur?",
+      "answerOptions": [
+        {
+          "text": "Farklı din, inanç, kültür ve felsefelerle karşılaşma",
+          "isCorrect": true,
+          "rationale": "İslam coğrafyasının genişlemesiyle Yunan, Mısır ve İran felsefi birikimleriyle temas kurulmuş ve bu durum bazı mezheplerin fikir yapısını şekillendirmiştir."
+        },
+        {
+          "text": "İnsanın psikolojik yapısı ve mizaç farklılıkları",
+          "isCorrect": false,
+          "rationale": "Bireysel mizaç içsel bir etken olup dış medeniyetlerden ve felsefi akımlardan aktarılan düşünceler dış çevresel etkileşimdir."
+        },
+        {
+          "text": "Hz. Peygamber'in vefatından hemen sonraki halife seçimi tartışmaları",
+          "isCorrect": false,
+          "rationale": "Halife seçimleri iç sosyo-politik bir faktördür; felsefi akımların transferi ise kültürlerarası karşılaşmanın ürünüdür."
+        },
+        {
+          "text": "Arap dilinin gramer ve edebi yapısındaki değişimler",
+          "isCorrect": false,
+          "rationale": "Dilsel yapı nassların anlaşılmasında etkili olmakla birlikte dış felsefi sistemlerin benimsenmesini açıklamakta yetersiz kalır."
+        }
+      ],
+      "hint": "İslam fetihleri sonrası farklı medeniyet havzalarıyla kurulan fikir alışverişini düşününüz.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Sıffîn Savaşı'nın ardından gerçekleşen Tahkim Hadisesi sonucunda, Hz. Ali'nin hakem tayin etmesini kabul etmeyerek ondan ayrılan ve ilk siyasi/itikadi fırkalardan biri kabul edilen grup aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Haricilik",
+          "isCorrect": true,
+          "rationale": "Tahkim olayını kabul ettiği gerekçesiyle Hz. Ali'ye karşı çıkan ve ordudan ayrılan topluluk Hariciler (Hâricîlik) olarak adlandırılmıştır."
+        },
+        {
+          "text": "Mu'tezile",
+          "isCorrect": false,
+          "rationale": "Mu'tezile daha sonraki dönemde Hasan-ı Basrî'nin meclisinden ayrılan Vâsıl b. Atâ tarafından kurulan kelami bir mezheptir."
+        },
+        {
+          "text": "Mürcie",
+          "isCorrect": false,
+          "rationale": "Mürcie, iç çatışmalar karşısında tarafsız kalıp hükmü Allah'a ertelemeyi savunan gruptur; Tahkim'de ayrılan sert mizaçlı grup değildir."
+        },
+        {
+          "text": "Eş'arîlik",
+          "isCorrect": false,
+          "rationale": "Eş'arîlik, Ebû'l-Hasan el-Eş'arî tarafından kurulan Ehl-i Sünnet kelam ekolüdür."
+        }
+      ],
+      "hint": "Siyasi uzlaşıyı reddedip 'Hüküm ancak Allah'ındır' sloganıyla ortaya çıkan ayrılıkçı grubu hatırlayınız.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Hz. Osman'ın hilafetinin son yıllarında otoritesinin sarsılmasına ve toplumsal huzursuzlukların tırmanmasına yol açan temel sosyo-politik sebep aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Devlet makamlarına akrabalarını getirmesiyle Hâşimî-Ümeyyeoğulları çekişmesinin yeniden canlanması",
+          "isCorrect": true,
+          "rationale": "Hz. Osman'ın akrabalarını önemli görevlere ataması İslam öncesi kabilevi rekabetleri tetiklemiş ve siyasi muhalefeti artırmıştır."
+        },
+        {
+          "text": "Kur'an metinlerinin tamamen yok edilerek yerine yeni bir kitabın yazılması",
+          "isCorrect": false,
+          "rationale": "Hz. Osman Kur'an'ı çoğaltıp ana merkezlere göndermiştir; yok etme gibi bir durum söz konusu değildir."
+        },
+        {
+          "text": "Yalancı peygamberler ve zekât vermeyen kabilelerle savaşmayı reddetmesi",
+          "isCorrect": false,
+          "rationale": "Yalancı peygamberler ve zekât vermeyenlerle mücadele Hz. Ebû Bekir döneminin ilk icraatıdır."
+        },
+        {
+          "text": "Orduyu tamamen dağıtarak fetih hareketlerini kalıcı olarak bitirmesi",
+          "isCorrect": false,
+          "rationale": "Hz. Osman döneminde fetihler genişlemiş, ilk dönemlerde büyük askeri başarılar kazanılmıştır."
+        }
+      ],
+      "hint": "İslam öncesi döneme kadar uzanan kabilevi aidiyetlerin devlet yönetimine yansımasını göz önünde bulundurunuz.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Mezheplerin 'dinin anlaşılma biçimleri' ve 'beşerî oluşumlar' olarak değerlendirilmesi, aşağıdakilerden hangisini doğrular?",
+      "answerOptions": [
+        {
+          "text": "Mezheplerin dinin kendisiyle özdeşleştirilemeyeceğini ve içinde geliştikleri ortamın izlerini taşıdığını",
+          "isCorrect": true,
+          "rationale": "Dinin kendisi ilahi iken, mezhepler insanların dini anlama ve yorumlama süreçlerinin zamanla kurumsallaşmış beşerî ürünleridir."
+        },
+        {
+          "text": "Mezheplerin mutlak ve değişmez ilahi vahiyler olduğunu",
+          "isCorrect": false,
+          "rationale": "Mezhepler beşerî anlayışlar olduğu için mutlak ilahi vahiy niteliğinde değildir."
+        },
+        {
+          "text": "Farklı mezhepsel yorumların insanları zorunlu olarak dinden çıkardığını",
+          "isCorrect": false,
+          "rationale": "Anlayış farklılıkları zenginlik veya beşerî yorum farkıdır, doğrudan dinden çıkma sebebi sayılamaz."
+        },
+        {
+          "text": "Bir mezhebin ortaya çıkışının tek bir nedene veya kişiye indirgenebileceğini",
+          "isCorrect": false,
+          "rationale": "Mezheplerin doğuşunda psiko-sosyal, politik ve ekonomik pek çok etken birlikte rol oynar."
+        }
+      ],
+      "hint": "İlahi olan din ile beşeri olan yorum arasındaki farkı düşününüz.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Dinin özündeki ve Müslüman toplumun bütünlüğündeki bozulmayı ifade eden, sözlükte ise 'önceden olmadığı halde sonradan icat edilen şey' anlamına gelen kavram aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Bid’at",
+          "isCorrect": true,
+          "rationale": "Bid'at sözlükte sonradan çıkarılan şey, terim olarak ise dinin aslında olmadığı halde dine eklenen veya eksiltilen hususları ifade eder."
+        },
+        {
+          "text": "Makâlât",
+          "isCorrect": false,
+          "rationale": "Makâlât, mezheplerin görüşlerini ve mezhep edebiyatını ifade eden klasik eser türüdür."
+        },
+        {
+          "text": "İttifak",
+          "isCorrect": false,
+          "rationale": "İttifak birlik ve uyuşma anlamına gelir, bozulmayı değil bütünlüğü temsil eder."
+        },
+        {
+          "text": "Tefrika",
+          "isCorrect": false,
+          "rationale": "Tefrika ayrılık ve bölünme demektir; dinin özündeki icat edilmiş yenilik anlamını doğrudan karşılayan kavram Bid'attır."
+        }
+      ],
+      "hint": "Din alanında sonradan ortaya çıkarılan usul veya inanç yenilikleri için kullanılan kavramı hatırlayınız.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Erken dönem İslam tarihinde yaşanan Cemel ve Sıffîn Savaşları sonrasında Müslümanların birbirini öldürmesi, ikilamda kalan Müslümanlar arasında aşağıdaki konulardan hangisinin tartışılmasına zemin hazırlamıştır?",
+      "answerOptions": [
+        {
+          "text": "Büyük günah işleyen kişinin (mürtekib-i kebîre) dini statüsü ve iman-amel ilişkisi",
+          "isCorrect": true,
+          "rationale": "Müslümanların birbirleriyle savaşması 'büyük günah işleyen mümin midir, kâfir midir?' tartışmasını tetiklemiş ve ilk kelami kutuplaşmaları doğurmuştur."
+        },
+        {
+          "text": "Arapça gramer kurallarının tespiti ve sözlük çalışmaları",
+          "isCorrect": false,
+          "rationale": "Gramer çalışmaları dilsel bir ihtiyaçtır, iç savaşların yarattığı itikadi krizle doğrudan ilgili değildir."
+        },
+        {
+          "text": "Kutsal mekânların ziyaret edilme usulleri",
+          "isCorrect": false,
+          "rationale": "Bu konu ibadet fıkhı ile ilgilidir, iç savaşların doğurduğu iman ve yönetim tartışmalarından bağımsızdır."
+        },
+        {
+          "text": "Yunan felsefi eserlerinin Arapçaya tercüme edilip edilmemesi",
+          "isCorrect": false,
+          "rationale": "Tercüme faaliyetleri Abbasiler döneminde yoğunlaşmıştır; ilk savaşların hemen arkasından çıkan temel sorun iman-küfür sınırıdır."
+        }
+      ],
+      "hint": "Büyük günah işleyenin durumu etrafında şekillenen iman tartışmasını göz önünde bulundurunuz.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Bedevi kabilelerin sert ve tavizsiz yaşam tarzlarının dini metinleri okuma biçimlerine yansıması ve katı bir tutum takınmaları, mezheplerin doğuşunda etkili olan faktörlerden hangisine örnektir?",
+      "answerOptions": [
+        {
+          "text": "İnsanın tabiatı ve sosyal çevresi",
+          "isCorrect": true,
+          "rationale": "Topluluğun yaşam şartları, kültürel yapısı ve mizaç özellikleri dini anlama ve yaşama biçimlerini doğrudan etkiler."
+        },
+        {
+          "text": "Sadece yabancı felsefe metinlerinin tercüme edilmesi",
+          "isCorrect": false,
+          "rationale": "Çöl yaşamındaki bedevilerin tutumu felsefi tercümelerden ziyade kendi mizaç ve sosyal şartlarının ürünüdür."
+        },
+        {
+          "text": "Kur'an ayetlerinin çoğaltılarak merkezlere gönderilmesi",
+          "isCorrect": false,
+          "rationale": "Metinlerin çoğaltılması standardize etme amacı taşır, bedevi mizacının sertliğini açıklamaz."
+        },
+        {
+          "text": "Zekât vergilerinin toplanma yöntemlerindeki teknik değişimler",
+          "isCorrect": false,
+          "rationale": "İdari düzenlemeler mizaç ve katı dini tutum oluşumunun temel nedeni değildir."
+        }
+      ],
+      "hint": "Karakter, mizaç ve yaşam çevresinin insan tutumlarına etkisini düşününüz.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "İnsanın fiillerinde tamamen özgür olduğunu, Allah'ın belirlediği bir kader yerine insanın kendi kaderini kendisinin tayin ettiğini savunan ilk mezhep aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Kaderiyye",
+          "isCorrect": true,
+          "rationale": "Kaderiyye, kaderi reddederek insanın kendi fiillerinin yaratıcısı olduğunu ve kaderini kendisinin belirlediğini savunur."
+        },
+        {
+          "text": "Cebriyye",
+          "isCorrect": false,
+          "rationale": "Cebriyye, insanın hiçbir iradesi olmadığını ve rüzgâr önündeki yaprak gibi tamamen mecbur olduğunu savunur."
+        },
+        {
+          "text": "Mücessime",
+          "isCorrect": false,
+          "rationale": "Mücessime, Allah'ı cisimlere benzeterek somutlaştıran akımdır."
+        },
+        {
+          "text": "İbâdiyye",
+          "isCorrect": false,
+          "rationale": "İbâdiyye Hariciliğin günümüze ulaşan tek ılımlı koludur; kader tartışmasının merkezindeki ilk akım değildir."
+        }
+      ],
+      "hint": "İnsana fiil ve kader tayin etme gücü veren mezhebin adını hatırlayınız.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Emeviler döneminde yaşanan siyasi çatışmalar ve karşılıklı tekfir söylemleri karşısında; amel ile imanı ayırarak 'günah işleyen kimsenin durumunu Allah'a ertelemeyi' ilke edinen kuşatmacı anlayış aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Mürcie",
+          "isCorrect": true,
+          "rationale": "Mürcie, 'ertelemek' anlamına gelir ve büyük günah işleyenlerin durumunu Allah'a bırakarak Müslüman toplumda bütünleştirici bir rol oynamıştır."
+        },
+        {
+          "text": "Haricilik",
+          "isCorrect": false,
+          "rationale": "Haricilik günah işleyenleri doğrudan tekfir eden dışlayıcı ve radikal bir tutum sergilemiştir."
+        },
+        {
+          "text": "Cebriyye",
+          "isCorrect": false,
+          "rationale": "Cebriyye fiillerin insana değil Allah'a ait olduğunu savunur, imanı erteleme ilkesiyle öne çıkmaz."
+        },
+        {
+          "text": "Mu'tezile",
+          "isCorrect": false,
+          "rationale": "Mu'tezile büyük günah işleyeni ne mümin ne kâfir sayıp iki konum arasında bir yerde görür."
+        }
+      ],
+      "hint": "Kelime anlamı 'erteleyen / tehir eden' olan ve Müslümanları tekfir etmekten kaçınan mezhebi düşününüz.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Mu'tezile mezhebinin kurucusu Vâsıl b. Atâ'nın, büyük günah işleyen kimsenin ne tam mümin ne de tam kâfir olduğunu, iki konum arasında bir yerde (el-Menzile beyne'l-Menzileteyn) bulunacağını belirtmesi aşağıdaki tartışmalardan hangisine verilen bir yanıttır?",
+      "answerOptions": [
+        {
+          "text": "Büyük günah işleyenin (mürtekib-i kebîre) durumu meselesi",
+          "isCorrect": true,
+          "rationale": "el-Menzile beyne'l-Menzileteyn prensibi doğrudan büyük günah işleyen kişinin iman-küfür bakımından konumu ile alakalıdır."
+        },
+        {
+          "text": "Allah'ın sıfatlarının zâtı ile aynı olup olmadığı meselesi",
+          "isCorrect": false,
+          "rationale": "Bu konu Mu'tezile'nin Tevhid prensibi kapsamındadır."
+        },
+        {
+          "text": "Kötülüklerin engellenmesi ve iyiliğin emredilmesi ilkesi",
+          "isCorrect": false,
+          "rationale": "Bu konu Emir bi'l-Ma'rûf Nehiy 'ani'l-Münker ilkesi ile alakalıdır."
+        },
+        {
+          "text": "Ahirette müminlerin cennet ve cehenneme sevk edilmesi kararı",
+          "isCorrect": false,
+          "rationale": "Bu konu Va'd ve Vaîd prensibiyle açıklanır."
+        }
+      ],
+      "hint": "Hasan-ı Basrî'nin meclisinde büyük günah işleyenin durumu tartışılırken Vâsıl b. Atâ'nın ortaya koyduğu görüşü hatırlayınız.",
+      "type": "multiple_choice"
+    }
+  ]
+}

@@ -1,0 +1,331 @@
+{
+  "unit": 4,
+  "unitTitle": "Biçim Bilgisi",
+  "title": "Biçim Bilgisi Testi",
+  "questions": [
+    {
+      "question": "Biri bağımsız biçim birim olmak üzere, en az iki biçim birimden oluşan ve bir veya daha fazla ek alan kök biçim birimlere 'gövde' adı verilir. Buna göre aşağıdaki sözcüklerden hangisi gövde durumundadır?",
+      "answerOptions": [
+        {
+          "text": "Gelişmişlik",
+          "isCorrect": true,
+          "rationale": "Kök üzerine eklenen türetme ekleriyle birden fazla biçim birimden oluşan türemiş bir yapıdır."
+        },
+        {
+          "text": "Bahçe",
+          "isCorrect": false,
+          "rationale": "Herhangi bir ek almamış, daha küçük anlamlı parçalara ayrılamayan yalın bir köktür."
+        },
+        {
+          "text": "Kelebek",
+          "isCorrect": false,
+          "rationale": "Sözlüksel anlam taşıyan ve ek almamış kök durumunda tek bir biçim birimdir."
+        },
+        {
+          "text": "Dinozor",
+          "isCorrect": false,
+          "rationale": "Daha küçük anlamlı birimlere bölünemeyen tek başına bir kök biçim birimdir."
+        }
+      ],
+      "hint": "Sözcüğün kök durumundan çıkıp en az bir türetme eki alarak genişleyip genişlemediğine dikkat ediniz.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Yabancı dildeki bir sözcüğün yapısına veya ses yapısına benzetilerek Türkçe kök ve eklerle yeni sözcük türetilmesi yoluna 'örnekseme' denir. Aşağıdaki sözcüklerden hangisi örnekseme yoluyla üretilmiş bir sözcük değildir?",
+      "answerOptions": [
+        {
+          "text": "Arge",
+          "isCorrect": true,
+          "rationale": "İki ayrı sözcüğün hece veya parçalarının bir araya getirilmesiyle oluşturulmuş karma bir yapı örneğidir."
+        },
+        {
+          "text": "Okul",
+          "isCorrect": false,
+          "rationale": "Fransızcadaki 'école' sözcüğünün ses ve yapı özellikleri örnek alınarak üretilmiştir."
+        },
+        {
+          "text": "İmge",
+          "isCorrect": false,
+          "rationale": "Fransızca 'image' sözcüğünün biçimsel yapısı esas alınarak Türkçeye kazandırılmıştır."
+        },
+        {
+          "text": "Genel",
+          "isCorrect": false,
+          "rationale": "Fransızcadaki 'général' kelimesinin yapısına benzetilerek türetilmiş bir sözcüktür."
+        }
+      ],
+      "hint": "Sözcüklerden hangisinin iki farklı ifadenin kısaltılarak birleştirilmesiyle oluştuğuna odaklanınız.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "'Bayılmak' eyleminden 'bay-', 'ayılmak' eyleminden 'ay-' eylemlerinin türetilmesinde olduğu gibi, var olan bir eylemden ek yapısının eksiltilmesiyle yeni bir eylem oluşturulması yöntemi aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Ters türetme",
+          "isCorrect": true,
+          "rationale": "Var olan ekli bir biçim birimden ek yapısı eksiltilerek geriye doğru yeni bir kök/eylem elde edilmesidir."
+        },
+        {
+          "text": "Kasıtlı yaratma",
+          "isCorrect": false,
+          "rationale": "Herhangi bir var olan kök veya ek bulunmaksızın dilcilerce sıfırdan sözcük oluşturulmasıdır."
+        },
+        {
+          "text": "Kırpma",
+          "isCorrect": false,
+          "rationale": "Uzun kelimelerin hecelerinin günlük dilde kısaltılarak kullanılması esasına dayanır."
+        },
+        {
+          "text": "Derleme",
+          "isCorrect": false,
+          "rationale": "Halk ağızlarında yaşayan sözlerin taranıp yazı diline aktarılması sürecidir."
+        }
+      ],
+      "hint": "Var olan türemiş bir eylemin ek kısmının mantıksal olarak eksiltilip geriye dönük türetilmesini düşününüz.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Çekim eklerinin ya da sözcük öbeklerinin kendi gramatikal işlevlerinin dışında yeni bir kavramı karşılayacak biçimde adlaşması durumuna 'kalıplaşma' adı verilir. Aşağıdaki sözcüklerden hangisi kalıplaşma yoluyla türetilmiştir?",
+      "answerOptions": [
+        {
+          "text": "İmambayıldı",
+          "isCorrect": true,
+          "rationale": "Cümle yapısındaki bir öbeğin zamanla bir yemek adı olarak sabitlenip kalıcı ad durumuna gelmesidir."
+        },
+        {
+          "text": "Selpak",
+          "isCorrect": false,
+          "rationale": "Özel bir marka adının ürünün tümü yerine geçmesiyle oluşan genelleşme örneğidir."
+        },
+        {
+          "text": "Uygar",
+          "isCorrect": false,
+          "rationale": "Belirli bir kavramı karşılamak üzere dil uzmanlarınca üretilmiş kasıtlı yaratma örneğidir."
+        },
+        {
+          "text": "Kilo",
+          "isCorrect": false,
+          "rationale": "'Kilogram' sözcüğünün hece atımıyla elde edilen kırpma yöntemine örnektir."
+        }
+      ],
+      "hint": "Bir eylem cümlesinin zamanla bir yemek adı olarak sabitleşip kalıcı ad haline gelmesini göz önüne getiriniz.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Aşağıdaki seçeneklerin hangisinde yer alan sözcüklerin tamamı 'eylemden ad yapma eki' almıştır?",
+      "answerOptions": [
+        {
+          "text": "Çekingen, akın, saplantı",
+          "isCorrect": true,
+          "rationale": "Sözcüklerin tamamı eylem köklerine gelen yapım ekleriyle ad soyundan sözcüklere dönüştürülmüştür."
+        },
+        {
+          "text": "Yolsuz, cızırtı, toptan",
+          "isCorrect": false,
+          "rationale": "İçlerinde addan ad yapma eki barındıran veya yansıma ad köklü sözcükler yer almaktadır."
+        },
+        {
+          "text": "İlçe, odun, yüzey",
+          "isCorrect": false,
+          "rationale": "Kökü ad olan veya farklı türde ek birleşimleri içeren yapılardan oluşmaktadır."
+        },
+        {
+          "text": "Azımsa, yüksün, kısal",
+          "isCorrect": false,
+          "rationale": "Seçenekteki ekler ad soyundan köklere gelerek eylem türeten ek işlevindedir."
+        }
+      ],
+      "hint": "Sözcüklerin türetildiği ilk durumlarının eylem (fiil) olup olmadığına dikkat ediniz.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Uzun bir sözcüğün bazı hece veya seslerinin düşürülerek günlük dilde daha kısa bir biçimde kullanılması işlemine 'kırpma' denir. Aşağıdakilerden hangisi kırpma yoluyla oluşturulmuş bir sözcüktür?",
+      "answerOptions": [
+        {
+          "text": "Kilo",
+          "isCorrect": true,
+          "rationale": "'Kilogram' sözcüğünün hecelerinin kısaltılarak günlük dile aktarılmış biçimidir."
+        },
+        {
+          "text": "Okul",
+          "isCorrect": false,
+          "rationale": "Yabancı bir sözcüğün yapısının Türkçeye örneksenmesiyle türetilmiştir."
+        },
+        {
+          "text": "Tümce",
+          "isCorrect": false,
+          "rationale": "Örnekseme veya türetme yollarıyla Türkçe eklerle oluşturulmuş bir sözcüktür."
+        },
+        {
+          "text": "İmge",
+          "isCorrect": false,
+          "rationale": "Başka bir dildeki kelimenin ses yapısına benzetilerek türetilmiştir."
+        }
+      ],
+      "hint": "'Kilogram' veya 'santimetre' gibi uzun ölçü birimlerinin günlük konuşmada kısaltılarak kullanılmasını hatırlayınız.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Biçim bilgisinde, eklerin (bağımlı biçim birimlerin) üzerine eklendiği yalın veya türemiş biçim birim yapısına ne ad verilir?",
+      "answerOptions": [
+        {
+          "text": "Taban",
+          "isCorrect": true,
+          "rationale": "Ekin doğrudan eklendiği temel birimi veya gövdeleşmiş aşamayı ifade eden kavramdır."
+        },
+        {
+          "text": "Kök",
+          "isCorrect": false,
+          "rationale": "Sözcüğün parçalanamayan en küçük anlamlı yapı birimidir."
+        },
+        {
+          "text": "Gövde",
+          "isCorrect": false,
+          "rationale": "Kökün en az bir yapım eki almış durumunu ifade eden türemiş yapıdır."
+        },
+        {
+          "text": "Karma",
+          "isCorrect": false,
+          "rationale": "Farklı sözcük parçalarının birleştirilmesiyle yapılan sözcük oluşturma yöntemidir."
+        }
+      ],
+      "hint": "Örneğin 'gözlük' türemiş sözcüğünün üzerine getirilen yeni bir ek için 'gözlük' kelimesinin üstlendiği birimi düşününüz.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Aşağıdaki sözcüklerin hangisinde hem birden çok yapım eki hem de birden çok çekim eki yer almaktadır?",
+      "answerOptions": [
+        {
+          "text": "Yaşanmışlıklarımız",
+          "isCorrect": true,
+          "rationale": "Sözcük yapısında birden fazla yapım eki ile çoğul ve iyelik ekleri gibi birden fazla çekim eki bir arada kullanılmıştır."
+        },
+        {
+          "text": "Beklemek",
+          "isCorrect": false,
+          "rationale": "Yalnızca bir yapım eki ile isim-fiil eki içeren sınırlı bir ek dizilimine sahiptir."
+        },
+        {
+          "text": "Eleştirmenin",
+          "isCorrect": false,
+          "rationale": "İçeriğinde birden fazla çekim eki çeşidi barındırmayan daha dar bir ek dizilimidir."
+        },
+        {
+          "text": "Gitmişlerse",
+          "isCorrect": false,
+          "rationale": "Yapım eki içermeyip yalnızca birleşik zaman ve çoğul gibi çekim ekleri almıştır."
+        }
+      ],
+      "hint": "Sözcükteki türetme ekleri ile çekim eklerinin (çoğul, iyelik vb.) sayısını ayrı ayrı analiz ediniz.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Dil uzmanları veya yetkili kurumlarca belirli bir kavramı karşılamak üzere doğrudan doğruya oluşturulan sözcük yapım yoluna 'kasıtlı yaratma' denir. Aşağıdakilerden hangisi bu yolla üretilmiş sözcüklerden biridir?",
+      "answerOptions": [
+        {
+          "text": "Uygar",
+          "isCorrect": true,
+          "rationale": "Yeni bir kavramı karşılamak amacıyla dil planlamacıları tarafından doğrudan oluşturulmuş bir sözcüktür."
+        },
+        {
+          "text": "Jilet",
+          "isCorrect": false,
+          "rationale": "Bir marka adının ürün türünün genel adı haline dönüşmesiyle oluşan genelleşmedir."
+        },
+        {
+          "text": "Deprenmek",
+          "isCorrect": false,
+          "rationale": "Halk ağızlarından taranıp yazı diline aktarılan derleme kökenli bir sözcüktür."
+        },
+        {
+          "text": "Futbol",
+          "isCorrect": false,
+          "rationale": "Başka bir dilden doğrudan alınan kopyalama bir sözcüktür."
+        }
+      ],
+      "hint": "'Bayan', 'koşul' veya 'uygar' gibi kavramların dil kurulları tarafından türetilme amacını düşününüz.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "'Araştırmacılık' sözcüğü biçim birimlerine ayrıldığında, anlam ilişkisi kopmaksızın ulaşılabilen en küçük anlamlı kök aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Ara",
+          "isCorrect": true,
+          "rationale": "Sözcüğün türetilme sürecindeki ilk ve anlamca ilişkili en temel bağımsız biçim birimidir."
+        },
+        {
+          "text": "Araştır",
+          "isCorrect": false,
+          "rationale": "Kök üzerine gelen ekle oluşmuş eylem gövdesi aşamasıdır."
+        },
+        {
+          "text": "Araştırma",
+          "isCorrect": false,
+          "rationale": "Eylemden ad türetilmiş bir alt gövde veya taban durumudur."
+        },
+        {
+          "text": "Ar",
+          "isCorrect": false,
+          "rationale": "Kelimenin genel anlam bağlamıyla ilişkisi bulunmayan bağımsız bir köktür."
+        }
+      ],
+      "hint": "'Aramak' eylemi ile 'araştırmak' arasındaki ilk anlam bağına odaklanınız.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Ticari bir marka adının zaman içerisinde o türdeki ürünlerin tümünü karşılar hale gelmesine 'genelleşme' denir. Aşağıdaki sözcüklerden hangisi bu yolla dili zenginleştiren sözcüklerden biridir?",
+      "answerOptions": [
+        {
+          "text": "Selpak",
+          "isCorrect": true,
+          "rationale": "Marka adının zamanla kağıt mendil ürünlerinin tümünü ifade edecek şekilde genelleşmesidir."
+        },
+        {
+          "text": "Yozlaşmak",
+          "isCorrect": false,
+          "rationale": "Halk dili kaynaklı derleme sürecine ait bir sözcüktür."
+        },
+        {
+          "text": "Başkan",
+          "isCorrect": false,
+          "rationale": "Tarihsel metinlerden taranarak yazı diline kazandırılmış bir sözcüktür."
+        },
+        {
+          "text": "Aşçı",
+          "isCorrect": false,
+          "rationale": "Standart addan ad yapma ekiyle türetilmiş bir sözcüktür."
+        }
+      ],
+      "hint": "Bir marka adının mendil türündeki tüm ürünler için genel isim olarak kullanılması örneğini hatırlayınız.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "İki ayrı sözcüğün hecelerinin veya parçalarının bir araya getirilerek yeni ve tek bir kavramı karşılayacak biçimde birleştirilmesiyle yapılan sözcük oluşturma yöntemine 'karma' adı verilir. Aşağıdakilerden hangisi bu yöntemle oluşturulmuştur?",
+      "answerOptions": [
+        {
+          "text": "Ordonat",
+          "isCorrect": true,
+          "rationale": "'Ordu' ve 'donatım' sözcüklerinin hece parçalarının birleştirilmesiyle türetilmiş karma bir sözcüktür."
+        },
+        {
+          "text": "Karatavuk",
+          "isCorrect": false,
+          "rationale": "İki ayrı sözcüğün eksiltilmeden bir araya getirildiği geleneksel birleştirme örneğidir."
+        },
+        {
+          "text": "Şükretmek",
+          "isCorrect": false,
+          "rationale": "Bir ad ile yardımcı eylemin birleşmesinden oluşan birleşik eylemdir."
+        },
+        {
+          "text": "Açık öğretim",
+          "isCorrect": false,
+          "rationale": "Sözcüklerin eksiltilmeden yan yana gelmesiyle kurulan birleşik ad yapısıdır."
+        }
+      ],
+      "hint": "'Ordu donatım' veya 'araştırma geliştirme' gibi tamlamaların hece birleştirilmesiyle tek kelime haline getirilmesini düşününüz.",
+      "type": "multiple_choice"
+    }
+  ]
+}

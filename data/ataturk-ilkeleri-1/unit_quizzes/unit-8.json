@@ -1,0 +1,331 @@
+{
+  "unit": 8,
+  "unitTitle": "Atatürk Dönemi Türk Dış Politikası",
+  "title": "Tarih Quiz",
+  "questions": [
+    {
+      "question": "Milli Mücadele Dönemi'nde Ankara'da yayımlanan, TBMM Hükûmetinin gayriresmî yayın organı olarak kabul edilen ve 1934 yılından sonra 'Ulus' adını alan gazete aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Hâkimiyet-i Milliye",
+          "isCorrect": true,
+          "rationale": "Ankara'da çıkarılan ve Millî Mücadele'nin gayriresmî yayın organı kabul edilen bu gazete 1934'te Ulus adını almıştır."
+        },
+        {
+          "text": "İrade-i Milliye",
+          "isCorrect": false,
+          "rationale": "Sivas Kongresi kararları doğrultusunda Sivas'ta yayımlanmaya başlayan ilk gazetedir."
+        },
+        {
+          "text": "Minber",
+          "isCorrect": false,
+          "rationale": "Mütareke döneminde İstanbul'da Mustafa Kemal Paşa ve Ali Fethi Bey tarafından çıkarılmıştır."
+        },
+        {
+          "text": "Albayrak",
+          "isCorrect": false,
+          "rationale": "Doğu Anadolu Müdafaa-i Hukuk Cemiyeti'nin Erzurum'daki yayın organıdır."
+        }
+      ],
+      "hint": "Gazetenin adı 'Milli Egemenlik' anlamına gelmektedir.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Osmanlı Mebusan Meclisinde 28 Ocak 1920 tarihinde kabul edilen ve Türk vatanının sınırlarını çizerek tam bağımsızlık esasını belirleyen tarihî belge aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Misak-ı Millî",
+          "isCorrect": true,
+          "rationale": "Son Osmanlı Mebusan Meclisi tarafından onaylanan ve Millî Mücadele'nin asgari barış şartlarını içeren belgedir."
+        },
+        {
+          "text": "Amasya Genelgesi",
+          "isCorrect": false,
+          "rationale": "Millî Mücadele'nin amaç, gerekçe ve yönteminin ilkesel olarak açıklandığı ilk ihtilal bildirgesidir."
+        },
+        {
+          "text": "Sened-i İttifak",
+          "isCorrect": false,
+          "rationale": "1808 yılında merkezi otorite ile ayanlar arasında yapılan yetki sözleşmesidir."
+        },
+        {
+          "text": "Teşkilat-ı Esasiye",
+          "isCorrect": false,
+          "rationale": "1921 yılında I. TBMM tarafından kabul edilen ilk Türk anayasasıdır."
+        }
+      ],
+      "hint": "'Milli And' veya 'Peyman-ı Milli' adlarıyla da bilinir.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Osmanlı Devleti tarihinde ilan edilen ilk anayasa olma özelliğine sahip, 23 Aralık 1876 tarihinde yürürlüğe giren belge aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Kanun-i Esasi",
+          "isCorrect": true,
+          "rationale": "Tersane Konferansı toplandığı sırada ilan edilen Osmanlı Devleti'nin ilk anayasasıdır."
+        },
+        {
+          "text": "Tanzimat Fermanı",
+          "isCorrect": false,
+          "rationale": "1839'da ilan edilen ve hukukun üstünlüğünü getiren ferman olup henüz bir anayasa niteliği taşımaz."
+        },
+        {
+          "text": "Islahat Fermanı",
+          "isCorrect": false,
+          "rationale": "1856'da gayrimüslim haklarını genişletmek amacıyla ilan edilmiş fermandır."
+        },
+        {
+          "text": "Teşkilat-ı Esasiye",
+          "isCorrect": false,
+          "rationale": "1921 Anayasası olup Türkiye Devleti'nin ilk anayasasıdır."
+        }
+      ],
+      "hint": "II. Abdülhamit döneminde ilan edilen meşrutiyet düzeninin temel metnidir.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "TBMM Hükûmetinin kurulmasının ardından artan iç ayaklanmaları bastırmak ve iç huzuru sağlamak amacıyla 29 Nisan 1920 tarihinde çıkarılan kanun aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Hıyanet-i Vataniye Kanunu",
+          "isCorrect": true,
+          "rationale": "Ayaklanmaları önlemek ve meclisin otoritesini tesis etmek amacıyla ilk çıkarılan kanunlardandır."
+        },
+        {
+          "text": "Takrir-i Sükun Kanunu",
+          "isCorrect": false,
+          "rationale": "1925 yılında Şeyh Sait İsyanı sonrasında huzuru sağlamak amacıyla çıkarılmıştır."
+        },
+        {
+          "text": "Men-i Müskirat Kanunu",
+          "isCorrect": false,
+          "rationale": "İçki üretim ve tüketimini yasaklamaya yönelik ekonomik/sosyal bir kanundur."
+        },
+        {
+          "text": "Nisab-ı Müzakere Kanunu",
+          "isCorrect": false,
+          "rationale": "Meclisin çalışma ve toplanma usullerini düzenleyen iç tüzük niteliğinde bir kanundur."
+        }
+      ],
+      "hint": "Vatana ihanet suçlamalarını ve asker kaçaklarını yargılamayı hedefler.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "I. Dünya Savaşı sonrasında Almanya'nın sömürgelerini kaybetmesine ve ağır askerî ile ekonomik yükümlülükler altına girmesine yol açan antlaşma aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Versailles (Versay) Barış Antlaşması",
+          "isCorrect": true,
+          "rationale": "İtilaf Devletleri ile Almanya arasında imzalanan ve ağır yaptırımlar içeren antlaşmadır."
+        },
+        {
+          "text": "Neuilly (Nöyi) Barış Antlaşması",
+          "isCorrect": false,
+          "rationale": "I. Dünya Savaşı sonunda Bulgaristan ile imzalanan antlaşmadır."
+        },
+        {
+          "text": "Trianon Antlaşması",
+          "isCorrect": false,
+          "rationale": "I. Dünya Savaşı sonunda Macaristan ile imzalanan barış antlaşmasıdır."
+        },
+        {
+          "text": "St. Germain Barış Antlaşması",
+          "isCorrect": false,
+          "rationale": "I. Dünya Savaşı sonunda Avusturya ile imzalanan antlaşmadır."
+        }
+      ],
+      "hint": "Fransa'da imzalanan ve İkinci Dünya Savaşı'nın sebeplerinden sayılan antlaşmadır.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "XVII. yüzyıl ıslahatçı düşünürlerinden biri olan ve 'Düstûrü'l-Amel li Islahı'l-Halel' adlı eserinde devlet adamlarının basiretsizliğini eleştirerek çözüm yolları sunan bilgin aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Katip Çelebi",
+          "isCorrect": true,
+          "rationale": "Osmanlı idari ve sosyal yapısındaki bozulmaları eleştirerek çözüm yolları öneren XVII. yüzyıl düşünürdür."
+        },
+        {
+          "text": "Evliya Çelebi",
+          "isCorrect": false,
+          "rationale": "Gezip gördüğü yerleri Seyahatname adlı eserinde toplayan ünlü seyyahtır."
+        },
+        {
+          "text": "Koçi Bey",
+          "isCorrect": false,
+          "rationale": "IV. Murad ve Sultan İbrahim'e devletin bozulma nedenlerini açıklayan risaleler sunmuştur."
+        },
+        {
+          "text": "Naima",
+          "isCorrect": false,
+          "rationale": "Osmanlı Devleti'nin ilk resmi vakanüvisi (tarihçisi) olarak görev yapmıştır."
+        }
+      ],
+      "hint": "'Keşfü'z-zünûn' ve 'Cihannüma' eserleriyle de tanınan Osmanlı bilginidir.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "İzmir'in işgalinden sonra Ege bölgesinde Yunanistan'a katılımı kabul etmeyerek direniş gösteren halk ve aydınlar tarafından kurulan cemiyet aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Redd-i İlhak Cemiyeti",
+          "isCorrect": true,
+          "rationale": "İzmir ve çevresinin Yunanistan'a bağlanmasını engellemek amacıyla kurulan direniş örgütüdür."
+        },
+        {
+          "text": "Kilikyalılar Cemiyeti",
+          "isCorrect": false,
+          "rationale": "Çukurova bölgesini Fransız ve Ermeni işgallerine karşı savunmak amacıyla kurulmuştur."
+        },
+        {
+          "text": "Trakya-Paşaeli Cemiyeti",
+          "isCorrect": false,
+          "rationale": "Trakya bölgesini Yunan işgaline karşı savunmayı hedefleyen milli cemiyettir."
+        },
+        {
+          "text": "Doğu Anadolu Müdafaa-i Hukuk Cemiyeti",
+          "isCorrect": false,
+          "rationale": "Doğu vilayetlerinde Ermeni devleti kurulmasını engellemek amacıyla teşkilatlanmıştır."
+        }
+      ],
+      "hint": "Cemiyetin adı doğrudan 'toprakların başka ülkeye katılmasına karşı çıkma' anlamı taşır.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Mondros Mütarekesi sonrasında İstanbul'da Mustafa Kemal Paşa ile Ali Fethi (Okyar) Bey'in birlikte çıkardıkları gazete aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Minber",
+          "isCorrect": true,
+          "rationale": "Mustafa Kemal Paşa ve Ali Fethi Bey'in Mütareke döneminde İstanbul'da çıkardıkları fikri ve siyasi gazetedir."
+        },
+        {
+          "text": "İrade-i Milliye",
+          "isCorrect": false,
+          "rationale": "Sivas Kongresi'nden sonra kamuoyunu bilgilendirmek amacıyla Sivas'ta çıkarılmıştır."
+        },
+        {
+          "text": "Tasvir-i Efkâr",
+          "isCorrect": false,
+          "rationale": "Şinasi tarafından Tanzimat Dönemi'nde çıkarılmaya başlanan gazetedir."
+        },
+        {
+          "text": "Hâkimiyet-i Milliye",
+          "isCorrect": false,
+          "rationale": "TBMM'nin açılmasından sonra Ankara'da çıkarılmaya başlanan yayın organıdır."
+        }
+      ],
+      "hint": "Mustafa Kemal'in İstanbul'daki siyasi mücadele döneminde çıkardığı yayındır.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Aşağıdakilerden hangisi I. TBMM'nin taşıdığı temel niteliklerden biri değildir?",
+      "answerOptions": [
+        {
+          "text": "İstanbul Hükûmeti ile tam uyum ve koordinasyon içinde çalışması",
+          "isCorrect": true,
+          "rationale": "I. TBMM, İstanbul Hükûmeti'nin teslimiyetçi politikalarına karşı bağımsız hareket etmiş ve onunla uyum içinde çalışmamıştır."
+        },
+        {
+          "text": "Meclis hükûmeti sistemini benimsemesi",
+          "isCorrect": false,
+          "rationale": "Ayrı bir başbakanlık olmayıp Meclis Başkanı aynı zamanda hükûmet başkanı olarak görev yapmıştır."
+        },
+        {
+          "text": "Olağanüstü yetkilere sahip olması",
+          "isCorrect": false,
+          "rationale": "Savaş koşulları nedeniyle yasama, yürütme ve yargı yetkilerini bünyesinde toplamıştır."
+        },
+        {
+          "text": "Meclisin sürekliliği ilkesini benimsemesi",
+          "isCorrect": false,
+          "rationale": "Milli mücadeleyi yürütmek adına kesintisiz çalışma esasına dayanmıştır."
+        }
+      ],
+      "hint": "Ankara'daki meclisin İstanbul'daki işbirlikçi ve teslimiyetçi tutuma karşı yaklaşımını değerlendirin.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "XIX. yüzyılda Osmanlı Devleti'ni dağılmaktan kurtarmak amacıyla ortaya atılan; din, dil ve ırk farkı gözetmeksizin tüm unsurları eşit kabul eden ilk siyasi fikir akımı aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Osmanlıcılık",
+          "isCorrect": true,
+          "rationale": "Tanzimat ve Meşrutiyet dönemlerinde imparatorluğu bir arada tutmak için geliştirilen ilk resmi fikir akımıdır."
+        },
+        {
+          "text": "Türkçülük",
+          "isCorrect": false,
+          "rationale": "Türkleri milli bir bilinç altında toplamayı hedefleyen daha sonraki fikir akımıdır."
+        },
+        {
+          "text": "İslamcılık",
+          "isCorrect": false,
+          "rationale": "II. Abdülhamit döneminde Müslüman tebaayı halife etrafında birleştirmeyi amaçlayan akımdır."
+        },
+        {
+          "text": "Adem-i Merkeziyetçilik",
+          "isCorrect": false,
+          "rationale": "Prens Sabahattin tarafından savunulan yerinden yönetim fikridir."
+        }
+      ],
+      "hint": "Genç Osmanlılar tarafından savunulan ve tüm Osmanlı uyruklarını kapsayan yaklaşımdır.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Millî Mücadele Dönemi'nde işgalci güçlerin kendi ortak düşmanı olması sebebiyle TBMM Hükûmetine mali ve askerî yardım sağlayan ülke aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Sovyet Rusya",
+          "isCorrect": true,
+          "rationale": "İtilaf Devletleri'ne karşı Ankara Hükûmeti ile iş birliği yaparak mali ve askeri destekte bulunmuştur."
+        },
+        {
+          "text": "Almanya",
+          "isCorrect": false,
+          "rationale": "I. Dünya Savaşı'ndan yenik çıkmış ve ağır antlaşma şartları altında ezilmiştir."
+        },
+        {
+          "text": "Bulgaristan",
+          "isCorrect": false,
+          "rationale": "Savaş sonrası sınırlandırılmış ve yardım ulaştıracak durumda bulunmamıştır."
+        },
+        {
+          "text": "Arnavutluk",
+          "isCorrect": false,
+          "rationale": "Kendi bağımsızlık ve iç sorunlarıyla uğraşan Balkan ülkesidir."
+        }
+      ],
+      "hint": "1917 devrimi sonrası İtilaf Devletleri ile ilişkileri kesilen kuzey komşumuz.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "III. Selim Dönemi'nde (Nizam-ı Cedid) hazırlanan ıslahat layihalarında (raporlarında) yenilik yapılması gerektiği konusunda birleşilen öncelikli alan aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Askerî",
+          "isCorrect": true,
+          "rationale": "III. Selim dönemi raporları ve yapılan düzenlemeler öncelikli olarak ordunun ıslahı ve Nizam-ı Cedid'in kurulmasına odaklanmıştır."
+        },
+        {
+          "text": "İdari",
+          "isCorrect": false,
+          "rationale": "İdari reformlar yapılsa da layihaların merkezinde ordunun durumu yer almaktaydı."
+        },
+        {
+          "text": "Mali",
+          "isCorrect": false,
+          "rationale": "İrad-ı Cedid hazinesi kurulmuş fakat bu yeni ordunun masraflarını karşılamak amacını taşımıştır."
+        },
+        {
+          "text": "Kültürel",
+          "isCorrect": false,
+          "rationale": "Matbaa kullanımı ve tercüme faaliyetleri artırılmış olsa da temel odak askerliktir."
+        }
+      ],
+      "hint": "Nizam-ı Cedid ordusunun kurulması bu dönemin en belirgin özelliğidir.",
+      "type": "multiple_choice"
+    }
+  ]
+}

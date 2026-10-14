@@ -1,0 +1,331 @@
+{
+  "unit": 6,
+  "unitTitle": "Lozan Barış Antlaşması",
+  "title": "Tarih Testi",
+  "questions": [
+    {
+      "question": "XVII. yüzyıl Osmanlı ıslahatçılarından Kâtip Çelebi'nin, devlet idaresindeki aksaklıkları ve devlet adamlarının yönetim yetersizliklerini eleştirerek çözüm önerileri sunduğu risale aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Keşfü'z-zünûn",
+          "isCorrect": false,
+          "rationale": "Bu eser Kâtip Çelebi'nin ünlü bir bibliyografik çalışması olup devlet yönetimi ve idari ıslahat risalesi niteliğinde değildir."
+        },
+        {
+          "text": "Düstûrü'l-Amel li Islahı'l-Halel",
+          "isCorrect": true,
+          "rationale": "Kâtip Çelebi bu eserinde devlet yapısındaki bozulmaları ve idarecilerin basiretsizliğini eleştirerek çözüm yolları sunmuştur."
+        },
+        {
+          "text": "Asafnâme",
+          "isCorrect": false,
+          "rationale": "Bu eser Kâtip Çelebi'ye değil, XVI. yüzyıl sadrazamlarından Lûtfî Paşa'ya aittir."
+        },
+        {
+          "text": "Künhü’l-Ahbar",
+          "isCorrect": false,
+          "rationale": "Bu eser Gelibolulu Mustafa Âlî tarafından kaleme alınmış genel bir tarih çalışmasıdır."
+        }
+      ],
+      "hint": "Yazarın bozulmaları teşhis edip düzeni iyileştirme amacını taşıyan öğüt ve analiz risalesini düşününüz.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Kanuni Sultan Süleyman döneminde sadrazamlık yapmış olan Lûtfî Paşa'nın, devlet teşkilatındaki bozulmaları ve idari ıslahat gereksinimlerini ele aldığı eser aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Asafnâme",
+          "isCorrect": true,
+          "rationale": "XVI. yüzyılda Sadrazam Lûtfî Paşa tarafından devlet adamlarına öğütler vermek ve idari aksaklıkları eleştirmek amacıyla kaleme alınmıştır."
+        },
+        {
+          "text": "Cihannüma",
+          "isCorrect": false,
+          "rationale": "Bu eser Kâtip Çelebi tarafından yazılmış coğrafya türünde bir çalışmadır."
+        },
+        {
+          "text": "Usulü'l-Hikem",
+          "isCorrect": false,
+          "rationale": "Bu eser İbrahim Müteferrika'nın devlet düzenine ve askeri yeniliklere dair yazdığı bir metindir."
+        },
+        {
+          "text": "Düstûrü'l-Amel li Islahı'l-Halel",
+          "isCorrect": false,
+          "rationale": "XVII. yüzyılda Kâtip Çelebi tarafından kaleme alınan bir ıslahat risalesidir."
+        }
+      ],
+      "hint": "Hz. Süleyman'ın ünlü vezirinin adıyla anılan ve devlet adamlarına rehberlik eden metni hatırlayınız.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "3 Kasım 1839 tarihinde Gülhane Parkı'nda okunan Tanzimat Fermanı'nın içerdiği temel esaslar düşünüldüğünde, aşağıdakilerden hangisi bu fermanda doğrudan yer alan konulardan biri değildir?",
+      "answerOptions": [
+        {
+          "text": "Vergilerin herkesin gücüne göre düzenlenmesi",
+          "isCorrect": false,
+          "rationale": "Mali adaleti sağlamak adına her vatandaştan gelirine göre vergi alınması ilkesi fermanın temel maddelerindendir."
+        },
+        {
+          "text": "Mülkiyet hakkı, mal ve namus güvenliğinin teminat altına alınması",
+          "isCorrect": false,
+          "rationale": "Kişi haklarının korunması, can, mal ve namus güvenliğinin sağlanması fermanın öncelikli maddelerindendir."
+        },
+        {
+          "text": "Devlet yönetiminin ilk kez anayasal parlamenter sisteme geçirilmesi",
+          "isCorrect": true,
+          "rationale": "Anayasal parlamenter düzene geçiş 1876 Kanun-i Esasi ile gerçekleşmiş olup Tanzimat Fermanı anayasa niteliği taşımayan mülki bir ıslahat programıdır."
+        },
+        {
+          "text": "Askerlik hizmetinin adil kurallara bağlanarak ıslah edilmesi",
+          "isCorrect": false,
+          "rationale": "Askerlik işlerinin belirli kurallara ve süreye bağlanarak bir vatan görevi sayılması hedeflenmiştir."
+        }
+      ],
+      "hint": "Osmanlı Devleti'nin ilk yazılı anayasasının ilan edildiği tarih ile bu fermanın ilan tarihi arasındaki farkı dikkate alınız.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "III. Selim döneminde devletin gerilemesini önlemek amacıyla devlet adamları ve aydınlardan alınan ıslahat layihalarında (raporlarında) en fazla vurgulanan ve ortak görüş sağlanan alan aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Mülki ve idari yapı",
+          "isCorrect": false,
+          "rationale": "İdari konular layihalarda yer bulmakla birlikte acil çözüm aranan birincil odak noktası değildir."
+        },
+        {
+          "text": "Askerî sistem",
+          "isCorrect": true,
+          "rationale": "III. Selim dönemi layihalarının ortak paydası, devletin varlığını koruması için öncelikle askerî yapının modernleştirilmesi gerektiği fikridir."
+        },
+        {
+          "text": "Mali düzenlemeler",
+          "isCorrect": false,
+          "rationale": "Maliye alanındaki tedbirler daha çok yenilenen ordunun ve askerî ocakların finansmanını sağlamak amacına hizmet etmiştir."
+        },
+        {
+          "text": "Eğitim ve kültür politikaları",
+          "isCorrect": false,
+          "rationale": "Eğitimdeki yenilikler bu dönemde genel bir sivil eğitim reformundan ziyade askerî okulların açılmasıyla sınırlı kalmıştır."
+        }
+      ],
+      "hint": "Nizam-ı Cedit ordusunun kurulması ve askerî mühendishanelerin açılması kararlarının arkasındaki temel ihtiyacı düşününüz.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "II. Meşrutiyet'in ilan edilmesinden sonra, Rumi 31 Mart 1325 (13 Nisan 1909) tarihinde İttihat ve Terakki Cemiyeti'nin politikalarına bir tepki olarak ortaya çıkan gerici nitelikli ayaklanma aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Kabakçı Mustafa İsyanı",
+          "isCorrect": false,
+          "rationale": "Bu isyan III. Selim'i tahttan indiren ve Nizam-ı Cedit yeniliklerini sona erdiren XVIII. yüzyıl isyanıdır."
+        },
+        {
+          "text": "Patrona Halil İsyanı",
+          "isCorrect": false,
+          "rationale": "Bu olay Lale Devri'ni sona erdiren 1730 tarihli ayaklanmadır."
+        },
+        {
+          "text": "31 Mart Vakası",
+          "isCorrect": true,
+          "rationale": "Rumi takvime göre 31 Mart 1325'te meşrutiyet rejimine ve İttihat ve Terakki Cemiyeti'ne tepki olarak başlayan isyandır."
+        },
+        {
+          "text": "Vaka-i Hayriye",
+          "isCorrect": false,
+          "rationale": "II. Mahmud döneminde Yeniçeri Ocağı'nın kaldırılması olayına verilen isimdir."
+        }
+      ],
+      "hint": "Olayın meydana geldiği Rumi takvim tarihinin adıyla anılan isyanı hatırlayınız.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "I. Dünya Savaşı devam ederken 1916 yılında İtilaf Devletleri arasında yapılan ve Irak'ın güneyini İngiltere'ye, Suriye kıyıları ile Adana ve Mersin çevresini ise Fransa'ya bırakan gizli antlaşma aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Petrograt Protokolü",
+          "isCorrect": false,
+          "rationale": "Bu protokol Çarlık Rusyası'na Doğu Anadolu ve Boğazlar çevresinde pay ayrılmasını öngörür."
+        },
+        {
+          "text": "Mc Mahon Antlaşması",
+          "isCorrect": false,
+          "rationale": "İngiltere ile Hicaz Emiri Şerif Hüseyin arasında Arap Yarımadası'na yönelik yapılan gizli görüşmelerdir."
+        },
+        {
+          "text": "Sykes-Picot Antlaşması",
+          "isCorrect": true,
+          "rationale": "1916 yılında İngiltere ve Fransa diplomatları arasında Orta Doğu Osmanlı topraklarının paylaşılması amacıyla imzalanmıştır."
+        },
+        {
+          "text": "St. Jean de Maurienne Antlaşması",
+          "isCorrect": false,
+          "rationale": "İtalya'ya Batı Anadolu ve İzmir çevresini vaat eden gizli antlaşmadır."
+        }
+      ],
+      "hint": "İngiliz ve Fransız diplomatların soyadlarıyla anılan paylaşım antlaşmasını düşününüz.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Milli Mücadele Dönemi'nde Ankara'da yayımlanan, TBMM Hükûmeti'nin yarı resmi yayın organı konumunda bulunan ve 1934 yılından itibaren 'Ulus' adıyla yayın hayatına devam eden gazete aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "İrade-i Milliye",
+          "isCorrect": false,
+          "rationale": "Bu gazete Sivas Kongresi sonrasında Sivas'ta çıkarılmaya başlanan ilk Milli Mücadele gazetesidir."
+        },
+        {
+          "text": "Hâkimiyet-i Milliye",
+          "isCorrect": true,
+          "rationale": "Ankara'da çıkarılan, TBMM Hükûmeti'nin yarı resmi organı işlevini gören ve sonradan Ulus adını alan gazetedir."
+        },
+        {
+          "text": "Minber",
+          "isCorrect": false,
+          "rationale": "Mustafa Kemal Paşa'nın Mondros sonrasında İstanbul'da Ali Fethi Bey ile birlikte çıkardığı gazetedir."
+        },
+        {
+          "text": "Albayrak",
+          "isCorrect": false,
+          "rationale": "Erzurum'da Doğu Anadolu Müdafaa-i Hukuk Cemiyeti bünyesinde yayımlanan yerel gazetedir."
+        }
+      ],
+      "hint": "Milletin egemenliğini vurgulayan ve Ankara'daki meclisin sesini duyuran gazete adını hatırlayınız.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Mondros Mütarekesi'nin 'İtilaf Devletleri güvenliklerini tehdit eden bir durum hâlinde stratejik noktaları işgal edebilecektir' hükmünü içeren 7. maddesine dayanarak İngilizler tarafından işgal edilen ilk Osmanlı toprağı aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Musul",
+          "isCorrect": true,
+          "rationale": "İngilizler, ateşkesin 7. maddesini gerekçe göstererek mütareke sonrasındaki ilk işgali petrol zengini Musul'da gerçekleştirmişlerdir."
+        },
+        {
+          "text": "İskenderun",
+          "isCorrect": false,
+          "rationale": "İskenderun stratejik bir liman olarak mütareke sonrası işgal edilmiş olsa da ilk işgal edilen nokta değildir."
+        },
+        {
+          "text": "Maraş",
+          "isCorrect": false,
+          "rationale": "Maraş önce İngilizler ardından Fransızlarca işgal edilmiş olup ilk işgal bölgesi değildir."
+        },
+        {
+          "text": "Halep",
+          "isCorrect": false,
+          "rationale": "Halep, ateşkes imzalanmadan hemen önce Suriye cephesi askeri harekâtının hattında yer almaktaydı."
+        }
+      ],
+      "hint": "Irak cephesi sınırlarında yer alan ve zengin petrol yataklarına sahip şehri hatırlayınız.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Mondros Mütarekesi sonrasında başlayan işgallere karşı Türk milletinin kendiliğinden oluşturduğu Kuva-yı Milliye hareketi ile ilgili aşağıdaki ifadelerden hangisi yanlıştır?",
+      "answerOptions": [
+        {
+          "text": "İşgalci güçlere ve azınlık taşkınlıklarına karşı direnç göstermişlerdir.",
+          "isCorrect": false,
+          "rationale": "İşgallere ve yerel tehditlere karşı halkın direnişini organize etmişlerdir."
+        },
+        {
+          "text": "Düzensiz milis kuvvetleri şeklinde bölgesel savunma yapmışlardır.",
+          "isCorrect": false,
+          "rationale": "Düzenli ordu kurulana kadar bölgesel ve gayrinizami harp taktikleriyle mücadele etmişlerdir."
+        },
+        {
+          "text": "İlk olarak İstanbul ve çevresinde teşkilatlanarak Anadolu'ya yayılmışlardır.",
+          "isCorrect": true,
+          "rationale": "Kuva-yı Milliye İstanbul merkezli değil, işgallere doğrudan maruz kalan Anadolu ve Trakya taşrasında halk tarafından kurulmuştur."
+        },
+        {
+          "text": "Türk subayları ve sivil devlet memurlarının yönlendirmeleriyle güçlenmişlerdir.",
+          "isCorrect": false,
+          "rationale": "Subaylar ve mülki idareciler halkın örgütlenmesinde ve direniş güçlerinin bir araya gelmesinde rol oynamışlardır."
+        }
+      ],
+      "hint": "Direniş birliklerinin başkentin otoritesinden mi yoksa işgale uğrayan taşra bölgelerinden mi doğduğunu düşününüz.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Osmanlı Mebusan Meclisi'nde 28 Ocak 1920'de kabul edilen, Türk vatanının sınırlarını çizen ve Milli Mücadele'nin temel hedeflerini ortaya koyan tarihî belge aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Amasya Genelgesi",
+          "isCorrect": false,
+          "rationale": "Milli Mücadele'nin amaç, gerekçe ve yöntemini belirleyen ilk ihtilal bildirisi niteliğindedir."
+        },
+        {
+          "text": "Misak-ı Milli",
+          "isCorrect": true,
+          "rationale": "Son Osmanlı Mebusan Meclisi'nde kabul edilen, vatanın bütünlüğünü ve siyasi/ekonomik bağımsızlık şartlarını belirleyen Milli Ant'tır."
+        },
+        {
+          "text": "Teşkilat-ı Esasiye",
+          "isCorrect": false,
+          "rationale": "1921 yılında TBMM tarafından kabul edilen yeni Türk devletinin ilk anayasasıdır."
+        },
+        {
+          "text": "Sened-i İttifak",
+          "isCorrect": false,
+          "rationale": "1808 yılında II. Mahmud ile âyanlar arasında imzalanan belge olup Milli Mücadele ile ilgisi yoktur."
+        }
+      ],
+      "hint": "'Milli Yemin' veya 'Peyman-ı Milli' olarak da bilinen bağımsızlık bildirisini düşününüz.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "TBMM'nin açılmasının ardından Anadolu'da çıkan iç ayaklanmaları bastırmak, meclisin otoritesini sağlamak ve iç huzuru tesis etmek amacıyla 29 Nisan 1920'de çıkarılan kanun aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Takrir-i Sükun Kanunu",
+          "isCorrect": false,
+          "rationale": "Bu kanun 1925 yılında Şeyh Sait İsyanı sonrasında kamu düzenini sağlamak için çıkarılmıştır."
+        },
+        {
+          "text": "Nisab-ı Müzakere Kanunu",
+          "isCorrect": false,
+          "rationale": "TBMM'nin çalışma esaslarını ve toplantı yeter sayısını düzenleyen kanundur."
+        },
+        {
+          "text": "Hıyanet-i Vataniye Kanunu",
+          "isCorrect": true,
+          "rationale": "TBMM'ye karşı çıkan isyanları önlemek, vatan hainliğini cezalandırmak ve otoriteyi korumak için 29 Nisan 1920'de kabul edilmiştir."
+        },
+        {
+          "text": "Men-i Müskirat Kanunu",
+          "isCorrect": false,
+          "rationale": "Savaş döneminde içki imalatı ve tüketimini yasaklamaya yönelik kanundur."
+        }
+      ],
+      "hint": "Meclisin varlığına ve vatanın bütünlüğüne karşı gelen eylemleri cezalandıran yasayı hatırlayınız.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "10 Ağustos 1920'de imzalanan Sevr Barış Antlaşması'nın hukuken geçersiz sayılması ve hiçbir zaman yürürlüğe girememesinin temel nedeni aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "San Remo Konferansı'nda antlaşma şartlarının değiştirilmesi",
+          "isCorrect": false,
+          "rationale": "San Remo Konferansı antlaşmanın şartlarının belirlendiği aşamadır; hukuki geçersizliğin nedeni değildir."
+        },
+        {
+          "text": "Osmanlı Mebusan Meclisi tarafından onaylanmaması ve Ankara Hükûmeti'nce reddedilmesi",
+          "isCorrect": true,
+          "rationale": "Bir uluslararası antlaşmanın geçerli olması için parlamentonun onaylaması gerekir; Mebusan Meclisi kapatıldığı için antlaşmayı onaylayacak yetkili organ kalmamış ve antlaşma hukuken ölü doğmuştur."
+        },
+        {
+          "text": "İtilaf Devletleri'nin antlaşma şartlarında uzlaşmaya varamaması",
+          "isCorrect": false,
+          "rationale": "Müttefik devletler metin üzerinde anlaşarak Osmanlı heyetine antlaşmayı imzalatmışlardır."
+        },
+        {
+          "text": "Yunanistan'ın antlaşmayı imzalamaktan vazgeçmesi",
+          "isCorrect": false,
+          "rationale": "Yunanistan antlaşmayı ilk onaylayan ve elde ettiği toprakları işgale başlayan devletlerden biridir."
+        }
+      ],
+      "hint": "Bir uluslararası antlaşmanın anayasal olarak yürürlüğe girmesi için meclis onayından geçmesi gerekliliğini düşününüz.",
+      "type": "multiple_choice"
+    }
+  ]
+}

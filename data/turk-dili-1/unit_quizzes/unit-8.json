@@ -1,0 +1,331 @@
+{
+  "unit": 8,
+  "unitTitle": "Türkçenin Güncel Sorunları",
+  "title": "Türkçe Bilgi Sınavı",
+  "questions": [
+    {
+      "question": "Türkçenin 'yazıldığı gibi okunan ve okunduğu gibi yazılan bir dil' olduğu yönündeki yaygın inanışın doğru olmadığını gösteren durum aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "'Söyleyeyim' sözcüğünün ölçünlü konuşma dilinde 'söyliyim' biçiminde telaffuz edilmesi.",
+          "isCorrect": true,
+          "rationale": "Ölçünlü Türkçe söyleyişinde yazım kuralları ile seslendirme arasında belirgin farklar bulunabilmekte, bazı sözcükler yazıldığından farklı telaffuz edilmektedir."
+        },
+        {
+          "text": "Sosyal medyada sesli harflerin kullanılmadan yazışılması.",
+          "isCorrect": false,
+          "rationale": "Bu durum yazımdaki bir özensizlik veya iletişim alışkanlığı olup kelimenin doğal ve ölçünlü sesletim kurallarıyla doğrudan ilgili değildir."
+        },
+        {
+          "text": "Yabancı kökenli terimlerin dilimize ses uyumlarına aykırı biçimde girmesi.",
+          "isCorrect": false,
+          "rationale": "Kelime kökenindeki farklılıklar ve ses uyumu aykırılıkları söyleyiş-yazım arasındaki doğrudan sesletim ilkesinden ziyade söz varlığıyla ilgilidir."
+        },
+        {
+          "text": "Günlük hayatta kullanılan kelime sayısının sözlükteki toplam söz varlığından az olması.",
+          "isCorrect": false,
+          "rationale": "Bu durum konuşma ve yazıda kelime hazinesinin kısıtlılığına işaret eder, ses ile harf arasındaki karşılığa ilişkin bir kanıt sunmaz."
+        }
+      ],
+      "hint": "Yazı dili ile ölçünlü konuşma dili arasındaki telaffuz farklarını düşününüz.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Türkçenin öğretim ve bilim dili olarak gelişmesini olumsuz etkileyen durumlardan biri olan yabancı dil eğitimiyle ilgili temel yanlışlık aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Yabancı dili bir ders olarak öğretmek yerine, derslerin yabancı bir dille (örneğin İngilizce) okutulması.",
+          "isCorrect": true,
+          "rationale": "Eğitim ve öğretim dilinin yabancılaştırılması, kavramların Türkçe ile işlenmesini önleyerek dilin bilim dili olarak gelişimine engel oluşturur."
+        },
+        {
+          "text": "Yabancı dil eğitimine erken yaşlarda değil yalnızca yükseköğretim düzeyinde başlanması.",
+          "isCorrect": false,
+          "rationale": "Eğitim kademesiyle ilgili bu durum dilin öğretim dili haline getirilmesinin yarattığı yapısal engeli açıklamaz."
+        },
+        {
+          "text": "Öğrencilerin sadece tek bir yabancı dili öğrenmeye yönlendirilip ikinci dili seçememesi.",
+          "isCorrect": false,
+          "rationale": "Birden fazla dil öğrenimi bireysel bir imkân olup Türkçenin eğitim dili olmaktan çıkarılması sorununu doğrudan temsil etmez."
+        },
+        {
+          "text": "Yabancı dildeki dil bilgisi kurallarının ezbere dayalı biçimde öğretilmesi.",
+          "isCorrect": false,
+          "rationale": "Metodolojik bir eksiklik olan bu yaklaşım, Türkçenin bilim ve öğretim dili olmaktan uzaklaştırılması sonucunu doğurmaz."
+        }
+      ],
+      "hint": "Yabancı dilin bir öğretim konusu olması ile öğretim vasıtası yapılması arasındaki farkı dikkate alınız.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "İş yerlerinde 'Rainbow Kasabı' veya 'Börek Center' gibi adların tercih edilmesi ve ürün kullanım kılavuzlarında Türkçeye yer verilmemesi hangi soruna işaret eder?",
+      "answerOptions": [
+        {
+          "text": "İş yaşamında Türkçenin göz ardı edilmesi ve yabancılaşma eğiliminin artması.",
+          "isCorrect": true,
+          "rationale": "Ticari alandaki yabancı ad ve tabela kullanımı, dildeki yabancılaşmanın iş hayatına ve günlük kültüre yansımasını gösterir."
+        },
+        {
+          "text": "Konuşma ve yazı dilindeki söyleyiş farklılıklarının derinleşmesi.",
+          "isCorrect": false,
+          "rationale": "Bu durum kelimelerin telaffuz özellikleriyle değil, iş yeri ve ticari isimlerdeki dil tercihiyle ilgilidir."
+        },
+        {
+          "text": "Dilin köken bakımından farklı dil aileleriyle etkileşime girmesi.",
+          "isCorrect": false,
+          "rationale": "Tarihsel dil etkileşimleri doğal bir süreçken, ticari mekân adlarındaki bilinçli yabancılaşma güncel bir kullanım sorunudur."
+        },
+        {
+          "text": "Türkçedeki eklerin yeni kavramları karşılamada yetersiz kalması.",
+          "isCorrect": false,
+          "rationale": "Bu tutum Türkçe eklerin yetersizliğinden ziyade toplumsal prestij ve özentiden kaynaklanmaktadır."
+        }
+      ],
+      "hint": "Tabela ve ticari işletme isimlerindeki dille ilgili tercihler üzerine odaklanınız.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Büyük Türkçe Sözlük'te yüz binlerce söz varlığı bulunmasına karşın, gündelik hayatta kısıtlı sayıda sözcükle iletişim kurulmasının doğurduğu temel sonuç aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Duygu ve düşüncelerin tam aktarılamaması neticesinde yanlış anlamalar ve iletişimsizlik yaşanması.",
+          "isCorrect": true,
+          "rationale": "Kelime hazinesinin daralması, bireylerin karmaşık düşünce ve duyguları ifade etme yeteneğini sınırlandırarak iletişim kopukluklarına yol açar."
+        },
+        {
+          "text": "Dildeki nedensizlik ilkesinin ve ses kurallarının geçersiz kılınması.",
+          "isCorrect": false,
+          "rationale": "Nedensizlik ilkesi dilin temel yapısal bir özelliği olup kullanılan kelime miktarının azlığıyla değişmez."
+        },
+        {
+          "text": "Standart (ölçünlü) dil ile bölgesel ağızlar arasındaki sınırların ortadan kalkması.",
+          "isCorrect": false,
+          "rationale": "Ağız çeşitliliği coğrafi ve toplumsal etkenlere bağlıdır; genel kelime kısırlığı ağızları ortadan kaldırmaz."
+        },
+        {
+          "text": "Dilin yapısal olarak bitişkenlik özelliğini kaybedip bükümlü hale gelmesi.",
+          "isCorrect": false,
+          "rationale": "Söz varlığının daralması dilin tipolojik ve gramer yapısında bir değişikliğe sebep olmaz."
+        }
+      ],
+      "hint": "Kelime hazinesinin yetersizliğinin bireyler arası duygu ve düşünce aktarımına etkisini değerlendiriniz.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "İnsan dillerinin doğuşunu, insanların doğadaki sesleri taklit etmesi esasına dayandıran dil doğuş kuramı aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Yansıma kuramı",
+          "isCorrect": true,
+          "rationale": "Bu kuram, ilk kelimelerin doğadaki nesne, hayvan ve doğa seslerinin benzetilmesi ve taklit edilmesiyle ortaya çıktığını savunur."
+        },
+        {
+          "text": "Ünlem kuramı",
+          "isCorrect": false,
+          "rationale": "Bu kuram dillerin kaynağını doğa seslerinin taklidine değil, insanların korku, sevinç gibi duygularla çıkardığı seslere bağlar."
+        },
+        {
+          "text": "Ding dong kuramı",
+          "isCorrect": false,
+          "rationale": "Bu yaklaşım nesnelerin insan zihninde uyandırdığı doğal titreşim ve izlenimlerden hareket eder."
+        },
+        {
+          "text": "Güneş dil kuramı",
+          "isCorrect": false,
+          "rationale": "Türkçenin dünya dillerinin kökeninde yer aldığını ileri sürer, genel bir doğa sesi taklidi tezi değildir."
+        }
+      ],
+      "hint": "Doğadaki seslerin taklit edilmesiyle türeyen sözcük gruplarını hatırlayınız.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "VIII-XVII. yüzyıllar arasında Doğu Türkistan'dan İstanbul'a kadar geniş bir coğrafyada kullanılan ve Soğut alfabesinden geliştirilmiş olan alfabe aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Uygur alfabesi",
+          "isCorrect": true,
+          "rationale": "Soğut alfabesinden türetilen ve 18 harften oluşan bu alfabe, uzun süre geniş bir kültür çevresinde kullanılmıştır."
+        },
+        {
+          "text": "Köktürk alfabesi",
+          "isCorrect": false,
+          "rationale": "Türklerin bilinen ilk düzenli alfabesi olup Soğut kaynaklı değil, yerli ve orijinal işaret sistemine dayanır."
+        },
+        {
+          "text": "Brahmi alfabesi",
+          "isCorrect": false,
+          "rationale": "Hint kökenli bir alfabe olup Türkler tarafından sınırlı alanlarda ve Budist metinlerde kullanılmıştır."
+        },
+        {
+          "text": "Arap alfabesi",
+          "isCorrect": false,
+          "rationale": "Samî dil ailesine ait bir alfabe olup Türklerin İslamiyet'i kabulüyle yaygınlaşan bir sistemdir."
+        }
+      ],
+      "hint": "Soğut yazısından geliştirilen ve Göç Destanı gibi eserlerin aktarımında kullanılan alfabeyi düşününüz.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Genç Kalemler dergisinde başlatılan Yeni Lisan hareketinin dille ilgili benimsediği ilkeler göz önüne alındığında, aşağıdakilerden hangisi bu hareketin prensiplerinden biri değildir?",
+      "answerOptions": [
+        {
+          "text": "Dildeki eksiklikleri kapatmak amacıyla diğer Türk lehçelerinden kelimeler aktarmak.",
+          "isCorrect": true,
+          "rationale": "Yeni Lisan hareketi, zorunlu olmadıkça diğer Türk lehçelerinden sözcük taşınmasını ilke olarak reddetmiştir."
+        },
+        {
+          "text": "Yazı dilini konuşma diline yaklaştırıp İstanbul halkının konuştuğu dili esas almak.",
+          "isCorrect": false,
+          "rationale": "Hareketin temel hedeflerinden biri konuşma dili ile yazı dili arasındaki uçurumu kapatarak İstanbul Türkçesini esas almaktır."
+        },
+        {
+          "text": "Arapça ve Farsça dil bilgisi kurallarını ve tamlamaları terk etmek.",
+          "isCorrect": false,
+          "rationale": "Dildeki yabancı dil bilgisi kaidelerinin çıkarılması sadeleşme programının ana maddelerinden biridir."
+        },
+        {
+          "text": "Dilimize yerleşmiş yabancı kelimeleri Türkçedeki söylenişlerine göre yazmak.",
+          "isCorrect": false,
+          "rationale": "Yaygınlaşmış ve Türkçeleşmiş yabancı sözcüklerin imlasında halkın telaffuzunun esas alınması ilkesi benimsenmiştir."
+        }
+      ],
+      "hint": "Ömer Seyfettin ve arkadaşlarının başka Türk lehçelerinden kelime alma konusundaki tutumunu anımsayınız.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Süreksiz bir ünsüzün sürekli bir ünsüze dönüşmesi olayına 'süreklileşme' denir. Buna göre 'öpke > öfke' sözcük değişiminde görülen ses olayı aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Süreklileşme",
+          "isCorrect": true,
+          "rationale": "Patlamalı ve süreksiz bir ünsüz olan /p/ sesinin sızıcı ve sürekli bir ünsüz olan /f/ sesine dönüşmesi süreklileşme örneğidir."
+        },
+        {
+          "text": "Ötümlüleşme",
+          "isCorrect": false,
+          "rationale": "Ötümlüleşme, tonlu/ötümlü olmayan bir ünsüzün ötümlü hale gelmesidir; buradaki temel değişim sızıcılaşmadır."
+        },
+        {
+          "text": "Ön damaksıllaşma",
+          "isCorrect": false,
+          "rationale": "Ön damaksıllaşma art damak seslerinin ön damak bölgesine kaymasıyla ilgilidir, ünsüzün sürekli hale gelmesiyle açıklanamaz."
+        },
+        {
+          "text": "Ünsüz tekleşmesi",
+          "isCorrect": false,
+          "rationale": "Çift ünsüzlerin teke düşmesini ifade eden bu olay, /p/ sesinin /f/ sesine dönüşümüyle örtüşmez."
+        }
+      ],
+      "hint": "Patlamalı (süreksiz) bir sesin sızıcı (sürekli) bir sese dönüşme durumunu dikkate alınız.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Osmanlı Dönemi'nin sonlarında Şemsettin Sami tarafından hazırlanan ve Türkçenin en yetkin sözlüklerinden biri kabul edilen eser aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Kamus-ı Türkî",
+          "isCorrect": true,
+          "rationale": "Şemsettin Sami'nin kaleme aldığı Kamus-ı Türkî, Türkçe sözlükçülük tarihinin en önemli köşe taşlarından biridir."
+        },
+        {
+          "text": "Divanu Lugati't-Türk",
+          "isCorrect": false,
+          "rationale": "Kaşgarlı Mahmut tarafından XI. yüzyılda Arapça olarak kaleme alınmış ilk Türkçe sözlüktür."
+        },
+        {
+          "text": "Muhakemetü'l-Lügateyn",
+          "isCorrect": false,
+          "rationale": "Ali Şir Nevayi tarafından Türkçe ile Farsçayı karşılaştırmak amacıyla yazılmış bir eserdir."
+        },
+        {
+          "text": "Kavaid-i Osmaniyye",
+          "isCorrect": false,
+          "rationale": "Ahmet Cevdet Paşa ve Fuat Paşa tarafından kaleme alınmış bir dil bilgisi (gramer) kitabıdır."
+        }
+      ],
+      "hint": "19. yüzyıl sonlarında Türkçe kelimelere geniş yer vererek hazırlanan başyapıtı düşününüz.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Dünya dilleri yapı bakımından incelendiğinde, kök değişmeden kelime türetme ve çekim eklerinin kökün sonuna eklenmesi esasına dayanan Türkçe hangi dil grubunda yer alır?",
+      "answerOptions": [
+        {
+          "text": "Bitişken (eklemeli) diller",
+          "isCorrect": true,
+          "rationale": "Bitişken dillerde kelime kökleri sabit kalır ve gramer işlevleri köke eklenen yapım ve çekim ekleriyle sağlanır."
+        },
+        {
+          "text": "Yalınlayan diller",
+          "isCorrect": false,
+          "rationale": "Çince gibi yalınlayan dillerde ek bulunmaz, kelimeler biçim değiştirmeden cümledeki sırasına göre anlam kazanır."
+        },
+        {
+          "text": "Çekimli (bükümlü) diller",
+          "isCorrect": false,
+          "rationale": "Arapça ve Hint-Avrupa dilleri gibi bükümlü dillerde türetme sırasında kök içi ses değişimleri yaşanır."
+        },
+        {
+          "text": "İzole diller",
+          "isCorrect": false,
+          "rationale": "İzole diller bilinen hiçbir dil ailesiyle akrabalığı kanıtlanamamış dillerdir, yapı sınıflandırması terimi değildir."
+        }
+      ],
+      "hint": "Kökün değişmeyip eklerin sıralanması esasına dayalı tipolojik grubu hatırlayınız.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Cumhuriyet Dönemi'nde Türk dilinin özleştirilmesi ve bilimsel yöntemlerle incelenip geliştirilmesi amacıyla kurulan Türk Dil Kurumu hangi tarihte faaliyete geçmiştir?",
+      "answerOptions": [
+        {
+          "text": "12 Temmuz 1932",
+          "isCorrect": true,
+          "rationale": "Türk Dil Kurumu, Atatürk'ün direktifleriyle 12 Temmuz 1932 tarihinde kurulmuştur."
+        },
+        {
+          "text": "1 Kasım 1928",
+          "isCorrect": false,
+          "rationale": "Bu tarih Harf Devrimi'nin gerçekleştiği ve Yeni Türk Harflerinin Kabulü Kanunu'nun çıkarıldığı tarihtir."
+        },
+        {
+          "text": "1926 Bakü Türkoloji Kongresi",
+          "isCorrect": false,
+          "rationale": "Azerbaycan'da toplanan ve Türk halklarının ortak alfabe kullanımı kararlarının tartışıldığı kongredir."
+        },
+        {
+          "text": "10 Mart 1933",
+          "isCorrect": false,
+          "rationale": "TDK'nin kuruluş tarihi olmayıp Cumhuriyet dönemi kültür çalışmalarının yürütüldüğü takvimdeki farklı bir tarihtir."
+        }
+      ],
+      "hint": "1932 yılında Atatürk öncülüğünde kurulan cemiyetin kuruluş gün ve ayını hatırlayınız.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Günümüz teknolojisinde 'bilgisayar' ve 'gerilim' gibi başarılı Türkçe terim türetmelerine karşın, bilimsel çalışmalarda yabancı terimlerin olduğu gibi kullanılması dil açısından hangi olumsuz sonucu doğurur?",
+      "answerOptions": [
+        {
+          "text": "Türkçenin bilim dili olarak gelişmesini ve yetkinleşmesini engeller.",
+          "isCorrect": true,
+          "rationale": "Bilimsel kavramların Türkçe terimlerle karşılanmaması dilin işlenme kapasitesini sınırlar ve terim yabancılaşmasına yol açar."
+        },
+        {
+          "text": "Dildeki eklerin türetme gücünün tamamen ortadan kalkmasına neden olur.",
+          "isCorrect": false,
+          "rationale": "Yabancı terim kullanımı dilin ek yapısını yok etmez, ancak Türkçe türetme potansiyelinin hayata geçirilmesini kısıtlar."
+        },
+        {
+          "text": "Ağızlar ile ölçünlü dil arasındaki ses farklarının silinmesine yol açar.",
+          "isCorrect": false,
+          "rationale": "Terim düzeyindeki yabancılaşma coğrafi söyleyiş ve ağız farklarıyla doğrudan ilgili değildir."
+        },
+        {
+          "text": "Sözcüklerin köken yapısını tamamen değiştireceğinden dilin ailesini değiştirir.",
+          "isCorrect": false,
+          "rationale": "Terim alıntıları dilin ait olduğu dil ailesini veya genetik kökenini değiştiremez."
+        }
+      ],
+      "hint": "Yabancı terim egemenliğinin dilin yüksek öğretim ve araştırma alanlarındaki imkânlarına etkisini düşününüz.",
+      "type": "multiple_choice"
+    }
+  ]
+}

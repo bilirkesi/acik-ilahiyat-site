@@ -40,34 +40,152 @@ Bu bölümün içinde yaşadığı ders paneli: [Atatürk İlkeleri ve İnkılap
 
 # Kaynak Temellendirme
 
-Bu ünitede öğrenciler ve kendini geliştirmek isteyen okuyucular, İkinci Meşrutiyet Dönemi'nden Birinci Dünya Savaşı'na uzanan süreçte Osmanlı Devleti'nin yaşadığı siyasi dönüşümleri, iç çalkantıları ve yıkıcı savaşları öğrenmektedir.
+## 2. İkinci Meşrutiyet Dönemi, 31 Mart Vakası ve Yıkıcı Savaşlar
 
-Öğrenme hedefleri doğrultusunda elde edilen kazanımlar şu şekildedir:
+İkinci Meşrutiyet'in ilanı sonrasında İttihat ve Terakki Cemiyeti'nin iktidara gelişi ve 31 Mart Vakası Osmanlı siyasi hayatında köklü değişimlere yol açmıştır. Bu siyasi çalkantıların ardından başlayan Trablusgarp ve Balkan Savaşları, imparatorluğun Kuzey Afrika ile Rumeli'deki varlığına son vererek büyük toprak kayıplarına neden olmuştur. Yaşanan bu askeri felaketler, Osmanlı Devleti'ni Birinci Dünya Savaşı'na sürükleyen süreci hızlandırmıştır.
 
-### 1. İkinci Meşrutiyet'in İlanı ve 31 Mart Vakası'nın Osmanlı Siyasi Yapısındaki Etkileri
+### Öğrenme hedefleri
+- İkinci Meşrutiyet'in ilanı ve 31 Mart Vakası'nın Osmanlı siyasi yapısındaki etkilerini açıklayabilme.
+- İttihat ve Terakki Cemiyeti'nin iktidara gelme sürecini ve tek parti yönetimi oluşturma çabalarını kavrayabilme.
+- Trablusgarp ve Balkan Savaşları'nın nedenlerini, sonuçlarını ve Osmanlı Devleti üzerindeki yıkıcı etkilerini değerlendirebilme.
 
-* Öğrenci, 23 Temmuz 1908 tarihinde İkinci Meşrutiyet'in yeniden ilan edilmesinde en büyük rolün İttihat ve Terakki Cemiyeti'ne ait olduğunu öğrenir [1, 2].
-* 13 Nisan 1909'da patlak veren 31 Mart Vakası'nın, Meşrutiyet yönetimine ve İttihat ve Terakki Cemiyeti'nin nüfuzuna karşı gelişen tepkiler sonucunda ortaya çıktığını kavrar [1]. Serbesti Gazetesi Başyazarı Hasan Fehmi'nin öldürülmesiyle yükselen gerilimin ardından, Avcı Taburlarına bağlı askerler ile medrese öğrencilerinin katılımıyla şeriat talepli büyük bir ayaklanma yaşandığı görülür [1, 3].
-* Ayaklanmayı bastırmak amacıyla Rumeli'de oluşturulan Hareket Ordusu'nun İstanbul'a girerek denetimi sağladığını ve Şeyhülislam fetvasıyla Sultan II. Abdülhamid'in tahttan indirilip yerine V. Mehmet Reşat'ın geçirildiğini öğrenir [4, 5].
-* Bu olaylar neticesinde Osmanlı siyasi yapısında sarayın ve padişahın belirleyici rolünün sona erdiğini, devlet yönetiminde Bâb-ı Âlî bürokrasisi ile İttihat ve Terakki egemenliğinin kesinleştiğini analiz eder [5, 6].
+### Bölüm 2: Yeni Bir İktidar, Yıkıcı ve Yıpratıcı Savaşlar Dönemi
+*AÖF ders kitabı, Bölüm 2, PDF sayfa ~42-81.*
 
-### 2. İttihat ve Terakki Cemiyeti'nin İktidara Gelme Süreci ve Tek Parti Yönetimi Oluşturma Çabaları
+Anahtar Sözcükler: • Meşrutiyet • Meclis-i Mebusan • İttihat ve Terakki • 31 Mart • Trablusgarp
+• Birinci Dünya Savaşı • Çanakkale • Suriye • Filistin • Hicaz • Yemen • Kafkasya • Anadolu
+• Galiçya • Enver Paşa
+öğrenme çıktıları
+II. Meşrutiyet’ten Birinci Dünya Savaşı’na
+Giden Süreçte Osmanlı Devleti
+1	 II. Meşrutiyet’ten Birinci Dünya Savaşı’na
+giden süreçte Osmanlı Devleti’nde
+yaşananları kavrayabilme
+Büyük Hesaplaşma veya Osmanlı
+Devleti’nin Son Savaşı: Birinci Dünya Savaşı
+2	 Birinci Dünya Savaşı’nda Osmanlı
+cephelerinde yaşananları kavrayabilme
+Birinci Dünya Savaşı Sonunda Mağlup
+Devletlerle Yapılan Antlaşmalar
+3	 Birinci Dünya Savaşı sonunda yapılan
+antlaşmaları değerlendirebilme ⟦1⟧
 
-* Öğrenci, cemiyetin 1889 yılında Tıp Fakültesi öğrencileri tarafından kurulduğunu, zamanla Ahmet Rıza ve Prens Sabahattin gibi liderlerin çevresinde farklı siyasi görüşlere ayrıldığını öğrenir [7, 8].
-* Doktor Bahaettin Şakir'in girişimleriyle yeniden yapılanan yapının Selanik'teki Osmanlı Hürriyet Cemiyeti ile birleşerek orduda ve Rumeli coğrafyasında güçlü bir teşkilatlanma kurduğunu kavrar [9].
-* Reval Görüşmelerinin yarattığı kaygılarla Meşrutiyet'in ilanını sağlayan cemiyetin, 1908 seçimlerinin ardından doğrudan iktidara geçmek yerine ilk etapta bir denetleme organı gibi hareket ettiğini görür [2, 6].
-* Balkan Savaşı'ndaki büyük felaket üzerine 23 Ocak 1913'te Bâb-ı Âlî Baskını adı verilen darbeyi gerçekleştiren cemiyetin, Sadrazam Mahmut Şevket Paşa suikastı sonrasında muhalefeti tamamen sindirerek otoriter bir tek parti yönetimi kurduğunu öğrenir [6].
-* İttihat ve Terakki'nin Meclis-i Mebusan'ı devre dışı bırakarak Osmanlı Devleti'nin Birinci Dünya Savaşı'na girmesi gibi hayati kararları tek başına aldığını, ayrıca Teşkilat-ı Mahsusa gibi yapılar ve esnaf örgütlenmeleri üzerinden devlet ve toplum üzerinde tam bir denetim sağladığını kavrar [6, 10].
+**SÜREÇTE OSMANLI DEVLETİ**
 
-### 3. Trablusgarp ve Balkan Savaşları'nın Nedenleri, Sonuçları ve Osmanlı Devleti Üzerindeki Yıkıcı Etkileri
+23 Temmuz 1908’de II. Meşrutiyet’in ilan edil­
+mesinde hiç şüphe yok ki en büyük rol, İttihat ve
+Terakki Cemiyetine aitti. Yakın dönem tarihimizde
+Rumi tarihle 31 Mart 1325’te (13 Nisan 1909) mey­
+dana gelen 31 Mart Vakası, İttihat ve Terakki Ce­
+miyetine bir tepki olarak başlamıştır. Meşrutiyet’in
+ilanından sonra 31 Mart Vakası’na kadar olan sü­
+reçteki gelişmeler kısaca şunlardı: Meşrutiyet ilan
+edildikten sonra Cemiyet, kurulan hükûmetlere
+girmemiş, ancak sık sık müdahalelerde bulunmuş­
+tur. Bu durum aynı zamanda İttihat ve Terakki’ye
+muhalefeti de artırmıştı. Bu tepki üzerine 14 Eylül
+1908’de İttihat ve Terakki karşıtları tarafından Ah­
+rar Fırkası kurulmuştur. Fırkayı, Prens Sabahattin’in
+çevresiyle muhafazakâr kesimler desteklemekteydi.
+II. Meşrutiyet’in ilanından sonra, 5 Ekim 1908’de
+Avusturya-Macaristan Bosna-Hersek’i, Yunanistan
+Girit’i sınırlarına katmış, Bulgaristan ise bağımsız­
+lığını ilan etmiştir. Bu gelişmeler ve İstanbul’daki si­
+yasi istikrarsızlık, muhalefetin özellikle basın yoluyla
+şiddetini arttırmasına sebep olduğu gibi İttihatçı­
+ların itibarını da zedelemiş, Meşrutiyet’in hemen
+ardındaki coşku yerini derin bir hayal kırıklığına
+bırakmıştır. Bu gelişmeler karşısında kendilerini
+güvende hissetmeyen İttihatçılar, Üçüncü Ordu­
+ya bağlı Avcı Taburlarını Meşrutiyet’in muhafazası
+ve İstanbul’un güvenliği gerekçesiyle 19 Ekim’de
+Selanik’ten İstanbul’a getirtmişlerdir.
+31 Mart Vakası (13 Nisan 1909 İsyanı)
+Kâmil Paşa hükûmetinin İttihatçıların baskıları
+sonucunda bir gensoru ile düşürülmesinden sonra
+14 Şubat 1909’da İttihat ve Terakki’ye yakın Hüse­
+yin Hilmi Paşa sadrazam olmuştur. 7 Nisan’da İtti­
+hatçılara sert eleştiriler yönelten Serbestî gazetesinin
+başyazarı Hasan Fehmi’nin Galata Köprüsü’nde fa­
+ili meçhul bir cinayete kurban gitmesi tansiyonun
+yükselmesine sebep olmuştur. Hasan Fehmi’nin
+ertesi gün yapılan cenaze töreni İttihatçılara karşı
+olan büyük kitlelerin katıldığı tam bir tepki göste­
+risine dönüşmüştür (Özcan, 2007). Öyle ki döne­
+min en büyük gazetelerinden İkdam’a göre Hasan
+Fehmi Bey’in cenazesine 30-40 bin kişi katılmıştır
+(Özçelik, 2001). Hasan Fehmi Bey’in öldürülmesi,
+dönemin Volkan, Serbestî ve Mizan gibi gazeteleri­
+nin körüklediği büyük bir gerilime de yol açmıştır.
+Cenazenin kaldırılmasından beş gün sonra 13
+Nisan 1909’da bir ayaklanma çıkmıştır. İttihatçı­
+ların ve Meşrutiyet aleyhtarı söylemlerin yoğun
+propagandası altında kalan IV. Avcı Taburuna bağ­
+lı askerler, şeriat talebiyle ayaklanarak subaylarını
+hapsetmişler, V., VI. ve VII. Nizamiye askerleriyle
+Beyoğlu Topçu Alayındaki askerleri de yanlarına
+alıp Ayasofya Meydanı’na gelerek Meclis-i Mebu­
+san önünde toplanmışlardır. Ellerinde beyaz, yeşil
+ve kırmızı bayraklar bulunan 3-4 bin civarındaki
+isyancılara başta Volkan gazetesi sahibi Derviş Vah­
+deti olmak üzere İttihad-ı Muhammedi Cemiyeti
+üyeleriyle Beyazıt ve Fatih medreselerinin bazı ta­
+lebeleri de katılmıştır (Karal, 2011; Uçarol, 1995;
+Tanör, 2006). Bu sırada isyancılara direnen ya da
+yaptıklarının yanlış olduğunu söyleyen asker ve il­
+miye mensubu bazı kişiler de öldürülmüştür.
+31 Mart Vakası olarak adlandırılan olay
+Rumi takvime göre 31 Mart 1325 tari­… ⟦2⟧
 
-* Öğrenci, Trablusgarp Savaşı'nın siyasi birliğini geç tamamlayan İtalya'nın sömürge arayışı doğrultusunda Osmanlı toprağı olan Libya'yı işgale girişmesiyle başladığını öğrenir [11, 12].
-* Osmanlı Devleti'nin kara bağlantısı olmaması sebebiyle Enver Bey ve Mustafa Kemal Bey gibi gönüllü vatansever subayların bölgeye giderek yerli halkı örgütlediğini ve İtalyan ilerleyişini karada durdurduğunu kavrar [13, 14]. Ancak İtalya'nın Rodos ve On İki Ada'yı işgal etmesi ve ardından Balkan Savaşı'nın çıkması üzerine imzalanan Uşi Antlaşması ile Kuzey Afrika'daki son Osmanlı toprağının kaybedildiğini görür [14, 15].
-* Birinci Balkan Savaşı'nın Rusya'nın teşvikiyle Sırbistan, Bulgaristan, Yunanistan ve Karadağ'ın Osmanlı'ya karşı ittifak kurması sonucu patlak verdiğini öğrenir [16, 17].
-* Savaş öncesinde tecrübeli askerlerin terhis edilmiş olması, altyapı yetersizliği ve subaylar arasındaki siyasi çekişmeler sebebiyle Osmanlı ordusunun ağır bir yenilgi aldığını; Midye-Enez hattının batısında kalan Edirne dâhil hemen bütün Rumeli topraklarının ve Ege Adalarının kaybedildiğini analiz eder [17-20].
-* Ele geçirilen toprakların paylaşılamaması nedeniyle İkinci Balkan Savaşı'nın çıktığını, Osmanlı Devleti'nin bu durumdan yararlanarak Edirne'yi geri aldığını ancak sonuçta altı asırlık Rumeli hakimiyetinin sona erdiğini, kitlesel Türk göçlerinin yaşandığını ve küresel savaş bloklaşmalarının hızlandığını öğrenir [19-22].
+**II. Abdülhamit Dönemi’nde kadroların**
 
-💡 İkinci Ünite konularını pekiştirmek için dönemdeki siyasi olaylar ve savaşlar kronolojisini içeren görsel bir özet veya soru bankası hazırlamamı ister misiniz?
+eski imtiyaz ve itibarlarını kaybetmeleri,
+Bürokraside geniş çaplı bir tasfiyeye gidile­
+rek İttihatçıların kendi kadrolarını iş başına
+getirmeleri,
+İlmiye mensuplarının tayin ve terfilerinde
+imtihan usulünün gündeme getirilmesi,
+İttihat ve Terakki ile Ahrar Fırkası mensup­
+larının iktidarı ele geçirme mücadeleleri,
+İttihatçıların, muhaliflerine hayat hakkı ta­
+nımayan baskıcı davranışları ve suikastlar,
+İttihatçıların kozmopolit yapıları, masonluk­
+la suçlanmaları ve dine ve dinî geleneğe karşı
+tavırlarından duyulan rahatsızlıklardır.
+İstanbul dışında Bursa, Erzincan, Erzurum ve
+Adana gibi vilayetlere de sıçrayan 31 Mart Olay­
+ları onbir gün sürmüştür. İşgal edilen Meclis-i
+Mebusan’da da ifade edildiği üzere isyancıların baş­
+lıca talepleri şunlardı:
+Hüseyin Hilmi Paşa hükûmetinin istifası,
+Kâmil Paşa’nın sadarete, İsmail Kemal’in
+Meclis-i Mebusan başkanlığına getirilmesi,
+İttihatçı subayların değiştirilmesi,
+Ordudan tasfiye edilen alaylı subayların
+geri dönmesi,
+İttihat ve Terakki’nin ilgası,
+Şeriat hükümlerinin tamamen uygulanması,
+İsyana katılanlar için af çıkarılması (Uçarol,
+1995).
+Karar alacak çoğunluğu bulunmadığı hâlde is­
+yancıların tehdidi altında kalan Meclis, bu talepleri
+kabul etmek zorunda kalmıştır. Taleplerle ilgili bir
+Mebusan Beyannamesi ilan edilmiştir. Bir telgrafla… ⟦3⟧ ⟦4⟧ ⟦5⟧ ⟦6⟧
+
+### İlgili çıkmış vize soruları
+Metindeki ⟦n⟧ işaretleri bu listeye açılır. Alıntıya tıklayınca çözüm rehberinde soru açılır ve çözümü vurgulanır.
+- [1] **2025/2026 · Soru 5**: Ahmet Rıza Bey, 1895’te bir nizamname hazırlayarak Cemiyetin amaç, örgütlenme ve takip edeceği siyaseti belirlemiş ve etki alanını genişletm
+- [2] **2025/2026 · Soru 11**: İzmir'in Yunanistan'a katılmasını reddetmek için kurulmuş, ardından 17-19 Mart 1919 tarihleri arasında “Büyük İzmir Kongresi” toplanmıştır.
+- [3] **2025/2026 · Soru 14**: Aşağıdakilerden hangisi 31 Mart Vakası sırasında yaşananlardan biri değildir?
+- [4] **2025/2026 · Soru 17**: Aşağıdakilerden hangisi 23 Temmuz-7 Ağustos 1919 tarihleri arasında toplanan Erzurum Kongresi’nde alınan kararlardan biri değildir?
+- [5] **2025/2026 · Soru 22**: Osmanlı Devleti’nden aldıkları toprakları paylaşamayan Balkan devletlerinin kendi aralarında yaptıkları bir savaştır. Savaşın sebebi Osmanlı
+- [6] **2025/2026 · Soru 29**: Osmanlı merkez vilayetlerinde bir süvari birliğini ve askerî-idarî hiyerarşiyi desteklemek amacıyla yapılan ve miras yoluyla geçmeyen tahsis
+- [7] **2025/2026 · Soru 33**: Aşağıdakilerden hangisi 31 Mart (13 Nisan 1909) Ayaklanması'nın nedenlerinden biri değildir?
+- [8] **2025/2026 · Soru 34**: İttihat ve Terakki Cemiyeti ile ilgili aşağıdaki ifadelerden hangisi yanlıştır?
+- [9] **2025/2026 · Soru 39**: Aşağıdakilerden hangisi 4-11 Eylül 1919 tarihleri arasında toplanan Sivas Kongresi’nde alınan kararlardan biri değildir?
+- [10] **2025/2026 · Soru 54**: aynı zamanda mirî arazi sisteminin işleyişinde, köylü-çiftçilerin statüleri ve ödeyecekleri verginin belirlenmesinde ve imparatorluğun klasi
+- [11] **2024/2025 · Soru 17**: Aşağıdakilerden hangisi Sivas Kongresi'nde yer alan esaslardan biri değildir?
+- [12] **2024/2025 · Soru 23**: Aşağıdakilerden hangisi Irak Cephesi'nde yaşanan muharabelerden biridir?
 
 # Kaynaklar
 

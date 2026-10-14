@@ -1,0 +1,385 @@
+{
+  "unit": 3,
+  "unitTitle": "Ses Bilgisi",
+  "title": "Ses Bilgisi Testi",
+  "questions": [
+    {
+      "question": "Konuşurların sesleri nasıl ürettiğini, ciğerlerden gelen havanın ses organlarında uğradığı değişiklikleri ve oluşum noktalarını inceleyen ses bilgisi alt dalı aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Söyleyiş ses bilgisi",
+          "isCorrect": true,
+          "rationale": "Konuşanın ses organlarını kullanarak sesleri üretme ve boğumlama sürecini doğrudan inceleyen alan söyleyiş ses bilgisidir."
+        },
+        {
+          "text": "Akustik ses bilgisi",
+          "isCorrect": false,
+          "rationale": "Bu alan seslerin fiziksel olarak havada nasıl yol aldığını ve ses dalgalarının özelliklerini inceler."
+        },
+        {
+          "text": "İşitsel ses bilgisi",
+          "isCorrect": false,
+          "rationale": "Bu alt dal seslerin dinleyen kişinin kulağı ve beyni tarafından nasıl algılandığını konu edinir."
+        },
+        {
+          "text": "Tarihî ses bilgisi",
+          "isCorrect": false,
+          "rationale": "Bu alan dilin ses yapısının tarihsel süreç içerisindeki evrimini ve değişimlerini inceler."
+        }
+      ],
+      "hint": "Seslerin konuşmacı tarafından fizyolojik olarak organlar vasıtasıyla çıkarılması sürecine odaklanmalısınız.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Türkçedeki 'e' ünlüsünün boğumlanma özelliklerine göre sınıflandırılması aşağıdakilerin hangisinde doğru ve eksiksiz olarak verilmiştir?",
+      "answerOptions": [
+        {
+          "text": "Ön, düz, geniş",
+          "isCorrect": true,
+          "rationale": "/e/ sesi dilin ön tarafının yükselmesiyle oluşur, dudaklar düzdür ve çene açıklığı geniş konumdadır."
+        },
+        {
+          "text": "Art, düz, dar",
+          "isCorrect": false,
+          "rationale": "Bu özellikler dilin arka tarafında oluşan /ı/ ünlüsüne aittir."
+        },
+        {
+          "text": "Ön, yuvarlak, geniş",
+          "isCorrect": false,
+          "rationale": "Dudakların yuvarlaklaşması durumunda ön-geniş konumda /ö/ ünlüsü oluşur."
+        },
+        {
+          "text": "Ön, düz, dar",
+          "isCorrect": false,
+          "rationale": "Ağız açıklığının dar olması durumunda ön-düz konumda /i/ ünlüsü ortaya çıkar."
+        }
+      ],
+      "hint": "Ünlünün dil pozisyonu (ön/art), dudak biçimi (düz/yuvarlak) ve çene açıklığı (geniş/dar) ölçütlerini değerlendirin.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Eski Türkçe dönemindeki 'öpke > öfke' veya 'beg > bey' örneklerinde görülen ses olayı aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Süreklileşme",
+          "isCorrect": true,
+          "rationale": "Patlamalı/süreksiz bir ünsüzün (/p/, /g/), sızıcı/sürekli bir ünsüze (/f/, /y/) dönüşmesi süreklileşme olarak adlandırılır."
+        },
+        {
+          "text": "Ötümlüleşme",
+          "isCorrect": false,
+          "rationale": "Ötümsüz bir sesin ses tellerinin titreşimiyle ötümlü hâle gelmesidir."
+        },
+        {
+          "text": "Göçüşme",
+          "isCorrect": false,
+          "rationale": "Sözcük içindeki iki ünsüzün birbiriyle yer değiştirmesidir."
+        },
+        {
+          "text": "Ünsüz tekleşmesi",
+          "isCorrect": false,
+          "rationale": "İkizleşmiş veya çift yazılan bir ünsüzün teke düşmesidir."
+        }
+      ],
+      "hint": "Hava akımını aniden kesen patlamalı bir sesin, havayı sızdıran sürekli bir sese dönüşmesini düşünün.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Arapçadan dilimize geçen 'hamir' sözcüğünün Türkçede 'hamur' şekline dönüşmesinde görülen ses olayı aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Ünlü yuvarlaklaşması",
+          "isCorrect": true,
+          "rationale": "İkinci hecedeki düz-dar /i/ ünlüsü, birinci hecedeki dudak ünsüzü veya çevre etkisiyle yuvarlak-dar /u/ sesine dönüşmüştür."
+        },
+        {
+          "text": "Ön damaksıllaşma",
+          "isCorrect": false,
+          "rationale": "Art ünlünün ön ünlüye dönüşmesi olayıdır (bıç- > biç- gibi)."
+        },
+        {
+          "text": "Ünlü daralması",
+          "isCorrect": false,
+          "rationale": "Geniş bir ünlünün dar bir ünlüye dönüşmesidir."
+        },
+        {
+          "text": "Ünsüz benzeşmesi",
+          "isCorrect": false,
+          "rationale": "Ünsüz seslerin nitelikçe birbirine yaklaşması veya aynı olmasıdır."
+        }
+      ],
+      "hint": "İkinci hecedeki düz sesin dudakların büzülmesiyle aldığı yeni biçimi göz önüne getirin.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Türkçe kökenli sözcüklerin ses özellikleri dikkate alındığında, aşağıdakilerden hangisi doğrudan yabancı kökenli bir sözcüktür?",
+      "answerOptions": [
+        {
+          "text": "Neşe",
+          "isCorrect": true,
+          "rationale": "Türkçe kökenli sözcüklerin başında istisnalar dışında /n/ ünsüzü bulunmaz ve 'neşe' bu istisnai Türkçe köklerden biri değildir."
+        },
+        {
+          "text": "Pınar",
+          "isCorrect": false,
+          "rationale": "Söz başında /p/ bulunmasına rağmen Türkçe kökenli istisnai sözcükler arasında yer alır."
+        },
+        {
+          "text": "Şimdi",
+          "isCorrect": false,
+          "rationale": "Söz başında /ş/ bulunmasına rağmen Eski Türkçedeki biçimden gelişmiş Türkçe kökenli bir istisnadır."
+        },
+        {
+          "text": "Pek",
+          "isCorrect": false,
+          "rationale": "Başta /p/ ünsüzü barındırmasına karşın Türkçe kökenli kabul edilen istisnai kelimelerdendir."
+        }
+      ],
+      "hint": "Türkçe sözcüklerin başında bulunmayan ünsüzleri ve bu kuralın Türkçe kökenli bilinen istisnalarını dikkate alın.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "'kirpik > kiprik' ve 'ekşi > eşki' örneklerinde görülen, sözcük içindeki ünsüzlerin birbiriyle yer değiştirmesi olayına ne ad verilir?",
+      "answerOptions": [
+        {
+          "text": "Göçüşme",
+          "isCorrect": true,
+          "rationale": "Komşu hecelerdeki veya yan yana duran ünsüzlerin yer değiştirmesi göçüşme (metatez) olarak tanımlanır."
+        },
+        {
+          "text": "Ötümsüzleşme",
+          "isCorrect": false,
+          "rationale": "Ötümlü bir sesin sertleşerek ötümsüz hâle gelmesidir."
+        },
+        {
+          "text": "Ünsüz ikizleşmesi",
+          "isCorrect": false,
+          "rationale": "Sözcük içindeki tek bir ünsüzün iki defa telaffuz edilmesidir."
+        },
+        {
+          "text": "Ünsüz aykırılaşması",
+          "isCorrect": false,
+          "rationale": "Birbiriyle aynı veya benzer olan iki sesin farklılaşmasıdır."
+        }
+      ],
+      "hint": "Seslerin sözcük içinde karşılıklı olarak yer değiştirmesi terimini hatırlayın.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Aşağıdaki cümlelerin hangisinde yer alan altı çizili sözcükte ünlü daralması gerçekleşmiştir?",
+      "answerOptions": [
+        {
+          "text": "Çocuk neden sürekli ağlıyorsun diye sordu.",
+          "isCorrect": true,
+          "rationale": "'ağla-' fiil kökündeki geniş /a/ ünlüsü, şimdiki zaman ekinin etkisiyle daralarak /ı/ sesine dönüşmüştür."
+        },
+        {
+          "text": "Akşamüstü kütüphanede ders çalışıyordu.",
+          "isCorrect": false,
+          "rationale": "'çalış-' fiili dar ünlülü bittiği için araya bağlama ünlüsü girmiştir, kökte geniş ünlü daralması yoktur."
+        },
+        {
+          "text": "Yeni aldığı kitabı büyük bir keyifle okuyordu.",
+          "isCorrect": false,
+          "rationale": "'oku-' fiil kökü zaten dar ünlü ile bittiğinden bir daralma gerçekleşmemiştir."
+        },
+        {
+          "text": "Olayın ardından polisler şüpheliyi götürüyordu.",
+          "isCorrect": false,
+          "rationale": "'götür-' fiili dar ünlü barındırdığı için geniş ünlünün daralması durumu söz konusu değildir."
+        }
+      ],
+      "hint": "Fiil kök veya gövdesindeki geniş ünlünün (a, e) /-yor/ ekinin etkisiyle daralıp daralmadığını kontrol edin.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Türkçede 'kardeş' sözcüğüne 'benim' iyelik eki getirildiğinde sözcüğün 'kardeşim' biçimini almasında araya giren '-i-' sesinin temel işlevi nedir?",
+      "answerOptions": [
+        {
+          "text": "Bağlama ünlüsü",
+          "isCorrect": true,
+          "rationale": "Ünsüzle biten bir sözcüğe ünsüzle başlayan ek getirildiğinde hece yapısını korumak üzere araya giren yardımcı ses bağlama ünlüsüdür."
+        },
+        {
+          "text": "Bağlama ünsüzü",
+          "isCorrect": false,
+          "rationale": "İki ünlü yan yana geldiğinde ikiz ünlü oluşumunu önlemek için araya giren ünsüz yardımcı sestir."
+        },
+        {
+          "text": "Ünlü türemesi",
+          "isCorrect": false,
+          "rationale": "Kök veya gövdede pekiştirme veya küçültme gibi süreçlerde ortaya çıkan yapım işlevli ünlü belirmesidir."
+        },
+        {
+          "text": "Ünlü birleşmesi",
+          "isCorrect": false,
+          "rationale": "Aşınma yoluyla iki ünlünün tek bir ünlüde toplanması olayıdır."
+        }
+      ],
+      "hint": "Ünsüzle biten kelime ile ünsüzle başlayan ek arasında heceleme olanağı sağlayan yardımcı sesi düşünün.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Konuşma sırasında cümlenin veya sözcüklerin anlamını değiştiren; vurgu, tonlama ve durak gibi doğrudan harflerle gösterilmeyen unsurlara ne ad verilir?",
+      "answerOptions": [
+        {
+          "text": "Parçalar üstü ses birimleri",
+          "isCorrect": true,
+          "rationale": "Vurgu, tonlama ve durak gibi söyleyişin ezgisini ve anlamını belirleyen nitelikler parçalar üstü ses birimleridir."
+        },
+        {
+          "text": "Parçasal ses birimleri",
+          "isCorrect": false,
+          "rationale": "Doğrudan harflerle temsil edilen ünlü ve ünsüz seslerin kendisidir."
+        },
+        {
+          "text": "Bağlama sesleri",
+          "isCorrect": false,
+          "rationale": "Ek birleşmelerinde hece uyumu sağlayan yardımcı ünlü ve ünsüzlerdir."
+        },
+        {
+          "text": "İkincil ünsüzler",
+          "isCorrect": false,
+          "rationale": "Tarihsel süreçte sonradan ortaya çıkmış olan ünsüz seslerdir."
+        }
+      ],
+      "hint": "Ses birimlerinin ötesinde söyleyiş ezgisi ve duraklamalarla sağlanan anlam katmanını arayın.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Eski Türkçe döneminden beri var olan 'penbe > pembe' sözcüğünde görülen ses olayı aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Ünsüz benzeşmesi",
+          "isCorrect": true,
+          "rationale": "Dudak ünsüzü olan /b/, kendinden önceki diş-damak ünsüzü /n/ sesini etkileyerek dudak ünsüzü /m/ hâline getirmiştir (dudak benzeşmesi)."
+        },
+        {
+          "text": "Ötümlüleşme",
+          "isCorrect": false,
+          "rationale": "Ötümsüz bir sesin ötümlü hâle dönüşmesidir."
+        },
+        {
+          "text": "Ünsüz tekleşmesi",
+          "isCorrect": false,
+          "rationale": "Çift ünsüzün teke düşmesidir."
+        },
+        {
+          "text": "Süreklileşme",
+          "isCorrect": false,
+          "rationale": "Patlamalı bir ünsüzün sızıcı ünsüze dönüşmesidir."
+        }
+      ],
+      "hint": "Bir ünsüzün diğer ünsüzü kendisine benzeterek boğumlanma noktasını değiştirmesini göz önüne alın.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "'kavuşak > kavşak' veya 'devirim > devrim' örneklerinde görülen ses olayı aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Ünlü düşmesi",
+          "isCorrect": true,
+          "rationale": "Sözcük türetilirken veya ek alırken vurgusuz orta hecedeki dar ünlünün kaybolması olayıdır."
+        },
+        {
+          "text": "Ünlü türemesi",
+          "isCorrect": false,
+          "rationale": "Sözcükte daha önce bulunmayan bir ünlünün ortaya çıkmasıdır."
+        },
+        {
+          "text": "Ünlü daralması",
+          "isCorrect": false,
+          "rationale": "Geniş ünlünün dar ünlüye dönüşmesidir."
+        },
+        {
+          "text": "Hece düşmesi",
+          "isCorrect": false,
+          "rationale": "Ünlü ve ünsüzden oluşan bütün bir hecenin kaybolmasıdır (ilerilemek > ilerlemek)."
+        }
+      ],
+      "hint": "İki ünsüz arasında yer alan vurgusuz dar ünlünün kaybolması durumunu düşünün.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Eski Türkçe 'ana' ve 'elig' sözcüklerinin Türkiye Türkçesinde 'anne' ve 'elli' biçimlerini alması hangi ses olayının sonucudur?",
+      "answerOptions": [
+        {
+          "text": "Ünsüz ikizleşmesi",
+          "isCorrect": true,
+          "rationale": "Kök veya gövde içindeki tek bir ünsüzün vurgu ve seslik nedenlerle çiftleşerek söylenmesidir."
+        },
+        {
+          "text": "Ünsüz benzeşmesi",
+          "isCorrect": false,
+          "rationale": "Farklı ünsüzlerin birbirini etkileyerek benzer hâle gelmesidir."
+        },
+        {
+          "text": "Ünsüz türemesi",
+          "isCorrect": false,
+          "rationale": "Sözcük başında veya içinde önceden var olmayan yeni bir ünsüz belirmesidir."
+        },
+        {
+          "text": "Ünsüz tekleşmesi",
+          "isCorrect": false,
+          "rationale": "Çift ünsüzlü yabancı kelimelerin Türkçede tek ünsüzle söylenmesidir."
+        }
+      ],
+      "hint": "Sözcük kökündeki tek ünsüzün iki kez telaffuz edilmeye başlanmasını değerlendirin.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Türkçenin düzlük-yuvarlaklık (dudak) uyumu kuralına göre, ilk hecesinde yuvarlak ünlü (o, ö, u, ü) bulunan bir sözcüğün sonraki hecelerinde hangi ünlüler yer alabilir?",
+      "answerOptions": [
+        {
+          "text": "Dar-yuvarlak (u, ü) veya düz-geniş (a, e)",
+          "isCorrect": true,
+          "rationale": "Dudak uyumu kuralına göre yuvarlak ünlüleri ancak dar-yuvarlak (u, ü) veya düz-geniş (a, e) ünlüler takip edebilir (ör. bora, kuru, bölüm)."
+        },
+        {
+          "text": "Yalnızca düz-dar (ı, i) ünlüler",
+          "isCorrect": false,
+          "rationale": "Düz ünlülerden sonra düz ünlüler gelebilir kuralı ile karıştırılmamalıdır."
+        },
+        {
+          "text": "Yalnızca yuvarlak-geniş (o, ö) ünlüler",
+          "isCorrect": false,
+          "rationale": "Türkçe kökenli sözcüklerde ikinci ve sonraki hecelerde yuvarlak-geniş (o, ö) ünlüler bulunmaz."
+        },
+        {
+          "text": "Yalnızca art-düz (a, ı) ünlüler",
+          "isCorrect": false,
+          "rationale": "Bu durum kalınlık-incelik (önlük-artlık) uyumu kuralıyla ilgilidir."
+        }
+      ],
+      "hint": "Dudak uyumunda yuvarlak ünlüden sonra gelebilecek iki ünlü grubunu hatırlayın.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Türkçe kökenli sözcüklerde asli olarak bulunmayıp zamanla ses değişimleri ve sızıcılaşma ile ortaya çıkan 'c, f, ğ, h, v' ünsüzlerine ne ad verilir?",
+      "answerOptions": [
+        {
+          "text": "İkincil ünsüzler",
+          "isCorrect": true,
+          "rationale": "Eski Türkçedeki ana seslerin (yupka > yufka, eb > ev) değişimiyle sonradan oluşan bu sesler ikincil ünsüzler olarak adlandırılır."
+        },
+        {
+          "text": "Asli ünsüzler",
+          "isCorrect": false,
+          "rationale": "Dilin en eski dönemlerinden beri köklerde yer alan temel ünsüzlerdir."
+        },
+        {
+          "text": "Süreksiz ünsüzler",
+          "isCorrect": false,
+          "rationale": "Hava akımının çıkakta engellenip patlamayla çıktığı ünsüzlerdir."
+        },
+        {
+          "text": "Titreşimsiz ünsüzler",
+          "isCorrect": false,
+          "rationale": "Ses tellerinin titreşmemesiyle oluşan ötümsüz/tonsuz ünsüzlerdir."
+        }
+      ],
+      "hint": "Tarihsel süreçte sonradan türeyen veya dönüşen ünsüz türünü düşünün.",
+      "type": "multiple_choice"
+    }
+  ]
+}

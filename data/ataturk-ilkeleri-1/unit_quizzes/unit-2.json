@@ -1,0 +1,331 @@
+{
+  "unit": 2,
+  "unitTitle": "Yeni Bir İktidar, Yıkıcı ve Yıpratıcı Savaşlar Dönemi",
+  "title": "Tarih Testi",
+  "questions": [
+    {
+      "question": "Osmanlı Devleti'nde bürokrasiyi yönlendiren kâtip sınıfının gelişim süreçlerinde, dış dünyayı kavramaya çalışan ve 'kadim' olanın karşısına 'yeni' yaklaşımını koyan evre aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Çelebiler Çağı",
+          "isCorrect": true,
+          "rationale": "Bu dönem, kâtip sınıfının Osmanlı dışındaki gelişmeleri merak ederek geleneksel kalıpların ötesinde yeni fikirleri kavramaya başladığı dönemi temsil eder."
+        },
+        {
+          "text": "Münevverler Çağı",
+          "isCorrect": false,
+          "rationale": "Bu kavram daha çok 19. yüzyıldaki Batılılaşma etkisindeki aydın bürokrat kuşağını ifade etmektedir."
+        },
+        {
+          "text": "Sefirler ve Reîsülküttâplar Çağı",
+          "isCorrect": false,
+          "rationale": "Bu evre, diplomasinin ön plana çıktığı ve hariciye sınıfının belirleyici olduğu farklı bir dönemi tanımlar."
+        },
+        {
+          "text": "Kahramanlar Çağı",
+          "isCorrect": false,
+          "rationale": "Bu adlandırma, devletin kuruluş ve yükselme dönemindeki askeri liderlik ve fetih sürecini tanımlamada kullanılır."
+        }
+      ],
+      "hint": "Bu dönemin adı, terbiye, görgü ve entelektüel merakı temsil eden geleneksel unvandan türetilmiştir.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "23 Temmuz 1908'de II. Meşrutiyet'in ilan edilmesinden sonra İttihat ve Terakki Cemiyeti'nin yönetimine ve uygulamalarına tepki olarak başlayan siyasi olay aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "31 Mart Vakası",
+          "isCorrect": true,
+          "rationale": "Rumi takvime göre 31 Mart 1325'te patlak veren bu isyan, meşrutiyet rejimine ve İttihatçıların iktidar nüfuzuna karşı gelişen en belirgin tepkidir."
+        },
+        {
+          "text": "Patrona Halil İsyanı",
+          "isCorrect": false,
+          "rationale": "Bu ayaklanma 18. yüzyılda Lale Devri'ni sona erdiren toplumsal ve askeri bir huzursuzluktur."
+        },
+        {
+          "text": "Kabakçı Mustafa İsyanı",
+          "isCorrect": false,
+          "rationale": "Bu olay III. Selim dönemi ıslahatlarına ve Nizam-ı Cedit ordusuna karşı gerçekleştirilmiş bir başkaldırıdır."
+        },
+        {
+          "text": "Vaka-i Hayriye",
+          "isCorrect": false,
+          "rationale": "Bu gelişme II. Mahmud döneminde Yeniçeri Ocağı'nın kaldırılmasını ifade eden devlet hamlesidir."
+        }
+      ],
+      "hint": "Olay, Rumi takvimdeki meydana geliş tarihine atıfla anılmaktadır.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "I. Dünya Savaşı sonunda Almanya'nın sömürgelerini kaybetmesine, askeri sınırlamalara tabi tutulmasına ve ağır finansal yükümlülükler üstlenmesine yol açan antlaşma aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Versay Barış Antlaşması",
+          "isCorrect": true,
+          "rationale": "Savaş sonrasında Müttefik Devletler ile Almanya arasında imzalanan bu antlaşma, Almanya'ya dönük son derece ağır yaptırımlar içermektedir."
+        },
+        {
+          "text": "Neuilly Antlaşması",
+          "isCorrect": false,
+          "rationale": "Bu antlaşma I. Dünya Savaşı sonrasında Bulgaristan ile imzalanmıştır."
+        },
+        {
+          "text": "Trianon Antlaşması",
+          "isCorrect": false,
+          "rationale": "Bu metin I. Dünya Savaşı'nın ardından Macaristan sınırlarını ve yükümlülüklerini belirlemiştir."
+        },
+        {
+          "text": "St. Germain Barış Antlaşması",
+          "isCorrect": false,
+          "rationale": "Bu düzenleme Avusturya İmparatorluğu'nun savaştan sonraki statüsünü tayin etmek üzere imzalanmıştır."
+        }
+      ],
+      "hint": "Fransa'da tarihi bir sarayda imzalanan ve II. Dünya Savaşı'na giden süreci tetikleyen barış metnini düşününüz.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Aşağıdakilerden hangisi Çanakkale Zaferi'nin küresel düzeyde yarattığı siyasi ve ekonomik neticelerden biri değildir?",
+      "answerOptions": [
+        {
+          "text": "Osmanlı Boğazları yönetimi için uluslararası bir komisyonun kurulması",
+          "isCorrect": true,
+          "rationale": "Boğazlar Komisyonu'nun kurulması Çanakkale Zaferi'nin değil, savaştan sonra imzalanan mütareke ve barış taslaklarının bir sonucudur."
+        },
+        {
+          "text": "Rusya'ya yardım ulaştırılamaması sebebiyle Çarlık rejiminin çöküş sürecinin hızlanması",
+          "isCorrect": false,
+          "rationale": "Müttefiklerin Boğazları geçememesi Rusya'daki ekonomik ve askeri krizi derinleştirerek Bolşevik İhtilali'ne zemin hazırlamıştır."
+        },
+        {
+          "text": "İngiltere ve Fransa'nın sömürgeleri üzerindeki sarsılmaz askeri itibarının darbe alması",
+          "isCorrect": false,
+          "rationale": "Çanakkale'de alınan yenilgi, Batılı güçlerin yenilmezliği algısını kırarak sömürgelerde bağımsızlık düşüncesini cesaretlendirmiştir."
+        },
+        {
+          "text": "İngiltere'de savaş harcamalarının getirdiği baskıyla hükümet krizinin yaşanması",
+          "isCorrect": false,
+          "rationale": "Uzayan savaş ve ağır maliyetler İngiliz iç siyasetinde hükümet değişikliklerine yol açmıştır."
+        }
+      ],
+      "hint": "Çanakkale Savaşı Osmanlı Devleti'nin zaferiyle sonuçlandığından, Boğazlar üzerindeki kontrol derhal Müttefiklerin eline geçmemiştir.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "XVII. yüzyıl Osmanlı düşünürü Katip Çelebi'nin, devlet mekanizmasındaki aksaklıkları ve bürokratların basiretsizliğini cesur bir dille eleştirerek çözüm yolları sunduğu eseri aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Düstûrü'l-Amel li Islahı'l-Halel",
+          "isCorrect": true,
+          "rationale": "Katip Çelebi bu risalesinde devlet yapısındaki bozulmaları bir tıp benzetmesiyle ele almış ve ıslahat önerileri sunmuştur."
+        },
+        {
+          "text": "Keşfü'z-Zünûn",
+          "isCorrect": false,
+          "rationale": "Bu eser binlerce yazma eseri ve yazarlarını içeren geniş bir bibliyografya çalışmasıdır."
+        },
+        {
+          "text": "Künhü’l-Ahbar",
+          "isCorrect": false,
+          "rationale": "Bu çalışma Gelibolulu Mustafa Âlî tarafından kaleme alınmış genel bir tarih eseridir."
+        },
+        {
+          "text": "Asafnâme",
+          "isCorrect": false,
+          "rationale": "Sadrazam Lütfi Paşa'ya ait olan bu eser devlet yönetimi ilkelerini ele alır."
+        }
+      ],
+      "hint": "Eserin adı Türkçe karşılık olarak 'Bozuklukların Düzeltilmesinde Uygulanacak Düsturlar' anlamına gelmektedir.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Osmanlı Devleti ile İtalya arasında gerçekleşen Trablusgarp Savaşı'nı resmi olarak sona erdiren diplomatik antlaşma aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Uşi Antlaşması",
+          "isCorrect": true,
+          "rationale": "1912 yılında imzalanan bu antlaşma ile Osmanlı Devleti Kuzey Afrika'daki son toprak parçası olan Trablusgarp ve Bingazi'yi İtalya'ya bırakmıştır."
+        },
+        {
+          "text": "Bükreş Antlaşması",
+          "isCorrect": false,
+          "rationale": "Bu antlaşma Balkan Savaşları sonrasında Balkan devletlerinin kendi aralarında yaptığı paylaşımı kapsar."
+        },
+        {
+          "text": "Londra Antlaşması",
+          "isCorrect": false,
+          "rationale": "I. Balkan Savaşı'nı sona erdiren ve Midye-Enez hattını sınır kabul eden düzenlemedir."
+        },
+        {
+          "text": "Atina Antlaşması",
+          "isCorrect": false,
+          "rationale": "Balkan Savaşları sonrasında Osmanlı Devleti ile Yunanistan arasında imzalanan ikili antlaşmadır."
+        }
+      ],
+      "hint": "İsviçre'de imzalanan ve Osmanlı Devleti'nin Kuzey Afrika varlığını sona erdiren antlaşmayı hatırlayınız.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "I. TBMM Hükûmeti'nin açılışından sonra Anadolu'da hızla yayılan iç ayaklanmaları bastırmak ve kamu düzenini tesis etmek amacıyla 29 Nisan 1920'de kabul edilen kanun aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Hıyanet-i Vataniye Kanunu",
+          "isCorrect": true,
+          "rationale": "Meclisin meşruiyetine karşı çıkan her türlü ayaklanma ve direnci yasaklayan ve ağır cezai yaptırımlar getiren temel yasal düzenlemedir."
+        },
+        {
+          "text": "Takrir-i Sükûn Kanunu",
+          "isCorrect": false,
+          "rationale": "Bu kanun 1925 yılında Şeyh Sait İsyanı sonrasında devlet otoritesini yeniden kurmak amacıyla çıkarılmıştır."
+        },
+        {
+          "text": "Nisab-ı Müzakere Kanunu",
+          "isCorrect": false,
+          "rationale": "TBMM'nin çalışma esaslarını ve toplantı yeter sayısını düzenleyen iç tüzük niteliğinde bir kanundur."
+        },
+        {
+          "text": "Men-i Müskirat Kanunu",
+          "isCorrect": false,
+          "rationale": "Savaş dönemi tasarruf tedbirleri kapsamında alkollü içeceklerin üretim ve tüketimini engellemeye yönelik yasadır."
+        }
+      ],
+      "hint": "Vatana ihanet edenlerin cezalandırılmasını öngören yasayı düşününüz.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Milli Mücadele Dönemi'nde işgalci Batılı devletlerin kendi güvenliğine tehdit oluşturması ve kendi bünyesindeki Türk-Müslüman unsurlara sempatik görünme arzusuyla Ankara Hükûmeti'ne finansal ve askeri destek sağlayan ülke aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Sovyet Rusya",
+          "isCorrect": true,
+          "rationale": "Bolşevik yönetimi, ortak düşman olarak gördüğü Müttefik Devletler'e karşı Milli Mücadele'ye parasal ve cephane yardımı yapmıştır."
+        },
+        {
+          "text": "Almanya",
+          "isCorrect": false,
+          "rationale": "Almanya, I. Dünya Savaşı'ndan yenik ayrıldığı için Mondros sonrası süreçte destek verecek durumda değildi."
+        },
+        {
+          "text": "Bulgaristan",
+          "isCorrect": false,
+          "rationale": "Bulgaristan savaştan yenik çıkmış ve kendi toprak kayıplarıyla mücadele etmek durumunda kalmıştır."
+        },
+        {
+          "text": "Arnavutluk",
+          "isCorrect": false,
+          "rationale": "Arnavutluk o dönemde kendi bağımsızlığını ve sınırlarını korumaya çalışan küçük bir Balkan devletidir."
+        }
+      ],
+      "hint": "Çarlık rejiminin yıkılmasından sonra kurulan ve Batılı devletlerle rekabet halinde olan komşu devleti hatırlayınız.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Milli Mücadele Dönemi'nde Ankara'da yayımlanan, TBMM Hükûmeti'nin yarı resmî yayın organı kabul edilen ve 1934 yılında adını 'Ulus' olarak değiştiren gazete aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Hâkimiyet-i Milliye",
+          "isCorrect": true,
+          "rationale": "Mustafa Kemal Paşa'nın Ankara'ya gelişinden sonra çıkarılan bu gazete, Anadolu hareketinin temel yayın organı olmuştur."
+        },
+        {
+          "text": "İrade-i Milliye",
+          "isCorrect": false,
+          "rationale": "Sivas Kongresi kararlarını duyurmak amacıyla Sivas'ta çıkarılan ilk gazeteydi."
+        },
+        {
+          "text": "Minber",
+          "isCorrect": false,
+          "rationale": "Mondros sonrasında İstanbul'da Ali Fethi (Okyar) ve Mustafa Kemal tarafından çıkarılan gazetedir."
+        },
+        {
+          "text": "Tasvir-i Efkâr",
+          "isCorrect": false,
+          "rationale": "Şinasi tarafından Tanzimat Dönemi'nde İstanbul'da kurulmuş tarihi bir basın organıdır."
+        }
+      ],
+      "hint": "İsmi 'Millet Egemenliği' anlamına gelen bu yayın organı Ankara merkezli mücadeleyi seslendirmiştir.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "28 Ocak 1920'de Son Osmanlı Mebusan Meclisi tarafından kabul edilen, Türk vatanının sınırlarını çizen ve siyasi-ekonomik bağımsızlığın asgari şartlarını belirleyen tarihi bildiri aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Misak-ı Milli",
+          "isCorrect": true,
+          "rationale": "'Milli And' olarak da bilinen bu kararlar metni, Türkiye Cumhuriyeti'nin temel sınırlarını ve bağımsızlık koşullarını ilke edinmiştir."
+        },
+        {
+          "text": "Sened-i İttifak",
+          "isCorrect": false,
+          "rationale": "1808 yılında II. Mahmud ile ayanlar arasında yapılan yetki paylaşımı sözleşmesidir."
+        },
+        {
+          "text": "Amasya Tamimi",
+          "isCorrect": false,
+          "rationale": "Milli Mücadele'nin gerekçe, amaç ve yöntemini ilk kez belirten ihtilal beyannamesidir."
+        },
+        {
+          "text": "Kanun-ı Esasi",
+          "isCorrect": false,
+          "rationale": "1876 yılında ilan edilen Osmanlı Devleti'nin ilk yazılı anayasasıdır."
+        }
+      ],
+      "hint": "Ahd-ı Milli veya Milli Yemin adlarıyla da bilinen belgeyi düşününüz.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "I. Dünya Savaşı sırasında Osmanlı ordusunun Irak Cephesi'nde İngiliz kuvvetlerini kuşatarak General Townshend dâhil çok sayıda askeri esir aldığı zafer aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Kutü'l-Amâre Muharebesi",
+          "isCorrect": true,
+          "rationale": "Halil (Kut) Paşa komutasındaki Osmanlı birliklerinin İngiliz ordusunu kuşatarak büyük bir zafer elde ettiği muharebedir."
+        },
+        {
+          "text": "Kirte Muharebeleri",
+          "isCorrect": false,
+          "rationale": "Çanakkale Kara Savaşları sırasında Gelibolu Yarımadası'nda gerçekleşen savunma muharebeleridir."
+        },
+        {
+          "text": "83 Rakımlı Tepe Muharebesi",
+          "isCorrect": false,
+          "rationale": "Çanakkale Cephesi'ndeki yerel çatışma alanlarından biridir."
+        },
+        {
+          "text": "Zığındere Muharebesi",
+          "isCorrect": false,
+          "rationale": "Çanakkale Savaşları bünyesinde kanlı çarpışmalara sahne olan bir diğer muharebedir."
+        }
+      ],
+      "hint": "Irak Cephesi'nde İngiliz tümeninin tamamının teslim alındığı tarihi muharebeyi hatırlayınız.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "İzmir'in Yunanistan tarafından işgal edilmesini ve ilhakını kabul etmeyerek bölgede protestolar düzenleyen ve işgale karşı direnişi örgütleyen cemiyet aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Redd-i İlhak Cemiyeti",
+          "isCorrect": true,
+          "rationale": "İzmir'in Yunanlılara verilmesini engellemek ve Ege'deki Türk varlığını savunmak amacıyla kurulan teşkilattır."
+        },
+        {
+          "text": "Kilikyalılar Cemiyeti",
+          "isCorrect": false,
+          "rationale": "Çukurova ve Adana bölgesindeki Fransız ve Ermeni işgallerine karşı kurulmuş bir cemiyettir."
+        },
+        {
+          "text": "Trakya Paşaeli Cemiyeti",
+          "isCorrect": false,
+          "rationale": "Doğu Trakya'nın Yunanistan'a ilhakını önlemek amacıyla Edirne merkezli faaliyet gösteren cemiyettir."
+        },
+        {
+          "text": "Mavri Mira Cemiyeti",
+          "isCorrect": false,
+          "rationale": "Fener Rum Patrikhanesi bünyesinde Büyük Yunanistan fikrini gerçekleştirmek için çalışan zararlı cemiyettir."
+        }
+      ],
+      "hint": "Cemiyetin adı 'Toprakların Başka Bir Devlete Bağlanmasını Reddetme' ilkesine dayanmaktadır.",
+      "type": "multiple_choice"
+    }
+  ]
+}

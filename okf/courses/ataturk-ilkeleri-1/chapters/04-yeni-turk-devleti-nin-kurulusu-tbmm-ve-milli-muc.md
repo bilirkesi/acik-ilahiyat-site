@@ -40,25 +40,135 @@ Bu bölümün içinde yaşadığı ders paneli: [Atatürk İlkeleri ve İnkılap
 
 # Kaynak Temellendirme
 
-### 1. Türkiye Büyük Millet Meclisi'nin Açılış Süreci, Çalışma Prensipleri ve İdari Yapısı
+## 4. Yeni Türk Devleti'nin Kuruluşu, TBMM ve Millî Mücadelenin Temelleri
 
-Bu öğrenme hedefi kapsamında öğrenci, Mustafa Kemal Paşa'nın İstanbul'un işgalinin hemen ardından 19 Mart 1920'de yayımladığı genelgeyle Ankara'da olağanüstü yetkilere sahip yeni bir meclis toplamak üzere harekete geçtiğini öğrenir [1]. İki dereceli olarak hızlıca gerçekleştirilen seçimlerin ardından, dağılan Meclis-i Mebusan üyelerinin de katılımıyla Türkiye Büyük Millet Meclisi, 23 Nisan 1920 tarihinde Hacı Bayram Camii'nde kılınan cuma namazı ve okunan duaların ardından en yaşlı üye Sinop Milletvekili Mehmet Şerif Bey'in açılış konuşmasıyla toplanmıştır [2]. Yapılan seçim sonucunda Mustafa Kemal Paşa oy birliğiyle Meclis Başkanı seçilmiştir [3].
+Ankara'da 23 Nisan 1920'de Türkiye Büyük Millet Meclisi'nin açılmasıyla yeni Türk devletinin hukuki ve siyasi temelleri atılmıştır. Meclis, Kuvvetler Birliği ve Meclis Hükümeti sistemini benimseyerek vatanın kurtarılması ve millî egemenliğin sağlanması yönünde kararlar almıştır. İzmir'in işgaliyle uyanan millî şuur, kongreler süreci ve örgütlenen lojistik destek sayesinde Millî Mücadele'nin maddi ve manevi gücünü oluşturmuştur.
 
-Öğrenci, Meclis'in meşruiyetini korumak adına Hıyanet-i Vataniye Kanunu ve Nisab-ı Müzakere Kanunu gibi düzenlemeleri hayata geçirdiğini, İstanbul Hükümeti ile resmi haberleşmeyi keserek onun aldığı kararları yok saydığını kavrar [4]. İdari yapı ve çalışma prensibi bakımından TBMM, Kuvvetler Birliği ilkesini ve Meclis Hükümeti sistemini benimsemiştir [5, 6]. Yasama, yürütme ve yargı yetkileri tek elde Meclis'te toplanmış; yürütme görevi Meclis adına İcra Vekilleri Heyeti tarafından üstlenilirken, yargı yetkisi ise Hıyanet-i Vataniye Kanunu çerçevesinde kurulan İstiklal Mahkemeleri kanalıyla kullanılmıştır [6, 7]. Ayrıca öğrenci, İlk Meclis'in farklı toplumsal kökenlerden ve ideolojik eğilimlerden (İttihatçılar, Halk Zümresi, İstiklal Grubu, Müdafaa-i Hukuk grupları gibi) gelen milletvekilleriyle oldukça çok sesli, renkli ve temsil kabiliyeti yüksek demokratik bir yapıya sahip olduğunu analiz eder [8-10].
+### Öğrenme hedefleri
+- Türkiye Büyük Millet Meclisi'nin açılış sürecini, çalışma prensiplerini ve idari yapısını açıklayabilme.
+- İzmir'in işgalinin Türk halkı üzerindeki psikolojik etkilerini ve millî bilincin uyanışındaki rolünü değerlendirebilme.
+- Amasya Genelgesi, Erzurum ve Sivas Kongreleri ile örgütlenen Millî Mücadele'nin temel hedeflerini kavrayabilme.
 
-### 2. İzmir'in İşgalinin Türk Halkı Üzerindeki Psikolojik Etkileri ve Millî Bilincin Uyanışındaki Rolü
+### Bölüm 4: Yeni Türk Devleti’nin Kuruluşu
+*AÖF ders kitabı, Bölüm 4, PDF sayfa ~122-163.*
 
-Bu öğrenme hedefinde öğrenci, yıllar süren ağır savaşlar, yenilgiler ve toprak kayıpları nedeniyle Türk halkının ciddi bir savaş yorgunluğu, bıkkınlık ve manevi çöküntü içerisinde bulunduğunu öğrenir [11, 12]. Millî Mücadele liderlerinin ilk iş olarak toplumu psikolojik bakımdan yeni bir mücadeleye hazırlamak ve halka özgüven kazandırmak amacıyla basın, beyannameler, mitingler ve özellikle din adamları ile kanaat önderlerinin etkisinden yararlandıklarını kavrar [13, 14].
+Anahtar Sözcükler: • Meclis-i Mebusan • Misak-ı Millî • Ali Rıza Paşa • Damat Ferit • TBMM
+• Mustafa Kemal • Millî Mücadele • Muhalefet • II. Grup • Sevr • Hâkimiyet-i Milliye • Minber • Aydede
+• Albayrak • Peyâm-ı Sabah • Müdafaa-ı Hukuk • Tekâlif-i Milliye • Duyun-u Umumiye
+öğrenme çıktıları
+Son Osmanlı Mebusan Meclisinin
+Açılması ve Faaliyetleri
+1	 Birinci Dünya Savaşı ardından yeniden
+açılan ve kapatılan meclisi ve faaliyetlerini
+analiz edebilme
+TBMM’nin Açılması ve Çalışmaları
+2	 Büyük Millet Meclisine giden süreci
+özetleyebilme, yeni meclisteki grupları
+tanımlayabilme ve faaliyetlerini Türk
+demokrasi tarihi açısından değerlendirebilme
+Millî Mücadele’de Basın ve Basının Millî
+Mücadele’nin Amacı Doğrultusunda
+Örgütlendirilmesi ve Yönlendirilmesi
+4	 Anadolu ve İstanbul basınında Millî
+Mücadele’ye yer veren gazeteleri
+özetleyebilme, gazetelerin fikirlerini
+Türkiye tarihi açısından değerlendirerek
+basın-propaganda ilişkisini kavrayabilme ⟦1⟧
 
-15 Mayıs 1919 tarihinde İzmir'in Yunanlılar tarafından işgal edilmesi, halkın direnç ve tepkisini zirveye taşıyarak psikolojik hazırlık evresindeki en önemli kırılma noktası olmuştur [13]. Diğer işgallere kıyasla Yunan işgali Türk halkına son derece ağır gelmiş; Mustafa Kemal Paşa'nın çağrısıyla İstanbul'daki Fatih, Üsküdar, Kadıköy ve Sultanahmet mitingleri başta olmak üzere Anadolu'nun dört bir yanında kitlesel protestolar ve mitingler düzenlenmiştir [15]. Öğrenci, İzmir'in işgaliyle ortaya çıkan bu büyük tepkinin Mustafa Kemal Paşa tarafından başarılı bir şekilde yönlendirildiğini, halkın Tek Yürek olarak Millî Mücadele etrafında birleşmesini sağlayan tarihi bir uyanış ve millî şuur miladına dönüştüğünü değerlendirir [14, 15].
+**Sevr Barış Antlaşması Sürecinde Yaşanan**
 
-### 3. Amasya Genelgesi, Erzurum ve Sivas Kongreleri ile Örgütlenen Millî Mücadele'nin Temel Hedefleri
+Olaylar
+3	 Sevr Barış Antlaşması’nın taraflarını ve
+maddelerini inceleyebilme, Avrupalı
+devletlerin Osmanlı Devleti üzerindeki
+amaçlarını analiz edebilme
+Millî Mücadele’nin Maddi ve Manevi
+Temelleri
+5	 Millî Mücadele’nin nasıl ve ne zaman
+ortaya çıktığını özetleyebilme,
+mücadelenin aktörlerini ve destekçilerini
+tanımlayabilme, maddi kaynakların Millî
+Mücadele ve sonucu açısından önemini
+kavrayabilme ⟦2⟧
 
-Bu hedef doğrultusunda öğrenci, Millî Mücadele'nin ilk günlerinden itibaren örgütlenme safhasının adım adım nasıl şekillendiğini öğrenir. Mustafa Kemal Paşa'nın Havza Genelgesi ile başlattığı süreç, 20-22 Haziran 1919 tarihli Amasya Genelgesi ile stratejik bir boyuta taşınmıştır [16, 17]. Amasya Genelgesi'nde vatanın bütünlüğünün ve milletin bağımsızlığının tehlikede olduğu, İstanbul Hükümeti'nin üzerine düşen sorumluluğu yerine getirmediği vurgulanmış; milletin bağımsızlığını yine milletin azim ve kararının kurtaracağı ilan edilerek ulusal egemenlik ilkesi öne çıkarılmıştır [17, 18].
+**FAALİYETLERİ**
 
-Ardından toplanan Erzurum Kongresi'nde Misak-ı Millî sınırları içinde vatanın bir bütün olduğu ve ödün verilemeyeceği ilkesi benimsenmiş, ulus adına karar alacak Heyet-i Temsiliye kurulmuştur [18]. Sivas Kongresi'nde ise dağınık halde bulunan bölgesel Müdafaa-i Hukuk cemiyetleri tek bir çatı altında birleştirilmiş ve Heyet-i Temsiliye tüm yurdu kapsayacak şekilde yetkilendirilmiştir [18]. Öğrenci, genelgeler ve kongreler zinciriyle örgütlenen Millî Mücadele'nin temel hedefinin millî sınırlar içerisinde tam bağımsızlığı kazanmak, millî kuvvetleri etkin ve millî iradeyi hâkim kılmak olduğunu kavrar [17, 18].
+İstanbul Hükûmeti’nin seçim kararı almasında et­
+kili olan gelişmelerden biri de Amasya Görüşmeleri’dir.
+20-22 Ekim 1919 tarihleri arasında gerçekleşen gö­
+rüşmelerde Heyet-i Temsiliyeyi Mustafa Kemal Paşa,
+Rauf [ORBAY] ve Bekir Sami [KUNDUH] Beyler;
+İstanbul Hükûmeti’ni ise Bahriye Nazırı Salih Hulusi
+[KEZRAK] Paşa temsil etmiştir. Görüşmeler kapsa­
+mında seçimlerin serbestçe yapılması, meclisin İstan­
+bul dışında güvenli bir yerde toplanması, İttihat ve
+Terakki Cemiyeti üyelerinin seçimlere katılmaması
+gibi hususlarda görüş birliğine varıldığı gibi ülkedeki
+tüm siyasi partilerin ve azınlıkların da seçimlere ka­
+tılması hususunda karara varılmıştır. Görüşmelerden
+sonra Ali Rıza Paşa hükûmeti, 7 Ekim 1919’da seçim
+kararnamesi yayımlamıştır. Ancak başta Damat Ferit
+Paşa olmak üzere Hürriyet ve İtilaf Fırkası seçimlere
+karşı çıkarken Müdafaa-i Hukuk Cemiyetleri ise se­
+çim kararını desteklemiş ve çalışmalara başlamışlardır
+(Olgun, 2001). Başta Mustafa Kemal Paşa olmak
+üzere Anadolu hareketinin önder kadrosu, seçimlerle
+ilgili gelişmeleri yakından takip ediyordu. 11 Ekim
+1919’da hazırlanan bir tamimle milletvekili seçim­
+lerine özen gösterilmesi ve adaylıklarını koyanların
+Heyet-i Temsiliyeye mutlaka bildirilmesi istenmiştir.
+Müdafaa-i Hukuk Gruplarının seçim kararı ile birlik­
+te oldukça yoğun bir faaliyet içinde olmasına karşın
+Hürriyet ve İtilaf Fırkası ise, millî hareket nedeniyle
+serbest seçim yapılamayacağını iddia ederek seçimleri
+boykot etmiştir. 1919 Genel Seçimlerini Müdafaa-ı
+Hukuk Cemiyetlerinin yoğun çalışması sonucun­
+da millî meseleler konusunda hassas ve genel olarak
+Müdafaa-ı Hukuk çizgisindeki adaylar kazanmıştır.
+Meclisin Açılması ve Misak-ı Millî
+Kararının Alınması
+Misak-ı Millî’nin kabul edildiği son Osmanlı
+Mebusan Meclisi, 1919 genel seçimleriyle oluştu­
+ruldu. Seçimler, Aralık 1919’da yapıldı. Kanun-ı
+Esasi’nin ilgili maddesine göre, meclisin dağıtıl­
+masından sonraki ilk dört ay içerisinde seçimlerin
+yenilenmesi gerekiyordu. Ancak Meclis-i Vükelâ, 2
+Ocak 1919’da aldığı bir kararla, işgal ve seferberliğin
+son bulmamasından ötürü seçimlerin yapılamaya­
+cağını kabul ederek ve barış ortamına geçilmesin­
+den itibaren dört ay içerisinde seçime başlanacağını
+ilan etti. Bu süreçte İstanbul Hükûmeti tarafından
+seçimle ilgili bazı girişimlerde bulunulmuş olsa da
+somut bir adım atılmamıştır. Ancak Anadolu’da­
+ki hareketin öngörülenden hızlı şekilde gelişmesi
+Hükûmeti harekete geçirmiştir. Durum üzerinde
+etkili olan önemli bir husus da Mustafa Kemal
+Paşa’nın önderliğinde giderek büyüyen Anadolu
+hareketinin öncelikli talepleri arasında 21 Aralık
+1918’de padişah tarafından kapatılan meclisin açıl­
+masının yer almasıydı. Zira İstanbul Hükûmeti,
+1919 yılının sonbaharında seçimlerin yapılması
+yönünde bazı adımlar attı. 14 Eylül 1919’da seçim­
+ler için bütçeye ek ödenek konuldu. ⟦3⟧
 
-📖 Dördüncü üniteye dair bu önemli konuları pekiştirmek için özgün çoktan seçmeli sorulardan oluşan interaktif bir quiz hazırlamamı ister misiniz?
+Seçimler sonrasında oluşan son Osmanlı Mebusan Meclisi seçilen 168 milletvekilinin 72’sinin İstanbul’a
+gelmesiyle 12 Ocak 1920 tarihinde açıldı (Karaca, 2004). Ancak daha önce kararlaştırılan Mustafa Kemal
+Paşa’nın gıyaben meclis başkanı seçilmesi ve bir Müdafaa-i Hukuk Grubunun kurulması esasları gerçek­… ⟦4⟧ ⟦5⟧ ⟦6⟧
+
+### İlgili çıkmış vize soruları
+Metindeki ⟦n⟧ işaretleri bu listeye açılır. Alıntıya tıklayınca çözüm rehberinde soru açılır ve çözümü vurgulanır.
+- [1] **2025/2026 · Soru 10**: Meclis-i Mebusan İstanbul’un işgalinden sonra kapatıldığı için İstanbul’da antlaşmayı onaylayacak yetkili bir kurul kalmamıştır. Ankara Hükû
+- [2] **2025/2026 · Soru 51**: 1920 yılında TBMM Hükûmetinin kurulmasından sonra ayaklanmalar daha da sıklaştı. Bu durum karşısında Ankara Hükûmeti tüm enerji ve gücünü ön
+- [3] **2025/2026 · Soru 57**: Aşağıdakilerden hangisi Sivas’ta 16-29 Kasım 1919 tarihlerinde gerçekleştirilen Komutanlar Toplantısı’nda alınan kararlardan biri değildir?
+- [4] **2024/2025 · Soru 20**: Aşağıdakilerden hangisi I. TBMM'ye karşı başlatılan isyanlardan biri değildir?
+- [5] **2024/2025 · Soru 31**: Aşağıdakilerden hangisi I. TBMM'ye yönelik ayaklanmalardan biri değildir?
+- [6] **2024/2025 · Soru 43**: Aşağıdakilerden hangisi I. TBMM’nin özelliklerinden biri değildir?
+- [7] **2024/2025 · Soru 51**: Aşağıdakilerden hangisi I. TBMM'ye karşı, İngiliz ve Fransızların kışkırtması sonucu patlak veren ayaklanmalardan biri değildir?
+- [8] **2023/2024 · Soru 37**: Aşağıdakilerden hangisi 18 Ocak 1919'da gerçekleştirilen Paris Barış Konferansı'nda oluşturulan "Onlar Konseyi"nde yer almaz?
+- [9] **2023/2024 · Soru 46**: Aşağıdakilerden hangisi I. TBMM açılmadan önce patlak veren ayaklanmalardan biri değildir?
+- [10] **2023/2024 · Soru 49**: Aşağıdakilerden hangisi Sevr Antlaşması'nı imzalayan devletlerden biri değildir?
+- [11] **2023/2024 · Soru 50**: Aşağıdakilerden hangisi Paris Barış Konferansı'na hâkim olan "Onlar Konseyi"nde yer alan devletlerden biridir?
+- [12] **2022/2023 · Soru 6**: Aşağıdakilerden hangisi iç ve dış etkenlerin desteği ve kışkırmaları ile I. TBMM'ye karşı başlatılan ayaklanmaların Milli Mücadeleye etkiler
 
 # Kaynaklar
 

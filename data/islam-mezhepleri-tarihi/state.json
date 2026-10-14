@@ -77,6 +77,54 @@
       "url": "https://www.youtube.com/watch?v=EDOncSKtEX0",
       "type": "youtube",
       "status": "ready"
+    },
+    "963c118b-9e55-402d-8399-9237939ce477": {
+      "id": "963c118b-9e55-402d-8399-9237939ce477",
+      "title": "İSLÂM MEZHEPLERİ TARİHİ - Kitap",
+      "url": "",
+      "type": "file",
+      "status": "ready",
+      "origin": "aof"
+    },
+    "f188fd5a-ade1-4b34-aaf4-fc10b58b93d9": {
+      "id": "f188fd5a-ade1-4b34-aaf4-fc10b58b93d9",
+      "title": "İSLÂM MEZHEPLERİ TARİHİ - Çıkmış Sınav Soruları (1)",
+      "url": "",
+      "type": "file",
+      "status": "ready",
+      "origin": "aof"
+    },
+    "97e947ff-6421-4e75-9e03-04370894a0f0": {
+      "id": "97e947ff-6421-4e75-9e03-04370894a0f0",
+      "title": "İSLÂM MEZHEPLERİ TARİHİ - Çıkmış Sınav Soruları (2)",
+      "url": "",
+      "type": "file",
+      "status": "ready",
+      "origin": "aof"
+    },
+    "53950a37-7922-4104-b46b-dab91fe25f20": {
+      "id": "53950a37-7922-4104-b46b-dab91fe25f20",
+      "title": "İSLÂM MEZHEPLERİ TARİHİ - Çıkmış Sınav Soruları (3)",
+      "url": "",
+      "type": "file",
+      "status": "ready",
+      "origin": "aof"
+    },
+    "293173e6-c41b-4ea5-a75a-9a75a5a4b090": {
+      "id": "293173e6-c41b-4ea5-a75a-9a75a5a4b090",
+      "title": "İSLÂM MEZHEPLERİ TARİHİ - Çıkmış Sınav Soruları (4)",
+      "url": "",
+      "type": "file",
+      "status": "ready",
+      "origin": "aof"
+    },
+    "19b43d40-a897-430b-be66-c541dfebcddc": {
+      "id": "19b43d40-a897-430b-be66-c541dfebcddc",
+      "title": "İSLÂM MEZHEPLERİ TARİHİ - Çıkmış Sınav Soruları",
+      "url": "",
+      "type": "file",
+      "status": "ready",
+      "origin": "aof"
     }
   },
   "order": [
@@ -89,7 +137,13 @@
     "dZ8nMOAz3_Y",
     "I6uc87hI5uE",
     "YXT_gTinJXY",
-    "EDOncSKtEX0"
+    "EDOncSKtEX0",
+    "963c118b-9e55-402d-8399-9237939ce477",
+    "f188fd5a-ade1-4b34-aaf4-fc10b58b93d9",
+    "97e947ff-6421-4e75-9e03-04370894a0f0",
+    "53950a37-7922-4104-b46b-dab91fe25f20",
+    "293173e6-c41b-4ea5-a75a-9a75a5a4b090",
+    "19b43d40-a897-430b-be66-c541dfebcddc"
   ],
   "tries": {
     "quiz": 1,

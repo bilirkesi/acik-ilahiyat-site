@@ -1,0 +1,358 @@
+{
+  "unit": 1,
+  "unitTitle": "Dil ve Kültür",
+  "title": "Dil Bilimi Quiz",
+  "questions": [
+    {
+      "question": "Dilin doğuşunu, ilk insanların acı, korku, sevinç gibi içsel durumlarını dışa vururken çıkardıkları seslere ve duygularını ifade etmelerine bağlayan kuram aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Ünlem kuramı",
+          "isCorrect": true,
+          "rationale": "Bu kuram, dilin kaynağını insanın sevinç, korku veya acı anlarında çıkardığı doğal ünlemlere ve duygusal tepkilere dayandırır."
+        },
+        {
+          "text": "Yansıma kuramı",
+          "isCorrect": false,
+          "rationale": "Yansıma kuramı duygusal tepkileri değil, doğadaki dış seslerin ve nesnelerin taklit edilmesini esas alır."
+        },
+        {
+          "text": "Ding-dong kuramı",
+          "isCorrect": false,
+          "rationale": "Ding-dong kuramı nesnelerin insan zihninde yarattığı titreşim ve ses uyumuna odaklanır."
+        },
+        {
+          "text": "Güneş dil kuramı",
+          "isCorrect": false,
+          "rationale": "Güneş dil kuramı, Türkçenin dünya dillerinin kökeninde yer aldığını savunan 20. yüzyıla ait antropolojik ve dil bilimsel bir hipotezdir."
+        }
+      ],
+      "hint": "İnsanın ruh halini gösteren ani ses tepkilerini ve hislerin dışa vurumunu düşününüz.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Doğadaki seslerin, hayvan çığlıklarının ve çevredeki nesnelerin çıkardığı seslerin insanlar tarafından taklit edilmesi esasına dayanan dilin doğuşu kuramı aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Yansıma kuramı",
+          "isCorrect": true,
+          "rationale": "Bu görüş, ilk kelimelerin insanların doğadaki gürültüleri, hayvan seslerini ve nesnelerin çıkardığı sesleri taklit etmesiyle oluştuğunu ileri sürer."
+        },
+        {
+          "text": "Ünlem kuramı",
+          "isCorrect": false,
+          "rationale": "Ünlem kuramı dış dünyadaki seslerin taklidinden ziyade insanın kendi duygusal çığlıklarını temel alır."
+        },
+        {
+          "text": "Etkileşim kuramı",
+          "isCorrect": false,
+          "rationale": "Etkileşim kuramı dilin doğuşunu toplumsal iş birliği ve birlikte çalışma sırasındaki sesleşmelere bağlar."
+        },
+        {
+          "text": "Tek köken kuramı",
+          "isCorrect": false,
+          "rationale": "Tek köken kuramı dilin doğuş biçiminden ziyade tüm dillerin tek bir ata dilden türediğini savunur."
+        }
+      ],
+      "hint": "Doğada duyulan şırıltı, patırtı gibi yansıma seslerin oluşum mantığını hatırlayınız.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "\"Tarihteki hiçbir dil günümüz modern dillerinden dil bilgisi yapıları bakımından geri değildir ve insan topluluklarının kullandığı tüm diller toplumun gereksinimlerine cevap verecek yeterliktedir.\" Bu durum bilimsel bakımdan dilin hangi özelliğini ifade eder?",
+      "answerOptions": [
+        {
+          "text": "İlkel dil, gelişmiş dil ayrımı yoktur.",
+          "isCorrect": true,
+          "rationale": "Dil bilimi ilkelerine göre her dil, ait olduğu toplumun ihtiyaçlarını karşılayabilecek gelişmişliktedir ve ilkel dil tanımı bilimsel olarak geçerli değildir."
+        },
+        {
+          "text": "Dilin üretim yetisi sınırsızdır.",
+          "isCorrect": false,
+          "rationale": "Üretim yetisinin sınırsızlığı, sınırlı sayıda sesle sonsuz sayıda yeni cümle üretilebilmesi özelliğini anlatır."
+        },
+        {
+          "text": "Dilde nedensizlik ilkesi esastır.",
+          "isCorrect": false,
+          "rationale": "Nedensizlik ilkesi, gösterge ile gösterilen (kavram ile ses imgesi) arasında zorunlu bir bağ olmamasını ifade eder."
+        },
+        {
+          "text": "Dil, öncelikle yazılı bir anlatım aracıdır.",
+          "isCorrect": false,
+          "rationale": "Dil tarihsel ve bilimsel açıdan öncelikle sözlü bir sistemdir; yazı dili sonradan geliştirilmiştir."
+        }
+      ],
+      "hint": "Diller arasında gelişim seviyesi yönünden bir hiyerarşi bulunmadığı fikrine odaklanın.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Dilin sesli ve yazılı biçimleri ile ilgili aşağıdaki ifadelerden hangisi bilimsel olarak doğrudur?",
+      "answerOptions": [
+        {
+          "text": "Dilin temeli sestir ve tarihsel olarak konuşma dili yazıdan çok daha eskidir.",
+          "isCorrect": true,
+          "rationale": "İnsanlık tarihinde sözlü iletişim yazıdan çok daha önce var olmuştur ve dilin temel yapı taşını konuşma sesleri oluşturur."
+        },
+        {
+          "text": "Yazılı dil, konuşma dilinden mantıksal açıdan her zaman üstündür.",
+          "isCorrect": false,
+          "rationale": "Bilimsel olarak sözlü ve yazılı dil arasında niteliksel veya mantıksal bir üstünlük hiyerarşisi bulunmamaktadır."
+        },
+        {
+          "text": "Konuşma sesleri tek başlarına bağımsız birer anlam taşırlar.",
+          "isCorrect": false,
+          "rationale": "Tek başlarına konuşma sesleri anlamsızdır; anlam ancak seslerin belirli kurallarla dizilmesiyle ortaya çıkar."
+        },
+        {
+          "text": "Dillerin öncelikli amacı yazılı belgeler oluşturmaktır.",
+          "isCorrect": false,
+          "rationale": "Dilin temel işlevi toplumsal iletişimi ve anlaşmayı sağlamaktır; yazılı belge oluşturmak ikincil bir araçtır."
+        }
+      ],
+      "hint": "İnsanlık tarihinin ilk iletişim biçimlerini ve konuşmanın yazıya göre önceliğini düşünün.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Herhangi bir dil ailesiyle akrabalık bağı kanıtlanamamış, bilinen diğer dillerden tamamen bağımsız yapıda olan diller \"izole dil\" olarak adlandırılır. Buna göre aşağıdakilerden hangisi izole dillerden biridir?",
+      "answerOptions": [
+        {
+          "text": "Gürcüce",
+          "isCorrect": true,
+          "rationale": "Gürcüce, bilinen büyük dil ailelerinin hiçbiriyle doğrudan akrabalık bağı kurulamayan izole diller kategorisindedir."
+        },
+        {
+          "text": "Farsça",
+          "isCorrect": false,
+          "rationale": "Farsça, izole bir dil olmayıp Hint-Avrupa dil ailesinin Hint-İran koluna mensuptur."
+        },
+        {
+          "text": "Yunanca",
+          "isCorrect": false,
+          "rationale": "Yunanca, Hint-Avrupa dil ailesine dahil olan köklü bir dildir."
+        },
+        {
+          "text": "Kazakça",
+          "isCorrect": false,
+          "rationale": "Kazakça, Türk dilleri ailesine ait Kıpçak grubu dillerindendir."
+        }
+      ],
+      "hint": "Kafkas coğrafyasında konuşulan ve bilinen büyük dil ailelerinin hiçbirine dahil edilmeyen dili arayınız.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Tarihte dinî metinlerin yazıldığı, ibadet dili olarak kabul edildiği ve kutsallık atfedildiği bilinen dillerden biri aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Sanskritçe",
+          "isCorrect": true,
+          "rationale": "Sanskritçe, Eski Hindistan'da dinî metinlerin, duaların ve kutsal metinlerin dili olarak kabul edilmiş klasik bir kutsal dildir."
+        },
+        {
+          "text": "Almanca",
+          "isCorrect": false,
+          "rationale": "Almanca, Cermen dil grubuna ait ulusal ve resmî bir dildir, kutsal diller sınıflandırmasında yer almaz."
+        },
+        {
+          "text": "İsveççe",
+          "isCorrect": false,
+          "rationale": "İsveççe, Kuzey Cermen dilleri arasında yer alan ulusal bir konuşma dilidir."
+        },
+        {
+          "text": "Tatarca",
+          "isCorrect": false,
+          "rationale": "Tatarca, Kıpçak grubuna ait bir Türk dili olup kutsal dil statüsünde değerlendirilmez."
+        }
+      ],
+      "hint": "Eski Hindistan'da dinî ve felsefi metinlerin kaleme alındığı tarihi dili hatırlayın.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Ölçünlü (standart) dil kavramı ile ilgili aşağıdaki yargılardan hangisi yanlıştır?",
+      "answerOptions": [
+        {
+          "text": "Ölçünlü Türkçe, Ankara ağzı esas alınarak oluşturulmuş bir konuşma dilidir.",
+          "isCorrect": true,
+          "rationale": "Ölçünlü (standart) Türkçe Ankara ağzına değil, İstanbul konuşma ağzına dayalı olarak biçimlenmiştir."
+        },
+        {
+          "text": "Bir dilin kurala bağlanmış, kurumlarca kabul görmüş standart özelliklerine ölçünlü dil denir.",
+          "isCorrect": false,
+          "rationale": "Ölçünlü dil terimi, dilin gramer ve imla kurallarıyla standartlaştırılmış biçimini doğru tanımlar."
+        },
+        {
+          "text": "Ölçünlü dil hem yazı hem de konuşma dilini kapsayan kurallaştırılmış yapıdır.",
+          "isCorrect": false,
+          "rationale": "Standart dil kuralları hem resmî konuşmalarda hem de yazılı anlatımda geçerlidir."
+        },
+        {
+          "text": "Resmî yazışmalarda ve eğitimde kullanılan standart dil ölçünlü dildir.",
+          "isCorrect": false,
+          "rationale": "Eğitim, kamu yönetimi ve hukuk gibi resmî alanlarda karmaşayı önlemek için ölçünlü dil kullanılır."
+        }
+      ],
+      "hint": "Türkiye Türkçesinin ölçünlü formunun tarihsel olarak hangi şehir ağzına dayandığını düşünün.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Kültürün kuşaktan kuşağa aktarılmasını sağlayan, taşıyıcısı ve en temel ögesi konumundaki unsur aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Dil",
+          "isCorrect": true,
+          "rationale": "Dil, bir toplumun geçmişten getirdiği tüm maddi ve manevi değerleri muhafaza eden ve kuşaktan kuşağa aktaran ana vasıtadır."
+        },
+        {
+          "text": "Sanat",
+          "isCorrect": false,
+          "rationale": "Sanat kültürün önemli bir dışa vurumu olsa da birikimin aktarılmasını sağlayan temel araç dilin kendisidir."
+        },
+        {
+          "text": "Hukuk",
+          "isCorrect": false,
+          "rationale": "Hukuk toplumsal düzeni sağlayan kurallar bütünüdür, kültür aktarımının ana taşıyıcısı konumunda değildir."
+        },
+        {
+          "text": "Mimari",
+          "isCorrect": false,
+          "rationale": "Mimari maddi kültür ögesidir; soyut fikir, inanç ve değerlerin bütüncül aktarımını tek başına sağlayamaz."
+        }
+      ],
+      "hint": "Soyut duygu, düşünce ve birikimlerin sözel veya yazılı aktarım vasıtasını hatırlayın.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Kültürü oluşturan maddi ve manevi ögeler dikkate alındığında, aşağıdakilerden hangisi manevi ögeler arasında yer alır?",
+      "answerOptions": [
+        {
+          "text": "Atasözleri ve inançlar",
+          "isCorrect": true,
+          "rationale": "Toplumun zihinsel birikimlerini, değer yargılarını, sözlü geleneklerini ve dünya görüşünü yansıtan unsurlar manevi kültür ögeleridir."
+        },
+        {
+          "text": "Geleneksel giysi ve kıyafetler",
+          "isCorrect": false,
+          "rationale": "Giysi ve kıyafetler somut ve nesnel nitelik taşıdıkları için maddi kültür ögeleri arasında sayılır."
+        },
+        {
+          "text": "Mimari yapılar ve binalar",
+          "isCorrect": false,
+          "rationale": "Fiziksel olarak inşa edilen tüm yapılar maddi kültürün somut tezahürleridir."
+        },
+        {
+          "text": "Üretimde kullanılan araç-gereçler",
+          "isCorrect": false,
+          "rationale": "Araç ve gereçler somut nesneler olduğu için maddi kültür alanına girer."
+        }
+      ],
+      "hint": "Zihinsel, soyut ve toplumsal değer yargıları içeren unsurları göz önünde bulundurun.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "\"Dil; ses, biçim, söz dizimi ve anlam gibi birbiriyle bağlantılı alt sistemlerin oluşturduğu bütüncül bir yapıdır.\" Bu tanım dilin hangi temel özelliğini vurgulamaktadır?",
+      "answerOptions": [
+        {
+          "text": "Dilin bir sistem olduğunu",
+          "isCorrect": true,
+          "rationale": "Birbiriyle uyumlu çalışarak iletişimi mümkün kılan alt birimlerin oluşturduğu bütünlük, dilin sistemik yapısını açıklar."
+        },
+        {
+          "text": "Dilde nedensizlik ilkesinin geçerli olduğunu",
+          "isCorrect": false,
+          "rationale": "Nedensizlik ilkesi nesneler ile onları karşılayan kelimeler arasındaki nedensiz bağ ilişkisini ifade eder."
+        },
+        {
+          "text": "Dilin coğrafyalara göre değiştiğini",
+          "isCorrect": false,
+          "rationale": "Coğrafi değişim diyalekt ve ağız farklılıklarını açıklar, alt sistemlerin bütünlüğünü vurgulamaz."
+        },
+        {
+          "text": "Dilin tamamen bireysel bir edim olduğunu",
+          "isCorrect": false,
+          "rationale": "Dil bireysel değil, toplumsal uzlaşıya dayanan kuralcı bir sistemdir."
+        }
+      ],
+      "hint": "Ögelerin düzenli bir bütün oluşturması ve belirli kurallara göre işlemesi durumuna ne ad verildiğini düşünün.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Bir dilin coğrafi, toplumsal ve tarihî süreçlerde ağız, şive ve lehçe gibi farklı \"değişke\"lere ayrılmasının temel nedeni aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Dilin zamana, coğrafyaya ve toplumsal katmanlara bağlı olarak sürekli değişmesi",
+          "isCorrect": true,
+          "rationale": "Dil durağan olmayıp zamanla, farklı coğrafyalarla ve toplumsal gruplarla etkileşime girerek çeşitlenir ve değişkelere ayrılır."
+        },
+        {
+          "text": "Dilde ilkeller ve gelişmişler ayrımının bulunması",
+          "isCorrect": false,
+          "rationale": "Dil biliminde ilkel dil-gelişmiş dil ayrımı yoktur, dolayısıyla değişke sebebi olamaz."
+        },
+        {
+          "text": "Dillerin yalnızca resmî yazışmalarda kullanılması",
+          "isCorrect": false,
+          "rationale": "Dilin günlük yaşamda ve her kesimce kullanılması değişkeleșmeyi artırır; sadece resmî kullanım çeşitliliği azaltırdı."
+        },
+        {
+          "text": "Yazı dilinin konuşma dilinden daha sonra keşfedilmiş olması",
+          "isCorrect": false,
+          "rationale": "Yazının keşif zamanı, dilde coğrafi veya toplumsal varyasyonların oluşmasının doğrudan nedeni değildir."
+        }
+      ],
+      "hint": "Dilin durağan olmayıp toplumla ve mekanla birlikte dönüşme karakterini göz önüne alın.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "\"Dil hem düşünceyi aktaran bir araç, hem edebî ve fikrî ürünlerin hammaddesi olan malzeme, hem de bu sistemi işleten bir düzendir.\" ifadesi dilin hangi yönünü öne çıkarmaktadır?",
+      "answerOptions": [
+        {
+          "text": "Araç-amaç ikiliği ve çok yönlülüğü",
+          "isCorrect": true,
+          "rationale": "Dilin hem duygu/düşünce aktarımında vasıta olması hem de kendisinin inceleme ve sanat nesnesi yapılması çok yönlü yapısını gösterir."
+        },
+        {
+          "text": "Yalnızca yazılı kurallara dayanmasını",
+          "isCorrect": false,
+          "rationale": "Bu ifade dilin tek yönlü yazılı kuralcılığını değil, işlevsel çeşitliliğini ve esnekliğini anlatır."
+        },
+        {
+          "text": "Sözcüklerin nedensiz bağlarla oluşmasını",
+          "isCorrect": false,
+          "rationale": "Nedensizlik kavramı kelimelerin anlamlandırılmasıyla ilgilidir, dilin işlevsel çift yönlülüğünü kapsamaz."
+        },
+        {
+          "text": "Yalnızca tek bir toplumsal sınıfa ait olmasını",
+          "isCorrect": false,
+          "rationale": "Dil tüm topluma ait ortak bir kurumdur, tek bir sınıfla sınırlandırılamaz."
+        }
+      ],
+      "hint": "Dilin hem iletişimi sağlayan bir vasıta hem de incelenen nesnenin kendisi olması durumunu değerlendirin.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Aşağıdakilerden hangisi Birleşmiş Milletler (BM) örgütünün resmî dillerinden biridir?",
+      "answerOptions": [
+        {
+          "text": "Çince",
+          "isCorrect": true,
+          "rationale": "Çince, Birleşmiş Milletler'in İngilizce, Fransızca, Rusça, İspanyolca ve Arapça ile birlikte kabul ettiği altı resmî dilden biridir."
+        },
+        {
+          "text": "Almanca",
+          "isCorrect": false,
+          "rationale": "Almanca Avrupa'da yaygın konuşulsa da Birleşmiş Milletler'in resmî dilleri arasında yer almaz."
+        },
+        {
+          "text": "Korece",
+          "isCorrect": false,
+          "rationale": "Korece Doğu Asya'da önemli bir dil olmasına karşın BM resmî dili statüsünde değildir."
+        },
+        {
+          "text": "Portekizce",
+          "isCorrect": false,
+          "rationale": "Portekizce küresel düzeyde geniş bir coğrafyada konuşulmasına rağmen BM resmî diller listesinde yoktur."
+        }
+      ],
+      "hint": "Dünyada en çok konuşuru bulunan ve BM'nin altı resmî dilinden biri olan Doğu Asya dilini düşünün.",
+      "type": "multiple_choice"
+    }
+  ]
+}

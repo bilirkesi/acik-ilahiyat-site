@@ -1,0 +1,331 @@
+{
+  "unit": 2,
+  "unitTitle": "Türk Dilinin Gelişimi ve Tarihsel Dönemleri",
+  "title": "Türk Dili Testi",
+  "questions": [
+    {
+      "question": "Türkçenin metinlerle takip edilebilen tarihi boyunca kullandığı, kendine özgü ilk düzenli ve kuralları yerleşmiş yerli yazı sistemi aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Köktürk alfabesi",
+          "isCorrect": true,
+          "rationale": "Türklerin bilinen ilk millî alfabesi olup Orhun Yazıtları bu gelişmiş ve kuralları oturmuş yazı sistemiyle taşa kazınmıştır."
+        },
+        {
+          "text": "Uygur alfabesi",
+          "isCorrect": false,
+          "rationale": "Soğd alfabesinden türetilen ve Köktürk alfabesinden sonra geniş kabul gören bir yazı sistemidir."
+        },
+        {
+          "text": "Soğd alfabesi",
+          "isCorrect": false,
+          "rationale": "İran kökenli bir alfabe olup Uygur yazısının oluşumuna temel sağlamıştır ancak Türklerin özgün ilk alfabesi değildir."
+        },
+        {
+          "text": "Mani alfabesi",
+          "isCorrect": false,
+          "rationale": "Maniheizm dininin kabulüyle beraber dar bir çevrede tercih edilen alfabelerden biridir."
+        }
+      ],
+      "hint": "Batılı bilginlerce 'Runik' olarak adlandırılan ve Orhun Yazıtları'nın yazımında kullanılan alfabeyi düşününüz.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Türk dilinin yazıyla izlenebilen ilk dönemi olan ve MS 5.-10. yüzyıllar arasında Göktürk ile Uygur metinlerini kapsayan tarihî dönem aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Eski Türkçe Dönemi",
+          "isCorrect": true,
+          "rationale": "Türkçenin bilinen ilk hacimli yazılı belgelerinin verildiği ve Köktürk ile Uygur evrelerini kapsayan ilk tarihî dönemdir."
+        },
+        {
+          "text": "Orta Türkçe Dönemi",
+          "isCorrect": false,
+          "rationale": "İslamiyet'in kabulünden sonra Karahanlı, Harezm ve Çağatay sahalarını kapsayan sonraki evredir."
+        },
+        {
+          "text": "Çağatay Türkçesi Dönemi",
+          "isCorrect": false,
+          "rationale": "Doğu Türkçesi kolunda Müşterek Türkistan Türkçesi olarak gelişen daha geç bir dönemi ifade eder."
+        },
+        {
+          "text": "Yeni Türkçe Dönemi",
+          "isCorrect": false,
+          "rationale": "20. yüzyıl sonrasını ve modern yazı dillerinin oluştuğu evreyi kapsar."
+        }
+      ],
+      "hint": "MS 5. ile 10. yüzyıllar arasında varlık gösteren ve Türkçenin bilinen en eski yazılı örneklerini barındıran ilk dönemi hatırlayınız.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Soğd yazı sisteminin dönüştürülmesiyle oluşturulan ve Moğol ile Mançu gibi toplulukların alfabelerine de kaynaklık eden tarihî alfabe aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Uygur alfabesi",
+          "isCorrect": true,
+          "rationale": "Soğd alfabesinden uyarlanarak geliştirilmiş ve çevre halkların alfabe yapılarına da modellik etmiştir."
+        },
+        {
+          "text": "Brahmi alfabesi",
+          "isCorrect": false,
+          "rationale": "Hindistan kaynaklı olup Budist metinlerin tercümesinde kısıtlı biçimde kullanılmıştır."
+        },
+        {
+          "text": "Köktürk alfabesi",
+          "isCorrect": false,
+          "rationale": "Yerli ve özgün damgalardan gelişmiş olup dış kaynaklı Soğd alfabesine dayanmaz."
+        },
+        {
+          "text": "Süryani alfabesi",
+          "isCorrect": false,
+          "rationale": "Yakın Doğu kökenli bir alfabe olup Türkçenin yazımında kısıtlı dinî metinlerde tercih edilmiştir."
+        }
+      ],
+      "hint": "Yerleşik hayata geçen Türk topluluklarının uzun yıllar zengin bir edebiyat külliyatı oluştururken yararlandığı alfabeyi göz önüne getiriniz.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Karahanlı ve Harezm Türkçesi metinlerini kapsayan, Türklerin İslam kültür çevresine girmesiyle şekillenen tarihî evre aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Orta Türkçe Dönemi",
+          "isCorrect": true,
+          "rationale": "Karahanlı ve Harezm sahası eserleriyle İslam etkisindeki ilk yazılı ürünlerin ortaya konduğu dönemi ifade eder."
+        },
+        {
+          "text": "Eski Türkçe Dönemi",
+          "isCorrect": false,
+          "rationale": "İslam öncesi Göktürk ve Uygur metinlerinin üretildiği ilk dönemi kapsar."
+        },
+        {
+          "text": "Hun Dönemi",
+          "isCorrect": false,
+          "rationale": "Türkçenin henüz yazılı belgelerle geniş biçimde takip edilemediği çok daha eski döneme aittir."
+        },
+        {
+          "text": "Yeni Türkçe Dönemi",
+          "isCorrect": false,
+          "rationale": "Modern Çağ'daki çağdaş Türk şivelerini ve yazı dillerini kapsayan evredir."
+        }
+      ],
+      "hint": "Divânü Lügati't-Türk ve Kutadgu Bilig gibi geçiş dönemi eserlerinin kaleme alındığı yüzyılları kapsayan dönemi değerlendiriniz.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Müşterek Türkistan Türkçesi adıyla da anılan ve Ali Şîr Nevâî'nin Muhakemetü'l-Lügateyn adlı eseriyle zirveye ulaşan edebî dil dönemi aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Çağatay Türkçesi",
+          "isCorrect": true,
+          "rationale": "Doğu Türkçesi sahasında gelişen ve Orta Asya Türk dünyasının ortak edebî dili olarak işlev gören tarihî yazı dilidir."
+        },
+        {
+          "text": "Kıpçak Türkçesi",
+          "isCorrect": false,
+          "rationale": "Kuzey Türkçesi alanında Altınordu ve Karadeniz'in kuzeyinde gelişen yazı dilidir."
+        },
+        {
+          "text": "Oğuz Türkçesi",
+          "isCorrect": false,
+          "rationale": "Türkiye Türkçesi ve Azerbaycan Türkçesinin temelini oluşturan Batı Türkçesi koludur."
+        },
+        {
+          "text": "Uygur Türkçesi",
+          "isCorrect": false,
+          "rationale": "Eski Türkçe dönemi içinde yer alan ve Budist-Maniheist metinlerle tanınan evredir."
+        }
+      ],
+      "hint": "Doğu Türkçesi kolunun en önemli edebî gelişim safhasını dikkate alınız.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "MS 687-692 yıllarına tarihlenen ve Türk dilinin tarihi bilinen ilk yazılı belgesi kabul edilen yazıt aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Çoyr Yazıtı",
+          "isCorrect": true,
+          "rationale": "Tarihi kesin olarak belirlenebilen en eski Türk yazılı belgesi olma niteliğini taşır."
+        },
+        {
+          "text": "Bilge Kağan Yazıtı",
+          "isCorrect": false,
+          "rationale": "8. yüzyılda (735 civarı) dikilmiş ana Orhun abidelerinden biridir."
+        },
+        {
+          "text": "Kül Tigin Yazıtı",
+          "isCorrect": false,
+          "rationale": "732 yılında dikilen ve Köktürk alfabesiyle yazılan görkemli bir anıttır."
+        },
+        {
+          "text": "Yenisey Yazıtları",
+          "isCorrect": false,
+          "rationale": "Tarihlenmesi tam olarak kesinleşmemiş, daha kısa nitelikli mezar taşlarıdır."
+        }
+      ],
+      "hint": "MS 7. yüzyılın sonlarına tarihlenen ve bilinen en eski yazılı Türk anıtı olma özelliğini taşıyan metni düşününüz.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Kuzey Türkçesi (Kıpçak Türkçesi) sahasında kaleme alınan, Kıpçak Türkçesinin söz varlığı ve dil bilgisi bakımından en önemli kaynağı sayılan eser aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Codex Cumanicus",
+          "isCorrect": true,
+          "rationale": "Karadeniz'in kuzeyindeki Kıpçak Türklerinin dilini yansıtan ve Hristiyan misyonerlerce derlenen temel kaynaktır."
+        },
+        {
+          "text": "Kutadgu Bilig",
+          "isCorrect": false,
+          "rationale": "Karahanlı Türkçesi dönemiyle yazılmış siyasetname niteliğinde ilk İslami eserdir."
+        },
+        {
+          "text": "Atebetü'l-Hakâyık",
+          "isCorrect": false,
+          "rationale": "Edip Ahmet Yüknekî tarafından Karahanlı Türkçesiyle yazılmış ahlaki bir öğüt kitabıdır."
+        },
+        {
+          "text": "Muhakemetü'l-Lügateyn",
+          "isCorrect": false,
+          "rationale": "Ali Şîr Nevâî tarafından Çağatay Türkçesi ile Farsça karşılaştırmalı olarak yazılmıştır."
+        }
+      ],
+      "hint": "Karadeniz'in kuzeyindeki Kıpçaklar ile Avrupalılar arasındaki ticari ve dinî ilişkiler sonucu derlenen derleme eseri hatırlayınız.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Çağdaş Türkiye Türkçesi aşağıdaki tarihî Türk dili kollarından hangisinin doğrudan devamı kabul edilmektedir?",
+      "answerOptions": [
+        {
+          "text": "Oğuz Türkçesi",
+          "isCorrect": true,
+          "rationale": "Selçuklu ve Osmanlı üzerinden günümüz Türkiye Türkçesine ulaşan Batı Türkçesi kolunu oluşturur."
+        },
+        {
+          "text": "Kıpçak Türkçesi",
+          "isCorrect": false,
+          "rationale": "Tatar, Başkurt ve Kazak Türkçesi gibi Kuzey grubu lehçelerinin kaynağını oluşturur."
+        },
+        {
+          "text": "Çağatay Türkçesi",
+          "isCorrect": false,
+          "rationale": "Özbek ve Doğu Türkistan alanındaki çağdaş lehçelerin tarihî temelidir."
+        },
+        {
+          "text": "Karluk Türkçesi",
+          "isCorrect": false,
+          "rationale": "Doğu grubunun oluşumunda rol oynayan ve Karahanlı Türkçesine zemin oluşturan koldur."
+        }
+      ],
+      "hint": "Yunus Emre ve Âşık Paşa gibi isimlerin ilk örneklerini verdiği Batı Türkçesi ana kolunu dikkate alınız.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "1926 yılında toplanan ve Çuvaşlar haricindeki tüm Türk topluluklarının Latin alfabesine geçmesi yönünde tarihi bir karar alan kongre aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Bakü Türkoloji Kongresi",
+          "isCorrect": true,
+          "rationale": "Türk dünyasının ortak alfabe kullanımı ve dil meselelerinin karara bağlandığı simge toplantıdır."
+        },
+        {
+          "text": "Taşkent Dil Kurultayı",
+          "isCorrect": false,
+          "rationale": "Orta Asya'da bölgesel alfabe düzenlemeleri yapılan ancak bu kararın alındığı ana kongre olmayan bir toplantıdır."
+        },
+        {
+          "text": "Almatı Kültür Kongresi",
+          "isCorrect": false,
+          "rationale": "Kazakistan sahasındaki dil çalışmalarıyla sınırlı yerel bir buluşmadır."
+        },
+        {
+          "text": "Kazan Türkoloji Toplantısı",
+          "isCorrect": false,
+          "rationale": "Tatar dili üzerine odaklanan, tüm Türk dünyasını bağlayan genel kararın çıkmadığı bir etkinliktir."
+        }
+      ],
+      "hint": "1920'li yıllarda Azerbaycan'ın başkentinde düzenlenen geniş katılımlı Türkoloji kongresini hatırlayınız.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Türkçenin metinlerle takip edilemeyen, teorik karşılaştırmalarla (rekonstrüksiyon) kurgulanan en eski karanlık dönemi aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Altay Dönemi",
+          "isCorrect": true,
+          "rationale": "Türkçenin henüz ayrı bir dil olarak şekillenmediği, Altay dil birliği içinde değerlendirildiği yazısız evredir."
+        },
+        {
+          "text": "Uygur Dönemi",
+          "isCorrect": false,
+          "rationale": "Yüzlerce yazılı belgenin günümüze ulaştığı metinlerle izlenebilir bir dönemdir."
+        },
+        {
+          "text": "Karahanlı Dönemi",
+          "isCorrect": false,
+          "rationale": "İslami dönemin ilk yazılı eserlerinin verildiği takipli evredir."
+        },
+        {
+          "text": "Harezm Dönemi",
+          "isCorrect": false,
+          "rationale": "14. yüzyılda Altınordu ve Orta Asya sahasında zengin yazılı metinler sunan dönemdir."
+        }
+      ],
+      "hint": "Türkçenin henüz Moğolca, Mançu-Tunguzca gibi akraba dillerle bir arada bulunduğu düşünülen en eski evreyi değerlendiriniz.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Batı Türkçesinin ilk evresi olan Eski Oğuz Türkçesi dönemi dil özelliklerini yansıtan ve destansı anlatılar barındıran eser aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Dede Korkut Kitabı",
+          "isCorrect": true,
+          "rationale": "Oğuz Türklerinin toplumsal hayatını ve dil yapısını Eski Anadolu Türkçesi dönemi özellikleriyle günümüze taşıyan destansı metindir."
+        },
+        {
+          "text": "Divânü Lügati't-Türk",
+          "isCorrect": false,
+          "rationale": "11. yüzyılda Kâşgarlı Mahmud tarafından Karahanlı sahasında yazılmış Arapça-Türkçe sözlüktür."
+        },
+        {
+          "text": "Nehcü'l-Ferâdis",
+          "isCorrect": false,
+          "rationale": "Harezm Türkçesi döneminde dinsel ve ahlaki konularda kaleme alınan bir yapıttır."
+        },
+        {
+          "text": "Mukaddimetü'l-Edeb",
+          "isCorrect": false,
+          "rationale": "Zemahşerî tarafından Harezm Türkçesi sahasında hazırlanan Arapça öğretim sözlüğüdür."
+        }
+      ],
+      "hint": "Salur Kazan, Bamsı Beyrek gibi kahramanların yer aldığı ve Batı Türkçesinin ilk evresini yansıtan eseri hatırlayınız.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Tarih boyunca Türklerin dillerini kaydetmek için kullandığı 13 farklı alfabe arasında aşağıdakilerden hangisi yer almaz?",
+      "answerOptions": [
+        {
+          "text": "Japon alfabesi",
+          "isCorrect": true,
+          "rationale": "Türklerin tarihsel süreçte coğrafi ve kültürel temaslar sonucunda kullandığı 13 yazı sistemi arasında bulunmamaktadır."
+        },
+        {
+          "text": "Süryani alfabesi",
+          "isCorrect": false,
+          "rationale": "Hristiyan Türk topluluklarının dinî metinleri yazarken tercih ettiği alfabelerdendir."
+        },
+        {
+          "text": "İbrani alfabesi",
+          "isCorrect": false,
+          "rationale": "Musevi dinine mensup Hazar Türkleri ve Karaylar tarafından kullanılan yazılardandır."
+        },
+        {
+          "text": "Mani alfabesi",
+          "isCorrect": false,
+          "rationale": "Uygur döneminde Maniheizm inancının benimsenmesiyle kullanılan yazı sistemlerinden biridir."
+        }
+      ],
+      "hint": "Türkçenin yazımında kullanılan 13 tarihî ve çağdaş alfabeden biri olmayan Doğu Asya kökenli yazı sistemini arayınız.",
+      "type": "multiple_choice"
+    }
+  ]
+}
