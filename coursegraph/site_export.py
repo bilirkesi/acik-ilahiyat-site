@@ -13,6 +13,7 @@ from urllib.parse import quote
 
 from .graph import CourseGraph
 from .indexer import fold, tokenize
+from .past_exams import COURSE_UNIT_CONFIGS, unit_to_chapters
 
 ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "site" / "coursegraph.js"
@@ -36,20 +37,14 @@ def _href(n: dict) -> str:
         return f"#/course/{c}"
     if t == "quiz":
         return f"#/course/{c}/quiz"
-    if t == "past_exam":
-        return f"#/course/{c}/quiz"
-    if t == "past_question":
-        u = n.get("unit")
-        # ünite -> site bölüm (yaklaşık)
-        ch_map = {1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6}
-        ch = ch_map.get(u or 0)
-        if ch:
-            return f"#/course/{c}/chapter/{ch}"
-        return f"#/course/{c}"
+    if t in ("unit_quiz", "unit_quiz_question"):
+        return f"#/course/{c}/unit-quiz/{n.get('unit') or ''}".rstrip("/")
+    if t in ("past_exam", "past_question"):
+        eid = n.get("exam_id")
+        return f"#/course/{c}/past/{quote(eid)}" if eid else f"#/course/{c}/exams"
     if t == "unit":
-        ch_map = {1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6}
-        ch = ch_map.get(n.get("unit") or 0)
-        return f"#/course/{c}/chapter/{ch}" if ch else f"#/course/{c}"
+        chs = unit_to_chapters(c).get(n.get("unit") or 0, []) if c in COURSE_UNIT_CONFIGS else []
+        return f"#/course/{c}/chapter/{chs[0]}" if chs else f"#/course/{c}"
     if t == "keyword":
         return f"#/ara?q={quote(n.get('title') or '')}"
     return f"#/course/{c}"
@@ -69,6 +64,8 @@ KEEP = {
     "past_question",
     "unit",
     "keyword",
+    "unit_quiz",
+    "unit_quiz_question",
 }
 
 
@@ -99,7 +96,7 @@ def build_site_cg(g: CourseGraph | None = None) -> dict:
         elif t == "concept":
             hay_src = f"{title} {n.get('definition') or ''}"
             snippet = n.get("definition") or ""
-        elif t in ("quiz_question", "exam_question"):
+        elif t in ("quiz_question", "exam_question", "unit_quiz_question"):
             hay_src = f"{title} {n.get('question') or ''} {n.get('answer') or ''}"
             snippet = n.get("question") or title
         elif t == "event":
@@ -115,6 +112,9 @@ def build_site_cg(g: CourseGraph | None = None) -> dict:
         elif t == "past_exam":
             hay_src = f"{title} çıkmış vize {n.get('year') or ''} {n.get('exam_id') or ''}"
             snippet = f"{n.get('year', '')} Güz ara sınav · {n.get('question_count', 0)} soru"
+        elif t == "unit_quiz":
+            hay_src = f"{title} ünite {n.get('unit') or ''} quiz test"
+            snippet = f"{n.get('question_count', 0)} soru"
         elif t == "unit":
             hay_src = f"{title} ünite {n.get('unit') or ''} {n.get('unit_title') or ''}"
             snippet = n.get("unit_title") or title
@@ -170,6 +170,9 @@ def build_site_cg(g: CourseGraph | None = None) -> dict:
         "covers_unit",
         "covers_chapter",
         "has_unit",
+        "unit_chapter",
+        "has_unit_quiz",
+        "cites_past_question",
     }
     for e in g.edges:
         if e["rel"] not in interesting:

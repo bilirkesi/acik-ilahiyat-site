@@ -239,53 +239,8 @@ def build_mindmaps(g: CourseGraph | None = None) -> dict:
         encoding="utf-8",
     )
     (OUT / "index.html").write_text(render_index_html(index_rows), encoding="utf-8")
-    write_site_mindmaps()
+    # Zihin haritaları sitede yok (PR #12); yalnızca yerel index/mindmaps + MCP course_mindmap.
     return {"out": str(OUT), "courses": len(index_rows), "maps": sum(len(r["mindmaps"]) for r in index_rows)}
-
-
-def write_site_mindmaps() -> Path:
-    """site/mindmaps.js → window.MINDMAPS (sitede bölüm entegrasyonu için)."""
-    site = ROOT / "site"
-    site.mkdir(exist_ok=True)
-    payload: dict[str, dict] = {}
-    for f in sorted(OUT.glob("*.json")):
-        if f.name == "index.json":
-            continue
-        data = load_json(f)
-        if not isinstance(data, dict) or "course" not in data:
-            continue
-        course = data["course"]
-        maps = []
-        for m in data.get("mindmaps") or []:
-            maps.append(
-                {
-                    "id": m.get("id"),
-                    "title": m.get("title"),
-                    "source": m.get("source"),
-                    "nodes": [
-                        {
-                            "id": n.get("id"),
-                            "label": n.get("label"),
-                            "desc": (n.get("desc") or "")[:240],
-                            "depth": n.get("depth", 0),
-                            "chapter": n.get("chapter"),
-                            "href": n.get("href"),
-                        }
-                        for n in (m.get("nodes") or [])
-                    ],
-                    "edges": m.get("edges") or [],
-                }
-            )
-        payload[course] = {"course": course, "generated_at": data.get("generated_at"), "mindmaps": maps}
-    out = site / "mindmaps.js"
-    out.write_text(
-        "/* CourseGraph zihin haritalari. python -m coursegraph.mindmap ile uretilir. */\n"
-        "window.MINDMAPS = "
-        + json.dumps(payload, ensure_ascii=False)
-        + ";\n",
-        encoding="utf-8",
-    )
-    return out
 
 
 def render_html(course: str, mindmaps: list[dict]) -> str:

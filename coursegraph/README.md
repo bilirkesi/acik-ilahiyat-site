@@ -1,6 +1,6 @@
 # CourseGraph
 
-Ders verisi için CodeGraph mantığında yerel bilgi grafiği + MCP sunucusu + **canlı zihin haritaları**.
+Ders verisi için CodeGraph mantığında yerel bilgi grafiği + MCP sunucusu + site arama indeksi (`site/coursegraph.js`). Dört ders: İslam Mezhepleri Tarihi, Türk Dili I, Atatürk İlkeleri I, Osmanlı Türkçesi I.
 
 ## Düğüm / kenar
 
@@ -9,11 +9,14 @@ Ders verisi için CodeGraph mantığında yerel bilgi grafiği + MCP sunucusu + 
 | university, term, course | AÖF/İÜ, 2026-2027 Güz, dersler |
 | chapter, concept, event | Bölüm, kavram, timeline olayı |
 | quiz_question, exam_question | Test ve vize/final/yaz soruları |
-| past_exam, past_question | Çıkmış AÖF vize soruları (2021-2026) |
-| unit, keyword | AÖF üniteleri (1-10) + anahtar kelimeler |
+| past_exam, past_question | Çıkmış AÖF vize soruları (2021-2026, dört ders) |
+| unit, keyword | AÖF üniteleri + anahtar kelimeler |
+| unit_quiz, unit_quiz_question | Ünite quiz'leri (`data/<slug>/unit_quizzes/unit-N.json`) |
 | artifact, source | NotebookLM çıktıları, kaynaklar |
 
-Kenarlar: `has_course`, `has_chapter`, `defines_concept`, `mentions_concept`, `has_quiz`, `has_exam`, `has_question`, `has_artifact`, `has_past_exam`, `in_unit`, `in_chapter`, `has_keyword`, `covers_unit`, `covers_chapter`, …
+Kenarlar: `has_course`, `has_chapter`, `defines_concept`, `mentions_concept`, `has_quiz`, `has_exam`, `has_question`, `has_artifact`, `has_past_exam`, `in_unit`, `in_chapter`, `has_keyword`, `covers_unit`, `covers_chapter`, `has_unit_quiz`, `unit_chapter`, `cites_past_question` (bölüm notundaki çıkmış soru atfı), …
+
+`artifacts/catalog.json` yalnızca yerel makinede bulunur (git dışı); yoksa önceki `graph.json`'daki artifact düğümleri korunur.
 
 ## Kurulum
 
@@ -34,7 +37,9 @@ python -m coursegraph.server
 
 opencode için: `opencode.json` → `mcp.coursegraph`. Değişiklikten sonra **opencode'u yeniden başlat**.
 
-## Canlı zihin haritaları
+## Zihin haritaları (yalnızca yerel)
+
+Sitede zihin haritası yok (PR #12, yerine interaktif bölüm raporu). Haritalar sadece yerel inceleme ve MCP `course_mindmap` için üretilir; `site/mindmaps.js` artık yazılmaz.
 
 Kaynak: `interactive.tree`, `interactive.chapters`, NotebookLM `mind-map__*.json`, graf türevi (bölüm→kavram).
 

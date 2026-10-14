@@ -88,16 +88,14 @@ class GraphBuilder:
         }
 
 
-def _add_past_exams(g: GraphBuilder, slug: str, cid: str) -> None:
-    """data/<slug>/past_exams.json → ünite, çıkmış vize, soru, anahtar kelime düğümleri."""
-    from .past_exams import UNIT_TITLES, UNIT_TO_CHAPTERS, annotate_questions
+def _add_units(g: GraphBuilder, slug: str, cid: str) -> None:
+    """Dersin AÖF ünite düğümleri (kapsam boş olsa bile hepsi)."""
+    from .past_exams import COURSE_UNIT_CONFIGS, unit_titles, unit_to_chapters
 
-    exams = annotate_questions(slug)
-    if not exams:
+    if slug not in COURSE_UNIT_CONFIGS:
         return
-
-    # ünite düğümleri (tüm 1-10, kapsam boş olsa bile)
-    for u, title in UNIT_TITLES.items():
+    UNIT_TO_CHAPTERS = unit_to_chapters(slug)
+    for u, title in unit_titles(slug).items():
         uid = f"unit:{slug}:{u}"
         g.node(
             uid,
@@ -110,6 +108,22 @@ def _add_past_exams(g: GraphBuilder, slug: str, cid: str) -> None:
             text=f"{title} ünite {u}",
         )
         g.edge(cid, uid, "has_unit")
+        for ch in UNIT_TO_CHAPTERS.get(u, []):
+            g.edge(uid, f"chapter:{slug}:{ch:02d}", "unit_chapter", chapter=ch)
+
+
+def _add_past_exams(g: GraphBuilder, slug: str, cid: str) -> dict[tuple[str, int], str]:
+    """data/<slug>/past_exams.json → çıkmış vize, soru, anahtar kelime düğümleri.
+
+    Dönüş: (exam_id, soru no) → düğüm id (bölüm notlarındaki atıflar için).
+    """
+    from .past_exams import annotate_questions, unit_to_chapters
+
+    UNIT_TO_CHAPTERS = unit_to_chapters(slug)
+    by_num: dict[tuple[str, int], str] = {}
+    exams = annotate_questions(slug)
+    if not exams:
+        return by_num
 
     for exam in exams:
         exam_id = exam.get("exam_id") or f"{exam.get('year', 'x')}-vize"
@@ -117,7 +131,7 @@ def _add_past_exams(g: GraphBuilder, slug: str, cid: str) -> None:
         g.node(
             eroot,
             "past_exam",
-            f"Çıkmış Vize {exam.get('year', exam_id)}",
+            f"Çıkmış Vize {exam.get('year', exam_id)}" + (f" · {exam['group']} grup" if exam.get("group") else ""),
             course=slug,
             exam_id=exam_id,
             year=exam.get("year", ""),
@@ -142,6 +156,7 @@ def _add_past_exams(g: GraphBuilder, slug: str, cid: str) -> None:
                 course=slug,
                 exam_id=exam_id,
                 year=exam.get("year", ""),
+                num=q.get("n") or qi,
                 unit=unit,
                 keywords=kws,
                 question=stem,
@@ -149,6 +164,7 @@ def _add_past_exams(g: GraphBuilder, slug: str, cid: str) -> None:
                 text=f"{stem} {' '.join(kws)}",
             )
             g.edge(eroot, qid, "has_question")
+            by_num[(exam_id, int(q.get("n") or qi))] = qid
             if unit:
                 units_in_exam.add(unit)
                 uid = f"unit:{slug}:{unit}"
@@ -170,6 +186,70 @@ def _add_past_exams(g: GraphBuilder, slug: str, cid: str) -> None:
             g.edge(eroot, f"unit:{slug}:{u}", "covers_unit", unit=u)
             for ch in UNIT_TO_CHAPTERS.get(u, []):
                 g.edge(eroot, f"chapter:{slug}:{ch:02d}", "covers_chapter", chapter=ch)
+    return by_num
+
+
+def _add_unit_quizzes(g: GraphBuilder, slug: str, cid: str) -> None:
+    """data/<slug>/unit_quizzes/unit-N.json → ünite quiz'i ve soru düğümleri."""
+    from .past_exams import COURSE_UNIT_CONFIGS, unit_to_chapters
+
+    qdir = ROOT / "data" / slug / "unit_quizzes"
+    if not qdir.is_dir():
+        return
+    u2c = unit_to_chapters(slug) if slug in COURSE_UNIT_CONFIGS else {}
+    files = sorted(qdir.glob("unit-*.json"), key=lambda p: int(re.sub(r"\D", "", p.stem) or 0))
+    for path in files:
+        data = load_json(path)
+        u = int(data.get("unit") or re.sub(r"\D", "", path.stem))
+        utitle = data.get("unitTitle") or ""
+        root = f"uquiz:{slug}:{u}"
+        questions = data.get("questions") or []
+        g.node(
+            root,
+            "unit_quiz",
+            f"Ünite {u} quiz'i" + (f": {utitle}" if utitle else ""),
+            course=slug,
+            unit=u,
+            unit_title=utitle,
+            question_count=len(questions),
+            text=f"ünite {u} quiz {utitle}",
+        )
+        g.edge(cid, root, "has_unit_quiz")
+        if f"unit:{slug}:{u}" in g.nodes:
+            g.edge(root, f"unit:{slug}:{u}", "in_unit", unit=u)
+        for ch in u2c.get(u, []):
+            g.edge(root, f"chapter:{slug}:{ch:02d}", "in_chapter", chapter=ch)
+        for qi, q in enumerate(questions, 1):
+            qid = f"uquizq:{slug}:{u}:{qi:03d}"
+            correct = next(
+                (o.get("text", "") for o in q.get("answerOptions", []) if o.get("isCorrect")),
+                "",
+            )
+            g.node(
+                qid,
+                "unit_quiz_question",
+                q.get("question", "")[:80],
+                course=slug,
+                unit=u,
+                question=q.get("question", ""),
+                answer=correct,
+                options=q.get("answerOptions", []),
+                text=q.get("question", ""),
+            )
+            g.edge(root, qid, "has_question")
+
+
+def _previous_artifacts() -> list[dict]:
+    """artifacts/catalog.json yalnızca yerel makinede (git dışı). Yoksa önceki indeksteki
+    artifact düğümlerini koru ki bulutta yeniden kurulum onları silmesin."""
+    path = INDEX_DIR / "graph.json"
+    if not path.exists():
+        return []
+    try:
+        old = load_json(path)
+    except (OSError, ValueError):
+        return []
+    return [n for n in old.get("nodes", []) if n.get("type") == "artifact"]
 
 
 def build() -> dict:
@@ -178,7 +258,8 @@ def build() -> dict:
     unis = load_json(ROOT / "universities.json") if (ROOT / "universities.json").exists() else {}
     interactive = dump_interactive()
     catalog_path = ROOT / "artifacts" / "catalog.json"
-    catalog = load_json(catalog_path) if catalog_path.exists() else []
+    catalog = load_json(catalog_path) if catalog_path.exists() else None
+    old_artifacts = _previous_artifacts() if catalog is None else []
 
     # universities
     for uid, u in unis.items():
@@ -380,11 +461,24 @@ def build() -> dict:
                 )
                 g.edge(eroot, qid, "has_question")
 
-        # çıkmış vize (AÖF PDF) + ünite/anahtar kelime
-        _add_past_exams(g, slug, cid)
+        # AÖF üniteleri, çıkmış vize (AÖF PDF) + anahtar kelime, ünite quiz'leri
+        _add_units(g, slug, cid)
+        past_by_num = _add_past_exams(g, slug, cid)
+        _add_unit_quizzes(g, slug, cid)
+
+        # bölüm notlarındaki çıkmış soru atıfları (study_plan chapters[].cites)
+        for i, ch in enumerate(chapters, 1):
+            for cite in ch.get("cites") or []:
+                qid = past_by_num.get((cite.get("exam_id", ""), int(cite.get("num") or 0)))
+                if qid:
+                    g.edge(f"chapter:{slug}:{i:02d}", qid, "cites_past_question")
 
         # artifacts
-        for art in catalog:
+        for n in old_artifacts:
+            if n.get("course") == slug:
+                g.node(n["id"], "artifact", n.get("title", ""), **{k: v for k, v in n.items() if k not in ("id", "type", "title")})
+                g.edge(cid, n["id"], "has_artifact")
+        for art in catalog or []:
             if art.get("course") != slug:
                 continue
             aid = f"artifact:{slug}:{art['filename']}"
