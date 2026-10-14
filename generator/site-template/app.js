@@ -3335,7 +3335,11 @@
     return all.find((v) => v.localService) || all[0] || null;
   }
   // Çeviriyazı işaretlerini sese uygun hâle getirir: ñ → n, ez-ber → ezber, çık- → çık.
-  const sayText = (s) => s.replace(/ñ/g, "n").replace(/Ñ/g, "N").replace(/(\p{L})-(?=\p{L})/gu, "$1").replace(/-/g, "");
+  // Şapkalı ünlüler düz ünlüye iner (bazı Türkçe sesler baştaki â'yı yutar: âmir → "mir"),
+  // kesme işareti (ayın/hemze) düşer: mes'ele → mesele.
+  const PLAIN = { "â": "a", "î": "i", "û": "u", "Â": "A", "Î": "İ", "Û": "U", "ñ": "n", "Ñ": "N" };
+  const sayText = (s) => s.replace(/[âîûÂÎÛñÑ]/g, (ch) => PLAIN[ch]).replace(/['’‘]/g, "")
+    .replace(/(\p{L})-(?=\p{L})/gu, "$1").replace(/-/g, "");
   let saying = null;
   function speakOta(el) {
     const synth = window.speechSynthesis;
