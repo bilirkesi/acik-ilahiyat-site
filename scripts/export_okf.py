@@ -120,6 +120,21 @@ def aof_infographic_block(slug: str, unit: int, title: str) -> str:
     return "\n".join(lines)
 
 
+def load_unit_quizzes(slug: str) -> list[dict]:
+    """data/<slug>/unit_quizzes/unit-N.json; şıklar sitedeki sırayla karıştırılır."""
+    from scripts.export_unit_quizzes_site import shuffle_options
+
+    d = ROOT / "data" / slug / "unit_quizzes"
+    out = []
+    for f in sorted(d.glob("unit-*.json"), key=lambda f: int(f.stem.split("-")[-1])):
+        data = load_json(f)
+        qs = data.get("questions") or []
+        if qs:
+            out.append({**data, "unit": int(data.get("unit") or f.stem.split("-")[-1]),
+                        "questions": [shuffle_options(q) for q in qs]})
+    return out
+
+
 def load_book_units(slug: str) -> list[dict]:
     path = ROOT / "data" / slug / "unit_infographics.json"
     if not path.exists():
@@ -409,6 +424,7 @@ def main() -> int:
         references = plan.get("references", [])
         panel = interactive.get(slug, {})
         book_units = load_book_units(slug)
+        unit_quizzes = load_unit_quizzes(slug)
 
         notebook_id = meta.get("notebook_id") or manifest.get("notebook_id")
         notebook_url = (
@@ -457,7 +473,9 @@ def main() -> int:
             f"# Yapı\n\n* [Bölümler](/courses/{slug}/chapters/index.md) ({len(chapters)})\n"
             + (f"* [Ders kitabı üniteleri](/courses/{slug}/units.md) ({len(book_units)})\n" if book_units else "")
             + f"* [Quiz](/courses/{slug}/quiz.md)\n"
-            f"* [Sınavlar](/courses/{slug}/exams/index.md) - vize, final, yaz kursu\n"
+            + (f"* [Ünite quizleri](/courses/{slug}/unit-quizzes/index.md) "
+               f"({len(unit_quizzes)} ünite, {sum(len(u['questions']) for u in unit_quizzes)} soru)\n" if unit_quizzes else "")
+            + f"* [Sınavlar](/courses/{slug}/exams/index.md) - vize, final, yaz kursu\n"
             f"* [Çıkmış vizeler](/courses/{slug}/exams/past/index.md)\n"
             f"* [Artifact'ler](/courses/{slug}/artifacts.md)\n",
         ]
@@ -629,6 +647,31 @@ def main() -> int:
             ("resource", f"/courses/{slug}/quiz.md"),
         ]
         write(OKF / "courses" / slug / "quiz.md", fm(quiz_fm) + "\n".join(q_lines))
+
+        # ünite quizleri
+        if unit_quizzes:
+            uq_index = [f"# {meta.get('subject', slug)} Ünite Quizleri\n",
+                        "Doğru cevaplar `*` ile işaretlidir; şık sırası sitedekiyle aynıdır.\n"]
+            for uq in unit_quizzes:
+                n_u = uq["unit"]
+                qs = uq["questions"]
+                u_title = uq.get("unitTitle") or f"Ünite {n_u}"
+                lines = [f"# Ünite {n_u}: {u_title}\n", f"Toplam {len(qs)} soru.\n"]
+                lines += [render_question_block(k, q) for k, q in enumerate(qs, 1)]
+                uq_fm = [
+                    ("type", "Quiz"),
+                    ("title", f"Ünite {n_u} quizi: {u_title}"),
+                    ("description", f"{meta.get('subject', slug)} {n_u}. ünite için {len(qs)} soruluk quiz."),
+                    ("course", slug),
+                    ("unit", str(n_u)),
+                    ("question_count", str(len(qs))),
+                    ("status", "stable"),
+                    ("generated", f"{{ by: {ACTOR}, at: {NOW} }}"),
+                    ("resource", f"/courses/{slug}/unit-quizzes/unit-{n_u}.md"),
+                ]
+                write(OKF / "courses" / slug / "unit-quizzes" / f"unit-{n_u}.md", fm(uq_fm) + "\n".join(lines))
+                uq_index.append(f"* [Ünite {n_u}: {u_title}](unit-{n_u}.md) - {len(qs)} soru")
+            write(OKF / "courses" / slug / "unit-quizzes" / "index.md", "\n".join(uq_index) + "\n")
 
         # exams: vize / final / yaz-kursu
         exam_dir = ROOT / "data" / slug / "exams"
