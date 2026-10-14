@@ -409,6 +409,7 @@
             <a class="btn ghost" href="#/ozet">Ders özeti</a>
             <a class="btn ghost" href="#/course/${c.slug}/quiz">Final (oyun)</a>
             <a class="btn ghost" href="#/course/${c.slug}/exams">Çıkmış / sınavlar</a>
+            <a class="btn ghost" href="#/oyunlar?ders=${c.slug}">Bulmaca ve oyunlar</a>
           </div>
           ${credit}
         </aside>
@@ -570,6 +571,7 @@
         </aside>
       </div>
       <div class="ch-read-row" data-noprint>${chapterReadHtml(c, n)}</div>
+      ${gameStripHtml(c, n)}
       <div class="pager">${prev}${next}</div>`;
   }
 
@@ -1344,7 +1346,7 @@
   function loadStudy() {
     let s = {};
     try { s = JSON.parse(localStorage.getItem(STUDY_KEY)) || {}; } catch (e) { s = {}; }
-    return Object.assign({ v: 1, cards: {}, days: {}, frozen: [], goal: 20, newPerDay: 10, courses: null, goalDone: "", log: [], mocks: [], videos: {}, vrate: 1, listen: {}, lrate: 1, plan: null, kcards: {}, kdir: "kavram" }, s);
+    return Object.assign({ v: 1, cards: {}, days: {}, frozen: [], goal: 20, newPerDay: 10, courses: null, goalDone: "", log: [], mocks: [], videos: {}, vrate: 1, listen: {}, lrate: 1, plan: null, kcards: {}, kdir: "kavram", games: {} }, s);
   }
   function saveStudy() {
     try { localStorage.setItem(STUDY_KEY, JSON.stringify(study)); } catch (e) { /* özel mod */ }
@@ -1361,7 +1363,7 @@
   function dayRec(key) {
     return study.days[key] || (study.days[key] = { n: 0, ok: 0, rev: 0, fresh: 0, read: 0 });
   }
-  const isActive = (key) => { const r = study.days[key]; return !!(r && (r.n || r.read || r.vid || r.lis || r.kav)) || study.frozen.includes(key); };
+  const isActive = (key) => { const r = study.days[key]; return !!(r && (r.n || r.read || r.vid || r.lis || r.kav || r.game)) || study.frozen.includes(key); };
 
   // Seri: bugünden (bugün henüz çalışılmadıysa dünden) geriye kesintisiz aktif gün sayısı.
   function streakInfo() {
@@ -1620,9 +1622,9 @@
         const k = dayKey(t);
         if (t > today) { cells += `<i class="hm-cell future"></i>`; continue; }
         const r = study.days[k];
-        const n = r ? r.n + r.read * 3 + (r.vid || 0) * 3 + (r.lis || 0) * 3 + (r.kav || 0) : 0;
+        const n = r ? r.n + r.read * 3 + (r.vid || 0) * 3 + (r.lis || 0) * 3 + (r.kav || 0) + (r.game || 0) * 2 : 0;
         const lvl = study.frozen.includes(k) && !n ? "frz" : n === 0 ? 0 : n < 10 ? 1 : n < 25 ? 2 : n < 50 ? 3 : 4;
-        cells += `<i class="hm-cell l${lvl}" title="${fmtDay(k)}: ${r ? `${r.n} soru, ${r.read} bölüm${r.vid ? `, ${r.vid} video` : ""}${r.lis ? `, ${r.lis} dinleme` : ""}${r.kav ? `, ${r.kav} kavram` : ""}` : lvl === "frz" ? "seri donduruldu" : "çalışılmadı"}"></i>`;
+        cells += `<i class="hm-cell l${lvl}" title="${fmtDay(k)}: ${r ? `${r.n} soru, ${r.read} bölüm${r.vid ? `, ${r.vid} video` : ""}${r.lis ? `, ${r.lis} dinleme` : ""}${r.kav ? `, ${r.kav} kavram` : ""}${r.game ? `, ${r.game} oyun` : ""}` : lvl === "frz" ? "seri donduruldu" : "çalışılmadı"}"></i>`;
       }
     }
     return `<div class="heatmap" style="--weeks:${weeks}" role="img" aria-label="Son ${weeks} haftanın çalışma takvimi">${cells}</div>
@@ -1673,7 +1675,7 @@
           <div>
             <h3>Bugünkü hedef</h3>
             <p class="muted">${day.n >= study.goal ? "Hedef tamam. Ekstra her soru bir sonraki tekrarı kolaylaştırır." : `Hedefe ${study.goal - day.n} soru kaldı.`}</p>
-            <p class="desk-meta">${day.ok} doğru · ${day.rev} tekrar · ${day.read} bölüm okundu${day.vid ? ` · ${day.vid} video` : ""}${day.lis ? ` · ${day.lis} bölüm dinlendi` : ""}${day.kav ? ` · ${day.kav} kavram` : ""}</p>
+            <p class="desk-meta">${day.ok} doğru · ${day.rev} tekrar · ${day.read} bölüm okundu${day.vid ? ` · ${day.vid} video` : ""}${day.lis ? ` · ${day.lis} bölüm dinlendi` : ""}${day.kav ? ` · ${day.kav} kavram` : ""}${day.game ? ` · ${day.game} oyun` : ""}</p>
           </div>
         </section>
         <a class="desk-card desk-action" href="#/tekrar">
@@ -1690,7 +1692,7 @@
         </a>
         ${kavramDeskHtml()}
       </div>
-      <div class="btn-row desk-links"><a class="btn ghost" href="#/karisik">Karışık test</a><a class="btn ghost" href="#/karisik?mod=deneme">Deneme sınavı</a><a class="btn ghost" href="#/analiz">Gelişim analizi</a></div>
+      <div class="btn-row desk-links"><a class="btn ghost" href="#/karisik">Karışık test</a><a class="btn ghost" href="#/karisik?mod=deneme">Deneme sınavı</a><a class="btn ghost" href="#/analiz">Gelişim analizi</a><a class="btn ghost" href="#/oyunlar">Bulmaca ve kelime oyunları</a></div>
       ${resumeVideoHtml()}
       <h2>Bu hafta</h2>
       <div class="week-grid">
@@ -3047,7 +3049,7 @@
     const b = document.getElementById("reset");
     if (!b) return;
     b.onclick = () => {
-      if (b.dataset.armed) { progress = {}; save(progress); study = loadStudy(); study.cards = {}; study.days = {}; study.frozen = []; study.log = []; study.mocks = []; saveStudy(); route(); return; }
+      if (b.dataset.armed) { progress = {}; save(progress); study = loadStudy(); study.cards = {}; study.days = {}; study.frozen = []; study.log = []; study.mocks = []; study.games = {}; saveStudy(); route(); return; }
       b.dataset.armed = "1";
       b.textContent = "Tüm sonuçları silmek için tekrar tıklayın";
       setTimeout(() => { if (document.body.contains(b)) { delete b.dataset.armed; b.textContent = "İlerlememi sıfırla"; } }, 4000);
@@ -4386,6 +4388,8 @@ document.getElementById("zin").focus();
       const a = study.kcards[id];
       if (!a || (card && card.last > a.last)) study.kcards[id] = card;
     }
+    // Oyunlar: yıldızda ve puanda büyük olan, oynama sayısında büyük olan kalır.
+    for (const [k, r] of Object.entries(b.games || {})) if (r && typeof r === "object") study.games[k] = study.games[k] ? mergeRecord(study.games[k], r) : r;
     saveStudy();
   }
 
@@ -5093,6 +5097,734 @@ document.getElementById("zin").focus();
     set('meta[property="og:url"]', location.href);
   }
 
+  // ---- kelime oyunları: çapraz bulmaca, harflerden kavram, kelime avı -------------
+  // İçerik interactive.js'teki bölüm kavramlarından (terim + tanım) tarayıcıda üretilir; ağ
+  // gerekmez. Sonuçlar study.games içinde tutulur (yedeğe dahil), yarım kalan bulmaca ayrıca
+  // GAME_CUR_KEY altında bu cihazda saklanır.
+  const GAME_KINDS = {
+    bulmaca: { name: "Çapraz bulmaca", desc: "Tanımlardan kavramı bul, kareleri doldur." },
+    kelime: { name: "Harflerden kavram", desc: "Karışık harflerden tanımı verilen kavramı türet." },
+    av: { name: "Kelime avı", desc: "Harf tablosuna gizlenmiş kavramları bul." },
+  };
+  const GAME_CUR_KEY = CONFIG.storageKey + ".gamecur";
+  const TR_UP = (s) => String(s).toLocaleUpperCase("tr");
+  const TR_LETTER = /^[A-ZÇĞİÖŞÜ]+$/;
+  const KEY_ROWS = ["ERTYUIOPĞÜ", "ASDFGHJKLŞİ", "ZCVBNMÖÇ"];
+
+  // Kavram adını oyun cevabına çevirir: parantez içi atılır, şapkalar düşer, Türkçe büyük harf.
+  // Ad maxLen harften uzunsa ya da rakam içeriyorsa ("31 Mart Vakası") en uzun kelimesi sorulur,
+  // geri kalanı ipucunda görünür: "31 Mart ……".
+  const clean = (w) => TR_UP(w.replace(/[âÂ]/g, "a").replace(/[îÎ]/g, "i").replace(/[ûÛ]/g, "u")).replace(/[’'‘`ʿʾ.\-–]/g, "");
+  function gameAnswer(term, maxLen) {
+    const label = String(term || "").replace(/\s*\([^)]*\)\s*/g, " ").trim();
+    if (!label || label.includes("/")) return null;
+    const raw = label.split(/\s+/);
+    const words = raw.map(clean);
+    const okWord = (w) => TR_LETTER.test(w);
+    if (words.every(okWord) && words.join("").length <= maxLen) return { ans: words.join(""), lens: words.map((w) => w.length), label, blank: "" };
+    let k = -1;
+    words.forEach((w, i) => { if (okWord(w) && w.length >= 4 && w.length <= maxLen && (k < 0 || w.length > words[k].length)) k = i; });
+    if (k < 0 || raw.length < 2) return null;
+    return { ans: words[k], lens: [words[k].length], label, blank: raw.map((w, i) => (i === k ? "……" : w)).join(" "), hit: raw[k] };
+  }
+  // Tanımda kavramın kendisi geçiyorsa "…" ile gizle (cevabı ele vermesin).
+  function gameClue(def, term) {
+    const keys = fold(String(term).replace(/\([^)]*\)/g, " ")).split(" ").filter((w) => w.length >= 3);
+    return String(def || "").replace(/[^\s,.;:()"“”!?]+/g, (w) => {
+      const f = fold(w), first = f.split(" ")[0];
+      return keys.some((k) => first === k || (k.length >= 4 && first.startsWith(k))) ? "…" : w;
+    });
+  }
+  function gamePool(c, unit, maxLen) {
+    maxLen = maxLen || 13;
+    const d = INTERACTIVE()[c.slug] || {};
+    const chs = d.chapters || {};
+    const raw = [];
+    const add = (list, u) => (list || []).forEach((x) => { if (x && x.term && x.def) raw.push({ term: x.term, def: x.def, unit: u }); });
+    if (unit) add((chs[unit] || {}).concepts, unit);
+    else { Object.keys(chs).sort((a, b) => a - b).forEach((k) => add(chs[k].concepts, +k)); add(d.concepts, 0); }
+    const seen = new Set(), out = [];
+    for (const r of raw) {
+      const a = gameAnswer(r.term, maxLen);
+      if (!a || a.ans.length < 3 || seen.has(a.ans)) continue;
+      seen.add(a.ans);
+      const clue = gameClue(r.def, r.term);
+      out.push(Object.assign({}, r, a, { clue: a.blank ? `«${a.blank}» ${clue}` : clue }));
+    }
+    return out;
+  }
+  const gameUnits = (c) => Object.keys((INTERACTIVE()[c.slug] || {}).chapters || {}).map(Number).filter((u) => u >= 1).sort((a, b) => a - b);
+  const gameUnitTitle = (c, u) => (u ? (((INTERACTIVE()[c.slug] || {}).chapters || {})[u] || {}).title || (c.chapters[u - 1] || {}).title || `Ünite ${u}` : "Tüm üniteler (karışık)");
+  const gameKey = (c, u, kind) => `${c.slug}:${u}:${kind}`;
+
+  // Tohumlu rastgele sayı: aynı tohum aynı bulmacayı verir.
+  function seededRandom(str) {
+    let a = 2166136261;
+    for (let i = 0; i < str.length; i++) a = Math.imul(a ^ str.charCodeAt(i), 16777619);
+    return () => {
+      a = (a + 0x6D2B79F5) | 0;
+      let t = Math.imul(a ^ (a >>> 15), 1 | a);
+      t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+  }
+  const rShuffle = (a, r) => { for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(r() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+  const lensLabel = (it) => `(${it.lens.join(", ")})`;
+  const starsHtml = (n) => `<span class="g-stars" aria-label="${n} yıldız">${"★".repeat(n)}<i>${"★".repeat(3 - n)}</i></span>`;
+
+  function gameRecord(key) { return (study.games || {})[key] || null; }
+  function gameFinish(key, stars, score) {
+    study.games = study.games || {};
+    const r = study.games[key] || { n: 0, stars: 0, best: 0 };
+    r.n = (r.n || 0) + 1;
+    r.stars = Math.max(r.stars || 0, stars);
+    r.best = Math.max(r.best || 0, score);
+    r.t = Date.now();
+    study.games[key] = r;
+    const d = dayRec(todayKey());
+    d.game = (d.game || 0) + 1;
+    saveStudy();
+    paintStudyBadges();
+  }
+  function gameCur(key) {
+    try { return (JSON.parse(localStorage.getItem(GAME_CUR_KEY)) || {})[key] || null; } catch (e) { return null; }
+  }
+  function gameCurSet(key, val) {
+    try {
+      const all = JSON.parse(localStorage.getItem(GAME_CUR_KEY)) || {};
+      if (val) all[key] = val; else delete all[key];
+      localStorage.setItem(GAME_CUR_KEY, JSON.stringify(all));
+    } catch (e) { /* özel mod */ }
+  }
+
+  // ---- oyun merkezi ----
+  function viewGames(query) {
+    const list = COURSES.filter((c) => gameUnits(c).length);
+    if (!list.length) return `<p class="eyebrow">Kelime oyunları</p><h1>Oyunlar</h1><p class="muted">Bu derslerde henüz oyun üretilecek kavram yok.</p>`;
+    const open = query.ders && bySlug[query.ders] ? query.ders : "";
+    const last = Object.entries(study.games || {}).sort((a, b) => (b[1].t || 0) - (a[1].t || 0))[0];
+    const lastSlug = last ? last[0].split(":")[0] : "";
+    const chip = (c, u, kind) => {
+      const r = gameRecord(gameKey(c, u, kind));
+      return `<a class="btn ghost g-chip" href="#/oyunlar/${c.slug}/${u}/${kind}">${GAME_KINDS[kind].name}${r ? starsHtml(r.stars || 0) : ""}</a>`;
+    };
+    const row = (c, u) => {
+      const n = gamePool(c, u).length;
+      return `<li class="past-row g-row">
+        <div><strong>${u ? `Ünite ${u}` : "Karışık"}</strong> · ${esc(gameUnitTitle(c, u))}<div class="muted" style="font-size:.82rem">${n} kavram</div></div>
+        <div class="btn-row" style="margin:0">${Object.keys(GAME_KINDS).map((k) => chip(c, u, k)).join("")}</div>
+      </li>`;
+    };
+    const sections = list.map((c, i) => {
+      const units = gameUnits(c).filter((u) => gamePool(c, u).length >= 3);
+      const isOpen = open ? open === c.slug : (lastSlug ? lastSlug === c.slug : i === 0);
+      const done = Object.keys(study.games || {}).filter((k) => k.startsWith(c.slug + ":")).length;
+      return `<details class="g-course"${isOpen ? " open" : ""}><summary><span>${esc(c.subject)}</span><span class="muted small">${units.length} ünite${done ? ` · ${done} oyun bitti` : ""}</span></summary>
+        <ul class="past-list">${units.map((u) => row(c, u)).join("")}${row(c, 0)}</ul></details>`;
+    }).join("");
+    return `<p class="eyebrow">Kelime oyunları</p><h1>Bulmaca ve kelime oyunları</h1>
+      <p class="lead muted">Her ünitenin kavramları ve tanımlarıyla üretilen üç oyun: çapraz bulmaca, karışık harflerden kavram türetme ve kelime avı. İnternetsiz çalışır; bitirdiğin oyunlar yıldızlarıyla burada görünür, seriye sayılır ve yedeğe dahildir.</p>
+      <div class="g-kinds">${Object.values(GAME_KINDS).map((k) => `<div><b>${k.name}</b><span class="muted small">${k.desc}</span></div>`).join("")}</div>
+      ${sections}`;
+  }
+
+  function gameStripHtml(c, n) {
+    if (gamePool(c, n).length < 3) return "";
+    return `<div class="g-strip" data-noprint><span>Bu ünitenin kavramlarıyla oyna:</span>${Object.keys(GAME_KINDS).map((k) => `<a class="btn ghost sm-mini" href="#/oyunlar/${c.slug}/${n}/${k}">${GAME_KINDS[k].name}</a>`).join("")}</div>`;
+  }
+
+  function gameShell(c, u, kind, body) {
+    const others = Object.keys(GAME_KINDS).filter((k) => k !== kind).map((k) => `<a href="#/oyunlar/${c.slug}/${u}/${k}">${GAME_KINDS[k].name}</a>`).join(" · ");
+    return `<p class="crumbs"><a href="#/oyunlar?ders=${c.slug}">Oyunlar</a> / <a href="#/course/${c.slug}">${esc(c.subject)}</a> / ${u ? `Ünite ${u}` : "Karışık"}</p>
+      <p class="eyebrow">${GAME_KINDS[kind].name} · ${u ? `Ünite ${u}` : "Tüm üniteler"}</p>
+      <h1 class="g-title">${esc(gameUnitTitle(c, u))}</h1>
+      <div id="game" class="game game-${kind}">${body}</div>
+      <p class="muted small g-other" data-noprint>Aynı kavramlarla: ${others}${u ? ` · <a href="#/course/${c.slug}/chapter/${u}">Konu anlatımı</a>` : ""}</p>`;
+  }
+
+  function viewGame(c, u, kind) {
+    if (!GAME_KINDS[kind]) return viewNotFound();
+    if (gamePool(c, u).length < 3) return gameShell(c, u, kind, `<p class="muted">Bu ünitede oyun için yeterli kavram yok.</p>`);
+    return gameShell(c, u, kind, `<p class="muted">Hazırlanıyor…</p>`);
+  }
+  function bindGame(c, u, kind) {
+    const root = document.getElementById("game");
+    if (!root || gamePool(c, u).length < 3) return;
+    if (kind === "bulmaca") crosswordGame(root, c, u);
+    else if (kind === "kelime") anagramGame(root, c, u);
+    else if (kind === "av") wordSearchGame(root, c, u);
+  }
+
+  // Fiziksel klavye: o an açık oyuna harf/silme/enter iletir.
+  let gameKeyHandler = null;
+  document.addEventListener("keydown", (e) => {
+    if (!gameKeyHandler || !document.body.contains(gameKeyHandler.root)) { gameKeyHandler = null; return; }
+    if (e.ctrlKey || e.metaKey || e.altKey) return;
+    const t = e.target;
+    if (t && (t.tagName === "INPUT" || t.tagName === "TEXTAREA" || t.tagName === "SELECT" || t.isContentEditable)) return;
+    let k = e.key;
+    if (k === "Backspace" || k === "Delete") k = "⌫";
+    else if (k === "Enter") k = "↵";
+    else if (k.startsWith("Arrow")) { /* yön tuşu olduğu gibi */ }
+    else if (k.length === 1) { k = TR_UP(k); if (!TR_LETTER.test(k)) return; }
+    else return;
+    if (gameKeyHandler.fn(k) !== false) e.preventDefault();
+  });
+  function keyboardHtml() {
+    return `<div class="g-kbd" role="group" aria-label="Harf klavyesi">${KEY_ROWS.map((r, i) => `<div>${[...r].map((ch) => `<button type="button" data-k="${ch}">${ch}</button>`).join("")}${i === 2 ? `<button type="button" data-k="⌫" class="wide" aria-label="Sil">⌫</button>` : ""}</div>`).join("")}</div>`;
+  }
+  function gameWinHtml(stars, lines, again) {
+    return `<section class="result pass g-win" role="status">
+      <p class="eyebrow">Tamamlandı</p>
+      <h2>${["Bitti", "İyi iş", "Çok iyi", "Kusursuz"][stars]} ${starsHtml(stars)}</h2>
+      ${lines}
+      <div class="btn-row"><button type="button" class="btn ghost on-dark" data-g-again>${again}</button><a class="btn ghost on-dark" href="#/oyunlar">Diğer oyunlar</a></div>
+    </section>`;
+  }
+  const fmtTime = (ms) => { const s = Math.round(ms / 1000); return `${Math.floor(s / 60)} dk ${String(s % 60).padStart(2, "0")} sn`; };
+
+  // ---- çapraz bulmaca ----
+  // Açgözlü yerleştirme: uzun kelimeden başla, her kelimeyi en çok kesişen geçerli yere koy;
+  // birkaç farklı sırayla dene, en çok kelimeyi en küçük alana sığdıranı al.
+  function buildCrossword(items, rnd, maxN) {
+    items = items.filter((it) => it.ans.length <= maxN);
+    if (!items.length) return null;
+    let best = null;
+    for (let attempt = 0; attempt < 60; attempt++) {
+      const order = rShuffle(items.slice(), rnd).sort((a, b) => b.ans.length - a.ans.length);
+      if (attempt) for (let s = 0; s < 2; s++) { const i = Math.floor(rnd() * order.length), j = Math.floor(rnd() * order.length); [order[i], order[j]] = [order[j], order[i]]; }
+      const cells = new Map(); // "x,y" -> { ch, h, v }
+      const placed = [];
+      let minX = 0, maxX = 0, minY = 0, maxY = 0;
+      const at = (x, y) => cells.get(x + "," + y);
+      const fits = (w, x, y, dir) => {
+        const dx = dir === "h" ? 1 : 0, dy = 1 - dx;
+        if (at(x - dx, y - dy) || at(x + dx * w.length, y + dy * w.length)) return -1;
+        let cross = 0;
+        for (let i = 0; i < w.length; i++) {
+          const cx = x + dx * i, cy = y + dy * i, cell = at(cx, cy);
+          if (cell) {
+            if (cell.ch !== w[i] || cell[dir]) return -1;
+            cross++;
+          } else if (at(cx + dy, cy + dx) || at(cx - dy, cy - dx)) return -1;
+        }
+        const nx0 = Math.min(minX, x), ny0 = Math.min(minY, y);
+        const nx1 = Math.max(maxX, x + dx * (w.length - 1)), ny1 = Math.max(maxY, y + dy * (w.length - 1));
+        if (nx1 - nx0 + 1 > maxN || ny1 - ny0 + 1 > maxN) return -1;
+        return cross;
+      };
+      const put = (it, x, y, dir) => {
+        const dx = dir === "h" ? 1 : 0, dy = 1 - dx;
+        for (let i = 0; i < it.ans.length; i++) {
+          const k = (x + dx * i) + "," + (y + dy * i);
+          const cell = cells.get(k) || { ch: it.ans[i] };
+          cell[dir] = true;
+          cells.set(k, cell);
+        }
+        minX = Math.min(minX, x); minY = Math.min(minY, y);
+        maxX = Math.max(maxX, x + dx * (it.ans.length - 1)); maxY = Math.max(maxY, y + dy * (it.ans.length - 1));
+        placed.push({ it, x, y, dir });
+      };
+      const tryPlace = (it) => {
+        let cand = null;
+        for (const p of placed) {
+          const dir = p.dir === "h" ? "v" : "h";
+          for (let i = 0; i < p.it.ans.length; i++) for (let j = 0; j < it.ans.length; j++) {
+            if (p.it.ans[i] !== it.ans[j]) continue;
+            const px = p.x + (p.dir === "h" ? i : 0), py = p.y + (p.dir === "v" ? i : 0);
+            const x = px - (dir === "h" ? j : 0), y = py - (dir === "v" ? j : 0);
+            const cross = fits(it.ans, x, y, dir);
+            if (cross < 1) continue;
+            const area = (Math.max(maxX, x + (dir === "h" ? it.ans.length - 1 : 0)) - Math.min(minX, x) + 1) * (Math.max(maxY, y + (dir === "v" ? it.ans.length - 1 : 0)) - Math.min(minY, y) + 1);
+            const score = cross * 40 - area + rnd() * 6;
+            if (!cand || score > cand.score) cand = { x, y, dir, score };
+          }
+        }
+        if (cand) put(it, cand.x, cand.y, cand.dir);
+        return !!cand;
+      };
+      if (order[0].ans.length > maxN) continue;
+      put(order[0], 0, 0, rnd() < 0.5 ? "h" : "v");
+      let rest = order.slice(1);
+      for (let pass = 0; pass < 2 && rest.length; pass++) rest = rest.filter((it) => !tryPlace(it));
+      const w = maxX - minX + 1, h = maxY - minY + 1;
+      const score = placed.length * 1000 - w * h - Math.abs(w - h) * 3;
+      if (!best || score > best.score) best = { score, w, h, placed: placed.map((p) => ({ it: p.it, x: p.x - minX, y: p.y - minY, dir: p.dir })) };
+    }
+    if (!best) return null;
+    // Numaralar: okuma sırasıyla (üstten alta, soldan sağa) her kelimenin başlangıç karesine.
+    const starts = new Map();
+    best.placed.sort((a, b) => a.y - b.y || a.x - b.x);
+    let num = 0;
+    for (const p of best.placed) {
+      const k = p.x + "," + p.y;
+      if (!starts.has(k)) starts.set(k, ++num);
+      p.num = starts.get(k);
+    }
+    return best;
+  }
+
+  function crosswordGame(root, c, u) {
+    const key = gameKey(c, u, "bulmaca");
+    const pool = gamePool(c, u);
+    const maxWords = u ? 10 : 12;
+    let saved = gameCur(key);
+    const start = (seed) => {
+      const rnd = seededRandom(key + ":" + seed);
+      const items = rShuffle(pool.slice(), rnd).slice(0, maxWords + 4);
+      const cw = buildCrossword(items, rnd, 13);
+      // Sığmayan fazlalık kelimeler atılır; en fazla maxWords kelime kalsın.
+      if (cw && cw.placed.length > maxWords) return buildCrossword(cw.placed.slice(0, maxWords).map((p) => p.it), rnd, 13);
+      return cw;
+    };
+    let seed = saved ? saved.seed : 1;
+    let cw = start(seed);
+    if (!cw) { root.innerHTML = `<p class="muted">Bulmaca üretilemedi.</p>`; return; }
+    const W = cw.w, H = cw.h;
+    const grid = []; // [y][x] -> { ch, val, num, h: entry, v: entry, rev }
+    for (let y = 0; y < H; y++) grid.push(Array.from({ length: W }, () => null));
+    cw.placed.forEach((p, idx) => {
+      for (let i = 0; i < p.it.ans.length; i++) {
+        const x = p.x + (p.dir === "h" ? i : 0), y = p.y + (p.dir === "v" ? i : 0);
+        const cell = grid[y][x] || (grid[y][x] = { ch: p.it.ans[i], val: "", rev: false });
+        cell[p.dir] = idx;
+        if (i === 0) cell.num = p.num;
+      }
+    });
+    const vals = saved && saved.vals && saved.vals.length === W * H ? saved.vals : null;
+    let hints = saved ? saved.hints || 0 : 0;
+    let t0 = Date.now() - (saved ? saved.ms || 0 : 0);
+    if (vals) grid.forEach((row, y) => row.forEach((cell, x) => { if (cell) { const v = vals[y * W + x]; cell.val = v === "." ? "" : v; cell.rev = !!(saved.rev && saved.rev[y * W + x] === "1"); } }));
+    let sel = null; // { x, y, dir }
+    let done = false;
+    const entryCells = (idx) => { const p = cw.placed[idx]; return [...p.it.ans].map((_, i) => [p.x + (p.dir === "h" ? i : 0), p.y + (p.dir === "v" ? i : 0)]); };
+    const entryOk = (idx) => entryCells(idx).every(([x, y]) => grid[y][x].val === grid[y][x].ch);
+    const persist = () => {
+      if (done) return;
+      let v = "", r = "";
+      for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) { const cell = grid[y][x]; v += cell ? cell.val || "." : "."; r += cell && cell.rev ? "1" : "0"; }
+      gameCurSet(key, { seed, vals: v, rev: r, hints, ms: Date.now() - t0 });
+    };
+    const clueLi = (idx) => {
+      const p = cw.placed[idx];
+      return `<li data-e="${idx}"><b>${p.num}</b> <span>${txt(p.it.clue)}</span> <i class="muted">${lensLabel(p.it)}</i></li>`;
+    };
+    const across = cw.placed.map((p, i) => (p.dir === "h" ? i : -1)).filter((i) => i >= 0);
+    const down = cw.placed.map((p, i) => (p.dir === "v" ? i : -1)).filter((i) => i >= 0);
+    root.innerHTML = `
+      <div class="g-bar"><span>${cw.placed.length} kelime · ${pool.length > cw.placed.length ? `${pool.length} kavramdan seçildi` : "ünitenin tüm kavramları"}</span><span class="g-time" aria-hidden="true"></span></div>
+      <div class="cw-wrap">
+        <div class="cw-grid" style="--cols:${W}" role="grid" aria-label="Bulmaca, ${W} sütun ${H} satır">${grid.map((row, y) => row.map((cell, x) => cell
+          ? `<button type="button" class="cw-cell" data-x="${x}" data-y="${y}" aria-label="${cell.num ? cell.num + ". kare, " : ""}satır ${y + 1} sütun ${x + 1}">${cell.num ? `<sup>${cell.num}</sup>` : ""}<span></span></button>`
+          : `<div class="cw-block" aria-hidden="true"></div>`).join("")).join("")}</div>
+        <div class="cw-clues">
+          ${across.length ? `<h3>Soldan sağa</h3><ol class="cw-list">${across.map(clueLi).join("")}</ol>` : ""}
+          ${down.length ? `<h3>Yukarıdan aşağı</h3><ol class="cw-list">${down.map(clueLi).join("")}</ol>` : ""}
+        </div>
+      </div>
+      <div class="g-dock" data-noprint>
+        <p class="cw-cur" aria-live="polite">Bir kareye ya da tanıma dokun.</p>
+        ${keyboardHtml()}
+        <div class="g-actions"><button type="button" class="btn ghost" data-a="letter">Harf aç</button><button type="button" class="btn ghost" data-a="word">Kelimeyi aç</button><button type="button" class="btn ghost" data-a="check">Kontrol et</button><button type="button" class="btn ghost" data-a="new">Yeni bulmaca</button></div>
+      </div>
+      <div class="g-end"></div>`;
+    const cellEl = (x, y) => root.querySelector(`.cw-cell[data-x="${x}"][data-y="${y}"]`);
+    const paint = () => {
+      const active = sel ? grid[sel.y][sel.x][sel.dir] : -1;
+      const inActive = new Set(active >= 0 ? entryCells(active).map(([x, y]) => x + "," + y) : []);
+      grid.forEach((row, y) => row.forEach((cell, x) => {
+        if (!cell) return;
+        const el = cellEl(x, y);
+        el.querySelector("span").textContent = cell.val;
+        el.classList.toggle("on", inActive.has(x + "," + y));
+        el.classList.toggle("cur", !!sel && sel.x === x && sel.y === y);
+        el.classList.toggle("rev", cell.rev);
+        if (!cell.val) el.classList.remove("bad");
+      }));
+      root.querySelectorAll(".cw-list li").forEach((li) => {
+        const idx = +li.dataset.e;
+        li.classList.toggle("on", idx === active);
+        li.classList.toggle("ok", entryOk(idx));
+      });
+      const cur = root.querySelector(".cw-cur");
+      if (active >= 0) {
+        const p = cw.placed[active];
+        cur.innerHTML = `<b>${p.num} ${p.dir === "h" ? "Soldan sağa" : "Yukarıdan aşağı"}</b> ${txt(p.it.clue)} <i>${lensLabel(p.it)}</i>`;
+      }
+    };
+    const select = (x, y, dir) => {
+      const cell = grid[y] && grid[y][x];
+      if (!cell) return;
+      if (dir === undefined) dir = sel && sel.x === x && sel.y === y ? (sel.dir === "h" ? "v" : "h") : (sel && cell[sel.dir] !== undefined ? sel.dir : "h");
+      if (cell[dir] === undefined) dir = dir === "h" ? "v" : "h";
+      sel = { x, y, dir };
+      paint();
+    };
+    const step = (d) => {
+      if (!sel) return;
+      const dx = sel.dir === "h" ? d : 0, dy = sel.dir === "v" ? d : 0;
+      const n = grid[sel.y + dy] && grid[sel.y + dy][sel.x + dx];
+      if (n && n[sel.dir] === grid[sel.y][sel.x][sel.dir]) { sel = { x: sel.x + dx, y: sel.y + dy, dir: sel.dir }; }
+    };
+    const checkWin = () => {
+      if (!grid.every((row) => row.every((cell) => !cell || cell.val === cell.ch))) return;
+      done = true;
+      gameCurSet(key, null);
+      const letters = grid.flat().filter(Boolean).length;
+      const revealed = grid.flat().filter((cell) => cell && cell.rev).length;
+      const stars = revealed === 0 && hints === 0 ? 3 : revealed <= letters * 0.2 ? 2 : 1;
+      const ms = Date.now() - t0;
+      gameFinish(key, stars, Math.round(100 * (1 - revealed / letters)));
+      sel = null;
+      paint();
+      root.querySelector(".g-dock").hidden = true;
+      root.querySelector(".g-end").innerHTML = gameWinHtml(stars,
+        `<p>${cw.placed.length} kelimeyi ${fmtTime(ms)} içinde tamamladın${revealed ? `; ${revealed} harf açıldı` : ", hiç ipucu almadan"}.</p>
+        <ul class="g-recap">${cw.placed.map((p) => `<li><b>${esc(p.it.label)}</b>: ${txt(p.it.def)}</li>`).join("")}</ul>`, "Yeni bulmaca");
+      root.querySelector("[data-g-again]").onclick = () => { gameCurSet(key, { seed: seed + 1 }); route(); };
+      root.querySelector(".g-end").scrollIntoView({ behavior: "smooth", block: "start" });
+    };
+    const type = (k) => {
+      if (done) return false;
+      if (k.startsWith("Arrow")) {
+        if (!sel) { const p = cw.placed[0]; select(p.x, p.y, p.dir); return; }
+        const d = { ArrowRight: [1, 0], ArrowLeft: [-1, 0], ArrowDown: [0, 1], ArrowUp: [0, -1] }[k];
+        let x = sel.x + d[0], y = sel.y + d[1];
+        while (grid[y] && x >= 0 && x < W && !grid[y][x]) { x += d[0]; y += d[1]; }
+        if (grid[y] && grid[y][x]) select(x, y, d[0] ? "h" : "v");
+        return;
+      }
+      if (!sel) { const p = cw.placed[0]; select(p.x, p.y, p.dir); }
+      const cell = grid[sel.y][sel.x];
+      if (k === "⌫") {
+        if (cell.val && !cell.rev) cell.val = "";
+        else { step(-1); const pc = grid[sel.y][sel.x]; if (!pc.rev) pc.val = ""; }
+      } else if (k === "↵") {
+        const order = across.concat(down);
+        const next = order[(order.indexOf(cell[sel.dir]) + 1) % order.length];
+        const p = cw.placed[next];
+        select(p.x, p.y, p.dir);
+        return;
+      } else {
+        if (!cell.rev) cell.val = k;
+        step(1);
+      }
+      paint();
+      persist();
+      checkWin();
+    };
+    gameKeyHandler = { root, fn: type };
+    root.querySelector(".cw-grid").addEventListener("click", (e) => {
+      const b = e.target.closest(".cw-cell");
+      if (b) select(+b.dataset.x, +b.dataset.y);
+    });
+    root.querySelectorAll(".cw-list li").forEach((li) => li.addEventListener("click", () => {
+      const p = cw.placed[+li.dataset.e];
+      const firstEmpty = entryCells(+li.dataset.e).find(([x, y]) => !grid[y][x].val) || [p.x, p.y];
+      select(firstEmpty[0], firstEmpty[1], p.dir);
+      root.querySelector(".g-dock").scrollIntoView({ block: "nearest" });
+    }));
+    root.querySelector(".g-kbd").addEventListener("click", (e) => { const b = e.target.closest("[data-k]"); if (b) type(b.dataset.k); });
+    root.querySelector(".g-actions").addEventListener("click", (e) => {
+      const b = e.target.closest("[data-a]");
+      if (!b || done) return;
+      const a = b.dataset.a;
+      if (a === "new") {
+        if (!b.dataset.armed && grid.flat().some((cell) => cell && cell.val)) { b.dataset.armed = "1"; b.textContent = "Emin misin? Tekrar dokun"; setTimeout(() => { delete b.dataset.armed; b.textContent = "Yeni bulmaca"; }, 3000); return; }
+        gameCurSet(key, { seed: seed + 1 });
+        route();
+        return;
+      }
+      if (a === "check") {
+        let bad = 0;
+        grid.forEach((row, y) => row.forEach((cell, x) => { if (cell && cell.val && cell.val !== cell.ch) { bad++; cellEl(x, y).classList.add("bad"); } }));
+        hints++;
+        persist();
+        showToast(bad ? `${bad} harf yanlış, kırmızıyla işaretlendi.` : "Şu ana kadar yazdıkların doğru.");
+        return;
+      }
+      if (!sel) { showToast("Önce bir kare seç."); return; }
+      const cells = a === "letter" ? [[sel.x, sel.y]] : entryCells(grid[sel.y][sel.x][sel.dir]);
+      cells.forEach(([x, y]) => { const cell = grid[y][x]; if (cell.val !== cell.ch) { cell.val = cell.ch; cell.rev = true; } });
+      if (a === "letter") step(1);
+      paint();
+      persist();
+      checkWin();
+    });
+    const tick = root.querySelector(".g-time");
+    const timer = setInterval(() => {
+      if (!document.body.contains(root) || done) { clearInterval(timer); return; }
+      tick.textContent = fmtTime(Date.now() - t0);
+    }, 1000);
+    paint();
+  }
+
+  // ---- harflerden kavram (kelime türetme) ----
+  function anagramGame(root, c, u) {
+    const key = gameKey(c, u, "kelime");
+    const rnd = seededRandom(key + ":" + Date.now());
+    const items = rShuffle(gamePool(c, u, 16), rnd).slice(0, u ? 10 : 12);
+    let i = 0, score = 0, solved = 0, helped = 0;
+    const results = [];
+    let tiles, slots, locked, hintsHere;
+    const t0 = Date.now();
+    const setup = () => {
+      const it = items[i];
+      let letters;
+      do { letters = rShuffle([...it.ans], rnd); } while (letters.join("") === it.ans && new Set(it.ans).size > 1);
+      tiles = letters.map((ch) => ({ ch, used: false }));
+      slots = Array(it.ans.length).fill(-1);
+      locked = Array(it.ans.length).fill(false);
+      hintsHere = 0;
+      render();
+    };
+    const slotGroups = (it) => {
+      let k = 0;
+      return it.lens.map((n) => `<div class="an-word">${Array.from({ length: n }, () => { const j = k++; return `<button type="button" class="an-slot" data-s="${j}"></button>`; }).join("")}</div>`).join("");
+    };
+    const render = () => {
+      const it = items[i];
+      root.innerHTML = `
+        <div class="g-bar"><span>Kavram ${i + 1}/${items.length}</span><span>Puan <b>${score}</b></span></div>
+        <div class="an-card">
+          <p class="an-clue">${txt(it.clue)}</p>
+          <p class="muted small">${it.lens.length > 1 ? `${it.lens.length} kelime ${lensLabel(it)}` : `${it.ans.length} harf`}</p>
+          <div class="an-slots" aria-label="Cevap">${slotGroups(it)}</div>
+          <div class="an-tiles">${tiles.map((t, j) => `<button type="button" class="an-tile" data-t="${j}">${t.ch}</button>`).join("")}</div>
+          <p class="an-msg" role="status"></p>
+        </div>
+        <div class="g-actions"><button type="button" class="btn ghost" data-a="hint">İpucu</button><button type="button" class="btn ghost" data-a="clear">Temizle</button><button type="button" class="btn ghost" data-a="skip">Cevabı göster</button></div>`;
+      paint();
+      root.querySelector(".an-tiles").addEventListener("click", (e) => { const b = e.target.closest("[data-t]"); if (b) pick(+b.dataset.t); });
+      root.querySelector(".an-slots").addEventListener("click", (e) => { const b = e.target.closest("[data-s]"); if (b) unpick(+b.dataset.s); });
+      root.querySelector(".g-actions").addEventListener("click", (e) => { const b = e.target.closest("[data-a]"); if (b) act(b.dataset.a); });
+    };
+    const paint = () => {
+      root.querySelectorAll(".an-slot").forEach((el, j) => { el.textContent = slots[j] >= 0 ? tiles[slots[j]].ch : ""; el.classList.toggle("lock", locked[j]); });
+      root.querySelectorAll(".an-tile").forEach((el, j) => { el.disabled = tiles[j].used; });
+    };
+    let busy = false;
+    const pick = (tj) => {
+      if (busy || tiles[tj].used) return;
+      const j = slots.indexOf(-1);
+      if (j < 0) return;
+      slots[j] = tj; tiles[tj].used = true;
+      paint();
+      if (slots.indexOf(-1) < 0) check();
+    };
+    const unpick = (j) => {
+      if (busy || slots[j] < 0 || locked[j]) return;
+      tiles[slots[j]].used = false; slots[j] = -1;
+      root.querySelector(".an-msg").textContent = "";
+      paint();
+    };
+    const word = () => slots.map((t) => (t >= 0 ? tiles[t].ch : "")).join("");
+    const advance = (ok, shown) => {
+      const it = items[i];
+      results.push({ it, ok, shown });
+      busy = true;
+      const msg = root.querySelector(".an-msg");
+      msg.innerHTML = ok ? `<b class="ok-t">Doğru!</b> ${esc(it.label)}` : `Cevap: <b>${esc(it.label)}</b>`;
+      root.querySelector(".an-slots").classList.add(ok ? "win" : "shown");
+      const next = document.createElement("button");
+      next.type = "button"; next.className = "btn"; next.textContent = i + 1 < items.length ? "Sonraki kavram" : "Sonucu gör";
+      next.onclick = () => { busy = false; i++; if (i < items.length) setup(); else finish(); };
+      root.querySelector(".g-actions").replaceChildren(next);
+      next.focus({ preventScroll: true });
+    };
+    const check = () => {
+      const it = items[i];
+      if (word() === it.ans) {
+        const pts = Math.max(2, 10 + Math.min(it.ans.length, 10) - hintsHere * 4);
+        score += pts; solved++;
+        if (hintsHere) helped++;
+        advance(true, false);
+      } else {
+        const s = root.querySelector(".an-slots");
+        s.classList.remove("shake"); void s.offsetWidth; s.classList.add("shake");
+        root.querySelector(".an-msg").textContent = "Olmadı. Harflere dokunarak geri al ya da Temizle'ye bas.";
+      }
+    };
+    const act = (a) => {
+      if (busy) return;
+      const it = items[i];
+      if (a === "clear") { slots.forEach((t, j) => { if (t >= 0 && !locked[j]) { tiles[t].used = false; slots[j] = -1; } }); root.querySelector(".an-msg").textContent = ""; paint(); }
+      else if (a === "skip") { slots = [...it.ans].map(() => -1); advance(false, true); root.querySelectorAll(".an-slot").forEach((el, j) => { el.textContent = it.ans[j]; }); }
+      else if (a === "hint") {
+        const j = slots.findIndex((t, k) => t < 0 || tiles[t].ch !== it.ans[k]);
+        if (j < 0) return;
+        // j. kareden sonrasını boşalt, doğru harfi kilitli olarak koy.
+        slots.forEach((t, k) => { if (k >= j && t >= 0 && !locked[k]) { tiles[t].used = false; slots[k] = -1; } });
+        const tj = tiles.findIndex((t) => !t.used && t.ch === it.ans[j]);
+        slots[j] = tj; tiles[tj].used = true; locked[j] = true;
+        hintsHere++;
+        paint();
+        if (slots.indexOf(-1) < 0) check();
+      }
+    };
+    const finish = () => {
+      gameKeyHandler = null;
+      const stars = solved === items.length && !helped ? 3 : solved >= items.length * 0.7 ? 2 : solved ? 1 : 0;
+      gameFinish(key, stars, score);
+      root.innerHTML = gameWinHtml(stars,
+        `<p>${items.length} kavramdan <b>${solved}</b> tanesini buldun${helped ? ` (${helped} tanesinde ipucu aldın)` : ""}. Puan: <b>${score}</b> · ${fmtTime(Date.now() - t0)}</p>
+        <ul class="g-recap">${results.map((r) => `<li class="${r.ok ? "ok" : "miss"}"><b>${esc(r.it.label)}</b>: ${txt(r.it.def)}</li>`).join("")}</ul>`, "Yeniden oyna");
+      root.querySelector("[data-g-again]").onclick = () => route();
+    };
+    gameKeyHandler = {
+      root,
+      fn: (k) => {
+        if (k === "↵") { const n = root.querySelector(".g-actions .btn:not(.ghost)"); if (n) n.click(); return; }
+        if (busy) return false;
+        if (k === "⌫") { for (let j = slots.length - 1; j >= 0; j--) if (slots[j] >= 0 && !locked[j]) { unpick(j); break; } return; }
+        if (k.length !== 1) return false;
+        const tj = tiles.findIndex((t) => !t.used && t.ch === k);
+        if (tj >= 0) pick(tj);
+      },
+    };
+    setup();
+  }
+
+  // ---- kelime avı ----
+  function wordSearchGame(root, c, u) {
+    const key = gameKey(c, u, "av");
+    const rnd = seededRandom(key + ":" + Date.now());
+    const pool = rShuffle(gamePool(c, u, 11), rnd);
+    const N = Math.max(8, Math.min(11, Math.max(...pool.slice(0, 8).map((it) => it.ans.length))));
+    const DIRS = [[1, 0], [0, 1], [1, 1], [1, -1]];
+    const grid = Array.from({ length: N }, () => Array(N).fill(""));
+    const words = [];
+    for (const it of pool) {
+      if (words.length >= (u ? 8 : 10)) break;
+      for (let tries = 0; tries < 300; tries++) {
+        const [dx, dy] = DIRS[Math.floor(rnd() * DIRS.length)];
+        const L = it.ans.length;
+        const x = Math.floor(rnd() * N), y = Math.floor(rnd() * N);
+        const ex = x + dx * (L - 1), ey = y + dy * (L - 1);
+        if (ex < 0 || ex >= N || ey < 0 || ey >= N) continue;
+        let ok = true;
+        for (let i = 0; i < L && ok; i++) { const g = grid[y + dy * i][x + dx * i]; if (g && g !== it.ans[i]) ok = false; }
+        if (!ok) continue;
+        for (let i = 0; i < L; i++) grid[y + dy * i][x + dx * i] = it.ans[i];
+        words.push({ it, x, y, dx, dy, found: false });
+        break;
+      }
+    }
+    const filler = "AAEEİİIRRNNLLKKMMDDYYTTSSUUOBBŞZGÇHĞVCÜÖPF";
+    for (let y = 0; y < N; y++) for (let x = 0; x < N; x++) if (!grid[y][x]) grid[y][x] = filler[Math.floor(rnd() * filler.length)];
+    const owner = {}; // "x,y" -> [renk sınıfı]
+    let hints = 0, foundN = 0, start = null, dragging = false, path = [];
+    const t0 = Date.now();
+    root.innerHTML = `
+      <div class="g-bar"><span><b class="ws-n">0</b>/${words.length} kavram bulundu</span><span class="g-time" aria-hidden="true"></span></div>
+      <p class="muted small">Kelimenin ilk harfine, sonra son harfine dokun (ya da parmağını sürükle). Kelimeler soldan sağa, yukarıdan aşağı ya da çapraz gizlendi.</p>
+      <div class="ws-grid" style="--cols:${N}">${grid.map((row, y) => row.map((ch, x) => `<span class="ws-cell" data-x="${x}" data-y="${y}">${ch}</span>`).join("")).join("")}</div>
+      <ul class="ws-words">${words.map((w, j) => `<li data-w="${j}"><button type="button">${w.it.hit ? esc(w.it.label).replace(esc(w.it.hit), `<u>${esc(w.it.hit)}</u>`) : esc(w.it.label)}</button></li>`).join("")}</ul>
+      <p class="ws-def muted small" role="status">Bulduğun kavrama dokunursan tanımı burada görünür.</p>
+      <div class="g-actions"><button type="button" class="btn ghost" data-a="hint">İpucu</button><button type="button" class="btn ghost" data-a="new">Yeni tablo</button></div>
+      <div class="g-end"></div>`;
+    const gridEl = root.querySelector(".ws-grid");
+    const cellAt = (x, y) => gridEl.querySelector(`[data-x="${x}"][data-y="${y}"]`);
+    const line = (a, b) => {
+      const dx = Math.sign(b.x - a.x), dy = Math.sign(b.y - a.y);
+      const n = Math.max(Math.abs(b.x - a.x), Math.abs(b.y - a.y));
+      if ((dx && dy && Math.abs(b.x - a.x) !== Math.abs(b.y - a.y)) || n === 0) return n === 0 ? [a] : null;
+      return Array.from({ length: n + 1 }, (_, i) => ({ x: a.x + dx * i, y: a.y + dy * i }));
+    };
+    const mark = (cells, cls) => { gridEl.querySelectorAll(".ws-cell.sel").forEach((el) => el.classList.remove("sel")); (cells || []).forEach((p) => cellAt(p.x, p.y).classList.add(cls)); };
+    const tryWord = (cells) => {
+      if (!cells || cells.length < 3) return false;
+      const s = cells.map((p) => grid[p.y][p.x]).join("");
+      const rev = [...s].reverse().join("");
+      const j = words.findIndex((w) => !w.found && (w.it.ans === s || w.it.ans === rev) && (() => {
+        // Aynı harfler başka yerde de dizilebilir; yalnızca gizlenen yer sayılır.
+        const a = { x: w.x, y: w.y }, b = { x: w.x + w.dx * (w.it.ans.length - 1), y: w.y + w.dy * (w.it.ans.length - 1) };
+        const f = cells[0], l = cells[cells.length - 1];
+        return (f.x === a.x && f.y === a.y && l.x === b.x && l.y === b.y) || (f.x === b.x && f.y === b.y && l.x === a.x && l.y === a.y);
+      })());
+      if (j < 0) return false;
+      const w = words[j];
+      w.found = true; foundN++;
+      cells.forEach((p) => { cellAt(p.x, p.y).classList.add("found", "f" + (j % 6)); });
+      const li = root.querySelector(`.ws-words [data-w="${j}"]`);
+      li.classList.add("ok", "f" + (j % 6));
+      root.querySelector(".ws-n").textContent = foundN;
+      root.querySelector(".ws-def").innerHTML = `<b>${esc(w.it.label)}</b>: ${txt(w.it.def)}`;
+      if (foundN === words.length) win();
+      return true;
+    };
+    const finishSel = (end) => {
+      const cells = line(start, end);
+      mark(null);
+      if (!tryWord(cells) && cells && cells.length > 1) {
+        gridEl.classList.remove("shake"); void gridEl.offsetWidth; gridEl.classList.add("shake");
+      }
+      start = null;
+    };
+    const cellFromEvent = (e) => {
+      const el = document.elementFromPoint(e.clientX, e.clientY);
+      const cell = el && el.closest && el.closest(".ws-cell");
+      return cell && gridEl.contains(cell) ? { x: +cell.dataset.x, y: +cell.dataset.y } : null;
+    };
+    let downAt = null;
+    gridEl.addEventListener("pointerdown", (e) => {
+      const p = cellFromEvent(e);
+      if (!p || foundN === words.length) return;
+      e.preventDefault();
+      if (start && (start.x !== p.x || start.y !== p.y)) { finishSel(p); return; } // dokun-dokun seçimi
+      start = p; downAt = p; dragging = true; path = [p];
+      mark([p], "sel");
+      try { gridEl.setPointerCapture(e.pointerId); } catch (err) { /* yok */ }
+    });
+    gridEl.addEventListener("pointermove", (e) => {
+      if (!dragging || !start) return;
+      const p = cellFromEvent(e);
+      if (!p) return;
+      path = line(start, p) || path;
+      mark(path, "sel");
+    });
+    gridEl.addEventListener("pointerup", (e) => {
+      if (!dragging) return;
+      dragging = false;
+      const p = cellFromEvent(e);
+      if (p && downAt && (p.x !== downAt.x || p.y !== downAt.y)) finishSel(p); // sürükleme bitti
+      // aynı karede bırakıldıysa: ilk harf seçili kalır, ikinci dokunuşu bekler
+    });
+    gridEl.addEventListener("pointercancel", () => { dragging = false; });
+    root.querySelector(".ws-words").addEventListener("click", (e) => {
+      const li = e.target.closest("[data-w]");
+      if (!li) return;
+      const w = words[+li.dataset.w];
+      root.querySelector(".ws-def").innerHTML = w.found ? `<b>${esc(w.it.label)}</b>: ${txt(w.it.def)}` : `<b>${esc(w.it.label)}</b> henüz bulunmadı. İpucu: ${txt(w.it.clue)}`;
+    });
+    root.querySelector(".g-actions").addEventListener("click", (e) => {
+      const b = e.target.closest("[data-a]");
+      if (!b) return;
+      if (b.dataset.a === "new") { route(); return; }
+      const w = words.find((x) => !x.found);
+      if (!w) return;
+      hints++;
+      const el = cellAt(w.x, w.y);
+      el.classList.remove("blink"); void el.offsetWidth; el.classList.add("blink");
+      root.querySelector(".ws-def").innerHTML = `<b>${esc(w.it.label)}</b> yanıp sönen harften başlıyor.`;
+    });
+    const tick = root.querySelector(".g-time");
+    const timer = setInterval(() => {
+      if (!document.body.contains(root) || foundN === words.length) { clearInterval(timer); return; }
+      tick.textContent = fmtTime(Date.now() - t0);
+    }, 1000);
+    function win() {
+      const ms = Date.now() - t0;
+      const stars = hints === 0 ? 3 : hints <= 2 ? 2 : 1;
+      gameFinish(key, stars, Math.max(0, 100 - hints * 10));
+      root.querySelector(".g-actions").hidden = true;
+      root.querySelector(".g-end").innerHTML = gameWinHtml(stars,
+        `<p>${words.length} kavramın hepsini ${fmtTime(ms)} içinde buldun${hints ? `; ${hints} ipucu aldın` : ""}.</p>
+        <ul class="g-recap">${words.map((w) => `<li><b>${esc(w.it.label)}</b>: ${txt(w.it.def)}</li>`).join("")}</ul>`, "Yeni tablo");
+      root.querySelector("[data-g-again]").onclick = () => route();
+    }
+  }
+
   // ---- yönlendirici ---------------------------------------------------------------
   function parseLoc() {
     // "##/..." biçimindeki eski kalıcı linkler de açılsın diye baştaki tüm # işaretleri atılır.
@@ -5127,6 +5859,7 @@ document.getElementById("zin").focus();
     else if (parts[0] === "ozet") { need.add("interactive"); need.add("coursegraph"); needExamData(); }
     else if (parts[0] === "ara") need.add("coursegraph");
     else if (parts[0] === "kavram") need.add("interactive");
+    else if (parts[0] === "oyunlar") need.add("interactive");
     else if (parts[0] === "transcript" || parts[0] === "certificate" || parts[0] === "calisma") { /* data.js yeterli */ }
     else if (["tekrar", "hatalar", "karisik", "analiz", "plan"].includes(parts[0])) needExamData();
     else if (parts[0] === "course" && bySlug[parts[1]]) {
@@ -5157,6 +5890,12 @@ document.getElementById("zin").focus();
     else if (parts[0] === "analiz") { html = viewAnalysis(query); bind = () => {}; }
     else if (parts[0] === "plan") { html = viewPlan(); bind = bindPlan; }
     else if (parts[0] === "kavram") { html = viewKavram(query); bind = bindKavram; }
+    else if (parts[0] === "oyunlar") {
+      const gc = bySlug[parts[1]];
+      if (!parts[1]) html = viewGames(query);
+      else if (gc) { const gu = +parts[2] || 0, gk = parts[3] || "bulmaca"; html = viewGame(gc, gu, gk); bind = () => bindGame(gc, gu, gk); }
+      else html = viewNotFound();
+    }
     else if (parts[0] === "course" && bySlug[parts[1]]) {
       const c = bySlug[parts[1]];
       if (parts[2] === "chapter") { html = viewChapter(c, +parts[3]); bind = () => { bindReport(); bindListen(query); bindVideos(c); }; }
