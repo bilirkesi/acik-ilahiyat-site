@@ -1,0 +1,331 @@
+{
+  "unit": 2,
+  "unitTitle": "Türkçe Ünlü ve Ünsüzlerin Yazılışı",
+  "title": "Osmanlı Türkçesi Testi",
+  "questions": [
+    {
+      "question": "Osmanlı Türkçesinde Türkçe kelimelerin yazımında, bugünkü alfabede tek sesle gösterilen bazı ünsüzlerin kalın ve ince hâlleri için ayrı harfler kullanılır. Buna göre \"t\" ünsüzünün kalın ve ince hâlleri aşağıdakilerin hangisinde sırasıyla doğru verilmiştir?",
+      "answerOptions": [
+        {
+          "text": "ط - ت",
+          "isCorrect": true,
+          "rationale": "Osmanlı Türkçesi alfabesinde 't' sesinin kalın şekli tı (ط), ince şekli ise te (ت) harfi ile temsil edilir."
+        },
+        {
+          "text": "ص - س",
+          "isCorrect": false,
+          "rationale": "Bu harf çifti 's' ünsüzünün kalın (sad) ve ince (sin) şekillerini göstermek için kullanılır."
+        },
+        {
+          "text": "ظ - ز",
+          "isCorrect": false,
+          "rationale": "Bu harf çifti 'z' ünsüzünün kalın (zı) ve ince (ze) biçimlerini karşılar."
+        },
+        {
+          "text": "ق - ك",
+          "isCorrect": false,
+          "rationale": "Bu harf çifti 'k' ünsüzünün kalın (kaf) ve ince (kef) karşılıklarıdır."
+        }
+      ],
+      "hint": "Kelime başındaki 'tat' ve 'ter' kelimelerinin ilk harflerini göz önüne getiriniz.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Türkçe kelimelerin başındaki \"s\" ünsüzü yazılırken, kendisinden sonra gelen ünlünün kalın veya ince oluşuna dikkat edilir. Buna göre, birinci hecesinde kalın ünlü bulunan bir Türkçe kelimenin başındaki \"s\" sesi aşağıdaki harflerden hangisiyle gösterilir?",
+      "answerOptions": [
+        {
+          "text": "ص",
+          "isCorrect": true,
+          "rationale": "Türkçe kelime başında 's' sesinden sonra kalın ünlü gelirse, kalın sırayı göstermek üzere sad (ص) harfi tercih edilir."
+        },
+        {
+          "text": "س",
+          "isCorrect": false,
+          "rationale": "Sin harfi, Türkçe kelimelerde ince ünlülerle birlikte veya kelime içinde ince sırayı belirtmek için kullanılır."
+        },
+        {
+          "text": "ث",
+          "isCorrect": false,
+          "rationale": "Peltek se harfi yalnızca Arapça kökenli kelimelerin yazımında yer alır, Türkçe kelimelerin kökünde bulunmaz."
+        },
+        {
+          "text": "ظ",
+          "isCorrect": false,
+          "rationale": "Zı harfi 'z' sesinin kalın karşılığı olup 's' sesini temsil etmez."
+        }
+      ],
+      "hint": "'Sat' veya 'sar' kelimelerinin yazımında kullanılan ilk harfi hatırlayınız.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Osmanlı Türkçesinde genizsi \"n\" (kâf-ı nûnî / sağır kef) sesini göstermek için kullanılan temel harf aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "ڭ / ك",
+          "isCorrect": true,
+          "rationale": "Genizsi 'n' sesi Osmanlı Türkçesi alfabesinde kef (ك / ڭ) harfiyle gösterilir ve sağır kef olarak adlandırılır."
+        },
+        {
+          "text": "ن",
+          "isCorrect": false,
+          "rationale": "Nun harfi diş sesi olan standart 'n' ünsüzünü göstermede kullanılır."
+        },
+        {
+          "text": "غ",
+          "isCorrect": false,
+          "rationale": "Gayn harfi kalın 'ğ' sesini temsil eden bir ünsüzdür."
+        },
+        {
+          "text": "ق",
+          "isCorrect": false,
+          "rationale": "Kaf harfi kalın 'k' sesini gösteren bir ünsüz harftir."
+        }
+      ],
+      "hint": "Bu harf yazılış biçimi bakımından 'kef' ile aynı tabana sahiptir.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Ders kitabındaki bilgilere göre, aşağıdaki kelimelerden hangisinin yazımında genizsi \"n\" (kâf-ı nûnî / sağır kef) harfi kullanılır?",
+      "answerOptions": [
+        {
+          "text": "deniz",
+          "isCorrect": true,
+          "rationale": "Metindeki örneklere göre 'deniz' kelimesi Osmanlı Türkçesinde 'دكز' şeklinde sağır kef ile yazılan kelimeler arasındadır."
+        },
+        {
+          "text": "gün",
+          "isCorrect": false,
+          "rationale": "Bu kelimedeki 'n' sesi genizsi olmayıp standart diş sesi olan nun (ن) harfi ile yazılır."
+        },
+        {
+          "text": "dün",
+          "isCorrect": false,
+          "rationale": "Kelimedeki 'n' sesi diş sesi 'n' kategorisinde yer aldığı için nun (ن) harfi tercih edilir."
+        },
+        {
+          "text": "göz",
+          "isCorrect": false,
+          "rationale": "'Göz' kelimesinde genizsi n sesi yoktur; گوز şeklinde yazılır."
+        }
+      ],
+      "hint": "İçinde 'kef' görünümünde sağır n sesi barındıran 'ön', 'son' ve 'beniz' gibi örneklere benzer bir sözcüktür.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Türkçe kelimelerin başında bulunan \"a\" ünlüsü Osmanlı Türkçesi yazımında genel olarak nasıl gösterilir?",
+      "answerOptions": [
+        {
+          "text": "Medli elif (آ)",
+          "isCorrect": true,
+          "rationale": "Türkçe kelimelerin başında 'a' ünlüsü 'at', 'aş', 'az' örneklerinde olduğu gibi medli elif (آ) ile yazılır."
+        },
+        {
+          "text": "Hemzeli elif (أ)",
+          "isCorrect": false,
+          "rationale": "Hemzeli elif kelime başında genellikle 'e' sesini veya ince yuvarlak ünlüleri ayırt etmek için kullanılır."
+        },
+        {
+          "text": "Elif ve Vav (او)",
+          "isCorrect": false,
+          "rationale": "Elif ve vav birlikteliği kelime başında yuvarlak ünlüleri (o, ö, u, ü) karşılamak içindir."
+        },
+        {
+          "text": "Elif ve Ye (اي)",
+          "isCorrect": false,
+          "rationale": "Elif ve ye harfleri kelime başında 'ı' ve 'i' ünlülerini gösterir."
+        }
+      ],
+      "hint": "'At', 'aş' ve 'az' gibi kelimelerin ilk harfindeki işareti düşününüz.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Bazı Türkçe kelimelerde günümüzde \"e\" olarak kullanılan ses, Osmanlı Türkçesi metinlerinde tarihî olarak \"ى\" (ye) harfi ile gösterilmiştir. Aşağıdakilerden hangisi bu duruma örnek gösterilebilecek kelimelerden biridir?",
+      "answerOptions": [
+        {
+          "text": "vermek",
+          "isCorrect": true,
+          "rationale": "'Vermek' kelimesi metindeki özel listede belirtildiği üzere tarihî yazımda 'ويرمك' şeklinde ye (ى) harfi barındırarak yazılan kelimelerdendir."
+        },
+        {
+          "text": "bebek",
+          "isCorrect": false,
+          "rationale": "Bu kelimede 'e' sesleri kelime içinde harfle gösterilmeyip 'ببك' şeklinde yazılır."
+        },
+        {
+          "text": "gerek",
+          "isCorrect": false,
+          "rationale": "Kelimedeki 'e' ünlüleri kelime içinde yazılmayarak 'كرك' biçiminde ifade edilir."
+        },
+        {
+          "text": "emek",
+          "isCorrect": false,
+          "rationale": "Bu kelimenin ortasındaki 'e' sesi yazılmayıp 'امك' şeklinde gösterilir."
+        }
+      ],
+      "hint": "'Demek', 'gece', 'elçi' ve 'etmek' gibi kökünde 'ye' harfi muhafaza edilen fiillerden birini arayınız.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Türkçe kelimelerin başında yer alan \"ı\" ve \"i\" ünlüleri Osmanlı Türkçesinde aşağıdaki harf birleşimlerinden hangisiyle gösterilir?",
+      "answerOptions": [
+        {
+          "text": "Elif ve Ye (اي)",
+          "isCorrect": true,
+          "rationale": "'İp', 'it', 'iz' ve 'iş' örneklerinde görüldüğü gibi kelime başındaki 'ı' ve 'i' sesleri elif + ye (اي) harfleriyle yazılır."
+        },
+        {
+          "text": "Elif ve Vav (او)",
+          "isCorrect": false,
+          "rationale": "Elif ve vav harfleri kelime başında yuvarlak sesleri (o, ö, u, ü) temsil eder."
+        },
+        {
+          "text": "Medli Elif ve Ye (آى)",
+          "isCorrect": false,
+          "rationale": "Kelime başında düz dar ünlüleri gösterirken med işareti kullanılmaz."
+        },
+        {
+          "text": "Elif ve Güzel He (اه)",
+          "isCorrect": false,
+          "rationale": "Kelime başında bu birleşim Türkçe düz dar ünlüler için standart bir gösterim değildir."
+        }
+      ],
+      "hint": "'İş' ve 'ip' kelimelerinin ilk iki harfinin dizilimini hatıralayınız.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Türkçe kelimelerin başında bulunan \"o, ö, u, ü\" yuvarlak ünlülerini göstermek için aşağıdaki birleşimlerden hangisi kullanılır?",
+      "answerOptions": [
+        {
+          "text": "Elif ve Vav (او)",
+          "isCorrect": true,
+          "rationale": "'Ok', 'ot', 'uç' ve 'öz' örneklerinde olduğu gibi kelime başındaki tüm yuvarlak ünlüler elif ve vav (او) birleşimiyle yazılır."
+        },
+        {
+          "text": "Elif ve Ye (اي)",
+          "isCorrect": false,
+          "rationale": "Bu birleşim kelime başındaki düz dar ünlüleri (ı, i) gösterir."
+        },
+        {
+          "text": "Medli Elif (آ)",
+          "isCorrect": false,
+          "rationale": "Medli elif kelime başında uzun 'â' veya Türkçe 'a' sesini gösterir."
+        },
+        {
+          "text": "Sadece Vav (و)",
+          "isCorrect": false,
+          "rationale": "Kelime başında ünlünün yazılabilmesi için destekleyici elif harfine ihtiyaç duyulur."
+        }
+      ],
+      "hint": "'Ok' veya 'un' yazarken kelime başında yan yana gelen iki harfi düşününüz.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Kelime başındaki yuvarlak ince ünlüleri (ö, ü) kalın yuvarlak ünlülerden (o, u) ayırt etmek amacıyla elif harfi yerine veya elif üzerinde kullanılan özel işaret hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Hemze (ء)",
+          "isCorrect": true,
+          "rationale": "İnce yuvarlak ünlülü kelimeleri ('öcü', 'ölü') kalınlarından ayırmak için elif yerine veya üzerinde hemze (أ / ئ) kullanılır."
+        },
+        {
+          "text": "Şedde ( ّ )",
+          "isCorrect": false,
+          "rationale": "Şedde işareti aynı ünsüzün iki kez okunmasını sağlar, ünlü çeşidini belirlemez."
+        },
+        {
+          "text": "Cezm ( ْ )",
+          "isCorrect": false,
+          "rationale": "Cezm işareti harfin sessiz (sakin) okunmasını sağlar."
+        },
+        {
+          "text": "Tenvin ( ً )",
+          "isCorrect": false,
+          "rationale": "Tenvin kelime sonlarına genizcil 'n' sesi ekleyen bir hareke işaretidir."
+        }
+      ],
+      "hint": "'Ölü' veya 'öcü' kelimelerinin başındaki elif üzerine ince sesi vurgulamak için konan işareti hatırlayınız.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Türkçe kelimelerin yazımında \"k\" sesinin kalın ünlülerin yanında ve ince ünlülerin yanında kullanılan karşılıkları sırasıyla aşağıdakilerin hangisinde verilmiştir?",
+      "answerOptions": [
+        {
+          "text": "ق - ك",
+          "isCorrect": true,
+          "rationale": "Kalın ünlülerin yanında kaf (ق), ince ünlülerin yanında ise kef (ك) harfi kullanılır (örneğin 'ak' - 'ek')."
+        },
+        {
+          "text": "غ - گ",
+          "isCorrect": false,
+          "rationale": "Bu harfler 'ğ' sesinin kalın (gayn) ve ince (gef) halleridir."
+        },
+        {
+          "text": "ط - ت",
+          "isCorrect": false,
+          "rationale": "Bu harfler 't' sesinin kalın ve ince biçimleridir."
+        },
+        {
+          "text": "ظ - ز",
+          "isCorrect": false,
+          "rationale": "Bu harfler 'z' sesinin kalın ve ince karşılıklarıdır."
+        }
+      ],
+      "hint": "'Ak' kelimesinde kullanılan harf ile 'ek' kelimesinde kullanılan harfi kıyaslayınız.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Türkçe kelimelerin sonunda yer alan \"e\" ünlüsü Osmanlı Türkçesi alfabesinde genel olarak hangi harfle gösterilir?",
+      "answerOptions": [
+        {
+          "text": "Güzel he (ه)",
+          "isCorrect": true,
+          "rationale": "'Anne', 'nine' ve 'dere' örneklerinde olduğu gibi Türkçe kelime sonundaki 'e' sesleri güzel he (ه) ile yazılır."
+        },
+        {
+          "text": "Ye (ى)",
+          "isCorrect": false,
+          "rationale": "Ye harfi kelime sonunda 'ı' ve 'i' ünlülerini göstermek için tercih edilir."
+        },
+        {
+          "text": "Elif (ا)",
+          "isCorrect": false,
+          "rationale": "Elif harfi kelime sonunda temel olarak 'a' ünlüsünü gösterir."
+        },
+        {
+          "text": "Vav (و)",
+          "isCorrect": false,
+          "rationale": "Vav harfi kelime sonunda yuvarlak ünlüleri (o, ö, u, ü) temsil eder."
+        }
+      ],
+      "hint": "'Dere' ve 'dede' kelimelerinin sonundaki okutucu harfi hatırlayınız.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Türkçe kelimelerin içindeki (ortasındaki) \"e\" ünlüsünün yazılışı ile ilgili genel kural aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Genellikle harfle gösterilmez, yazılmaz.",
+          "isCorrect": true,
+          "rationale": "'Gerek' (كرك), 'emek' (امك) ve 'bebek' (ببك) örneklerinde görüldüğü gibi kelime içindeki 'e' sesi kural olarak yazılmaz."
+        },
+        {
+          "text": "Her zaman elif (ا) harfi ile gösterilir.",
+          "isCorrect": false,
+          "rationale": "Kelime içinde elif harfi 'a' ünlüsünü göstermek için kullanılır."
+        },
+        {
+          "text": "Her zaman güzel he (ه) harfi ile gösterilir.",
+          "isCorrect": false,
+          "rationale": "Güzel he kelime içinde 'e' sesi için nadiren kullanılır, temel yeri kelime sonudur."
+        },
+        {
+          "text": "Her zaman vav (و) harfi ile gösterilir.",
+          "isCorrect": false,
+          "rationale": "Vav harfi sadece yuvarlak ünlüleri gösterir, 'e' sesi için kullanılmaz."
+        }
+      ],
+      "hint": "'Bebek' ve 'emek' kelimelerinin harf dizilimini ve ortadaki 'e' seslerinin yazılıp yazılmadığını düşününüz.",
+      "type": "multiple_choice"
+    }
+  ]
+}

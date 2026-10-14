@@ -59,6 +59,24 @@ COURSES = {
             6: "Günümüz İslâm Mezhepleri",
         },
     },
+    "osmanlica-1": {
+        "nb": "18b3f791-a3cd-4d19-a002-ced4ebfe16ae",
+        "units": 8,
+        # Çıkmış sınavlardaki Osmanlıca şıklar görüntü olduğu için yalnız onlardan üretilen
+        # sorular ünite konusundan kopuyor; kitabı da kaynak al, ünite hedeflerine odakla.
+        "all_sources": True,
+        "focus_objectives": True,
+        "titles": {
+            1: "Osmanlı Türkçesi Alfabesi",
+            2: "Türkçe Ünlü ve Ünsüzlerin Yazılışı",
+            3: "Türkçe Kelimelerin Yapısı, Türkçe Kiplerin ve Edatların Yazılışı",
+            4: "Türkçe Ek, Zamir, Zarf ve Sayıların Yazılışı",
+            5: "Arapça ve Farsça Kelimelerde Ünlüler ve Yazılışları",
+            6: "Arapça Kelimelerin Yapısı",
+            7: "Aksâm-ı Seb'a, Mücerred Masdarlar, İsm-i Fâil ve İsm-i Mef'ûl",
+            8: "Mezîdünfih Masdarlar (I)",
+        },
+    },
 }
 
 LIMIT_HINTS = re.compile(r"limit|quota|rate.?limit|too many|429|usage", re.I)
@@ -108,9 +126,27 @@ def past_exam_source_ids(nb):
     return ids, {s["id"]: s.get("title") or s["id"] for s in srcs}
 
 
-def generate_unit_quiz(nb, unit, unit_title, source_ids, max_tries=3):
+def unit_objectives(slug, unit):
+    """study_plan.json'daki ünite öğrenme hedefleri (yoksa boş liste)."""
+    try:
+        plan = json.loads((DATA / slug / "study_plan.json").read_text(encoding="utf-8-sig"))
+    except (OSError, json.JSONDecodeError):
+        return []
+    chapters = plan.get("chapters") if isinstance(plan, dict) else plan
+    if not chapters or unit > len(chapters):
+        return []
+    return chapters[unit - 1].get("objectives") or []
+
+
+def generate_unit_quiz(nb, unit, unit_title, source_ids, max_tries=3, objectives=None):
+    focus = ""
+    if objectives:
+        focus = (
+            "Soruların tamamı şu ünite hedeflerini ölçsün: " + " ".join(objectives) + " "
+            + ("Önceki ünitelerin konularını (alfabe, harekeler, genel zarflar) tekrar sorma. " if unit > 2 else "")
+        )
     desc = (
-        f"Ünite {unit}: {unit_title}. "
+        f"Ünite {unit}: {unit_title}. " + focus +
         "Yalnızca çıkmış vize soruları ve AÖF ders kitabındaki ilgili ünite konularından "
         "10-15 çoktan seçmeli soru üret. "
         "Her soruda 4 seçenek, tek doğru, kısa gerekçe ve ipucu olsun. "
@@ -254,7 +290,7 @@ def main():
         ]
         if not past_ids:
             past_ids = [sid for sid in src_ids if "Kitap" in id_titles.get(sid, "")]
-        use_ids = past_ids or src_ids
+        use_ids = src_ids if meta.get("all_sources") else (past_ids or src_ids)
         print(f"  üretim kaynağı: {len(use_ids)} (çıkmış odaklı)")
         for unit in range(1, meta["units"] + 1):
             if only_unit and unit != only_unit:
@@ -272,7 +308,8 @@ def main():
             title = meta["titles"].get(unit, f"Ünite {unit}")
             print(f"  unit {unit}: {title}", flush=True)
             try:
-                aid, status = generate_unit_quiz(nb, unit, title, use_ids)
+                objectives = unit_objectives(slug, unit) if meta.get("focus_objectives") else None
+                aid, status = generate_unit_quiz(nb, unit, title, use_ids, objectives=objectives)
                 print(f"    artifact {aid} ({status})", flush=True)
                 download_quiz(nb, aid, dest)
                 norm = normalize_quiz(dest, unit, title)

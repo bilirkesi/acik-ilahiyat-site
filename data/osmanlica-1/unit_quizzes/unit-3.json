@@ -1,0 +1,331 @@
+{
+  "unit": 3,
+  "unitTitle": "Türkçe Kelimelerin Yapısı, Türkçe Kiplerin ve Edatların Yazılışı",
+  "title": "Osmanlı Türkçesi Testi",
+  "questions": [
+    {
+      "question": "Türkçe kelimelerin yapısı ve ünsüz özellikleri göz önüne alındığında, aşağıdakilerden hangisi Türkçe kökenli kelimelerin başında yer almayan ünsüz harflerden biridir?",
+      "answerOptions": [
+        {
+          "text": "r",
+          "isCorrect": true,
+          "rationale": "Türkçe kelimeler ğ, l, m, n, ñ, r, z ünsüzleriyle başlamaz."
+        },
+        {
+          "text": "k",
+          "isCorrect": false,
+          "rationale": "Türkçe kökenli kelimeler 'k' ünsüzü ile başlayabilir."
+        },
+        {
+          "text": "s",
+          "isCorrect": false,
+          "rationale": "Türkçe kökenli kelimeler 's' ünsüzü ile başlayabilir."
+        },
+        {
+          "text": "t",
+          "isCorrect": false,
+          "rationale": "Türkçe kökenli kelimeler 't' ünsüzü ile başlayabilir."
+        }
+      ],
+      "hint": "Türkçe kelime başlarında bulunmayan sekiz ünsüz harf grubunu (ğ, l, m, n, ñ, r, z) hatırlayınız.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Türkçe kelimelerde tonlu-tonsuz ünsüz benzeşmesi kuralına örnek gösterilen 'it-ti' fiilinin Osmanlı Türkçesindeki doğru yazılışı aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "ايتدى",
+          "isCorrect": true,
+          "rationale": "Türkçe 'it-ti' fiilinde kökten sonra gelen görülen geçmiş zaman eki imlada 'dal' harfiyle korunarak 'ايتدى' biçiminde yazılır fakat okunuşta benzeşmeye uğrar."
+        },
+        {
+          "text": "ايتتى",
+          "isCorrect": false,
+          "rationale": "Okunuştaki sertleşmeyi imlaya yansıtarak 'te' harfiyle yazmak Osmanlı Türkçesi ek imla geleneğine uymaz."
+        },
+        {
+          "text": "ايتى",
+          "isCorrect": false,
+          "rationale": "Bu yazımda görülen geçmiş zaman ekinin 'dal' harfi eksiktir."
+        },
+        {
+          "text": "ايتديك",
+          "isCorrect": false,
+          "rationale": "Bu biçim teklik 3. şahıs 'it-ti' çekimini değil, çokluk 1. şahıs eki almış halini gösterir."
+        }
+      ],
+      "hint": "Türkçe eklerdeki tonlu-tonsuz ünsüz değişiminde fiil kökünden sonra gelen 'd' harfinin imladaki kalıbını göz önüne getiriniz.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Osmanlı Türkçesinde Türkçe dilek-şart kipi eki olan '-sa / -se' aşağıdakilerden hangisi şeklinde tek kalıp olarak yazılır?",
+      "answerOptions": [
+        {
+          "text": "سه",
+          "isCorrect": true,
+          "rationale": "Dilek-şart eki ses uyumlarına göre okunsa da imlada standart olarak 'sin' ve güzel 'he' (سه) birleşimiyle yazılır."
+        },
+        {
+          "text": "سا",
+          "isCorrect": false,
+          "rationale": "Kalın ünlülü fiillerde 'sa' okunsa dahi ek imlasında elif kullanılmaz."
+        },
+        {
+          "text": "سي",
+          "isCorrect": false,
+          "rationale": "Dilek-şart eki imlasında 'ye' harfi standart ek kalıbı değildir."
+        },
+        {
+          "text": "سو",
+          "isCorrect": false,
+          "rationale": "Dilek-şart eki yuvarlak ünlü taşıyan bir harfle gösterilmez."
+        }
+      ],
+      "hint": "Ek ünlü uyumuna göre -sa veya -se olarak okunsa da yazımda sonuna güzel he getirilerek tek kalıp olarak gösterilir.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Osmanlı Türkçesi dilek-şart kipinde ince ünlülü fiillerin teklik 2. şahıs yazılışı ile aşağıdaki şahıslardan hangisinin yazılışı aynıdır (örneğin كلسه ك)?",
+      "answerOptions": [
+        {
+          "text": "Çokluk 1. şahıs",
+          "isCorrect": true,
+          "rationale": "İnce ünlülü fiillerde 'gelsen' (teklik 2. şahıs) ile 'gelsek' (çokluk 1. şahıs) çekimlerinin ikisi de 'كلسه ك' şeklinde yazılır."
+        },
+        {
+          "text": "Teklik 1. şahıs",
+          "isCorrect": false,
+          "rationale": "Teklik 1. şahıs çekimi sonuna mim harfi alarak 'كلسه م' biçiminde biter."
+        },
+        {
+          "text": "Çokluk 2. şahıs",
+          "isCorrect": false,
+          "rationale": "Çokluk 2. şahıs çekiminde ek sonunda kef-zeyn 'كز' birleşimi yer alır."
+        },
+        {
+          "text": "Çokluk 3. şahıs",
+          "isCorrect": false,
+          "rationale": "Çokluk 3. şahıs çekiminde ek sonunda çokluk eki 'لر' bulunur."
+        }
+      ],
+      "hint": "'كلسه ك' (gelsen / gelsek) örneğinde olduğu gibi cümledeki bağlamdan ayırt edilen şahıs çekimini düşününüz.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Aşağıdaki fiillerden hangisi dilek-şart kipinin olumsuz şekliyle yazılmıştır?",
+      "answerOptions": [
+        {
+          "text": "دونمه سه",
+          "isCorrect": true,
+          "rationale": "'Dönmese' fiili olumsuzluk eki 'مه' ve dilek-şart eki 'سه' ile 'دونمه سه' biçiminde yazılır."
+        },
+        {
+          "text": "كلسه م",
+          "isCorrect": false,
+          "rationale": "Bu kelime olumsuzluk eki içermeyen olumlu 'gelsem' çekimidir."
+        },
+        {
+          "text": "اويوسه ق",
+          "isCorrect": false,
+          "rationale": "Bu kelime olumsuzluk eki içermeyen olumlu 'uyusak' çekimidir."
+        },
+        {
+          "text": "بيلسه",
+          "isCorrect": false,
+          "rationale": "Bu kelime olumsuzluk eki içermeyen olumlu 'bilse' çekimidir."
+        }
+      ],
+      "hint": "Dilek-şart kipinde olumsuzluk için ince ünlülü fiillerde مه, kalın ünlülü fiillerde ما ekinin eklendiğini hatırlayınız.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Osmanlı Türkçesinde gereklilik kipi eki olan '-malı / -meli' standart olarak aşağıdakilerden hangisi biçiminde yazılır?",
+      "answerOptions": [
+        {
+          "text": "ملى",
+          "isCorrect": true,
+          "rationale": "Gereklilik kipi eki standart olarak mim-lam-ye (ملى) harfleriyle yazılır."
+        },
+        {
+          "text": "مالى",
+          "isCorrect": false,
+          "rationale": "Elif kullanımı bazı kalın örneklerde görülse de ek temel standart kalıbı elifsiz yazılır."
+        },
+        {
+          "text": "ملو",
+          "isCorrect": false,
+          "rationale": "Gereklilik eki son harf olarak vav değil ye alır."
+        },
+        {
+          "text": "مه لى",
+          "isCorrect": false,
+          "rationale": "Ayrı güzel he kullanımı standart gereklilik eki imlası değildir."
+        }
+      ],
+      "hint": "Mim, lam ve ye harflerinden oluşan standart ek kalıbını hatırlayınız.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Gereklilik kipinin olumsuz çekimine örnek olan 'bitirmemeliyiz' ifadesinin Osmanlı Türkçesi imlası aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "بيتيرمه ملى يز",
+          "isCorrect": true,
+          "rationale": "Fiil tabanı ile gereklilik eki arasına olumsuzluk eki -me (مه) getirilerek 'بيتيرمه ملى يز' şeklinde yazılır."
+        },
+        {
+          "text": "بيتيرملى يز",
+          "isCorrect": false,
+          "rationale": "Bu yazım olumsuzluk eki içermeyen olumlu 'bitirmeliyiz' çekimidir."
+        },
+        {
+          "text": "بيتيرمه مكده يز",
+          "isCorrect": false,
+          "rationale": "Bu yazım gereklilik kipi değil şimdiki zaman kipinin olumsuz çekimidir."
+        },
+        {
+          "text": "بيتيرمه سه ك",
+          "isCorrect": false,
+          "rationale": "Bu yazım gereklilik kipi değil, dilek-şart kipindeki 'bitirmesek' çekimidir."
+        }
+      ],
+      "hint": "Fiil kökü ile '-malı/-meli' eki arasına 'me' (مه) olumsuzluk ekinin girdiği şekli arayınız.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Türkçedeki şimdiki zaman eki olan '-makta / -mekte' eklerinin Osmanlı Türkçesindeki temel yazılış biçimi aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "مقده / مكده",
+          "isCorrect": true,
+          "rationale": "Şimdiki zaman eki kalın fiillerde 'مقده', ince fiillerde 'مكده' biçiminde fiil tabanına eklenir."
+        },
+        {
+          "text": "مقتى / مكتى",
+          "isCorrect": false,
+          "rationale": "Ek sonundaki bulunma hali 'dal-he' birleşimi yerine 'te-ye' ile yazılmaz."
+        },
+        {
+          "text": "مقدا / مكدا",
+          "isCorrect": false,
+          "rationale": "Ekin sonundaki geniş ünlü elif ile değil güzel he ile gösterilir."
+        },
+        {
+          "text": "ماقده / ميكده",
+          "isCorrect": false,
+          "rationale": "Mastar ekindeki ünlüler elif veya ye ile uzatılarak yazılmaz."
+        }
+      ],
+      "hint": "Fiil tabanına eklenen mastar eki (-mak/-mek) üzerine bulunma hali ekinin (-ta/-te) gelmesiyle oluşan kalıbı düşününüz.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Aşağıdaki ifadelerin hangisinde Farsça kökenli 'ez' (از) ön edatının Türkçe karşılığı doğru verilmiştir?",
+      "answerOptions": [
+        {
+          "text": "ez-cân u dil (از جان و دل) - Candan ve gönülden",
+          "isCorrect": true,
+          "rationale": "Farsça 'ez' (از) ön edatı Türkçe isim çekimindeki '-dan, -den' ayrılma halinin işlevini görür."
+        },
+        {
+          "text": "ezber (از بر) - Yüzünden, başkası adına",
+          "isCorrect": false,
+          "rationale": "'Ezber' kelimesindeki 'ez' edatıyla oluşan yapı 'zihinden, göğüsten' anlamına gelir."
+        },
+        {
+          "text": "ez-cân u dil (از جان و دل) - Can ile gönül",
+          "isCorrect": false,
+          "rationale": "Birliktelik (ile) anlamını sağlayan edat 'ez' değil 'ba' edatıdır."
+        },
+        {
+          "text": "ez-cân u dil (از جان و دل) - Cana ve gönüle",
+          "isCorrect": false,
+          "rationale": "Yönelme (-a, -e) anlamını sağlayan edat 'ez' değil 'be' edatıdır."
+        }
+      ],
+      "hint": "'ez' (از) ön edatının Türkçe isim çekimindeki ayrılma (-dan / -den) haline karşılık geldiğini hatırlayınız.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Osmanlı Türkçesi metinlerinde 'üzerine, üzerinde, üzere' anlamlarına gelen Farsça ön edat aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "ber (بر)",
+          "isCorrect": true,
+          "rationale": "'Ber' edatı 'üzerine, üzerinde, üzere' anlamı katar (örneğin ber-kemâl, ber-dâr)."
+        },
+        {
+          "text": "der (در)",
+          "isCorrect": false,
+          "rationale": "'Der' edatı bulunma hali olan '-da, -de, içinde' anlamı katar."
+        },
+        {
+          "text": "ba (با)",
+          "isCorrect": false,
+          "rationale": "'Ba' edatı vasıta/birliktelik gösteren 'ile, -lı, -li' anlamı katar."
+        },
+        {
+          "text": "be (به)",
+          "isCorrect": false,
+          "rationale": "'Be' edatı yönelme gösteren '-a, -e' anlamı katar."
+        }
+      ],
+      "hint": "'ber-kemâl' (kemal üzere) veya 'ber-dâr' (asılmış) kelimelerindeki edatı hatırlayınız.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Aşağıdakilerden hangisi Osmanlı Türkçesinde sıklıkla kullanılan ünlem (nidâ) kelimelerinden biridir?",
+      "answerOptions": [
+        {
+          "text": "zihî (زهى)",
+          "isCorrect": true,
+          "rationale": "'Zihî' (ne güzel, ne hoş) Osmanlı Türkçesinde metinlerde sıkça yer alan ünlemlerdendir."
+        },
+        {
+          "text": "gayrı (غيرى)",
+          "isCorrect": false,
+          "rationale": "'Gayrı' kelimesi ünlem değil, 'başka, artık' anlamında kullanılan bir kelimedir."
+        },
+        {
+          "text": "ancak (انجق)",
+          "isCorrect": false,
+          "rationale": "'Ancak' kelimesi bir bağlama edatıdır."
+        },
+        {
+          "text": "berây-ı (براى)",
+          "isCorrect": false,
+          "rationale": "'Berây-ı' tamlaması 'için' anlamına gelen bir ön edattır."
+        }
+      ],
+      "hint": "Coşku, şaşırma veya beğeni ifade eden, 'ey' veya 'yâ' gibi ünlem grubunda yer alan sözcüğü düşününüz.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Aşağıdaki fiil çekimlerinden hangisi '-makta / -mekte' şimdiki zaman ekiyle oluşturulmuştur?",
+      "answerOptions": [
+        {
+          "text": "اوشومكده يم",
+          "isCorrect": true,
+          "rationale": "'Üşü-' fiiline -mekte (مكده) şimdiki zaman eki ve teklik 1. şahıs eki (يم) eklenerek 'üşümekteyim' elde edilir."
+        },
+        {
+          "text": "اوشوسه م",
+          "isCorrect": false,
+          "rationale": "Bu kelime dilek-şart eki (-se) ile oluşturulmuş 'üşüsem' çekimidir."
+        },
+        {
+          "text": "اوشوملى يز",
+          "isCorrect": false,
+          "rationale": "Bu kelime gereklilik eki (-meli) ile oluşturulmuş 'üşümeliyiz' çekimidir."
+        },
+        {
+          "text": "اوشودم",
+          "isCorrect": false,
+          "rationale": "Bu kelime görülen geçmiş zamanla çekimlenmiş 'üşüdüm' biçimidir."
+        }
+      ],
+      "hint": "Fiil tabanından sonra mim-kef-dal-he (مكده) ekini ve şahıs ekini içeren seçeneği arayınız.",
+      "type": "multiple_choice"
+    }
+  ]
+}

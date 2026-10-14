@@ -1,0 +1,331 @@
+{
+  "unit": 8,
+  "unitTitle": "Mezîdünfih Masdarlar (I)",
+  "title": "Arapça Bâblar Quiz",
+  "questions": [
+    {
+      "question": "Sülâsî mücerred bir kelime İf‘âl bâbına aktarıldığında oluşan etken sıfat (ism-i fâ‘il) hangi vezinde gelir?",
+      "answerOptions": [
+        {
+          "text": "müf‘il",
+          "isCorrect": true,
+          "rationale": "İf‘âl bâbının etken yapıda işi yapanı gösteren ism-i fâ‘ili, başa ötreli mîm getirilip aynü'l-fiilin esrelenmesiyle müf‘il vezninde oluşur."
+        },
+        {
+          "text": "müf‘al",
+          "isCorrect": false,
+          "rationale": "Müf‘al vezni, İf‘âl bâbının etken ismi değil edilgen yapıdaki ism-i mef‘ûlüne ait kalıptır."
+        },
+        {
+          "text": "mufa‘‘il",
+          "isCorrect": false,
+          "rationale": "Mufa‘‘il vezni şeddeli orta harfiyle Tef‘îl bâbının ism-i fâ‘il kalıbıdır."
+        },
+        {
+          "text": "mütefa‘‘il",
+          "isCorrect": false,
+          "rationale": "Mütefa‘‘il vezni başında 'müte-' eki bulunan Tefa‘‘ul bâbının ism-i fâ‘il kalıbıdır."
+        }
+      ],
+      "hint": "Baştaki ötreli mîm harfinden sonra ortadaki aslî harfin esreli okunduğu kalıbı düşünün.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "İf‘âl bâbından türetilen ve 'idare eden' anlamına gelen 'müdîr' kelimesi, ecvef (orta harfi illetli) köklerde hangi ism-i fâ‘il veznindedir?",
+      "answerOptions": [
+        {
+          "text": "müfîl",
+          "isCorrect": true,
+          "rationale": "Ecvef fiiller İf‘âl bâbında ism-i fâ‘il yapılırken orta harf uzatıcı 'yâ' sesine dönüşerek müfîl veznini alır."
+        },
+        {
+          "text": "mû‘il",
+          "isCorrect": false,
+          "rationale": "Mû‘il vezni misâl veya mehmûzü'l-fâ fiillerin İf‘âl bâbı ism-i fâ‘il veznidir."
+        },
+        {
+          "text": "müfi‘‘",
+          "isCorrect": false,
+          "rationale": "Müfi‘‘ vezni muzâ‘af fiillerin İf‘âl bâbındaki ism-i fâ‘il veznidir."
+        },
+        {
+          "text": "müf‘î",
+          "isCorrect": false,
+          "rationale": "Müf‘î vezni nâkıs fiillerin İf‘âl bâbındaki ism-i fâ‘il veznidir."
+        }
+      ],
+      "hint": "Kelimedeki 'î' sesinin, orta harf olan illetli harfin uzatılmasıyla ortaya çıktığını dikkate alın.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Aşağıdaki kelimelerden hangisi Tef‘îl bâbının ism-i fâ‘il kalıbına (mufa‘‘il) örnek gösterilebilir?",
+      "answerOptions": [
+        {
+          "text": "mu‘allim",
+          "isCorrect": true,
+          "rationale": "'Öğreten' anlamına gelen mu‘allim kelimesi, ta‘lîm (Tef‘îl) masdarının şeddeli ve esreli orta harfe sahip mufa‘‘il kalıbındaki ism-i fâ‘ilidir."
+        },
+        {
+          "text": "mürekkeb",
+          "isCorrect": false,
+          "rationale": "Mürekkeb kelimesi Tef‘îl bâbının ism-i fâ‘ili değil, mufa‘‘al veznindeki ism-i mef‘ûlüdür."
+        },
+        {
+          "text": "muhzır",
+          "isCorrect": false,
+          "rationale": "Muhzır kelimesi İf‘âl bâbının (ihzâr) müf‘il veznindeki ism-i fâ‘ilidir."
+        },
+        {
+          "text": "mütekebbir",
+          "isCorrect": false,
+          "rationale": "Mütekebbir kelimesi Tefa‘‘ul bâbının (tekebbür) mütefa‘‘il veznindeki ism-i fâ‘ilidir."
+        }
+      ],
+      "hint": "Şeddeli orta harfi esreli okunan ve 'öğreten / ders veren' gibi eylemi yapanı gösteren kelimeyi arayın.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Tef‘îl bâbında nâkıs (son harfi illetli) kelimelerin ism-i mef‘ûlü hangi özel vezinde gelir?",
+      "answerOptions": [
+        {
+          "text": "mufa‘‘â",
+          "isCorrect": true,
+          "rationale": "Nâkıs fiiller Tef‘îl bâbında ism-i mef‘ûl yapılırken son illet harfi üstünleşerek mufa‘‘â (müberrâ, müsemmâ gibi) veznini oluşturur."
+        },
+        {
+          "text": "mufa‘‘î",
+          "isCorrect": false,
+          "rationale": "Mufa‘‘î vezni nâkıs kelimelerin Tef‘îl bâbındaki ism-i fâ‘il veznidir."
+        },
+        {
+          "text": "müf‘al",
+          "isCorrect": false,
+          "rationale": "Müf‘al vezni İf‘âl bâbının genel ism-i mef‘ûl veznidir."
+        },
+        {
+          "text": "mütefe‘‘î",
+          "isCorrect": false,
+          "rationale": "Mütefe‘‘î vezni Tefa‘‘ul bâbındaki nâkıs kelimelerin ism-i fâ‘il veznidir."
+        }
+      ],
+      "hint": "Müsemmâ ve müberrâ gibi sonu uzun 'â' sesi ile biten edilgen kalıbı hatırlayın.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Tefa‘‘ul bâbı (تَـَفعُّْل) sülâsî mücerred masdarlara aktarıldığında genel olarak hangi anlam özelliğini kazandırır?",
+      "answerOptions": [
+        {
+          "text": "Dönüşlülük ve eylemin kendinde gerçekleşmesi",
+          "isCorrect": true,
+          "rationale": "Tefa‘‘ul bâbı, eylemin öznenin kendi üzerinde gerçekleştiğini gösteren dönüşlülük anlamı ve bazen de yapmacıklık katar."
+        },
+        {
+          "text": "Sadece dışa dönük ettirgenlik ve geçişlilik",
+          "isCorrect": false,
+          "rationale": "Ettirgenlik ve dışa dönük geçişlilik daha çok İf‘âl ve Tef‘îl bâblarının temel işlevidir."
+        },
+        {
+          "text": "İki kişi arasında karşılıklı işteşlik",
+          "isCorrect": false,
+          "rationale": "İki veya daha fazla kişi arasındaki işteşlik eylemleri ağırlıklı olarak Tefâ‘ul ve Müfâ‘ale bâblarının özelliğidir."
+        },
+        {
+          "text": "Sadece edilgenlik ve nesnesizlik",
+          "isCorrect": false,
+          "rationale": "Tefa‘‘ul bâbı doğrudan edilgenlikten ziyade dönüşlülük veya geçişsiz/bazen geçişli fiil türetmede kullanılır."
+        }
+      ],
+      "hint": "Bu bâbın 'tahassul' veya 'tekebbür' örneklerinde olduğu gibi eylemin kişinin kendisinde meydana gelmesini ifade ettiğini düşünün.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Tefa‘‘ul bâbının etken nitelik taşıyan ism-i fâ‘il vezni aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "mütefa‘‘il",
+          "isCorrect": true,
+          "rationale": "Tefa‘‘ul bâbının etken ismi olan ism-i fâ‘ili, başında 'müte-' eki ve şeddeli esreli orta harfiyle mütefa‘‘il (örneğin mütekebbir) veznindedir."
+        },
+        {
+          "text": "mütefâ‘il",
+          "isCorrect": false,
+          "rationale": "Mütefâ‘il vezni Tefâ‘ul bâbının ism-i fâ‘ilidir."
+        },
+        {
+          "text": "mufa‘‘il",
+          "isCorrect": false,
+          "rationale": "Mufa‘‘il vezni Tef‘îl bâbının ism-i fâ‘ilidir."
+        },
+        {
+          "text": "mütefa‘‘al",
+          "isCorrect": false,
+          "rationale": "Mütefa‘‘al vezni Tefa‘‘ul bâbının ism-i mef‘ûl veznidir."
+        }
+      ],
+      "hint": "Başında 'müte-' eki bulunan ve ikinci aslî harfi şeddeli olan etken kalıbı değerlendirin.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Tefa‘‘ul bâbının ism-i mef‘ûlünün (mütefa‘‘al) dilde son derece az kullanılmasının temel sebebi nedir?",
+      "answerOptions": [
+        {
+          "text": "Bâbın temel işlevinin dönüşlülük olması ve nesne almaması",
+          "isCorrect": true,
+          "rationale": "Tefa‘‘ul bâbı dönüşlülük bildirdiğinden eylem öznenin üzerinde kalır; bu yüzden nesne alan edilgen yapıdaki ism-i mef‘ûlüne pek ihtiyaç duyulmaz."
+        },
+        {
+          "text": "Bâbın yalnızca isim türetmek için kullanılması",
+          "isCorrect": false,
+          "rationale": "Bu bâbdan hem masdar hem de ism-i fâ‘il gibi sıfat türleri yaygın olarak türetilmektedir."
+        },
+        {
+          "text": "Bâbda hiçbir zaman ism-i fâ‘il türetilememesi",
+          "isCorrect": false,
+          "rationale": "Bâbın mütekebbir, mütehassıl gibi dilde son derece yaygın kullanılan ism-i fâ‘illeri bulunmaktadır."
+        },
+        {
+          "text": "Bâbın sadece geçişli fiillerden oluşması",
+          "isCorrect": false,
+          "rationale": "Bu bâb aksine çoğunlukla geçişsiz ve dönüşlü fiiller türetir."
+        }
+      ],
+      "hint": "Eylemin özneye geri dönmesi ile dışarıdan bir nesne gereksinimi arasındaki ilişkiyi düşünün.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "'Bakışmak, yardımlaşmak' gibi işteşlik eylemlerinin yanı sıra bazen var olmayan bir durumu varmış gibi gösterme (yapmacıklık) anlamı da katan bâb hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Tefâ‘ul Bâbı",
+          "isCorrect": true,
+          "rationale": "Tefâ‘ul bâbı (تَـَفاُعْل), birden fazla kişi arasında işteşlik sağladığı gibi 'tecâhül' örneğindeki gibi yapmacıklık ve sahtelik anlamı da taşır."
+        },
+        {
+          "text": "İf‘âl Bâbı",
+          "isCorrect": false,
+          "rationale": "İf‘âl bâbı geçişlilik ve ettirgenlik ifade eder."
+        },
+        {
+          "text": "Tef‘îl Bâbı",
+          "isCorrect": false,
+          "rationale": "Tef‘îl bâbı çoğunlukla geçişlilik ve pekiştirme ifade eder."
+        },
+        {
+          "text": "Müfâ‘ale Bâbı",
+          "isCorrect": false,
+          "rationale": "Müfâ‘ale bâbı işteşlik ve geçişlilik sağlasa da sahtelik/yapmacıklık anlamı katma özelliği Tefâ‘ul bâbına aittir."
+        }
+      ],
+      "hint": "Tecâhül (bilmezlikten gelme) ve tenâzur (bakışma) örneklerinin ait olduğu bâbı hatırlayın.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Tefâ‘ul bâbının ism-i fâ‘ili olan ve 'olgunlaşmış' anlamına gelen 'mütekâmil' kelimesi hangi vezinde türetilmiştir?",
+      "answerOptions": [
+        {
+          "text": "mütefâ‘il",
+          "isCorrect": true,
+          "rationale": "Tekâmül (Tefâ‘ul) masdarının ism-i fâ‘ili olan mütekâmil, mütefâ‘il vezninde türetilmiştir."
+        },
+        {
+          "text": "mütefa‘‘il",
+          "isCorrect": false,
+          "rationale": "Mütefa‘‘il vezni şeddeli orta harfe sahiptir ve Tefa‘‘ul bâbına aittir."
+        },
+        {
+          "text": "müfâ‘il",
+          "isCorrect": false,
+          "rationale": "Müfâ‘il vezni Müfâ‘ale bâbının ism-i fâ‘il veznidir."
+        },
+        {
+          "text": "mütefâ‘al",
+          "isCorrect": false,
+          "rationale": "Mütefâ‘al vezni Tefâ‘ul bâbının ism-i mef‘ûl veznidir."
+        }
+      ],
+      "hint": "Başında 'müte-' eki olan ve ilk aslî harften sonra uzatıcı elif bulunan etken kalıbı arayın.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Müfâ‘ale bâbı (ُمَفاَعَله) masdarları ile ilgili aşağıdaki ifadelerden hangisi doğrudur?",
+      "answerOptions": [
+        {
+          "text": "Genellikle işteşlik (karşılıklılık) ve geçişlilik anlamı taşır.",
+          "isCorrect": true,
+          "rationale": "Müfâ‘ale bâbı eylemin karşılıklı yapılmasını (işteşlik) sağlar ve geçişli/geçişsiz yapıda bulunabilir."
+        },
+        {
+          "text": "Yalnızca tek taraflı ettirgenlik ve edilgenlik anlamları oluşturur.",
+          "isCorrect": false,
+          "rationale": "Ettirgenlik ve edilgenlik bu bâbın temel işlevi değildir."
+        },
+        {
+          "text": "Başındaki mîm harfi kelimenin aslî kök harflerinden biridir.",
+          "isCorrect": false,
+          "rationale": "Başındaki ötreli mîm (mü-) harfi bâbın zâid (eklenmiş) harfidir, kök harf değildir."
+        },
+        {
+          "text": "Bâbın ism-i fâ‘il ve ism-i mef‘ûlleri dilde hiç kullanılmaz.",
+          "isCorrect": false,
+          "rationale": "Müşâhed, muhâtab, mübârek gibi ism-i mef‘ûller dilde sıklıkla kullanılır."
+        }
+      ],
+      "hint": "Muhâtabe (karşılıklı konuşma) ve mücâdele gibi kelimelerin kattığı eylem biçimini dikkate alın.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "'İnkâr edilmiş' anlamına gelen 'münker' ve 'sağlamlaştırılmış' anlamına gelen 'muhkem' kelimeleri İf‘âl bâbının hangi kalıbındadır?",
+      "answerOptions": [
+        {
+          "text": "müf‘al",
+          "isCorrect": true,
+          "rationale": "İf‘âl bâbının edilgen nitelikteki ism-i mef‘ûlü, aynü'l-fiili üstünlü olan müf‘al veznindedir."
+        },
+        {
+          "text": "müf‘il",
+          "isCorrect": false,
+          "rationale": "Müf‘il vezninde aynü'l-fiil esrelidir ve etken (ism-i fâ‘il) anlam verir."
+        },
+        {
+          "text": "mufa‘‘al",
+          "isCorrect": false,
+          "rationale": "Mufa‘‘al vezni Tef‘îl bâbının ism-i mef‘ûlüdür."
+        },
+        {
+          "text": "mütefa‘‘al",
+          "isCorrect": false,
+          "rationale": "Mütefa‘‘al vezni Tefa‘‘ul bâbının ism-i mef‘ûlüdür."
+        }
+      ],
+      "hint": "Baştaki ötreli mîmden sonra ortadaki kök harfi üstünlü okunarak edilgen nitelik kazanan kalıbı düşünün.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Tef‘îl bâbının ism-i mef‘ûlü olan 'mürekkeb' (birleştirilmiş) ve 'müşerref' (şereflendirilmiş) kelimeleri hangi vezinde türetilmiştir?",
+      "answerOptions": [
+        {
+          "text": "mufa‘‘al",
+          "isCorrect": true,
+          "rationale": "Tef‘îl bâbının ism-i mef‘ûlü, ikinci aslî harfi şeddeli ve üstünlü okunan mufa‘‘al veznindedir."
+        },
+        {
+          "text": "mufa‘‘il",
+          "isCorrect": false,
+          "rationale": "Mufa‘‘il vezni Tef‘îl bâbının etken sıfatı olan ism-i fâ‘il veznidir."
+        },
+        {
+          "text": "müf‘al",
+          "isCorrect": false,
+          "rationale": "Müf‘al vezni İf‘âl bâbının ism-i mef‘ûlüdür."
+        },
+        {
+          "text": "mütefa‘‘al",
+          "isCorrect": false,
+          "rationale": "Mütefa‘‘al vezni Tefa‘‘ul bâbının ism-i mef‘ûlüdür."
+        }
+      ],
+      "hint": "Ortadaki aslî harfi hem şeddeli hem de üstünlü okunarak yapılan edilgen sıfat kalıbını hatırlayın.",
+      "type": "multiple_choice"
+    }
+  ]
+}

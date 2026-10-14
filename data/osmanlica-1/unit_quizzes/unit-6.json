@@ -1,0 +1,358 @@
+{
+  "unit": 6,
+  "unitTitle": "Arapça Kelimelerin Yapısı",
+  "title": "Arapça Bilgisi Testi",
+  "questions": [
+    {
+      "question": "Arap dilinin genel yapısı ve kelime türetme mantığı ile ilgili aşağıdakilerden hangi ifade doğrudur?",
+      "answerOptions": [
+        {
+          "text": "Kelimelerin anlamını değiştirmek ve yeni manalar türetmek için kelime kökünün başına, ortasına veya sonuna zâid sesler getirilerek bükünlü (tasrîfli) bir yapı oluşturulur.",
+          "isCorrect": true,
+          "rationale": "Arapça bükünlü bir dil olduğu için kelime kökü içerisindeki ses değişimi ve eklenen zâid harfler vasıtasıyla yeni kavramlar türetilir."
+        },
+        {
+          "text": "Kelime kökleri hiçbir zaman değişikliğe uğramaz ve yalnızca sonuna getirilen eklerle yeni kelimeler elde edilir.",
+          "isCorrect": false,
+          "rationale": "Bu durum bitişken (eklemeli) diller için geçerlidir; Arapçada ise kelime kökünün iç yapısı kırılarak veya genişletilerek türetme yapılır."
+        },
+        {
+          "text": "Osmanlı Türkçesinde Arapça kökenli fiiller çekimlenerek ve cümle içinde yüklem yapılarak yoğun şekilde kullanılmıştır.",
+          "isCorrect": false,
+          "rationale": "Osmanlı Türkçesinde Arapçadan fiiller çekimli halleriyle değil, çoğunlukla isim ve masdar formlarıyla ödünç alınmıştır."
+        },
+        {
+          "text": "Arapçada kelimeler türetilirken aslî harfler tamamen çıkarılır ve sadece zâid harflerden oluşan yeni kelimeler kurulur.",
+          "isCorrect": false,
+          "rationale": "Kelime türetiminde aslî (kök) harfler korunur veya kalıba göre düzenlenir; aslî harflerin tamamen atılması söz konusu değildir."
+        }
+      ],
+      "hint": "Arapçanın bükünlü (tasrîfli) yapısını ve köke eklenen zâid seslerin işlevini düşününüz.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Arapça kelimelerin vezinleri çıkarılırken kelimenin birinci, ikinci ve üçüncü aslî (kök) harflerinin yerine sırasıyla hangi harfler yazılır?",
+      "answerOptions": [
+        {
+          "text": "ف (fe) – ع (ayn) – ل (lam)",
+          "isCorrect": true,
+          "rationale": "Arapçada vezin kalıbı oluşturulurken birinci kök harf fe, ikinci kök harf ayn, üçüncü kök harf ise lam temsilci harfleriyle gösterilir."
+        },
+        {
+          "text": "ا (elif) – ب (be) – ت (te)",
+          "isCorrect": false,
+          "rationale": "Bu harfler alfabenin ilk harfleri olup gramerde vezin temsili için kullanılan standart sembol harfler değildir."
+        },
+        {
+          "text": "م (mim) – ن (nun) – ه (he)",
+          "isCorrect": false,
+          "rationale": "Bu harfler genellikle kelimelere türetme aşamasında eklenen zâid harfler arasında yer alır."
+        },
+        {
+          "text": "س (sin) – ت (te) – م (mim)",
+          "isCorrect": false,
+          "rationale": "Söz konusu harfler vezin kalıbını oluşturmak için kök harfleri temsil etmez, türetme ekleri olarak zâid harflerde kullanılır."
+        }
+      ],
+      "hint": "Arap gramerinde vezin kalıbı oluşturulurken standart olarak seçilen üç sembolik kök harfi hatırlayınız.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Arapçada \"كرم\" (k-r-m) kökünden türetilen \"اِكْرَام\" (ikrâm) kelimesinin vezni aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "إفعال (if‘âl)",
+          "isCorrect": true,
+          "rationale": "Kök harfler (k-r-m) yerlerine fe-ayn-lam konulup baştaki esreli elif ve dördüncü sıradaki üstünlü elif zâid harfleri eklendiğinde if'âl kalıbı elde edilir."
+        },
+        {
+          "text": "فَعَل (fa‘al)",
+          "isCorrect": false,
+          "rationale": "Bu kalıp üç aslî harften oluşan ve zâid harf içermeyen yalın masdar kalıbıdır."
+        },
+        {
+          "text": "مَفْعُول (mef‘ûl)",
+          "isCorrect": false,
+          "rationale": "Bu kalıp başında mim ve dördüncü harfinde vav bulunan edilgen sıfat (ism-i mef'ûl) kalıbıdır."
+        },
+        {
+          "text": "تَفَعُّل (tefa‘‘ul)",
+          "isCorrect": false,
+          "rationale": "Bu kalıp başında te bulunan ve ikinci kök harfi şeddeli olan farklı bir masdar babıdır."
+        }
+      ],
+      "hint": "Kelimenin başındaki elif (ا) ve dördüncü sırasındaki uzun elif (ا) zâid harflerdir.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "\"مَجْهُول\" (mechûl) kelimesinin aslî ve zâid harfleri dikkate alındığında vezni aşağıdakilerden hangisi olur?",
+      "answerOptions": [
+        {
+          "text": "مَفْعُول (mef‘ûl)",
+          "isCorrect": true,
+          "rationale": "Kök harfleri 'c-h-l' olan kelimenin başına ötreli mim ve üçüncü harfinden sonra vav gelerek mef'ûl vezni oluşmuştur."
+        },
+        {
+          "text": "فَاعِل (fâ‘il)",
+          "isCorrect": false,
+          "rationale": "Fâ'il kalıbı etken sıfat yapısında olup ilk harfinden sonra elif alan üç kök harfli yapıdır."
+        },
+        {
+          "text": "اِفْتِعَال (ifti‘âl)",
+          "isCorrect": false,
+          "rationale": "İfti'âl kalıbı beş harfli bir mezidünfih masdar veznidir."
+        },
+        {
+          "text": "فَعَلَة (fe‘ale)",
+          "isCorrect": false,
+          "rationale": "Fe'ale kalıbı çoğul veya isim kalıbı olarak kullanılır ve mim/vav zâid harflerini barındırmaz."
+        }
+      ],
+      "hint": "Mim harfiyle başlayan ve dördüncü harfinde uzun u (و) barındıran edilgen sıfat kalıbını hatırlayınız.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Aşağıdakilerden hangisi Arapça isimlerde dişil (müennes) yapıyı gösteren açık alametlerden biri değildir?",
+      "answerOptions": [
+        {
+          "text": "Kelimenin başında zâid mim (م) harfinin bulunması",
+          "isCorrect": true,
+          "rationale": "Baştaki mim harfi müenneslik eki değildir; genellikle mekân, zaman, alet isimleri veya ism-i mef'ûl yapımında kullanılan bir zâid harftir."
+        },
+        {
+          "text": "Kelime sonunda kapalı te (ة / ت) veya he (ه) bulunması",
+          "isCorrect": false,
+          "rationale": "Kelime sonundaki kapalı te veya okutucu he harfi en yaygın dişil (müennes) alametidir."
+        },
+        {
+          "text": "Kelime sonunda kısa elif (elif-i maksûre, ى) bulunması",
+          "isCorrect": false,
+          "rationale": "Kelime sonunda 'a' sesini veren ve 'ye' şeklinde yazılan elif-i maksûre belirgin bir müenneslik ekidir."
+        },
+        {
+          "text": "Kelime sonunda uzun elif (elif-i memdûde, اء / ا) bulunması",
+          "isCorrect": false,
+          "rationale": "Kelime sonundaki uzatılan elif (elif-i memdûde) sıfatlarda ve isimlerde dişilik gösteren alametlerdendir."
+        }
+      ],
+      "hint": "Dişilik belirten son ekler ile isim türetmede kullanılan ön ekleri ayırt ediniz.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Kendisinde herhangi bir müenneslik alameti bulunmadığı hâlde anlamı veya sözlüksel kullanımı gereği dişil kabul edilen \"mü'ennes-i ma'nevî\" veya \"semâî müennes\" kelimelere aşağıdakilerden hangisi örnektir?",
+      "answerOptions": [
+        {
+          "text": "ارض (arz) ve نار (nâr)",
+          "isCorrect": true,
+          "rationale": "Arz (yer) ve nâr (ateş) kelimeleri biçimsel bir dişilik eki taşımamalarına rağmen semâî müennes kabul edilen sözcüklerdendir."
+        },
+        {
+          "text": "kâtib (كاتب) ve me'mûr (مأمور)",
+          "isCorrect": false,
+          "rationale": "Bu kelimeler eril (müzekker) yapıda olup isim/sıfat kategorisindedir."
+        },
+        {
+          "text": "ahmer (احمر) ve esved (اسود)",
+          "isCorrect": false,
+          "rationale": "Bu kelimeler renk bildiren eril (müzekker) sıfat kalıbındadır; dişil halleri hamrâ ve sevdâ şeklindedir."
+        },
+        {
+          "text": "mu'allim (معلم) ve sâbir (صابر)",
+          "isCorrect": false,
+          "rationale": "Her iki sözcük de dişil eki taşımayan kurallı eril sıfatlardır."
+        }
+      ],
+      "hint": "Sözlükten veya işitilerek dişil kabul edilen coğrafi ve tabiat unsurlarını içeren örnekleri düşününüz.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Arapçada iki nesneyi veya kavramı ifade etmek için kullanılan \"tesniye\" (ikilik) yapısı Osmanlı Türkçesinde çoğunlukla hangi ek ile sağlanır?",
+      "answerOptions": [
+        {
+          "text": "–eyn (ـَيْن)",
+          "isCorrect": true,
+          "rationale": "Osmanlı Türkçesinde iki kavramı bir arada ifade etmek için tekil ismin sonuna –eyn eki getirilir (örn. devleteyn, tarafeyn)."
+        },
+        {
+          "text": "–ât (ات)",
+          "isCorrect": false,
+          "rationale": "–ât eki ikilik değil, çoğul (cem'-i mü'ennes-i sâlim) yapmak için kullanılır."
+        },
+        {
+          "text": "–în (ين)",
+          "isCorrect": false,
+          "rationale": "Uzun i sesi veren –în eki cem'-i müzekker-i sâlim (eril çoğul) yapımında kullanılır."
+        },
+        {
+          "text": "–iyye (يه)",
+          "isCorrect": false,
+          "rationale": "–iyye eki nispet ve soyut masdar yapımında kullanılır, ikilik anlamı katmaz."
+        }
+      ],
+      "hint": "Arapçada iki nesne veya durum için kullanılan özel ikilik ekini hatırlayınız.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "\"Taraf\" (طرف) kelimesinin tesniye (ikilik) biçimi aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Tarafeyn (طرفين)",
+          "isCorrect": true,
+          "rationale": "Taraf kelimesine ikilik eki olan –eyn getirilerek 'iki taraf' anlamına gelen tarafeyn yapısı oluşturulur."
+        },
+        {
+          "text": "Etrâf (اطراف)",
+          "isCorrect": false,
+          "rationale": "Etrâf kelimesi taraf sözcüğünün ikilik değil, çoğul (cem'-i mükesser) halidir."
+        },
+        {
+          "text": "Tarafât (طرفات)",
+          "isCorrect": false,
+          "rationale": "Dişil çoğul eki olan –ât ile yapılan bu form ikilik anlamı taşımaz."
+        },
+        {
+          "text": "Tarafûn (طرفون)",
+          "isCorrect": false,
+          "rationale": "–ûn eki eril çoğul yapımında kullanılır, ikilik bildiren cezm kalıbından farklıdır."
+        }
+      ],
+      "hint": "Doğu ve batı için kullanılan 'maşrıkeyn' veya iki deniz için kullanılan 'bahreyn' örneklerindeki eki hatırlayınız.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Akıllı varlıklara (zevi'l-ukūl) ait eril sıfatların ve isimlerin cem'-i müzekker-i sâlim (düzenli eril çoğul) yapılması için kelime sonuna yaygın olarak hangi ek getirilir?",
+      "answerOptions": [
+        {
+          "text": "–în (ين) / –ûn (ون)",
+          "isCorrect": true,
+          "rationale": "Osmanlı Türkçesinde akıllı varlıkların eril sıfatları ve isimleri tekil halin sonuna –în (veya –ûn) eki getirilerek kurallı çoğul yapılır (örn. me'mûrîn, mü'minîn)."
+        },
+        {
+          "text": "–ât (ات)",
+          "isCorrect": false,
+          "rationale": "–ât eki dişil varlıkların ve masdarların kurallı çoğulunda kullanılır."
+        },
+        {
+          "text": "–eyn (ين - cezmli)",
+          "isCorrect": false,
+          "rationale": "Cezmli okunarak eyn sesini veren yapı çoğul değil, tesniye (ikilik) bildirir."
+        },
+        {
+          "text": "–ân (ان)",
+          "isCorrect": false,
+          "rationale": "–ân eki Farsça çoğul eki veya Arapça tesniye alternatifi olup standart eril çoğul biçimi değildir."
+        }
+      ],
+      "hint": "Memur, mümin ve muallim gibi akıllı varlıkların kurallı çoğul yapılma şeklini hatırlayınız.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Osmanlı Türkçesinde masdarların ve dişil isimlerin sonuna \"–ât\" (ات) eki getirilerek yapılan çoğul türü aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Cem‘-i Mü’ennes-i Sâlim",
+          "isCorrect": true,
+          "rationale": "Düzenli dişil çoğul olarak adlandırılan cem'-i mü'ennes-i sâlim, kelimelerin sonuna –ât eki getirilerek oluşturulur (örn. hissiyyât, nakliyyât)."
+        },
+        {
+          "text": "Cem‘-i Müzekker-i Sâlim",
+          "isCorrect": false,
+          "rationale": "Cem'-i müzekker-i sâlim yapısı –ât ile değil, –în veya –ûn ekleri ile kurulur."
+        },
+        {
+          "text": "Cem‘-i Mükesser",
+          "isCorrect": false,
+          "rationale": "Cem'-i mükesser düzensiz (kırık) çoğul olup eklerle değil, vezin değişimiyle elde edilir."
+        },
+        {
+          "text": "Tesniye",
+          "isCorrect": false,
+          "rationale": "Tesniye iki adedi gösteren ikilik yapısıdır, çoğul kategorisinde yer almaz."
+        }
+      ],
+      "hint": "Hissiyyât, neşriyyât ve edebiyyât örneklerinde görülen kurallı çoğul türünü hatırlayınız.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "\"Kâtib\" (katip) -> \"Küttâb\" (katipler), \"Hâkim\" -> \"Hükkâm\", \"Tâlib\" -> \"Tullâb\" çoğul kelimeleri hangi cem'-i mükesser (kırık çoğul) veznindedir?",
+      "answerOptions": [
+        {
+          "text": "Fu‘‘âl (فُعَّال)",
+          "isCorrect": true,
+          "rationale": "Fâ'il veznindeki meslek ve sıfat isimlerinin kırık çoğulu çoğunlukla ilk harfi ötreli, ikinci harfi şeddeli fu‘‘âl vezninde yapılır (küttâb, hükkâm, tullâb)."
+        },
+        {
+          "text": "Ef‘âl (َافْـَعال)",
+          "isCorrect": false,
+          "rationale": "Ef'âl kalıbı başı elifli olan farklı bir kırık çoğul veznidir (örn. eser -> âsâr)."
+        },
+        {
+          "text": "Mefâ‘il (َمَفاِعل)",
+          "isCorrect": false,
+          "rationale": "Mefâ'il kalıbı meclis -> mecâlis örneğinde olduğu gibi mim ile başlayan dört harfli kelimelerin çoğul kalıbıdır."
+        },
+        {
+          "text": "Fi‘âl (ِفَعاْل)",
+          "isCorrect": false,
+          "rationale": "Fi'âl kalıbının ilk harfi esreli olup cebel -> cibâl veya recül -> ricâl kelimelerinde görülür."
+        }
+      ],
+      "hint": "Fâ'il veznindeki meslek veya sıfat isimlerinin çoğullaştırılmasında kullanılan ve ikinci harfi şeddeli olan kalıbı düşününüz.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Tekil kelimenin yapısı ve vezni değiştirilerek oluşturulan \"Cem'-i Mükesser\" (kırık çoğul) ile ilgili aşağıdakilerden hangi ifade doğrudur?",
+      "answerOptions": [
+        {
+          "text": "Kurallı bir ek getirmek yerine tekil kelimenin kök yapısına ve veznine müdahale edilerek elde edilen semâî çoğullardır.",
+          "isCorrect": true,
+          "rationale": "Cem'-i mükesser, ek ekleyerek değil kelimenin iç ses düzenini ve veznini değiştirerek yapılan semâî (işitilerek öğrenilen) kırık çoğuldur."
+        },
+        {
+          "text": "Yalnızca –ât eki kullanılarak tekil kelimenin sonuna ek yapılmasıyla elde edilir.",
+          "isCorrect": false,
+          "rationale": "–ât eki ile yapılan çoğullar kırık çoğul değil, kurallı (sâlim) dişil çoğuldur."
+        },
+        {
+          "text": "Sadece akılsız varlıkların ikili (tesniye) durumlarını göstermek için kullanılır.",
+          "isCorrect": false,
+          "rationale": "Cem'-i mükesser iki adedi değil, üç ve daha fazla çoğul durumları ifade eder."
+        },
+        {
+          "text": "Osmanlı Türkçesinde fiil çekimlerini çoğul yapmak için kullanılan temel kuraldır.",
+          "isCorrect": false,
+          "rationale": "Cem'-i mükesser fiillere değil, Arapça isim ve sıfatlara uygulanan bir çoğaltma yöntemidir."
+        }
+      ],
+      "hint": "Kırık çoğulun kurala bağlı eklerle değil, kelime kalıbının değiştirilmesiyle (semâî) oluştuğunu dikkate alınız.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "\"Meclis\" (مجلس) kelimesinin cem'-i mükesser (kırık çoğul) biçimi olan \"Mecâlis\" (مجالس) kelimesinin vezni aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Mefâ‘il (مَفَاعِل)",
+          "isCorrect": true,
+          "rationale": "Meclis kelimesindeki m-c-l-s düzeni kırık çoğul kalıbına sokulduğunda mefâ'il vezni (mecâlis) ortaya çıkar."
+        },
+        {
+          "text": "Fe‘âlîl (فَعَالِيل)",
+          "isCorrect": false,
+          "rationale": "Fe'âlîl kalıbı kandîl -> kanâdîl örneğinde olduğu gibi uzun i sesi barındıran beş harfli çoğul yapısıdır."
+        },
+        {
+          "text": "Ef‘ile (أَفْعِلَة)",
+          "isCorrect": false,
+          "rationale": "Ef'ile kalıbı mekân -> emkine veya cevâb -> ecvibe örneklerinde görülen başında elif bulunan kalıptır."
+        },
+        {
+          "text": "Fu‘alâ (فُعَلَاء)",
+          "isCorrect": false,
+          "rationale": "Fu'alâ kalıbı şerîk -> şürekâ örneğinde görülen sonu hemzeli çoğul yapısıdır."
+        }
+      ],
+      "hint": "İlk harfi mim (m) ile başlayan isimlerin çoğullaştırılmasında kullanılan mefâ'il kalıbını hatırlayınız.",
+      "type": "multiple_choice"
+    }
+  ]
+}
