@@ -1,0 +1,15 @@
+{
+  "name": "{{NAME}}",
+  "short_name": "{{SHORT}}",
+  "description": "{{DESCRIPTION}}",
+  "lang": "tr",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "{{PAPER}}",
+  "theme_color": "{{PRIMARY}}",
+  "icons": [
+    { "src": "favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}
