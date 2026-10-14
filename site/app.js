@@ -1730,6 +1730,7 @@
           <p class="mistake-meta">${card.wrong} kez yanlış${card.right ? `, ${card.right} kez doğru` : ""} · son: ${fmtDay(dayKey(card.last))}</p>
         </div>
         <div class="mistake-actions">
+          <button class="btn sm-mini" type="button" data-ask="${esc(id)}">Soruyu sor</button>
           <a class="btn ghost sm-mini" href="${esc(x.href)}">Çözüme bak</a>
           <button class="btn ghost sm-mini" type="button" data-drop="${esc(id)}">Listeden çıkar</button>
         </div>
@@ -1758,14 +1759,19 @@
         paintStudyBadges();
       };
     });
-    const start = document.querySelector("[data-start]");
-    if (start) start.onclick = () => {
+    // Tüm listeyi ya da (Soruyu sor ile) tek bir soruyu oturum olarak aç.
+    const open = (only) => {
       document.getElementById("mistake-start").remove();
       document.querySelector(".mistake-list").remove();
       const s = document.getElementById("session");
+      if (only) s.dataset.only = only;
       s.hidden = false;
       runSession(s);
+      s.scrollIntoView({ block: "start" });
     };
+    const start = document.querySelector("[data-start]");
+    if (start) start.onclick = () => open("");
+    document.querySelectorAll("[data-ask]").forEach((b) => (b.onclick = () => open(b.dataset.ask)));
   }
 
   function shuffle(a) {
@@ -1786,6 +1792,8 @@
       const fresh = freshCandidates(freshLeftToday(), slug ? new Map([...bank].filter(([, x]) => x.slug === slug)) : bank);
       fresh.forEach((id) => freshIds.add(id));
       queue = due.concat(fresh);
+    } else if (root.dataset.only) {
+      queue = inScope(root.dataset.only) ? [root.dataset.only] : [];
     } else {
       queue = shuffle(openMistakes().filter(([id]) => inScope(id)).map(([id]) => id));
     }
@@ -1851,11 +1859,13 @@
         if (mode === "hatalar") {
           recordAnswer(id, ok, ok ? 3 : 1, "exam");
           if (!ok) tally.again++;
-          actions.innerHTML = `<button class="btn" type="button" id="rv-next">${queue.length ? "Sonraki soru" : "Bitir"}</button>`;
+          // Tek soru (Soruyu sor): sonuç ekranı yerine doğrudan hata listesine dön.
+          const go = root.dataset.only ? () => { setKeys(null); route(); } : next;
+          actions.innerHTML = `<button class="btn" type="button" id="rv-next">${root.dataset.only ? "Hata listesine dön" : queue.length ? "Sonraki soru" : "Bitir"}</button>`;
           const b = root.querySelector("#rv-next");
-          b.onclick = next;
+          b.onclick = go;
           b.focus();
-          setKeys((e) => { if (e.key === "Enter" && e.target.tagName !== "BUTTON") { e.preventDefault(); next(); } });
+          setKeys((e) => { if (e.key === "Enter" && e.target.tagName !== "BUTTON") { e.preventDefault(); go(); } });
           return;
         }
         const base = card || {};
