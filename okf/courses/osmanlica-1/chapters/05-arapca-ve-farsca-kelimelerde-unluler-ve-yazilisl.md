@@ -5,7 +5,8 @@ description: "Arapça ve Farsça kelimelerdeki uzun ve kısa ünlüleri, bu dill
 course: osmanlica-1
 chapter: 5
 status: stable
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-14T17:33:22Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-14T20:00:01Z }
+notebook: "https://notebooklm.google.com/notebook/18b3f791-a3cd-4d19-a002-ced4ebfe16ae"
 ---
 
 # Özet
