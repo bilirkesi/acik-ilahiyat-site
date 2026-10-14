@@ -253,17 +253,35 @@
   // ile ikiye bölünmüş olabilir. Bölünmüş kelimeleri birleştir, cümle ortasında kırılan satırları aynı
   // paragrafa al; böylece metin hem düzgün görünür hem de sesli okumada kesik kesik okunmaz.
   const LIST_LINE = /^\s*(?:[*•-]\s|#|\d+[.)]\s|[A-ZÇĞİÖŞÜ][.)]\s|---)/;
+  // Satır bağlaçla bitiyorsa ("19. ve" / "20. yüzyıl") cümle sürüyordur.
+  const TR_LINK_END = /\s(?:ve|ile|veya|ya da|ya|yahut|ile|bir|olan|için|gibi|de|da|ki|ise|ama|fakat|ancak|hem|ne|en|çok|daha)$/u;
+  const lowerShare = (s) => {
+    const w = s.split(/\s+/).filter((x) => /^\p{L}/u.test(x));
+    return w.length ? w.filter((x) => /^\p{Ll}/u.test(x)).length / w.length : 0;
+  };
   function unwrap(text) {
     const lines = String(text || "").replace(/\u00ad[ \t]*\n[ \t]*/g, "").split("\n");
     const out = [];
+    let last = ""; // bir önceki fiziksel satır (birleştirilmiş paragrafın tamamı değil)
     for (const raw of lines) {
-      const prev = out.length ? out[out.length - 1] : "";
       const line = raw.trim();
-      const p = prev.trim();
-      const join = p && line && !LIST_LINE.test(line) && !/^#/.test(p) && !/[.!?:;…"”)]$|⟧$/.test(p)
-        && (/^\p{Ll}/u.test(line) || (/[\p{L},]$/u.test(p) && p.length >= 45));
-      if (join) out[out.length - 1] = /\p{L}-$/u.test(p) ? p + line : p + " " + line;
-      else out.push(raw);
+      const p = last;
+      // Büyük harfle başlayan satır özel ad da olabilir başlık da: önceki satır uzunsa ya da kelimelerinin
+      // çoğu küçük harfliyse (başlıklar Baş Harfleri Büyük yazılır) cümle sürüyor demektir.
+      // Satır içi "•" listesi (anahtar sözcükler) ya da bağlaçla biten satır ("19. ve" / "20. yüzyıl") da sürer.
+      const linked = TR_LINK_END.test(p);
+      const bulletRun = /^•\s/.test(line) && / • /.test(p);
+      const join = p && line && (bulletRun || linked || !LIST_LINE.test(line)) && !/^#/.test(p) && !/[.!?:;…"”)]$|⟧$/.test(p)
+        && (bulletRun || linked || /^\p{Ll}/u.test(line) || /^[,.;:)]/.test(line) || /[,-]$/.test(p)
+          || (/[\p{L}\d]$/u.test(p) && (p.length >= 45 || (p.split(/\s+/).length >= 4 && lowerShare(p) >= 0.5)))
+          // İki satıra bölünmüş başlık: ikisi de kısa ve Baş Harfleri Büyük ("Bir İmparatorluğun" / "Dönüşümü").
+          || (p.split(/\s+/).length >= 3 && p.length <= 50 && line.length <= 40 && !/^\d+\. Ünite/.test(p)
+            && /^\p{Lu}/u.test(line) && lowerShare(p) < 0.5 && lowerShare(line) < 0.5 && !/\d/.test(line)));
+      if (join) {
+        const q = out[out.length - 1].trimEnd();
+        out[out.length - 1] = /\p{L}-$/u.test(p) || /^[,.;:)]/.test(line) ? q + line : q + " " + line;
+      } else out.push(raw);
+      last = line;
     }
     return out.join("\n");
   }
