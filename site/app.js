@@ -533,6 +533,7 @@
           ${nb ? `<div class="btn-row">${nb}</div>` : ""}
         </aside>
       </div>
+      <div class="ch-read-row" data-noprint>${chapterReadHtml(c, n)}</div>
       <div class="pager">${prev}${next}</div>`;
   }
 
@@ -1307,7 +1308,7 @@
   function loadStudy() {
     let s = {};
     try { s = JSON.parse(localStorage.getItem(STUDY_KEY)) || {}; } catch (e) { s = {}; }
-    return Object.assign({ v: 1, cards: {}, days: {}, frozen: [], goal: 20, newPerDay: 10, courses: null, goalDone: "", log: [], mocks: [], videos: {}, vrate: 1 }, s);
+    return Object.assign({ v: 1, cards: {}, days: {}, frozen: [], goal: 20, newPerDay: 10, courses: null, goalDone: "", log: [], mocks: [], videos: {}, vrate: 1, listen: {}, lrate: 1, plan: null }, s);
   }
   function saveStudy() {
     try { localStorage.setItem(STUDY_KEY, JSON.stringify(study)); } catch (e) { /* özel mod */ }
@@ -1324,7 +1325,7 @@
   function dayRec(key) {
     return study.days[key] || (study.days[key] = { n: 0, ok: 0, rev: 0, fresh: 0, read: 0 });
   }
-  const isActive = (key) => { const r = study.days[key]; return !!(r && (r.n || r.read || r.vid)) || study.frozen.includes(key); };
+  const isActive = (key) => { const r = study.days[key]; return !!(r && (r.n || r.read || r.vid || r.lis)) || study.frozen.includes(key); };
 
   // Seri: bugünden (bugün henüz çalışılmadıysa dünden) geriye kesintisiz aktif gün sayısı.
   function streakInfo() {
@@ -1545,11 +1546,13 @@
     const due = dueCards().filter(([id]) => bySlug[courseOfId(id)]).length;
     const mist = openMistakes().length;
     const goalPct = Math.min(100, Math.round((day.n / study.goal) * 100));
+    const plan = activePlan();
     return `<section class="today-strip" aria-label="Bugünkü çalışma">
       <a class="ts-item ts-streak${st.today ? " lit" : ""}" href="#/calisma">${FLAME}<span><b>${st.n}</b> gün seri</span></a>
       <a class="ts-item ts-goal" href="#/calisma"><span class="ring" style="--p:${goalPct}"><i>${goalPct}%</i></span><span><b>${day.n}/${study.goal}</b> bugünkü hedef</span></a>
       <a class="ts-item" href="#/tekrar"><span><b>${due}</b> tekrar bekliyor</span></a>
       <a class="ts-item" href="#/hatalar"><span><b>${mist}</b> açık hata</span></a>
+      ${plan ? `<a class="ts-item ts-plan" href="#/plan" title="${esc(plan.exam.name)}"><span>${plan.days === 0 ? "<b>Sınav bugün</b>" : `${plan.scope === "vize" ? "Vizeye" : "Finale"} <b>${plan.days}</b> gün`}</span></a>` : ""}
       <a class="btn ts-cta" href="#/tekrar">${due ? "Tekrara başla" : "Yeni kart öğren"}</a>
     </section>`;
   }
@@ -1581,9 +1584,9 @@
         const k = dayKey(t);
         if (t > today) { cells += `<i class="hm-cell future"></i>`; continue; }
         const r = study.days[k];
-        const n = r ? r.n + r.read * 3 + (r.vid || 0) * 3 : 0;
+        const n = r ? r.n + r.read * 3 + (r.vid || 0) * 3 + (r.lis || 0) * 3 : 0;
         const lvl = study.frozen.includes(k) && !n ? "frz" : n === 0 ? 0 : n < 10 ? 1 : n < 25 ? 2 : n < 50 ? 3 : 4;
-        cells += `<i class="hm-cell l${lvl}" title="${fmtDay(k)}: ${r ? `${r.n} soru, ${r.read} bölüm${r.vid ? `, ${r.vid} video` : ""}` : lvl === "frz" ? "seri donduruldu" : "çalışılmadı"}"></i>`;
+        cells += `<i class="hm-cell l${lvl}" title="${fmtDay(k)}: ${r ? `${r.n} soru, ${r.read} bölüm${r.vid ? `, ${r.vid} video` : ""}${r.lis ? `, ${r.lis} dinleme` : ""}` : lvl === "frz" ? "seri donduruldu" : "çalışılmadı"}"></i>`;
       }
     }
     return `<div class="heatmap" style="--weeks:${weeks}" role="img" aria-label="Son ${weeks} haftanın çalışma takvimi">${cells}</div>
@@ -1622,6 +1625,7 @@
     const sel = new Set(studyCourses());
     return `<p class="eyebrow">Öğrenme döngüsü</p><h1>Çalışma masan</h1>
       <p class="lead muted">Her gün biraz: unutmak üzere olduğun sorular tekrar kuyruğuna gelir, yanlışların ayrı bir listede toplanır, serin ve hedefin burada izlenir.</p>
+      ${planCardHtml() || `<a class="desk-card plan-card plan-empty" href="#/plan"><div><span class="desk-k">Sınav planı</span><p class="plan-today">Sınav tarihini seç, her gün ne çalışacağını planlayalım.</p></div><span class="btn ghost">Plan oluştur</span></a>`}
       <div class="desk-grid">
         <section class="desk-card desk-streak${st.today ? " lit" : ""}">
           <div class="desk-big">${FLAME}<b>${st.n}</b><span>gün seri</span></div>
@@ -1633,7 +1637,7 @@
           <div>
             <h3>Bugünkü hedef</h3>
             <p class="muted">${day.n >= study.goal ? "Hedef tamam. Ekstra her soru bir sonraki tekrarı kolaylaştırır." : `Hedefe ${study.goal - day.n} soru kaldı.`}</p>
-            <p class="desk-meta">${day.ok} doğru · ${day.rev} tekrar · ${day.read} bölüm okundu${day.vid ? ` · ${day.vid} video` : ""}</p>
+            <p class="desk-meta">${day.ok} doğru · ${day.rev} tekrar · ${day.read} bölüm okundu${day.vid ? ` · ${day.vid} video` : ""}${day.lis ? ` · ${day.lis} bölüm dinlendi` : ""}</p>
           </div>
         </section>
         <a class="desk-card desk-action" href="#/tekrar">
@@ -1699,6 +1703,281 @@
   }
 
   // -- #/tekrar ve #/hatalar oturumları (aynı motor) --
+  // ---- #/plan: sınav geri sayımı ve günlük plan ------------------------------------
+  // Sınav tarihleri university.json "exams" listesinden gelir; öğrenci kendi tarihini de girebilir.
+  // Plan kalan güne göre her gün yeniden hesaplanır: kapsamdaki okunmamış bölümler son haftadan önce
+  // bitecek şekilde günlere bölünür, hiç çözülmemiş sorular sınav gününe kadar dağıtılır, son hafta
+  // deneme sınavı önerilir. Vize kapsamı varsayılan olarak ünitelerin ilk yarısı, final tümüdür.
+  //   study.plan = { exam: id | "ozel" | "kapali", date, name, scope: "vize"|"final", units: { slug: [n] }, courses: [slug] | null }
+  const EXAMS = (Array.isArray(U.exams) ? U.exams : []).filter((e) => e && /^\d{4}-\d{2}-\d{2}$/.test(e.date));
+  const parseDay = (s) => { const [y, m, d] = String(s).split("-").map(Number); return new Date(y, m - 1, d).getTime(); };
+  const daysUntil = (s) => Math.round((parseDay(s) - dayStart(Date.now())) / DAY_MS);
+  const fmtDate = (s) => { const t = parseDay(s); return `${fmtDay(dayKey(t))} ${new Date(t).getFullYear()}`; };
+  const unitCount = (c) => c.chapters.length;
+  const defaultUnits = (c, scope) => Array.from({ length: scope === "vize" ? Math.ceil(unitCount(c) / 2) : unitCount(c) }, (_, i) => i + 1);
+  const nextPreset = () => EXAMS.find((e) => daysUntil(e.end || e.date) >= 0) || null;
+
+  // Geçerli plan: kayıtlı seçim, yoksa takvimdeki ilk yaklaşan sınav. Geçmiş sınav seçiliyse bir sonrakine geçer.
+  function activePlan() {
+    const p = study.plan || {};
+    if (p.exam === "kapali") return null;
+    let exam = p.exam === "ozel" ? (p.date ? { id: "ozel", name: p.name || "Sınavım", date: p.date, scope: p.scope || "vize" } : null) : EXAMS.find((e) => e.id === p.exam);
+    if (exam && exam.id !== "ozel" && daysUntil(exam.end || exam.date) < 0) exam = null;
+    if (!exam) exam = nextPreset();
+    if (!exam) return null;
+    const scope = exam.id === "ozel" || exam.id === p.exam ? p.scope || exam.scope || "vize" : exam.scope || "vize";
+    const courses = (Array.isArray(p.courses) && p.courses.length ? p.courses : studyCourses()).filter((s) => bySlug[s]);
+    const units = {};
+    for (const slug of courses) {
+      const c = bySlug[slug];
+      const saved = exam.id === p.exam && p.units && Array.isArray(p.units[slug]) ? p.units[slug].filter((n) => n >= 1 && n <= unitCount(c)) : null;
+      units[slug] = saved && saved.length ? saved : defaultUnits(c, scope);
+    }
+    return { exam, scope, courses, units, days: daysUntil(exam.date), saved: !!p.exam };
+  }
+
+  // Bir soru plan kapsamında mı? Ünitesi bilinmeyen çıkmış vize soruları her zaman, final soruları finalde sayılır.
+  function inPlanScope(plan, x, id) {
+    if (!plan.units[x.slug]) return false;
+    const u = x.unit || 0;
+    if (u) return plan.units[x.slug].includes(u);
+    return sourceOf(id) === "p" || plan.scope === "final";
+  }
+
+  // Okuma planı: kapsamdaki okunmamış bölümler, derslere sırayla dağıtılarak. Soru bankası gerektirmez.
+  function planReading(plan) {
+    const today = study.days[todayKey()] || { n: 0, read: 0 };
+    const lists = plan.courses.map((slug) => {
+      const read = readSet(slug);
+      return plan.units[slug].filter((n) => !read.has(n)).map((n) => ({ slug, n }));
+    });
+    const unread = [];
+    for (let i = 0; lists.some((l) => i < l.length); i++) for (const l of lists) if (i < l.length) unread.push(l[i]);
+    const days = Math.max(0, plan.days);
+    // Son hafta (uzun planlarda) ya da son iki gün tekrara ayrılır; okuma ondan önce biter.
+    const buffer = days > 14 ? 7 : days > 4 ? 2 : 0;
+    const readDays = Math.max(1, days - buffer);
+    const readToday = Math.min(today.read || 0, unread.length + (today.read || 0));
+    const perDay = Math.ceil((unread.length + readToday) / readDays);
+    const toRead = days > buffer || !buffer ? unread.slice(0, Math.max(0, perDay - readToday)) : unread.slice(0, 2);
+    const mockToday = (study.mocks || []).some((m) => dayKey(m.t) === todayKey());
+    return { unread, toRead, perDay, readToday, buffer, days, mockToday, done: today.n || 0, rev: today.rev || 0 };
+  }
+
+  function planNumbers(plan) {
+    const bank = questionBank();
+    const now = Date.now();
+    const r = planReading(plan);
+    const days = r.days;
+    const perCourse = {};
+    let unseen = 0, due = 0, seen = 0, total = 0, ok = 0, answered = 0, firstToday = 0;
+    for (const [id, x] of bank) {
+      if (!inPlanScope(plan, x, id)) continue;
+      const pc = perCourse[x.slug] || (perCourse[x.slug] = { total: 0, seen: 0, ok: 0, answered: 0 });
+      const card = study.cards[id];
+      total++; pc.total++;
+      if (!card) { unseen++; continue; }
+      seen++; pc.seen++;
+      const a = (card.right || 0) + (card.wrong || 0);
+      ok += card.right || 0; answered += a; pc.ok += card.right || 0; pc.answered += a;
+      if (card.due <= now) due++;
+      if (card.reps === 1 && dayKey(card.last) === todayKey()) firstToday++;
+    }
+    // Hedef gün başındaki duruma göre sabit kalsın: bugün ilk kez çözülenler ve bugünkü tekrarlar geri eklenir.
+    const fresh = Math.ceil((unseen + firstToday) / Math.max(1, days));
+    const target = Math.min(150, Math.max(study.goal, due + r.rev + fresh));
+    const weak = unitStats()
+      .filter((u) => plan.units[u.slug] && plan.units[u.slug].includes(u.unit) && u.cards.length >= 3 && u.acc < 0.7)
+      .sort((a, b) => a.acc - b.acc)[0] || null;
+    return Object.assign(r, { unseen, due, seen, total, ok, answered, fresh, target, weak, perCourse });
+  }
+
+  const planVerb = (plan) => (plan.days === 0 ? "bugün" : plan.days === 1 ? "yarın" : `${plan.days} gün kaldı`);
+  const examShort = (e) => e.name.replace(/\s*\(.*\)$/, "");
+
+  // Ana sayfa şeridi ve çalışma masası için kısa geri sayım kartı.
+  function planCardHtml() {
+    const plan = activePlan();
+    if (!plan) return "";
+    const k = planReading(plan);
+    const due = dueCards().filter(([id]) => plan.units[courseOfId(id)]).length;
+    const tasks = [];
+    if (k.toRead.length) tasks.push(`${k.toRead.length} bölüm oku`);
+    else if (k.unread.length && k.readToday) tasks.push("bugünkü okuma tamam");
+    if (due) tasks.push(`${due} tekrar`);
+    if (plan.days <= 7) tasks.push(k.mockToday ? "deneme tamam" : "1 deneme sınavı");
+    if (!tasks.length) tasks.push(k.done >= study.goal ? "hedef tamam" : `${study.goal - k.done} soru çöz`);
+    return `<a class="desk-card plan-card" href="#/plan">
+      <div class="plan-count"><b>${plan.days}</b><span>${plan.days === 0 ? "sınav bugün" : "gün kaldı"}</span></div>
+      <div>
+        <span class="desk-k">${esc(plan.exam.name)} · ${fmtDate(plan.exam.date)}</span>
+        <p class="plan-today"><b>Bugünün işi:</b> ${esc(tasks.join(", "))}</p>
+        <p class="desk-meta">${plan.scope === "vize" ? "Vize" : "Final"} kapsamında ${k.unread.length ? `${k.unread.length} okunmamış bölüm` : "okunmamış bölüm kalmadı"}</p>
+      </div>
+      <span class="btn">Planı aç</span>
+    </a>`;
+  }
+
+  function planTaskHtml(done, title, body, cta) {
+    return `<li class="plan-task${done ? " done" : ""}"><span class="plan-check" aria-hidden="true">${done ? "✓" : ""}</span><div><b>${title}</b>${body ? `<p class="muted">${body}</p>` : ""}</div>${cta || ""}</li>`;
+  }
+
+  function viewPlan() {
+    const plan = activePlan();
+    const p = study.plan || {};
+    const sel = p.exam === "kapali" ? "kapali" : plan ? plan.exam.id : "ozel";
+    const upcoming = EXAMS.filter((e) => daysUntil(e.end || e.date) >= 0);
+    const form = `<h2>Sınavın</h2>
+      <form class="desk-card mix-form plan-form" id="plan-form">
+        <label>Sınav
+          <select name="exam">
+            ${upcoming.map((e) => `<option value="${esc(e.id)}"${sel === e.id ? " selected" : ""}>${esc(e.name)} · ${fmtDate(e.date)}</option>`).join("")}
+            <option value="ozel"${sel === "ozel" ? " selected" : ""}>Kendi tarihimi gireceğim</option>
+            <option value="kapali"${sel === "kapali" ? " selected" : ""}>Plan kapalı</option>
+          </select>
+        </label>
+        <div class="plan-own" ${sel === "ozel" ? "" : "hidden"}>
+          <label>Sınav adı <input name="ename" type="text" maxlength="60" value="${esc(p.name || "")}" placeholder="Örneğin bütünleme"></label>
+          <label>Tarih <input name="date" type="date" value="${esc(p.exam === "ozel" ? p.date || "" : "")}" min="${todayKey()}"></label>
+        </div>
+        ${plan ? `<fieldset class="seg"><legend>Kapsam</legend>
+          <label class="seg-opt"><input type="radio" name="scope" value="vize"${plan.scope === "vize" ? " checked" : ""}><span><b>Vize</b><small>Varsayılan: ünitelerin ilk yarısı</small></span></label>
+          <label class="seg-opt"><input type="radio" name="scope" value="final"${plan.scope === "final" ? " checked" : ""}><span><b>Final</b><small>Tüm üniteler</small></span></label>
+        </fieldset>
+        <fieldset><legend>Dersler</legend><div class="chk-row">
+          ${COURSES.map((c) => `<label class="chk-chip"><input type="checkbox" name="course" value="${esc(c.slug)}"${plan.courses.includes(c.slug) ? " checked" : ""}><span>${esc(c.subject)}</span></label>`).join("")}
+        </div></fieldset>
+        <details class="plan-units"><summary>Kapsamdaki üniteleri düzenle</summary>
+          ${plan.courses.map((slug) => {
+            const c = bySlug[slug];
+            return `<fieldset><legend>${esc(c.subject)}</legend><div class="chk-row">${c.chapters.map((ch, i) => `<label class="chk-chip" title="${esc(ch.title)}"><input type="checkbox" name="u:${esc(slug)}" value="${i + 1}"${plan.units[slug].includes(i + 1) ? " checked" : ""}><span>Ünite ${i + 1}</span></label>`).join("")}</div></fieldset>`;
+          }).join("")}
+          <p class="muted small">AÖF her dönem sınav kapsamını duyurur; farklıysa buradan düzelt. Ünite numaraları ders kitabıyla aynıdır.</p>
+        </details>` : ""}
+      </form>`;
+    const head = `<p class="crumbs"><a href="#/calisma">Çalışma masası</a> / Sınav planı</p>
+      <p class="eyebrow">Sınav planı</p>`;
+    if (!plan) {
+      return `${head}<h1>Sınavına kaç gün kaldı?</h1>
+        <p class="lead muted">Sınav tarihini seç; kalan güne göre her gün ne okuyacağını ve kaç soru çözeceğini planlayalım.</p>${form}`;
+    }
+    const k = planNumbers(plan);
+    const e = plan.exam;
+    const readList = k.toRead.map(({ slug, n }) => `<li><a href="#/course/${slug}/chapter/${n}">${esc(bySlug[slug].subject)} · ${n}. bölüm: ${esc(bySlug[slug].chapters[n - 1].title)}</a></li>`).join("");
+    const qLeft = Math.max(0, k.target - k.done);
+    const tasks = [];
+    tasks.push(k.unread.length
+      ? planTaskHtml(!k.toRead.length, k.toRead.length ? `${k.toRead.length} bölüm oku` : "Bugünün okuması tamam",
+        k.toRead.length ? `Okuduğun bölümü sayfanın sonundaki "Okudum" düğmesiyle işaretle. Notları dinleyerek de çalışabilirsin.<ol class="plan-read">${readList}</ol>` : `Kapsamda ${k.unread.length} okunmamış bölüm kaldı; yarın plana gelecek.`)
+      : planTaskHtml(true, "Kapsamdaki tüm bölümleri okudun", "Kalan günleri soru çözmeye ve tekrara ayır."));
+    tasks.push(planTaskHtml(qLeft === 0, `${k.target} soru çöz`,
+      `Bugün ${k.done} soru çözdün.${k.due ? ` ${k.due} tekrar kartı bekliyor; önce onları bitir.` : ""}${k.fresh ? ` Kapsamda ${k.unseen} hiç çözülmemiş soru var; ${k.fresh > k.target ? "hepsine yetişmek zor; önce yanlışlarını ve tekrarlarını bitir." : `sınava kadar günde yaklaşık ${k.fresh} yeni soru yeter.`}` : ""}`,
+      `<a class="btn${qLeft ? "" : " ghost"}" href="${k.due ? "#/tekrar" : "#/karisik?kapsam=1&havuz=yeni"}">${k.due ? "Tekrara başla" : "Soru çöz"}</a>`));
+    if (k.weak) {
+      const wc = bySlug[k.weak.slug];
+      tasks.push(planTaskHtml(false, `Zayıf ünite: ${esc(wc.subject)} · Ünite ${k.weak.unit}`,
+        `Bu ünitede doğruluğun ${pct(k.weak.acc)}. 10 soruluk kısa bir alıştırma iyi gelir.`,
+        `<a class="btn ghost" href="#/karisik?ders=${encodeURIComponent(k.weak.slug)}&unite=${k.weak.unit}&n=10">Alıştırma</a>`));
+    }
+    if (plan.days <= 7) {
+      tasks.push(planTaskHtml(k.mockToday, k.mockToday ? "Bugünün denemesi tamam" : "Deneme sınavı çöz",
+        "Son hafta her gün bir deneme: AÖF formatında, süreli, 4 yanlış 1 doğruyu götürür. Yanlışların Hatalarım'a düşer.",
+        k.mockToday ? `<a class="btn ghost" href="#/hatalar">Hatalarım</a>` : `<a class="btn" href="#/karisik?mod=deneme&kapsam=1">Denemeyi başlat</a>`));
+    }
+    const rows = plan.courses.map((slug) => {
+      const c = bySlug[slug], pc = k.perCourse[slug] || { total: 0, seen: 0, ok: 0, answered: 0 };
+      const read = readSet(slug), units = plan.units[slug];
+      const r = units.filter((n) => read.has(n)).length;
+      return `<tr><th scope="row">${esc(c.subject)}<small>Ünite ${units.length === unitCount(c) ? "tümü" : units.join(", ")}</small></th>
+        <td>${r}/${units.length}</td><td>${pc.seen}/${pc.total}</td><td>${pc.answered ? pct(pc.ok / pc.answered) : "-"}</td></tr>`;
+    }).join("");
+    const phase = plan.days === 0 ? "Sınav günü: yeni konu açma, Hatalarım'a göz at ve dinlen."
+      : plan.days <= k.buffer ? "Tekrar dönemindesin: okuma bitti sayılır, soru çöz, deneme yap, yanlışlarını kapat."
+      : k.unread.length ? `Okuma dönemindesin: kapsamdaki ${k.unread.length} bölümü günde ${k.perDay} bölümle ${k.buffer ? `sınavdan ${k.buffer} gün önce` : "sınava kadar"} bitirirsin.`
+      : "Okuma bitti; şimdi soru ve tekrarla pekiştir.";
+    return `${head}<h1>${esc(examShort(e))}: ${planVerb(plan)}</h1>
+      <p class="lead muted">${fmtDate(e.date)}${e.end ? ` – ${fmtDate(e.end)}` : ""} · ${plan.scope === "vize" ? "Vize kapsamı" : "Final kapsamı"}. ${phase}</p>
+      <div class="plan-hero">
+        <div class="plan-count big"><b>${plan.days}</b><span>${plan.days === 0 ? "sınav bugün" : "gün kaldı"}</span></div>
+        <div class="btn-row"><button class="btn ghost" type="button" id="plan-ics">Takvimime ekle</button><a class="btn ghost" href="#/karisik?mod=deneme&kapsam=1">Kapsamdan deneme</a></div>
+      </div>
+      <h2>Bugünün işi</h2>
+      <ul class="plan-tasks">${tasks.join("")}</ul>
+      <h2>Kapsamdaki durumun</h2>
+      <div class="table-wrap"><table class="plan-table"><thead><tr><th scope="col">Ders</th><th scope="col">Okunan bölüm</th><th scope="col">Görülen soru</th><th scope="col">Doğruluk</th></tr></thead><tbody>${rows}</tbody></table></div>
+      ${form}
+      <p class="muted small">Plan her gün kalan güne göre yeniden hesaplanır. Ayarlar bu tarayıcıda saklanır ve <a href="#/cevrimdisi?b=yedek">yedek koduna</a> dahildir.</p>`;
+  }
+
+  // Takvim dosyası (.ics): sınav günü tüm gün etkinlik, bir hafta ve bir gün önce hatırlatma.
+  function planIcs(plan) {
+    const e = plan.exam;
+    const d = (s) => s.replace(/-/g, "");
+    const endDay = dayKey(addDays(parseDay(e.end || e.date), 1));
+    const stamp = new Date().toISOString().replace(/[-:]/g, "").replace(/\.\d+/, "");
+    const fold = (s) => s.replace(/[\\;,]/g, (m) => "\\" + m);
+    const alarm = (tr, msg) => ["BEGIN:VALARM", "ACTION:DISPLAY", `TRIGGER:${tr}`, `DESCRIPTION:${fold(msg)}`, "END:VALARM"];
+    const courses = plan.courses.map((s) => bySlug[s].subject).join(", ");
+    return ["BEGIN:VCALENDAR", "VERSION:2.0", `PRODID:-//${fold(CONFIG.name)}//Sinav plani//TR`, "CALSCALE:GREGORIAN", "METHOD:PUBLISH",
+      "BEGIN:VEVENT", `UID:${e.id}-${e.date}@${CONFIG.storageKey}`, `DTSTAMP:${stamp}`,
+      `DTSTART;VALUE=DATE:${d(e.date)}`, `DTEND;VALUE=DATE:${d(endDay)}`,
+      `SUMMARY:${fold("AÖF " + e.name)}`, `DESCRIPTION:${fold(courses + ". Plan: " + location.origin + location.pathname + "#/plan")}`,
+      ...alarm("-P7D", "Sınava bir hafta kaldı: deneme sınavı zamanı"), ...alarm("-PT12H", "Sınav yarın"),
+      "END:VEVENT", "END:VCALENDAR"].join("\r\n") + "\r\n";
+  }
+
+  function bindPlan() {
+    const ics = document.getElementById("plan-ics");
+    if (ics) ics.addEventListener("click", () => {
+      const plan = activePlan();
+      if (!plan) return;
+      const url = URL.createObjectURL(new Blob([planIcs(plan)], { type: "text/calendar;charset=utf-8" }));
+      const a = Object.assign(document.createElement("a"), { href: url, download: `sinav-${plan.exam.date}.ics` });
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 4000);
+      showToast("Takvim dosyası indirildi. Açınca sınav günü telefon takvimine eklenir.");
+    });
+    const f = document.getElementById("plan-form");
+    if (!f) return;
+    f.addEventListener("change", (ev) => {
+      const prev = study.plan || {};
+      const exam = f.exam.value;
+      const next = { exam };
+      if (exam === "ozel") {
+        f.querySelector(".plan-own").hidden = false;
+        next.name = f.elements.ename.value.trim();
+        next.date = f.elements.date.value;
+        if (!next.date) { study.plan = Object.assign({}, prev, next); saveStudy(); return; }
+      }
+      const examChanged = exam !== prev.exam;
+      const scopeEl = f.querySelector("[name=scope]:checked");
+      const preset = EXAMS.find((e) => e.id === exam);
+      next.scope = examChanged && preset ? preset.scope : scopeEl ? scopeEl.value : (prev.scope || "vize");
+      const picked = [...f.querySelectorAll("[name=course]:checked")].map((x) => x.value);
+      if (picked.length) next.courses = picked.length === COURSES.length ? null : picked;
+      // Kapsam ya da sınav değişince üniteler varsayılana döner; aksi hâlde işaretlenenler saklanır.
+      if (!examChanged && ev.target.name !== "scope" && ev.target.name !== "exam") {
+        next.units = {};
+        for (const c of COURSES) {
+          const boxes = f.querySelectorAll(`[name="u:${c.slug}"]`);
+          if (boxes.length) next.units[c.slug] = [...boxes].filter((x) => x.checked).map((x) => +x.value);
+        }
+        for (const [slug, u] of Object.entries(prev.units || {})) if (!(slug in next.units)) next.units[slug] = u;
+      }
+      study.plan = next;
+      saveStudy();
+      const open = !!(f.querySelector(".plan-units") || {}).open;
+      const y = window.scrollY;
+      route().then(() => {
+        const d = document.querySelector(".plan-units");
+        if (d && open) d.open = true;
+        window.scrollTo(0, y);
+      });
+    });
+  }
+
   function courseFilterHtml(mode, active, counts) {
     const href = (slug) => `#/${mode}${slug ? "?ders=" + slug : ""}`;
     const total = Object.values(counts).reduce((a, b) => a + b, 0);
@@ -1973,7 +2252,8 @@
 
   function mixDefaults(query) {
     const saved = study.mix || {};
-    const courses = query.ders && bySlug[query.ders] ? [query.ders] : (saved.courses || []).filter((s) => bySlug[s]);
+    const plan = query.kapsam ? activePlan() : null;
+    const courses = query.ders && bySlug[query.ders] ? [query.ders] : plan ? plan.courses : (saved.courses || []).filter((s) => bySlug[s]);
     return {
       mode: query.mod === "deneme" || query.mod === "alistirma" ? query.mod : saved.mode || "alistirma",
       courses: courses.length ? courses : COURSES.map((c) => c.slug),
@@ -1981,6 +2261,7 @@
       units: query.unite ? [+query.unite] : [],
       pool: MIX_POOLS.some(([k]) => k === query.havuz) ? query.havuz : (query.ders || query.unite ? "hepsi" : saved.pool || "hepsi"),
       count: MIX_COUNTS.includes(+query.n) ? +query.n : saved.count || 20,
+      scope: !!(query.kapsam && activePlan()),
     };
   }
 
@@ -1994,10 +2275,12 @@
     const bank = questionBank();
     const recent = o.pool === "son" ? recentWrong(50) : null;
     const courses = new Set(o.courses), sources = new Set(o.sources), units = new Set(o.units);
+    const plan = o.scope ? activePlan() : null;
     const out = [];
     for (const [id, x] of bank) {
       if (!courses.has(x.slug) || !sources.has(sourceOf(id))) continue;
       if (units.size && !units.has(x.unit)) continue;
+      if (plan && !inPlanScope(plan, x, id)) continue;
       const card = study.cards[id];
       if (o.pool === "yeni" && card) continue;
       if (o.pool === "hata" && !(card && card.ok === false)) continue;
@@ -2054,6 +2337,7 @@
           ${MIX_SOURCES.map(([k, label]) => `<label class="chk-chip"><input type="checkbox" name="source" value="${k}"${o.sources.includes(k) ? " checked" : ""}><span>${label}</span></label>`).join("")}
         </div></fieldset>
         <fieldset id="mix-units"><legend>Üniteler</legend><div class="chk-row" data-units></div></fieldset>
+        ${activePlan() ? `<label class="chk-inline"><input type="checkbox" name="scope"${o.scope ? " checked" : ""}> Yalnızca sınav planımın kapsamı (${esc(activePlan().scope === "vize" ? "vize" : "final")} üniteleri)</label>` : ""}
         <div class="mix-row">
           <label>Soru havuzu
             <select name="pool">${MIX_POOLS.map(([k, label]) => `<option value="${k}"${o.pool === k ? " selected" : ""}>${label}</option>`).join("")}</select>
@@ -2086,6 +2370,7 @@
       units: [...f.querySelectorAll("[name=unit]:checked")].map((x) => +x.value),
       pool: f.pool.value,
       count: +f.count.value,
+      scope: !!(f.scope && f.scope.checked),
     };
   }
 
@@ -2776,6 +3061,7 @@
       <div class="rp-head">
         <h2>Bölüm raporu</h2>
         <p class="muted rp-lead">Çalışma notları kısımlara ayrıldı${total ? `; ${total} etkinlik ilgili kısmın altında. Açmak için karta dokunun.` : "."}</p>
+        ${listenBarHtml(c, n)}
         ${c.okunus && "speechSynthesis" in window ? `<p class="muted rp-lead ota-hint">Altı noktalı Osmanlıca kelimelere dokununca okunuşunu dinleyebilirsin.</p>` : ""}
         ${total ? `<div class="rp-progress" aria-live="polite"><span class="rp-bar"><span style="width:0%"></span></span><span class="rp-done">0/${total} etkinlik açıldı</span></div>` : ""}
       </div>
@@ -2818,6 +3104,7 @@
   function speakOta(el) {
     const synth = window.speechSynthesis;
     if (!synth) return;
+    if (lis && lis.playing) lisStop();
     synth.cancel();
     if (saying) saying.classList.remove("speaking");
     if (saying === el) { saying = null; return; }
@@ -2845,6 +3132,272 @@
     if ((e.key !== "Enter" && e.key !== " ") || !e.target.matches || !e.target.matches(".ota.say")) return;
     e.preventDefault();
     speakOta(e.target);
+  });
+
+  // ---- notları dinle: bölüm raporunu cihazın Türkçe sesiyle okur ---------------------
+  // Metin notların paragraflarından toplanır (etkinlik kartları, kaynak işaretleri ve formüller atlanır;
+  // Arap harfli Osmanlıca diziler atlanır). Her cümle ayrı okunur, çünkü bazı tarayıcılar uzun metni
+  // yarıda keser. Duraklatma, paragraf başından devam eder (Android'de pause/resume güvenilir değil).
+  // Konum study.listen["slug:n"] (paragraf sırası), hız study.lrate'te saklanır. Dinlerken ekran
+  // açık tutulur (Wake Lock); telefon kilitlenince okuma çoğu tarayıcıda durur.
+  const LISTEN_RATES = [0.8, 1, 1.2, 1.5];
+  const ICON_PLAY = `<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M8 5.5v13l10.5-6.5z"/></svg>`;
+  const ICON_PAUSE = `<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M7 5h3.5v14H7zm6.5 0H17v14h-3.5z"/></svg>`;
+  const ICON_PREV = `<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M6 5h2.2v14H6zm3.5 7L19 5.5v13z"/></svg>`;
+  const ICON_NEXT = `<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M15.8 5H18v14h-2.2zM5 5.5l9.5 6.5L5 18.5z"/></svg>`;
+  let lis = null; // { key, slug, n, blocks: [{ el, text }], i, playing, token, lock, counted }
+
+  function listenBarHtml(c, n) {
+    if (!("speechSynthesis" in window)) return "";
+    const pos = (study.listen || {})[`${c.slug}:${n}`] || 0;
+    return `<div class="lp" data-lp="${esc(c.slug)}:${n}" data-noprint>
+      <button class="btn lp-play" type="button" data-lp-act="play" aria-pressed="false">${ICON_PLAY}<span>${pos ? "Dinlemeye devam et" : "Notları dinle"}</span></button>
+      <button class="lp-btn" type="button" data-lp-act="prev" aria-label="Önceki paragraf" disabled>${ICON_PREV}</button>
+      <button class="lp-btn" type="button" data-lp-act="next" aria-label="Sonraki paragraf" disabled>${ICON_NEXT}</button>
+      <button class="lp-btn lp-rate" type="button" data-lp-act="rate" aria-label="Okuma hızı">${String(study.lrate || 1).replace(".", ",")}×</button>
+      <span class="lp-status" aria-live="polite"></span>
+    </div>`;
+  }
+
+  // Okunacak metin parçaları: rapordaki notların başlık, paragraf, madde ve tablo satırları.
+  function listenBlocks(rp) {
+    const out = [];
+    const textOf = (el) => {
+      const clone = el.cloneNode(true);
+      clone.querySelectorAll(".inline-cite, sup, .katex, .rp-act, script, style").forEach((x) => x.remove());
+      // Notlarda Arap harfli dizinin yanında okunuşu zaten yazılı; diziyi atla (dokununca ayrıca dinlenir).
+      clone.querySelectorAll(".ota").forEach((x) => x.replaceWith(" "));
+      return clone.textContent.replace(/\s+/g, " ").trim();
+    };
+    rp.querySelectorAll(".rp-sec").forEach((sec) => {
+      sec.querySelectorAll(".rp-h, .notes p, .notes li, .notes h1, .notes h2, .notes h3, .notes h4, .notes tr, .notes blockquote").forEach((el) => {
+        if (el.closest(".rp-act")) return;
+        if (el.matches("li") && el.querySelector("li")) return; // iç içe listede yalnızca yapraklar
+        if (el.matches("p") && el.closest("li, blockquote")) return;
+        const t = textOf(el);
+        if (t && /\p{L}/u.test(t)) out.push({ el, text: t });
+      });
+    });
+    return out;
+  }
+
+  // Cümlelere böl, çok kısa cümleleri birleştir, uzunları virgülden kır.
+  function listenChunks(text) {
+    const parts = text.match(/[^.!?…:;]+[.!?…:;]*["”’)\]]*\s*/g) || [text];
+    const out = [];
+    for (const p of parts) {
+      const s = p.trim();
+      if (!s) continue;
+      if (out.length && (out[out.length - 1].length < 40 || s.length < 12) && out[out.length - 1].length + s.length < 220) out[out.length - 1] += " " + s;
+      else if (s.length > 260) out.push(...(s.match(/[^,]{1,240}(,|$)/g) || [s]).map((x) => x.trim()).filter(Boolean));
+      else out.push(s);
+    }
+    return out;
+  }
+
+  function lisPaint() {
+    const bar = document.querySelector(".lp");
+    if (!bar || !lis || bar.dataset.lp !== lis.key) return;
+    const play = bar.querySelector(".lp-play");
+    play.innerHTML = lis.playing ? `${ICON_PAUSE}<span>Duraklat</span>` : `${ICON_PLAY}<span>${lis.i ? "Dinlemeye devam et" : "Notları dinle"}</span>`;
+    play.setAttribute("aria-pressed", String(!!lis.playing));
+    bar.querySelector("[data-lp-act=prev]").disabled = !lis.i;
+    bar.querySelector("[data-lp-act=next]").disabled = lis.i >= lis.blocks.length - 1;
+    bar.querySelector(".lp-status").textContent = `${Math.min(lis.i + 1, lis.blocks.length)}/${lis.blocks.length} paragraf`;
+    bar.classList.toggle("on", !!lis.playing);
+  }
+
+  async function lisLock(on) {
+    if (!lis) return;
+    try {
+      if (on && !lis.lock && navigator.wakeLock) {
+        lis.lock = await navigator.wakeLock.request("screen");
+        lis.lock.addEventListener("release", () => { if (lis) lis.lock = null; });
+      } else if (!on && lis.lock) { const l = lis.lock; lis.lock = null; await l.release(); }
+    } catch (e) { /* desteklenmiyor ya da pil tasarrufu */ }
+  }
+
+  function lisSavePos() {
+    if (!lis) return;
+    study.listen = study.listen || {};
+    if (lis.i > 0 && lis.i < lis.blocks.length) study.listen[lis.key] = lis.i;
+    else delete study.listen[lis.key];
+    saveStudy();
+  }
+
+  function lisMark(on) {
+    document.querySelectorAll(".lp-on").forEach((x) => x.classList.remove("lp-on"));
+    const b = on && lis && lis.blocks[lis.i];
+    if (!b) return;
+    b.el.classList.add("lp-on");
+    const r = b.el.getBoundingClientRect();
+    if (r.top < 70 || r.bottom > window.innerHeight - 40) {
+      b.el.scrollIntoView({ behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "center" });
+    }
+  }
+
+  function lisSpeak() {
+    const synth = window.speechSynthesis;
+    if (!lis || !synth) return;
+    const token = ++lis.token;
+    synth.cancel();
+    if (lis.i >= lis.blocks.length) return lisFinish();
+    lis.playing = true;
+    lisMark(true);
+    lisPaint();
+    const chunks = listenChunks(lis.blocks[lis.i].text);
+    const v = trVoice();
+    chunks.forEach((t, j) => {
+      const u = new SpeechSynthesisUtterance(t);
+      u.lang = "tr-TR";
+      u.rate = study.lrate || 1;
+      if (v) u.voice = v;
+      if (j === chunks.length - 1) u.onend = () => {
+        if (!lis || lis.token !== token) return;
+        lis.i++;
+        if (lis.i - (lis.start || 0) >= 3 && !lis.counted) lisCount();
+        lisSavePos();
+        lisSpeak();
+      };
+      u.onerror = (e) => {
+        if (!lis || lis.token !== token) return;
+        // Başka bir okuma (ör. Osmanlıca kelimeye dokunma) araya girdi: dur, konumu koru.
+        lis.token++;
+        lis.playing = false;
+        lisMark(false);
+        lisPaint();
+        lisLock(false);
+        if (e.error && e.error !== "interrupted" && e.error !== "canceled") showToast("Okuma durdu. Tekrar başlatmak için Notları dinle düğmesine dokun.");
+      };
+      synth.speak(u);
+    });
+  }
+
+  // Seri ve günlük çalışma için: bir oturumda en az 3 paragraf dinlemek o günü aktif sayar.
+  function lisCount() {
+    lis.counted = true;
+    const key = todayKey(), wasActive = isActive(key);
+    const day = dayRec(key);
+    day.lis = (day.lis || 0) + 1;
+    saveStudy();
+    afterActivity(wasActive, key);
+  }
+
+  function lisFinish() {
+    const { slug, n } = lis;
+    lis.playing = false;
+    lis.i = 0;
+    lisSavePos();
+    lisMark(false);
+    lisPaint();
+    lisLock(false);
+    if (!lis.counted) lisCount();
+    const c = bySlug[slug];
+    const read = readSet(slug).has(n);
+    if (!read) showToast("Bölümün notlarını dinleyerek bitirdin.", "Okundu işaretle", () => { setRead(slug, n, true); paintChapterRead(); });
+    else if (n < c.chapters.length) showToast("Bölüm bitti.", "Sonraki bölümü dinle", () => { location.hash = `#/course/${slug}/chapter/${n + 1}?dinle=1`; });
+  }
+
+  function lisStop() {
+    if (!lis) return;
+    lis.token++;
+    lis.playing = false;
+    if (window.speechSynthesis) speechSynthesis.cancel();
+    lisSavePos();
+    lisMark(false);
+    lisPaint();
+    lisLock(false);
+  }
+
+  function lisInit(bar) {
+    const rp = document.querySelector(".rp");
+    if (!rp) return false;
+    const key = bar.dataset.lp;
+    if (!lis || lis.key !== key || !lis.blocks[0] || !document.contains(lis.blocks[0].el)) {
+      const [slug, n] = [key.slice(0, key.lastIndexOf(":")), +key.slice(key.lastIndexOf(":") + 1)];
+      const blocks = listenBlocks(rp);
+      const pos = (study.listen || {})[key] || 0;
+      lis = { key, slug, n, blocks, i: pos < blocks.length ? pos : 0, playing: false, token: 0, lock: null, counted: false };
+    }
+    return lis.blocks.length > 0;
+  }
+  function lisStart(bar) {
+    if (!lisInit(bar)) return;
+    lis.start = lis.i;
+    if (window.speechSynthesis.getVoices().length && !trVoice()) showToast("Bu cihazda Türkçe okuma sesi bulunamadı. Telefon ayarlarındaki Metin okuma (TTS) bölümünden Türkçe sesi indirebilirsin.");
+    lisLock(true);
+    lisSpeak();
+  }
+
+  function bindListen(query) {
+    const bar = document.querySelector(".lp");
+    if (!bar) return;
+    bar.addEventListener("click", (e) => {
+      const btn = e.target.closest("[data-lp-act]");
+      if (!btn) return;
+      const act = btn.dataset.lpAct;
+      if (act === "rate") {
+        const i = LISTEN_RATES.indexOf(study.lrate || 1);
+        study.lrate = LISTEN_RATES[(i + 1) % LISTEN_RATES.length];
+        saveStudy();
+        btn.textContent = String(study.lrate).replace(".", ",") + "×";
+        if (lis && lis.playing) lisSpeak();
+        return;
+      }
+      if (act === "play") {
+        if (lis && lis.key === bar.dataset.lp && lis.playing) lisStop();
+        else lisStart(bar);
+        return;
+      }
+      if (!lis || lis.key !== bar.dataset.lp) return;
+      lis.i = Math.max(0, Math.min(lis.blocks.length - 1, lis.i + (act === "next" ? 1 : -1)));
+      lisSavePos();
+      if (lis.playing) lisSpeak();
+      else { lisMark(true); lisPaint(); }
+    });
+    // Bir paragrafa uzun basmadan, çift dokunarak oradan dinlemeye başla.
+    document.querySelector(".rp").addEventListener("dblclick", (e) => {
+      if (e.target.closest("a, button, summary, .rp-act, .ota.say") || !lisInit(bar)) return;
+      const i = lis.blocks.findIndex((b) => b.el.contains(e.target));
+      if (i < 0) return;
+      lis.i = lis.start = i;
+      lisLock(true);
+      lisSpeak();
+    });
+    if (lis && lis.key === bar.dataset.lp) lisPaint();
+    if (query && query.dinle) lisStart(bar);
+  }
+
+  // Sekme arka plana geçip geri gelince okuma kesilmişse kaldığı paragraftan sürdür.
+  document.addEventListener("visibilitychange", () => {
+    if (!lis || !lis.playing) return;
+    if (document.visibilityState === "visible") {
+      lisLock(true);
+      setTimeout(() => { if (lis && lis.playing && !speechSynthesis.speaking) lisSpeak(); }, 400);
+    }
+  });
+
+  // Bölüm sayfasının sonundaki "Okudum" düğmesi (sınav planı okunan bölümleri buradan sayar).
+  function chapterReadHtml(c, n) {
+    const on = readSet(c.slug).has(n);
+    return `<button class="btn ghost ch-read${on ? " is-read" : ""}" type="button" data-ch-read="${esc(c.slug)}:${n}" aria-pressed="${on}">${on ? "✓ Okudum, geri al" : "Bu bölümü okudum"}</button>`;
+  }
+  function paintChapterRead() {
+    document.querySelectorAll("[data-ch-read]").forEach((b) => {
+      const [slug, n] = [b.dataset.chRead.slice(0, b.dataset.chRead.lastIndexOf(":")), +b.dataset.chRead.split(":").pop()];
+      const on = readSet(slug).has(n);
+      b.classList.toggle("is-read", on);
+      b.setAttribute("aria-pressed", String(on));
+      b.textContent = on ? "✓ Okudum, geri al" : "Bu bölümü okudum";
+    });
+  }
+  document.addEventListener("click", (e) => {
+    const b = e.target.closest("[data-ch-read]");
+    if (!b) return;
+    const key = b.dataset.chRead, i = key.lastIndexOf(":");
+    const slug = key.slice(0, i), n = +key.slice(i + 1);
+    setRead(slug, n, !readSet(slug).has(n));
+    paintChapterRead();
   });
 
   // Panel etkileşimleri: tek global delegation; bölüm sayfasında da özet sekmesinde de çalışır.
@@ -3590,6 +4143,9 @@ document.getElementById("zin").focus();
       const notes = Array.from(new Map(((a && a.notes) || []).concat(v.notes || []).map((n) => [n.t + "|" + n.s, n])).values()).sort((x, y) => x.t - y.t);
       study.videos[id] = Object.assign({}, !a || (v.at || 0) > (a.at || 0) ? v : a, { done: !!((a && a.done) || v.done), notes });
     }
+    // Sınav planı ve dinleme konumu: bu cihazda yoksa yedekten gelir.
+    if (!study.plan && b.plan && typeof b.plan === "object") study.plan = b.plan;
+    study.listen = Object.assign({}, b.listen || {}, study.listen || {});
     saveStudy();
   }
 
@@ -4321,6 +4877,7 @@ document.getElementById("zin").focus();
     const seq = ++routeSeq;
     vidSave(true);
     vp = null;
+    lisStop();
     cleanupPrint();
     const { parts, query } = parseLoc();
     const need = new Set();
@@ -4330,7 +4887,7 @@ document.getElementById("zin").focus();
     else if (parts[0] === "ozet") { need.add("interactive"); need.add("coursegraph"); needExamData(); }
     else if (parts[0] === "ara") need.add("coursegraph");
     else if (parts[0] === "transcript" || parts[0] === "certificate" || parts[0] === "calisma") { /* data.js yeterli */ }
-    else if (["tekrar", "hatalar", "karisik", "analiz"].includes(parts[0])) needExamData();
+    else if (["tekrar", "hatalar", "karisik", "analiz", "plan"].includes(parts[0])) needExamData();
     else if (parts[0] === "course" && bySlug[parts[1]]) {
       if (parts[2] === "chapter") { need.add("interactive"); need.add("past_exams"); }
       else if (parts[2] === "quiz") { /* data.js quiz yeterli */ }
@@ -4357,9 +4914,10 @@ document.getElementById("zin").focus();
     else if (parts[0] === "hatalar") { html = viewMistakes(query); bind = bindMistakes; }
     else if (parts[0] === "karisik") { html = viewMix(query); bind = bindMix; }
     else if (parts[0] === "analiz") { html = viewAnalysis(query); bind = () => {}; }
+    else if (parts[0] === "plan") { html = viewPlan(); bind = bindPlan; }
     else if (parts[0] === "course" && bySlug[parts[1]]) {
       const c = bySlug[parts[1]];
-      if (parts[2] === "chapter") { html = viewChapter(c, +parts[3]); bind = () => { bindReport(); bindVideos(c); }; }
+      if (parts[2] === "chapter") { html = viewChapter(c, +parts[3]); bind = () => { bindReport(); bindListen(query); bindVideos(c); }; }
       else if (parts[2] === "videolar") { html = viewVideos(c, query); bind = () => bindVideos(c); }
       else if (parts[2] === "quiz") { html = viewQuiz(c); bind = () => bindQuiz(c); }
       else if (parts[2] === "unit-quiz") {
@@ -4385,7 +4943,7 @@ document.getElementById("zin").focus();
     document.querySelectorAll(".nav a").forEach((a) => {
       const href = a.getAttribute("href");
       const key = parts[0] || "";
-      const on = href === "#/" + key || (href === "#/calisma" && ["tekrar", "hatalar", "analiz"].includes(key)) || (href === "#/sinavlar" && key === "karisik");
+      const on = href === "#/" + key || (href === "#/calisma" && ["tekrar", "hatalar", "analiz", "plan"].includes(key)) || (href === "#/sinavlar" && key === "karisik");
       a.classList.toggle("active", on);
       if (on) a.setAttribute("aria-current", "page"); else a.removeAttribute("aria-current");
     });
