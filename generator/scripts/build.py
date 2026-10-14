@@ -340,9 +340,9 @@ def og_image(site, uni, data):
 
 
 # Kurulumda önbelleğe alınan uygulama kabuğu (görseller hariç; onlar ders paketlerinde).
-SHELL_FILES = ["index.html", "styles.css", "app.js", "data.js", "interactive.js", "coursegraph.js", "mindmaps.js",
+SHELL_FILES = ["index.html", "styles.css", "app.js", "data.js", "interactive.js", "coursegraph.js",
                "past_exams.js", "unit_quizzes.js", "manifest.webmanifest", "favicon.svg"]
-SHELL_DIRS = ["fonts", "icons", "vendor"]
+SHELL_DIRS = ["fonts", "icons"]
 
 
 def shell_manifest(site):
@@ -370,16 +370,15 @@ if __name__ == "__main__":
     shutil.copy2(TEMPLATE_DIR / "app.js", site / "app.js")
     shutil.copy2(TEMPLATE_DIR / "styles.css", site / "styles.css")
     shutil.copy2(TEMPLATE_DIR / "favicon.svg", site / "favicon.svg")
-    for d in SHELL_DIRS:  # fontlar, ikonlar, Cytoscape: dış sunucuya gerek kalmasın
+    for d in SHELL_DIRS:  # fontlar ve ikonlar: dış sunucuya gerek kalmasın
         if (TEMPLATE_DIR / d).exists():
             shutil.copytree(TEMPLATE_DIR / d, site / d, dirs_exist_ok=True)
     # interactive.js proje verisidir: varsa koru, yoksa şablondan boş iskelet kopyala.
     if not (site / "interactive.js").exists() and (TEMPLATE_DIR / "interactive.js").exists():
         shutil.copy2(TEMPLATE_DIR / "interactive.js", site / "interactive.js")
-    # coursegraph.js / mindmaps.js proje verisidir: site export üretir; yoksa boş stub.
+    # coursegraph.js proje verisidir: site export üretir; yoksa boş stub.
     for name, stub in (
         ("coursegraph.js", "window.CG = { items: [], edges: {} };\n"),
-        ("mindmaps.js", "window.MINDMAPS = {};\n"),
         ("past_exams.js", "window.PAST_EXAMS = {};\n"),
         ("unit_quizzes.js", "window.UNIT_QUIZZES = {};\n"),
     ):

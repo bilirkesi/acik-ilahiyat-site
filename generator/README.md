@@ -17,7 +17,7 @@ Pillow is only needed to compress new PNGs.
 
 Offline (PWA): `build.py` also writes `sw.js` with a list of app-shell files and their content hashes,
 and appends `window.OFFLINE` (per-course image packs with sizes) to `data.js`. The shell (HTML, CSS, all
-JS data bundles, fonts in `fonts/`, icons in `icons/`, Cytoscape in `vendor/`) is cached on the first
+JS data bundles, fonts in `fonts/`, icons in `icons/`) is cached on the first
 visit; course images are downloaded per course from the `#/cevrimdisi` page. New versions wait until
 the student taps "Yenile" on the update toast.
 

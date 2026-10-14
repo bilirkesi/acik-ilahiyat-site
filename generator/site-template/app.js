@@ -4,16 +4,14 @@
 
   const U = window.UNIVERSITY || {};
   const COURSES = window.COURSES || [];
-  // Ağır veri paketleri (interactive/coursegraph/mindmaps/past_exams/unit_quizzes) rota
+  // Ağır veri paketleri (interactive/coursegraph/past_exams/unit_quizzes) rota
   // bazlı olarak sonradan yüklenir; bu yüzden window'dan her seferinde okunur.
   const INTERACTIVE = () => window.INTERACTIVE || {};
   const CG = () => window.CG || { items: [], edges: {} };
-  const MINDMAPS = () => window.MINDMAPS || {};
   const VERSION = (document.querySelector('meta[name="pu-version"]') || {}).content || "";
   const LAZY_BUNDLES = {
     interactive: "interactive.js",
     coursegraph: "coursegraph.js",
-    mindmaps: "mindmaps.js",
     past_exams: "past_exams.js",
     unit_quizzes: "unit_quizzes.js",
   };
@@ -86,43 +84,6 @@
   const fold = (s) => String(s || "").replace(/[çÇğĞıİIöÖşŞüÜâÂîÎûÛ]/g, (ch) => CG_FOLD[ch]).toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
   const tokenize = (s) => fold(s).split(/\s+/).filter(Boolean);
   const hayOf = (it) => it.hay || tokenize([it.title, it.snippet, it.definition, it.answer, it.course].filter(Boolean).join(" ")).join(" ");
-
-  // ---- zihin haritası (mindmaps.js) ------------------------------------------
-  function courseMaps(slug) {
-    const d = MINDMAPS()[slug];
-    return (d && d.mindmaps) || [];
-  }
-  function pickMap(slug, preferId) {
-    const maps = courseMaps(slug);
-    if (!maps.length) return null;
-    const byPref = maps.find((m) => m.id === preferId);
-    if (byPref) return byPref;
-    return maps.find((m) => m.id === "panel-chapters") || maps.find((m) => m.id === "graph-derived") || maps[0];
-  }
-  function mapTabsHtml(slug, activeId) {
-    const maps = courseMaps(slug);
-    if (maps.length < 2) return "";
-    return `<div class="mm-tabs" role="tablist">` + maps.map((m) =>
-      `<button type="button" class="mm-tab${m.id === activeId ? " active" : ""}" role="tab" data-mm="${esc(m.id)}" aria-selected="${m.id === activeId}">${esc(m.title || m.id)}</button>`
-    ).join("") + `</div>`;
-  }
-  function mindmapSectionHtml(slug, opts) {
-    const o = opts || {};
-    const maps = courseMaps(slug);
-    if (!maps.length) return "";
-    const active = pickMap(slug, o.preferId || "panel-chapters");
-    const focusCh = o.chapter || null;
-    return `<section class="mindmap-section" data-mm-course="${esc(slug)}" data-mm-id="${esc(active.id)}"${focusCh ? ` data-mm-chapter="${focusCh}"` : ""}>
-      <div class="mm-head">
-        <h2>${esc(o.title || "Zihin haritası")}</h2>
-        <p class="muted">${esc(o.lead || "Bölümler, kavramlar ve ilişkiler. Düğüm tıklayınca ilgili bölüme geçin.")}</p>
-      </div>
-      ${mapTabsHtml(slug, active.id)}
-      <div class="mm-canvas" id="mm-canvas" role="img" aria-label="Zihin haritası; aynı içerik aşağıda liste olarak da var"></div>
-      <details class="mm-outline" id="mm-outline"><summary>Haritayı liste olarak göster</summary><div></div></details>
-      <p class="mm-detail muted" id="mm-detail">Düğüm seçin.</p>
-    </section>`;
-  }
 
   function scoreItem(it, terms, raw) {
     const hay = hayOf(it);
@@ -398,7 +359,6 @@
         </aside>
       </section>
       ${offlineCourseCardHtml(c)}
-      ${mindmapSectionHtml(c.slug, { title: "Ders zihin haritası", lead: "Bölüm başlıkları ve alt kavramlar. Bölüm düğümüne tıklayınca o bölüme geçilir." })}
       <h2>Bölümler</h2>
       <ol class="syllabus">${chapters}</ol>
       ${bookUnitsExtraHtml(c)}`;
@@ -538,18 +498,10 @@
       ${ch.image ? `<figure class="figure">${imgTag(ch.image, ch.title + " infografiği", " data-zoom")}<figcaption><b>Şekil ${n}.</b> Yalnızca bu bölümün ${noun(c, 2)}lerinden NotebookLM ile üretildi.</figcaption></figure>` : ""}
       ${aofFiguresHtml(ch, n, "figure")}
       ${bookUnitFiguresHtml(c, n, "figure")}
-      ${chapterPanel(c, n)}
-      ${mindmapSectionHtml(c.slug, {
-        title: n + ". bölüm zihin haritası",
-        lead: "Bu bölümün konu ağacı. Vurgulu düğüm aktif bölümdür; komşularına tıklayarak gezinin.",
-        chapter: n,
-        preferId: "panel-chapters",
-      })}
       ${chVids.length ? `<h2 id="videolar">Bu bölümün videoları</h2>${videoPlayerHtml(c, chVids, { chapter: n })}${allVids.length > chVids.length ? `<p class="muted small" data-noprint><a href="#/course/${c.slug}/videolar">Dersin tüm videoları (${allVids.length})</a></p>` : ""}` : ""}
       <div class="two-col">
         <div>
-          <h2>Çalışma notları</h2>
-          <div class="notes">${notesHtmlWithCites(ch, chapterPastCites(c, n), c.slug)}</div>
+          ${chapterReportHtml(c, n)}
           ${chapterCiteHtml(c, n)}
         </div>
         <aside>
@@ -2658,7 +2610,7 @@
 
     return `<div class="sm-panel" data-panel="${esc(prefix)}" data-json="${esc(JSON.stringify(d))}">
       ${takeaways ? `<p class="sm-panel-title">${esc(d.title || "İnteraktif çalışma paneli")}</p>${takeaways}` : ""}
-      ${tabs.length ? `<div class="sm-tabs" role="tablist" aria-label="Panel görünümleri">${tabbar}</div>` : ""}
+      ${tabs.length > 1 ? `<div class="sm-tabs" role="tablist" aria-label="Panel görünümleri">${tabbar}</div>` : ""}
       ${cards}${cmp}${timeline}${matrix}${factors}${tree}${quiz}
     </div>`;
   }
@@ -2671,6 +2623,157 @@
     const d = INTERACTIVE()[c.slug];
     const ch = d && d.chapters && d.chapters[String(n)];
     return ch ? panelHTML(ch, `chp-${c.slug}-${n}`) : "";
+  }
+
+  // ---- interaktif bölüm raporu ---------------------------------------------
+  // NotebookLM'in "Learning Overview" raporunun mantığı: çalışma notları başlıklarına göre
+  // kısımlara ayrılır ve paneldeki her etkinlik (kavram kartı, test sorusu, akış, karşılaştırma,
+  // matris, sâikler, şecere) metinde en çok geçtiği kısmın hemen altına yerleşir. Etkinlikler
+  // kapalı kart olarak başlar, okur açınca çalışır. Hepsi data.js ve interactive.js'ten gelir,
+  // bu yüzden çevrimdışı da çalışır.
+  function splitNotes(text) {
+    const parts = [];
+    let cur = { title: "", lines: [] };
+    for (const raw of String(text || "").split("\n")) {
+      const line = raw.trim();
+      const h = line.match(/^#{1,6}\s+(.+)$/) || line.match(/^\*\*([^*].*?)\*\*:?$/);
+      if (h) {
+        if (cur.title || cur.lines.some((l) => l.trim())) parts.push(cur);
+        cur = { title: h[1].replace(/\*\*/g, "").trim(), lines: [] };
+      } else cur.lines.push(raw);
+    }
+    if (cur.title || cur.lines.some((l) => l.trim())) parts.push(cur);
+    return parts.map((p) => ({ title: p.title, body: p.lines.join("\n").trim() }));
+  }
+
+  // Bir etkinliği metnine en çok benzeyen kısma bağla (uzun kelimelerin kısımda geçme oranı).
+  function bestSection(secTokens, text, fallback) {
+    const words = [...new Set(tokenize(text).filter((w) => w.length >= 4))];
+    if (!words.length) return fallback;
+    let best = fallback, bestScore = 0;
+    secTokens.forEach((set, i) => {
+      let hit = 0;
+      for (const w of words) if (set.has(w) || [...set].some((t) => t.length >= 5 && (t.startsWith(w) || w.startsWith(t)))) hit++;
+      const score = hit / words.length;
+      if (score > bestScore) { bestScore = score; best = i; }
+    });
+    return bestScore >= 0.34 ? best : fallback;
+  }
+
+  const ACT_KIND = {
+    concepts: ["Kavram kartları", (d) => `${d.concepts.length} kart`],
+    quiz: ["Kendini dene", (d) => `${d.quiz.length} soru`],
+    compare: ["Karşılaştırma", (d) => `${d.compare.left.title || ""} / ${d.compare.right.title || ""}`],
+    timeline: ["Tarihsel akış", (d) => `${d.timeline.length} adım`],
+    matrix: ["Karşılaştırma matrisi", (d) => `${d.matrix.rows.length} satır`],
+    factors: ["Sâikler", (d) => `${d.factors.items.length} etken`],
+    tree: ["Şecere", (d) => `${d.tree.length} kol`],
+  };
+
+  function reportActivities(d, sections) {
+    const secTokens = sections.map((s) => new Set(tokenize(s.title + " " + s.body)));
+    const last = Math.max(0, sections.length - 1);
+    const L = d.labels || {};
+    const acts = [];
+    const add = (kind, sec, data) => acts.push({ kind, sec, data });
+    // Kartlar ve sorular tek tek dağıtılır; aynı kısma düşenler tek kartta toplanır.
+    const spread = (kind, items, textOf) => {
+      const groups = new Map();
+      items.forEach((it, i) => {
+        const fb = Math.min(last, Math.floor((i * sections.length) / items.length));
+        const sec = bestSection(secTokens, textOf(it), fb);
+        if (!groups.has(sec)) groups.set(sec, []);
+        groups.get(sec).push(it);
+      });
+      groups.forEach((list, sec) => add(kind, sec, { labels: L, [kind]: list }));
+    };
+    if ((d.concepts || []).length) spread("concepts", d.concepts, (k) => k.term);
+    // Sorular her zaman kısmın sonunda dursun diye en sona eklenir (aşağıda sıralanır).
+    const whole = [
+      ["compare", d.compare && d.compare.left && d.compare.right, (x) => [x.left.title, x.right.title, ...(x.left.points || []).map((p) => p.k), ...(x.right.points || []).map((p) => p.k)].join(" ")],
+      ["timeline", (d.timeline || []).length, (x) => x.map((m) => m.name).join(" ")],
+      ["matrix", d.matrix && (d.matrix.rows || []).length, (x) => x.rows.map((r) => r.label || r.school || "").join(" ") + " " + (x.axes || []).join(" ")],
+      ["factors", d.factors && (d.factors.items || []).length, (x) => x.items.map((f) => f.t).join(" ")],
+      ["tree", (d.tree || []).length, (x) => x.map((n) => n.label).join(" ")],
+    ];
+    whole.forEach(([kind, ok, textOf], i) => {
+      if (!ok) return;
+      const fb = Math.min(last, Math.round(((i + 1) * last) / (whole.length + 1)));
+      add(kind, bestSection(secTokens, textOf(d[kind]), fb), { labels: L, [kind]: d[kind] });
+    });
+    if ((d.quiz || []).length) spread("quiz", d.quiz, (q) => q.q + " " + (q.options || [])[q.answer]);
+    const order = { concepts: 0, compare: 1, timeline: 2, matrix: 3, factors: 4, tree: 5, quiz: 6 };
+    return acts.sort((a, b) => a.sec - b.sec || order[a.kind] - order[b.kind]);
+  }
+
+  function activityHtml(act, prefix) {
+    const [kindLabel, sub] = ACT_KIND[act.kind];
+    const L = act.data.labels || {};
+    const named = { concepts: L.concepts, quiz: L.quiz, compare: L.compare, timeline: L.timeline, matrix: L.matrix, factors: L.factors, tree: L.tree }[act.kind];
+    return `<details class="rp-act" data-kind="${act.kind}">
+      <summary><span class="rp-act-kind">${esc(named || kindLabel)}</span><span class="rp-act-sub">${esc(sub(act.data))}</span><span class="rp-act-cta" aria-hidden="true"></span></summary>
+      <div class="rp-act-body">${panelHTML(act.data, prefix)}</div>
+    </details>`;
+  }
+
+  function chapterReportHtml(c, n) {
+    const ch = c.chapters[n - 1];
+    const cites = chapterPastCites(c, n);
+    if (!ch.notes) return `<h2>Çalışma notları</h2><div class="notes"><p class="muted">Bu bölümün çalışma notları henüz hazır değil.</p></div>`;
+    const d = (INTERACTIVE()[c.slug] || {}).chapters || {};
+    const data = d[String(n)] || {};
+    const sections = splitNotes(ch.notes);
+    const acts = reportActivities(data, sections);
+    const id = (i) => `rp-${c.slug}-${n}-${i}`;
+    const actsIn = (i) => acts.filter((a) => a.sec === i);
+    const title = (s, i) => s.title || (i === 0 ? "Giriş" : `${i + 1}. kısım`);
+    const toc = sections.length > 1 ? `<nav class="rp-toc" aria-label="Raporun ana hatları">
+        <p class="rp-label">Ana hatlar</p>
+        <ol>${sections.map((s, i) => {
+          const k = actsIn(i).length;
+          return `<li><button type="button" class="rp-goto" data-goto="${id(i)}"><span>${ota(esc(title(s, i)))}</span>${k ? `<span class="rp-count">${k} etkinlik</span>` : ""}</button></li>`;
+        }).join("")}</ol>
+      </nav>` : "";
+    const take = (data.takeaways || []).length
+      ? `<div class="rp-take"><p class="rp-label">Ana çıkarımlar</p><ul>${data.takeaways.map((k) => `<li><strong>${esc(k.t)}:</strong> ${esc(k.d)}</li>`).join("")}</ul></div>`
+      : "";
+    const body = sections.map((s, i) => {
+      const text = notesHtmlWithCites({ notes: s.body }, cites, c.slug);
+      const head = sections.length > 1 || s.title ? `<h3 class="rp-h" id="${id(i)}" tabindex="-1">${ota(esc(title(s, i)))}</h3>` : "";
+      return `<section class="rp-sec">${head}<div class="notes">${text}</div>${actsIn(i).map((a, j) => activityHtml(a, `${id(i)}-${a.kind}-${j}`)).join("")}</section>`;
+    }).join("");
+    const total = acts.length;
+    return `<div class="rp" data-rp-total="${total}">
+      <div class="rp-head">
+        <h2>Bölüm raporu</h2>
+        <p class="muted rp-lead">Çalışma notları kısımlara ayrıldı${total ? `; ${total} etkinlik ilgili kısmın altında. Açmak için karta dokunun.` : "."}</p>
+        ${total ? `<div class="rp-progress" aria-live="polite"><span class="rp-bar"><span style="width:0%"></span></span><span class="rp-done">0/${total} etkinlik açıldı</span></div>` : ""}
+      </div>
+      ${take}${toc}${body}
+    </div>`;
+  }
+
+  function bindReport() {
+    const rp = document.querySelector(".rp");
+    if (!rp) return;
+    const total = +rp.dataset.rpTotal || 0;
+    const paint = () => {
+      const done = rp.querySelectorAll(".rp-act.seen").length;
+      const bar = rp.querySelector(".rp-bar > span"), lab = rp.querySelector(".rp-done");
+      if (bar) bar.style.width = (total ? Math.round((done / total) * 100) : 0) + "%";
+      if (lab) lab.textContent = `${done}/${total} etkinlik açıldı`;
+    };
+    rp.querySelectorAll(".rp-act").forEach((el) => el.addEventListener("toggle", () => {
+      if (el.open) { el.classList.add("seen"); paint(); }
+    }));
+    rp.addEventListener("click", (e) => {
+      const go = e.target.closest(".rp-goto");
+      if (!go) return;
+      const h = document.getElementById(go.dataset.goto);
+      if (!h) return;
+      h.scrollIntoView({ behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" });
+      h.focus({ preventScroll: true });
+    });
   }
 
   // Panel etkileşimleri: tek global delegation; bölüm sayfasında da özet sekmesinde de çalışır.
@@ -3086,155 +3189,6 @@
       }, 120);
     });
     if (!input.value) input.focus();
-  }
-
-  // zihin haritası bağlayıcı (Cytoscape lazy load)
-  function ensureCytoscape() {
-    if (window.cytoscape) return Promise.resolve(window.cytoscape);
-    if (window.__cyPromise) return window.__cyPromise;
-    window.__cyPromise = new Promise((resolve, reject) => {
-      const s = document.createElement("script");
-      s.src = "vendor/cytoscape.min.js";
-      s.onload = () => resolve(window.cytoscape);
-      s.onerror = reject;
-      document.head.appendChild(s);
-    });
-    return window.__cyPromise;
-  }
-
-  function bindMindmaps() {
-    const root = document.querySelector(".mindmap-section");
-    if (!root) return;
-    const slug = root.dataset.mmCourse;
-    const maps = courseMaps(slug);
-    if (!maps.length) return;
-    let activeId = root.dataset.mmId || "panel-chapters";
-    let cy = null;
-    const canvas = root.querySelector("#mm-canvas");
-    const detail = root.querySelector("#mm-detail");
-
-    function mapById(id) {
-      return maps.find((m) => m.id === id) || maps[0];
-    }
-
-    function draw() {
-      const map = mapById(activeId);
-      if (!map || !canvas) return;
-      root.dataset.mmId = activeId;
-      const focusCh = +(root.dataset.mmChapter || 0);
-      const elements = [];
-      const nodeById = {};
-      for (const n of map.nodes || []) {
-        nodeById[n.id] = n;
-        const data = { id: n.id, label: n.label, depth: n.depth || 0, chapter: n.chapter || 0, href: n.href || "", desc: n.desc || "" };
-        elements.push({ group: "nodes", data });
-      }
-      for (const e of map.edges || []) {
-        elements.push({ group: "edges", data: { source: e.source, target: e.target } });
-      }
-      // Ekran okuyucu ve klavye için aynı haritanın iç içe liste hâli.
-      const outline = root.querySelector("#mm-outline > div");
-      if (outline) {
-        const kids = {};
-        for (const e of map.edges || []) (kids[e.source] = kids[e.source] || []).push(e.target);
-        const seen = new Set();
-        const li = (id) => {
-          if (seen.has(id) || !nodeById[id]) return "";
-          seen.add(id);
-          const n = nodeById[id];
-          const sub = (kids[id] || []).map(li).join("");
-          return `<li>${n.href ? `<a href="${esc(n.href)}">${esc(n.label)}</a>` : esc(n.label)}${n.desc ? ` <span class="muted">${esc(n.desc)}</span>` : ""}${sub ? `<ul>${sub}</ul>` : ""}</li>`;
-        };
-        const roots = (map.nodes || []).filter((n) => (n.depth || 0) === 0);
-        outline.innerHTML = `<ul>${(roots.length ? roots : map.nodes || []).map((n) => li(n.id)).join("")}</ul>`;
-      }
-      ensureCytoscape().then((cytoscape) => {
-        if (cy) { cy.destroy(); cy = null; }
-        cy = cytoscape({
-          container: canvas,
-          elements,
-          style: [
-            { selector: "node", style: {
-              "background-color": "#f8f4ea",
-              "border-width": 2,
-              "border-color": "#1b2a4a",
-              label: "data(label)",
-              "text-valign": "bottom",
-              "text-margin-y": 6,
-              "font-size": 11,
-              "text-wrap": "wrap",
-              "text-max-width": 120,
-              color: "#1b2a4a",
-              width: "label",
-              height: "label",
-              padding: 8,
-              shape: "round-rectangle",
-            } },
-            { selector: "node[depth = 0]", style: {
-              "background-color": "#1b2a4a",
-              color: "#f8f4ea",
-              "border-color": "#b08d4a",
-              "font-weight": 600,
-              "text-wrap": "wrap",
-              "text-max-width": 140,
-            } },
-            { selector: "node[depth = 1]", style: {
-              "background-color": "#e9dcbf",
-              "border-color": "#b08d4a",
-              color: "#1b2a4a",
-            } },
-            { selector: "node.mm-focus", style: {
-              "border-width": 4,
-              "border-color": "#b08d4a",
-              "background-color": "#b08d4a",
-              color: "#1b2a4a",
-              "font-weight": 700,
-            } },
-            { selector: "edge", style: {
-              width: 1.5,
-              "line-color": "#c9b896",
-              "curve-style": "bezier",
-            } },
-          ],
-          layout: { name: "cose", animate: false, padding: 24 },
-        });
-        if (focusCh) {
-          const target = cy.nodes().filter((el) => +el.data("chapter") === focusCh);
-          if (target.length) {
-            cy.elements().addClass("mm-dim");
-            target.removeClass("mm-dim");
-            target.addClass("mm-focus");
-            // komşular da belirgin
-            target.connectedEdges().removeClass("mm-dim");
-            target.neighborhood().removeClass("mm-dim");
-            cy.fit(target.closedNeighborhood(), 48);
-          }
-        }
-        cy.on("tap", "node", (evt) => {
-          const d = evt.target.data();
-          if (detail) detail.innerHTML = `<strong>${esc(d.label)}</strong>${d.desc ? " · " + esc(d.desc) : ""}`;
-          if (d.href) location.hash = d.href.replace(/^#/, "");
-        });
-        cy.on("mouseover", "node", () => { canvas.style.cursor = "pointer"; });
-        cy.on("mouseout", "node", () => { canvas.style.cursor = "default"; });
-      }).catch(() => {
-        // CDN yoksa: düz liste
-        canvas.innerHTML = '<ul class="mm-fallback">' + (map.nodes || []).filter((n) => n.depth === 0).map((n) =>
-          `<li>${n.href ? `<a href="${esc(n.href)}">${esc(n.label)}</a>` : esc(n.label)}</li>`
-        ).join("") + '</ul>';
-      });
-    }
-
-    root.querySelectorAll(".mm-tab").forEach((btn) => {
-      btn.addEventListener("click", () => {
-        root.querySelectorAll(".mm-tab").forEach((b) => { b.classList.remove("active"); b.setAttribute("aria-selected", "false"); });
-        btn.classList.add("active");
-        btn.setAttribute("aria-selected", "true");
-        activeId = btn.dataset.mm;
-        draw();
-      });
-    });
-    draw();
   }
 
   // üst cubuk arama + Ctrl/Cmd+K
@@ -4306,12 +4260,11 @@ document.getElementById("zin").focus();
     else if (parts[0] === "transcript" || parts[0] === "certificate" || parts[0] === "calisma") { /* data.js yeterli */ }
     else if (["tekrar", "hatalar", "karisik", "analiz"].includes(parts[0])) needExamData();
     else if (parts[0] === "course" && bySlug[parts[1]]) {
-      if (parts[2] === "chapter") { need.add("mindmaps"); need.add("interactive"); need.add("past_exams"); }
+      if (parts[2] === "chapter") { need.add("interactive"); need.add("past_exams"); }
       else if (parts[2] === "quiz") { /* data.js quiz yeterli */ }
       else if (parts[2] === "unit-quiz") need.add("unit_quizzes");
       else if (parts[2] === "exams") needExamData();
       else if (parts[2] === "past") need.add("past_exams");
-      else need.add("mindmaps");
     }
     let missing = [];
     if (need.size) {
@@ -4334,7 +4287,7 @@ document.getElementById("zin").focus();
     else if (parts[0] === "analiz") { html = viewAnalysis(query); bind = () => {}; }
     else if (parts[0] === "course" && bySlug[parts[1]]) {
       const c = bySlug[parts[1]];
-      if (parts[2] === "chapter") { html = viewChapter(c, +parts[3]); bind = () => { bindMindmaps(); bindVideos(c); }; }
+      if (parts[2] === "chapter") { html = viewChapter(c, +parts[3]); bind = () => { bindReport(); bindVideos(c); }; }
       else if (parts[2] === "videolar") { html = viewVideos(c, query); bind = () => bindVideos(c); }
       else if (parts[2] === "quiz") { html = viewQuiz(c); bind = () => bindQuiz(c); }
       else if (parts[2] === "unit-quiz") {
@@ -4348,7 +4301,7 @@ document.getElementById("zin").focus();
         html = viewPastExam(c, id, query);
         bind = () => (String(query.mod || "") === "rehber" ? bindSolutionGuide(c, id) : bindPastExam(c, id));
       }
-      else { html = viewCourse(c); bind = bindMindmaps; }
+      else { html = viewCourse(c); }
     } else html = viewNotFound();
     if (missing.length) html = `<div class="notice warn" role="alert"><b>Bu sayfanın bir kısmı yüklenemedi.</b> ${navigator.onLine === false ? "İnternet bağlantınız yok ve bu içerik henüz cihaza kaydedilmemiş." : "Bağlantı sorunu olabilir."} İnternete bağlanınca sayfayı yenileyin. Bir kez çevrimiçi açtıktan sonra site çevrimdışı da çalışır.</div>` + html;
     if (!parts.length) html = installBannerHtml() + todayStripHtml() + html;
