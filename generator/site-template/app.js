@@ -323,6 +323,7 @@
           <ul class="objectives">${ch.objectives.map((o) => `<li>${esc(o)}</li>`).join("")}</ul>
           ${ch.image ? `<figure class="plate">${imgTag(ch.image, ch.title + " infografiği", " data-zoom")}<figcaption><b>Şekil ${i + 1}.</b> ${esc(ch.title)}. Bu bölümün ${ch.lectures.length} ${noun(c, ch.lectures.length)}ından NotebookLM ile üretildi.</figcaption></figure>` : ""}
           ${aofFiguresHtml(ch, i + 1, "plate")}
+          ${bookUnitFiguresHtml(c, i + 1, "plate")}
         </div>
       </li>`).join("");
     const credit = c.playlist
@@ -355,7 +356,25 @@
       </section>
       ${mindmapSectionHtml(c.slug, { title: "Ders zihin haritası", lead: "Bölüm başlıkları ve alt kavramlar. Bölüm düğümüne tıklayınca o bölüme geçilir." })}
       <h2>Bölümler</h2>
-      <ol class="syllabus">${chapters}</ol>`;
+      <ol class="syllabus">${chapters}</ol>
+      ${bookUnitsExtraHtml(c)}`;
+  }
+
+  // Ders kitabı ünite özetlerinden üretilen infografikler (AÖF'ün yayınlamadığı dersler için).
+  function bookUnitFigure(c, u, cls) {
+    return `<figure class="${cls} aof-figure"><img src="${esc(u.image)}" alt="${esc(u.title)} ünite infografiği" data-zoom loading="lazy"><figcaption><b>Ünite ${u.unit} özeti.</b> ${esc(u.title)}. AÖF ders kitabının ünite özetinden bu site için hazırlandı; resmî AÖF infografiği değildir.</figcaption></figure>`;
+  }
+
+  function bookUnitFiguresHtml(c, n, cls) {
+    return (c.bookUnits || []).filter((u) => u.chapter === n).map((u) => bookUnitFigure(c, u, cls)).join("");
+  }
+
+  function bookUnitsExtraHtml(c) {
+    const rest = (c.bookUnits || []).filter((u) => !u.chapter);
+    if (!rest.length) return "";
+    return `<h2>Diğer üniteler</h2>
+      <p class="muted">Ders kitabında olup bölümlerde henüz işlenmeyen ünitelerin özet infografikleri.</p>
+      ${rest.map((u) => bookUnitFigure(c, u, "plate")).join("")}`;
   }
 
   function aofFiguresHtml(ch, n, cls) {
@@ -472,6 +491,7 @@
       <p class="lead muted" style="font:1.15rem/1.6 var(--serif)">${esc(ch.summary)}</p>
       ${ch.image ? `<figure class="figure">${imgTag(ch.image, ch.title + " infografiği", " data-zoom")}<figcaption><b>Şekil ${n}.</b> Yalnızca bu bölümün ${noun(c, 2)}lerinden NotebookLM ile üretildi.</figcaption></figure>` : ""}
       ${aofFiguresHtml(ch, n, "figure")}
+      ${bookUnitFiguresHtml(c, n, "figure")}
       ${chapterPanel(c, n)}
       ${mindmapSectionHtml(c.slug, {
         title: n + ". bölüm zihin haritası",

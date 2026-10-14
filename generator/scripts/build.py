@@ -164,11 +164,33 @@ def course_data(proj, slug):
             "nlmInfographic": nlm_infographics.get(i),
         })
     mode = c.get("mode", "lectures")
-    return {"slug": slug, "subject": c["subject"], "course": c["course"], "professor": c.get("professor", ""),
+    course = {"slug": slug, "subject": c["subject"], "course": c["course"], "professor": c.get("professor", ""),
             "school": c.get("school", ""), "playlist": c.get("playlist", ""), "note": c.get("note", ""),
             "kind": "lectures" if mode == "lectures" else "sources",
             "notebook": m["notebook_url"], "sourceCount": m["source_count"],
             "chapters": chapters, "quiz": questions}
+    book_units = book_unit_images(proj, slug, out_dir)
+    if book_units:
+        course["bookUnits"] = book_units
+    return course
+
+
+def book_unit_images(proj, slug, out_dir):
+    """Ders kitabı ünite özeti infografikleri (scripts/render_unit_infographics.py üretir).
+
+    data/<slug>/unit_infographics.json'daki her ünite için site/assets/<slug>/kitap-unite-N.jpg
+    varsa {unit, title, chapter, image} döner; app.js bunları bölümlere ya da "Diğer üniteler"e koyar.
+    """
+    spec = proj.root / "data" / slug / "unit_infographics.json"
+    if not spec.exists():
+        return []
+    out = []
+    for u in json.loads(spec.read_text(encoding="utf-8")).get("units", []):
+        name = f"kitap-unite-{u['unit']}.jpg"
+        if (out_dir / name).exists():
+            out.append({"unit": u["unit"], "title": u["title"], "chapter": u.get("chapter"),
+                        "image": f"assets/{slug}/{name}"})
+    return out
 
 
 def public_config(u):
