@@ -5,13 +5,46 @@ description: Bu bölümde Şia'nın günümüze kadar varlığını sürdüren k
 course: islam-mezhepleri-tarihi
 chapter: 6
 status: stable
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-13T19:42:22Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-14T17:33:22Z }
 notebook: "https://notebooklm.google.com/notebook/ad4a99c9-cc96-4f29-92f5-ca8638bc42c2"
 ---
 
 # Özet
 
 Bu bölümde Şia'nın günümüze kadar varlığını sürdüren kollarından Zeydiyye ve İsmailiyye mezhepleri detaylı olarak incelenmektedir. Zeydiyye'nin meftulün imameti ve harici huruç anlayışı ile Ehl-i Sünnet'e ve Mu'tezile'ye yakın yönleri sunulmaktadır. İsmailiyye'nin ise Zahir-Batın ayrımı, Yedi Devir anlayışı, Nizariler ve Müsta'liler şeklindeki tarihsel kolları açıklanmaktadır.
+
+# Ders Kitabı Ünite Özeti
+
+## Ünite 5: Şiîlik I
+
+Şîa'nın anlamı ve ortaya çıkışı ile günümüze ulaşan iki kolu: Zeydiyye ve İsmâiliyye.
+
+![Ünite 5 ders kitabı infoğrafiği](/assets/islam-mezhepleri-tarihi/kitap-unite-5.jpg)
+
+**Kavram**
+
+* Şîa sözlükte taraftar, yardımcı, destekçi demektir; ilk dönemde mezhep anlamı yoktu.
+* Sonra Hz. Ali'yi halifeliğe en layık gören ve halifelerin onun soyundan gelmesi gerektiğine inanan grubun adı oldu.
+
+**Ortaya çıkış ve köken**
+
+* Hz. Ali'nin imametini savunmak önce siyasî bir tercihti, sonra dinî içerik kazandı.
+* İlk Ehl-i Beyt odaklı isyanlarda İmâmiyye'nin nass ve tayin nazariyesi belirleyici değildi.
+* Şîa'yı tek bir yabancı kökene (Arap, Fars, Yahudi, Hıristiyan, Zerdüşt) bağlamak indirgemecidir.
+
+**Zeydiyye**
+
+* Mutedil imamet anlayışı; Ehl-i Sünnet'e en yakın Şiî fırka.
+* İtikatta Mu‘tezile'yi, amelde Hanefîliği benimser.
+* Fâtıma neslinden âlim, zâhid, cömert ve zulme karşı çıkan kim olursa imamdır.
+
+**İsmâiliyye**
+
+* Merkez fikir: her zâhirin bir bâtını vardır; zâhir değişir, bâtın evrenseldir.
+* Muhammed b. İsmâil'in yedinci ve son devri başlattığına inanılır.
+* Kollar: Musta‘lîler daha mutedil; Nizârîler ibadetleri tamamen bâtınî yorumlar, takiyye kullanır.
+
+*Anahtar kelimeler:* Şîa, Ehl-i Beyt, imamet, efdal-mefdûl, zâhir-bâtın, Nizârî, Musta‘lî
 
 # Öğrenme Hedefleri
 

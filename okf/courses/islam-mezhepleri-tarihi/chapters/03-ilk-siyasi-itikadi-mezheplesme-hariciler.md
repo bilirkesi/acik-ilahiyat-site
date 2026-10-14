@@ -5,13 +5,47 @@ description: Bu bölümde Sıffin Savaşı ve Tahkim Hadisesi sonrasında Hz. Al
 course: islam-mezhepleri-tarihi
 chapter: 3
 status: stable
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-13T19:42:22Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-14T17:33:22Z }
 notebook: "https://notebooklm.google.com/notebook/ad4a99c9-cc96-4f29-92f5-ca8638bc42c2"
 ---
 
 # Özet
 
 Bu bölümde Sıffin Savaşı ve Tahkim Hadisesi sonrasında Hz. Ali ordusundan ayrılarak ortaya çıkan ilk itikadi grup olan Hariciler incelenmektedir. Hariciliğin isimleşme süreci, kabilevi ve sosyal yapısı ile itikadi söylemlerinin gelişim aşamaları ele alınmaktadır. Ayrıca Ezrika gibi radikal kollar ile günümüze ulaşan tek kol olan İbaziyye arasındaki farklar açıklanmaktadır.
+
+# Ders Kitabı Ünite Özeti
+
+## Ünite 3: Yönetim, İman-Küfür ve Kader Meseleleri Etrafında Oluşan İlk Mezhepler
+
+Şiîlik dışında ilk büyük mezhepler: Haricîlik, Mürcie, Kaderiyye ve Mu‘tezile. Önce yönetim, sonra iman-küfür ve kader konusunda ayrılık doğdu.
+
+![Ünite 3 ders kitabı infoğrafiği](/assets/islam-mezhepleri-tarihi/kitap-unite-3.jpg)
+
+**Haricîlik**
+
+* Diğer adları: Havâric, Mârika, Şurât, Harûriyye, Muhakkime, Vehbiyye.
+* İmamet ve iman-küfür konusundaki katı görüşleri Müslümanların ilk defa karşılaştığı fikirlerdi.
+* Ana kollar: Muhakkime, Ezârika, Necedât, Sufriyye, Beyhesiyye, Acâride, Seâlibe, İbâziyye.
+* Günümüze yalnızca İbâziyye ulaştı (Umman, Kuzey ve Doğu Afrika).
+
+**Mürcie**
+
+* İman-küfür tartışmasında doğdu; büyük günah işleyen kâfir değildir.
+* İlke: taatın kâfire faydası olmadığı gibi günahın da imana zararı yoktur.
+* Horasan ve Mâverâünnehir'de yayıldı; fikirleri Ehl-i Sünnet'in reyci kanadında sürdü.
+* Kuşatıcı tavrıyla Türklerin İslâmlaşmasında olumlu etki gösterdi.
+
+**Kaderiyye**
+
+* Sorumluluk doğuran fiillerde ilâhî kaderi reddeder; fiil sadece insan iradesiyle olur.
+* İlk: Ma‘bed el-Cühenî; sistemleştiren: Geylân ed-Dımeşkî; görüşler Mu‘tezile'de devam etti.
+
+**Mu‘tezile**
+
+* Vâsıl b. Atâ, büyük günah işleyenin iman ile küfür arasında olduğunu söyleyerek Hasan-ı Basrî'den ayrıldı.
+* Kurumsal varlığı sürmese de kelam metodu ve aklî yöntemiyle Ehl-i Sünnet, Şîa, Zeydiyye ve İbâziyye'yi etkiledi.
+
+*Anahtar kelimeler:* tahkim, mürtekib-i kebîre, el-menzile beyne'l-menzileteyn, irca, kader, İbâziyye
 
 # Öğrenme Hedefleri
 

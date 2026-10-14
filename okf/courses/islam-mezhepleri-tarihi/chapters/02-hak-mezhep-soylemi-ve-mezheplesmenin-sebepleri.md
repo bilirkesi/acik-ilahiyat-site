@@ -5,13 +5,41 @@ description: Bu bölümde ihtilaf ile tefrika arasındaki farklar açıklanarak 
 course: islam-mezhepleri-tarihi
 chapter: 2
 status: stable
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-13T19:42:22Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-14T17:33:22Z }
 notebook: "https://notebooklm.google.com/notebook/ad4a99c9-cc96-4f29-92f5-ca8638bc42c2"
 ---
 
 # Özet
 
 Bu bölümde ihtilaf ile tefrika arasındaki farklar açıklanarak mezheplerin birer zenginlik mi yoksa problem mi olduğu tartışılmaktadır. İslam toplumunda itikadi mezhepleşmeye zemin hazırlayan dış kültürlerle karşılaşma, metinlerin yapısı ve siyasi olaylar ayrıntılı olarak sunulmaktadır. Ayrıca mezhepsizlik ve mezhepçilik gibi uç yaklaşımların tehlikeleri ve hakkaniyetli orta yolun önemi belirtilmektedir.
+
+# Ders Kitabı Ünite Özeti
+
+## Ünite 2: Mezheplerin Ortaya Çıkış Nedenleri
+
+Mezhepler dinin anlaşılma biçimleridir; özünde insanî bir olgudur.
+
+![Ünite 2 ders kitabı infoğrafiği](/assets/islam-mezhepleri-tarihi/kitap-unite-2.jpg)
+
+**Psiko-sosyal faktörler**
+
+* Her insan yapısal olarak farklıdır; bu, dünya görüşünü ve dini anlayışını biçimlendirir.
+* Bireysel ve toplumsal değişim, dini anlama sürecini etkiler.
+* Farklı din algıları zamanla kurumsallaşıp sistemleşerek mezhepleri oluşturur.
+
+**Farklı din, kültür ve medeniyetler**
+
+* İslâm yayıldıkça farklı dinlere ve kültürlere mensup insanları bünyesine kattı.
+* Yeni Müslümanlar eski kültürel dokularını belli ölçüde korudu.
+* Bu durum farklı algı ve düşünme biçimleri doğurarak mezheplere zemin hazırladı.
+
+**Sosyo-politik faktörler**
+
+* Hz. Peygamber'in vefatından sonra, özellikle dört halife döneminde yaşanan anlaşmazlıklar.
+* Halife seçimleri, Hz. Osman dönemindeki kargaşa, Hz. Ali dönemindeki iç savaşlar.
+* İlk ayrılıklar siyasî temelliydi; bu olaylar itikadî görüşleri de şekillendirdi.
+
+*Anahtar kelimeler:* psiko-sosyal, sosyo-politik, hilafet, Cemel, Sıffîn, fitne
 
 # Öğrenme Hedefleri
 

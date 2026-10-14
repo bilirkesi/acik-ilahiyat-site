@@ -5,13 +5,46 @@ description: Bu bölümde din ve mezhep kavramları arasındaki ilişki ile Hz. 
 course: islam-mezhepleri-tarihi
 chapter: 1
 status: stable
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-13T19:42:22Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-14T17:33:22Z }
 notebook: "https://notebooklm.google.com/notebook/ad4a99c9-cc96-4f29-92f5-ca8638bc42c2"
 ---
 
 # Özet
 
 Bu bölümde din ve mezhep kavramları arasındaki ilişki ile Hz. Peygamber sonrasında ortaya çıkan beşeri gayretlerin doğası ele alınmaktadır. Bir mezhebin sivil bir inisiyatif olarak başlayıp cemaatleşme, sistemleşme ve kurumsallaşma aşamalarından geçerek nasıl teşekkül ettiği incelenmektedir. Ayrıca mezheplerin ilahi değil, insan unsuru ve sosyo-psikolojik etkenlerle şekillenen dinamik yapılar olduğu vurgulanmaktadır.
+
+# Ders Kitabı Ünite Özeti
+
+## Ünite 1: Mezhepler Tarihine Giriş
+
+İslâm Mezhepleri Tarihi; konuları, amaçları ve kendine özgü yöntemiyle bağımsız bir bilim dalıdır.
+
+![Ünite 1 ders kitabı infoğrafiği](/assets/islam-mezhepleri-tarihi/kitap-unite-1.jpg)
+
+**Bilim dalı**
+
+* Klâsik dönemden beri özel bir uzmanlık alanı; modern dönemde bağımsız bir disiplin.
+* Diğer din bilimleriyle ilişkisi, sınırlarını ve farklılığını görünür kılar.
+
+**Kaynaklar**
+
+* Mezheplerin çoğu kendilerini ve başka mezhepleri tanıtan eserler yazdı.
+* İlk yazarlar çoğunlukla Mu‘tezile kelamcılarıydı; hicri 4. asırdan itibaren Sünnî yazarlar.
+* En yaygın tasnif: 'yetmiş üç fırka hadisi' eksenli sistem. Henüz mezhepleşmemiş oluşumları mezhep gösterdiği için yanıltıcıdır.
+
+**Yöntem sorunları**
+
+* Klâsik literatür genel olarak sübjektif ve normatiftir.
+* Çözüm: dikkatli ve karşılaştırmalı okuma; mezhebi kendi mensuplarının görüşlerinden tanımak.
+* Mezhebin doğduğu mekân ve tarihî şartlar mutlaka göz önünde tutulmalı.
+
+**Din ve mezhep**
+
+* Dinî kimlik üst, mezhebî kimlik alt kimliktir.
+* Mezhepler beşerî oluşumlardır; dinin yerine geçemez.
+* İhtilaf zenginlik olabilir; mutlaklık iddiası ise mezhebi tefrika odağına çevirir.
+
+*Anahtar kelimeler:* fırka, mezhep, ihtilaf, tefrika, 73 fırka hadisi, makâlât, milel ve nihal
 
 # Öğrenme Hedefleri
 

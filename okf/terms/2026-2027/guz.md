@@ -5,14 +5,15 @@ description: 2026-2027 öğretim yılı Güz dönemi ders listesi.
 academic_year: 2026-2027
 semester: guz
 term_code: 20262027-1
-course_count: 3
+course_count: 4
 language: tr
 status: stable
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-13T19:42:22Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-14T17:33:22Z }
 ---
 
-# Dersler (3)
+# Dersler (4)
 
-* [Atatürk İlkeleri ve İnkılap Tarihi](/courses/ataturk-ilkeleri-1.md) - AÖF · TAR201U
-* [Türk Dili](/courses/turk-dili-1.md) - AÖF · TÜR201U
 * [İslam Mezhepleri Tarihi](/courses/islam-mezhepleri-tarihi.md) - İÜ · İLH207U
+* [Türk Dili](/courses/turk-dili-1.md) - AÖF · TÜR201U
+* [Atatürk İlkeleri ve İnkılap Tarihi](/courses/ataturk-ilkeleri-1.md) - AÖF · TAR201U
+* [Osmanlı Türkçesi I](/courses/osmanlica-1.md) - AÖF · TAR111U

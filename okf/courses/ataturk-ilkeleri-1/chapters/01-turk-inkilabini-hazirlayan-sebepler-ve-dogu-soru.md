@@ -5,7 +5,7 @@ description: Osmanlı Devleti'nin 17. ve 18. yüzyıllardaki dönüşüm süreci
 course: ataturk-ilkeleri-1
 chapter: 1
 status: stable
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-13T19:42:22Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-14T17:33:22Z }
 notebook: "https://notebooklm.google.com/notebook/436f4e9d-25d4-4441-98f1-ed97d01b9b7f"
 ---
 
@@ -17,9 +17,9 @@ Osmanlı Devleti'nin 17. ve 18. yüzyıllardaki dönüşüm süreci, ekonomik kr
 
 Ünite 1 infoğrafik sayfaları:
 
-![Türk İnkılabını Hazırlayan Sebepler ve Doğu Sorunu AÖF infoğrafik sayfa 1/2](/assets/ataturk-ilkeleri-1/aof-infographic-1-p1.png)
+![Türk İnkılabını Hazırlayan Sebepler ve Doğu Sorunu AÖF infoğrafik sayfa 1/2](/assets/ataturk-ilkeleri-1/aof-infographic-1-p1.jpg)
 
-![Türk İnkılabını Hazırlayan Sebepler ve Doğu Sorunu AÖF infoğrafik sayfa 2/2](/assets/ataturk-ilkeleri-1/aof-infographic-1-p2.png)
+![Türk İnkılabını Hazırlayan Sebepler ve Doğu Sorunu AÖF infoğrafik sayfa 2/2](/assets/ataturk-ilkeleri-1/aof-infographic-1-p2.jpg)
 
 Kaynak PDF: `assets/ataturk-ilkeleri-1/aof/` (Anadolu Üniversitesi ünite infoğrafikleri).
 

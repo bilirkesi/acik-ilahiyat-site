@@ -5,7 +5,7 @@ description: Kuvayı Milliye birliklerinin düşman ilerleyişini durdurmada yet
 course: ataturk-ilkeleri-1
 chapter: 5
 status: stable
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-13T19:42:22Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-14T17:33:22Z }
 notebook: "https://notebooklm.google.com/notebook/436f4e9d-25d4-4441-98f1-ed97d01b9b7f"
 ---
 
@@ -15,7 +15,7 @@ Kuvayı Milliye birliklerinin düşman ilerleyişini durdurmada yetersiz kalmas�
 
 # AÖF Ünite İnfoğrafik
 
-![Türk İstiklal Harbi, Düzenli Ordunun Kurulması ve Cepheler AÖF infoğrafik](/assets/ataturk-ilkeleri-1/aof-infographic-5.png)
+![Türk İstiklal Harbi, Düzenli Ordunun Kurulması ve Cepheler AÖF infoğrafik](/assets/ataturk-ilkeleri-1/aof-infographic-5.jpg)
 
 Kaynak PDF: `assets/ataturk-ilkeleri-1/aof/` (Anadolu Üniversitesi ünite infoğrafikleri).
 

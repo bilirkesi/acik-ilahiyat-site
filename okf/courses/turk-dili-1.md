@@ -18,7 +18,7 @@ school: Anadolu Üniversitesi Açıköğretim Fakültesi
 mode: own
 language: tr
 status: active
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-13T19:42:22Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-14T17:33:22Z }
 resource: "https://www.youtube.com/playlist?list=PLfFz63YLe29p6tY65NyEc37KZVhSW63ey"
 notebook: "https://notebooklm.google.com/notebook/c702ed26-fe17-463d-b217-202acd0c3d26"
 sources:
@@ -48,11 +48,11 @@ Resmî AÖF Konu Anlatımı playlist'i (Ünite 1-8, 21 video) kullanıldı. 16 v
 
 # Yapı
 
-* [Bölümler](/turk-dili-1/chapters/index.md) (8)
-* [Quiz](/turk-dili-1/quiz.md)
-* [Sınavlar](/turk-dili-1/exams/index.md) - vize, final, yaz kursu
-* [Çıkmış vizeler](/turk-dili-1/exams/past/index.md)
-* [Artifact'ler](/turk-dili-1/artifacts.md)
+* [Bölümler](/courses/turk-dili-1/chapters/index.md) (8)
+* [Quiz](/courses/turk-dili-1/quiz.md)
+* [Sınavlar](/courses/turk-dili-1/exams/index.md) - vize, final, yaz kursu
+* [Çıkmış vizeler](/courses/turk-dili-1/exams/past/index.md)
+* [Artifact'ler](/courses/turk-dili-1/artifacts.md)
 
 # Panel Öne Çıkanları
 

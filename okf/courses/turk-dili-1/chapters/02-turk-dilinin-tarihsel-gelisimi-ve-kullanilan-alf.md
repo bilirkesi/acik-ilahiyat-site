@@ -5,7 +5,7 @@ description: Bu bölümde Türk dilinin ilk yazılı belgelerinden günümüze k
 course: turk-dili-1
 chapter: 2
 status: stable
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-13T19:42:22Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-14T17:33:22Z }
 notebook: "https://notebooklm.google.com/notebook/c702ed26-fe17-463d-b217-202acd0c3d26"
 ---
 
@@ -15,7 +15,7 @@ Bu bölümde Türk dilinin ilk yazılı belgelerinden günümüze kadar geçirdi
 
 # AÖF Ünite İnfoğrafik
 
-![Türk Dilinin Tarihsel Gelişimi ve Kullanılan Alfabeler AÖF infoğrafik](/assets/turk-dili-1/aof-infographic-2.png)
+![Türk Dilinin Tarihsel Gelişimi ve Kullanılan Alfabeler AÖF infoğrafik](/assets/turk-dili-1/aof-infographic-2.jpg)
 
 Kaynak PDF: `assets/turk-dili-1/aof/` (Anadolu Üniversitesi ünite infoğrafikleri).
 
