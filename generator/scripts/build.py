@@ -7,7 +7,7 @@ Copies site-template/ into PROJECT/site/, injects university.json, bundles every
 manifest.json into site/data.js, and compresses chapter infographics (sips, else Pillow, else PNG copy).
 Cleans NotebookLM text: drops citation markers, fixes doubled LaTeX delimiters, removes em dashes.
 """
-import html, json, re, shutil, subprocess, sys, time
+import hashlib, html, json, re, shutil, subprocess, sys, time
 from pathlib import Path
 from common import TEMPLATE_DIR, Project
 
@@ -194,9 +194,50 @@ def book_unit_images(proj, slug, out_dir):
 
 
 def public_config(u):
-    keys = ["name", "tagline", "headline", "issuer", "issuerUrl", "passMark", "codePrefix", "colors",
-            "showNotebookLinks", "plannedCourses"]
+    keys = ["name", "shortName", "tagline", "headline", "issuer", "issuerUrl", "passMark", "codePrefix", "colors",
+            "showNotebookLinks", "plannedCourses", "storageKey"]
     return {k: u[k] for k in keys if k in u}
+
+
+def rev(path):
+    """İçerik özeti: service worker ve indirme paketleri dosyanın değişip değişmediğini buna bakarak anlar."""
+    return hashlib.sha256(path.read_bytes()).hexdigest()[:10]
+
+
+def offline_packs(site, data):
+    """Ders başına çevrimdışı paket: data.js'in andığı görseller (+ varsa -sm.jpg kopyaları)."""
+    packs, small = {}, []
+    for course in data:
+        slug = course["slug"]
+        paths = sorted(set(re.findall(r'assets/' + re.escape(slug) + r'/[^"\\]+?\.(?:jpg|jpeg|png|webp)',
+                                      json.dumps(course, ensure_ascii=False))))
+        files = []
+        for p in paths:
+            for q in (p, re.sub(r"\.jpg$", "-sm.jpg", p)):
+                f = site / q
+                if q != p and not f.exists():
+                    continue
+                if not f.exists():
+                    print(f"warning: {q} is referenced but missing", file=sys.stderr)
+                    continue
+                if q != p:
+                    small.append(p)
+                files.append([q, rev(f), f.stat().st_size])
+        packs[slug] = {"bytes": sum(x[2] for x in files), "files": files}
+    return {"packs": packs, "small": small}
+
+
+# Kurulumda önbelleğe alınan uygulama kabuğu (görseller hariç; onlar ders paketlerinde).
+SHELL_FILES = ["index.html", "styles.css", "app.js", "data.js", "interactive.js", "coursegraph.js", "mindmaps.js",
+               "past_exams.js", "unit_quizzes.js", "manifest.webmanifest", "favicon.svg"]
+SHELL_DIRS = ["fonts", "icons", "vendor"]
+
+
+def shell_manifest(site):
+    files = [site / n for n in SHELL_FILES if (site / n).exists()]
+    for d in SHELL_DIRS:
+        files += sorted(f for f in (site / d).rglob("*") if f.is_file() and f.suffix != ".txt")
+    return [[f.relative_to(site).as_posix(), rev(f)] for f in files]
 
 
 if __name__ == "__main__":
@@ -209,20 +250,25 @@ if __name__ == "__main__":
     data = [dash(x) for x in (course_data(proj, s) for s in order if s in proj.courses) if x]
     uni = dash(public_config(proj.uni))
     (site / "data.js").write_text("window.UNIVERSITY = " + json.dumps(uni, ensure_ascii=False) + ";\n"
-                                  + "window.COURSES = " + json.dumps(data, ensure_ascii=False) + ";\n")
+                                  + "window.COURSES = " + json.dumps(data, ensure_ascii=False) + ";\n"
+                                  + "window.OFFLINE = " + json.dumps(offline_packs(site, data), ensure_ascii=False)
+                                  + ";\n")
     v = str(int(time.time()))
     shutil.copy2(TEMPLATE_DIR / "app.js", site / "app.js")
     shutil.copy2(TEMPLATE_DIR / "styles.css", site / "styles.css")
     shutil.copy2(TEMPLATE_DIR / "favicon.svg", site / "favicon.svg")
+    for d in SHELL_DIRS:  # fontlar, ikonlar, Cytoscape: dış sunucuya gerek kalmasın
+        if (TEMPLATE_DIR / d).exists():
+            shutil.copytree(TEMPLATE_DIR / d, site / d, dirs_exist_ok=True)
     # interactive.js proje verisidir: varsa koru, yoksa şablondan boş iskelet kopyala.
     if not (site / "interactive.js").exists() and (TEMPLATE_DIR / "interactive.js").exists():
         shutil.copy2(TEMPLATE_DIR / "interactive.js", site / "interactive.js")
     # coursegraph.js / mindmaps.js proje verisidir: site export üretir; yoksa boş stub.
     for name, stub in (
-        ("coursegraph.js", "window.CG = { items: [], edges: {} };\\n"),
-        ("mindmaps.js", "window.MINDMAPS = {};\\n"),
-        ("past_exams.js", "window.PAST_EXAMS = {};\\n"),
-        ("unit_quizzes.js", "window.UNIT_QUIZZES = {};\\n"),
+        ("coursegraph.js", "window.CG = { items: [], edges: {} };\n"),
+        ("mindmaps.js", "window.MINDMAPS = {};\n"),
+        ("past_exams.js", "window.PAST_EXAMS = {};\n"),
+        ("unit_quizzes.js", "window.UNIT_QUIZZES = {};\n"),
     ):
         if not (site / name).exists():
             (site / name).write_text(stub, encoding="utf-8")
@@ -235,11 +281,11 @@ if __name__ == "__main__":
     colors = uni.get("colors") or {}
     primary = colors.get("primary", "#1b2a4a")
     paper = colors.get("paper", "#f8f4ea")
-    short = uni["name"].split()[0] if uni.get("name") else "PU"
+    short = uni.get("shortName") or (uni["name"].split()[0] if uni.get("name") else "PU")
     page = (TEMPLATE_DIR / "index.html").read_text()
     for k, val in {"{{NAME}}": html.escape(uni["name"]), "{{TAGLINE}}": html.escape(uni.get("tagline", "")),
                    "{{DESCRIPTION}}": html.escape(desc), "{{ISSUER}}": issuer, "{{V}}": v,
-                   "{{PRIMARY}}": primary}.items():
+                   "{{PRIMARY}}": primary, "{{SHORT}}": html.escape(short)}.items():
         page = page.replace(k, val)
     (site / "index.html").write_text(page)
     # PWA: manifest + service worker (aynı {{V}} ile önbellek kırılır).
@@ -248,7 +294,8 @@ if __name__ == "__main__":
                    "{{PAPER}}": paper, "{{PRIMARY}}": primary}.items():
         manifest = manifest.replace(k, val)
     (site / "manifest.webmanifest").write_text(manifest, encoding="utf-8")
-    sw = (TEMPLATE_DIR / "sw.js").read_text().replace("{{V}}", v)
+    shell = shell_manifest(site)
+    sw = (TEMPLATE_DIR / "sw.js").read_text().replace("{{V}}", v).replace("/*SHELL*/[]", json.dumps(shell))
     (site / "sw.js").write_text(sw, encoding="utf-8")
     print(f"built {site}: {n} course(s):",
           ", ".join(f"{x['slug']}({len(x['chapters'])}ch/{len(x['quiz'])}q/"

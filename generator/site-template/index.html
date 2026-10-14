@@ -10,9 +10,10 @@
 <meta name="theme-color" content="{{PRIMARY}}">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="{{SHORT}}">
 <link rel="stylesheet" href="styles.css?v={{V}}">
 </head>
 <body>
@@ -28,12 +29,14 @@
     <a href="#/ara">Ara</a>
     <a href="#/transcript">Transkript</a>
     <a href="#/certificate">Belge</a>
+    <a href="#/cevrimdisi">Çevrimdışı</a>
   </nav>
   <form class="nav-search" id="nav-search" role="search" autocomplete="off">
     <input type="search" id="nav-q" placeholder="Derslerde ara… (Ctrl+K)" aria-label="CourseGraph arama">
   </form>
 </header>
 <main id="app" tabindex="-1"></main>
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
 <footer class="footer">
   <p>{{NAME}}, {{ISSUER}} tarafından hazırlanmış ücretsiz bir çalışma projesidir. Herhangi bir üniversite ile bağlantılı, onaylanan veya ilişkilendirilen değildir. Her ders ve belge kendi özgün sahibine aittir. Çalışma materyalleri NotebookLM ile bu kaynaklardan üretilmiştir.</p>
 </footer>
