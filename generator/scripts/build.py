@@ -59,11 +59,11 @@ def _save_pillow(png, dest, max_side, quality, tall_max_width):
 
 
 def compress_one(png, out_dir, max_side=1800, quality=78, tall_max_width=None):
-    """Return (full_name, sm_name_or_None) written into out_dir.
+    """Return the file name written into out_dir.
 
     Dikey (çok sayfalı stitch) görsellerde max_side her iki kenara uygulanmaz;
     yalnızca genişlik sınırı kullanılır (yoksa 13k px görsel 158 px'e düşer).
-    Yanında <stem>-sm.jpg (640px genişlik) da üretilir; app.js srcset ile kullanır.
+    WebP ve küçük kopyalar sonradan, JPG'den üretilir (bkz. image_variants).
     """
     png = Path(png)
     is_aof = png.name.startswith("aof-infographic-")
@@ -72,7 +72,6 @@ def compress_one(png, out_dir, max_side=1800, quality=78, tall_max_width=None):
         quality = 90
         tall_max_width = tall_max_width or 2200
     jpg = out_dir / (png.stem + ".jpg")
-    sm = out_dir / (png.stem + "-sm.jpg")
     if not (jpg.exists() and jpg.stat().st_mtime >= png.stat().st_mtime):
         full = None
         if shutil.which("sips") and not is_aof:
@@ -87,12 +86,7 @@ def compress_one(png, out_dir, max_side=1800, quality=78, tall_max_width=None):
                 full = png.name
     else:
         full = jpg.name
-    sm_name = None
-    if not (sm.exists() and sm.stat().st_mtime >= png.stat().st_mtime):
-        sm_name = _save_pillow(png, sm, 640, 72, None)
-    else:
-        sm_name = sm.name
-    return full, sm_name
+    return full
 
 
 def site_images(proj, slug, pattern, out_dir):
@@ -105,7 +99,7 @@ def site_images(proj, slug, pattern, out_dir):
     pngs = sorted((proj.root / "assets" / slug).glob(pattern + ".png"))
     if pngs:
         for png in pngs:
-            full, _sm = compress_one(png, out_dir)
+            full = compress_one(png, out_dir)
             yield png.stem, f"assets/{slug}/{full}"
         return
     for jpg in sorted(out_dir.glob(pattern + ".jpg")):
@@ -204,9 +198,45 @@ def rev(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()[:10]
 
 
-def offline_packs(site, data):
-    """Ders başına çevrimdışı paket: data.js'in andığı görseller (+ varsa -sm.jpg kopyaları)."""
-    packs, small = {}, []
+SMALL_WIDTH = 640
+
+
+def image_variants(site, data):
+    """Ders verisindeki her JPG'nin yanına .webp (aynı boy) ve genişse -sm.webp (640px) üretir.
+
+    Dönüş: {"assets/<ders>/x.jpg": [genişlik, yükseklik, küçük_kopya_var_mı]}. app.js bununla
+    <picture> + width/height yazar; çevrimdışı paketler JPG yerine WebP'leri indirir.
+    Pillow yoksa boş döner ve site JPG'lerle çalışmaya devam eder.
+    """
+    try:
+        from PIL import Image
+    except ImportError:
+        print("warning: Pillow yok; WebP kopyaları üretilmedi", file=sys.stderr)
+        return {}
+    paths = sorted(set(re.findall(r'assets/[^"\\]+?\.jpg', json.dumps(data, ensure_ascii=False))))
+    out = {}
+    for p in paths:
+        jpg = site / p
+        if not jpg.exists():
+            continue
+        with Image.open(jpg) as im:
+            w, h = im.size
+            targets = [(jpg.with_suffix(".webp"), w, 80)]
+            if w > SMALL_WIDTH * 1.25:
+                targets.append((jpg.with_name(jpg.stem + "-sm.webp"), SMALL_WIDTH, 75))
+            stale = [t for t in targets if not (t[0].exists() and t[0].stat().st_mtime >= jpg.stat().st_mtime)]
+            if stale:
+                rgb = im.convert("RGB")
+                for dest, width, quality in stale:
+                    img = rgb if width == w else rgb.resize((width, max(1, round(h * width / w))), Image.LANCZOS)
+                    img.save(dest, "WEBP", quality=quality, method=6)
+        out[p] = [w, h, len(targets) > 1]
+    return out
+
+
+def offline_packs(site, data, images):
+    """Ders başına çevrimdışı paket: data.js'in andığı görseller (WebP kopyası varsa onlar)."""
+    packs = {}
     # Çıkmış sınav ve ünite testi görselleri (ör. Osmanlıca şıklar) data.js dışında durur.
     extra = "".join((site / n).read_text(encoding="utf-8") for n in ("past_exams.js", "unit_quizzes.js")
                     if (site / n).exists())
@@ -216,18 +246,19 @@ def offline_packs(site, data):
                                       json.dumps(course, ensure_ascii=False) + extra)))
         files = []
         for p in paths:
-            for q in dict.fromkeys((p, re.sub(r"\.jpg$", "-sm.jpg", p))):  # png'de küçük kopya yok
+            if p in images:
+                webp = p[:-4] + ".webp"
+                variants = [webp, p[:-4] + "-sm.webp"] if images[p][2] else [webp]
+            else:
+                variants = [p]
+            for q in variants:
                 f = site / q
-                if q != p and not f.exists():
-                    continue
                 if not f.exists():
                     print(f"warning: {q} is referenced but missing", file=sys.stderr)
                     continue
-                if q != p:
-                    small.append(p)
                 files.append([q, rev(f), f.stat().st_size])
         packs[slug] = {"bytes": sum(x[2] for x in files), "files": files}
-    return {"packs": packs, "small": small}
+    return {"packs": packs, "images": images}
 
 
 # Kurulumda önbelleğe alınan uygulama kabuğu (görseller hariç; onlar ders paketlerinde).
@@ -252,9 +283,10 @@ if __name__ == "__main__":
     order = proj.uni.get("order") or list(proj.courses)
     data = [dash(x) for x in (course_data(proj, s) for s in order if s in proj.courses) if x]
     uni = dash(public_config(proj.uni))
+    offline = offline_packs(site, data, image_variants(site, data))
     (site / "data.js").write_text("window.UNIVERSITY = " + json.dumps(uni, ensure_ascii=False) + ";\n"
                                   + "window.COURSES = " + json.dumps(data, ensure_ascii=False) + ";\n"
-                                  + "window.OFFLINE = " + json.dumps(offline_packs(site, data), ensure_ascii=False)
+                                  + "window.OFFLINE = " + json.dumps(offline, ensure_ascii=False)
                                   + ";\n")
     v = str(int(time.time()))
     shutil.copy2(TEMPLATE_DIR / "app.js", site / "app.js")
