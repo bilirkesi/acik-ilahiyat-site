@@ -1025,6 +1025,26 @@ main:focus, main:focus-visible { outline: none; }
 .ch-read.is-read { border-color: var(--ok); color: var(--ok); }
 @media print { .lp, .ch-read-row { display: none !important; } .lp-on { background: none; box-shadow: none; } }
 
+/* kavram desteleri (#/kavram) */
+.k-top { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin: 1.2rem 0; }
+.k-top .desk-n { margin-right: .3rem; }
+.k-dir { margin: 0 0 1.2rem; }
+.k-decks { list-style: none; padding: 0; margin: 1rem 0 1.5rem; display: grid; gap: .6rem; }
+.k-deck { display: flex; align-items: center; gap: 1rem; background: var(--paper); border: 1px solid var(--line); padding: .9rem 1rem; }
+.k-deck > div { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: .2rem; }
+.k-deck > div > span { font: 1rem/1.35 var(--serif); }
+.k-deck small { color: var(--muted); font-size: .82rem; }
+.k-deck .btn { flex: none; }
+.k-meter { display: block; height: 4px; background: var(--gold-soft); border-radius: 2px; overflow: hidden; margin-top: .25rem; }
+.k-meter > i { display: block; height: 100%; background: var(--ok); }
+.k-flash { background: var(--paper); border: 1px solid var(--line); padding: 1.3rem 1.2rem; margin-top: 1rem; }
+.k-q { font: 600 1.45rem/1.35 var(--serif); color: var(--navy); margin: .6rem 0 1rem; }
+.k-flash.rev .k-q { font: 1.15rem/1.55 var(--serif); font-weight: 400; color: var(--ink); }
+.k-a { border-top: 1px dashed var(--line-strong); padding-top: .9rem; margin-bottom: .8rem; font: 1.1rem/1.55 var(--serif); }
+.k-flash.rev .k-a { font: 600 1.35rem/1.35 var(--serif); color: var(--navy); }
+.k-say { min-width: 36px; min-height: 36px; padding: 0 .4rem; vertical-align: middle; font-size: .95rem; margin-left: .3rem; }
+.k-link a { font-weight: 600; }
+@media (max-width: 640px) { .k-deck { flex-wrap: wrap; } .k-deck .btn { width: 100%; } }
 /* ---- kelime oyunları (#/oyunlar) ---- */
 .g-kinds { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: .6rem; margin: 1rem 0 1.4rem; }
 .g-kinds > div { display: flex; flex-direction: column; gap: .2rem; padding: .8rem 1rem; border: 1px solid var(--line); background: var(--paper); }
@@ -1116,3 +1136,4 @@ main:focus, main:focus-visible { outline: none; }
 .shake { animation: gShake .35s; }
 @keyframes gShake { 25% { transform: translateX(-5px); } 75% { transform: translateX(5px); } }
 @media (prefers-reduced-motion: reduce) { .shake, .ws-cell.blink { animation: none; } }
+.ws-words u { text-decoration-thickness: 2px; text-underline-offset: 2px; font-weight: 700; }
