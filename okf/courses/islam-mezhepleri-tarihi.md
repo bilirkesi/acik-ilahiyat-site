@@ -18,7 +18,7 @@ school: İstanbul Üniversitesi (e-Medrese yayını)
 mode: lectures
 language: tr
 status: active
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-13T19:42:22Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-14T17:33:22Z }
 source_provider: aof
 resource: "https://www.youtube.com/playlist?list=PLNbpRT8SFQRrt0jMiJkPXprfdebuCSTJw"
 notebook: "https://notebooklm.google.com/notebook/ad4a99c9-cc96-4f29-92f5-ca8638bc42c2"
@@ -49,11 +49,12 @@ AÖF resmî kanalındaki Konu Anlatımı playlist'i NotebookLM tarafından alın
 
 # Yapı
 
-* [Bölümler](/islam-mezhepleri-tarihi/chapters/index.md) (6)
-* [Quiz](/islam-mezhepleri-tarihi/quiz.md)
-* [Sınavlar](/islam-mezhepleri-tarihi/exams/index.md) - vize, final, yaz kursu
-* [Çıkmış vizeler](/islam-mezhepleri-tarihi/exams/past/index.md)
-* [Artifact'ler](/islam-mezhepleri-tarihi/artifacts.md)
+* [Bölümler](/courses/islam-mezhepleri-tarihi/chapters/index.md) (6)
+* [Ders kitabı üniteleri](/courses/islam-mezhepleri-tarihi/units.md) (10)
+* [Quiz](/courses/islam-mezhepleri-tarihi/quiz.md)
+* [Sınavlar](/courses/islam-mezhepleri-tarihi/exams/index.md) - vize, final, yaz kursu
+* [Çıkmış vizeler](/courses/islam-mezhepleri-tarihi/exams/past/index.md)
+* [Artifact'ler](/courses/islam-mezhepleri-tarihi/artifacts.md)
 
 # Panel Öne Çıkanları
 

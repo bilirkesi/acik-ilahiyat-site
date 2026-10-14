@@ -5,7 +5,7 @@ description: İkinci Meşrutiyet'in ilanı sonrasında İttihat ve Terakki Cemiy
 course: ataturk-ilkeleri-1
 chapter: 2
 status: stable
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-13T19:42:22Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-14T17:33:22Z }
 notebook: "https://notebooklm.google.com/notebook/436f4e9d-25d4-4441-98f1-ed97d01b9b7f"
 ---
 
@@ -17,9 +17,9 @@ notebook: "https://notebooklm.google.com/notebook/436f4e9d-25d4-4441-98f1-ed97d0
 
 Ünite 2 infoğrafik sayfaları:
 
-![İkinci Meşrutiyet Dönemi, 31 Mart Vakası ve Yıkıcı Savaşlar AÖF infoğrafik sayfa 1/2](/assets/ataturk-ilkeleri-1/aof-infographic-2-p1.png)
+![İkinci Meşrutiyet Dönemi, 31 Mart Vakası ve Yıkıcı Savaşlar AÖF infoğrafik sayfa 1/2](/assets/ataturk-ilkeleri-1/aof-infographic-2-p1.jpg)
 
-![İkinci Meşrutiyet Dönemi, 31 Mart Vakası ve Yıkıcı Savaşlar AÖF infoğrafik sayfa 2/2](/assets/ataturk-ilkeleri-1/aof-infographic-2-p2.png)
+![İkinci Meşrutiyet Dönemi, 31 Mart Vakası ve Yıkıcı Savaşlar AÖF infoğrafik sayfa 2/2](/assets/ataturk-ilkeleri-1/aof-infographic-2-p2.jpg)
 
 Kaynak PDF: `assets/ataturk-ilkeleri-1/aof/` (Anadolu Üniversitesi ünite infoğrafikleri).
 

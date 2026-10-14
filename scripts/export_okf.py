@@ -2,8 +2,12 @@
 """Ders verisini OKF (Open Knowledge Format) v0.2 bundle'ına çevirir.
 
 Kaynak:
-  courses.json, data/<slug>/{study_plan,quiz,manifest}.json,
+  courses.json, data/<slug>/{study_plan,quiz,manifest,unit_infographics}.json,
   site/interactive.js (window.INTERACTIVE), artifacts/catalog.json
+
+assets/ ve artifacts/ git'e girmez. Bulunmadıklarında (ör. temiz bir klon)
+infoğrafikler site/assets/<slug>/ altındaki JPG'lerden, artifact katalogları
+mevcut okf/courses/<slug>/artifacts.md'den korunur.
 
 Çıktı: okf/ dizini (bundle root; index.md ile okf_version: "0.2")
 """
@@ -23,7 +27,8 @@ OKF = ROOT / "okf"
 NOW = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
 ACTOR = "acik-ilahiyat-exporter/1.0"
 
-SLUGS = ["ataturk-ilkeleri-1", "turk-dili-1", "islam-mezhepleri-tarihi"]
+# Ders listesi courses.json'dan gelir (sıra: main() içinde)
+SLUGS: list[str] = []
 
 SEMESTER_TR = {
     "guz": "Güz",
@@ -88,8 +93,16 @@ def clean_grounding(text: str) -> str:
 def aof_infographic_block(slug: str, unit: int, title: str) -> str:
     """Çok sayfalı ünitelerde sayfa PNG'lerini, tek sayfada stitch'i listeler."""
     assets = ROOT / "assets" / slug
-    pages = sorted(assets.glob(f"aof-infographic-{unit}-p*.png"))
-    stitched = assets / f"aof-infographic-{unit}.png"
+    ext = "png"
+    if not any(assets.glob(f"aof-infographic-{unit}*.png")):
+        # temiz klonda kaynak PNG'ler yok; sitede yayınlanan JPG'leri kullan
+        assets = ROOT / "site" / "assets" / slug
+        ext = "jpg"
+    pages = sorted(
+        assets.glob(f"aof-infographic-{unit}-p*.{ext}"),
+        key=lambda p: int(re.search(r"-p(\d+)\.", p.name).group(1)),
+    )
+    stitched = assets / f"aof-infographic-{unit}.{ext}"
     lines = ["# AÖF Ünite İnfoğrafik\n"]
     if pages:
         lines.append(f"Ünite {unit} infoğrafik sayfaları:\n")
@@ -97,13 +110,40 @@ def aof_infographic_block(slug: str, unit: int, title: str) -> str:
             rel = f"/assets/{slug}/{p.name}"
             lines.append(f"![{title} AÖF infoğrafik sayfa {pi}/{len(pages)}]({rel})\n")
     elif stitched.exists():
-        rel = f"/assets/{slug}/aof-infographic-{unit}.png"
+        rel = f"/assets/{slug}/{stitched.name}"
         lines.append(f"![{title} AÖF infoğrafik]({rel})\n")
     else:
         return ""
     lines.append(
         f"Kaynak PDF: `assets/{slug}/aof/` (Anadolu Üniversitesi ünite infoğrafikleri).\n"
     )
+    return "\n".join(lines)
+
+
+def load_book_units(slug: str) -> list[dict]:
+    path = ROOT / "data" / slug / "unit_infographics.json"
+    if not path.exists():
+        return []
+    return load_json(path).get("units", [])
+
+
+def book_unit_image(slug: str, unit: int) -> str:
+    img = ROOT / "site" / "assets" / slug / f"kitap-unite-{unit}.jpg"
+    return f"/assets/{slug}/{img.name}" if img.exists() else ""
+
+
+def render_book_unit(slug: str, u: dict, level: str = "##") -> str:
+    lines = [f"{level} Ünite {u['unit']}: {u.get('title', '')}\n"]
+    if u.get("lead"):
+        lines.append(f"{u['lead']}\n")
+    img = book_unit_image(slug, u["unit"])
+    if img:
+        lines.append(f"![Ünite {u['unit']} ders kitabı infoğrafiği]({img})\n")
+    for sec in u.get("sections", []):
+        lines.append(f"**{sec.get('heading', '')}**\n")
+        lines.append("\n".join(f"* {pt}" for pt in sec.get("points", [])) + "\n")
+    if u.get("keywords"):
+        lines.append(f"*Anahtar kelimeler:* {', '.join(u['keywords'])}\n")
     return "\n".join(lines)
 
 
@@ -187,6 +227,13 @@ def render_question_block(n: int, q: dict) -> str:
 
 
 def main() -> int:
+    # artifacts/ yoksa (temiz klon) mevcut katalog sayfalarını koru
+    prev_artifacts = {
+        p.parent.name: p.read_text(encoding="utf-8")
+        for p in (OKF / "courses").glob("*/artifacts.md")
+    }
+    prev_log = (OKF / "log.md").read_text(encoding="utf-8") if (OKF / "log.md").exists() else ""
+
     # temiz yeniden üretim
     if OKF.exists():
         import shutil
@@ -194,6 +241,7 @@ def main() -> int:
         shutil.rmtree(OKF)
 
     courses = load_json(ROOT / "courses.json")
+    SLUGS[:] = [s for s in courses if (ROOT / "data" / s / "study_plan.json").exists()]
     unis = load_json(ROOT / "universities.json") if (ROOT / "universities.json").exists() else {}
     interactive = dump_interactive()
     catalog = load_json(ROOT / "artifacts" / "catalog.json") if (ROOT / "artifacts" / "catalog.json").exists() else []
@@ -250,12 +298,18 @@ def main() -> int:
         + "* [Dizin](/courses/index.md)\n",
     )
 
-    write(
-        OKF / "log.md",
-        f"# Bundle Log\n\n## {NOW[:10]}\n"
+    history = prev_log.split("\n", 1)[1].lstrip("\n") if prev_log.startswith("# Bundle Log") else (
+        "## 2026-10-13\n"
         "* **Update**: Üniversite + yıl + dönem (güz/bahar) hiyerarşisi eklendi.\n"
-        "* **Creation**: İlk OKF export (courses.json, study_plan, quiz, interactive panel, artifact catalog).\n",
+        "* **Creation**: İlk OKF export (courses.json, study_plan, quiz, interactive panel, artifact catalog).\n"
     )
+    entry = (
+        f"## {NOW[:10]}\n"
+        f"* **Update**: Yeniden export; dersler: {', '.join(SLUGS)}.\n"
+    )
+    if history.startswith(entry):
+        history = history[len(entry):].lstrip("\n")
+    write(OKF / "log.md", f"# Bundle Log\n\n{entry}\n{history}")
 
     # universities index + pages
     uni_lines = ["# Üniversiteler\n"]
@@ -354,6 +408,7 @@ def main() -> int:
         chapters = plan.get("chapters", [])
         references = plan.get("references", [])
         panel = interactive.get(slug, {})
+        book_units = load_book_units(slug)
 
         notebook_id = meta.get("notebook_id") or manifest.get("notebook_id")
         notebook_url = (
@@ -399,11 +454,12 @@ def main() -> int:
             f"* Kod: {meta.get('course_code', '')} - {meta.get('course_name', '')}\n"
             f"* AKTS: {meta.get('ects_credits', '')} | Seviye: {meta.get('level', '')}\n\n",
             f"# Özet\n\n{meta.get('note', '')}\n",
-            f"# Yapı\n\n* [Bölümler](/{slug}/chapters/index.md) ({len(chapters)})\n"
-            f"* [Quiz](/{slug}/quiz.md)\n"
-            f"* [Sınavlar](/{slug}/exams/index.md) - vize, final, yaz kursu\n"
-            f"* [Çıkmış vizeler](/{slug}/exams/past/index.md)\n"
-            f"* [Artifact'ler](/{slug}/artifacts.md)\n",
+            f"# Yapı\n\n* [Bölümler](/courses/{slug}/chapters/index.md) ({len(chapters)})\n"
+            + (f"* [Ders kitabı üniteleri](/courses/{slug}/units.md) ({len(book_units)})\n" if book_units else "")
+            + f"* [Quiz](/courses/{slug}/quiz.md)\n"
+            f"* [Sınavlar](/courses/{slug}/exams/index.md) - vize, final, yaz kursu\n"
+            f"* [Çıkmış vizeler](/courses/{slug}/exams/past/index.md)\n"
+            f"* [Artifact'ler](/courses/{slug}/artifacts.md)\n",
         ]
         if panel.get("takeaways"):
             body_parts.append("# Panel Öne Çıkanları\n\n")
@@ -472,10 +528,17 @@ def main() -> int:
             lec_list = "\n".join(f"* {l}" for l in ch.get("lectures", [])) or "* (ders listesi yok)"
 
             aof_block = aof_infographic_block(slug, i, title)
+            ch_units = [u for u in book_units if u.get("chapter") == i]
+            book_block = ""
+            if ch_units:
+                book_block = "# Ders Kitabı Ünite Özeti\n\n" + "\n".join(
+                    render_book_unit(slug, u) for u in ch_units
+                )
 
             ch_body = [
                 f"# Özet\n\n{ch.get('summary', '')}\n",
                 aof_block,
+                book_block,
                 f"# Öğrenme Hedefleri\n\n{obj_list}\n" if obj_list else "",
                 f"# Dersler\n\n{lec_list}\n",
             ]
@@ -519,6 +582,32 @@ def main() -> int:
             OKF / "courses" / slug / "chapters" / "index.md",
             "\n".join(ch_index) + "\n",
         )
+
+        # ders kitabı ünite özetleri (unit_infographics.json)
+        if book_units:
+            spec = load_json(ROOT / "data" / slug / "unit_infographics.json")
+            ch_files = {
+                i: f"{i:02d}-{slugify(ch.get('title', f'Bölüm {i}'))}.md"
+                for i, ch in enumerate(chapters, 1)
+            }
+            u_lines = [f"# {meta.get('subject', slug)} Ders Kitabı Üniteleri\n"]
+            if spec.get("note"):
+                u_lines.append(f"{spec['note']}\n")
+            for u in book_units:
+                u_lines.append(render_book_unit(slug, u))
+                cn = u.get("chapter")
+                if cn in ch_files:
+                    u_lines.append(f"İlgili bölüm: [{cn}. bölüm](chapters/{ch_files[cn]})\n")
+            u_fm = [
+                ("type", "Book Units"),
+                ("title", f"{meta.get('subject', slug)} ders kitabı üniteleri"),
+                ("description", spec.get("source", "")),
+                ("course", slug),
+                ("unit_count", str(len(book_units))),
+                ("status", "stable"),
+                ("generated", f"{{ by: {ACTOR}, at: {NOW} }}"),
+            ]
+            write(OKF / "courses" / slug / "units.md", fm(u_fm) + "\n".join(u_lines))
 
         # quiz
         questions = quiz.get("questions", [])
@@ -621,6 +710,9 @@ def main() -> int:
                     kws = ", ".join(q.get("keywords") or [])
                     ch_nums = list(ch_map.get(u, []) if u else [])
                     lines.append(f"## {n}. {q.get('stem', '')}\n")
+                    for part in q.get("stemParts") or []:
+                        if part.get("img"):
+                            lines.append(f"![Soru {n} görseli](/{part['img'].lstrip('/')})\n")
                     lines.append(f"*Ünite:* {unit_t}\n")
                     if ch_nums:
                         ch_bits = []
@@ -638,7 +730,9 @@ def main() -> int:
                     for j, o in enumerate(q.get("options") or []):
                         letter = o.get("key") or letters[j]
                         mark = " *" if letter == correct or o.get("isCorrect") else ""
-                        lines.append(f"{letter}) {o.get('text', '')}{mark}")
+                        img = f"![{letter} şıkkı](/{o['image'].lstrip('/')})" if o.get("image") else ""
+                        body = " ".join(x for x in (o.get("text", ""), img) if x)
+                        lines.append(f"{letter}) {body}{mark}")
                     lines.append("")
                     sol_parts = []
                     if correct and correct_opt:
@@ -649,6 +743,8 @@ def main() -> int:
                         sol_parts.append("ilgili ders bölümleri " + ", ".join(f"{cn}. bölüm" for cn in ch_nums))
                     if sol_parts:
                         lines.append("**Çözüm:** " + "; ".join(sol_parts) + ".\n")
+                    if q.get("explanation"):
+                        lines.append(f"**Açıklama:** {q['explanation']}\n")
                 p_fm = [
                     ("type", "Past Exam"),
                     ("title", f"Çıkmış vize {exam.get('year', '')}"),
@@ -665,7 +761,7 @@ def main() -> int:
                     ("resource", f"/courses/{slug}/exams/past/{eid}.md"),
                 ]
                 write(OKF / "courses" / slug / "exams" / "past" / f"{eid}.md", fm(p_fm) + "\n".join(lines))
-                past_index.append(f"* [{exam.get('year', eid)}](past/{eid}.md) - {len(qs)} soru")
+                past_index.append(f"* [{exam.get('year', eid)}]({eid}.md) - {len(qs)} soru")
             if len(past_index) > 2:
                 write(OKF / "courses" / slug / "exams" / "past" / "index.md", "\n".join(past_index) + "\n")
             exam_index.append("* [Çıkmış vizeler](past/index.md) - arşiv, cevap anahtarı var")
@@ -677,9 +773,9 @@ def main() -> int:
         course_path = OKF / "courses" / f"{slug}.md"
         if course_path.exists():
             ctext = course_path.read_text(encoding="utf-8")
-            marker = f"* [Artifact'ler](/{slug}/artifacts.md)"
+            marker = f"* [Artifact'ler](/courses/{slug}/artifacts.md)"
             exam_links = (
-                "\n* [Sınavlar](/{slug}/exams/index.md) - vize, final, yaz kursu"
+                f"\n* [Sınavlar](/courses/{slug}/exams/index.md) - vize, final, yaz kursu"
             )
             if marker in ctext and "/exams/" not in ctext:
                 course_path.write_text(ctext.replace(marker, marker + exam_links), encoding="utf-8")
@@ -687,6 +783,9 @@ def main() -> int:
 
         # artifacts catalog page for course
         cats = by_course_cat.get(slug, {})
+        if not catalog and slug in prev_artifacts:
+            write(OKF / "courses" / slug / "artifacts.md", prev_artifacts[slug])
+            continue
         art_lines = [f"# {meta.get('subject', slug)} Artifact'leri\n"]
         CAT_TR = {
             "hazirlik-donemi": "Hazırlık Dönemi",

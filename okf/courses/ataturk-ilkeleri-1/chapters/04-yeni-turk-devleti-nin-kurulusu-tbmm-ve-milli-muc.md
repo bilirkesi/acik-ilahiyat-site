@@ -5,7 +5,7 @@ description: "Ankara'da 23 Nisan 1920'de Türkiye Büyük Millet Meclisi'nin aç
 course: ataturk-ilkeleri-1
 chapter: 4
 status: stable
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-13T19:42:22Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-14T17:33:22Z }
 notebook: "https://notebooklm.google.com/notebook/436f4e9d-25d4-4441-98f1-ed97d01b9b7f"
 ---
 
@@ -17,9 +17,9 @@ Ankara'da 23 Nisan 1920'de Türkiye Büyük Millet Meclisi'nin açılmasıyla ye
 
 Ünite 4 infoğrafik sayfaları:
 
-![Yeni Türk Devleti'nin Kuruluşu, TBMM ve Millî Mücadelenin Temelleri AÖF infoğrafik sayfa 1/2](/assets/ataturk-ilkeleri-1/aof-infographic-4-p1.png)
+![Yeni Türk Devleti'nin Kuruluşu, TBMM ve Millî Mücadelenin Temelleri AÖF infoğrafik sayfa 1/2](/assets/ataturk-ilkeleri-1/aof-infographic-4-p1.jpg)
 
-![Yeni Türk Devleti'nin Kuruluşu, TBMM ve Millî Mücadelenin Temelleri AÖF infoğrafik sayfa 2/2](/assets/ataturk-ilkeleri-1/aof-infographic-4-p2.png)
+![Yeni Türk Devleti'nin Kuruluşu, TBMM ve Millî Mücadelenin Temelleri AÖF infoğrafik sayfa 2/2](/assets/ataturk-ilkeleri-1/aof-infographic-4-p2.jpg)
 
 Kaynak PDF: `assets/ataturk-ilkeleri-1/aof/` (Anadolu Üniversitesi ünite infoğrafikleri).
 

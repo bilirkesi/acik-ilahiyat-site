@@ -5,13 +5,52 @@ description: Bu bölümde Haricilerin tekfir söylemine tepki olarak doğan Mür
 course: islam-mezhepleri-tarihi
 chapter: 4
 status: stable
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-13T19:42:22Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-14T17:33:22Z }
 notebook: "https://notebooklm.google.com/notebook/ad4a99c9-cc96-4f29-92f5-ca8638bc42c2"
 ---
 
 # Özet
 
 Bu bölümde Haricilerin tekfir söylemine tepki olarak doğan Mürcie, orta yolu arayan Mu'tezile ve ameli esas alan Ashabü'l-Hadis'in büyük günah meselesine yaklaşımları işlenmektedir. Ayrıca insan fiilleri bağlamında Cebir, Kader ve Kesp görüşleri ile Allah'ın zatı ve sıfatları etrafındaki kelami tartışmalar değerlendirilmektedir. Böylece erken dönem kelami meselelerin mezhepleşme sürecine etkileri bütüncül bir bakışla sunulmaktadır.
+
+# Ders Kitabı Ünite Özeti
+
+## Ünite 4: Ehl-i Sünnet ve’l-Cemaat
+
+Oluşumu yaklaşık dört asır süren, birden fazla mezhebi kapsayan ve bugün Müslümanların büyük çoğunluğunu temsil eden yapı.
+
+![Ünite 4 ders kitabı infoğrafiği](/assets/islam-mezhepleri-tarihi/kitap-unite-4.jpg)
+
+**Oluşum ve alt ekoller**
+
+* İfade ilk defa hicri 378 yılında kullanıldı; görüşler selef ve kelam metodu üzerine kuruldu.
+* Fıkhî: Hanefîlik, Şâfiîlik, Mâlikîlik, Hanbelîlik.
+* İtikadî: Selefîlik, Eş‘arîlik, Mâtürîdîlik.
+
+**Ashâb-ı Hadis / Selefiyye**
+
+* Hicri 2-4. asırlar; tefsir, hadis, fıkıh ve dil âlimleri.
+* İnanç esaslarını nasslarda geldiği gibi kabul ederler.
+* Yed, vech, istivâ gibi haberî sıfatları tevil etmeden tasdik eder, aklî delil aramazlar.
+
+**Ashâb-ı Rey ve kelam ekolleri**
+
+* Ashâb-ı rey: Irak ehli, yani Ebû Hanîfe ve öğrencileri.
+* Sünnî kelam mezhepleri Eş‘arîlik ve Mâtürîdîlik; akıl ve nassı birlikte değerlendirirler.
+
+**Eş‘arîlik**
+
+* Kurucusundan çok müntesiplerinin sistemleştirdiği bir mezhep.
+* 5/11. yüzyıldan bugüne Ehl-i Sünnet'i en geniş çerçevede temsil eder.
+* Yayanlar: İbn Fûrek, Gazâlî, Teftâzânî.
+
+**Mâtürîdîlik**
+
+* Sadece nakille yetinen Selefiyye ile aklı öne çıkaran Mu‘tezile arasında, akıl ve nakli uzlaştırır.
+* Mâverâünnehir; eserleri Kitâbü't-Tevhîd ve Te'vîlâtü'l-Kur'ân.
+* Yayanlar: Pezdevî, Ebü'l-Muîn en-Nesefî.
+
+*Anahtar kelimeler:* selef, haberî sıfatlar, tevil, müteşâbihât, kelam, Eş‘arî, Mâtürîdî
 
 # Öğrenme Hedefleri
 

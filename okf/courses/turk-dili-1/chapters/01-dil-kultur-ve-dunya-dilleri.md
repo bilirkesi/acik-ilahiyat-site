@@ -5,7 +5,7 @@ description: Bu bölümde dilin temel özellikleri, doğuşu, toplum ve kültür
 course: turk-dili-1
 chapter: 1
 status: stable
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-13T19:42:22Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-14T17:33:22Z }
 notebook: "https://notebooklm.google.com/notebook/c702ed26-fe17-463d-b217-202acd0c3d26"
 ---
 
@@ -17,21 +17,21 @@ Bu bölümde dilin temel özellikleri, doğuşu, toplum ve kültürle olan kökl
 
 Ünite 1 infoğrafik sayfaları:
 
-![Dil, Kültür ve Dünya Dilleri AÖF infoğrafik sayfa 1/8](/assets/turk-dili-1/aof-infographic-1-p1.png)
+![Dil, Kültür ve Dünya Dilleri AÖF infoğrafik sayfa 1/8](/assets/turk-dili-1/aof-infographic-1-p1.jpg)
 
-![Dil, Kültür ve Dünya Dilleri AÖF infoğrafik sayfa 2/8](/assets/turk-dili-1/aof-infographic-1-p2.png)
+![Dil, Kültür ve Dünya Dilleri AÖF infoğrafik sayfa 2/8](/assets/turk-dili-1/aof-infographic-1-p2.jpg)
 
-![Dil, Kültür ve Dünya Dilleri AÖF infoğrafik sayfa 3/8](/assets/turk-dili-1/aof-infographic-1-p3.png)
+![Dil, Kültür ve Dünya Dilleri AÖF infoğrafik sayfa 3/8](/assets/turk-dili-1/aof-infographic-1-p3.jpg)
 
-![Dil, Kültür ve Dünya Dilleri AÖF infoğrafik sayfa 4/8](/assets/turk-dili-1/aof-infographic-1-p4.png)
+![Dil, Kültür ve Dünya Dilleri AÖF infoğrafik sayfa 4/8](/assets/turk-dili-1/aof-infographic-1-p4.jpg)
 
-![Dil, Kültür ve Dünya Dilleri AÖF infoğrafik sayfa 5/8](/assets/turk-dili-1/aof-infographic-1-p5.png)
+![Dil, Kültür ve Dünya Dilleri AÖF infoğrafik sayfa 5/8](/assets/turk-dili-1/aof-infographic-1-p5.jpg)
 
-![Dil, Kültür ve Dünya Dilleri AÖF infoğrafik sayfa 6/8](/assets/turk-dili-1/aof-infographic-1-p6.png)
+![Dil, Kültür ve Dünya Dilleri AÖF infoğrafik sayfa 6/8](/assets/turk-dili-1/aof-infographic-1-p6.jpg)
 
-![Dil, Kültür ve Dünya Dilleri AÖF infoğrafik sayfa 7/8](/assets/turk-dili-1/aof-infographic-1-p7.png)
+![Dil, Kültür ve Dünya Dilleri AÖF infoğrafik sayfa 7/8](/assets/turk-dili-1/aof-infographic-1-p7.jpg)
 
-![Dil, Kültür ve Dünya Dilleri AÖF infoğrafik sayfa 8/8](/assets/turk-dili-1/aof-infographic-1-p8.png)
+![Dil, Kültür ve Dünya Dilleri AÖF infoğrafik sayfa 8/8](/assets/turk-dili-1/aof-infographic-1-p8.jpg)
 
 Kaynak PDF: `assets/turk-dili-1/aof/` (Anadolu Üniversitesi ünite infoğrafikleri).
 

@@ -5,13 +5,45 @@ description: Bu bölümde Hz. Peygamber sonrası liderlik tartışmalarıyla ba�
 course: islam-mezhepleri-tarihi
 chapter: 5
 status: stable
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-13T19:42:22Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-14T17:33:22Z }
 notebook: "https://notebooklm.google.com/notebook/ad4a99c9-cc96-4f29-92f5-ca8638bc42c2"
 ---
 
 # Özet
 
 Bu bölümde Hz. Peygamber sonrası liderlik tartışmalarıyla başlayıp zamanla itikadi bir yapıya dönüşen Şiilik düşüncesi ve İmamet nazariyesi ele alınmaktadır. Kerbela olayı ve Tevvabun hareketi gibi tarihsel kırılmaların Şii kimliğin teşekkülündeki belirleyici rolü açıklanmaktadır. Gaybet, takiyye, tenasüh ve Beda gibi Şii kavramlar ile 12 İmam Şiiliğinin (İsnaaşeriyye) temel esasları sunulmaktadır.
+
+# Ders Kitabı Ünite Özeti
+
+## Ünite 6: Şiîlik II
+
+İmâmiyye (İsnâaşeriyye) Şîası'nın oluşumu, on iki imam anlayışı ve gaybet doktrini.
+
+![Ünite 6 ders kitabı infoğrafiği](/assets/islam-mezhepleri-tarihi/kitap-unite-6.jpg)
+
+**Oluşum**
+
+* Hz. Hüseyin'in ölümünden sonra siyasî Şiî eğilimler giderek dinî içerik kazandı.
+* Nass-tayin nazariyesi, on iki imam ve gaybet doktrini ancak Hasan Askerî'nin vefatından sonra birleşti.
+
+**Diğer Şiî fırkalarla farkı**
+
+* İsmâiliyye'deki bâtınîlik İmâmiyye'de yoktur.
+* Zeydiyye efdal-mefdûl anlayışıyla Hz. Ebû Bekir ve Hz. Ömer'e hoşgörülüdür; İmâmiyye'de efdalin imameti zorunludur.
+* Zeydiyye'de gâib imam inancı yoktur.
+
+**On iki imam**
+
+* Ehl-i Sünnet ve diğer mezheplerin de saygıyla andığı şahsiyetlerdir.
+* İmâmiyye bu tarihî kişiliklerin üzerine büyük bir inanç ve gelenek örgüsü kurdu.
+
+**Gaybet ve sonuçları**
+
+* Yeterli tarihî delil olmadan İmam Askerî'nin bir oğlu olduğu varsayıldı.
+* Sonuç: intizar (bekleyiş) nazariyesi ve gaybet döneminde siyasî faaliyetin haram sayılması.
+* Çözüm olarak velâyet-i fakîh nazariyesi ortaya atıldı; ulemanın genel onayını almadı.
+
+*Anahtar kelimeler:* İsnâaşeriyye, nass-tayin, gaybet, intizar, Mehdî, velâyet-i fakîh
 
 # Öğrenme Hedefleri
 

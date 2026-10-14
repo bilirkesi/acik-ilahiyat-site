@@ -5,7 +5,7 @@ description: Bu bölümde Türk dilinin biçim bilgisi yapısı, en küçük anl
 course: turk-dili-1
 chapter: 4
 status: stable
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-13T19:42:22Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-14T17:33:22Z }
 notebook: "https://notebooklm.google.com/notebook/c702ed26-fe17-463d-b217-202acd0c3d26"
 ---
 
@@ -17,15 +17,15 @@ Bu bölümde Türk dilinin biçim bilgisi yapısı, en küçük anlamlı birim o
 
 Ünite 4 infoğrafik sayfaları:
 
-![Biçim Bilgisi, Ekler ve Sözcük Türleri AÖF infoğrafik sayfa 1/5](/assets/turk-dili-1/aof-infographic-4-p1.png)
+![Biçim Bilgisi, Ekler ve Sözcük Türleri AÖF infoğrafik sayfa 1/5](/assets/turk-dili-1/aof-infographic-4-p1.jpg)
 
-![Biçim Bilgisi, Ekler ve Sözcük Türleri AÖF infoğrafik sayfa 2/5](/assets/turk-dili-1/aof-infographic-4-p2.png)
+![Biçim Bilgisi, Ekler ve Sözcük Türleri AÖF infoğrafik sayfa 2/5](/assets/turk-dili-1/aof-infographic-4-p2.jpg)
 
-![Biçim Bilgisi, Ekler ve Sözcük Türleri AÖF infoğrafik sayfa 3/5](/assets/turk-dili-1/aof-infographic-4-p3.png)
+![Biçim Bilgisi, Ekler ve Sözcük Türleri AÖF infoğrafik sayfa 3/5](/assets/turk-dili-1/aof-infographic-4-p3.jpg)
 
-![Biçim Bilgisi, Ekler ve Sözcük Türleri AÖF infoğrafik sayfa 4/5](/assets/turk-dili-1/aof-infographic-4-p4.png)
+![Biçim Bilgisi, Ekler ve Sözcük Türleri AÖF infoğrafik sayfa 4/5](/assets/turk-dili-1/aof-infographic-4-p4.jpg)
 
-![Biçim Bilgisi, Ekler ve Sözcük Türleri AÖF infoğrafik sayfa 5/5](/assets/turk-dili-1/aof-infographic-4-p5.png)
+![Biçim Bilgisi, Ekler ve Sözcük Türleri AÖF infoğrafik sayfa 5/5](/assets/turk-dili-1/aof-infographic-4-p5.jpg)
 
 Kaynak PDF: `assets/turk-dili-1/aof/` (Anadolu Üniversitesi ünite infoğrafikleri).
 
