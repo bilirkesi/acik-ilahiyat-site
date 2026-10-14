@@ -249,10 +249,28 @@
   }
 
   // NotebookLM notları için en küçük markdown: başlıklar, madde imleri, kalın.
+  // Kitaptan (PDF) alınmış notlarda satırlar sayfa genişliğinde kırılmış, kelimeler yumuşak tire (U+00AD)
+  // ile ikiye bölünmüş olabilir. Bölünmüş kelimeleri birleştir, cümle ortasında kırılan satırları aynı
+  // paragrafa al; böylece metin hem düzgün görünür hem de sesli okumada kesik kesik okunmaz.
+  const LIST_LINE = /^\s*(?:[*•-]\s|#|\d+[.)]\s|[A-ZÇĞİÖŞÜ][.)]\s|---)/;
+  function unwrap(text) {
+    const lines = String(text || "").replace(/\u00ad[ \t]*\n[ \t]*/g, "").split("\n");
+    const out = [];
+    for (const raw of lines) {
+      const prev = out.length ? out[out.length - 1] : "";
+      const line = raw.trim();
+      const p = prev.trim();
+      const join = p && line && !LIST_LINE.test(line) && !/^#/.test(p) && !/[.!?:;…"”)]$|⟧$/.test(p)
+        && (/^\p{Ll}/u.test(line) || (/[\p{L},]$/u.test(p) && p.length >= 45));
+      if (join) out[out.length - 1] = /\p{L}-$/u.test(p) ? p + line : p + " " + line;
+      else out.push(raw);
+    }
+    return out.join("\n");
+  }
   function md(text) {
     const inline = (s) => ota(esc(s).replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>"));
     let html = "", inList = false;
-    for (const raw of String(text || "").split("\n")) {
+    for (const raw of unwrap(text).split("\n")) {
       const line = raw.trim();
       const bullet = line.match(/^[*-]\s+(.*)/);
       if (bullet) { if (!inList) { html += "<ul>"; inList = true; } html += "<li>" + inline(bullet[1]) + "</li>"; continue; }
@@ -3167,7 +3185,7 @@
       clone.querySelectorAll(".inline-cite, sup, .katex, .rp-act, script, style").forEach((x) => x.remove());
       // Notlarda Arap harfli dizinin yanında okunuşu zaten yazılı; diziyi atla (dokununca ayrıca dinlenir).
       clone.querySelectorAll(".ota").forEach((x) => x.replaceWith(" "));
-      return clone.textContent.replace(/\s+/g, " ").trim();
+      return clone.textContent.replace(/\u00ad/g, "").replace(/\s+/g, " ").trim();
     };
     rp.querySelectorAll(".rp-sec").forEach((sec) => {
       sec.querySelectorAll(".rp-h, .notes p, .notes li, .notes h1, .notes h2, .notes h3, .notes h4, .notes tr, .notes blockquote").forEach((el) => {
@@ -3183,7 +3201,8 @@
 
   // Cümlelere böl, çok kısa cümleleri birleştir, uzunları virgülden kır.
   function listenChunks(text) {
-    const parts = text.match(/[^.!?…:;]+[.!?…:;]*["”’)\]]*\s*/g) || [text];
+    // Cümle sonu: noktalama + boşluk + büyük harf/tırnak. "16. yüzyıl", "Hz. Ali", "vb." gibi yerlerde bölme.
+    const parts = text.split(/(?<=(?<![\s(]\d{1,4}|\b(?:Hz|vb|vs|bkz|Dr|Prof|Doç|Av|yy|s|c|a\.g\.e|M\.Ö|M\.S))[.!?…]["”’)\]]*)\s+(?=["“‘(]?\p{Lu})|(?<=[;:])\s+/u);
     const out = [];
     for (const p of parts) {
       const s = p.trim();
