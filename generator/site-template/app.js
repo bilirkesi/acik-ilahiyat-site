@@ -1064,7 +1064,7 @@
       <div class="solution-links">
         <p class="solution-label">İlgili bölüm</p>
         ${chHtml}
-        <a class="solution-link sol-self" href="#${link}">Bu sorunun kalıcı linki<span>${esc(link)}</span></a>
+        <a class="solution-link sol-self" href="${esc(link)}">Bu sorunun kalıcı linki<span>${esc(link)}</span></a>
       </div>
     </article>`;
   }
@@ -4228,7 +4228,8 @@ document.getElementById("zin").focus();
 
   // ---- yönlendirici ---------------------------------------------------------------
   function parseLoc() {
-    const raw = location.hash.replace(/^#\/?/, "");
+    // "##/..." biçimindeki eski kalıcı linkler de açılsın diye baştaki tüm # işaretleri atılır.
+    const raw = location.hash.replace(/^#+\/?/, "");
     const [pathPart, queryPart] = raw.split("?");
     const parts = pathPart.split("/").filter(Boolean);
     const query = {};
