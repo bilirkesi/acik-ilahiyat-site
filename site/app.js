@@ -624,11 +624,11 @@
         const slug = q._slug || q.course || "";
         const href = `#/course/${slug}/chapter/${m.n}`;
         return `<a class="solution-link" href="${href}">${esc(m.n)}. ${esc(m.title)}${m.summary ? `<span>${esc(m.summary)}</span>` : ""}</a>`;
-      }).join("") + (q._examId ? `<button type="button" class="sol-copy sol-game-copy" data-q="${(i || 0) + 1}">Bu sorunun linkini kopyala</button>` : "");
+      }).join("") + (q._examId ? `<button type="button" class="sol-copy sol-game-copy" data-q="${q._pos || (i || 0) + 1}">Bu sorunun linkini kopyala</button>` : "");
       box.appendChild(wrap);
       const copyBtn = wrap.querySelector(".sol-game-copy");
       if (copyBtn && q._examId) {
-        const path = `#/course/${q._slug || q.course}/past/${encodeURIComponent(q._examId)}?soru=${(i || 0) + 1}`;
+        const path = `#/course/${q._slug || q.course}/past/${encodeURIComponent(q._examId)}?soru=${q._pos || (i || 0) + 1}`;
         copyBtn.dataset.link = path;
         copyBtn.onclick = async () => {
           const abs = location.href.split("#")[0] + path;
@@ -747,7 +747,7 @@
       stage.innerHTML = `<div class="q game-q" data-q="${i}">${questionHTML(q, i)}
         <div class="btn-row game-actions">
           <button class="btn" type="button" id="check-ans">Kontrol et</button>
-          <button class="btn ghost" type="button" id="skip-q" style="display:none">Sonraki</button>
+          <button class="btn ghost" type="button" id="skip-q" hidden>Sonraki</button>
         </div>
       </div>`;
       paintHud();
@@ -761,6 +761,7 @@
         perQ[i] = Date.now() - qStart;
         const isGraded = GRADED.has(q.type);
         if (isGraded) {
+          recordAnswer(q._qid, ok, null, "exam");
           gradedDone++;
           if (ok === true) {
             gradedRight++;
@@ -955,6 +956,7 @@
   function bindUnitQuiz(c, n) {
     const q = unitQuizMap(c.slug)[String(n)];
     if (!q) return;
+    tagUnitQuizzes();
     bindQuiz(c, { questions: q.questions, gameKey: `${c.slug}:u${n}` });
   }
 
@@ -1005,7 +1007,7 @@
     const totalUnits = COURSES.reduce((n, c) => n + Object.keys(unitQuizMap(c.slug)).length, 0);
     const totalQuizQ = COURSES.reduce((n, c) => n + COURSES.find((x) => x.slug === c.slug).quiz.length, 0);
     const passedN = passedCount();
-    return `<p class="eyebrow">Sınav merkezi</p><h1>Tüm sınavlar</h1>
+    return `${todayStripHtml()}<p class="eyebrow">Sınav merkezi</p><h1>Tüm sınavlar</h1>
       <p class="lead muted">Final quiz'leri, ünite quiz'leri ve çıkmış vize arşivleri tek listede. Puan, XP ve seri ilerlemesi bu tarayıcıda saklanır.</p>
       <div class="stat" style="display:flex;gap:1.5rem;flex-wrap:wrap;margin:.5rem 0 1.4rem">
         <span><b>${COURSES.length}</b>ders</span>
@@ -1145,22 +1147,7 @@
     if (!root || !stage) return;
     const exam = pastFor(c.slug).find((s) => s.exam_id === examId) || pastFor(c.slug)[0];
     if (!exam) return;
-    const questions = (exam.questions || []).map((q) => ({
-      ...q,
-      _slug: c.slug,
-      course: c.slug,
-      type: "multiple_choice",
-      question: q.question || q.stem || "",
-      solution: q.solution || "",
-      chapterMeta: q.chapterMeta || [],
-      answerOptions: (q.options || []).map((o) => ({
-        text: o.text,
-        image: o.image,
-        imageSize: o.imageSize,
-        rationale: o.rationale || "",
-        isCorrect: !!(o.isCorrect || (q.correct && o.key === q.correct)),
-      })),
-    }));
+    const questions = (exam.questions || []).map((q, i) => pastToQuiz(q, c.slug, exam, i));
     const hasKey = questions.some((q) => q.answerOptions.some((o) => o.isCorrect));
     const startQ = Math.max(1, Math.min(questions.length || 1, parseInt(String(parseLoc().query.soru || "1").split("#")[0], 10) || 1));
     let idx = startQ - 1, right = 0, streak = 0, bestStreakRun = 0, xp = 0, gradedDone = 0, gradedRight = 0;
@@ -1217,6 +1204,7 @@
         check.onclick = () => {
           const ok = grade(q, i, stage);
           showFeedback(q, i, ok, box);
+          recordAnswer(q._qid, ok, null, "exam");
           check.hidden = true;
           skip.hidden = true;
           gradedDone++;
@@ -1267,6 +1255,7 @@
         self.querySelectorAll("[data-mark]").forEach((btn) => {
           btn.onclick = () => {
             const ok = btn.dataset.mark === "ok";
+            recordAnswer(q._qid, ok, null, "exam");
             gradedDone++;
             if (ok) {
               gradedRight++;
@@ -1319,6 +1308,654 @@
     showQuestion(idx);
   }
 
+  // ---- öğrenme döngüsü: aralıklı tekrar, hatalarım, günlük seri ve hedef ------------
+  // Her puanlı cevap (final, ünite quiz'i, çıkmış vize, tekrar) bir "kart"a işlenir. Kartlar FSRS-4.5
+  // (açık kaynak aralıklı tekrar algoritması, varsayılan ağırlıklar) ile planlanır; bir sonraki
+  // tekrar, unutma olasılığı %10'a çıktığı gün gelir. Yanlış cevaplanan sorular "Hatalarım"da durur.
+  // Veri ayrı anahtarda saklanır: localStorage[storageKey + ".study"].
+  //   cards[id] = { s, d, due, last, reps, lapses, ok, wrong, right, fixedAt }
+  //   days["YYYY-MM-DD"] = { n: cevap, ok: doğru, rev: tekrar, fresh: yeni kart, read: okunan bölüm }
+  const STUDY_KEY = CONFIG.storageKey + ".study";
+  const DAY_MS = 86400000;
+  const GOAL_OPTIONS = [10, 20, 30, 50];
+  const NEW_OPTIONS = [0, 5, 10, 20, 30];
+  function loadStudy() {
+    let s = {};
+    try { s = JSON.parse(localStorage.getItem(STUDY_KEY)) || {}; } catch (e) { s = {}; }
+    return Object.assign({ v: 1, cards: {}, days: {}, frozen: [], goal: 20, newPerDay: 10, courses: null, goalDone: "" }, s);
+  }
+  function saveStudy() {
+    try { localStorage.setItem(STUDY_KEY, JSON.stringify(study)); } catch (e) { /* özel mod */ }
+  }
+  let study = loadStudy();
+
+  // -- tarih yardımcıları (yerel gün) --
+  const dayKey = (t) => { const d = new Date(t); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`; };
+  const dayStart = (t) => { const d = new Date(t); d.setHours(0, 0, 0, 0); return d.getTime(); };
+  const addDays = (t, n) => { const d = new Date(t); d.setDate(d.getDate() + n); return d.getTime(); };
+  const todayKey = () => dayKey(Date.now());
+  const TR_MONTHS = ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"];
+  const fmtDay = (key) => { const [y, m, d] = key.split("-").map(Number); return `${d} ${TR_MONTHS[m - 1]}`; };
+  function dayRec(key) {
+    return study.days[key] || (study.days[key] = { n: 0, ok: 0, rev: 0, fresh: 0, read: 0 });
+  }
+  const isActive = (key) => { const r = study.days[key]; return !!(r && (r.n || r.read)) || study.frozen.includes(key); };
+
+  // Seri: bugünden (bugün henüz çalışılmadıysa dünden) geriye kesintisiz aktif gün sayısı.
+  function streakInfo() {
+    let t = Date.now();
+    const today = isActive(dayKey(t));
+    if (!today) t = addDays(t, -1);
+    let n = 0;
+    while (isActive(dayKey(t))) { n++; t = addDays(t, -1); }
+    return { n, today };
+  }
+  function bestStreak() {
+    const keys = Object.keys(study.days).filter(isActive).concat(study.frozen).sort();
+    let best = 0, run = 0, prev = null;
+    for (const k of Array.from(new Set(keys))) {
+      const t = new Date(k + "T12:00:00").getTime();
+      run = prev !== null && dayKey(addDays(prev, 1)) === k ? run + 1 : 1;
+      best = Math.max(best, run);
+      prev = t;
+    }
+    return best;
+  }
+  // Seri dondurma: ayda bir kez, tek bir boş gün seriyi bozmaz (dün boşsa ve önceki gün aktifse).
+  function applyFreeze() {
+    const y = addDays(Date.now(), -1), yk = dayKey(y);
+    const month = yk.slice(0, 7);
+    if (isActive(yk) || !isActive(dayKey(addDays(y, -1)))) return;
+    if (study.frozen.some((k) => k.slice(0, 7) === month)) return;
+    study.frozen.push(yk);
+    saveStudy();
+  }
+  const freezeUsedThisMonth = () => study.frozen.find((k) => k.slice(0, 7) === todayKey().slice(0, 7)) || "";
+
+  // -- FSRS-4.5 --
+  const FSRS_W = [0.4872, 1.4003, 3.7145, 13.8206, 5.1618, 1.2298, 0.8975, 0.031, 1.6474, 0.1367, 1.0461, 2.1072, 0.0793, 0.3246, 1.587, 0.2272, 2.8755];
+  const FSRS_DECAY = -0.5, FSRS_FACTOR = 19 / 81;
+  const clampD = (d) => Math.min(10, Math.max(1, d));
+  const initD = (g) => clampD(FSRS_W[4] - (g - 3) * FSRS_W[5]);
+  const retrievability = (days, s) => Math.pow(1 + FSRS_FACTOR * days / s, FSRS_DECAY);
+  const intervalDays = (s) => Math.min(365, Math.max(1, Math.round(s))); // %90 hedef tutmada aralık = kararlılık
+  // Kararlılık (gün): g = 1 Tekrar (bilemedim), 2 Zor, 3 İyi, 4 Kolay.
+  function fsrsStability(c, g, now) {
+    if (!c.reps || !c.s) return FSRS_W[g - 1];
+    const elapsed = Math.max(0, (now - c.last) / DAY_MS);
+    const r = retrievability(elapsed, c.s);
+    if (g === 1) return Math.min(c.s, FSRS_W[11] * Math.pow(c.d, -FSRS_W[12]) * (Math.pow(c.s + 1, FSRS_W[13]) - 1) * Math.exp(FSRS_W[14] * (1 - r)));
+    // Aynı gün içindeki ikinci bakış: FSRS-5'in kısa dönem formülü (uzun dönem formülü burada neredeyse hiç büyümez).
+    if (elapsed < 1) return c.s * Math.exp(0.5425 * (g - 3 + 0.0912));
+    return c.s * (1 + Math.exp(FSRS_W[8]) * (11 - c.d) * Math.pow(c.s, -FSRS_W[9]) * (Math.exp(FSRS_W[10] * (1 - r)) - 1)
+      * (g === 2 ? FSRS_W[15] : 1) * (g === 4 ? FSRS_W[16] : 1));
+  }
+  // Kartın yeni hâlini döndürür (eskisini değiştirmez). ivl: gün cinsinden aralık; Zor < İyi < Kolay sırası korunur.
+  function fsrsNext(card, g, now) {
+    const c = Object.assign({ reps: 0, lapses: 0 }, card);
+    const s = Math.max(0.1, fsrsStability(c, g, now));
+    let ivl = g === 1 ? 0 : intervalDays(s);
+    if (g === 3) ivl = Math.max(ivl, intervalDays(fsrsStability(c, 2, now)) + 1);
+    if (g === 4) ivl = Math.max(ivl, intervalDays(fsrsStability(c, 3, now)) + 2);
+    ivl = Math.min(365, ivl);
+    c.d = !c.reps || !c.d ? initD(g) : clampD(FSRS_W[7] * initD(3) + (1 - FSRS_W[7]) * (c.d - FSRS_W[6] * (g - 3)));
+    if (g === 1 && c.reps) c.lapses++;
+    c.s = s;
+    c.ivl = ivl;
+    c.reps++;
+    c.last = now;
+    // Bilemediğin kart 10 dakika sonra aynı oturumda yeniden gelir; diğerleri gün başında açılır.
+    c.due = g === 1 ? now + 10 * 60000 : addDays(dayStart(now), ivl);
+    return c;
+  }
+  const fmtInterval = (card, g) => {
+    if (g === 1) return "10 dk";
+    const days = fsrsNext(card, g, Date.now()).ivl;
+    return days < 30 ? `${days} g` : days < 365 ? `${Math.round(days / 30)} ay` : "1 yıl";
+  };
+
+  // -- soru bankası: her puanlı sorunun kalıcı kimliği ve oynatılabilir hâli --
+  function hashStr(s) {
+    let h = 0x811c9dc5;
+    for (let i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 0x01000193); }
+    return (h >>> 0).toString(36);
+  }
+  const termName = (t) => String(t || "guz").replace("guz", "Güz").replace("bahar", "Bahar").replace("yaz", "Yaz");
+  // Çıkmış vize sorusunu oyun motorunun beklediği biçime çevirir (cevap anahtarı seçeneklerde işaretli).
+  function pastToQuiz(q, slug, exam, i) {
+    return {
+      ...q,
+      _slug: slug,
+      course: slug,
+      _examId: exam.exam_id,
+      _qid: `p:${slug}:${exam.exam_id}:${q.n || i + 1}`,
+      _pos: i + 1,
+      type: "multiple_choice",
+      question: q.question || q.stem || "",
+      solution: q.solution || "",
+      chapterMeta: q.chapterMeta || [],
+      answerOptions: (q.options || []).map((o) => ({
+        text: o.text,
+        image: o.image,
+        imageSize: o.imageSize,
+        rationale: o.rationale || "",
+        isCorrect: !!(o.isCorrect || (q.correct && o.key === q.correct)),
+      })),
+    };
+  }
+  COURSES.forEach((c) => (c.quiz || []).forEach((q) => { q._qid = `f:${c.slug}:${hashStr(q.question || "")}`; q._slug = c.slug; }));
+  function tagUnitQuizzes() {
+    for (const c of COURSES) {
+      for (const [u, set] of Object.entries(unitQuizMap(c.slug))) {
+        (set.questions || []).forEach((q) => { if (!q._qid) { q._qid = `u:${c.slug}:${u}:${hashStr(q.question || q.stem || "")}`; q._slug = c.slug; } });
+      }
+    }
+  }
+  let bankCache = null, bankSig = "";
+  // id -> { q, slug, unit, label, href } ; çıkmış sorular past_exams.js yüklüyse eklenir.
+  function questionBank() {
+    const sig = Object.keys(PAST()).length + ":" + Object.keys(UQ()).length;
+    if (bankCache && sig === bankSig) return bankCache;
+    tagUnitQuizzes();
+    const bank = new Map();
+    for (const c of COURSES) {
+      (c.quiz || []).forEach((q, i) => {
+        if (GRADED.has(q.type)) bank.set(q._qid, { q, slug: c.slug, unit: 0, label: `Final · ${i + 1}. soru`, href: `#/course/${c.slug}/quiz` });
+      });
+      for (const [u, set] of Object.entries(unitQuizMap(c.slug))) {
+        (set.questions || []).forEach((q, i) => {
+          if (GRADED.has(q.type)) bank.set(q._qid, { q, slug: c.slug, unit: +u, label: `Ünite ${u} quiz · ${i + 1}. soru`, href: `#/course/${c.slug}/unit-quiz/${u}` });
+        });
+      }
+      for (const exam of pastFor(c.slug)) {
+        (exam.questions || []).forEach((raw, i) => {
+          const q = pastToQuiz(raw, c.slug, exam, i);
+          if (!q.answerOptions.some((o) => o.isCorrect)) return;
+          bank.set(q._qid, {
+            q, slug: c.slug, unit: +raw.unit || 0,
+            label: `${exam.year || exam.exam_id} ${termName(exam.term)} vize${exam.group && exam.group !== "A" ? " " + exam.group + " grup" : ""} · ${i + 1}. soru`,
+            href: `#/course/${c.slug}/past/${encodeURIComponent(exam.exam_id)}?mod=rehber&soru=${i + 1}`,
+          });
+        });
+      }
+    }
+    bankCache = bank; bankSig = sig;
+    return bank;
+  }
+
+  // -- cevap kaydı: tüm sınav modları buradan geçer --
+  // g verilmezse doğru=İyi(3), yanlış=Tekrar(1) sayılır. kind: "exam" | "review" | "fresh"
+  function recordAnswer(id, ok, g, kind) {
+    if (!id || ok === null || ok === undefined) return;
+    const now = Date.now();
+    const key = dayKey(now);
+    const wasActive = isActive(key);
+    const prev = study.cards[id];
+    const card = fsrsNext(prev, g || (ok ? 3 : 1), now);
+    card.right = (prev && prev.right || 0) + (ok ? 1 : 0);
+    card.wrong = (prev && prev.wrong || 0) + (ok ? 0 : 1);
+    if (ok && prev && prev.ok === false) card.fixedAt = now;
+    card.ok = !!ok;
+    study.cards[id] = card;
+    const day = dayRec(key);
+    day.n++;
+    if (ok) day.ok++;
+    if (kind === "review") day.rev++;
+    if (kind === "fresh" || (!prev && kind === "review")) day.fresh++;
+    saveStudy();
+    afterActivity(wasActive, key);
+  }
+  function recordRead() {
+    const key = todayKey();
+    const wasActive = isActive(key);
+    dayRec(key).read++;
+    saveStudy();
+    afterActivity(wasActive, key);
+  }
+  function afterActivity(wasActive, key) {
+    const day = study.days[key];
+    if (!wasActive) {
+      const s = streakInfo().n;
+      if (s > 1) showToast(`Seri ${s} gün oldu. Böyle devam!`);
+    }
+    if (day.n >= study.goal && study.goalDone !== key) {
+      study.goalDone = key;
+      saveStudy();
+      showToast(`Günlük hedef tamam: bugün ${day.n} soru çözdün.`, "Çalışma masası", () => { location.hash = "#/calisma"; });
+    }
+    paintStudyBadges();
+  }
+
+  // -- sayımlar --
+  const dueCards = (now) => Object.entries(study.cards).filter(([, c]) => c.due <= (now || Date.now()));
+  const openMistakes = () => Object.entries(study.cards).filter(([, c]) => c.ok === false);
+  const courseOfId = (id) => id.split(":")[1];
+  const studyCourses = () => (Array.isArray(study.courses) && study.courses.length ? study.courses.filter((s) => bySlug[s]) : COURSES.map((c) => c.slug));
+  const freshLeftToday = () => Math.max(0, study.newPerDay - ((study.days[todayKey()] || {}).fresh || 0));
+  function paintStudyBadges() {
+    const n = dueCards().filter(([id]) => bySlug[courseOfId(id)]).length;
+    document.querySelectorAll("[data-due-badge]").forEach((b) => { b.hidden = !n; b.textContent = n > 99 ? "99+" : String(n); });
+  }
+
+  // Yeni kartlar: seçili derslerden sırayla (ders ders karışık), ünite sırasına göre; hiç görülmemiş sorular.
+  function freshCandidates(limit, bank) {
+    const lists = studyCourses().map((slug) => [...bank.entries()]
+      .filter(([id, x]) => x.slug === slug && !study.cards[id])
+      .sort((a, b) => (a[1].unit || 99) - (b[1].unit || 99) || a[0].localeCompare(b[0])));
+    const out = [];
+    for (let i = 0; out.length < limit && lists.some((l) => i < l.length); i++) {
+      for (const l of lists) if (i < l.length && out.length < limit) out.push(l[i][0]);
+    }
+    return out;
+  }
+
+  // -- ana sayfa şeridi --
+  const FLAME = `<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M12 2c1 3.5-1.6 5.3-2.8 7.4C8 11.5 8.3 14 10 15c-.3-1.7.6-3 2-4 .2 2.4 2.8 3.4 2.8 6 0 2.1-1.6 3.8-3.8 4C7.5 21.3 5 18.6 5 15.3 5 9.6 11 7.6 12 2zm3.3 6.2c2.6 1.9 3.7 4.6 3.7 7 0 3.2-2.3 6-5.5 6.7 1.6-1 2.6-2.7 2.6-4.6 0-3.2-2.4-4.3-2-7.3.4-.6.8-1.2 1.2-1.8z"/></svg>`;
+  function todayStripHtml() {
+    const st = streakInfo();
+    const day = study.days[todayKey()] || { n: 0 };
+    const due = dueCards().filter(([id]) => bySlug[courseOfId(id)]).length;
+    const mist = openMistakes().length;
+    const goalPct = Math.min(100, Math.round((day.n / study.goal) * 100));
+    return `<section class="today-strip" aria-label="Bugünkü çalışma">
+      <a class="ts-item ts-streak${st.today ? " lit" : ""}" href="#/calisma">${FLAME}<span><b>${st.n}</b> gün seri</span></a>
+      <a class="ts-item ts-goal" href="#/calisma"><span class="ring" style="--p:${goalPct}"><i>${goalPct}%</i></span><span><b>${day.n}/${study.goal}</b> bugünkü hedef</span></a>
+      <a class="ts-item" href="#/tekrar"><span><b>${due}</b> tekrar bekliyor</span></a>
+      <a class="ts-item" href="#/hatalar"><span><b>${mist}</b> açık hata</span></a>
+      <a class="btn ts-cta" href="#/tekrar">${due ? "Tekrara başla" : "Yeni kart öğren"}</a>
+    </section>`;
+  }
+
+  // -- #/calisma: çalışma masası (seri, hedef, haftalık özet, ısı haritası, ayarlar) --
+  function weekStats(offsetWeeks) {
+    const now = new Date();
+    const monday = dayStart(addDays(now.getTime(), -((now.getDay() + 6) % 7) - 7 * offsetWeeks));
+    const s = { n: 0, ok: 0, rev: 0, read: 0, active: 0 };
+    for (let i = 0; i < 7; i++) {
+      const k = dayKey(addDays(monday, i));
+      const r = study.days[k];
+      if (r) { s.n += r.n; s.ok += r.ok; s.rev += r.rev; s.read += r.read; }
+      if (isActive(k)) s.active++;
+    }
+    return s;
+  }
+  function trend(a, b) {
+    if (a === b) return `<span class="trend">aynı</span>`;
+    return a > b ? `<span class="trend up">▲ ${a - b}</span>` : `<span class="trend down">▼ ${b - a}</span>`;
+  }
+  function heatmapHtml(weeks) {
+    const today = Date.now();
+    const start = addDays(dayStart(today), -((new Date(today).getDay() + 6) % 7) - 7 * (weeks - 1));
+    let cells = "";
+    for (let w = 0; w < weeks; w++) {
+      for (let d = 0; d < 7; d++) {
+        const t = addDays(start, w * 7 + d);
+        const k = dayKey(t);
+        if (t > today) { cells += `<i class="hm-cell future"></i>`; continue; }
+        const r = study.days[k];
+        const n = r ? r.n + r.read * 3 : 0;
+        const lvl = study.frozen.includes(k) && !n ? "frz" : n === 0 ? 0 : n < 10 ? 1 : n < 25 ? 2 : n < 50 ? 3 : 4;
+        cells += `<i class="hm-cell l${lvl}" title="${fmtDay(k)}: ${r ? `${r.n} soru, ${r.read} bölüm` : lvl === "frz" ? "seri donduruldu" : "çalışılmadı"}"></i>`;
+      }
+    }
+    return `<div class="heatmap" style="--weeks:${weeks}" role="img" aria-label="Son ${weeks} haftanın çalışma takvimi">${cells}</div>
+      <div class="hm-legend"><span>Az</span><i class="hm-cell l0"></i><i class="hm-cell l1"></i><i class="hm-cell l2"></i><i class="hm-cell l3"></i><i class="hm-cell l4"></i><span>Çok</span><i class="hm-cell lfrz"></i><span>Dondurma</span></div>`;
+  }
+  function forecastHtml() {
+    const start = dayStart(Date.now());
+    const counts = Array.from({ length: 7 }, (_, i) => {
+      const from = i === 0 ? -Infinity : addDays(start, i), to = addDays(start, i + 1);
+      return Object.values(study.cards).filter((c) => c.due >= from && c.due < to).length;
+    });
+    const max = Math.max(1, ...counts);
+    const names = ["Bugün", "Yarın"].concat(Array.from({ length: 5 }, (_, i) => ["Paz", "Pzt", "Sal", "Çar", "Per", "Cum", "Cmt"][new Date(addDays(start, i + 2)).getDay()]));
+    return `<div class="forecast">${counts.map((n, i) => `<div class="fc-col"><span class="fc-n">${n}</span><i style="height:${Math.round((n / max) * 100)}%"></i><span class="fc-d">${names[i]}</span></div>`).join("")}</div>`;
+  }
+  function deckLevels() {
+    const out = { learning: 0, young: 0, mature: 0 };
+    for (const c of Object.values(study.cards)) {
+      if (c.ok === false || c.s < 3) out.learning++;
+      else if (c.s < 21) out.young++;
+      else out.mature++;
+    }
+    return out;
+  }
+  function viewStudyDesk() {
+    const st = streakInfo();
+    const day = study.days[todayKey()] || { n: 0, ok: 0, rev: 0, read: 0 };
+    const due = dueCards().filter(([id]) => bySlug[courseOfId(id)]).length;
+    const mist = openMistakes().length;
+    const goalPct = Math.min(100, Math.round((day.n / study.goal) * 100));
+    const w = weekStats(0), pw = weekStats(1);
+    const acc = w.n ? pct(w.ok / w.n) : "-";
+    const lv = deckLevels();
+    const total = Object.keys(study.cards).length;
+    const frz = freezeUsedThisMonth();
+    const sel = new Set(studyCourses());
+    return `<p class="eyebrow">Öğrenme döngüsü</p><h1>Çalışma masan</h1>
+      <p class="lead muted">Her gün biraz: unutmak üzere olduğun sorular tekrar kuyruğuna gelir, yanlışların ayrı bir listede toplanır, serin ve hedefin burada izlenir.</p>
+      <div class="desk-grid">
+        <section class="desk-card desk-streak${st.today ? " lit" : ""}">
+          <div class="desk-big">${FLAME}<b>${st.n}</b><span>gün seri</span></div>
+          <p class="muted">${st.today ? "Bugün çalıştın, seri güvende." : st.n ? "Seriyi korumak için bugün en az bir soru çöz ya da bir bölüm oku." : "Bir soru çözerek ya da bir bölüm okuyarak seriyi başlat."}</p>
+          <p class="desk-meta">En uzun seri: <b>${Math.max(bestStreak(), st.n)}</b> gün · Seri dondurma: ${frz ? `bu ay ${fmtDay(frz)} günü kullanıldı` : "bu ay 1 hakkın var (tek boş gün seriyi bozmaz)"}</p>
+        </section>
+        <section class="desk-card desk-goal">
+          <div class="goal-ring" style="--p:${goalPct}"><div><b>${day.n}</b><span>/ ${study.goal} soru</span></div></div>
+          <div>
+            <h3>Bugünkü hedef</h3>
+            <p class="muted">${day.n >= study.goal ? "Hedef tamam. Ekstra her soru bir sonraki tekrarı kolaylaştırır." : `Hedefe ${study.goal - day.n} soru kaldı.`}</p>
+            <p class="desk-meta">${day.ok} doğru · ${day.rev} tekrar · ${day.read} bölüm okundu</p>
+          </div>
+        </section>
+        <a class="desk-card desk-action" href="#/tekrar">
+          <span class="desk-k">Aralıklı tekrar</span>
+          <b class="desk-n">${due}</b>
+          <span>${due ? "kart bugün tekrar bekliyor" : "kart bekliyor, bugünlük tamam"}${freshLeftToday() ? ` · ${freshLeftToday()} yeni kart hakkı` : ""}</span>
+          <span class="btn">${due ? "Tekrara başla" : "Yeni kart öğren"}</span>
+        </a>
+        <a class="desk-card desk-action" href="#/hatalar">
+          <span class="desk-k">Hatalarım</span>
+          <b class="desk-n">${mist}</b>
+          <span>${mist ? "soruyu henüz düzeltmedin" : "açık hata yok"}</span>
+          <span class="btn ghost">${mist ? "Yanlışlarımı çöz" : "Listeye bak"}</span>
+        </a>
+      </div>
+      <h2>Bu hafta</h2>
+      <div class="week-grid">
+        <div class="stat"><b>${w.n}</b><span>soru</span> ${trend(w.n, pw.n)}</div>
+        <div class="stat"><b>${acc}</b><span>doğruluk</span></div>
+        <div class="stat"><b>${w.rev}</b><span>tekrar</span> ${trend(w.rev, pw.rev)}</div>
+        <div class="stat"><b>${w.read}</b><span>bölüm</span> ${trend(w.read, pw.read)}</div>
+        <div class="stat"><b>${w.active}/7</b><span>aktif gün</span></div>
+      </div>
+      <p class="muted small">Geçen hafta: ${pw.n} soru, ${pw.rev} tekrar, ${pw.read} bölüm, ${pw.active} aktif gün.</p>
+      <div class="desk-two">
+        <section class="desk-card">
+          <h3>Son 16 hafta</h3>
+          ${heatmapHtml(16)}
+        </section>
+        <section class="desk-card">
+          <h3>Önümüzdeki 7 gün</h3>
+          ${total ? forecastHtml() : `<p class="muted">Kart desteğin boş. Bir sınav çöz ya da tekrar sayfasından yeni kart öğren.</p>`}
+          <p class="desk-meta">Destede <b>${total}</b> kart: ${lv.learning} öğreniliyor · ${lv.young} pekişiyor · ${lv.mature} oturmuş (3 haftadan uzun aralık)</p>
+        </section>
+      </div>
+      <h2>Ayarlar</h2>
+      <form class="desk-card desk-settings" id="study-settings">
+        <label>Günlük hedef
+          <select name="goal">${GOAL_OPTIONS.map((n) => `<option value="${n}"${n === study.goal ? " selected" : ""}>${n} soru</option>`).join("")}</select>
+        </label>
+        <label>Günde yeni kart
+          <select name="newPerDay">${NEW_OPTIONS.map((n) => `<option value="${n}"${n === study.newPerDay ? " selected" : ""}>${n ? n + " kart" : "Kapalı"}</option>`).join("")}</select>
+        </label>
+        <fieldset><legend>Tekrara katılan dersler</legend>
+          ${COURSES.map((c) => `<label class="chk"><input type="checkbox" name="course" value="${esc(c.slug)}"${sel.has(c.slug) ? " checked" : ""}> ${esc(c.subject)}</label>`).join("")}
+        </fieldset>
+        <p class="muted small">Ayarlar ve tekrar geçmişi bu tarayıcıda saklanır; <a href="#/cevrimdisi?b=yedek">yedek koduna</a> dahildir.</p>
+      </form>`;
+  }
+  function bindStudyDesk() {
+    const f = document.getElementById("study-settings");
+    if (!f) return;
+    f.addEventListener("change", () => {
+      study.goal = +f.goal.value || 20;
+      study.newPerDay = +f.newPerDay.value;
+      const picked = [...f.querySelectorAll("[name=course]:checked")].map((x) => x.value);
+      study.courses = picked.length === COURSES.length ? null : picked;
+      saveStudy();
+      showToast("Ayarlar kaydedildi.");
+    });
+  }
+
+  // -- #/tekrar ve #/hatalar oturumları (aynı motor) --
+  function courseFilterHtml(mode, active, counts) {
+    const href = (slug) => `#/${mode}${slug ? "?ders=" + slug : ""}`;
+    const total = Object.values(counts).reduce((a, b) => a + b, 0);
+    return `<div class="chip-row filter-row" role="tablist">
+      <a class="chip${!active ? " active" : ""}" href="${href("")}">Tümü · ${total}</a>
+      ${COURSES.filter((c) => counts[c.slug]).map((c) => `<a class="chip${active === c.slug ? " active" : ""}" href="${href(c.slug)}">${esc(c.subject)} · ${counts[c.slug]}</a>`).join("")}
+    </div>`;
+  }
+  function countBy(entries) {
+    const out = {};
+    for (const [id] of entries) { const s = courseOfId(id); if (bySlug[s]) out[s] = (out[s] || 0) + 1; }
+    return out;
+  }
+
+  function viewReview(query) {
+    const slug = bySlug[query.ders] ? query.ders : "";
+    const due = dueCards().filter(([id]) => bySlug[courseOfId(id)]);
+    const mine = due.filter(([id]) => !slug || courseOfId(id) === slug);
+    const fresh = freshLeftToday();
+    return `<p class="crumbs"><a href="#/calisma">Çalışma masan</a> / Aralıklı tekrar</p>
+      <div class="quiz-head">
+        <div><p class="eyebrow">Aralıklı tekrar</p><h1 style="margin:0">Bugünün tekrarları</h1></div>
+        <div class="muted" style="font-size:.9rem">${mine.length} bekleyen kart · ${fresh} yeni kart hakkı</div>
+      </div>
+      <p class="muted">Soruyu çöz, sonra ne kadar kolay geldiğini işaretle. Zorlandığın kart yakında, kolay bildiğin kart haftalar sonra yeniden gelir. Kısayol: 1-4 tuşları.</p>
+      ${due.length ? courseFilterHtml("tekrar", slug, countBy(due)) : ""}
+      <div id="session" data-mode="tekrar" data-course="${esc(slug)}"></div>`;
+  }
+
+  function viewMistakes(query) {
+    const slug = bySlug[query.ders] ? query.ders : "";
+    const all = openMistakes().filter(([id]) => bySlug[courseOfId(id)]);
+    const list = all.filter(([id]) => !slug || courseOfId(id) === slug).sort((a, b) => (b[1].wrong - a[1].wrong) || (b[1].last - a[1].last));
+    const fixedWeek = Object.values(study.cards).filter((c) => c.ok && c.fixedAt && c.fixedAt > addDays(Date.now(), -7)).length;
+    const bank = questionBank();
+    const units = {};
+    for (const [id] of list) { const x = bank.get(id); const u = x && x.unit ? x.unit : 0; units[u] = (units[u] || 0) + 1; }
+    const weakest = !slug ? [] : Object.entries(units).filter(([u]) => +u).sort((a, b) => b[1] - a[1]).slice(0, 3);
+    const rows = list.map(([id, card]) => {
+      const x = bank.get(id);
+      if (!x) return "";
+      const c = bySlug[x.slug];
+      const stem = String(x.q.question || x.q.stem || "").replace(/\s+/g, " ");
+      return `<li class="mistake" data-id="${esc(id)}">
+        <div class="mistake-body">
+          <p class="mistake-meta">${esc(c.subject)} · ${esc(x.label)}${x.unit ? ` · Ünite ${x.unit}` : ""}</p>
+          <p class="mistake-q">${txt(stem.length > 180 ? stem.slice(0, 177) + "…" : stem)}</p>
+          <p class="mistake-meta">${card.wrong} kez yanlış${card.right ? `, ${card.right} kez doğru` : ""} · son: ${fmtDay(dayKey(card.last))}</p>
+        </div>
+        <div class="mistake-actions">
+          <a class="btn ghost sm-mini" href="${esc(x.href)}">Çözüme bak</a>
+          <button class="btn ghost sm-mini" type="button" data-drop="${esc(id)}">Listeden çıkar</button>
+        </div>
+      </li>`;
+    }).join("");
+    return `<p class="crumbs"><a href="#/calisma">Çalışma masan</a> / Hatalarım</p>
+      <div class="quiz-head">
+        <div><p class="eyebrow">Hatalarım</p><h1 style="margin:0">Yanlış çözdüğün sorular</h1></div>
+        <div class="muted" style="font-size:.9rem">${all.length} açık hata · son 7 günde ${fixedWeek} düzeltildi</div>
+      </div>
+      <p class="muted">Bir soruyu yanlış cevapladığında buraya düşer, doğru cevapladığında listeden çıkar. Pasif okumak yerine yanlışlarını yeniden çözmek en hızlı kazanımdır.</p>
+      ${all.length ? courseFilterHtml("hatalar", slug, countBy(all)) : ""}
+      ${weakest.length ? `<p class="weak-units">En çok hata: ${weakest.map(([u, n]) => `<span class="chip">Ünite ${u} · ${n}</span>`).join(" ")}${slug ? ` <a href="#/course/${slug}/chapter/${weakest[0][0]}">Ünite ${weakest[0][0]} konu anlatımına git</a>` : ""}</p>` : ""}
+      <div id="session" data-mode="hatalar" data-course="${esc(slug)}" hidden></div>
+      ${list.length
+        ? `<div class="btn-row" id="mistake-start"><button class="btn" type="button" data-start>Yanlışlarımı çöz (${list.length})</button></div><ol class="mistake-list">${rows}</ol>`
+        : `<div class="desk-card empty-state"><h3>${all.length ? "Bu derste açık hata yok" : "Henüz hata yok"}</h3><p class="muted">Sınav, ünite quiz'i ya da çıkmış vize çözdükçe yanlışların burada toplanır.</p><div class="btn-row"><a class="btn" href="#/sinavlar">Sınavlara git</a></div></div>`}`;
+  }
+
+  function bindMistakes() {
+    document.querySelectorAll("[data-drop]").forEach((b) => {
+      b.onclick = () => {
+        const card = study.cards[b.dataset.drop];
+        if (card) { card.ok = null; saveStudy(); }
+        b.closest(".mistake").remove();
+        paintStudyBadges();
+      };
+    });
+    const start = document.querySelector("[data-start]");
+    if (start) start.onclick = () => {
+      document.getElementById("mistake-start").remove();
+      document.querySelector(".mistake-list").remove();
+      const s = document.getElementById("session");
+      s.hidden = false;
+      runSession(s);
+    };
+  }
+
+  function shuffle(a) {
+    for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; }
+    return a;
+  }
+
+  // Oturum: tekrar kipinde kuyruk = vadesi gelen kartlar + günlük yeni kart hakkı; "Tekrar" denen
+  // kart birkaç soru sonra yeniden gelir. Hatalar kipinde kuyruk = açık hatalar (karışık sırada).
+  function runSession(root) {
+    const mode = root.dataset.mode;
+    const slug = root.dataset.course;
+    const bank = questionBank();
+    const inScope = (id) => bank.has(id) && (!slug || courseOfId(id) === slug);
+    let queue, freshIds = new Set();
+    if (mode === "tekrar") {
+      const due = dueCards(Date.now() + 20 * 60000).filter(([id]) => inScope(id)).sort((a, b) => a[1].due - b[1].due).map(([id]) => id);
+      const fresh = freshCandidates(freshLeftToday(), slug ? new Map([...bank].filter(([, x]) => x.slug === slug)) : bank);
+      fresh.forEach((id) => freshIds.add(id));
+      queue = due.concat(fresh);
+    } else {
+      queue = shuffle(openMistakes().filter(([id]) => inScope(id)).map(([id]) => id));
+    }
+    const total0 = queue.length;
+    const tally = { done: 0, ok: 0, again: 0 };
+    const t0 = Date.now();
+
+    if (!queue.length) {
+      root.innerHTML = mode === "tekrar"
+        ? `<div class="desk-card empty-state"><h3>Bugünlük bu kadar</h3><p class="muted">${Object.keys(study.cards).length ? "Bekleyen kart yok. Yeni kart hakkını da kullandın ya da kapattın." : "Desten henüz boş. Ayarlardan günlük yeni kart sayısını aç ya da bir sınav çöz; çözdüğün her soru desteye girer."}</p>
+            <div class="btn-row"><a class="btn" href="#/calisma">Çalışma masası</a><a class="btn ghost" href="#/sinavlar">Sınavlar</a></div></div>`
+        : "";
+      return;
+    }
+
+    function hudHtml() {
+      const left = queue.length;
+      return `<div class="hud session-hud" aria-live="polite">
+        <div class="hud-item"><span class="hud-k">Kalan</span><span class="hud-v">${left}</span></div>
+        <div class="hud-item"><span class="hud-k">Çözülen</span><span class="hud-v">${tally.done}</span></div>
+        <div class="hud-item"><span class="hud-k">Doğru</span><span class="hud-v">${tally.ok}</span></div>
+        <div class="hud-item"><span class="hud-k">Bugün</span><span class="hud-v">${(study.days[todayKey()] || { n: 0 }).n}/${study.goal}</span></div>
+        <div class="hud-bar" aria-hidden="true"><i style="width:${total0 ? Math.min(100, (tally.done / (tally.done + left)) * 100) : 0}%"></i></div>
+      </div>`;
+    }
+
+    let keyHandler = null;
+    function setKeys(fn) {
+      if (keyHandler) document.removeEventListener("keydown", keyHandler);
+      keyHandler = fn;
+      if (fn) document.addEventListener("keydown", fn);
+    }
+
+    function next() {
+      if (!document.body.contains(root)) return setKeys(null);
+      const id = queue.shift();
+      if (!id) return finish();
+      const x = bank.get(id);
+      if (!x) return next();
+      const c = bySlug[x.slug];
+      const card = study.cards[id];
+      const isFresh = !card;
+      const q = x.q;
+      root.innerHTML = `${hudHtml()}
+        <div class="q game-q review-q" data-q="0">
+          <p class="review-src"><span class="chip">${esc(c.subject)}</span> <span>${esc(x.label)}</span>${isFresh ? ` <span class="badge none">Yeni kart</span>` : card.ok === false ? ` <span class="badge fail">Hata</span>` : ""}</p>
+          ${questionHTML(q, 0)}
+          <div class="btn-row game-actions" id="rv-actions">
+            <button class="btn" type="button" id="rv-check">Kontrol et</button>
+            <button class="btn ghost" type="button" id="rv-skip">Bilmiyorum, cevabı göster</button>
+          </div>
+        </div>`;
+      typeset(root);
+      const box = root.querySelector(".review-q");
+      const actions = root.querySelector("#rv-actions");
+      const reveal = (forced) => {
+        let ok = forced ? false : grade(q, 0, root);
+        if (ok === null) ok = false;
+        showFeedback(q, 0, ok, box);
+        box.classList.add(ok ? "hit" : "miss");
+        tally.done++;
+        if (ok) tally.ok++;
+        if (mode === "hatalar") {
+          recordAnswer(id, ok, ok ? 3 : 1, "exam");
+          if (!ok) tally.again++;
+          actions.innerHTML = `<button class="btn" type="button" id="rv-next">${queue.length ? "Sonraki soru" : "Bitir"}</button>`;
+          const b = root.querySelector("#rv-next");
+          b.onclick = next;
+          b.focus();
+          setKeys((e) => { if (e.key === "Enter" && e.target.tagName !== "BUTTON") { e.preventDefault(); next(); } });
+          return;
+        }
+        const base = card || {};
+        const grades = ok
+          ? [[2, "Zor"], [3, "İyi"], [4, "Kolay"]]
+          : [[1, "Tekrar"]];
+        actions.innerHTML = `<p class="rate-q">${ok ? "Ne kadar kolay hatırladın?" : "Bu kart birkaç soru sonra yeniden gelecek."}</p>
+          <div class="rate-row">${grades.map(([g, label]) => `<button class="btn${g === 3 || g === 1 ? "" : " ghost"} rate" type="button" data-g="${g}"><span>${label}</span><small>${fmtInterval(base, g)}</small></button>`).join("")}</div>`;
+        const rate = (g) => {
+          recordAnswer(id, ok, g, isFresh ? "fresh" : "review");
+          if (g === 1) { tally.again++; queue.splice(Math.min(queue.length, 3), 0, id); }
+          next();
+        };
+        actions.querySelectorAll("[data-g]").forEach((b) => (b.onclick = () => rate(+b.dataset.g)));
+        (actions.querySelector('[data-g="3"]') || actions.querySelector('[data-g="1"]')).focus();
+        setKeys((e) => {
+          const g = +e.key;
+          if (grades.some(([x]) => x === g)) { e.preventDefault(); rate(g); }
+        });
+        box.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      };
+      root.querySelector("#rv-check").onclick = () => {
+        const answered = root.querySelector(`[name=q0]:checked`) || (root.querySelector(`input[type=text][name=q0]`) || {}).value;
+        if (!answered) { root.querySelector("#rv-check").textContent = "Önce bir seçenek işaretle"; return; }
+        reveal(false);
+      };
+      root.querySelector("#rv-skip").onclick = () => reveal(true);
+      setKeys((e) => {
+        if (/^[1-6]$/.test(e.key) && e.target.tagName !== "INPUT") {
+          const opt = root.querySelectorAll("[name=q0]")[+e.key - 1];
+          if (opt && opt.type !== "text") { opt.checked = true; e.preventDefault(); }
+        } else if (e.key === "Enter" && e.target.tagName !== "BUTTON" && e.target.tagName !== "A") {
+          e.preventDefault();
+          root.querySelector("#rv-check").click();
+        }
+      });
+    }
+
+    function finish() {
+      setKeys(null);
+      const mins = Math.max(1, Math.round((Date.now() - t0) / 60000));
+      const tomorrow = Object.values(study.cards).filter((c) => c.due < addDays(dayStart(Date.now()), 2)).length;
+      const left = openMistakes().filter(([id]) => inScope(id)).length;
+      root.innerHTML = `<div class="result pass game-result">
+        <p class="eyebrow" style="color:var(--gold-soft)">${mode === "tekrar" ? "Tekrar oturumu bitti" : "Hata turu bitti"}</p>
+        <h2>${tally.done} soru · ${tally.ok} doğru · ${tally.done ? pct(tally.ok / tally.done) : "0%"}</h2>
+        <ul class="game-stats">
+          <li><b>${mins} dk</b> süre</li>
+          <li><b>${streakInfo().n}</b> gün seri</li>
+          <li><b>${(study.days[todayKey()] || { n: 0 }).n}/${study.goal}</b> günlük hedef</li>
+          <li><b>${mode === "tekrar" ? tomorrow : left}</b> ${mode === "tekrar" ? "kart yarına kadar" : "hata kaldı"}</li>
+        </ul>
+        <div class="btn-row">
+          <a class="btn ghost" style="color:var(--ivory);border-color:var(--gold)" href="#/calisma">Çalışma masası</a>
+          ${mode === "tekrar" && openMistakes().length ? `<a class="btn ghost" style="color:var(--ivory);border-color:var(--gold)" href="#/hatalar">Hatalarım</a>` : ""}
+          ${mode === "hatalar" && left ? `<button class="btn ghost" style="color:var(--ivory);border-color:var(--gold)" type="button" id="again">Kalanları yeniden çöz</button>` : ""}
+        </div></div>`;
+      const again = document.getElementById("again");
+      if (again) again.onclick = () => route();
+      paintStudyBadges();
+    }
+    next();
+  }
+
+  function bindReview() {
+    const s = document.getElementById("session");
+    if (s) runSession(s);
+  }
+
+  applyFreeze();
+
   // ---- transkript ------------------------------------------------------------
   function viewTranscript() {
     const done = passedCount(), total = CONFIG.totalCourses;
@@ -1338,7 +1975,7 @@
     const b = document.getElementById("reset");
     if (!b) return;
     b.onclick = () => {
-      if (b.dataset.armed) { progress = {}; save(progress); route(); return; }
+      if (b.dataset.armed) { progress = {}; save(progress); study = loadStudy(); study.cards = {}; study.days = {}; study.frozen = []; saveStudy(); route(); return; }
       b.dataset.armed = "1";
       b.textContent = "Tüm sonuçları silmek için tekrar tıklayın";
       setTimeout(() => { if (document.body.contains(b)) { delete b.dataset.armed; b.textContent = "İlerlememi sıfırla"; } }, 4000);
@@ -1354,6 +1991,7 @@
   function setRead(slug, n, on) {
     const rec = progress[slug] || (progress[slug] = { best: 0, attempts: 0, passed: false, read: [] });
     const s = new Set(rec.read || []);
+    if (on && !s.has(n)) recordRead();
     if (on) s.add(n); else s.delete(n);
     rec.read = Array.from(s).sort((a, b) => a - b);
     save(progress);
@@ -2282,7 +2920,7 @@ img.ondblclick=function(e){e.preventDefault();var r=img.getBoundingClientRect();
   function backupJson() {
     let name = "";
     try { name = localStorage.getItem(CONFIG.storageKey + ".name") || ""; } catch (e) { /* yok */ }
-    return JSON.stringify({ app: CONFIG.storageKey, savedAt: new Date().toISOString(), progress, name });
+    return JSON.stringify({ app: CONFIG.storageKey, savedAt: new Date().toISOString(), progress, name, study });
   }
 
   // Aynı dersin iki kaydını birleştirir: sayılarda büyük olan, listelerde birleşim; bestTimeMs'te küçük olan.
@@ -2302,6 +2940,17 @@ img.ondblclick=function(e){e.preventDefault();var r=img.getBoundingClientRect();
     return a === undefined ? b : a;
   }
 
+  // Tekrar geçmişi: kartta en son tekrar edilen sürüm, günlerde alan alan büyük olan kazanır.
+  function mergeStudy(b) {
+    for (const [id, card] of Object.entries(b.cards || {})) {
+      const a = study.cards[id];
+      if (!a || (card && card.last > a.last)) study.cards[id] = card;
+    }
+    for (const [k, day] of Object.entries(b.days || {})) study.days[k] = study.days[k] ? mergeRecord(study.days[k], day) : day;
+    study.frozen = Array.from(new Set(study.frozen.concat(b.frozen || []))).sort();
+    saveStudy();
+  }
+
   function restoreBackup(text) {
     let data;
     try { data = JSON.parse(String(text).trim()); } catch (e) { return "Bu bir yedek kodu değil. Kodun tamamını yapıştırdığınızdan emin olun."; }
@@ -2311,6 +2960,7 @@ img.ondblclick=function(e){e.preventDefault();var r=img.getBoundingClientRect();
       progress[slug] = progress[slug] ? mergeRecord(progress[slug], rec) : rec;
     }
     save(progress);
+    if (data.study && typeof data.study === "object") mergeStudy(data.study);
     try {
       if (data.name && !localStorage.getItem(CONFIG.storageKey + ".name")) localStorage.setItem(CONFIG.storageKey + ".name", data.name);
     } catch (e) { /* yok */ }
@@ -2460,7 +3110,8 @@ img.ondblclick=function(e){e.preventDefault();var r=img.getBoundingClientRect();
     else if (parts[0] === "sinavlar") needExamData();
     else if (parts[0] === "ozet") { need.add("interactive"); need.add("coursegraph"); needExamData(); }
     else if (parts[0] === "ara") need.add("coursegraph");
-    else if (parts[0] === "transcript" || parts[0] === "certificate") { /* data.js yeterli */ }
+    else if (parts[0] === "transcript" || parts[0] === "certificate" || parts[0] === "calisma") { /* data.js yeterli */ }
+    else if (parts[0] === "tekrar" || parts[0] === "hatalar") needExamData();
     else if (parts[0] === "course" && bySlug[parts[1]]) {
       if (parts[2] === "chapter") { need.add("mindmaps"); need.add("interactive"); need.add("past_exams"); }
       else if (parts[2] === "quiz") { /* data.js quiz yeterli */ }
@@ -2483,6 +3134,9 @@ img.ondblclick=function(e){e.preventDefault();var r=img.getBoundingClientRect();
     else if (parts[0] === "transcript") { html = viewTranscript(); bind = bindTranscript; }
     else if (parts[0] === "certificate") { html = viewCertificate(); bind = bindCertificate; }
     else if (parts[0] === "cevrimdisi") { html = viewOffline(); bind = bindOffline; }
+    else if (parts[0] === "calisma") { html = viewStudyDesk(); bind = bindStudyDesk; }
+    else if (parts[0] === "tekrar") { html = viewReview(query); bind = bindReview; }
+    else if (parts[0] === "hatalar") { html = viewMistakes(query); bind = bindMistakes; }
     else if (parts[0] === "course" && bySlug[parts[1]]) {
       const c = bySlug[parts[1]];
       if (parts[2] === "chapter") { html = viewChapter(c, +parts[3]); bind = bindMindmaps; }
@@ -2501,15 +3155,16 @@ img.ondblclick=function(e){e.preventDefault();var r=img.getBoundingClientRect();
       else { html = viewCourse(c); bind = bindMindmaps; }
     } else html = viewNotFound();
     if (missing.length) html = `<div class="notice warn" role="alert"><b>Bu sayfanın bir kısmı yüklenemedi.</b> ${navigator.onLine === false ? "İnternet bağlantınız yok ve bu içerik henüz cihaza kaydedilmemiş." : "Bağlantı sorunu olabilir."} İnternete bağlanınca sayfayı yenileyin. Bir kez çevrimiçi açtıktan sonra site çevrimdışı da çalışır.</div>` + html;
-    if (!parts.length) html = installBannerHtml() + html;
+    if (!parts.length) html = installBannerHtml() + todayStripHtml() + html;
     app.innerHTML = html;
     bind();
     paintPacks();
+    paintStudyBadges();
     typeset(app);
     document.querySelectorAll(".nav a").forEach((a) => {
       const href = a.getAttribute("href");
       const key = parts[0] || "";
-      a.classList.toggle("active", href === "#/" + key || (key === "ara" && href === "#/ara"));
+      a.classList.toggle("active", href === "#/" + key || (href === "#/calisma" && (key === "tekrar" || key === "hatalar")));
     });
     window.scrollTo(0, 0);
   }
