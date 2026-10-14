@@ -56,6 +56,41 @@
    "url": "",
    "type": "book",
    "status": "ready"
+  },
+  "k4Cl5j777xs": {
+   "id": "osm1-video-1",
+   "title": "AÖF Osmanlı Türkçesi I, Ünite 1 Özet videosu",
+   "url": "https://www.youtube.com/watch?v=k4Cl5j777xs",
+   "type": "youtube",
+   "status": "ready"
+  },
+  "RjVpM8DAUPI": {
+   "id": "osm1-video-3",
+   "title": "AÖF Osmanlı Türkçesi I, Ünite 3 Özet videosu",
+   "url": "https://www.youtube.com/watch?v=RjVpM8DAUPI",
+   "type": "youtube",
+   "status": "ready"
+  },
+  "0vFS6f94LFA": {
+   "id": "osm1-video-4",
+   "title": "AÖF Osmanlı Türkçesi I, Ünite 4 Özet videosu",
+   "url": "https://www.youtube.com/watch?v=0vFS6f94LFA",
+   "type": "youtube",
+   "status": "ready"
+  },
+  "3HtOWWxmAD8": {
+   "id": "osm1-video-5",
+   "title": "AÖF Osmanlı Türkçesi I, Ünite 5 Özet videosu",
+   "url": "https://www.youtube.com/watch?v=3HtOWWxmAD8",
+   "type": "youtube",
+   "status": "ready"
+  },
+  "f_sPl7P0Lpw": {
+   "id": "osm1-video-6",
+   "title": "AÖF Osmanlı Türkçesi I, Ünite 6 Özet videosu",
+   "url": "https://www.youtube.com/watch?v=f_sPl7P0Lpw",
+   "type": "youtube",
+   "status": "ready"
   }
  },
  "order": [
