@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-13T14:27:52Z",
+  "generated_at": "2026-10-14T21:34:00Z",
   "courses": [
     {
       "course": "ataturk-ilkeleri-1",
@@ -18,27 +18,9 @@
           "source": "interactive.chapters"
         },
         {
-          "id": "nl-01",
-          "title": "I. TBMM'nin Kurucu Özellikleri ve Yapısı",
-          "nodes": 21,
-          "source": "artifact:mind-map__I. TBMM Zihin Haritası.json"
-        },
-        {
-          "id": "nl-02",
-          "title": "Mondros Sonrası Gelişmeler ve Milli Mücadele Hazırlıkları",
-          "nodes": 48,
-          "source": "artifact:mind-map__Mondros Mütarekesi Zihin Haritası.json"
-        },
-        {
-          "id": "nl-03",
-          "title": "HTML5, Canvas ve Chart.js Modüler Yapısı ve Veri Akışı",
-          "nodes": 29,
-          "source": "artifact:mind-map__Veri Görselleştirme Zihin Haritası.json"
-        },
-        {
           "id": "graph-derived",
           "title": "ataturk-ilkeleri-1 kavram ağacı (graf)",
-          "nodes": 41,
+          "nodes": 45,
           "source": "coursegraph"
         }
       ]
@@ -62,7 +44,25 @@
         {
           "id": "graph-derived",
           "title": "islam-mezhepleri-tarihi kavram ağacı (graf)",
-          "nodes": 43,
+          "nodes": 47,
+          "source": "coursegraph"
+        }
+      ]
+    },
+    {
+      "course": "osmanlica-1",
+      "title": "Osmanlı Türkçesi I",
+      "mindmaps": [
+        {
+          "id": "panel-chapters",
+          "title": "osmanlica-1 bölüm ağacı",
+          "nodes": 72,
+          "source": "interactive.chapters"
+        },
+        {
+          "id": "graph-derived",
+          "title": "osmanlica-1 kavram ağacı (graf)",
+          "nodes": 15,
           "source": "coursegraph"
         }
       ]
@@ -86,7 +86,7 @@
         {
           "id": "graph-derived",
           "title": "turk-dili-1 kavram ağacı (graf)",
-          "nodes": 57,
+          "nodes": 55,
           "source": "coursegraph"
         }
       ]
