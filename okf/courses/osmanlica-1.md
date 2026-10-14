@@ -1,7 +1,7 @@
 ---
 type: Course
 title: Osmanlı Türkçesi I
-description: TAR111U - Osmanlı Türkçesi I. Bu dersin bölümleri AÖF ders kitabından (Anadolu Üniversitesi, 2018) hazırlandı; NotebookLM defteri yoktur. AÖF resmî kanalındaki Ünite Özetleri playlist'inden Ünite 1, 3, 4, 5 ve 6 videoları ilgili bölümlere bağlandı; Ünite 2, 7 ve 8 için video yoktur. Arap harfli örne
+description: TAR111U - Osmanlı Türkçesi I. Bu dersin bölümleri AÖF ders kitabından (Anadolu Üniversitesi, 2018) hazırlandı. Kitap ve 5 çıkmış sınav PDF'iyle bir NotebookLM defteri de var. AÖF resmî kanalındaki Ünite Özetleri playlist'inden Ünite 1 ve 3-8 videoları ilgili bölümlere bağlandı; Ünite 2 videosu gizli
 slug: osmanlica-1
 university: aof
 university_name: AÖF
@@ -18,13 +18,18 @@ school: Anadolu Üniversitesi Açıköğretim Fakültesi
 mode: sources
 language: tr
 status: active
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-14T17:33:22Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-14T20:00:01Z }
 resource: "https://www.youtube.com/playlist?list=PLfFz63YLe29oglXKkTU5wQ507Sw_z_G7T"
+notebook: "https://notebooklm.google.com/notebook/18b3f791-a3cd-4d19-a002-ced4ebfe16ae"
 sources:
   - id: playlist
     resource: https://www.youtube.com/playlist?list=PLfFz63YLe29oglXKkTU5wQ507Sw_z_G7T
     title: Ders playlist
     author: Anadolu Üniversitesi Açıköğretim Fakültesi
+  - id: notebooklm
+    resource: https://notebooklm.google.com/notebook/18b3f791-a3cd-4d19-a002-ced4ebfe16ae
+    title: NotebookLM çalışma notu
+    author: acik-ilahiyat-exporter/1.0
 ---
 
 # Üniversite ve Dönem
@@ -39,7 +44,7 @@ sources:
 
 # Özet
 
-Bu dersin bölümleri AÖF ders kitabından (Anadolu Üniversitesi, 2018) hazırlandı; NotebookLM defteri yoktur. AÖF resmî kanalındaki Ünite Özetleri playlist'inden Ünite 1, 3, 4, 5 ve 6 videoları ilgili bölümlere bağlandı; Ünite 2, 7 ve 8 için video yoktur. Arap harfli örnekler metin olarak, çıkmış sınavlardaki Osmanlıca şıklar ise sınav kâğıdındaki görüntüsüyle verilmiştir.
+Bu dersin bölümleri AÖF ders kitabından (Anadolu Üniversitesi, 2018) hazırlandı. Kitap ve 5 çıkmış sınav PDF'iyle bir NotebookLM defteri de var. AÖF resmî kanalındaki Ünite Özetleri playlist'inden Ünite 1 ve 3-8 videoları ilgili bölümlere bağlandı; Ünite 2 videosu gizli olduğu için eklenemedi. Arap harfli örnekler metin olarak, çıkmış sınavlardaki Osmanlıca şıklar ise sınav kâğıdındaki görüntüsüyle verilmiştir.
 
 # Yapı
 
