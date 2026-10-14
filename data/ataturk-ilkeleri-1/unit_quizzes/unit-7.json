@@ -1,0 +1,331 @@
+{
+  "unit": 7,
+  "unitTitle": "Atatürk Dönemi İç Politika",
+  "title": "Tarih Testi",
+  "questions": [
+    {
+      "question": "Osmanlı Devleti'nde 28 Ocak 1920 tarihinde Son Osmanlı Mebusan Meclisi tarafından kabul edilen, millî sınırları çizen ve 'Ahd-ı Milli' olarak da bilinen tarihî belge aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Misak-ı Milli",
+          "isCorrect": true,
+          "rationale": "Misak-ı Milli, Son Osmanlı Mebusan Meclisi tarafından onaylanan ve Milli Mücadele'nin asgari barış şartları ile vatan sınırlarını belirleyen temel belgedir."
+        },
+        {
+          "text": "Amasya Tamimi",
+          "isCorrect": false,
+          "rationale": "Amasya Tamimi, Haziran 1919'da Mustafa Kemal Paşa ve arkadaşları tarafından yayımlanan ihtilal beyannamesi niteliğindeki genelgedir."
+        },
+        {
+          "text": "Teşkilat-ı Esasiye Kanunu",
+          "isCorrect": false,
+          "rationale": "Teşkilat-ı Esasiye Kanunu, 1921 yılında I. TBMM tarafından kabul edilen yeni Türk devletinin ilk anayasasıdır."
+        },
+        {
+          "text": "Sened-i İttifak",
+          "isCorrect": false,
+          "rationale": "Sened-i İttifak, 1808 yılında Sultan II. Mahmut ile ayanlar arasında imzalanan merkezin otoritesini sınırlayan sözleşmedir."
+        }
+      ],
+      "hint": "Türk vatanının asgari barış şartlarını ve ayrılmaz sınırlarını ilan eden millî anddır.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Milli Mücadele Dönemi'nde Ankara'da yayımlanan, TBMM Hükûmetinin gayriresmî yayın organı olarak kabul edilen ve 1934 yılında 'Ulus' adını alan gazete aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Hâkimiyet-i Milliye",
+          "isCorrect": true,
+          "rationale": "Hâkimiyet-i Milliye, Ankara'da TBMM'nin görüş ve kararlarını halka duyurmak amacıyla çıkarılmış, daha sonra Ulus adını almış gazetedir."
+        },
+        {
+          "text": "İrade-i Milliye",
+          "isCorrect": false,
+          "rationale": "İrade-i Milliye gazetesi Ankara'da değil, Sivas Kongresi sonrasında Sivas'ta yayımlanmaya başlayan ilk mücadele gazetesidir."
+        },
+        {
+          "text": "Minber",
+          "isCorrect": false,
+          "rationale": "Minber gazetesi, Mustafa Kemal Paşa'nın Ali Fethi Bey ile birlikte Mondros sonrasında İstanbul'da çıkardığı gazetedir."
+        },
+        {
+          "text": "Peyam-ı Sabah",
+          "isCorrect": false,
+          "rationale": "Peyam-ı Sabah, Milli Mücadele'ye ve Ankara Hükûmetine karşı tutum sergileyen İstanbul merkezli muhalif bir gazetedir."
+        }
+      ],
+      "hint": "Ankara'da çıkarılan ve ismi ulusal egemenlik ilkesini doğrudan temsil eden yayındır.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "XVII. yüzyıl Osmanlı ıslahatçı düşünürlerinden biri olan ve 'Düstûrü'l-Amel li Islahı'l-Halel' adlı eserinde devlet organlarındaki bozulmaları ve idarecilerin basiretsizliğini eleştiren mütefekkir kimdir?",
+      "answerOptions": [
+        {
+          "text": "Katip Çelebi",
+          "isCorrect": true,
+          "rationale": "Katip Çelebi, söz konusu eserinde Osmanlı devlet yapısındaki aksaklıkları tespit etmiş ve çözüm yolları önermiştir."
+        },
+        {
+          "text": "Lûtfî Paşa",
+          "isCorrect": false,
+          "rationale": "Lûtfî Paşa, XVII. yüzyılda değil XVI. yüzyılda Kanuni Sultan Süleyman döneminde yaşamış ve 'Asafnâme'yi kaleme almıştır."
+        },
+        {
+          "text": "Gelibolulu Mustafa Âlî",
+          "isCorrect": false,
+          "rationale": "Gelibolulu Mustafa Âlî, XVI. yüzyıl sonlarında eser vermiş ve 'Künhü'l-Ahbar' adlı tarih çalışmasıyla tanınmıştır."
+        },
+        {
+          "text": "Naima",
+          "isCorrect": false,
+          "rationale": "Naima, Osmanlı Devleti'nin ilk resmî vakanüvisi olup XVII. yüzyıl sonu ve XVIII. yüzyıl başında tarih yazıcılığı yapmıştır."
+        }
+      ],
+      "hint": "Keşfü'z-Zünûn ve Cihannüma gibi eserleriyle de bilinen kâtip sınıfı temsilcisidir.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "23 Temmuz 1908'de II. Meşrutiyet'in ilan edilmesinden sonra, İttihat ve Terakki Cemiyetinin politikalarına tepki olarak 13 Nisan 1909'da meydana gelen ayaklanma aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "31 Mart Vakası",
+          "isCorrect": true,
+          "rationale": "Rumi takvimle 31 Mart 1325 tarihine denk gelen bu ayaklanma, İttihat ve Terakki iktidarına ve meşrutiyet rejimine karşı gerçekleşmiştir."
+        },
+        {
+          "text": "Kabakçı Mustafa İsyanı",
+          "isCorrect": false,
+          "rationale": "Kabakçı Mustafa İsyanı, 1807 yılında III. Selim'i tahttan indiren ve Nizam-ı Cedid ıslahatlarını sonlandıran ayaklanmadır."
+        },
+        {
+          "text": "Patrona Halil İsyanı",
+          "isCorrect": false,
+          "rationale": "Patrona Halil İsyanı, 1730 yılında Lale Devri'ni ve III. Ahmet saltanatını sona erdiren olaydır."
+        },
+        {
+          "text": "Vaka-i Hayriye",
+          "isCorrect": false,
+          "rationale": "Vaka-i Hayriye, 1826 yılında II. Mahmut tarafından Yeniçeri Ocağı'nın kaldırılması olayına verilen isimdir."
+        }
+      ],
+      "hint": "Miladi ve Rumi takvim farkından dolayı Rumi ayın son günüyle anılan gerici kalkışmadır.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "21-22 Haziran 1919'da yayımlanan ve 'Vatanın bütünlüğü, milletin bağımsızlığı tehlikededir' kararıyla Milli Mücadele'nin gerekçesini ilan eden belge aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Amasya Genelgesi",
+          "isCorrect": true,
+          "rationale": "Amasya Genelgesi, Cevat Abbas Bey tarafından kaleme alınan ve Kurtuluş Savaşı'nın gerekçe, amaç ve yöntemini sunan bildiridir."
+        },
+        {
+          "text": "Erzurum Kongresi Kararları",
+          "isCorrect": false,
+          "rationale": "Erzurum Kongresi, Doğu Anadolu'daki cemiyetlerin birleştiği ve bölgesel toplanıp ulusal kararlar alan bir kongredir."
+        },
+        {
+          "text": "Sivas Kongresi Beyannamesi",
+          "isCorrect": false,
+          "rationale": "Sivas Kongresi, Amasya Genelgesi'nde alınan karar uyarınca Eylül 1919'da toplanan ulusal temsil kongresidir."
+        },
+        {
+          "text": "Havza Bildirisi",
+          "isCorrect": false,
+          "rationale": "Havza Bildirisi, Mustafa Kemal Paşa'nın işgallere karşı protesto mitingleri yapılmasını istediği ilk kişisel çağrısıdır."
+        }
+      ],
+      "hint": "Mustafa Kemal Paşa'nın yaveri Cevat Abbas Bey tarafından kaleme alınan ihtilal çağrısıdır.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "4-11 Eylül 1919 tarihleri arasında toplanan Sivas Kongresi'nde bütün milli cemiyetlerin tek çatı altında birleştirildiği organizasyonun adı aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Anadolu ve Rumeli Müdafaa-i Hukuk Cemiyeti",
+          "isCorrect": true,
+          "rationale": "Sivas Kongresi'nde dağınık halde bulunan tüm direniş cemiyetleri Anadolu ve Rumeli Müdafaa-i Hukuk Cemiyeti adı altında birleştirilmiştir."
+        },
+        {
+          "text": "Redd-i İlhak Cemiyeti",
+          "isCorrect": false,
+          "rationale": "Redd-i İlhak Cemiyeti, İzmir ve çevresinin Yunanistan'a katılmasını önlemek amacıyla kurulan yerel bir cemiyettir."
+        },
+        {
+          "text": "Milli Karakol Cemiyeti",
+          "isCorrect": false,
+          "rationale": "Milli Karakol Cemiyeti, İstanbul'dan Anadolu'ya silah, mühimmat ve insan aktarımını sağlayan gizli bir örgüttür."
+        },
+        {
+          "text": "Trakya-Paşaeli Müdafaa-i Hukuk Cemiyeti",
+          "isCorrect": false,
+          "rationale": "Trakya-Paşaeli Cemiyeti, Trakya bölgesinin işgalini engellemek için kurulan bölgesel bir direniş cemiyetidir."
+        }
+      ],
+      "hint": "Milli direnişi tek bir merkezden yürütmek amacıyla kurulan kapsayıcı cemiyettir.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "TBMM'nin açılmasından sonra Anadolu'da çıkan iç ayaklanmaları bastırmak ve Meclisin otoritesini korumak amacıyla 29 Nisan 1920'de çıkarılan kanun aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Hıyanet-i Vataniye Kanunu",
+          "isCorrect": true,
+          "rationale": "Hıyanet-i Vataniye Kanunu, I. TBMM'nin meşruiyetine karşı çıkan asker kaçakları ve isyancıları yargılamak üzere yürürlüğe konmuştur."
+        },
+        {
+          "text": "Takrir-i Sükun Kanunu",
+          "isCorrect": false,
+          "rationale": "Takrir-i Sükun Kanunu, 1925 yılında Şeyh Sait İsyanı sonrası huzuru sağlamak amacıyla çıkarılmış bir yasadır."
+        },
+        {
+          "text": "Nisab-ı Müzakere Kanunu",
+          "isCorrect": false,
+          "rationale": "Nisab-ı Müzakere Kanunu, TBMM'nin çalışma usul ve esaslarını düzenleyen ilk içtüzük niteliğindeki kanundur."
+        },
+        {
+          "text": "Men-i Müskirat Kanunu",
+          "isCorrect": false,
+          "rationale": "Men-i Müskirat Kanunu, içki imalatı ve tüketimini yasaklamaya yönelik sosyal ve iktisadi bir düzenlemedir."
+        }
+      ],
+      "hint": "Vatana ihanet suçlamalarını engellemeye ve iç huzuru temin etmeye dönük ilk hukuki adımdır.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Kanuni Sultan Süleyman döneminde sadrazamlık yapmış olan ve Osmanlı devlet yapısındaki bozulmaları ele alan 'Asafnâme' adlı eserin yazarı aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Lûtfî Paşa",
+          "isCorrect": true,
+          "rationale": "Lûtfî Paşa, başvezirlik tecrübesinden hareketle devlet yönetimi ve idari ıslahatlar hakkında Asafnâme'yi yazmıştır."
+        },
+        {
+          "text": "Katip Çelebi",
+          "isCorrect": false,
+          "rationale": "Katip Çelebi, XVII. yüzyılda Düstûrü'l-Amel li Islahı'l-Halel adlı eseri kaleme alan bilginimizdir."
+        },
+        {
+          "text": "Koçi Bey",
+          "isCorrect": false,
+          "rationale": "Koçi Bey, XVII. yüzyılda IV. Murat ve Sultan İbrahim'e sunduğu risaleleri ile tanınmaktadır."
+        },
+        {
+          "text": "Defterdar Sarı Mehmed Paşa",
+          "isCorrect": false,
+          "rationale": "Defterdar Sarı Mehmed Paşa, XVII. yüzyıl sonlarında 'Zübde-i Vekayi'at' ve devlet yönetimi risaleleri kaleme almıştır."
+        }
+      ],
+      "hint": "XVI. yüzyılda vezirlik yapmış, devlet adamlarına ahlak ve idare tavsiyeleri sunmuş paşadır.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Osmanlı Devleti'nde 23 Aralık 1876 tarihinde ilan edilen, I. Meşrutiyet Dönemi'ni başlatan ve Türk tarihinin ilk yazılı anayasası kabul edilen belge aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Kanun-i Esasi",
+          "isCorrect": true,
+          "rationale": "Kanun-i Esasi, 1876'da yürürlüğe giren Osmanlı Devleti ve Türk tarihinin ilk anayasasıdır."
+        },
+        {
+          "text": "Teşkilat-ı Esasiye Kanunu",
+          "isCorrect": false,
+          "rationale": "Teşkilat-ı Esasiye Kanunu, 1921 yılında Ankara'da TBMM tarafından ilan edilen anayasadır."
+        },
+        {
+          "text": "Tanzimat Fermanı",
+          "isCorrect": false,
+          "rationale": "Tanzimat Fermanı (1839), hukukun üstünlüğü ilkesini getiren fakat bir anayasa niteliği taşımayan feryat ve fermandır."
+        },
+        {
+          "text": "Islahat Fermanı",
+          "isCorrect": false,
+          "rationale": "Islahat Fermanı (1856), gayrimüslimlere verilen hakları genişleten bir reform belgesidir."
+        }
+      ],
+      "hint": "Tersane Konferansı devam ederken ilan edilerek Avrupalıların müdahalesini engellemek istenen metindir.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Sultan II. Mahmut döneminde gerçekleştirilen idari yapı reformları kapsamında atılan en önemli adımlardan biri aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Divan-ı Hümayun'un kaldırılarak yerine nezaretlerin kurulması",
+          "isCorrect": true,
+          "rationale": "II. Mahmut, geleneksel Divan-ı Hümayun sistemini ilga ederek batı tarzı bakanlıklar (nezaretler) usulünü getirmiştir."
+        },
+        {
+          "text": "Mühendishane-i Berr-i Hümayun matbaasının açılması",
+          "isCorrect": false,
+          "rationale": "Mühendishane matbaası III. Selim döneminde devlet eliyle kurulan ilk matbaalardandır."
+        },
+        {
+          "text": "Nizam-ı Cedid adıyla yeni bir ordunun kurulması",
+          "isCorrect": false,
+          "rationale": "Nizam-ı Cedid ordusu ve yenilikleri III. Selim dönemine ait askerî adımlardır."
+        },
+        {
+          "text": "Evkaf Vekaletinin kurulması",
+          "isCorrect": false,
+          "rationale": "Evkaf Vekaleti (Bakanlığı) Cumhuriyet döneminde kurulan, II. Mahmut döneminde ise sadece Evkaf Nezareti olarak düzenlenen kurumdur."
+        }
+      ],
+      "hint": "Geleneksel karar ve danışma organının yerini bakanlıklar sistemine bıraktığı idari yeniliktir.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "15 Mayıs 1919'da İzmir'in işgali üzerine Sultanahmet'te düzenlenen protesto mitinginde yaptığı etkileyici konuşmayla kitleleri direnişe teşvik eden kadın yazarımız kimdir?",
+      "answerOptions": [
+        {
+          "text": "Halide Edip Adıvar",
+          "isCorrect": true,
+          "rationale": "Halide Edip Adıvar, Sultanahmet Mitingi'nde yaptığı tarihi konuşmayla milli bilincin uyanmasında simgeleşmiştir."
+        },
+        {
+          "text": "Afet İnan",
+          "isCorrect": false,
+          "rationale": "Afet İnan, Cumhuriyet döneminin ilk kadın tarih profesörlerinden olup Mitingler döneminde genç yaştaydı."
+        },
+        {
+          "text": "Nezihe Muhiddin",
+          "isCorrect": false,
+          "rationale": "Nezihe Muhiddin, Cumhuriyet’in ilk yıllarında Kadınlar Halk Fırkası ve kadın hakları hareketi öncülerindendir."
+        },
+        {
+          "text": "Şüküfe Nihal",
+          "isCorrect": false,
+          "rationale": "Şüküfe Nihal da mitinglerde yer almakla birlikte Sultanahmet'teki simgeleşen ana nutku Halide Edip vermiştir."
+        }
+      ],
+      "hint": "Sultanahmet kürsüsünden işgale karşı halka seslenen ünlü Edebiyatçı ve Onbaşı unvanlı kadın kahramandır.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "I. Dünya Savaşı sırasında Çanakkale Savaşı'nın kazanılmasının uluslararası siyasi dengeler üzerindeki en önemli etkisi aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Çarlık Rusyası'na yardım ulaştırılamaması sonucu Bolşevik İhtilali'nin gelişmesi ve Çarlığın yıkılması",
+          "isCorrect": true,
+          "rationale": "Çanakkale Boğazı'nın kapatılması İtilaf Devletleri'nin Rusya'ya yardım etmesini engellemiş ve Rusya'da rejim değişikliğine yol açmıştır."
+        },
+        {
+          "text": "Osmanlı Devleti'nin savaştan en erken çekilen taraf olması",
+          "isCorrect": false,
+          "rationale": "Çanakkale Zaferi Osmanlı Devleti'nin savaştaki ömrünü uzatmış ve savaştan hemen çekilmesini engellemiştir."
+        },
+        {
+          "text": "ABD'nin savaşa girmesini kesin olarak engellemesi",
+          "isCorrect": false,
+          "rationale": "ABD, Çanakkale Savaşı'ndan sonra 1917 yılında İtilaf Devletleri yanında savaşa dahil olmuştur."
+        },
+        {
+          "text": "Avusturya-Macaristan İmparatorluğu'nun parçalanmasını önlemesi",
+          "isCorrect": false,
+          "rationale": "Avusturya-Macaristan İmparatorluğu I. Dünya Savaşı sonunda yine dağılmaktan kurtulamamıştır."
+        }
+      ],
+      "hint": "Müttefiklerin Boğazlar üzerinden yardım ulaştıramadığı Doğu Avrupa ülkesinde yaşanan rejim değişikliğidir.",
+      "type": "multiple_choice"
+    }
+  ]
+}

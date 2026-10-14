@@ -53,29 +53,111 @@ Bu bölümün içinde yaşadığı ders paneli: [Türk Dili paneli](/courses/tur
 
 # Kaynak Temellendirme
 
-Aşağıda, ilgili ders kaynakları temel alınarak belirtilen üç öğrenme hedefi doğrultusunda öğrencilerin neleri edineceği ve öğreneceği açıklanmıştır:
+## 3. Türk Dilinin Ses Yapısı ve Ses Özellikleri
 
-### 1. Seslerin Konuşma Organlarında Oluşum Biçimleri ve Türkçe Seslerin Sınıflandırılması
-Öğrenci bu hedef kapsamında, ses bilgisinin konuşma seslerini özellikleri, türleri, sözcüklerdeki sıralanışları ve uğradıkları değişmeler açısından araştırıp sınıflandıran dil bilgisi dalı olduğunu öğrenir [1]. Konuşma sesleri, akciğerlerden diyafram ve göğüs kaslarının itmesiyle pompalanan havanın ses telleri, gırtlak, geniz ve ağız boşluğundan geçmesiyle üretilmektedir [2, 3]. Ağız boşluğuna ulaşan hava akımı alt çene, üst çene, dil, dişler ve damak aracılığıyla boğumlanarak konuşma seslerine dönüşmektedir [3]. Sesin yazıdaki karşılığı harf olup, Türk alfabesi 29 harften ve ayırıcı nitelikteki düzeltme ile kesme işaretlerinden oluşmaktadır [3, 4].
+Bu bölümde ses bilgisinin temel ilkeleri, konuşma seslerinin oluşumu ve Türkçedeki ünlü ile ünsüz seslerin nitelikleri öğretilmektedir. Türkçe sözcüklerin ses özellikleri, ünlü ve ünsüz uyumları ile altı farklı hece yapısı detaylıca açıklanmaktadır. Zamanla ortaya çıkan ses olayları ile vurgu, durak ve tonlama gibi parçalar üstü ses birimlerinin işlevleri sunulmaktadır.
 
-Seslerin sınıflandırılmasında ise öğrenci şu ilkeleri kavrar:
-* **Ünlüler**: Konuşma organlarında bir engelle karşılaşmadan çıkan seslerdir ve Türkçede 8 adet ünlü (a, e, ı, i, o, ö, u, ü) bulunmaktadır [4]. Ünlüler; önlük-artlık, darlık-genişlik, düzlük-yuvarlaklık ve uzunluk-kısalık ölçütlerine göre sınıflandırılmaktadır [4]. Türkçe kökenli sözcüklerde birincil uzun ünlü bulunmaz; uzun ünlüler yabancı dillerden kopyalanan kelimelerde görülür [4, 5].
-* **Ünsüzler**: Oluşumları sırasında ses yolunda bir engelle karşılaşan seslerdir ve alfabede 21 ünsüz harfle gösterilmektedir [5]. Ünsüzler; oluşum yerlerine göre (dudak, diş, damak, gırtlak), ses tellerini titreştirip titreştirmemelerine göre (ötümlü ve ötümsüz), hava akımının durumuna göre (sürekli ve süreksiz) ve hava akımının çıktığı yere göre (ağız ve burun ünsüzleri) olmak üzere 4 temel ölçüte göre sınıflandırılmaktadır [5, 6].
+### Öğrenme hedefleri
+- Seslerin konuşma organlarında oluşum biçimlerini ve Türkçe seslerin sınıflandırılmasını açıklayabilme.
+- Türkçenin ünlü ve ünsüz uyumu kurallarını belirleyerek hece yapılarını çözümleyebilme.
+- Türkçedeki temel ses olaylarını ve parçalar üstü ses birimlerinin anlatımdaki rolünü kavrayabilme.
 
-### 2. Türkçenin Ünlü ve Ünsüz Uyumu Kuralları ile Hece Yapıları
-Öğrenci bu hedef doğrultusunda, Türkçedeki seslerin yan yana gelme kurallarını ve kelimelerin hece yapılarını çözümlemeyi öğrenir:
-* **Ünlü Uyumları**: Türkçede önlük-artlık uyumu (büyük ünlü uyumu) ve dudak uyumu (küçük ünlü uyumu) olmak üzere iki temel ünlü uyumu vardır [7]. Önlük-artlık uyumuna göre kelimedeki ilk ünlü art ünlü ise sonraki ünlüler de art ünlü, ön ünlü ise sonraki ünlüler de ön ünlü olur [7]. Dudak uyumunda ise düz ünlülerden sonra düz ünlüler; yuvarlak ünlülerden sonra dar yuvarlak veya düz geniş ünlüler gelebilmektedir [7, 8].
-* **Ünsüz Uyumu ve Ses Özellikleri**: Ötümsüz ünsüzle biten sözcüklere gelen eklerin ünsüzleri ötümsüzleşerek ünsüz uyumuna girer [8]. Türkçe kökenli kelimelerin başında j sesi bulunmaz; c, f, ğ, h, l, m, n, p, r, ş, v gibi ünsüzler ise kural olarak söz başında yer almaz [9, 10]. Sözcük sonunda b, c, d, g, ğ ünsüzleri bulunmaz ve ilk hece dışında o, ö ünlüleri yer almaz [8, 10]. Türkçe kelimelerde istisnalar dışında iki ünlü yan yana gelmez ve ikiz ünlü bulunmaz [8, 11].
-* **Yardımcı Sesler**: Türkçe kelimelerde iki ünlünün yan yana gelmesini önlemek için y gibi bağlama ünsüzleri, ünsüzle biten kelimeye ek getirildiğinde ise i gibi bağlama ünlüleri yardımcı ses olarak devreye girer [8, 11, 12].
-* **Hece Yapıları**: Türkçede 6 çeşit hece türü bulunur ve bir hecede en fazla 4 ses yer alabilir [12]. Kelime kökünde veya hece sonunda üç ünsüz yan yana bulunmaz; söz başında çift ünsüz barındıran veya hece sonunda kural dışı ünsüz çiftleri içeren kelimeler yabancı kökenlidir [11-13].
+### Ünite 3: Ses Bilgisi
+*AÖF ders kitabı, Ünite 3, PDF sayfa ~77-105.*
 
-### 3. Türkçedeki Temel Ses Olayları ve Parçalar Üstü Ses Birimleri
-Öğrenci bu hedef kapsamında, dildeki ses değişimlerinin nedenlerini, meydana gelen ses olaylarını ve anlatımı biçimlendiren ses ögelerini kavrar:
-* **Ses Olayları ve Nedenleri**: Dildeki kelime ve eklerde zamanla meydana gelen değişmelere ses olayları denir [14]. Ses olayları; tarihî gelişimler, yabancı dillerin etkisi, seslerin özellikleri ve konuşurken en az enerji harcama eğilimi olan en az çaba yasasından kaynaklanmaktadır [15-17].
-* **Meydana Gelen Ses Olayları**: Ünlülerde ünlü düşmesi (söz başında, ortasında veya sonunda), ünlü daralması, ünlü türemesi, ünlü genişlemesi, ön ve art damaksıllaşma, ünlü yuvarlaklaşması, ünlü düzleşmesi, ünlü birleşmesi ve ünlü benzeşmesi gibi ses olayları gerçekleşir [16, 18-22]. Ünsüzlerde ise ünsüz düşmesi, ünsüz türemesi, göçüşme (ünsüzlerin yer değiştirmesi), ötümlüleşme, ötümsüzleşme, ünsüz benzeşmesi, ünsüz aykırılaşması, ünsüz ikizleşmesi, ünsüz tekleşmesi ve süreklileşme gibi olaylar görülür [22-25].
-* **Parçalar Üstü Ses Birimleri**: Dilde ünlü, ünsüz ve hece gibi parçaların yanında, konuşmaya anlam ve duygu değeri katan parçalar üstü ses birimleri yer alır [25, 26]. Vurgu (hece veya sözcüklerin baskılı söylenmesi), durak (sözcükler arası duraklama) ve tonlama bu ögeleri oluşturur [25, 27]. Vurgunun yeri bir sözcüğün anlamını veya kipini değiştirebildiği gibi, durakların doğru yapılması bir kelimenin özne mi yoksa sıfat mı olduğunu belirleyerek anlatımdaki anlamı berraklaştırır [26, 27].
+3. Ünite - Ses Bilgisi
+Ses bilgisi ile ilgili daha ayrıntılı bilgi edinmek isterseniz Doğan Aksan’ın Her Yönüyle Dil
+Ana Çizgileriyle Dilbilim adlı kitabından yararlanabilirsiniz (TDK Yayınları, 2011).
+Harf
+Seslerin yazıdaki karşılığına harf denir. Bir dildeki sesleri karşılayan işaretlerin belirli bir
+sırada meydana getirdiği harfler topluluğuna ise alfabe denir. Sesçil, yani söyleyişle yazılı­
+şın mümkün olduğunca birbirine yakın olması ilkesini esas alan Türk alfabesi 29 harf, iki
+ayırıcı işaretten oluşur. Bağımsız olarak kullanılan ayırıcı işaretler, halk arasında ‘şapka’
+olarak bilinen düzeltme işareti (^) ve kesme işaretidir (’). Ünsüz harfler ön sıradan e ünlüsü
+ile /be/, /ce/, /he/, /ke/ vb. şeklinde okunur. 29 harften yalnızca yumuşak g (ğ) harfi kelime
+başında bulunmaz.
+1928 yılında Harf Devrimi ile kabul edilen ve 1929’da resmen uygulanmaya başlayan
+yeni Türk alfabesinde, Latin alfabesinin temel harfleri alınmış, ayrıca bu temel harflerde
+bazı değişiklikler gerçekleştirilerek yeni harfler yapılmıştır. Çok sayıda farklı harften olu­
+şan karmaşık bir alfabeye yol açmamak amacıyla dilin sesleri ayırıcı işaretlerle gösteril­
+miştir.
+Türk alfabesi, ses-yazı karşılıklığı ilkesini esas alır. Sesler (ünlüler ve ünsüzler), kısaca,
+iki sözcüğü ayırt eden en küçük birim; yazı (harfler) ise yazım sistemindeki en küçük
+birimdir. Türk alfabesinde yer alan harflerin her biri genel olarak tek ses değerini gösterir.
+Türk alfabesinde düzeltme (^) ve kesme (’) işaretlerinin birden fazla görevi vardır. Dü­
+zeltme işareti, âdet örneğinde olduğu gibi, üzerine konulduğu ünlünün uzun okunduğunu
+gösterir. Kâr örneğinde ise üzerine konulduğu, ölçünlü söyleyişte kısalan /a/ ünlüsünün
+uzun söylenmesi gerektiğini değil, bir önceki ünsüzün ön damaksıl (ince, ön sıradan) söy­
+lenmesi gerektiğini ifade eder. Kesme işareti ise bir yandan özel adlara getirilen ekleri
+ayırmaya yarayan noktalama işareti olarak yaygın biçimde kullanılırken bir yandan da
+cüz’i, Kur’an, kıt’a vb. örneklerde, kullanımı zorunlu olmamakla birlikte, Osmanlı alfa­
+besindeki ayın ve hemze harflerini karşılamaktadır. Nadiren de olsa karın, kar’ın, karı’n
+vd. eşsesli kelimeleri birbirlerinden ayırmak üzere de kullanılmaktadır. Son dönemlerde
+söyleyişte düşen ünsüzlerin yerine kesme işaretinin kullanıldığını görüyoruz: bir yerine
+bi’ vb. yazılışlara da rastlanmaktadır. Bu ayırıcı işaretlere iki ayrı işlevin yüklenmesi, geniş
+kitleler tarafından içselleştirilememekte, üstelik uzun yıllardır zaman ve enerji kayıplarına
+yol açan önemli sorunlar yaratmaktadır.
+Dil ile ilgili bilimsel çalışmalarda kullanılmak üzere, 1928’de yasayla kabul edilen öl­
+çünlü Türk alfabesinden ayrı, bu alfabedeki harflerin ayırıcı işaretlerle genişletilmiş bir
+gayriresmî çeviri yazı alfabesi vardır. Dil çalışmalarında yaygın kullanım alanı bulunan
+Türk çeviri yazısının temel harfleri şu şekildedir: a, b, c, ç, d, e, ė, f, ġ, g, ğ, h, ḥ, ḫ, i, ı, j, ḳ,
+k, l, m, n, ñ, o, ö, p, r, s, ṣ, s, ş, t, ṭ, u, ü, v, v̇, y, z, ż, ẓ, ẕ. Bu alfabede yer alan ayırıcı işaretli
+Şekil 3.2
+Ses / Harf
+Ses/Harf
+Ünlüler
+İkiz
+Ünlüler
+İkiz
+Ünsüzler
+Üçüz
+Ünsüzler
+Ünsüzler
+Alfabe adı Yunancada, bu
+alfabenin ilk iki harfine verilen… ⟦1⟧
 
-💡 Üçüncü ünitenin ses bilgisi konularını daha iyi kavramak ve sınava hazırlık yapmak için interaktif bir çalışma kartı veya test soruları hazırlamamı ister misiniz?
+**TÜRKÇEDEKİ SESLER**
+
+Konuşma seslerini çok genel olarak ünlüler ve ünsüzler olmak üzere ikiye ayırabiliriz. Ses­
+lerin ünlü ve ünsüz biçimde ayrılması Eski Yunan’a, Platon ve Aristotales’e değin uzanır.
+Antik Yunan düşünürleri sesleri işitilebilen/ses veren ve işitilemeyen/ses vermeyen yani
+ünlüler ve ünsüzler olarak ikiye ayırmışlardır (Eker, 2011). Aşağıda Türkçedeki sesler ün­
+lüler ve ünsüzler olarak ayrıntılı bir biçimde ele alınmaktadır.
+Ünlüler
+Oluşumları sırasında belirli bir engele takılmadan, zorluğa uğramadan çıkan seslere ünlü
+adı verilir. Türkçede sekiz ünlü vardır: a, e, ı, i, o, ö, u, ü.
+Dünya dillerindeki toplam farklı ünlü sayısı 200 civarındadır (Ladefoged, 2001) . Ünlü
+ve ünsüz sayısı ile ilgili olarak çok sayıda dil üzerine yapılan bir çalışmada ünlü sayılarının
+dillere göre 3 ile 46 arasında değiştiği, yani 8,7’lik bir ortalamanın bulunduğu anlaşılmış­
+tır. Bu durumda araştırmaya konu olan dillerin % 62,1’inin 5-9 arasında ünlüye sahip
+olduğu ortaya çıkmaktadır. Türkçenin de bu dağılımda ünlü sayısı bakımından normal sı­
+nırlar içinde bulunduğu anlaşılmaktadır. Dünya dillerinin önemli bir bölümü /a, e, i, o, u/
+seslerinden oluşan 5’li ünlü setine sahiptir (Aranoff, Rees Miller 2003). Ancak, bu seslerin
+tümünün niteliklerinin ve niceliklerinin bire bir aynı olduğu söylenemez.
+Konuşma seslerinin iki ana türünden biri kabul edilen, tek başlarına bağımsız sözlüksel ve
+anlamsal birim olabilen, hecenin çekirdeğini teşkil eden ünlülerin üretimleri esnasında ses
+yolunda ünsüzlerin aksine, herhangi bir engelle karşılaşmadığı MRI fotoğraflarında açıkça
+görülmektedir.
+Ünlülerin Sınıflandırılması
+Ünlüler oluştukları yere, dilin veya çenenin yüksekliğine, dudakların durumuna göre bi­
+çimlenir. Ünlüler; akciğerden gelen havanın ses tellerini titreştirmesiyle ilk özelliklerini
+kazandıktan sonra herhangi bir engelle karşılaşmadan ağız boşluğuna gelir ve burada
+hiçbir nokta ile temas etmeden dilin, alt ve üst çenenin yüksekliğine; dudakların düz ya… ⟦2⟧ ⟦3⟧ ⟦4⟧ ⟦5⟧ ⟦6⟧
+
+### İlgili çıkmış vize soruları
+Metindeki ⟦n⟧ işaretleri bu listeye açılır. Alıntıya tıklayınca çözüm rehberinde soru açılır ve çözümü vurgulanır.
+- [1] **2025/2026 · Soru 5**: Ünsüzler çıkaklarında oluşurken hava akımı kesintili biçimde veya sızarak çıkar. Hava akımının kesintili olduğu ünsüzlere süreksiz ünsüzler,
+- [2] **2025/2026 · Soru 6**: Süreklileşme, süreksiz ünsüzlerin, akıcı ya da sızıcı sürekli ünsüzlere dönüşmesidir. Aşağıdakilerden hangisinde bu duruma örnek vardır?
+- [3] **2025/2026 · Soru 18**: “Anne” sözcüğünde görülenses olayı aşağıdakilerden hangisine örnektir?
+- [4] **2025/2026 · Soru 20**: Aşağıdaki sözcüklerin hangisinde söz başında ünlü düşmesi vardır?
+- [5] **2025/2026 · Soru 28**: Sokaktayım, kimsesiz bir sokak ortasında Yürüyorum, ardıma bakmadan yürüyorum Yolumun karanlığa saplanan noktasında Sanki beni bekleyen bir
+- [6] **2025/2026 · Soru 34**: “Dil hem araç, hem malzeme, hem de bu aracı kullanan sistemdir.” Bu ifade dilin hangi özelliğini vurgular?
+- [7] **2025/2026 · Soru 38**: Aşağıdakilerden hangisinde ünsüz benzeşmesi yoktur?
+- [8] **2025/2026 · Soru 52**: Aşağıdakilerden hangisi ölçünlü dilin özelliğidir?
+- [9] **2025/2026 · Soru 57**: Aşağıdakilerden hangisi ünlülerin sınıflandırılmasında kullanılan ölçütlerden biri değildir?
+- [10] **2025/2026 · Soru 58**: Türkçede 'd, n, s, t, z' ünsüzleri hangi özelliğe sahiptir?
+- [11] **2025/2026 · Soru 59**: "Bekliyorum" sözcüğünde hangi ses olayı görülmektedir?
+- [12] **2025/2026 · Soru 60**: “i, e” ünlüleri aşağıdaki gruplardan hangisine girer?
 
 # Kaynaklar
 

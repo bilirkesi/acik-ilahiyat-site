@@ -63,25 +63,166 @@ Bu bölümün içinde yaşadığı ders paneli: [İslam Mezhepleri Tarihi paneli
 
 # Kaynak Temellendirme
 
-**1. Hariciliğin ortaya çıkışında etkili olan siyasi ve dini faktörleri açıklayabilmek**
+## 3. İlk Siyasi-İtikadi Mezhepleşme: Hariciler
 
-Öğrenci bu hedef doğrultusunda, ilk itikadi ve siyasi mezhep olan Hariciliğin doğuşunda hem tarihsel kırılmaların hem de zihni ve sosyolojik etkenlerin rol oynadığını öğrenir. Siyasi faktör olarak, Hz. Osman'ın şehadetiyle başlayan iç karışıklıklar, Cemel Savaşı ve ardından Hz. Ali ile Muaviye arasında gerçekleşen Sıffin Savaşı öne çıkar. Sıffin Savaşı esnasında Muaviye ordusunun mızrakların ucuna Kur'an sayfaları takması üzerine savaşı durdurup tahkime (hakeme gitmeye) karar verilmesi ana kırılma noktasıdır. Dini faktör ise Hz. Ali ordusundan ayrılan bu grubun, meşru bir halifenin isyancılarla savaşması emredilmişken insanların hakemliğine başvurulmasını "La hükme illa lillah" (Hüküm ancak Allah'a aittir) ilkesine aykırı görerek bir itikat meselesine dönüştürmeleridir. Bu siyasi kararı Allah'ın hükmünü tanımamak ve küfüre düşmek olarak değerlendirmişlerdir. Ayrıca bu kitlenin çoğunlukla yeni kurulan ordugah şehirlerine yerleştirilmiş çöl kökenli Bedevi kabilelerden oluşması; dini bilgilerinin sığlığı, soyut düşünme yetersizlikleri ve Kureyş hegemonyasına duydukları kabilevi tepkiler de bu radikal ayrışmayı tetiklemiştir *(Ders: 5- İlk Siyasî-İtikadî Mezhepleşme: Hâricîler)*.
+Bu bölümde Sıffin Savaşı ve Tahkim Hadisesi sonrasında Hz. Ali ordusundan ayrılarak ortaya çıkan ilk itikadi grup olan Hariciler incelenmektedir. Hariciliğin isimleşme süreci, kabilevi ve sosyal yapısı ile itikadi söylemlerinin gelişim aşamaları ele alınmaktadır. Ayrıca Ezrika gibi radikal kollar ile günümüze ulaşan tek kol olan İbaziyye arasındaki farklar açıklanmaktadır.
 
-**2. Haricilere verilen isimleri ve bu isimlerin anlam içeriklerini analiz edebilmek**
+### Öğrenme hedefleri
+- Hariciliğin ortaya çıkışında etkili olan siyasi ve dini faktörleri açıklayabilmek.
+- Haricilere verilen isimleri ve bu isimlerin anlam içeriklerini analiz edebilmek.
+- Ezrika'nın radikal tutumu ile İbaziyye'nin ılımlı çizgisi arasındaki niteliksel farkları kavrayabilmek.
 
-Öğrenci bu hedef kapsamında, Haricilere hem muhalifleri hem de kendileri tarafından verilen çeşitli isimleri ve bu isimlerin arka planını öğrenir:
-*   **Havâric (Hariciler):** "Harece ala" (birine karşı çıkmak veya baş kaldırmak) ifadesinden hareketle Hz. Ali'ye isyan ettikleri için muhaliflerince verilen olumsuz bir isimdir. Hariciler ise bu ismi Nisa suresinde geçen "Allah ve Resulü uğrunda evinden çıkanlar (huruç edenler)" ayetine dayanarak olumlu bir içeriğe dönüştürmüşlerdir.
-*   **Muhakkime (Muhakkime-i Ula):** Tahkimi reddetmeleri ve "Hüküm ancak Allah'a aittir" sloganını merkeze koymaları sebebiyle hem kendilerinin hem de diğer grupların kullandığı ilk adlandırmadır.
-*   **Harûriyye:** Hz. Ali'nin ordusundan ayrıldıktan sonra ilk toplandıkları Harûra köyüne nispetle verilen isimdir.
-*   **Vehbiyye / Râsiyye:** Kendilerine ilk lider olarak seçtikleri Abdullah b. Vehb er-Râsibî'ye nispetle anılmalarıdır.
-*   **Mârika:** Okun yaydan fırlayıp çıkması anlamına gelen "meraka" kökünden türetilmiştir. Hz. Peygamber'in çokça Kur'an okuyan ancak okun yaydan çıktığı gibi dinden çıkacak bir topluluğu haber verdiği hadise dayandırılarak muhaliflerince kullanılan oldukça olumsuz bir kavreimdir.
-*   **Şurât:** "Şerâ" (satmak) kökünden gelir. Canlarını ve mallarını cennet karşılığında Allah'a satanlar anlamında Haricilerin kendileri için severek kullandıkları övgü dolu bir isimdir *(Ders: 5- İlk Siyasî-İtikadî Mezhepleşme: Hâricîler)*.
+### Ünite 4: Ehl-i Sünnet ve’l Cemaat
+*AÖF ders kitabı, Ünite 4, PDF sayfa ~69-87.*
 
-**3. Ezrika'nın radikal tutumu ile İbaziyye'nin ılımlı çizgisi arasındaki niteliksel farkları kavrayabilmek**
+4. Ünite - Ehl-i Sünnet ve’l Cemaat
+sıfatlarını kabul etmesi sebebiyle özellikle Mutezile tarafından Sıfâtiyye (sıfatçılar) olarak
+isimlendirilmiştir. Haberî sıfatları hakiki anlamlarında ve Zât’a ait birer gerçeklik olarak
+ispat etmelerinden dolayı Müşebbihe, Allah’ı cisim sayanlar anlamında Müces­sime isim­
+leri verilmiştir. Yine, Allah’ın âleme her an müdahale etme­sini gerektiren sıfatları kabul
+ettikleri, kula kısıtlı bir irade hürriyeti verdikleri için Mücbire adı verilmiştir. Bu sıfatları
+kaba manalarda ele aldıkları, Allah ile mahlukâtı arasında kaba benzetmeler yaptıkları
+için Haşviyye diye adlandırılmıştır. Nâsıbe ise, Hz. Ali ve Ehl-i Beyt’i ümmetin tayin edil­
+miş liderleri saymadıkları için, Şîa tarafından kullanılan aşağılayıcı bir isimdir. Bu tabirler
+daha çok Sünnîliğin Ehl-i Hadis kanadı için kullanılmıştır.
+Ehl-i Sünnet ve’l-Cemaat tabirinin, sadece bir mezhebe verilmiş bir isim olmadığına dikkat
+ediniz. Söz konusu ifade birçok fıkıh ve kelam mezhep­lerinin yanında, mutedil tasavvufî
+grupları da içine alan geniş bir şemsiye ifadedir.
+Doğuşu ve Gelişimi
+Hasan el-Basrî’nin (v. 110/728), yönetimin ve toplumun ıslahı için Haricîliğin isyan fik­
+rine karşı çıkışı Sünnî siyaset anlayışı için sağlam bir temel teşkil etmiştir. Basrî haksızlık
+karşısında suskunluk ve tepkisizliği de onaylamamış, nasihat yöntemini uygulamış, Emevî
+idarecilerine yazdığı mektuplarda, yapılan yanlışları eleştirmiştir. Toplumda fitneye yol
+açan unsurlardan tümüyle kaçınılması gerektiğini öğütlemiş, hatta bu konuda Hz. Ali’yi
+bile hatalı bulmuştur. Yine Basrî’nin büyük günah sahibi Müslümanı İslâm dairesi için­
+de görmesi ve insanın fiilerinde kaderin mutlak belirleyiciliğini (cebir) reddetmesi de
+Sünnîlik için önemli referansları teşkil etmiştir.
+Ehl-i sünnet akaidinin oluşumunu etkileyen diğer önemli isim Ebû Hanife’dir (v.
+150/767). Bazı kaynaklarda Ebû Hanife’nin Mürcie grupların­dan birinin kurucusu olarak
+gösterilmesi, o dönemde mezheplerin henüz teşekkül aşamasında olmasından kaynaklan­
+maktadır. Ebû Hanife’nin bizzat kendisi tarafından kaleme alınmış eseri yoktur, öğrencileri
+tarafından fikirleri yazıya geçirilmiştir. Ehl-i sünnet’in temel inaçlarını oluşturan görüşle­
+rinden bazıları şöyledir: Allah sayı yönünden değil ortağı bulunmaması yönünden birdir.
+Peygamberlerin hepsi günahlardan, küfür ve çirkin fiillerden münezzehtir. Peygamber­
+lerden sonra en üstün insanlar sırasıyla Ebû Bekir, Ömer b. Hattab, Osman b. Affan ve
+Ali b. Ebî Talib’tir. Bir Müslüman, helal saymamak şartıyla büyük günah işlemiş olsa bile
+küfürle suçlanamaz. Bir müminin kâfir olmamakla birlikte fâsık olması caizdir. Nebilerin
+mucizeleri ile velilerin kerametleri haktır. Allah Teâlâ ahirette görülecektir. İman, dil ile
+ikrar ve kalp ile tasdikten ibarettir. Peygamberlerin şefaati haktır. Kıyamet ve hesap haktır.
+Ehl-i Sünnet kavramı ile ifade edilen ana kitlenin zihniyeti, mevâli arasından Hasan el-
+Basrî ve Ebû Hanîfe ile başlamış ve cumhûr ulema denilen âlimlerle devam etmiştir. Bun­
+lardan ilki Mâlik b. Enes’tir (v. 179/795). Gündelik politik çekişmelerden bağımsız kalma­
+ya özen gösteren İmam Mâlik, Hicaz bölgesinde Medine halkının yaşayışıyla bütünleşen… ⟦1⟧
 
-Öğrenci bu hedef çerçevesinde, Hariciliğin homojen bir yapı olmadığını, içinden çıkan kollar arasında derin nitelik farkları bulunduğunu kavrar. Nâfi b. el-Ezrak liderliğinde kurulan **Ezrika**, son derece radikal ve terörize edici bir tutum benimsemiştir. Ezrika, kendilerine katılmayan ve oturan (kuûd eden) diğer Haricileri bile tekfir etmiş, kendi bölgelerine hicret etmeyi farz kılmış, yollarını kestikleri Müslümanları sorguya çekerek (isti'râz) kendileri gibi düşünmeyenleri ve hatta onların çocuklarını müşrik kabul edip öldürülmelerini helal saymıştır. Buna karşılık Abdullah b. İbâz ve Ebu Ubeyde çizgisindeki **İbaziyye** ise bu katı söylemleri ve terör eylemlerini kesinlikle reddetmiştir. İbaziler kendilerinden olmayan veya büyük günah işleyen Müslümanları müşrik değil, "küfr-i nimet" (Allah'ın nimetine nankörlük eden) olarak tanımlamışlardır. Bu kişilere dünyada Mümin muamelesi yapılması gerektiğini (can, mal, nikah ve miras hukukunu koruyarak) savunmuşlardır. Basra'da ilim merkezli gizli bir teşkilatlanma kurup yetiştirdikleri ilim elçilerini (hameletü'l-ilm) taşraya göndererek devletler kurmuşlar ve Hariciliğin günümüze kadar ulaşan tek ılımlı kolu olmayı başarmışlardır *(Ders: 5- İlk Siyasî-İtikadî Mezhepleşme: Hâricîler)*.
+**ASHÂB-I HADİS VE SELEFÎLİK**
 
-💡 Hariciler konusunun ardından, bu fikirlerin büyük günah (kebire) tartışmasına nasıl evrildiğini inceleyeceğimiz sonraki dersler için de benzer bir özet hazırlamamı ister misiniz?
+Hadis ve sünnet, tarif edenlerin mensup oldukları ilmî camiaya göre birtakım farklı ta­
+nımlara konu olmakla birlikte, genellikle Hz. Peygamber’den nakledilen söz, fiil ve takrir­
+lerin toplamı olarak kabul edilmiştir.
+İslâm kaynaklarında, genellikle Müslümanların Şâfiî’den önce Ashâb-ı Hadis ve
+Ashâb-ı Rey diye iki fırkaya ayrıldığı bildirilmektedir. Hadis ashâbı, insanları hadislere
+bağlanmaya teşvik edenler ve bunun dışındaki fikirlere uymaktan sakındıranlardır. İmam
+Şâfiî ve ashabı bu sıfatla anılan en önemli topluluk olarak tanınmıştır. Öte yandan bir mu­
+haddis ile Ashâb-ı hadis arasında da ayırıma dikkat çekilmiştir. Buna göre muhaddis, sa­
+dece rivayete ve râvilerin hallerini bilmeye muktedir olan kimse; Ashâb-ı hadis ise haberle
+istidlal yapabilen ve ondan ahkâm çıkarma usulünü bilen kimse demektir. Bu durumda
+Hadis ehli, hakkında nass bulunmayan herhangi bir meselede asla görüş belirtmez. Bun­
+lar Hicaz ehli, yani Mâlik ve ashâbı, Şâfiî ve ashâbı, Süfyân es-Sevrî ve ashâbı, Ahmed b.
+Hanbel ve ashâbı, Dâvud b. Ali ve ashâbından müteşekkildir. Başka bir tasnife göre ashab-ı
+hadis beş tabakaya ayrılmıştır: Mâlikiyye, Şâfiîyye, Hanbeliyye, Râheviyye ve Huzeymiy­
+ye. Ashâb-ı hadis tabirinin sadece Şafiîler’e has olduğunu belirten ifadeler de vardır. Fakat
+kaynaklarda yer alan bilgiler, genellikle ilk dönem ulemasını birlikte değerlendirip kesin
+bir ayrıma tabi tutmaz.
+Ashâb-ı hadis ya da Selefiyye, hicri 2-4. asırlar arasında yaşamış ve ana bünyenin önde
+gelen tefsir, hadis, fıkıh ve Arap dili âlimleri tarafından temsil edilmiştir. Temel özellikleri,
+inanç esasları konusunda nasslarda ifade edilen esasları olduğu gibi kabul etmeleri, bilhas­
+sa Allah’ın yed, vech, istivâ gibi haberî sıfatlarını (müteşâbihât) hiç tevil etmeden tasdik
+etmeleri ve konuyla ilgili aklî delil aramamalarıdır. Selefiyye’nin klasik kelam kaynakların­
+da rastlanan inanç esaslarını ortaya koymada takip ettikleri metodik prensipleri; tasdik… ⟦2⟧ ⟦3⟧ ⟦4⟧ ⟦5⟧ ⟦6⟧
+
+### Ünite 5: Şiîlik I
+*AÖF ders kitabı, Ünite 5, PDF sayfa ~93-111.*
+
+5. Ünite - Şiîlik I
+idareceyi iş başına geçirme özlemi ortaya çıkmamış; dolayısıyla Ali taraftarlığı belirli ölçü­
+de, siyasî bir taraftarlıktan öteye geçmemiştir. Hatta Hz. Ali bu iki halifenin en yakın da­
+nışmanı olarak çalışmıştır. Ammâr gibi bir taraftarı da onların valileri arasındadır. Fakat
+Hz. Osman devrinde (23-35/644-656) bu durum değişmiş; halifenin yaşlılığı, icraatındaki
+bazı zaaflar, Ümeyye ailesine mensubiyeti dolayısıyla valilik ve memuriyetlere yakınlarını
+tayin etmesi, onları kontrol edememesi, yaptıkları yanlış işlere göz yumması, kendilerine
+ölçüyü aşan ihsanlarda bulunması, Emevîler’in idare ettikleri yerlerin ahalisine kötü dav­
+ranmaları, sonuçta halk arasında Hz. Osman ve çevresine karşı husumet oluşmasına ve
+siyasî anlamda Şîa’nın gelişmesine zemin hazırlamıştır.
+Hz. Ali lehindeki ilk hareket Velid b. Ukbe’nin valiliği devrinde Kufe’de ortaya çıktı.
+Kurrâ (Kur’ân okuyucuları) diye anılan bir takım zâhid kişiler, Ali’nin hilâfeti döneminde
+ve daha sonra, Ali Şîası’nın liderleri oldular. Bu devrede Şîatu Osman yahut Osman ta­
+raftarları adıyla mevcut halifeyi destekleyen kesim zayıfladı ve adaletli bir devlet başkanı
+arayışı ve özlemiyle, Şîatü Ali yahut Ali taraftarları olarak anılan; fakat toplumun diğer
+kesiminden farklı belirgin bir yapısı olmayan grup, güç ve itibar kazanmaya başladı (Öz,
+s. 60-1).
+Başkent Medine dışındaki İslâm beldelerinde, yukarıda belirtilenler yanında, İslâm’a
+sonradan girip ihtidâ edenler sebebiyle, halife aleyhinde başlatılan cereyanlar hızla gelişti.
+Şiîliğin Hz. Osman dönemindeki fitne olaylarına bağlı olarak ortaya çıktığı görüşünde
+olanlar, daha çok İbn Sebe meselesinden hareket etmektedirler. Her ne kadar erken dö­
+nem Şiî kaynaklarda da, Hz. Ali hakkında, onun imâmetinin farz olduğunu ileri süren
+ilk kimsenin Yemenli İbn Sebe olduğu şeklinde kayıtlar mevcut ise de (Nevbahtî, s. 20),
+Şiîliğin İbn Sebe ile birlikte Hz Osman döneminde başladığı iddiası önemli sorunları
+içermektedir. Öncelikle İbn Sebe’nin kimliği meçhuldür ve kim olduğu hakkında farklı
+rivayetler bulunmaktadır. İkincisi İbn Sebe meselesinde, konuyla ilgilenen araştırıcılar
+arasında görüş birliği olmadığı gibi, müşterek noktalar bulmak da pek mümkün değildir.
+Diğer bazı kaynaklarda ise, Hz. Osman döneminden hiç söz edilmeksizin, doğrudan İbn
+Sebe’nin Ali’nin tanrılığını iddia ettiği, bunun üzerine Ali’nin onun yakılmasını emrettiği;
+fakat daha sonra vazgeçtiği söylenmektedir.
+Kısacası İbn Sebe’yle ilgili rivayetler birbirleriyle çelişkilidir. Bu yüzden Şiîliğin doğu­
+şunun, Hz. Osman dönemindeki, tarihe fitne olayları olarak geçen hadiselerle ve Sebeiy­
+ye ile doğrudan irtibatlandırılması pek mümkün gözükmemektedir. İbn Sebe’ye atfedilen
+fikirler ise, birinci asrın sonlarıyla ikinci asrın başlarında tartışılan fikirler arasındadır.
+Hz. Osman dönemindeki olaylara katılanların çoğunluğunun güneyli olması sebebiyle,
+onlara Sebeiyye sıfatının verilmiş olması mümkündür. Ancak o dönemde bu kavramın
+içeriğinde muhtemelen Osman aleyhtarlığı vardır. Nitekim 51/671 yılında Ali’ye ve soyu­
+na sövülmesini protesto ederek ayaklanan Hucr b. Adiy için de Sebeî sıfatı kullanılmıştır… ⟦1⟧
+
+**ZEYDİYYE ŞÎASI**
+
+Zeydiyye’nin Teşekkülü ve Tarihçesi
+Zeydîlik, İmâmiyye Şîası’nın dördüncü imamı Ali b. Hüseyin Zeynelâbidîn’in (ö. 712/94)
+oğlu Zeyd’e (ö. 74/1220), ondan sonra da oğlu Yahya’ya (125/743) uyarak onların imâmetini
+ileri sürenlerin mezhebidir (Fığlalı, 1996, s. 123). Şiî fırkalar arasında mutedil ve Ehl-i
+Sünnet’e en yakın olması ve diğer Şiî grupların aksine, ilk üç halifeyi kabullerinden dolayı
+Makdisî ve Mesûdî gibi bazı ilk devir müellifleri, haklı olarak Zeydîliği Şîa’nın dışında
+tutmuşlardır. Onların itikatta Mu‘tezile, amelde de Ebû Hanife’nin mezhebini takip etmiş
+olmaları, bu yakınlaşmayı daha da güçlendirmektedir. Her şeyden önce, daha sonra Ehl-i
+Sünnet adını alacak ana bünyenin mensuplarıyla İmam Zeyd ve tabileri aynı siyasî ve top­
+lumsal şartlara tepki gösteriyorlardı. Ebû Hanife’nin, Zeyd’e yardım ederek onu destekle­
+menin gerekliliğini söyleyip onunla birlikte zâlim saydıkları Emevî idarecilerine karşı baş­
+kaldırmanın vâcip olduğuna dair fetvâlar vermiş olması, bunun en önemli kanıtlarından
+birisidir. Bugün Zeydîler’in yoğun olarak yaşadığı Yemen’de, Sünnî Şâfiîler’le bu mezhebin
+mensupları arasında dinî, hukukî ve toplumsal açıdan herhangi bir çatışma olmadığı gibi,
+her iki topluluk aynı camide, aynı imamın arkasında namaz kılabilmektedir.
+80/699 yılında, İmâmiyye’nin dördüncü imamı kabul edilen Ali Zeynelâbidîn’in oğlu
+olarak Medine’de doğan Zeyd’in yetişip olgunluk çağına geldiği devrede Hz. Ali taraftarla­
+rı, Hz. Hüseyin ve ailesinin Kerbela’da katledilmeleri sebebiyle, Emevîler’e karşı büyük bir
+düşmanlık besliyorlar ve onlara isyan etmek için fırsat kolluyorlardı. Kerbela faciasından
+sonra Tevvâbun hareketi ve Muhtar es-Sakafî’nin isyanına Emevîler’in kanlı müdahaleleri
+ve toplum genelinde uygulamış oldukları zulüm politikaları, Halife Hişâm b. Abdülmelik
+zamanında Zeyd b. Ali’nin liderliğinde yeni bir isyan hareketinin ortaya çıkmasına sebep
+olmuştur.
+Emevîler’in haksızlıkları ve Ehl-i Beyt’e düşmanlıkları, özellikle Ehl-i Beyt’in içinde… ⟦2⟧ ⟦3⟧ ⟦4⟧ ⟦5⟧ ⟦6⟧
+
+### İlgili çıkmış vize soruları
+Metindeki ⟦n⟧ işaretleri bu listeye açılır. Alıntıya tıklayınca çözüm rehberinde soru açılır ve çözümü vurgulanır.
+- [1] **2025-2026 · Soru 5**: Aşağıdaki tarihi gelişmelerden hangisi İslam mezheplerini doğuran sosyo-politik etkenler arasında sayılamaz?
+- [2] **2025-2026 · Soru 8**: Aşağıdakilerden hangisi Emevi ve Abbasiler döneminde alemin yaratılması, Allah’ın sıfatları gibi felsefi ve kelami konulardaki tartışmaların
+- [3] **2025-2026 · Soru 9**: Aşağıdakilerden hangisi Mu‘tezile 'nin temel ilkelerinden biri değildir?
+- [4] **2025-2026 · Soru 10**: Mu'tezile mezhebinin kurucusu aşağıdakilerden hangisidir?
+- [5] **2025-2026 · Soru 11**: Ebû Hanîfe ve Mürcie ilişkisi bağlamında aşağıdakilerden hangisi yanlıştır?
+- [6] **2025-2026 · Soru 12**: Aşağıdakilerden hangisi Abbasi halifeleri Me'mun, Mu'tasım ve Vasık dönemlerinde Mu'tezili fikirleri kabul etmeyen kadılara ve âlimlere uygu
+- [7] **2025-2026 · Soru 13**: Hakkında nass bulunmayan herhangi bir meselede asla görüş belirtmeyen, sadece haberle (âsârla) yetinenlere ------- adı verilir. Yukarıdaki c
+- [8] **2025-2026 · Soru 14**: Mâtürîdîler’in; ilâhî sıfatlar, halku’l-Kur’ân, insan fiilleri, kader ve kerâmet konularında; nasları görmezlikten gelerek insanı yanıltan a
+- [9] **2025-2026 · Soru 15**: Aşağıdakilerden hangisi “hilafet, iman-küfür ve kader” meseleleri etrafında oluşan ilk mezheplerden biri değildir?
+- [10] **2024-2025 · Soru 7**: Aşağıdakilerden hangisi Cemel ve Sıffin Savaşları sonrasında ortaya çıkan problemlerden biridir?
+- [11] **2024-2025 · Soru 9**: - 2025 Güz Dönemi Ara Sınav Aşağıdakilerden hangisi “yönetim, iman-küfür ve kader” meseleleri etrafında oluşan ilk mezheplerden biri değildi
+- [12] **2024-2025 · Soru 10**: ------- hakem tayinini, yani tahkimi kabul etmesinden dolayı Hz. Ali'yi suçlayıp ondan ayrılanların meydana getirdiği bir fırkadır. Yukarıda
 
 # Kaynaklar
 

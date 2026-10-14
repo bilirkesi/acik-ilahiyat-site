@@ -63,19 +63,106 @@ Bu bölümün içinde yaşadığı ders paneli: [İslam Mezhepleri Tarihi paneli
 
 # Kaynak Temellendirme
 
-**1. Din ve mezhep kavramsal çerçevesini ve aralarındaki farkı açıklayabilmek**
+## 1. Din, Mezhep İlişkisi ve Mezhepleşme Süreci
 
-Bu öğrenme hedefi kapsamında öğrenci, kelime kökeni olarak "mezhep" kavramının Arapçada "zehebe" (gitmek) fiilinden türediğini ve kişiyi hedefe ulaştıran "yol" anlamıyla olumlu bir içeriğe sahip olduğunu öğrenir [1]. Buna karşın "fırka" kelimesinin kökünde bölünüp parçalanma ve toplumsal bütünlüğün bozulması anlamının yattığını kavrar [1]. Din kavramının ilahi kaynaklı ve tek olduğunu, mezheplerin ise alimlerin içtihat ve gayretleriyle şekillenen beşeri ve çoklu yapılar olduğunu anlar [2, 3]. Hz. Peygamber döneminde yaşayan masum bir otorite bulunması sebebiyle dinin doğrudan tebliğ edildiğini, vefatından sonra ise metinleri anlama çabasının mezhepleri doğurduğunu görür [4-6]. Mezheplerin ilahi dinin yerini alan veya onunla eşitlebilecek yapılar olmadığını, aksine sıradan insanların dini doğru anlayıp günlük hayatlarında kolayca uygulayabilmelerini sağlayan uzmanlık rehberleri olduğunu öğrenir [3, 7-9].
+Bu bölümde din ve mezhep kavramları arasındaki ilişki ile Hz. Peygamber sonrasında ortaya çıkan beşeri gayretlerin doğası ele alınmaktadır. Bir mezhebin sivil bir inisiyatif olarak başlayıp cemaatleşme, sistemleşme ve kurumsallaşma aşamalarından geçerek nasıl teşekkül ettiği incelenmektedir. Ayrıca mezheplerin ilahi değil, insan unsuru ve sosyo-psikolojik etkenlerle şekillenen dinamik yapılar olduğu vurgulanmaktadır.
 
-**2. Hz. Peygamber dönemi sonrasında mezhepleşmenin niçin doğal bir süreç olduğunu kavrayabilmek**
+### Öğrenme hedefleri
+- Din ve mezhep kavramsal çerçevesini ve aralarındaki farkı açıklayabilmek.
+- Hz. Peygamber dönemi sonrasında mezhepleşmenin niçin doğal bir süreç olduğunu kavrayabilmek.
+- Bir mezhebin oluşum aşamalarını ve ikinci adamın sistemleştirmedeki rolünü analiz edebilmek.
 
-Öğrenci bu hedef doğrultusunda, Hz. Peygamber hayattayken vahiy süreci devam ettiği ve ihtilafları çözen peygamberlik otoritesi bulunduğu için o dönemde mezheplerin bulunmamasının gayet tabii bir durum olduğunu anlar [4, 10]. Hz. Peygamber'in vefatıyla birlikte vahyin kesildiğini, İslam toplumunda yanılmaz (masum) bir kişi veya kurum otoritesinin kalmadığını kavrar [5]. Otoritenin artık Kur'an ve sünnet metinlerine devredildiğini, bu metinlerden yeni sorunlara çözüm üretme görevinin ise masum olmayan alimlere kaldığını öğrenir [2, 6, 11]. İnsanın yaratılışı gereği farklı düşünmeye ve ihtilafa meyilli bir varlık olması sebebiyle, alimlerin bilgi birikimi ve bakış açılarına göre farklı hükümlere ulaşmasının kaçınılmaz olduğunu görür [11, 12]. İslam coğrafyasının fetihlerle genişlemesi, yeni kültürlerle karşılaşılması ve siyasi gelişmelerin yaşanmasıyla birlikte mezhepleşmenin bir sapma değil, dinî ve sosyal hayatın doğal bir gereksinimi haline geldiğini kavrar [11, 13-16].
+### Ünite 1: Mezhepler Tarihine Giriş
+*AÖF ders kitabı, Ünite 1, PDF sayfa ~15-31.*
 
-**3. Bir mezhebin oluşum aşamalarını ve ikinci adamın sistemleştirmedeki rolünü analiz edebilmek**
+1. Ünite - Mezhepler Tarihine Giriş
+Mezhep ve dinî grupların liderleri zaman zaman yanlış yollara sapmışlar, siyasî ya da
+mali çıkarları doğrultusunda din istismarına kalkışmışlardır. Liderlik sultası ve liderle­
+rin kutsanması, mensuplar kitlesinin aldatılması, ekonomik sömürüye maruz kalması, bu
+bağlamda belirtilmesi gereken diğer olumsuzluklardır. Mezhepler Tarihi tüm bu yaşanan­
+ları sağlam bir bilimsel zeminde ortaya koyarak önümüzü aydınlatmayı amaçlar. Olumlu
+gelişmelerin tekrarı, olumsuzlukların ise bir daha yaşanmaması için bir bilinç kazandır­
+maya çalışır. Tarihten alınması gereken dersleri görünür kılar. Bu dersler dinî eğitim ve
+öğretimin en verimli şekilde yapılabilmesi için lazım olan çok önemli malzemelerdir.
+Diğer taraftan Mezhepler Tarihi ortaya koyduğu objektif bulgularla mezhep ve gruplar
+arasındaki önyargıları giderici bir işlev görebilir, müminlerin birbirlerini daha yakından
+tanımalarına yardımcı olabilir. Sözünü ettiğimiz yakınlaşma olmadan sağlıklı ve güvenli
+bir toplumun inşası mümkün görünmemektedir.
+Konuları
+İslâm Mezhepleri Tarihi’nin konusunu esas olarak tarihte ortaya çıkmış ve günümüzde ya­
+şamakta olan mezhepler teşkil etmektedir. Henüz sosyalle­şemediği, kurumsallaşamadığı,
+kendine mahsus doktrinleri oluşturamadığı için mezhep olarak kabul edilemeyecek dinî
+gruplar, cemaatlar, akımlar, ekol ve okullar, siyasî hareketler veya tarikatlar da, ‘farklılaşıp
+mezhepleşme’ potansiyelini bünyelerinde taşıdıklarından Mezhepler Tarihi uzmanlarınca
+gözlemlenip incelemeye alınırlar. Zira günümüzün büyük İslâm mezheple­rinden her biri,
+hatta Bahâîlik gibi İslâmiyet kökenli yeni bir dünya dinî, tarihin bir döneminde ya küçük
+bir cemaat veya partizan bir hareket ya da tarikat olarak ortaya çıktı. Sonra da bir mezhep
+(peşinden belki de Bahâilik örneğinde olduğu gibi bir din) olmaya doğru evrildi.
+İslâm düşüncesinin itikadî, ideolojik ve politik geçmişini ve bugüne yan­sımasını mez­
+hepler ve akımlar üzerinden incelemek isteyen bir Mezhepler Tarihi araştırmacısının ele
+alacağı belli başlı meseleleri şu şekilde sıralamak mümkündür (Kutlu, 2008, s. 23–9):
+a.	 Mezhep ve akım isimlerinin kaynakları,
+b.	 Mezhep ve akımların doğuş sebepleri,
+c.	 Teşekkül süreçleri,
+d.	 Bulundukları mekân ve coğrafya ile olan ilişkileri,
+e.	 Kimler ve hangi toplumsal yapılar ile başladıkları,
+f.	 İlk ve sonraki temsilcileri,
+g.	 Temel fikir ve kavramları,
+h.	 Oluşturdukları edebiyat,
+i.	 Yaşadıkları iç bölünmeler,
+j.	 Yayıldıkları bölgeler,
+k.	 Diğer dinî ve siyasî oluşumlarla ilişkileri ve tartışma konuları,
+l.	 Günümüzdeki durumları,
+m.	İslâm düşüncesine katkıları,
+n.	 Haklarında yapılmış çağdaş araştırmalar.
+Diğer Din Bilimleriyle Olan İrtibatı
+Her bağımsız bilim dalı gibi kendine özgü bir alanı, konuları ve amaçları olan İslâm Mez­
+hepleri Tarihi doğal olarak diğer ilmi disiplinlerle değişik düzeylerde irtibata geçmek duru­
+mundadır. Söz konusu irtibatın en yoğun gerçekleştiği disiplin kuşkusuz Kelam ilim dalıdır.
+Kelam ilmi gözettiği gayeler bakımından “kesin deliller kullanmak ve vaki olacak şüp­
+heleri gidermek suretiyle dinî inanç esaslarını ispata kudret kazandıran bir ilim dalı” olarak… ⟦1⟧
 
-Öğrenci bu hedef kapsamında, mezheplerin baştan planlanmış veya masa başında kurgulanmış yapılar olmadığını, zaman içinde gelişen canlı süreçler olduğunu öğrenir [15, 17, 18]. Mezhepleşmenin ilk aşamasında, toplumun karşılaştığı yeni meselelere yetkin alimlerin bireysel çözümler sunmasıyla bir "sivil inisiyatif" döneminin başladığını görür [15, 16]. Sunulan bu çözümler etrafında zamanla bir takipçi kitlesinin toplanmasıyla yapının "cemaat" aşamasına evrildiğini anlar [16, 19]. Cemaat yapısından asıl mezhebe geçişte ise kurucu imamdan sonra gelen ve "ikinci adam" olarak adlandırılan sistemleştirici şahsiyetlerin hayati rolünü analiz eder [19]. İkinci adamın, gelen ilmi birikimi derleyip yazılı literatüre dönüştürdüğünü, metodolojiyi netleştirerek mezhebin özgün kimliğini inşa ettiğini öğrenir [19, 20]. Öğrenci son olarak, bu sistemleşmenin ardından medreseler ve hiyerarşik hoca-talebe yapılarıyla kurumsallaşmanın tamamlanarak müstakil bir mezhebin teşekkül ettiğini kavrar [20].
+**Bunları yaparken Din Fenomenolojisi, Dinler Tarihi’nden ve Mezhepler Tarihi’nden**
 
-💡 Bu ilk iki dersin temel konularını kapsayan bir çalışma rehberi veya pekiştirme testi hazırlamamı ister misiniz?
+veri sağlar. Vardığı sonuçlardan, her iki bilim dalı da istifade eder. Bu istifade tenâsüh,
+hulûl, mehdilik, ikrar, takiyye, ric’at, mut’a gibi kavram, terminoloji, inanç, mitos, ritüel ve
+geleneklerin derinlikli olarak anlaşılmasında vazgeçilmez değerdedir (Büyükkara, 2005).
+Mezhepler ve dinî gruplar sosyal gerçeklikler olduklarından Din Sosyolojisi’nin ilgi
+alanına girerler. Mezhebin oluşumu, isim alışı, bölünüşü, mezhebe giriş ve mensubiyet,
+dinî grup liderliği, cemaatsel hiyerarşi, grupsal dayanışma, ekonomik yardımlaşma, top­
+lu ibadet gibi Mezhepler Tarihi’nin konusuna giren olgular Din Sosyolojisi tarafından
+derinlikli olarak araştırıl­maktadır. Din sosyologları dinî grupları ele alırken Mezhepler
+Tarihi’nin bulgularından yararlanırlar. Buna karşılık Din Sosyolojisi’nin tespitleri, İslâm
+mezheplerinin oluşum ve gelişimleri ile günümüzdeki durumlarını anlamada çok kıymet­
+li açılımlar sağlar. Sosyolojinin gözlem, anket, görüşme gibi ampirik yöntemleri son yıllar­
+da saha araştırmalarında mezhepler tarihçileri tarafından kullanılmaktadır. ⟦2⟧
+
+1. Ünite - Mezhepler Tarihine Giriş
+İnsanların dinî oluşumlara girişleri, psikolojilerin etkili olduğu sosyal bir faaliyettir.
+Bireysel karakter farklılıkları ve insan tabiatındaki psikolojik eğilimler, kişileri tepkisel,
+akılcı, gelenekçi, sezgici, radikal yahut uzlaşmacı tiplerdeki gruplardan birisine girmeye
+sevkeder (Kutlu, 2008; Sarıkaya, 2009). Kişinin mezhep ve cemaati ile aynileşmesi, inan­
+cında müteassıplaş­ması, grubundan olmayan diğer müminleri ötekileştirmesi, bazen şid­
+dete yönelmesi gibi vakıalar Din Psikolojisi’nin ilgi alanı içerisindedir. Aynı şekilde lider
+karizması, dinî lider hezeyanları, liderlerin kutsanması, ilahi kaynaklı olduğuna inanılan
+yol gösterici rüyalar, toplumdan soyutlanma davranışları, grup gerilemesi ve kurtarıcı
+bekleme, Kerbela örneğinde olduğu gibi tarihi örselenmelere bir cevap olarak yıldönü­
+mü tepkileri, mensuplara uygulanan beyin yıkama ve karizmatik ikna taktikleri yine Din… ⟦3⟧ ⟦4⟧ ⟦5⟧ ⟦6⟧
+
+### İlgili çıkmış vize soruları
+Metindeki ⟦n⟧ işaretleri bu listeye açılır. Alıntıya tıklayınca çözüm rehberinde soru açılır ve çözümü vurgulanır.
+- [1] **2025-2026 · Soru 1**: ------- dinin özündeki ve Müslüman toplumun bütünlüğündeki bozulmayı ifade eden kavramdır. Yukarıdaki cümlede boş bırakılan yeri aşağıdakile
+- [2] **2025-2026 · Soru 2**: Aşağıdakilerden hangisi İslam mezhepleri tarihi disiplini ile din sosyolojisinin ortak çalışma konuları arasında yer almaz?
+- [3] **2025-2026 · Soru 3**: Aşağıdakilerden hangisi mezhepleri isimlendirme ve sınıflama konusunda ki metodolojik problemlerden biri değildir?
+- [4] **2025-2026 · Soru 4**: Aşağıdakilerden hangisi İslam mezhepleri tarihi biliminin amaçlarından biri değildir?
+- [5] **2025-2026 · Soru 17**: -------, Şîa’yı diğer İslamî fırkalardan ayıran en önemli itikat esasıdır. Yukarıdaki cümlede boş bırakılan yeri aşağıdakilerden hangisi doğ
+- [6] **2025-2026 · Soru 19**: Aşırı Şii fırkalar tarafından ileri sürülen ve ilâhî ruhun Hz. Peygamber’e, sonra da Ali ve evlatlarına intikal ettiği düşüncesini ifade ede
+- [7] **2024-2025 · Soru 2**: Aşağıdakilerden hangisi İslam mezhepleri tarihinin araştırma alanları arasında yer almaz?
+- [8] **2024-2025 · Soru 4**: ------- dinin özündeki ve Müslüman toplumun bütünlüğündeki bozulmayı ifade eden kavramdır. Yukarıdaki cümlede boş bırakılan yeri aşağıdakile
+- [9] **2024-2025 · Soru 19**: - 2025 Güz Dönemi Ara Sınav -------, Şîa’yı diğer İslamî fırkalardan ayıran en önemli itikat esasıdır. Yukarıdaki cümlede boş bırakılan yeri
+- [10] **2023-2024 · Soru 1**: Aşağıdakilerden hangisi İslam mezhepleri tarihi biliminin amaçlarından biri değildir?
+- [11] **2023-2024 · Soru 2**: ------- dinin özündeki ve Müslüman toplumun bütünlüğündeki bozulmayı ifade eden kavramdır. Yukarıdaki cümlede boş bırakılan yeri aşağıdakile
+- [12] **2023-2024 · Soru 4**: Aşağıdakilerden hangisi İslam Mezhepleri tarihçisinin ana kaynakları okuyup anlamlandırırken karşılaştığı metodolojik problemlerden biridir?
 
 # Kaynaklar
 

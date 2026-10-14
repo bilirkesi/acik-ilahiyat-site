@@ -1,0 +1,331 @@
+{
+  "unit": 5,
+  "unitTitle": "Şîa Tarihi ve Çağdaş Akımlar",
+  "title": "Şii Mezhebi Testi",
+  "questions": [
+    {
+      "question": "Şîa gelenek ve literatüründe, Hz. Peygamber'in Veda Haccı dönüşünde Hz. Ali'yi kendisinden sonraki dini ve siyasi lider (imam) olarak tayin ettiğine inanılan tarihî olay aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Gadir Hum Hadisesi",
+          "isCorrect": true,
+          "rationale": "Gadir Hum, Şîa inancında Hz. Ali'nin açıkça velayet ve imametle görevlendirildiği belirleyici mekan ve olay olarak kabul edilir."
+        },
+        {
+          "text": "Kırtas Hadisesi",
+          "isCorrect": false,
+          "rationale": "Hz. Peygamber'in vefatına yakın bir kağıt ve kalem istemesi olayı olup doğrudan bir imam tayin merasimi şeklinde gerçekleşmemiştir."
+        },
+        {
+          "text": "Ebvâ Toplantısı",
+          "isCorrect": false,
+          "rationale": "Emeviler döneminde Haşimoğulları mensuplarının siyasi biat konusunu görüşmek üzere toplandığı özel bir buluşmadır."
+        },
+        {
+          "text": "Hakem Olayı",
+          "isCorrect": false,
+          "rationale": "Sıffîn Savaşı sonrasında Hz. Ali ile Muaviye taraftarları arasındaki halifelik anlaşmazlığını çözmek amacıyla kurulan tahkim sürecidir."
+        }
+      ],
+      "hint": "Hz. Peygamber'in Veda Haccı dönüşü yol üzerindeki bir su birikintisi mevkiinde gerçekleşen olayı düşününüz.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Klasik İslam mezhepleri tarihinde Şîa'yı Ehl-i Sünnet ve diğer ana İslami ekollerden ayıran ve dinin temel esasları (usûlü'd-dîn) arasında sayılan en belirleyici itikadi ilke aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "İmâmet",
+          "isCorrect": true,
+          "rationale": "Şîa mektebinde devlet başkanlığı sıradan bir siyasi seçim değil, Peygamberlik müessesesinin devamı niteliğinde ilahi bir tayindir."
+        },
+        {
+          "text": "Adâlet",
+          "isCorrect": false,
+          "rationale": "Adalet ilkesi Mu'tezile ve Şîa'da ortak esaslardan biri olup Şîa'yı diğer tüm fırkalardan ayıran tekil unsur değildir."
+        },
+        {
+          "text": "Tevhid",
+          "isCorrect": false,
+          "rationale": "Tevhid bütün İslami ekollerin ortak inanç esası olduğundan Şîa'ya özgü ayrıştırıcı bir çizgi niteliği taşımaz."
+        },
+        {
+          "text": "Nübüvvet",
+          "isCorrect": false,
+          "rationale": "Peygamberlik müessesesi tüm Müslüman gruplarca kabul edilen genel bir İslam inanç esasıdır."
+        }
+      ],
+      "hint": "Siyasi ve dini liderliğin ilahi bir nassa dayandığı inancını hatırlayınız.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Günümüzde nüfusunun önemli bir kısmını bünyesinde barındıran ve devletin resmi mezhepsel yapısında belirgin ağırlığı bulunan Zeydiyye mensupları yoğun olarak hangi ülkede yaşamaktadır?",
+      "answerOptions": [
+        {
+          "text": "Yemen",
+          "isCorrect": true,
+          "rationale": "Zeydiyye mezhebi tarihsel süreçten günümüze kadar varlığını en güçlü şekilde Yemen coğrafyasında sürdürmüştür."
+        },
+        {
+          "text": "Azerbaycan",
+          "isCorrect": false,
+          "rationale": "Azerbaycan'daki Şii nüfusun büyük çoğunluğu On İki İmam (İsnâaşeriyye/Ca'feriyye) koluna mensuptur."
+        },
+        {
+          "text": "Hindistan",
+          "isCorrect": false,
+          "rationale": "Hindistan'da İsnâaşeriyye ve İsmailiyye kollarının toplulukları bulunmakta olup Zeydiyye hâkim mezhep değildir."
+        },
+        {
+          "text": "Mısır",
+          "isCorrect": false,
+          "rationale": "Mısır günümüzde ağırlıklı olarak Sünni nüfusun ve Sünni ameli mezheplerin yaygın olduğu bir ülkedir."
+        }
+      ],
+      "hint": "Güney Arap Yarımadası'nda yer alan ve Zeydi imamların tarih boyunca hüküm sürdüğü coğrafyayı anımsayınız.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "İsmailiyye tarihinde, imamların kimliklerini gizlediği ve Ubeydullah el-Mehdî'nin Fatımi Devleti'ni kurduğu döneme kadar devam eden 'gizlenme dönemi' hangi terimle ifade edilir?",
+      "answerOptions": [
+        {
+          "text": "Setr",
+          "isCorrect": true,
+          "rationale": "İsmaili geleneğinde devlet kurulana kadarki imamların gizli faaliyet yürüttüğü döneme 'dövrü's-setr' adı verilir."
+        },
+        {
+          "text": "Gaybet",
+          "isCorrect": false,
+          "rationale": "İsnâaşeriyye (On İki İmam) ekolünde son imamın gizlenmesi ve gözlerden uzaklaşması durumunu ifade eder."
+        },
+        {
+          "text": "Rec'at",
+          "isCorrect": false,
+          "rationale": "Vefat eden imamın veya kişilerin ahir zamanda adaleti tesis etmek üzere tekrar dünyaya döneceği inancıdır."
+        },
+        {
+          "text": "Bâtın",
+          "isCorrect": false,
+          "rationale": "Ayet ve hadislerin dış anlamının ötesindeki gizli ve içsel derin anlamını simgeleyen kavramdır."
+        }
+      ],
+      "hint": "Arapçada örtünme, gizlenme ve saklanma anlamına gelen kökten türeyen terimi düşününüz.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "İsmailî düşünce sisteminin teşekkülünde Neo-Platonist ve Gnostik felsefi akımların etkisiyle öne çıkan ve dini metinlerin yorumlanmasında uygulanan temel yaklaşım aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Kutsal metinlerin zahir ve batın şeklinde ayrıştırılması",
+          "isCorrect": true,
+          "rationale": "İsmailîlik, ayetlerin dış anlamının (zahir) yanında yalnızca masum imamın öğretebileceği gizli bir anlamının (batın) bulunduğunu savunur."
+        },
+        {
+          "text": "Nassların tamamen lafzi (zahiri) anlamlarıyla sınırlandırılması",
+          "isCorrect": false,
+          "rationale": "Lafzi ve şekilsel okuma Bâtınî/İsmailî felsefenin aksine Zahiriyye ve Selefiyye ekollerine aittir."
+        },
+        {
+          "text": "Hadis metinlerinin akli gerekçelerle tamamen reddedilmesi",
+          "isCorrect": false,
+          "rationale": "İsmailîlik hadisleri tümüyle reddetmez; kendi silsileleri üzerinden batıni tevil metoduna tabi tutarak aktarır."
+        },
+        {
+          "text": "Siyasi iktidarın halk oylamasıyla belirlenmesi zorunluluğu",
+          "isCorrect": false,
+          "rationale": "Şii/İsmailî anlayışta liderlik seçimle değil, nass ve ilahi tayinle belirlenir."
+        }
+      ],
+      "hint": "Dış görünüş ile gizli ve derin anlam arasındaki ikiliği kuran Bâtınî yorum yöntemini düşününüz.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Hz. Hüseyin'in Kerbela'da şehit edilmesinden sonra, pişmanlık duyarak Emeviler'e karşı vicdan azabıyla harekete geçen ve Şiiliğin duygusal/siyasi kimlik kazanmasında önemli rol oynayan kitlesel hareket aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Tevvabun Hareketi",
+          "isCorrect": true,
+          "rationale": "Tevvabun Hareketi, Kerbela'da Hz. Hüseyin'i yalnız bırakan Kûfelilerin kefaret ödeme ve intikam alma amacıyla başlattıkları bir 'Tövbeler Edenler' eylemidir."
+        },
+        {
+          "text": "Zeyd b. Ali İsyanı",
+          "isCorrect": false,
+          "rationale": "Tevvabun hareketinden daha sonraki bir dönemde Emevi yönetimine karşı gerçekleştirilmiş silahlı ihya hareketidir."
+        },
+        {
+          "text": "Ridde Savaşları",
+          "isCorrect": false,
+          "rationale": "Hz. Ebu Bekir döneminde dinden dönen ve zekat vermeyen kabilelere karşı yürütülen askeri mücadeledir."
+        },
+        {
+          "text": "Ezrakiyye Ayaklanması",
+          "isCorrect": false,
+          "rationale": "Ezrakiyye, Şîa ile ilişkisi bulunmayan ve radikal eylemleriyle bilinen bir Harici fırkasıdır."
+        }
+      ],
+      "hint": "Kelime anlamı 'günahlarına pişman olup tövbe eden topluluk' olan grubu hatırlayınız.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Şîa’nın bazı kollarında görülen; vefat eden imamın ahir zamanda adaleti sağlamak üzere dünyaya yeniden döneceği yönündeki inanç kavramı aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Rec'at",
+          "isCorrect": true,
+          "rationale": "Rec'at, sözlükte 'geri dönmek' anlamına gelip Şii teolojisinde imamın ahir zamanda dünyaya rücu etmesi fikrini ifade eder."
+        },
+        {
+          "text": "Bedâ",
+          "isCorrect": false,
+          "rationale": "Allah'ın önceden takdir ettiği veya bildirdiği bir durumun sonradan başka bir şekilde tecelli etmesi tezidir."
+        },
+        {
+          "text": "Tenâsüh",
+          "isCorrect": false,
+          "rationale": "Ruhun bir bedenden çıkıp ölümden sonra başka bir insan veya hayvan bedenine geçmesi inancıdır."
+        },
+        {
+          "text": "Hulûl",
+          "isCorrect": false,
+          "rationale": "İlahi varlığın veya ruhun bir insan bedenine girmesi ve onunla birleşmesi anlayışıdır."
+        }
+      ],
+      "hint": "Arapçada 'rücu etmek' veya 'geri dönmek' kökünden gelen terimi düşününüz.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Şîa’nın tarihsel teşekkül sürecinde, Müslümanlar arasındaki ilk büyük iç savaş olarak kabul edilen ve Hz. Ali ile Hz. Aişe taraftarları arasında gerçekleşen olay aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Cemel Vak'ası",
+          "isCorrect": true,
+          "rationale": "Deve Olayı olarak da bilinen Cemel Vak'ası, Müslümanlar arasındaki ilk iç savaştır ve siyasi kutuplaşmayı derinleştirmiştir."
+        },
+        {
+          "text": "Sıffîn Savaşı",
+          "isCorrect": false,
+          "rationale": "Hz. Ali ile Muaviye b. Ebi Süfyan ordusu arasında gerçekleşen ikinci büyük iç savaştır."
+        },
+        {
+          "text": "Nahrevan Savaşı",
+          "isCorrect": false,
+          "rationale": "Hz. Ali'nin ordusu ile ordusundan ayrılan Harici gruplar arasında yapılan mücadeledir."
+        },
+        {
+          "text": "Kerbela Hadisesi",
+          "isCorrect": false,
+          "rationale": "Emevi halifesi Yezid'in ordusu ile Hz. Hüseyin ve beraberindekiler arasında gerçekleşen trajik çatışmadır."
+        }
+      ],
+      "hint": "Hz. Aişe'nin devesinin etrafında cereyan ettiği için bu adla anılan olayı anımsayınız.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Şîa mezhebi içinde, günümüze kadar varlığını sürdürmüş ana kollar arasında yer alan ve ilk üç halifenin hilafetini tamamen reddetmeyip Hz. Ali'nin en üstün (efdal) olduğunu savunmakla yetinen ılımlı Şii kolu aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Zeydiyye",
+          "isCorrect": true,
+          "rationale": "Zeydiyye, Sünni ameli ve fikri yapıya en yakın Şii fırkasıdır; mefzulün (daha az üstün olanın) imametini caiz görerek ilk halifelerin idaresini kategorik olarak reddetmez."
+        },
+        {
+          "text": "Kerbiyye",
+          "isCorrect": false,
+          "rationale": "Muhammed b. el-Hanefiyye'nin ölmediğini savunan, aşırı fikirli ve tarihi süreçte yok olmuş bir koldur."
+        },
+        {
+          "text": "Muhammire",
+          "isCorrect": false,
+          "rationale": "Aşırı (Gulat) görüşler taşıyan ve günümüze ulaşamayan marjinal bir gruptur."
+        },
+        {
+          "text": "Beyâniyye",
+          "isCorrect": false,
+          "rationale": "Beyan b. Sem'an'a nispet edilen ve uluhiyet iddiası barındıran yok olmuş radikal bir fırkadır."
+        }
+      ],
+      "hint": "Zeyd b. Ali'ye mensup olan ve Sünniliğe en yakın kabul edilen Şii mezhebini düşününüz.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Aşağıdakilerden hangisi Şîa’nın tarihsel olarak teşekkül etmesinde ve Emeviler yönetimine karşı bir muhalefet odağı haline gelmesinde etkili olan gelişmelerden biri DEĞİLDİR?",
+      "answerOptions": [
+        {
+          "text": "Ridde Hadiseleri",
+          "isCorrect": true,
+          "rationale": "Ridde Hadiseleri, Hz. Ebu Bekir döneminde zekat vermeyen ve sahte peygamberlerin peşinden giden kabilelere karşı yürütülmüş olup Şii teşekkülle doğrudan ilişkili değildir."
+        },
+        {
+          "text": "Kerbela Hadisesi",
+          "isCorrect": false,
+          "rationale": "Kerbela, Şii bilincinin, matem kültürünün ve direniş kimliğinin oluşmasındaki ana milattır."
+        },
+        {
+          "text": "Muhtar es-Sakafi Hareketi",
+          "isCorrect": false,
+          "rationale": "Kûfe merkezli bu hareket Hz. Hüseyin'in intikamını alma vaadiyle Şii siyasi örgütlenmesini güçlendirmiştir."
+        },
+        {
+          "text": "Hucr b. Adiyy İsyanı",
+          "isCorrect": false,
+          "rationale": "Emevi valilerinin Ali evladına lanet okuma politikasına karşı Şiilerin gösterdiği ilk açık tepki ve başkaldırılardandır."
+        }
+      ],
+      "hint": "Hz. Ebu Bekir'in halifeliğinin ilk zamanlarında yalancı peygamberler ve zekat vermeyen kabilelere karşı yapılan mücadeleyi hatırlayınız.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Allah'ın bilmesinde veya takdirinde sonradan bir değişme olması, önceden ilan edilen bir durumun başka şekilde tecelli etmesi anlamına gelen ve bazı Şii grupların imamet nakillerindeki sapmaları açıklamakta başvurduğu kavram aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Bedâ",
+          "isCorrect": true,
+          "rationale": "Bedâ, sözlükte 'sonradan ortaya çıkmak' anlamında olup imamlara dair öngörülerin gerçekleşmemesini açıklamakta kullanılan teolojik bir terimdir."
+        },
+        {
+          "text": "Hulûl",
+          "isCorrect": false,
+          "rationale": "İlahın insan bedenine intikal etmesi veya onda tecelli etmesi fikridir."
+        },
+        {
+          "text": "Teşbîh",
+          "isCorrect": false,
+          "rationale": "Yaratıcıyı yaratılmış varlıklara ve insan organlarına benzetme anlayışıdır."
+        },
+        {
+          "text": "Tenâsüh",
+          "isCorrect": false,
+          "rationale": "Ölen bir kimsenin ruhunun başka bir bedene geçerek yaşamaya devam etmesi inancıdır."
+        }
+      ],
+      "hint": "İmamet sırasının belirlenmesinde vuku bulan beklenmedik değişimleri açıklamak için kullanılan kavramı anımsayınız.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Şiilikte Ehl-i Beyt sevgisi ve imamet düşüncesinin kurumsallaşmasında, Hz. Peygamber'in soyunun devam ettiği ve evlilik bağıyla Hz. Ali ile birleştiği kilit kızı kimdir?",
+      "answerOptions": [
+        {
+          "text": "Hz. Fatıma",
+          "isCorrect": true,
+          "rationale": "Hz. Fatıma, Hz. Peygamber'in soyunun devamını sağlayan ve Hz. Ali ile evliliğinden imamlar silsilesi doğan kilit şahsiyettir."
+        },
+        {
+          "text": "Hz. Hatice",
+          "isCorrect": false,
+          "rationale": "Hz. Peygamber'in ilk eşidir; Peygamber soyunun Ali evladı üzerinden sürdüğü doğrudan halkanın anası Hz. Fatıma'dır."
+        },
+        {
+          "text": "Hz. Âişe",
+          "isCorrect": false,
+          "rationale": "Hz. Peygamber'in eşi olup Cemel Vak'ası'nda Hz. Ali'nin karşısındaki grupta yer almıştır."
+        },
+        {
+          "text": "Hz. Zeyneb",
+          "isCorrect": false,
+          "rationale": "Hz. Ali ve Hz. Fatıma'nın kızıdır; Kerbela sonrası süreçte rol oynamış olmakla birlikte soy silsilesinin kökünü oluşturmaz."
+        }
+      ],
+      "hint": "Hz. Peygamber'in 'benden bir parçadır' dediği ve Hz. Hasan ile Hz. Hüseyin'in annesi olan kızı düşününüz.",
+      "type": "multiple_choice"
+    }
+  ]
+}

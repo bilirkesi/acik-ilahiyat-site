@@ -1,0 +1,331 @@
+{
+  "unit": 3,
+  "unitTitle": "Millî Mücadele Başlıyor",
+  "title": "İnkılap Tarihi Testi",
+  "questions": [
+    {
+      "question": "Millî Mücadele Dönemi'nde Sivas Kongresi kararlarını halka duyurmak ve millî birliği sağlamak amacıyla çıkarılan ilk resmî yayın organı aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "İrade-i Milliye",
+          "isCorrect": true,
+          "rationale": "Sivas Kongresi sonrasında alınan kararları halka aktarmak ve ulusal hareketi desteklemek amacıyla Sivas'ta çıkarılan ilk resmî gazetedir."
+        },
+        {
+          "text": "Hâkimiyet-i Milliye",
+          "isCorrect": false,
+          "rationale": "Bu gazete, TBMM'nin açılmasından sonra Ankara'da yayımlanmaya başlayan yarı resmî yayın organıdır."
+        },
+        {
+          "text": "Minber",
+          "isCorrect": false,
+          "rationale": "Mütareke Dönemi'nde İstanbul'da Mustafa Kemal Paşa ve Ali Fethi Bey tarafından çıkarılan gazetedir."
+        },
+        {
+          "text": "Albayrak",
+          "isCorrect": false,
+          "rationale": "Erzurum'da Doğu Anadolu Müdafaa-i Hukuk Cemiyeti'nin görüşlerini savunmak üzere yayımlanmıştır."
+        }
+      ],
+      "hint": "Sivas Kongresi kararlarının kamuoyuna duyurulması için kurulmuş olan gazeteyi hatırlayınız.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Mustafa Kemal Paşa'nın yaveri Cevat Abbas Bey'e yazdırılan ve Millî Mücadele'nin gerekçe, amaç ve yöntemini ilk kez belirten tarihî belge aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Amasya Genelgesi",
+          "isCorrect": true,
+          "rationale": "Amasya Genelgesi, Kurtuluş Savaşı'nın gerekçe, amaç ve yöntemini beyan eden ilk resmî ihtilal beyannamesidir."
+        },
+        {
+          "text": "Erzurum Kongresi Kararları",
+          "isCorrect": false,
+          "rationale": "Doğu illerinin durumunu değerlendirmek ve manda fikrini reddetmek amacıyla toplanan bölgesel kongre kararlarıdır."
+        },
+        {
+          "text": "Misak-ı Millî",
+          "isCorrect": false,
+          "rationale": "Son Osmanlı Mebusan Meclisinde kabul edilen ve ulusal sınırları belirleyen bağımsızlık bildirimidir."
+        },
+        {
+          "text": "Sivas Kongresi Beyannamesi",
+          "isCorrect": false,
+          "rationale": "Tüm millî cemiyetlerin birleştirilmesinden sonra kamuoyuna yayımlanan genel beyannamedir."
+        }
+      ],
+      "hint": "21-22 Haziran 1919 tarihlerinde yayımlanan ve Sivas'ta ulusal bir kongre toplanması çağrısı yapan belgeyi düşününüz.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Millî Mücadele sürecinde bölgesel nitelikteki tüm müdafaa-i hukuk cemiyetlerinin 'Anadolu ve Rumeli Müdafaa-i Hukuk Cemiyeti' çatısı altında birleştirildiği gelişme aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Sivas Kongresi",
+          "isCorrect": true,
+          "rationale": "Sivas Kongresi'nde bölgesel tüm direniş cemiyetleri tek bir çatı altında toplanarak Millî Mücadele'nin yönetimi merkezîleştirilmiştir."
+        },
+        {
+          "text": "Amasya Görüşmeleri",
+          "isCorrect": false,
+          "rationale": "Temsil Heyeti ile İstanbul Hükûmeti arasında yapılan ve Heyet-i Temsiliye'nin hukuki varlığını tanıtan görüşmelerdir."
+        },
+        {
+          "text": "Erzurum Kongresi",
+          "isCorrect": false,
+          "rationale": "Sadece Doğu Anadolu ve Karadeniz bölgesindeki cemiyetlerin birleştirildiği bölgesel bir kongredir."
+        },
+        {
+          "text": "Balıkesir Kongresi",
+          "isCorrect": false,
+          "rationale": "Batı Anadolu'da Yunan işgaline karşı düzenlenen yerel direniş kongrelerinden biridir."
+        }
+      ],
+      "hint": "Manda ve himayenin kesin olarak reddedildiği ve tüm ulusal güçlerin tek çatı altında toplandığı kongreyi hatırlayınız.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Osmanlı Mebusan Meclisinde 28 Ocak 1920'de kabul edilen, millî sınırları çizen ve vatanın bölünmezliğini ilan eden metin aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Misak-ı Millî",
+          "isCorrect": true,
+          "rationale": "Misak-ı Millî, Türk vatanının sınırlarını netleştiren ve kapitülasyonları reddeden temel bağımsızlık bildirgesidir."
+        },
+        {
+          "text": "Sevr Antlaşması",
+          "isCorrect": false,
+          "rationale": "İtilaf Devletleri tarafından hazırlanan ve Osmanlı Devleti'ni fiilen paylaşmayı hedefleyen tasarıdır."
+        },
+        {
+          "text": "Kanun-ı Esasi",
+          "isCorrect": false,
+          "rationale": "1876 yılında ilan edilen Osmanlı Devleti'nin ilk anayasasıdır."
+        },
+        {
+          "text": "Mondros Mütarekesi",
+          "isCorrect": false,
+          "rationale": "I. Dünya Savaşı sonrasında işgallere zemin hazırlayan ateşkes antlaşmasıdır."
+        }
+      ],
+      "hint": "'Ahd-ı Millî' veya 'Millî And' olarak da bilinen kararlar bütününü düşününüz.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "TBMM Hükûmetinin açılmasından hemen sonra artan iç ayaklanmalara karşı otoriteyi sağlamak amacıyla 29 Nisan 1920'de çıkarılan kanun aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Hıyanet-i Vataniye Kanunu",
+          "isCorrect": true,
+          "rationale": "TBMM'nin varlığına ve meşruiyetine karşı çıkan isyanları bastırmak ve iç huzuru sağlamak amacıyla çıkarılan kanundur."
+        },
+        {
+          "text": "Takrir-i Sükûn Kanunu",
+          "isCorrect": false,
+          "rationale": "1925 yılında Şeyh Sait İsyanı sürecinde asayişi sağlamak amacıyla yürürlüğe konulmuştur."
+        },
+        {
+          "text": "Teşkilat-ı Esasiye Kanunu",
+          "isCorrect": false,
+          "rationale": "1921 yılında kabul edilen TBMM'nin ilk kurucu anayasasıdır."
+        },
+        {
+          "text": "Nisab-ı Müzakere Kanunu",
+          "isCorrect": false,
+          "rationale": "Meclisin çalışma usul ve esaslarını belirleyen iç tüzük niteliğindeki kanundur."
+        }
+      ],
+      "hint": "Vatan hainliği suçlamalarını önlemek ve Meclis otoritesini tesis etmek amacıyla ilk çıkarılan yasalardan birini hatırlayınız.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Millî Mücadele Dönemi'nde hem işgalci devletlerin ortak düşman olması hem de kendi ülkesindeki Müslüman azınlığa sempatik görünme amacı taşıyarak Ankara Hükûmetine mali yardım sağlayan devlet aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Sovyet Rusya",
+          "isCorrect": true,
+          "rationale": "Ortak düşman İtilaf Devletleri'ne karşı cephe almak ve iç siyasetteki azınlıklara olumlu mesaj vermek amacıyla Ankara Hükûmetine maddi ve askeri destek sağlamıştır."
+        },
+        {
+          "text": "Almanya",
+          "isCorrect": false,
+          "rationale": "I. Dünya Savaşı'ndan yenik çıkmış ve Versay Antlaşması kısıtlamaları altında ezilmiş bir devlettir."
+        },
+        {
+          "text": "Arnavutluk",
+          "isCorrect": false,
+          "rationale": "Balkan Savaşları sürecinde bağımsızlığını kazanmış ve dış yardım yapabilecek ekonomik güce sahip olmayan bir ülkedir."
+        },
+        {
+          "text": "Bulgaristan",
+          "isCorrect": false,
+          "rationale": "I. Dünya Savaşı sonrası Neuilly Antlaşması ile ağır yükümlülükler üstlenmiş ve tarafsız kalmaya çalışmıştır."
+        }
+      ],
+      "hint": "Kurtuluş Savaşı sürecinde Ankara Hükûmeti ile Moskova Antlaşması'nı imzalayan kuzey komşumuzu düşününüz.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Mustafa Kemal Paşa, İstanbul'un işgalinden sonra Ankara'da toplanacak yeni meclis için hazırladığı ilk taslaklarda hangi tabiri kullanmış, ancak gelen tepkiler üzerine bu tanımı değiştirmek durumunda kalmıştır?",
+      "answerOptions": [
+        {
+          "text": "Meclis-i Müessesan",
+          "isCorrect": true,
+          "rationale": "'Kurucu Meclis' anlamına gelen bu terim, rejimin değişeceği kaygısını taşıyan çevrelerin tepkisi üzerine 'olağanüstü yetkilere sahip meclis' şeklinde değiştirilmiştir."
+        },
+        {
+          "text": "Meclis-i Mebusan",
+          "isCorrect": false,
+          "rationale": "Osmanlı Devleti'nin İstanbul'da bulunan anayasal parlamentosuna verilen addır."
+        },
+        {
+          "text": "Meclis-i Kebir",
+          "isCorrect": false,
+          "rationale": "Osmanlı yönetim geleneklerinde üst düzey kararların görüşüldüğü danışma kuruludur."
+        },
+        {
+          "text": "Millet Meclisi",
+          "isCorrect": false,
+          "rationale": "Tepkiler sonrasında ve Meclis açıldıktan sonra kullanılan genel kavrama yakın bir tanımdır."
+        }
+      ],
+      "hint": "Fransızca kökenli olan ve 'Kurucu Meclis' anlamına gelen kavaramı hatırlayınız.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Millî Mücadele'nin masraflarını karşılamak ve ordunun ihtiyaçlarına kaynak yaratmak amacıyla şehirlere dışarıdan getirilen mallardan alınan giriş vergisi aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Oktura vergisi",
+          "isCorrect": true,
+          "rationale": "Oktura vergisi, Millî Mücadele döneminde şehirlere giren ticari mallara uygulanan ek bir giriş vergisidir."
+        },
+        {
+          "text": "Aşar vergisi",
+          "isCorrect": false,
+          "rationale": "Tarımsal rekolte üzerinden alınan geleneksel Osmanlı ürün vergisidir."
+        },
+        {
+          "text": "Ağnam vergisi",
+          "isCorrect": false,
+          "rationale": "Küçükbaş hayvan yetiştiricilerinden alınan doğrudan bir hayvancılık vergisidir."
+        },
+        {
+          "text": "Derbent vergisi",
+          "isCorrect": false,
+          "rationale": "Geçit ve yolların güvenliğini sağlayan birimlerin masrafları için toplanan vergidir."
+        }
+      ],
+      "hint": "Ticaret amacıyla şehir merkezlerine sokulan mallara uygulanan kapı ve giriş vergisini düşününüz.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Aşağıdakilerden hangisi düzenli ordunun kurulma kararı sonrasında disiplin altına girmeyi reddederek I. TBMM'ye karşı ayaklanan Kuva-yı Milliye liderlerinden biridir?",
+      "answerOptions": [
+        {
+          "text": "Demirci Mehmet Efe",
+          "isCorrect": true,
+          "rationale": "Batı Anadolu'da işgale karşı yararlılıklar göstermiş fakat düzenli ordu emir ve komutasına girmeyi kabul etmeyerek TBMM'ye karşı isyan etmiştir."
+        },
+        {
+          "text": "Anzavur Ahmet",
+          "isCorrect": false,
+          "rationale": "Doğrudan İstanbul Hükûmeti desteğiyle Kuva-yı Milliye'yi engellemek üzere isyan başlatan eski bir subaydır."
+        },
+        {
+          "text": "Çopur Musa",
+          "isCorrect": false,
+          "rationale": "Afyon bölgesinde dini duyguları kışkırtarak TBMM otoritesine başkaldıran yerel bir isyancıdır."
+        },
+        {
+          "text": "Delibaş Mehmet",
+          "isCorrect": false,
+          "rationale": "Konya ve çevresinde hilafet yanlısı söylemlerle TBMM'ye karşı ayaklanma çıkaran kişidir."
+        }
+      ],
+      "hint": "Batı Cephesi'nde Kuva-yı Milliye komutanlığı yapmış ancak düzenli orduya katılması istenince isyan etmiş ünlü efe liderini hatırlayınız.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Millî Mücadele Dönemi'nde Ankara'da yayımlanan, TBMM Hükûmetinin yarı resmî yayın organı kabul edilen ve 1934 yılında 'Ulus' adını alan gazete aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Hâkimiyet-i Milliye",
+          "isCorrect": true,
+          "rationale": "10 Ocak 1920'de Ankara'da yayımlanmaya başlayan gazete, TBMM'nin yarı resmî organı olmuş ve 1934'te Ulus adını almıştır."
+        },
+        {
+          "text": "İrade-i Milliye",
+          "isCorrect": false,
+          "rationale": "Sivas Kongresi kararlarını duyurmak üzere Sivas'ta çıkarılan ilk gazetedir."
+        },
+        {
+          "text": "Yenigün",
+          "isCorrect": false,
+          "rationale": "Yunus Nadi liderliğinde yayımlanan ve Millî Mücadele'yi destekleyen özel bir gazetedir."
+        },
+        {
+          "text": "Tasvir-i Efkâr",
+          "isCorrect": false,
+          "rationale": "Tanzimat Dönemi'nden itibaren İstanbul'da yayımlanan köklü basın organlarından biridir."
+        }
+      ],
+      "hint": "Ankara'da Meclis'in sesini duyuran ve halk egemenliği vurgusu taşıyan ismi düşününüz.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Mustafa Kemal Paşa ve Ali Fethi Bey tarafından Mütareke döneminde İstanbul'da kamuoyunu bilgilendirmek amacıyla çıkarılan gazete aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Minber",
+          "isCorrect": true,
+          "rationale": "Mustafa Kemal Paşa ve Fethi (Okyar) Bey'in Mondros sonrasında İstanbul'da görüşlerini açıklamak için ortaklaşa çıkardıkları haftalık gazetedir."
+        },
+        {
+          "text": "Sabah",
+          "isCorrect": false,
+          "rationale": "Mütareke devrinde İstanbul'da yayımlanan dönemin mütareke gazetelerinden biridir."
+        },
+        {
+          "text": "Vakit",
+          "isCorrect": false,
+          "rationale": "Ahmet Emin Yalman ve Asım Us tarafından çıkarılan bağımsız bir gazetedir."
+        },
+        {
+          "text": "Peyam-ı Sabah",
+          "isCorrect": false,
+          "rationale": "Ali Kemal'in başyazarlığını yaptığı ve Millî Mücadele karşıtı sert tutumuyla bilinen gazetedir."
+        }
+      ],
+      "hint": "Mütareke günlerinde Fethi Bey ile Mustafa Kemal Paşa'nın görüşlerini kamuoyuna duyurmak için çıkardıkları gazeteyi hatırlayınız.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Erzurum Kongresi'nde oluşturulan, Sivas Kongresi'nde yetkileri tüm vatanı kapsayacak şekilde genişletilen ve yürütme gücünü temsil eden kurul aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Heyet-i Temsiliye",
+          "isCorrect": true,
+          "rationale": "Heyet-i Temsiliye (Temsil Kurulu), TBMM açılıncaya kadar Millî Mücadele'nin siyasi ve yürütme organı olarak görev yapmıştır."
+        },
+        {
+          "text": "Felah-ı Vatan Grubu",
+          "isCorrect": false,
+          "rationale": "Son Osmanlı Mebusan Meclisinde Misak-ı Millî kararlarının kabulünü sağlayan milletvekili grubudur."
+        },
+        {
+          "text": "İcra Vekilleri Heyeti",
+          "isCorrect": false,
+          "rationale": "TBMM açıldıktan sonra Meclis içerisinden seçilen Bakanlar Kurulu kabinesine verilen isimdir."
+        },
+        {
+          "text": "Meclis-i Mebusan",
+          "isCorrect": false,
+          "rationale": "Osmanlı Anayasası gereğince İstanbul'da toplanan yasama meclisidir."
+        }
+      ],
+      "hint": "Başkanlığını Mustafa Kemal Paşa'nın yaptığı ve TBMM açılana dek geçici hükûmet gibi çalışan kurulu düşününüz.",
+      "type": "multiple_choice"
+    }
+  ]
+}

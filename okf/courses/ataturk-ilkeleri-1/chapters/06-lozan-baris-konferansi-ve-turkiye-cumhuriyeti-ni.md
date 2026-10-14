@@ -36,19 +36,153 @@ Bu bölümün içinde yaşadığı ders paneli: [Atatürk İlkeleri ve İnkılap
 
 # Kaynak Temellendirme
 
-### 1. Saltanatın Kaldırılması Süreci ve Lozan Konferansı Öncesindeki Siyasi Gelişmeler
+## 6. Lozan Barış Konferansı ve Türkiye Cumhuriyeti'nin Kuruluş Belgesi
 
-Bu öğrenme hedefi kapsamında öğrenci, Mudanya Mütarekesi sonrasında toplanması planlanan barış konferansının İtilaf Devletleri tarafından İsviçre'nin Lozan şehrinde yapılmasına karar verildiğini öğrenir [1]. İtilaf Devletleri'nin konferansa hem TBMM Hükümeti'ni hem de İstanbul Hükümeti'ni birlikte davet etmesi, Türk tarafında ikilik yaratma girişimi olarak değerlendirilmiştir [2]. İstanbul Hükümeti Sadrazamı Tevfik Paşa'nın ortak hareket etme teklifi TBMM'de büyük tepki toplamış ve Türk milletinin tek temsilcisinin Ankara Hükümeti olduğunu kanıtlamak amacıyla saltanat konusu meclis gündemine taşınmıştır [2, 3]. Dr. Rıza Nur Bey ve arkadaşlarının verdiği önerge doğrultusunda 1 Kasım 1922 tarihinde çıkarılan kanunla saltanat ile halifelik birbirinden ayrılmış ve saltanat kaldırılmıştır [3]. Saltanatın kaldırılmasıyla İstanbul Hükümeti hukuken sona ermiş, Tevfik Paşa istifa etmiş ve son padişah VI. Mehmet Vahdettin ülkeyi terk etmiştir [3, 4]. Bu süreç sayesinde Lozan Barış Konferansı'nda Türk milletini temsil etme yetkisi kesin olarak Ankara'daki TBMM Hükümeti'ne geçmiştir [4].
+Mudanya Mütarekesi sonrası toplanan Lozan Barış Konferansı öncesinde Saltanat kaldırılarak Türk milletinin tek temsilcisinin TBMM olduğu vurgulanmıştır. İki dönem halinde çetin müzakerelere sahne olan konferansta Türk heyeti Kapitülasyonların kaldırılmasını ve tam bağımsızlığı kararlılıkla savunmuştur. 24 Temmuz 1923'te imzalanan Lozan Barış Antlaşması ile Yeni Türk Devleti'nin bağımsızlığı uluslararası alanda tescillenmiş ve Sevr Antlaşması tarihe gömülmüştür.
 
-### 2. Lozan Barış Konferansı'nda Müzakere Edilen Temel Konular ve Türk Heyetinin Tam Bağımsızlık Mücadelesi
+### Öğrenme hedefleri
+- Saltanatın kaldırılması sürecini ve Lozan Konferansı öncesindeki siyasi gelişmeleri açıklayabilme.
+- Lozan Barış Konferansı'nda müzakere edilen temel konuları ve Türk heyetinin tam bağımsızlık mücadelesini analiz edebilme.
+- Lozan Barış Antlaşması'nın maddelerini ve Türkiye Cumhuriyeti'nin uluslararası hukuk bakımından kuruluşundaki önemini değerlendirebilme.
 
-Öğrenci bu öğrenme hedefinde, İsmet Paşa başkanlığındaki Türk heyetinin Lozan'da eşit ve bağımsız bir devlet sıfatıyla yer almak için yürüttüğü zorlu diplomasi mücadelesini analiz eder [5, 6]. İtilaf Devletleri konferansı Birinci Dünya Savaşı'nın bir devamı sayıp Mondros Mütarekesi şartlarını kabul ettirmeye çalışırken; İsmet Paşa "Ben buraya Mondros'tan değil Mudanya'dan geldim" diyerek askeri zaferle kazanılan Misakı Millî haklarını savunmuştur [7]. Konferansta sınırlar, Boğazlar rejimi, kapitülasyonlar, azınlıklar ve Osmanlı dış borçları gibi hayati konular müzakere edilmiştir [7]. Batılı devletlerin özellikle kapitülasyonların sürdürülmesi ve mali bağımsızlığı kısıtlayan borç şartlarında ısrar etmeleri üzerine Türk heyeti tam bağımsızlık anlayışından taviz vermemiştir [8-10]. İsmet Paşa'nın Türk milletini esarete mahkûm edecek bir belgeye imza atmayacağını vurgulayarak tasarıyı reddetmesi neticesinde 4 Şubat 1923 tarihinde konferans görüşmeleri kesintiye uğramıştır [9, 10].
+### Bölüm 6: Bir Uzlaşı Belgesi Olarak Türkiye Cumhuriyeti Devleti’nin Kuruluş Belgesi: Lozan Barış Antlaşması
+*AÖF ders kitabı, Bölüm 6, PDF sayfa ~204-229.*
 
-### 3. Lozan Barış Antlaşması'nın Maddeleri ve Türkiye Cumhuriyeti'nin Uluslararası Hukuk Bakımından Kuruluşundaki Önemi
+Bir Uzlaşı Belgesi Olarak Türkiye Cumhuriyeti
+Devleti’nin Kuruluş Belgesi: Lozan Barış Antlaşması
+Anahtar Sözcükler: • Mudanya Mütarekesi • Lozan Barış Konferansı • Lozan Barış Antlaşması
+• Misak-ı Millî • Tam Bağımsızlık
+öğrenme çıktıları
+Silahlı Direnişten Diplomatik Mücadeleye:
+Mudanya Mütarekesi (3-11 Ekim 1922)
+1	 Mudanya Mütarekesi’nin Millî
+Mücadele’deki yeri ve Lozan’a giden
+süreçte önemini kavrayabilme
+Lozan Barış Konferansı’nın Toplanma
+Süreci ve I. Dönem Lozan Konferansı
+Görüşmeleri
+2	 Lozan Konferansı’nın I. Döneminde
+yaşanan güçlükleri ve görüşmelerin
+kesilmesi sürecini değerlendirebilme
+II. Dönem Lozan Konferansı Görüşmeleri
+ve Lozan Barış Antlaşması’nın
+İmzalanması
+3	 Lozan Barış Antlaşması’nın İmzalanma
+sürecini ve temel hükümlerini kavrayabilme ⟦1⟧
 
-Bu öğrenme hedefi doğrultusunda öğrenci, TBMM'nin barış şartlarını içeren tasarıyı sunmasıyla Lozan Konferansı'nın ikinci döneminin 23 Nisan 1923'te yeniden başladığını öğrenir [11]. İkinci dönem müzakereleri sonucunda kapitülasyonlar kesin olarak kaldırılmış, Osmanlı borçları Osmanlı'dan ayrılan devletler arasında paylaştırılmış ve Yunanistan'dan savaş tazminatı karşılığında Karaağaç alınmıştır [12-14]. Musul meselesi ikili görüşmelere bırakılırken, Boğazlar ve İstanbul'un tahliyesi özel bir protokole bağlanmıştır [13, 15]. 24 Temmuz 1923 tarihinde imzalanan 143 maddelik Lozan Barış Antlaşması ile Sevr Antlaşması tarihe gömülmüş ve Birinci Dünya Savaşı resmen sona ermiştir [16, 17]. Öğrenci, Lozan Antlaşması'nın Yeni Türk Devleti'nin siyasi ve ekonomik bağımsızlığını uluslararası alanda tescil eden, Misakı Millî'yi büyük ölçüde gerçekleştiren ve Türkiye Cumhuriyeti'nin uluslararası hukuktaki kuruluş senedi niteliğinde olan kurucu bir antlaşma olduğunu kavrar [18, 19].
+**MUDANYA MÜTAREKESİ**
 
-📜 6. Ünite konularını pekiştirmek için Lozan Antlaşması'nın dönüm noktalarını içeren hızlı bir özet veya interaktif test hazırlamamı ister misiniz?
+(3-11 EKİM 1922)
+Büyük Taarruz ile tüm Batı Anadolu’nun Yu­
+nan işgalinden kurtarılmasının ardından Yunan
+işgal kuvvetlerinin denetiminde bulunan Doğu
+Trakya’nın ve müttefik devletlerin kontrolünde­
+ki İstanbul ve Boğazların kurtarılması için hare­
+kete geçilmiştir. TBMM’ye bağlı askerî birlikler,
+Çanakkale’ye doğru ilerlemeye başlarken bu yeni
+durum bir Türk-İngiliz çatışmasını gündeme ge­
+tirmiş ve diplomasi tarihinde “Çanakkale Olayı”
+adı ile bilinen krize yol açmıştır. Türk birlikleri­
+nin kuzeye doğru ilerlemesi karşısında İngiltere
+bir taraftan Çanakkale Boğazı’ndaki kuvvetlerini
+artırırken diğer taraftan da müttefiklerinden ve
+sömürgelerinden İstanbul ve Boğazların savunul­
+ması için yardım talep etmiştir. Ancak dominyon­
+lardan Hindistan ve Kanada bu yardım teklifine
+sıcak bakmazken sadece Yeni Zelanda bu yardım
+çağrısına olumlu cevap vermiştir. İngiltere’nin Av­
+rupa’daki müttefikleri olan Fransa ve İtalya ise yeni
+bir riski göze alamadıkları için yardım teklifini geri
+çevirmişlerdir. Bu durumda İngiltere ve müttefik­
+leri için TBMM Hükûmeti ile diplomatik çözüm
+aramaktan başka bir yol kalmamıştır. Müttefik
+devletler 23 Eylül 1922’de TBMM Hükûmeti’ne
+verdikleri bir nota ile askerî harekâtın durdurulma­
+sını ve bir ateşkes antlaşması imzalanmasını teklif
+etmişlerdir. Mütareke görüşmelerinin nerede ve
+ne zaman yapılacağının yoğun olarak tartışıldığı
+günlerde Türk birlikleri tarafsız bölge olarak ad­
+landırılan İstanbul ve Boğazlar bölgesine ilerlemiş
+ve Çanakkale yakınlarındaki Erenköy’e girmiştir.
+Türk-İngiliz kuvvetlerinin karşı karşıya geldikleri
+bu dönemde İngiliz İşgal Kuvvetleri Yüksek Komi­
+seri General Harrington, Londra’dan aldığı talima­
+ta rağmen askerlerine ateş emir vermemiş ve Türk
+birlikleri, Çanakkale’ye saldırmadıkça herhangi bir
+çatışmaya girilmemesini istemiştir (Ertan, 2012).
+Aynı günlerde İstanbul’daki Fransız Yüksek
+Komiseri General Pelé ile 20 Ekim 1921 tarihli
+Ankara Antlaşması’nı imzalayan Fransız diplomat
+Franklin Bouilion taraflar arasında ara buluculuk
+yapmak üzere İzmir’e gelerek Mustafa Kemal Paşa
+ile bir görüşme gerçekleştirmiştir. Mustafa Kemal
+Paşa, İtilaf devletlerinin askerî harekâtın durdu­
+rulması ve barış görüşmelerinin başlaması tekli­ ⟦2⟧
+
+fini elde edilen askerî başarıyı tehlikeye atmamak
+ve gerilimi tırmandırmamak adına kabul etmiştir.
+Bunun üzerine 1 Ekim 1922’de TBMM tarafından
+İtilaf devletlerine bir nota gönderilerek, “Trakya’nın
+Edirne’de dahil olmak üzere Meriç batısına kadar
+hemen boşaltılması ve derhal TBMM Hükûmeti’ne
+teslim edilmesi şartıyla Türkiye’nin barıştan ve kon­
+feransın toplanmasından yana olduğu” bildirilmiştir.
+Aynı notada mütareke [silah bırakışması] görüşme­
+lerinin 3 Ekim 1922 tarihinde Mudanya’da gerçek­
+leştirilmesi de önerilmiştir (Yalçın, 2005).
+Resim 6.1 Mudanya’da İtilaf Devletleri Delegeleri:
+Fransız General Charpy, İngiliz General Harrington ve
+İtalyan General Monbelly
+Mudanya Mütarekesi’nin İmzalanması
+ve Temel Hükümleri
+Mütareke görüşmeleri Mudanya’da 3 Ekim
+1922 Salı günü saat 15.00’te başlamıştır. Görüşme­
+lerde TBMM Hükûmeti’ni Batı Cephesi Komu­
+tanı İsmet [İNÖNÜ] Paşa temsil etmiştir. Ayrıca
+Türk heyetinde Batı Cephesi Kurmay Başkanı Al­… ⟦3⟧
+
+**Mudanya Mütarekesi’nin Önemi**
+
+11 Ekim 1922 tarihinde Mudanya Mütarekesi’nin
+imzalanması ile Millî Mücadele’nin askerî safhası
+başarı ile sonuçlandırılmış, Mondros Mütareke­
+si yok sayılmıştır. Mudanya Mütarekesi, 15 Mayıs
+1919’da Yunan ordusunun İzmir’i işgali ile başlayan
+Türk-Yunan çatışmasına son vermiştir. Mütareke ile
+Misak-ı Millî sınırları içerisinde yer alan Edirne dâhil
+Doğu Trakya savaş yapılmadan ve Yunan kuvvetle­
+rince tahrip edilmeden kurtarılmıştır. İstanbul ve
+Boğazlar üzerinde denetim sağlanması ve Trakya’ya
+ordunun geçirilmesi Mütareke şartları gereği müm­
+kün olmamışsa da Lozan görüşmelerine uygun ze­
+min hazırlanması noktasında büyük bir adım atıl­
+mıştır (Ertan, 2012). Mudanya barışı ile TBMM
+Hükûmeti, İtilaf devletlerince resmen tanınmıştır.
+Mudanya Mütarekesi, Türk Kurtuluş Savaşı’nın za­
+ferle sonuçlandığını gösteren ilk diplomatik ve siyasi
+belge olması açısından fevkâlede önemlidir (Başyiğit,
+2007). Mütarekenin imzalanması ile yaşanan önem­
+li bir dış gelişme ise İngiliz diplomasisi için büyük
+bir yenilgi sayılan Mudanya’dan sonra İngiltere’de
+hükûmet değişikliği yaşanması ve Doğu Akdeniz
+politikasının iflası ile büyük prestij kaybına uğrayan
+Başbakan Lloyd George’un görevinden istifa etmek
+zorunda kalmasıdır.… ⟦4⟧ ⟦5⟧ ⟦6⟧
+
+### İlgili çıkmış vize soruları
+Metindeki ⟦n⟧ işaretleri bu listeye açılır. Alıntıya tıklayınca çözüm rehberinde soru açılır ve çözümü vurgulanır.
+- [1] **2025/2026 · Soru 16**: Aşağıdakilerden hangisi Misak-ı Milli'nin esaslarından biri değildir?
+- [2] **2025/2026 · Soru 18**: sonra Anadolu’da idareyi ele almış olan Heyet-i Temsiliye, Anadolu’daki mali kaynakları da kontrol altına almıştır. Bu amaç doğrultusunda ya
+- [3] **2025/2026 · Soru 40**: Osmanlı Devleti’nin Sevr Barış Antlaşması’nın imzalanmasını hızlandıran olay aşağıdakilerden hangisidir?
+- [4] **2025/2026 · Soru 45**: Megali İdea’ya göre, Yunanlılar bir gün birleşecek ve Yunan Krallığı “İonya” adı verdikleri devlet, Batı Anadolu’dan Karadeniz’e kadar uzana
+- [5] **2025/2026 · Soru 52**: Doğu Anadolu’da bir Ermenistan kurulması tehlikesine karşı Erzurum’da ------- Cemiyeti kurulmuş, bu Cemiyet Albayrak Gazetesini yayımlayarak
+- [6] **2025/2026 · Soru 56**: Misak-ı Milli ile ilgili aşağıdaki ifadelerden hangisi yanlıştır?
+- [7] **2024/2025 · Soru 18**: bir bağımsızlık bildirisidir. Millî Mücadele’nin nihai hedefidir. İtilaf devletlerine karşı Türk milletinin direneceğinin, boyun eğmeyerek k
+- [8] **2024/2025 · Soru 40**: III. Selim döneminde yeniden yapılanmanın (Nizâm-ı Cedîd) en önemli kurumlarından biri olarak 1795’te Hasköy’de açılmıştır. İmparatorluğun i
+- [9] **2023/2024 · Soru 1**: 10 Ağustos 1920'de imzalanan ------- Antlaşması, şartları dikkate alındığında Türklerin yaşaması için öngörülen topraklarda bağımsız bir dev
+- [10] **2023/2024 · Soru 3**: Uşi Antlaşması 'nı imzalayan devletler aşağıdakilerin hangisinde birlikte ve doğru olarak verilmiştir?
+- [11] **2023/2024 · Soru 24**: Sevr Barış Antlaşması ile ilgili aşağıdaki ifadelerden hangisi yanlıştır?
+- [12] **2023/2024 · Soru 26**: Doğu Anadolu’da bir Ermenistan kurulması tehlikesine karşı Erzurum’da İstihlas-ı Vatan (Vatanın Kurtuluşu) Cemiyeti kurulmuş, bu Cemiyet ---
 
 # Kaynaklar
 

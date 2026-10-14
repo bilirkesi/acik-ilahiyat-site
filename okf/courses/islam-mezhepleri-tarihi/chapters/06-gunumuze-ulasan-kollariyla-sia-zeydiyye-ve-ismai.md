@@ -63,19 +63,91 @@ Bu bölümün içinde yaşadığı ders paneli: [İslam Mezhepleri Tarihi paneli
 
 # Kaynak Temellendirme
 
-**1. Zeydiyye'nin İmamet anlayışını ve diğer Şii kollardan ayrılan ılımlı yönlerini açıklayabilmek**
+## 6. Günümüze Ulaşan Kollarıyla Şia: Zeydiyye ve İsmailiyye
 
-Öğrenci bu hedef doğrultusunda, Zeydiyye'nin İmamet konusundaki yaklaşımının diğer Şii gruplardan önemli ölçüde ayrıldığını ve Ehl-i Sünnet'e en yakın ılımlı Şii kolu olduğunu öğrenir. Zeydiyye'de imamet, Nübüvvetin bir devamı olarak görülmez [1]. Hz. Peygamber'in Hz. Ali'yi bizzat ismiyle değil, taşıdığı nitelikler ve vasıflar üzerinden işaret ettiğine inanılır [1]. Hz. Ali, Hz. Hasan ve Hz. Hüseyin'den sonraki imamların önceden belirlenmiş bir soy listesi (nass ve tayin) bulunmamaktadır [1, 2]. Zeydiyye'de gizli, gaip veya masum imam anlayışı yoktur; imamın bilgisi ilahi değil, çalışarak elde edilen kesbi bir bilgidir [2]. Bu nedenle imamın dini ilimlerde alim, dindar ve takva sahibi olması şart koşulur [2]. İmam olabilmek için kişinin alimliği ve takvasıyla açıkça ortaya çıkıp imamlığını ilan etmesi ve halktan biat alması (huruç etmesi) gerekir [2]. İmamet hakkı, Hz. Hüseyin'in soyunun yanı sıra Hz. Hasan'ın soyundan gelen Ehlibeyit mensuplarına da tanınmıştır [3]. Mezhebin en ayırt edici ve ılımlı görüşü olan "meftulün imameti" anlayışına göre, toplumun en üstünü (Eftal) varken daha alt nitelikteki ehil bir kimsenin (Meftul) açıkça ortaya çıkıp biat alması halinde imameti caiz kabul edilir [3, 4]. Bu ilke sayesinde Hz. Ebubekir ve Hz. Ömer'in hilafetleri meşru sayılmış, sahabeye sövmek veya onları gaspçı görmek reddedilmiştir [4, 5]. Ayrıca Zeydiyye, ameli fıkıh konularında da Hanefi mezhebine oldukça yakın bir çizgi izlemiştir [6] *(Ders: 9- Günümüze Ulaşan Kollarıyla Şîa: "Zeydiyye")*.
+Bu bölümde Şia'nın günümüze kadar varlığını sürdüren kollarından Zeydiyye ve İsmailiyye mezhepleri detaylı olarak incelenmektedir. Zeydiyye'nin meftulün imameti ve harici huruç anlayışı ile Ehl-i Sünnet'e ve Mu'tezile'ye yakın yönleri sunulmaktadır. İsmailiyye'nin ise Zahir-Batın ayrımı, Yedi Devir anlayışı, Nizariler ve Müsta'liler şeklindeki tarihsel kolları açıklanmaktadır.
 
-**2. İsmailiyye'deki Batıni tevil metodunu ve Yedi Devir anlayışını kavrayabilmek**
+### Öğrenme hedefleri
+- Zeydiyye'nin İmamet anlayışını ve diğer Şii kollardan ayrılan ılımlı yönlerini açıklayabilmek.
+- İsmailiyye'deki Batıni tevil metodunu ve Yedi Devir anlayışını kavrayabilmek.
+- Zeydiyye ve İsmailiyye'nin tarihsel gelişim süreçlerini ve günümüzdeki durumlarını değerlendirebilmek.
 
-Öğrenci bu hedef kapsamında, İsmailiyye mezhebinin düşünce yapısını şekillendiren temel ilkeleri öğrenir. Batıni tevil metoduna göre, dini metinlerin ve şeriat hükümlerinin görünür bir "zahir" anlamı, bir de bu görünür kabuğun altında yer alan gizli "batın" anlamı bulunmaktadır [7, 8]. Zahiri hükümler meyvenin dış kabuğu gibidir; asıl değerli ve öz olan kısım ise batıni anlamdır [8]. Bu batıni ve gizli bilgiye herkes erişemez; bu derin bilgi yalnızca ilahi bilgiye sahip masum imamlara verilmiştir ve ancak imamın öğretmesiyle (talim) öğrenilebilir [7-9]. Bu nedenle mezhep Batıniye veya Talimiye adlarıyla da anılmıştır [9]. İsmailiyye'nin insanlık tarihini açıklayan "Yedi Devir" (Hareketi Seb'iyye) anlayışında 7 sayısına kutsal bir önem atfedilmektedir [8, 9]. İnsanlık tarihi yedi ana devre ayrılır ve her devir, insanlara şeriatı bildiren "Natık" unvanlı bir peygamberle başlar [8, 10]. Natık peygamberin yanında, o şeriatın batıni sırlarını bilen ve suskun duran "Samit" unvanlı bir yardımcı yer alır [8, 10]. İlk altı devrin natık peygamberleri sırasıyla Hz. Adem, Hz. Nuh, Hz. İbrahim, Hz. Musa, Hz. İsa ve Hz. Muhammed'dir [10]. Yedinci ve son devir ise İsmail'in oğlu Muhammed b. İsmail ile başlamıştır ve bu devir kıyamet öncesi son dönemi temsil etmektedir [10, 11] *(Ders: 10- Günümüze Ulaşan Kollarıyla Şîa: "İsmailiyye")*.
+### Ünite 10: Çağdaş İslâmî Akımlar
+*AÖF ders kitabı, Ünite 10, PDF sayfa ~193-213.*
 
-**3. Zeydiyye ve İsmailiyye'nin tarihsel gelişim süreçlerini ve günümüzdeki durumlarını değerlendirebilmek**
+10. Ünite - Çağdaş İslâmî Akımlar
+Yeni selefîlik ile daha çok Vehhâbîlik’le özdeşleştirilen ve geleneksel Ehl-i Hadîs çizgisini
+sürdüren günümüz selefîliği arasında “ana kaynaklara dönüşçü” ortak payda dışında be­
+lirgin bir benzerlik ve yakınlık bulunmamak­ta­dır. İhyâcılık/İslâmcılık İslâm toplumunu
+modernleştirmek adına yükseltilen, entelektüel, rasyonel, bilimci, gelişimci, aktivist yönleri
+ağır basan, Müslüman­ları birleştirici bir amaç güden küresel bir siyasi projenin adı iken;
+geleneksel selefiyye, daha çok hadis merkezli bir metinciliği esas alarak akılcı çözümlere
+mesafeli, dışlamacı karakteri baskın muhafazakâr yaklaşımı temsil etmektedir.
+b.	 İslâmiyet’in modern ihtiyaçları karşılayacak evrensel bir siyasi-sosyal muhtevaya
+sahip olduğu fikri, İslâmcıların sıklıkla vurguladıkları bir tez olmuştur. İslâmiyet’in
+modern dünyadaki bu kapsayıcılığı, kaynağını kutsaldan almakla birlikte akılla da
+kavranıp temellendirilebilir. Zira İslâm, akla uygun bir dindir. Bu nedenle çağın
+yeniliklerine kolaylıkla intibak edebilir. Gelişmeye (terakki) engel olmadığı gibi
+bizzat gelişmeyi emreder. Dinin gelişmeye engel olan unsurları, dine sonradan
+ilave edilen geleneğin ürünleridir. Tutucu bağlardan kurtulmak ve asli kaynakla­
+rı gelişmeci bir dini sistemin hizmetine sunmak için, Ortaçağ’da kapanan ictihat
+kapısı yeniden açılmalı, yeni hükümler üretilmeli, mezhep taklitçiliğinin önüne
+geçilmelidir (Özcan, Kutluer, 2001).
+c.	 Müslümanlar batıyı üstün kılan ilmi, medeni ve teknik usulleri alarak kendi top­
+lumlarını kalkındırmak zorundadır. Zaten batı medeniyeti bugünkü yüksek sevi­
+yesine daha önce Müslümanlardan öğrendikleriyle ulaşmıştır. Hz. Peygamber’in
+“hikmet müminin yitik malıdır, nerede bulursa onu alır” sözü referans alınmalıdır.
+Fakat bu yararlanma faaliyeti seçmeci (eklektik) bir tarzda yapılmalıdır (Özcan,
+Kutluer, 2001). Yabancı ideolojiler ve ahlak anlayışları da bu arada alınırsa, bunlar
+İslâm’ın asli değerlerine uymadığından, bu tarz bir taklit gelişmeye değil yıkıma
+sebep olur.
+d.	 Gelenekle hesaplaşma bağlamında İslâmcılar, genel olarak tasavvuf ve tarikatlara
+menfi bakmışlardır. Tarikatların atâlet ve miskinlik yuvaları haline geldiği; insan
+iradesini değersizleştirdiği; hurafeciliği geliştirdiği; takva, tevekkül ve zühd kav­
+ramlarını yanlış yorumlayarak ilerlemeye mani olduğu iddiaları sık sık dile ge­
+tirilmiştir. Bununla birlikte felsefi bir boyut taşıması ve bütün dinleri içine alan
+müsamahakâr birlik anlayışı nedeniyle vahdet-i vücûd düşüncesi bazı İslâmcılar
+nezdinde özel ilgi görmüştür (Özcan, Kutluer, 2001).
+e.	 İslâmcılar, eğitim-öğretimin ıslahı üzerinde önemle durmuşlardır. Onlara göre,
+medrese sistemini değiştirmek, ıslah etmek, pratik hiçbir faydası olmayan veya
+devri geçmiş dersler yerine günün ihtiyaçlarına cevap verecek konuları okutmak,
+felsefenin ve pozitif bilimlerin tahsiline önem vermek gerekmekteydi (Kara, 1995,
+s. 77). Bu hedefler doğrultusunda Seyyid Ahmed Han, Aligarh Mektebi’ni kurmuş;
+Muhammed Abduh el-Ezher müfredatının ıslahı için çalışmış, Said Nursî ise Doğu
+Anadolu’da Zehrâ Medresesi adıyla açmayı düşündüğü bir yüksek öğretim kuru­
+munu projelendirmişti.… ⟦1⟧
 
-Öğrenci bu hedef çerçevesinde, iki mezhebin tarih içindeki dönüşümünü ve günümüzdeki varlıklarını analiz eder. Zeydiyye, kurucusu Zeyd b. Ali'nin Emevilere karşı yürüttüğü isyanın başarısızlıkla sonuçlanması ve şehit edilmesi sonrasında, varlığını korumak amacıyla merkez coğrafyadan uzaklaşmıştır [12, 13]. Hazar Denizi kıyısındaki Tabaristan bölgesinde ve Yemen'de bağımsız devletler kurmuşlardır [13]. Tabaristan'daki devlet Büveyhiler tarafından yıkılmış, fakat Yemen'deki Zeydi imamet yönetimi varlığını günümüze kadar sürdürmüştür [13]. İtikadi konularda Mutezile mezhebinin görüşlerinden geniş ölçüde etkilenen Zeydiler, günümüzde Yemen nüfusunun önemli bir bölümünü oluşturmaktadır [5, 14]. Yemen'deki iç savaş dışarıdan bir mezhep çatışması gibi görünse de aslında siyasi bir güç mücadelesidir; nitekim tarih boyunca Zeydiler ile Şafiler aynı camilerde ibadet ederek barış içinde yaşamışlardır [15] *(Ders: 9- Günümüze Ulaşan Kollarıyla Şîa: "Zeydiyye")*.
+**GÜNÜMÜZ İSLÂM DÜNYASINDA ANA DİNÎ AKIMLAR**
 
-İsmailiyye ise Cafer es-Sadık'ın oğlu İsmail ve onun oğlu Muhammed b. İsmail etrafında gizli davetçiler (Dai) teşkilatıyla örgütlenmiştir [9, 16, 17]. Kuzey Afrika ve Mısır'da Ubeydullah el-Mehdi önderliğinde güçlü Fatımi Devleti'ni kurmuşlardır [11]. Halife Hakim bi-Emrillah döneminde Dürzilik mezhebi bu yapıdan ayrılmış; 8. halife Mustansır'ın ölümünün ardından ise Büyükoğlu Nizar'ı destekleyen Nizariler ile Küçükoğlu Musta'li'yi destekleyen Musta'liler şeklinde günümüze kadar gelen ana bölünme yaşanmıştır [18, 19]. Hasan Sabbah, Nizariler adına Alamut Kalesi merkezli devleti kurmuştur [19]. Günümüzde Musta'liler daha çok Hindistan'da "Bohralar" adıyla Dâi-i Mutlak önderliğinde varlıklarını sürdürmekte ve ibadetlerinde İslam şeriatının zahirine bağlı kalmaktadırlar [10, 20]. Nizariler ise 4. Ağa Han (Kerim Şah) liderliğinde 20'den fazla ülkede yaşamakta ve ibadetlerde batıni yorumları öne çıkararak yaşadıkları ülkelerin kültürlerine uyum sağlamaktadırlar [7, 10, 20] *(Ders: 10- Günümüze Ulaşan Kollarıyla Şîa: "İsmailiyye")*.
+Ünitemizin bu bölümünde, günümüz İslâm dünyasının üç büyük akımı olan gelenekçilik,
+ıslahatçılık ve modernizmi, bunların teşkilat veya şahıs teme­linde önemli temsilcilerini
+ve bunların görüşlerini değerlendirmeye alacağız.
+Söz konusu akımların kesin hatlarla birbirlerinden ayrıldığını söyle­yemiyoruz. Aralarında
+mutlaka benzerliklerin olduğunu, geçişkenliklerin yaşandığını görüyoruz. Gelenekçi yapılar­
+da ıslahatçı eğilimlere veya ıslahatçı yapılarda güçlü modernist motiflere sıklıkla rastlıyoruz.
+Fakat bu benzerlik ve geçişkenliklere rağmen, mevcut dini, siyasi ve kültürel oluşumların söz
+ve icraatlarına ve tabii ki tarihsel köklerine bakarak üçlü bir sınıflamanın yapılmasının ve bu
+sınıfların kendi altlarında detaylandırılmasının mümkün olacağını düşünüyoruz.
+Gelenekçi Oluşumlar
+Bir toplum veya toplulukta eskiden kalmış olmaları dolayısıyla saygın tutulup kuşaktan
+kuşağa iletilen, üyeler arasında manevi bağları güçlendiren, özgüven kazandıran ve belli
+bir yaptırım gücü olan bilgiler, adetler, davranışlar, alışkanlıklar, sözlü ya da yazılı kültürel
+kalıntılar geleneği oluş­turmaktadır. Örneğin mezheplerin, tarikatların, medrese tedrisatı­
+nın ken­dilerine özgü gelenekleri bulunmaktadır. Bunlar ümmet veya İslâm geleneği deni­
+len geleneksel ana yapı içerisinde önemli bir kısmı oluşturur.
+Gelenek birikimi içinde sıhhatli unsurlar yanında sıhhatsiz, temelsiz, marazi unsurlar
+da tabii ki bulunacaktır. Gelenekçilik, muhafazakâr bir tutumla sıhhatli-sıhhatsiz ayrı­
+mına çok itibar etmeden, sadece “müslümanlar arasında intikal etmesi” özelliğini dik­
+kate alarak geleneğin sürdürülmesini, yaşanmasını ister. Gelenekçi oluşumların liderleri
+çoğunlukla şeyh, üstad, mevlâna, âlim, imam gibi lakaplarla anılırlar ve geleneksel dini
+eğitim almış kişiler arasından çıkarlar. Silsile sistemi bu yapılarda bugünü geçmişe bağ­
+lar. Ayrıca gelenek içinde bazı mertebeler oluşmuştur ve bu hiyerarşiye saygılı davranışlar
+beklenir. Yapılanmada erkek egemen bir çalışma sistemi mevcuttur. Meseleler karşısında… ⟦2⟧
+
+### İlgili çıkmış vize soruları
+Metindeki ⟦n⟧ işaretleri bu listeye açılır. Alıntıya tıklayınca çözüm rehberinde soru açılır ve çözümü vurgulanır.
+- [1] **2021-2022 · Soru 17**: İsmailiyye imamları, Ubeydullah el-Mehdî’nin Fâtımî devletini kurduğu 296/908 tarihine kadar -------, yani gizlenme dönemini devam ettirdile
+- [2] **2021-2022 · Soru 19**: İsmailiyye imamları, Ubeydullah el-Mehdî’nin Fâtımî devletini kurduğu 296/908 tarihine kadar -------, yani gizlenme dönemini devam ettirdile
 
 # Kaynaklar
 

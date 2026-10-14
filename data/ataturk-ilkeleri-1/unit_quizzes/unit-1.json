@@ -1,0 +1,331 @@
+{
+  "unit": 1,
+  "unitTitle": "Türk İnkılabını Hazırlayan Sebepler",
+  "title": "Osmanlı Tarihi Testi",
+  "questions": [
+    {
+      "question": "XVII. yüzyıl Osmanlı ıslahatçı düşünürlerinden Kâtip Çelebi'nin, devlet mekanizmasındaki bozulmaları ve yönetimdeki aksaklıkları eleştirerek çözüm yolları sunduğu ünlü eseri aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Düstûrü'l-Amel li Islahı'l-Halel",
+          "isCorrect": true,
+          "rationale": "Kâtip Çelebi bu eserinde devlet organlarındaki bozulmaları cesurca teşhis etmiş ve ıslahe yönelik somut öneriler sunmuştur."
+        },
+        {
+          "text": "Asafnâme",
+          "isCorrect": false,
+          "rationale": "Bu eser XVI. yüzyılda Kanuni Sultan Süleyman'ın sadrazamı Lütfi Paşa tarafından devlet yönetimine dair kaleme alınmıştır."
+        },
+        {
+          "text": "Keşfü'z-Zünûn",
+          "isCorrect": false,
+          "rationale": "Kâtip Çelebi'ye ait olmakla birlikte bu çalışma devlet ıslahatından ziyade geniş kapsamlı bir bibliyografya eseridir."
+        },
+        {
+          "text": "Cihannüma",
+          "isCorrect": false,
+          "rationale": "Bu çalışma coğrafya alanında hazırlanmış bir eser olup idari reform tavsiyeleri içermemektedir."
+        }
+      ],
+      "hint": "Yazarın devlet dairesindeki aksaklıkların giderilmesi ve bozulmaların düzeltilmesi için reçete sunduğu risalesini düşününüz.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Osmanlı Devleti'nde III. Selim döneminde gerçekleştirilen Nizam-ı Cedit ıslahatları kapsamında yer almayan gelişme aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Evkaf Vekâletinin kurulması",
+          "isCorrect": true,
+          "rationale": "Vakıf idaresini tek bir çatı altında toplayan Evkaf Vekâleti III. Selim döneminde değil, II. Mahmud döneminde tesis edilmiştir."
+        },
+        {
+          "text": "Mühendishane-i Berr-i Hümayun matbaasının açılması",
+          "isCorrect": false,
+          "rationale": "III. Selim döneminde askerî okul bünyesinde telif ve tercüme eserleri basmak amacıyla bu matbaa kurulmuştur."
+        },
+        {
+          "text": "Mühendishane-i Bahri-i Hümayunun yeniden düzenlenmesi",
+          "isCorrect": false,
+          "rationale": "Deniz mühendishanesi bu dönemde modernize edilerek ıslah edilen kurumlar arasındadır."
+        },
+        {
+          "text": "Humbaracı ve topçu ocaklarının ıslah edilmesi",
+          "isCorrect": false,
+          "rationale": "III. Selim dönemi askerî yenilikleri kapsamında teknik sınıflar ve topçu ocakları yeniden yapılandırılmıştır."
+        }
+      ],
+      "hint": "Cevap seçeneği, vakıf mallarının idaresini merkezîleştirmek amacıyla II. Mahmud döneminde oluşturulan bakanlıktır.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Osmanlı Devleti'nde idari ve hukuki yapıyı yeniden şekillendiren, 23 Aralık 1876 tarihinde ilan edilerek Türk tarihinin ilk anayasası olma özelliğini taşıyan belge aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Kanun-i Esasi",
+          "isCorrect": true,
+          "rationale": "Tersane Konferansı sırasında ilan edilen Kanun-i Esasi, Osmanlı Devleti'nin ilk yazılı anayasasıdır."
+        },
+        {
+          "text": "Tanzimat Fermanı",
+          "isCorrect": false,
+          "rationale": "1839 yılında ilan edilen bu ferman anayasal düzene geçişin ilk adımı olmakla birlikte bir anayasa metni değildir."
+        },
+        {
+          "text": "Sened-i İttifak",
+          "isCorrect": false,
+          "rationale": "1808 yılında Padişah ile âyânlar arasında imzalanan ve padişah yetkilerini kısıtlayan bir sözleşmedir."
+        },
+        {
+          "text": "Islahat Fermanı",
+          "isCorrect": false,
+          "rationale": "1856 yılında gayrimüslimlere verilen hakları genişleten mülki ıslahat fermanıdır."
+        }
+      ],
+      "hint": "I. Meşrutiyet'in ilanı ile yürürlüğe giren ve meclisli yönetimin temelini oluşturan metni hatırlayınız.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Osmanlı modernleşme sürecinde dış dünyaya merak duyan, 'kadim' anlayış yerine 'yeni' yaklaşımları öne çıkaran kâtip sınıfı kuşağını tanımlamak için kullanılan kavram aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Çelebiler Çağı",
+          "isCorrect": true,
+          "rationale": "Bu kavram, Batı'daki ve Osmanlı dışındaki gelişmeleri kavramaya çalışan bürokrat ve kâtip kuşağını ifade eder."
+        },
+        {
+          "text": "Münevverler Çağı",
+          "isCorrect": false,
+          "rationale": "Bu terim daha çok XIX. yüzyıl sonu ve XX. yüzyıl başındaki Jön Türk ve aydın grubunu ifade etmek için kullanılır."
+        },
+        {
+          "text": "Sefirler Çağı",
+          "isCorrect": false,
+          "rationale": "Bu niteleme diplomasi ve elçilik faaliyetlerinin yoğunlaştığı Lale Devri ve sonrasını tanımlamada kullanılır ancak bürokratik kuşak adı değildir."
+        },
+        {
+          "text": "Kahramanlar Çağı",
+          "isCorrect": false,
+          "rationale": "Bu kavram erken dönem Osmanlı kuruluş veya askerî fetih dönemlerini tanımlamakta kullanılır."
+        }
+      ],
+      "hint": "Osmanlı eğitimli bürokrat sınıfının 'çelebi' unvanıyla anıldığı tarihsel dönemi düşününüz.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Kanuni Sultan Süleyman'ın sadrazamlarından Lütfi Paşa tarafından kaleme alınan ve Osmanlı devlet teşkilatındaki aksaklıkları inceleyen siyasetname türündeki eser aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Asafnâme",
+          "isCorrect": true,
+          "rationale": "Lütfi Paşa'nın devlet yönetimi, hazine idaresi ve askerî düzen konularında tavsiyelerde bulunduğu eseridir."
+        },
+        {
+          "text": "Usulü'l-Hikem",
+          "isCorrect": false,
+          "rationale": "Bu eser XVIII. yüzyıl düşünürlerinden İbrahim Müteferrika tarafından kaleme alınmıştır."
+        },
+        {
+          "text": "Künhü'l-Ahbar",
+          "isCorrect": false,
+          "rationale": "Gelibolulu Mustafa Âlî tarafından yazılmış genel bir tarih eseridir."
+        },
+        {
+          "text": "Vakayi'u'l-Fuzala",
+          "isCorrect": false,
+          "rationale": "Şeyhi Mehmed Efendi tarafından yazılan ilmiye biyografisi eseridir."
+        }
+      ],
+      "hint": "Hz. Süleyman'ın veziri Asaf'a atıfla adlandırılan yönetim risalesini hatırlayınız.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Osmanlı Devleti'nde milliyetçilik akımlarının ve dağılma tehlikesinin önüne geçmek amacıyla ortaya atılan ilk siyasi ideoloji aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Osmanlıcılık",
+          "isCorrect": true,
+          "rationale": "Din ve ırk farkı gözetmeksizin tüm tebaayı eşit yurttaşlar olarak bir arada tutmayı hedefleyen ilk kapsayıcı ideolojidir."
+        },
+        {
+          "text": "İslamcılık",
+          "isCorrect": false,
+          "rationale": "II. Abdülhamid döneminde öne çıkan ve Müslüman unsurların birliğini savunan daha sonraki ideolojik yaklaşımdır."
+        },
+        {
+          "text": "Türkçülük",
+          "isCorrect": false,
+          "rationale": "Balkan Savaşları sonrasında ve İttihat ve Terakki döneminde etkisini artıran akımdır."
+        },
+        {
+          "text": "Adem-i Merkeziyetçilik",
+          "isCorrect": false,
+          "rationale": "Prens Sabahaddin tarafından savunulan yerel yönetim ağırlıklı bir idari model önerisidir."
+        }
+      ],
+      "hint": "Tanzimat dönemiyle birlikte tüm Osmanlı tebaasını tek bir kimlik altında birleştirmeyi amaçlayan akımı düşününüz.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "1 Kasım 1831 tarihinde yayın hayatına başlayan ve Osmanlı Devleti'nin Türkçe olarak yayımlanan ilk resmî gazetesi aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Takvim-i Vekayi",
+          "isCorrect": true,
+          "rationale": "II. Mahmud döneminde devlet icraatlarını ve mevzuatı duyurmak amacıyla çıkarılan ilk resmî gazetedir."
+        },
+        {
+          "text": "Ceride-i Havadis",
+          "isCorrect": false,
+          "rationale": "1840 yılında bir İngiliz girişimci tarafından çıkarılan ilk yarı resmî gazetedir."
+        },
+        {
+          "text": "Tercüman-ı Ahvâl",
+          "isCorrect": false,
+          "rationale": "1860 yılında Şinasi ve Agâh Efendi tarafından çıkarılan ilk özel Türkçe gazetedir."
+        },
+        {
+          "text": "Tasvir-i Efkâr",
+          "isCorrect": false,
+          "rationale": "Şinasi tarafından çıkarılan fikrî ve siyasi içerikli özel gazetedir."
+        }
+      ],
+      "hint": "Devlet olaylarının ve resmî duyuruların takvim sırasına göre aktarıldığı yayını hatırlayınız.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "13 Nisan 1909 (31 Mart 1325) tarihinde gerçekleşen 31 Mart Vakası ile ilgili aşağıdaki ifadelerden hangisi yanlıştır?",
+      "answerOptions": [
+        {
+          "text": "İsyancılar İttihatçı subayların görevlerine derhal iade edilmesini talep etmişlerdir.",
+          "isCorrect": true,
+          "rationale": "İsyan doğrudan İttihat ve Terakki Cemiyetine ve onun subay kadrosuna bir tepki olarak çıktığı için bu subayların iadesi değil, uzaklaştırılması istenmiştir."
+        },
+        {
+          "text": "II. Meşrutiyet yönetimine ve İttihat ve Terakki Cemiyetine karşı bir tepki niteliğindedir.",
+          "isCorrect": false,
+          "rationale": "31 Mart Ayaklanması meşrutiyet rejimine ve İttihatçıların yönetimine karşı muhafazakâr ve tepkisel bir harekettir."
+        },
+        {
+          "text": "Ayaklanma sonucunda Hüseyin Hilmi Paşa Hükûmeti istifa etmek zorunda kalmıştır.",
+          "isCorrect": false,
+          "rationale": "İsyancıların baskısı ve gösterileri üzerine mevcut hükûmet istifasını sunmuştur."
+        },
+        {
+          "text": "Aşırı dinî söylemler ve şeriat talepleri isyanın propaganda unsurları arasında yer almıştır.",
+          "isCorrect": false,
+          "rationale": "İsyancılar şeriat hükümlerinin tam uygulanması talebini öne sürmüşlerdir."
+        }
+      ],
+      "hint": "İsyancıların İttihat ve Terakki politikalarına tamamen karşıt bir duruş sergilediğini göz önünde bulundurunuz.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "1889 yılında İttihad-ı Osmanî Cemiyetini kurarak daha sonra İttihat ve Terakki Cemiyetine dönüşecek olan harekete öncülük eden isim aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "İbrahim Temo",
+          "isCorrect": true,
+          "rationale": "Askeri Tıbbiye öğrencileriyle birlikte İttihad-ı Osmanî Cemiyetinin kurucuları arasında yer alan öncü isimdir."
+        },
+        {
+          "text": "Ziya Gökalp",
+          "isCorrect": false,
+          "rationale": "İttihat ve Terakki'nin ideoloğu olmakla birlikte cemiyetin ilk kurucu çekirdeğinde yer almamıştır."
+        },
+        {
+          "text": "Namık Kemal",
+          "isCorrect": false,
+          "rationale": "Genç Osmanlılar hareketinin önde gelen fikir adamlarından biridir."
+        },
+        {
+          "text": "Ahmet Rıza Bey",
+          "isCorrect": false,
+          "rationale": "Cemiyetin Paris grubunun liderliğini üstlenmiş ancak İstanbul'daki ilk gizli teşkilatlanmayı başlatan isim olmamıştır."
+        }
+      ],
+      "hint": "Askerî Tıbbiye'de gizli cemiyetleşmeyi başlatan Arnavut kökenli Osmanlı aydınını düşününüz.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Sultan Abdülmecit döneminde ilan edilen ve gayrimüslim tebaaya eşit haklar tanıyarak geleneksel yapıda köklü değişimler öngören mülki ıslahat belgesi aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Islahat Fermanı",
+          "isCorrect": true,
+          "rationale": "1856 yılında ilan edilen bu ferman özellikle azınlık haklarını düzenleyen ve dış baskıların da etkisiyle hazırlanan mülki yenilik programıdır."
+        },
+        {
+          "text": "Nizam-ı Cedit",
+          "isCorrect": false,
+          "rationale": "III. Selim dönemi askerî ve idari yenilik programına verilen isimdir."
+        },
+        {
+          "text": "Sened-i İttifak",
+          "isCorrect": false,
+          "rationale": "II. Mahmud döneminde merkezî otorite ile âyânlar arasında yapılan belgedir."
+        },
+        {
+          "text": "Halepa Fermanı",
+          "isCorrect": false,
+          "rationale": "Girit'teki Rum nüfusa özerklik imtiyazları veren özel bir düzenlemedir."
+        }
+      ],
+      "hint": "Kırım Savaşı sonrasında Paris Antlaşması öncesinde ilan edilen reform belgesini hatırlayınız.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "31 Mart Ayaklanması'nın çıkmasında ve ordu içerisinde huzursuzluk yaşanmasında etkili olan temel askerî idari sorun aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Alaylı-mektepli çatışması ve alaylı subayların tasfiye edilmesi",
+          "isCorrect": true,
+          "rationale": "Mektepli subayların öne çıkarılması ve geleneksel alaylı subay kadrosunun tasfiyesi subaylar arasında ciddi tepki oluşturmuştur."
+        },
+        {
+          "text": "Yeniçeri Ocağı'nın kaldırılması kararı",
+          "isCorrect": false,
+          "rationale": "Yeniçeri Ocağı 1826'da (Vaka-i Hayriye) kaldırılmış olup 1909 olayları ile ilgisi yoktur."
+        },
+        {
+          "text": "Kapıkulu askerlerinin ulufe alamaması",
+          "isCorrect": false,
+          "rationale": "Ulufe sistemi klasik dönem Osmanlı askerî yapısına aittir."
+        },
+        {
+          "text": "Tımar sisteminin bozulması",
+          "isCorrect": false,
+          "rationale": "Tımar sistemi eyalet ordusuyla ilgili olup XX. yüzyıl başındaki profesyonel ordu içi çatışmayı açıklamaz."
+        }
+      ],
+      "hint": "Mektep mezunu eğitimli subaylar ile çekirdekten yetişme subaylar arasındaki gerilimi düşününüz.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Mustafa Kemal Paşa'nın 19 Gemici/Mayıs 1919'da Samsun'a çıkarken resmi görevi olan 9. Ordu Müfettişliğine atanmasının asıl gerekçesi aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Bölgedeki Türkler ile Rumlar arasındaki çatışmaları sona erdirmek ve asayişi sağlamak",
+          "isCorrect": true,
+          "rationale": "İstanbul Hükûmeti ve İtilaf Devletleri'nin talebi doğrultusunda Mondros mütarekesi hükümlerine uyulmasını sağlamak ve çatışmaları durdurmak amacıyla görevlendirilmiştir."
+        },
+        {
+          "text": "Güney cephesinde Fransızlara karşı direnişi başlatmak",
+          "isCorrect": false,
+          "rationale": "Güney cephesi 9. Ordu Müfettişliği görev sahası dışındadır."
+        },
+        {
+          "text": "Sivas Kongresi'ni hemen organize etmek",
+          "isCorrect": false,
+          "rationale": "Kongre kararları Mustafa Kemal Paşa'nın resmi görevinin bir parçası olmayıp Millî Mücadele sürecinde kendi kararıyla uygulanmıştır."
+        },
+        {
+          "text": "Anadolu'da yeni bir hükûmet kurmak",
+          "isCorrect": false,
+          "rationale": "İstanbul Hükûmeti tarafından verilen resmi talimatta yeni bir hükûmet kurma yetkisi yer almamaktadır."
+        }
+      ],
+      "hint": "Karadeniz bölgesindeki Mondros Mütarekesi ihlallerini ve İtilaf Devletleri'nin müdahale tehditlerini önleme amacını düşününüz.",
+      "type": "multiple_choice"
+    }
+  ]
+}

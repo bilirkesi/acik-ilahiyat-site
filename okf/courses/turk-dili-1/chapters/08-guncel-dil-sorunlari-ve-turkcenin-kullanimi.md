@@ -40,27 +40,90 @@ Bu bölümün içinde yaşadığı ders paneli: [Türk Dili paneli](/courses/tur
 
 # Kaynak Temellendirme
 
-Aşağıda, sekizinci ünite kaynakları doğrultusunda belirlenen üç öğrenme hedefi çerçevesinde öğrencilerin edineceği bilgi ve kazanımlar açıklanmıştır:
+## 8. Güncel Dil Sorunları ve Türkçenin Kullanımı
 
-### 1. Sosyal Medyada ve Kitle İletişim Araçlarında Dil Kullanım Hatalarını Tespit Edebilme
-Öğrenci bu öğrenme hedefi kapsamında, televizyon, haber programları ve internet ortamında yaygınlaşan dil hatalarını tanımayı öğrenir:
-* **Kitle İletişim Araçlarındaki Yetersizlikler**: Günlük haber programlarında ve yayınlarda dildeki zengin söz varlığı yerine yalnızca birkaç yüz sözcüğün tekrarlandığını [1, 2]; "müjde" kelimesinin "müjdeli haber" şeklinde kullanımı gibi anlatım bozukluklarının sıkça yapıldığını tespit eder [3]. Yayınlardaki söyleyiş bozukluklarının ve kaba ifadelerin, özellikle günde ortalama beş saatten fazla televizyon izleyen çocuk ve gençlerin dil kullanımını olumsuz etkilediğini kavrar [1].
-* **Sosyal Medyadaki Özensizlikler**: İnternet ortamında ve cep telefonu mesajlaşmalarında zamandan tasarruf etmek veya ucuz kullanım sağlamak gerekçesiyle sözcüklerin eksik yazıldığını, büyük-küçük harf kurallarının hiçe sayıldığını, Türkçe kelimelerin İngilizce harf düzeniyle yazıldığını ve sadece ünsüz harflerin kullanıldığını öğrenir [4]. Ayrıca "alıyo" veya "bakıyon" örneklerinde olduğu gibi söyleyişteki ses düşmelerinin ve türemelerinin yazılı ortama aktarılarak ölçünlü dili bozduğunu görür [5].
-* **Söyleyiş ve Düzeltme İşareti Hataları**: Uzun ve kısa ünlülerin yanlış telaffuz edilmesinin anlam kargaşasına yol açtığını öğrenir [4, 5]. Örneğin gelenek anlamına gelen "âdet" sözcüğündeki uzun ünlünün kısa söylenmesi durumunda, sayı bildiren "adet" sözcüğüyle karıştığını ve bu tür hataların iletişimi olumsuz etkilediğini kavrar [5].
+Bu bölümde Türkçenin günümüzde karşılaştığı yozlaşma ve yabancılaşma sorunları ele alınmaktadır. Kitle iletişim araçları, sosyal medya ve iş hayatında yabancı sözcüklerin bilinçsiz kullanımının olumsuz etkileri tartışılmaktadır. Türkçenin öğretim ve bilim dili olarak korunması ve toplumda ana dili bilincinin geliştirilmesi için yapılması gerekenler açıklanmaktadır.
 
-### 2. Yabancı Sözcük Kullanımının Türkçenin Yapısına ve Kültürüne Zararlarını Değerlendirebilme
-Öğrenci bu hedef doğrultusunda, dildeki kontrolsüz yabancılaşmanın dilin kurallarına ve toplumsal yaşama verdiği zararları analiz eder:
-* **Dilin Yapısına ve Gramerine Zararları**: Batı dillerinden, özellikle İngilizceden alınan sözcüklerin geçmişteki alıntıların aksine Türkçenin ses yapısına uydurulmadan orijinal halleriyle dile girmesini inceler [6]. Türkçe karşılıkları olduğu halde statü özentisiyle kullanılan yabancı sözcüklerin yanı sıra, Türkçede bulunmayan çoğul eklerinin (-s), aitlik eklerinin ('s) ve "zaplamak", "zoomlamak" gibi yabancı kökenli eylem türetimlerinin dilin yapısını bozduğunu öğrenir [7, 8]. "Kahve içmek" yerine "kahve almak" veya "hoşça kal" yerine "kendine iyi bak" gibi kalıplaşmış yabancı ifade biçimlerinin Türkçenin söz dizimini ve mantığını zayıflattığını kavrar [8].
-* **Kültürel Yozlaşma ve Yaşam Tarzı Değişimi**: Dilimize giren yabancı kavramların sadece sözcük düzeyinde kalmayıp yabancı yaşam tarzlarını ve kültürel ögeleri de beraberinde taşıdığını öğrenir [9]. Örneğin "residence" ifadesinin komşuluk ilişkileri zayıf ve izole bir yaşamı, "fast food" kavramının ise geleneksel beslenme alışkanlıklarını bozarak sağlık sorunlarını getirdiğini kavrar [9, 10]. Sınırlı sözcük kullanımı nedeniyle unutulan kelimelerle birlikte zengin kültürel ögelerin de yok olduğunu fark eder [2, 3].
-* **Ticari Hayatta Yabancılaşma**: Mağaza, ürün ve iş yeri isimlerinde ("Angle Börek Center" gibi) ve tabelalarda görülen dil yabancılaşmasının yasal denetim eksikliklerinden kaynaklandığını öğrenir [11].
+### Öğrenme hedefleri
+- Sosyal medyada ve kitle iletişim araçlarında görülen dil kullanım hatalarını tespit edebilme.
+- Yabancı sözcük kullanımının Türkçenin yapısına ve kültürüne olan zararlarını değerlendirebilme.
+- Türkçenin bir bilim dili olarak gelişmesi ve korunması için gereken bilinci kavrayabilme.
 
-### 3. Türkçenin Bir Bilim Dili Olarak Gelişmesi ve Korunması İçin Gereken Bilinci Kavrayabilme
-Öğrenci bu öğrenme hedefi çerçevesinde, Türkçenin tarihsel bilim dili potansiyelini ve dili korumaya yönelik sorumlulukları kavrar:
-* **Tarihsel Köken ve Birikim**: Türkçenin 10. yüzyıldaki Eski Uygurca metinlerden itibaren yabancı terimlere Türkçe karşılıklar türeterek bir bilim ve kültür dili olduğunu; 1933 Üniversite Reformu ve Atatürk'ün bizzat türettiği geometri terimleriyle (üçgen, eşkenar üçgen, iç ters açılar gibi) modern bir bilim dili kimliği kazandığını öğrenir [12, 13].
-* **Yabancı Dille Öğretimin Zararları**: Üniversitelerde mesleki derslerin Türkçe yerine yabancı dille verilmesinin ve akademik çalışmalarda Türkçe yerine yabancı dilde yayın yapmanın teşvik edilmesinin, Türkçenin bir bilim dili olarak gelişmesini engellediğini kavrar [8, 14]. Ana dilde öğrenimin daha kolay ve etkili olduğunu, yapılması gerekenin yabancı dille öğretim değil, nitelikli bir yabancı dil öğretimi verilerek öğretim dilinin Türkçe kalması olduğunu öğrenir [14].
-* **Ana Dili Bilinci ve Koruma Yolları**: Türkçedeki sorunların dilin kendisinden değil, konuşurların kayıtsızlığından kaynaklandığını saptar [3, 9]. Türkçeyi korumak için toplumda ana dili bilincinin artırılması, kitle iletişim araçlarında doğru Türkçe kullanımının teşvik edilmesi, yasal düzenlemelerin yapılması ve sözlük kullanma alışkanlığının yaygınlaştırılması gerektiğini öğrenir [2, 11, 15].
+### Ünite 8: Türkçenin Güncel Sorunları
+*AÖF ders kitabı, Ünite 8, PDF sayfa ~223-239.*
 
-💡 Türk Dili I dersinizin tüm ünitelerini kapsayan genel bir vize/final sınavına hazırlık testi veya çalışma rehberi oluşturmamı ister misiniz?
+8. Ünite - Türkçenin Güncel Sorunları
+te, sunulan “yüksek güvenlik” ile toplumdan kopuk, komşuluk ilişkilerinden uzak yeni
+bir yaşam tarzı oluşturulmaktadır. Ticari hayatta ise Türkçe ihmal edilen dil durumuna
+düşürülmektedir. Yurt dışından getirilen pek çok ürünün, aygıtın kullanım kılavuzunda
+hemen her dil yer alırken Türkçe kullanım kılavuzu bulunmaması veya küçük bir çıkart­
+ma üzerinde minicik harflerle özet bilgi verilmesi, ticari hayatta Türkçenin durumunu
+ortaya koymaktadır. Yasal hükümler gereği Türkçe kullanım kılavuzu verilmesi bir ge­
+reklilik iken aykırı davranılması aynı zamanda tüketici haklarının da ihlal edilmesidir.
+Türk mutfağının besleyici, sağlıklı yemekleri dururken bütün dünyada aşırı şişmanlığa
+yol açtığı bilinen ve kimi ülkelerde yasaklanan ayaküstü (fastfood) yiyecekler, yabancı adlı
+menülerle sunulmakta, beslenme alışkanlıklarımız değişmektedir. Kısacası, dilde yaşanan
+bu etkilenme, buzulun suyun üzerinde kalan kısmı gibidir. Asıl büyük etkilenme hayatın
+diğer alanlarında kendisini göstermektedir. Ancak biz konumuz gereği dilde yaşanan etki­
+lenmeyi, Türkçenin karşı karşıya bulunduğu sorunları yaşandıkları alanlar açısından ayrı
+ayrı ele alacağız ve çözüm yoları üzerinde duracağız.
+Türkçenin karşı karşıya bulunduğu sorunları çeşitli açılardan ele alan yararlı bir kaynak
+olarak Mustafa Argunşah’ın Sözüm Türkçe Üstüne adlı kitabını okuyabilirsiniz. (Kesit Yay.,
+İstanbul, 2008) ⟦1⟧
+
+**TÜRKÇENİN KULLANIMINDA YAŞANAN SORUNLAR**
+
+Gündelik dilde, öğretim hayatında, kitle iletişim araçlarında ve sosyal medyada Türkçe­
+nin kullanımında yaşanan sorunların başında Türkçeye karşı kayıtsızlık ve duyarsızlık,
+toplumda Türkçe bilincinin gereğince yaygınlaşmamış olması gelmektedir. Geçmişte de
+Türkçeye karşı kayıtsızlığın, duyarsızlığın yaşandığı bir dönemde Karamanoğlu Mehmet
+Bey, “Şimden gerü divanda, dergâhta, bargâhta, çarşıda ve bazarda Türkçeden başka dil
+konuşulmaya” diyerek ferman çıkarmış; Âşık Paşa, ünlü eseri Garibname’de Türkçe bilin­
+cinin oluşmamasından
+Türk diline kimsene bakmaz idi
+Türklere hergiz gönül akmaz idi.
+dizelerini dile getirerek yakınmış; Mesihî de döneminde ilginin Arap ve Acem diyarların­
+dan gelenlere, dolayısıyla Arapça ve Farsça yazanlara yöneldiğini
+Mesihî gökden insen sana yer yok
+Yüri var gel Arabdan ya Acemden
+sözleriyle vurgulamıştı.
+Kültür etkilenmesini ve bunun sonucunda yabancı dillerden etkilenme olumsuzluğu­
+nu geçmişte de yaşamış olan Türkçe, Arap ve Fars kültürü ile etkileşim sonucunda Arapça
+ve Farsçanın etkisinde kalmıştı. Bununla birlikte Türkçe geçen dönemler içerisinde yaşa­
+dığı gelişmelerle bugünkü ulaştığı noktaya gelmiştir.
+Türkçenin karşılaştığı farklı sorunlara ilişkin ayrıntılı bilgi edinmek için farklı yazar­
+larla hazırlanmış Türkçenin Çağdaş Sorunları adlı kitaptan yararlanabilirsiniz. (Editör­
+ler: Gürer Gülsevin ve Erdoğan Boz (2. Baskı). Gazi Kitabevi, Ankara, 2006 )
+Kitle İletişim Araçlarında Türkçenin Kullanımı
+“Sokaktaki insan” diye nitelenen kitlenin gündelik dilde kullandığı söz varlığının her ülke­
+de sınırlı olduğu bilinmektedir. Ancak kitle iletişim araçlarının söz varlığının daha geniş
+olması beklenir. Türk Dil Kurumunun RTÜK için 1999 yılında yaptığı bir araştırmaya ⟦2⟧
+
+göre haber programlarında bin sözcüğün kullanıldığı, ilk yüz sözcüğün ise bu söz varlığı­
+nın neredeyse yüzde ellisini oluşturduğu ortaya konulmuştur. Bu veri, haber programları­
+nın birkaç yüz sözcükle hazırlandığını göstermektedir.
+21 Mayıs 2002 tarihli Resmî Gazete’de yayımlanarak yürürlüğe girmiş, Radyo Televizyon Üst
+Kurulu (RTÜK) yasasında değişiklik öngören 3984 sayılı Kanun’un değiştirilmiş 4. Madde­
+sinin h) fıkrası; “Türkçenin; özellikleri ve kuralları bozulmadan konuşma dili olarak kulla­
+nılması; millî birlik ve bütünlüğün temel unsurlarından biri olarak çağdaş kültür, eğitim, ve
+bilim dili hâlinde gelişmesinin sağlanması” şeklindedir.
+Radyo ve televizyon yayımlarının yaygınlaşması, dinleme ve izleme oranlarının yük­
+selmesi Türkçe açısından olumlu ve yararlı bir gelişme olması gerekirken yeni sorunlar
+ortaya çıkarmıştır. Söyleyiş bozuklukları, cümle düşüklükleri, yanlış sözcük kullanma,
+Türkçenin söz varlığında bulunmayan yabancı sözcüklere yer verme, kaba dil ve argo gibi
+olumsuzluklar radyo ve televizyon yayınlarında sınırsızca yapılınca bu yanlışlar toplu­
+mun, özellikle de genç kuşakların diline yerleşmiştir. Yayımcılığın kısır bir söz varlığıyla
+yapılması ise bir başka sorundur.
+Televizyon dizilerinde bir dönem moda hâlinde yayılmış kaba dil ve argo kullanımına ilişkin
+örnekleri bulunuz. Bugün bu örnekler aynı yaygınlıkta kullanılıyor mu? Tartışınız.… ⟦3⟧ ⟦4⟧ ⟦5⟧
+
+### İlgili çıkmış vize soruları
+Metindeki ⟦n⟧ işaretleri bu listeye açılır. Alıntıya tıklayınca çözüm rehberinde soru açılır ve çözümü vurgulanır.
+- [1] **2023/2024 · Soru 8**: I. Bir dilin standart özellikleri ölçünlü dil olarak adlandırılır. II. Ölçünlü dil terimi hem yazı hem de konuşma dilini kapsar. III. Ölçünl
+- [2] **2022/2023 · Soru 12**: I. Bir dilin standart özellikleri ölçünlü dil olarak adlandırılır. II. Ölçünlü dil terimi hem yazı hem de konuşma dilini kapsar. III. Ölçünl
+- [3] **2022/2023 · Soru 14**: I. Bir ülkenin tamamında veya bir bölgesinde yönetim dili olarak kullanılır. II. Tüm resmî işlemlerde kullanılan yasal statüsü bulunan bir v
+- [4] **2022/2023 · Soru 4**: I. Bir dilin standart özellikleri ölçünlü dil olarak adlandırılır. II. Ölçünlü dil terimi hem yazı hem de konuşma dilini kapsar. III. Ölçünl
+- [5] **2022/2023 · Soru 11**: I. Bir ülkenin tamamında veya bir bölgesinde yönetim dili olarak kullanılır. II. Tüm resmî işlemlerde kullanılan yasal statüsü bulunan bir v
 
 # Kaynaklar
 

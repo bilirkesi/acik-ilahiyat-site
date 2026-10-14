@@ -1,0 +1,331 @@
+{
+  "unit": 3,
+  "unitTitle": "İlk Mezhepler (Haricilik, Şia, Maturidilik vb.)",
+  "title": "İslâm Mezhepleri Testi",
+  "questions": [
+    {
+      "question": "Dinî terim olarak Hz. Peygamber ve Ashâbı döneminde bulunmayıp sonradan ortaya çıkan, dinin özüne müdahale niteliğindeki yeni anlayış ve uygulamaları ifade eden kavram aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Bid’at",
+          "isCorrect": true,
+          "rationale": "Dinde Asr-ı Saadet'ten sonra ortaya çıkan ve şer'i dayanağı bulunmayan yenilikler bid’at olarak tanımlanır."
+        },
+        {
+          "text": "Tefrika",
+          "isCorrect": false,
+          "rationale": "Birlik ve beraberliğin bozulması, ayrılık ve toplumsal bölünme anlamına gelir."
+        },
+        {
+          "text": "Dalâlet",
+          "isCorrect": false,
+          "rationale": "Doğru yoldan sapma ve hidayetin zıddı durumu ifade eden genel bir kavramdır."
+        },
+        {
+          "text": "Celâdet",
+          "isCorrect": false,
+          "rationale": "Yiğitlik, cesaret ve sertlik anlamına gelen ahlaki bir vasıftır."
+        }
+      ],
+      "hint": "Sözlük anlamı 'önceden benzeri olmadan icat edilen şey' olan bu kavram, dinde sonradan ortaya çıkan yenilikleri ifade eder.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Sıffîn Savaşı sırasında yaşanan Tahkim Hadisesi'nin ardından, Hz. Ali'nin insanları hakem tayin etmesini kabul etmeyerek onun ordusundan ayrılan ilk siyasi fırka aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Haricilik",
+          "isCorrect": true,
+          "rationale": "Tahkim olayında insan hakemliğine itiraz ederek 'Hüküm ancak Allah'ındır' düşüncesiyle ana gövdeden ayrılan ilk gruptur."
+        },
+        {
+          "text": "Mu’tezile",
+          "isCorrect": false,
+          "rationale": "Büyük günah tartışması sonucu Hasan-ı Basrî'nin meclisinden ayrılarak akılcı kelam ekolünü kurmuşlardır."
+        },
+        {
+          "text": "Mürcie",
+          "isCorrect": false,
+          "rationale": "Sahabe arasındaki siyasi çekişmelerde tarafsız kalmayı ve hükmü Allah'a ertelemeyi tercih eden gruptur."
+        },
+        {
+          "text": "Zeydiyye",
+          "isCorrect": false,
+          "rationale": "Zeyd b. Ali'nin Emevilere karşı başlattığı hareketle şekillenen ılımlı Şiî koludur."
+        }
+      ],
+      "hint": "Hakem olayına sert bir tutumla karşı çıkan ve ayrılıkçı bir yapı oluşturan gruptur.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Büyük günah işleyen kimsenin (mürtekib-i kebîre) durumu konusunda hocası Hasan-ı Basrî ile görüş ayrılığına düşerek onun ders halkasını terk eden ve Mu'tezile mezhebinin temellerini atan alim kimdir?",
+      "answerOptions": [
+        {
+          "text": "Vâsıl b. Atâ",
+          "isCorrect": true,
+          "rationale": "Büyük günah işleyenin ne tam mümin ne de tam kafir olduğunu ileri sürerek hocasının meclisinden ayrılmış ve Mu'tezile'yi kurmuştur."
+        },
+        {
+          "text": "Cehm b. Safvân",
+          "isCorrect": false,
+          "rationale": "İnsanın fiillerinde tamamen mecbur olduğunu savunan Cebriyye düşüncesinin önde gelen ismidir."
+        },
+        {
+          "text": "Ebû'l-Hüzeyl el-Allâf",
+          "isCorrect": false,
+          "rationale": "Mu'tezile'nin sistemli kelam konularını geliştiren sonraki dönem alimlerindendir."
+        },
+        {
+          "text": "Bişr b. el-Mu'temir",
+          "isCorrect": false,
+          "rationale": "Mu'tezile'nin Bağdat ekolünün kurucusu kabul edilen kelamcıdır."
+        }
+      ],
+      "hint": "Hocası Hasan-ı Basrî'nin 'O bizden ayrıldı' ifadesiyle anılan kurucu şahsiyettir.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Mu'tezile ekolünün temel prensiplerinden biri olan 'el-Menzile beyne'l-menzileteyn' esası, kelam tarihindeki hangi temel tartışmayla doğrudan ilgilidir?",
+      "answerOptions": [
+        {
+          "text": "Büyük günah işleyen kişinin imandaki durumu",
+          "isCorrect": true,
+          "rationale": "Bu prensip, büyük günah işleyen kimsenin iman ile küfür arasında ara bir konumda yer aldığını savunur."
+        },
+        {
+          "text": "Allah'ın sıfatlarının ezeli olup olmaması",
+          "isCorrect": false,
+          "rationale": "Bu tartışma Mu'tezile'nin tevhid ilkesi çerçevesinde sıfatları zatın aynı sayması konusudur."
+        },
+        {
+          "text": "Kur'an-ı Kerim'in yaratılmışlığı meselesi",
+          "isCorrect": false,
+          "rationale": "Kur'an'ın kadim değil mahluk olduğu iddiası yine tevhid prensibine dayanır."
+        },
+        {
+          "text": "Devlet başkanının Kureyş soyundan seçilmesi gerekliliği",
+          "isCorrect": false,
+          "rationale": "Bu husus imamet ve siyaset teorisine dair içtihadı bir konudur."
+        }
+      ],
+      "hint": "'İki konum arasında bir konum' anlamına gelen bu ilke, günahkar Müslümanın statüsünü konu edinir.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "İnsan fiillerinin yaratılmasında ilahi kaderin belirleyiciliğini reddederek fiilleri tamamen insanın özgür iradesine ve kudretine isnat eden mezhep aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Kaderiyye",
+          "isCorrect": true,
+          "rationale": "İnsanın kendi fiillerinin yaratıcısı olduğunu savunarak ilahi kaderin insan fiillerindeki mutlak belirleyiciliğini reddederler."
+        },
+        {
+          "text": "Cebriyye",
+          "isCorrect": false,
+          "rationale": "İnsanın hiçbir irade ve güce sahip olmadığını, rüzgardaki yaprak gibi mecbur olduğunu savunur."
+        },
+        {
+          "text": "Mücessime",
+          "isCorrect": false,
+          "rationale": "Allah'ı cismâni niteliklere ve insan uzuvlarına benzeterek tecsim eden akımdır."
+        },
+        {
+          "text": "Mürcie",
+          "isCorrect": false,
+          "rationale": "İman ile ameli birbirinden ayırarak günahların imana zarar vermediğini ileri sürer."
+        }
+      ],
+      "hint": "İnsanın kendi fiillerinin kadir ve yaratıcısı olduğunu iddia eden gruptur.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Büyük günah işleyenlerin durumunu Allah'a erteleyen, kapsayıcı ve bütünleştirici tutumu sayesinde Türk boylarının İslam dinini benimsemesinde olumlu rol oynayan mezhebi anlayış aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Mürcie",
+          "isCorrect": true,
+          "rationale": "Ameli imandan bir cüz saymayıp Müslümanları tekfir etmekten kaçınması, farklı toplumların İslam'a girişini kolaylaştırmıştır."
+        },
+        {
+          "text": "Haricilik",
+          "isCorrect": false,
+          "rationale": "Katı tekfirci tutumları nedeniyle toplumsal bütünleşmeyi engelleyen dışlayıcı bir yaklaşım sergilemiştir."
+        },
+        {
+          "text": "Müşebbihe",
+          "isCorrect": false,
+          "rationale": "Somut ilah tasavvuru ile kelami tartışmalara odaklanmış olup kitlesel İslamlaşmada olumlu rol üstlenmemiştir."
+        },
+        {
+          "text": "Şîa",
+          "isCorrect": false,
+          "rationale": "İmamet esasını dinin merkezine koyarak siyasi ve itikadi şartlar öne sürmüştür."
+        }
+      ],
+      "hint": "Görüşleri 'ertelemek' anlamına gelen ve ameli imanın şartı görmeyen mezheptir.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Şîa düşüncesini diğer tüm İslâmî fırkalardan ayıran, dinî ve siyasi otoritenin Hz. Peygamber'in soyundan gelen masum şahıslara ait olduğu inancına dayanan temel itikat esası aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "İmâmet",
+          "isCorrect": true,
+          "rationale": "Şîa'da imamet inancı dinin asıllarından kabul edilerek diğer mezheplerden temel ayrışma noktasını oluşturur."
+        },
+        {
+          "text": "Meâd",
+          "isCorrect": false,
+          "rationale": "Ahiret hayatı ve yeniden dirilme inancı olup tüm İslam mezheplerinin ortak aslıdır."
+        },
+        {
+          "text": "Adâlet",
+          "isCorrect": false,
+          "rationale": "Allah'ın adil olduğu prensibi Mu'tezile ve Şîa'da ortak temel ilkelerden biridir."
+        },
+        {
+          "text": "Nübüvvet",
+          "isCorrect": false,
+          "rationale": "Peygamberlik müessesesi bütün Müslüman fırkalarca kabul edilen genel bir inanç esasıdır."
+        }
+      ],
+      "hint": "Devlet başkanlığı ve dini rehberliğin nas ile Ehl-i Beyt'e aidiyetini savunan esastır.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Şiî gelenekte Hz. Peygamber'in Veda Haccı dönüşünde Hz. Ali'yi kendisinden sonraki imam ve halife olarak açıkça tayin ettiğine inanılan tarihi olay aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Gadir Hum Hadisesi",
+          "isCorrect": true,
+          "rationale": "Şiî literatürde Hz. Peygamber'in Hz. Ali'yi açıkça veli ve halife tayin ettiği iddia edilen tarihi olaydır."
+        },
+        {
+          "text": "Kırtas Hadisesi",
+          "isCorrect": false,
+          "rationale": "Hz. Peygamber'in vefatına yakın bir vasiyetyazdırmak istemesi ve çıkan tartışmayla ilgili olaydır."
+        },
+        {
+          "text": "Ridde Olayları",
+          "isCorrect": false,
+          "rationale": "Hz. Ebû Bekir döneminde dinden dönen ve zekat vermeyen kabilelere karşı yürütülen askeri harekatlardır."
+        },
+        {
+          "text": "Ebvâ Toplantısı",
+          "isCorrect": false,
+          "rationale": "Emevîlerin son döneminde Haşimoğulları'nın halife adayını belirlemek üzere toplandığı buluşmadır."
+        }
+      ],
+      "hint": "Mekke ile Medine arasında bir su birikintisi konaklama yerinde vuku bulduğu rivayet edilen gelişmedir.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Hanefî çizgideki ameli anlayışı kelam düzeyinde sistemleştirerek Ehl-i Sünnet'in iki ana omurgasından birini oluşturan İmam Mâtürîdî'nin temel kelam eseri aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Kitâbü't-Tevhîd",
+          "isCorrect": true,
+          "rationale": "Mâtürîdî kelam sisteminin temel ilkelerini metotlu bir şekilde ortaya koyan ana eserdir."
+        },
+        {
+          "text": "el-Fark beyne'l-Fırak",
+          "isCorrect": false,
+          "rationale": "Abdülkâhir el-Bağdâdî'nin mezhepler tarihine dair yazdığı klasik eserdir."
+        },
+        {
+          "text": "Makâlâtü'l-İslâmiyyîn",
+          "isCorrect": false,
+          "rationale": "Ebû'l-Hasan el-Eş'arî'nin mezheplerin görüşlerini aktardığı eseridir."
+        },
+        {
+          "text": "el-Mevâkıf",
+          "isCorrect": false,
+          "rationale": "Adudüddin el-Îcî'ye ait müteahhirûn dönemi kelam kitabıdır."
+        }
+      ],
+      "hint": "Allah'ın varlığı, birliği ve sıfatlarını ele alan, mezhebin temel metni niteliğindeki kitaptır.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Şîa'nın günümüze kadar varlığını sürdürmüş kollarından biri olan ve günümüzde Yemen'de resmi ve yaygın bir mezhep olarak varlığını koruyan fırka aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Zeydiyye",
+          "isCorrect": true,
+          "rationale": "Dini ve hukuki görüşleriyle Ehl-i Sünnet'e en yakın duran Zeydiyye, Yemen bölgesinde varlığını sürdürmektedir."
+        },
+        {
+          "text": "İsmailiyye",
+          "isCorrect": false,
+          "rationale": "Yedi imam inancına dayanan ve bâtınî tevil anlayışıyla tanınan bir Şiî koldur."
+        },
+        {
+          "text": "Kerbiyye",
+          "isCorrect": false,
+          "rationale": "Muhammed b. el-Hanefiyye'nin gaybetine inanan erken dönem aşırı Şiî gruplardandır."
+        },
+        {
+          "text": "Bahailik",
+          "isCorrect": false,
+          "rationale": "19. yüzyılda Şiilik bünyesinden çıkıp müstakil yeni bir dine dönüşen harekettir."
+        }
+      ],
+      "hint": "Efdal dururken mefzulün imametini caiz gören ılımlı Şiî koldur.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Hz. Ebû Bekir'in halife seçildikten hemen sonra devlet otoritesini sağlamak ve toplum bütünlüğünü korumak adına öncelikle odaklandığı temel sorun aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Yalancı peygamberler ve zekat vermeyen kabilelerle mücadele etmek",
+          "isCorrect": true,
+          "rationale": "Hz. Ebû Bekir, hilafetinin ilk döneminde Ridde savaşları ile iç düzeni ve ümmet birliğini yeniden tesis etmiştir."
+        },
+        {
+          "text": "Bizans ve Sâsânî imparatorluklarına karşı fetih hareketlerini durdurmak",
+          "isCorrect": false,
+          "rationale": "Hz. Ebû Bekir döneminde fetihler durdurulmamış, Suriye ve Irak cephelerinde başlatılmıştır."
+        },
+        {
+          "text": "Kur'ân-ı Kerim nüshalarını çoğaltıp eyalet merkezlerine göndermek",
+          "isCorrect": false,
+          "rationale": "Kur'an'ın çoğaltılıp dağıtılması Hz. Osman döneminde gerçekleşmiştir."
+        },
+        {
+          "text": "Kûfe ve Basra gibi ordu şehirlerini (emsâr) kurmak",
+          "isCorrect": false,
+          "rationale": "Bu ordu şehirleri Hz. Ömer'in hilafeti döneminde inşa edilmiştir."
+        }
+      ],
+      "hint": "Dinden dönme emareleri gösteren ve zekat yükümlülüğüne başkaldıran gruplara karşı yürütülen mücadeledir.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Selefî anlayışı yeniden canlandırarak Suud hanedanı nezdinde siyasi bir güç haline getiren ve Vehhâbiyye hareketinin kurucusu olan şahsiyet kimdir?",
+      "answerOptions": [
+        {
+          "text": "Muhammed b. Abdülvahhâb",
+          "isCorrect": true,
+          "rationale": "İbn Teymiyye çizgisindeki Selefî anlayışı siyasallaştırarak Suud emirliği bünyesinde resmi mezhep haline getirmiştir."
+        },
+        {
+          "text": "İbn Teymiyye",
+          "isCorrect": false,
+          "rationale": "14. yüzyılda yaşamış ve Selefî düşüncenin teorik temellerini atmış Hanbelî alimdir."
+        },
+        {
+          "text": "Şevkânî",
+          "isCorrect": false,
+          "rationale": "Yemenli müctehid alim olup mutlak ictihadı savunmuştur."
+        },
+        {
+          "text": "İbn Kayyım el-Cevziyye",
+          "isCorrect": false,
+          "rationale": "İbn Teymiyye'nin en tanınmış öğrencisidir."
+        }
+      ],
+      "hint": "18. yüzyılda Necid bölgesinde ortaya çıkan itikadi hareketin lideridir.",
+      "type": "multiple_choice"
+    }
+  ]
+}

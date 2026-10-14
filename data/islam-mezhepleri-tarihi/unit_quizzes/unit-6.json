@@ -1,0 +1,412 @@
+{
+  "unit": 6,
+  "unitTitle": "Günümüz İslâm Mezhepleri",
+  "title": "İslam Mezhepleri Tarihi Testi",
+  "questions": [
+    {
+      "question": "İslam Mezhepleri Tarihi disiplininin temel metodolojisi ve akademik yaklaşımı göz önüne alındığında, aşağıdakilerden hangisi bu bilim dalının amaçları arasında yer almaz?",
+      "answerOptions": [
+        {
+          "text": "Mezhepleri 'hak' veya 'batıl' olarak sınıflandırıp doğru inanç esaslarını tespit etmek",
+          "isCorrect": true,
+          "rationale": "Mezhepler Tarihi normatif ve teolojik değerlendirmeler yapmak yerine tarafsız, tasviri ve objektif bir inceleme yapmayı hedefler."
+        },
+        {
+          "text": "Mezhep ve dinî grupların tarih boyunca bıraktıkları izleri görünür kılmak",
+          "isCorrect": false,
+          "rationale": "Dini hareketlerin ve mezheplerin tarihsel süreçteki etkilerini tespit etmek bu disiplinin temel hedeflerindendir."
+        },
+        {
+          "text": "Müslümanlar arasındaki mezhepsel çatışma ve sorunlara yönelik yapıcı çözümler sunmak",
+          "isCorrect": false,
+          "rationale": "Toplumsal barışa katkı sunmak ve mezhepsel önyargıları gidermek akademik Mezhepler Tarihi çalışmalarının gayelerindendir."
+        },
+        {
+          "text": "Müslüman toplumların sosyo-psikolojik kuvvet ve zaaflarına dair verilere ulaşmak",
+          "isCorrect": false,
+          "rationale": "Toplumsal yapıların din anlayışıyla etkileşimini anlamak disiplinin veri toplama amaçları arasında yer alır."
+        }
+      ],
+      "hint": "Bu disiplinin normatif (yargılayıcı/kelamî) değil, tasvirî (betimleyici) bir bilim dalı olduğunu hatırlayınız.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Dinin özündeki uygulamalardan sapmayı/sonradan uydurulan şeyleri ve Müslüman toplumun bütünlüğündeki bozulmayı ifade eden temel kavramlar aşağıdakilerin hangisinde sırasıyla doğru verilmiştir?",
+      "answerOptions": [
+        {
+          "text": "Bid’at - Tefrika",
+          "isCorrect": true,
+          "rationale": "Sözlükte önceden benzeri olmadan icat edilen şey anlamına gelen Bid’at dinin özündeki sonradan olma şeyleri, Tefrika ise toplum bütünlüğünün bozulmasını ifade eder."
+        },
+        {
+          "text": "Tefrika - Makâlât",
+          "isCorrect": false,
+          "rationale": "Makâlât, İslam düşüncesindeki görüşlerin derlendiği eser türlerini ifade eder, toplumsal ayrışmayla doğrudan ilgisi yoktur."
+        },
+        {
+          "text": "Celâdet - Dalâlet",
+          "isCorrect": false,
+          "rationale": "Celâdet yiğitlik/sertlik anlamına gelir; dinin bozulması veya toplumsal bölünmeyle kavrayış olarak örtüşmez."
+        },
+        {
+          "text": "Furkat - İttifak",
+          "isCorrect": false,
+          "rationale": "İttifak, ayrışma veya bozulmayı değil aksine birlik ve uzlaşmayı simgeler."
+        }
+      ],
+      "hint": "İlk kavram dinî yenilik/icadı, ikinci kavram ise toplumsal bölünmeyi ifade etmektedir.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Din Sosyolojisi ile İslam Mezhepleri Tarihi’nin ortak çalışma alanları değerlendirildiğinde, aşağıdakilerden hangisi bu iki disiplinin ortak odak noktalarından biri değildir?",
+      "answerOptions": [
+        {
+          "text": "Bir mezhebin itikadi görüşlerinin kelami açıdan doğruluğunu kanıtlama",
+          "isCorrect": true,
+          "rationale": "İtikadi görüşlerin doğruluğunu kanıtlama çabası sosyolojik veya tarihsel bir analiz değil, Kelam ilminin konusudur."
+        },
+        {
+          "text": "Bir mezhepte cemaatsel hiyerarşinin nasıl teşekkül ettiği",
+          "isCorrect": false,
+          "rationale": "Dini gruplar içerisindeki otorite yapısı ve hiyerarşi hem sosyolojinin hem de mezhepler tarihinin inceleme alanıdır."
+        },
+        {
+          "text": "Bir mezhebin 'kurtarıcı bekleme' inancı geliştirmesinin sosyo-psikolojik sebepleri",
+          "isCorrect": false,
+          "rationale": "Kurtarıcı beklentisi ve mehdilik gibi inançların toplumsal zeminini araştırmak her iki disiplinin ortak konusudur."
+        },
+        {
+          "text": "Mezhep mensupları arasındaki grupsal dayanışma ve ekonomik yardımlaşma",
+          "isCorrect": false,
+          "rationale": "Grup içi bağlılık ve sosyal dayanışma mekanizmaları toplumsal ve mezhepsel incelemelerde ortak konudur."
+        }
+      ],
+      "hint": "Disiplinlerin betimleyici nitelikte mi yoksa inanç savunucusu (savunmacı/teolojik) nitelikte mi olduğunu göz önüne alınız.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "İslam Mezhepleri Tarihi'nin klasik kaynaklarından kabul edilen 'el-Fark beyne'l-Fırak' ve 'Makâlâtü'l-İslâmiyyîn' adlı eserlerin yazarları sırasıyla aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Abdülkāhir el-Bağdâdî - Ebû'l-Hasan el-Eş'arî",
+          "isCorrect": true,
+          "rationale": "el-Fark beyne'l-Fırak Bağdâdî'nin, Makâlâtü'l-İslâmiyyîn ise Eş'arî'nin İslam fırkalarını ele alan en önemli klasik eserlerindendir."
+        },
+        {
+          "text": "Ebû Mansur el-Mâtürîdî - Vâsıl b. Atâ",
+          "isCorrect": false,
+          "rationale": "Ebû Mansur el-Mâtürîdî Kitâbü't-Tevhîd'in yazarıdır; bahsedilen klasik makâlât eserleri bu alimlere ait değildir."
+        },
+        {
+          "text": "İmam Rabbânî - Mevlâna Hâlid Bağdâdî",
+          "isCorrect": false,
+          "rationale": "Bu isimler tasavvufi geleneğin (Nakşibendiyye) önemli simaları olup klasik mezhepler tarihi makâlât literatürünün ana yazarları değillerdir."
+        },
+        {
+          "text": "Ebû'l-Mu’în en-Nesefî - Ebû Yûsuf",
+          "isCorrect": false,
+          "rationale": "Nesefî Mâtürîdî kelamcısı, Ebû Yûsuf ise Hanefî fıkıh alimidir; sözü edilen eserler bu kişilere ait değildir."
+        }
+      ],
+      "hint": "Eserlerden biri Eş'arîliğin kurucusu olan ünlü kelamcıya aittir.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Sıffîn Savaşı sonrasında gerçekleşen Tahkim Hadisesi ve Hz. Ali'nin hakeme başvurmayı kabul etmesi neticesinde ortaya çıkan ilk siyasi mezhep aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Hâricîlik",
+          "isCorrect": true,
+          "rationale": "Tahkim kararına 'Hüküm ancak Allah'ındır' diyerek karşı çıkan ve Hz. Ali'nin ordusundan ayrılan grup Hâricîliği oluşturmuştur."
+        },
+        {
+          "text": "Mürcie",
+          "isCorrect": false,
+          "rationale": "Mürcie, iç çatışmalar karşısında tarafsız kalıp büyük günah işleyenin durumunu Allah'a erteleyen fikri akımdır; doğrudan tahkim ayrışmasıyla doğmamıştır."
+        },
+        {
+          "text": "Mu'tezile",
+          "isCorrect": false,
+          "rationale": "Mu'tezile, Hasan-ı Basrî'nin ders halkasından ayrılan Vâsıl b. Atâ tarafından daha sonraki bir dönemde kurulmuştur."
+        },
+        {
+          "text": "İbâdiyye",
+          "isCorrect": false,
+          "rationale": "İbâdiyye, Hâricîliğin ılımlı bir kolu olarak daha sonra teşekkül etmiş, doğrudan tahkim olayının kendisinde bağımsız bir fırka olarak çıkmamıştır."
+        }
+      ],
+      "hint": "Sloganları 'Hüküm ancak Allah'ındır' (Lâ hükme illâ lillâh) olan gruptur.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Hz. Ebû Bekir'in halife seçildikten hemen sonra toplumsal düzeni ve devlet otoritesini korumak adına üstlendiği ilk büyük mücadele aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Yalancı peygamberlerle ve zekat vermeyen kabilelerle mücadele etmek",
+          "isCorrect": true,
+          "rationale": "Hz. Ebû Bekir hilafetinin başlangıcında dinî ve siyasi bütünlüğü tehdit eden dinden dönme (ridde) hareketleri, sahte peygamberler ve zekat karşıtlarıyla mücadele etmiştir."
+        },
+        {
+          "text": "Hz. Ali'yi Kûfe valisi olarak atamak",
+          "isCorrect": false,
+          "rationale": "Hz. Ebû Bekir döneminde Kûfe şehri henüz kurulmamıştı ve Hz. Ali Kûfe valisi olarak atanmamıştır."
+        },
+        {
+          "text": "Sa’d b. Ubâde’yi cezalandırarak sürgüne göndermek",
+          "isCorrect": false,
+          "rationale": "Hz. Ebû Bekir Sa'd b. Ubâde'yi cezalandırma yoluna gitmemiş, siyasi uzlaşma zeminini korumuştur."
+        },
+        {
+          "text": "Emevi soyundan gelen yöneticileri görevden uzaklaştırmak",
+          "isCorrect": false,
+          "rationale": "Emevi valilerine yönelik tasfiye politikası Hz. Ebû Bekir döneminin bir önceliği veya ilk işi olmamıştır."
+        }
+      ],
+      "hint": "İslam tarih literatüründe 'Ridde Savaşları' olarak adlandırılan olayları düşününüz.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Mu'tezile mezhebinin beş temel esasından biri olan 'el-Menzile beyne'l-Menzileteyn' (iki konum arasında bir konum) prensibi aşağıdaki tartışmalardan hangisiyle doğrudan ilgilidir?",
+      "answerOptions": [
+        {
+          "text": "Büyük günah işleyen Müslümanın (mürtekib-i kebîre) durumu",
+          "isCorrect": true,
+          "rationale": "Bu ilke, büyük günah işleyen kişinin ne tam mümin ne de tam kâfir olduğunu, imansızlık ile iman arasında fâsık bir konumda yer aldığını savunur."
+        },
+        {
+          "text": "İmanın artıp eksilmesi meselesi",
+          "isCorrect": false,
+          "rationale": "İmanın artması ve eksilmesi tartışması daha çok Mürcie, Ehl-i Hadis ve Mâtürîdî/Eş'arî kelamında ele alınan farklı bir konudur."
+        },
+        {
+          "text": "Allah'ın sıfatlarının zatı ile olan ilişkisi",
+          "isCorrect": false,
+          "rationale": "Sıfatlar meselesi Mu'tezile'nin 'Tevhid' prensibi altında incelenir."
+        },
+        {
+          "text": "İnsan fiillerinin yaratıcısının kim olduğu sorunu",
+          "isCorrect": false,
+          "rationale": "Kulun fiilleri ve adalet konusu Mu'tezile'nin 'Adâlet' esasının kapsamına girer."
+        }
+      ],
+      "hint": "Vâsıl b. Atâ'nın Hasan-ı Basrî'nin meclisinden ayrılmasına neden olan ana meseledir.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Fiillerin yaratılmasında kaderin mutlak belirleyiciliğini reddederek insanın kendi fiillerinin yaratıcısı olduğunu savunan ve fiili Allah'a değil insana nispet eden mezhep aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Kaderiyye",
+          "isCorrect": true,
+          "rationale": "Kaderiyye, Allah'ın belirlediği kader anlayışına karşı çıkarak insanın özgür iradesiyle fiillerini yarattığını ileri süren mezheptir."
+        },
+        {
+          "text": "Cebriyye",
+          "isCorrect": false,
+          "rationale": "Cebriyye tam tersine insanın hiçbir iradesinin bulunmadığını, rüzgarda yaprak gibi kaderin sürüklemesinde olduğunu savunur."
+        },
+        {
+          "text": "Mücessime",
+          "isCorrect": false,
+          "rationale": "Mücessime, Allah'ı cisim olarak tahayyül eden ve teşbihe düşen anlayıştır; kader tartışmasıyla doğrudan tanımlanmaz."
+        },
+        {
+          "text": "Mürcie",
+          "isCorrect": false,
+          "rationale": "Mürcie ana odağını amelin imandan bir cüz olmadığı ve hükmün tehir edilmesi fikrine oturtur."
+        }
+      ],
+      "hint": "Kaderi kul lehine yorumlayıp, 'kader insan iradesidir' diyen fırkadır.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Mâtürîdîlerin; ilâhî sıfatlar, halku'l-Kur'ân, kader ve insan fiilleri gibi konularda nasları aşırı rasyonel zorlamalarla yorumlayarak sapmaya düştüğü iddiasıyla en çok eleştirdiği mezhep aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Mu'tezile",
+          "isCorrect": true,
+          "rationale": "Mâtürîdî kelamcılar akla verdikleri aşırı rolle nasların zahirini zedeledikleri gerekçesiyle Mu'tezile'yi tutarsız yorum yapmakla eleştirmişlerdir."
+        },
+        {
+          "text": "Eş'arîyye",
+          "isCorrect": false,
+          "rationale": "Eş'arîyye, Mâtürîdiyye ile birlikte Ehl-i Sünnet'in iki ana kolundan biridir; aralarında köklü zıtlıktan ziyade küçük cüz'i farklar bulunur."
+        },
+        {
+          "text": "Selefiyye",
+          "isCorrect": false,
+          "rationale": "Selefiyye aklı ikincil plana atar; Mâtürîdîlerin aşırı akılcılıkla eleştirdiği grup Selefiyye değildir."
+        },
+        {
+          "text": "Haşviyye",
+          "isCorrect": false,
+          "rationale": "Haşviyye, aklı hiç kullanmayıp metinlerin yüzeysel anlamına takılan grubu ifade eder; akılcı yorum yapmakla suçlanmaz."
+        }
+      ],
+      "hint": "Akılcılığı ve beş esası (Usûl-i Hamse) ile tanınan kelam mezhebidir.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "XVIII. yüzyılda Muhammed b. Abdülvahhâb tarafından Selefî düşünce temellerine dayanarak sistemleştirilen ve Suud hanedanı nezdinde siyasi bir devlet mezhebine dönüştürülen akım aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Vehhâbiyye",
+          "isCorrect": true,
+          "rationale": "Muhammed b. Abdülvahhâb'ın fikirleri doğrultusunda siyasallaşan ve Arap Yarımadası'nda yaygınlaşan hareket Vehhâbiyye olarak adlandırılır."
+        },
+        {
+          "text": "Zeydiyye",
+          "isCorrect": false,
+          "rationale": "Zeydiyye Şîa'nın Mutedil koludur, XVIII. yüzyıl Suud devletleşmesiyle ilintili değildir."
+        },
+        {
+          "text": "Zâhiriyye",
+          "isCorrect": false,
+          "rationale": "Dâvûd ez-Zâhirî ve İbn Hazm ile özdeşleşen klasik hukuk ekolüdür."
+        },
+        {
+          "text": "Mâtürîdiyye",
+          "isCorrect": false,
+          "rationale": "Aklî-naklî dengeyi kuran Ehl-i Sünnet kelam ekolüdür, Vehhabîlik anlayışıyla örtüşmez."
+        }
+      ],
+      "hint": "Kurucusunun ismine nispetle adlandırılan ve günümüzde Suudi Arabistan'da resmi nitelik kazanan akımdır.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Mâtürîdiyye mezhebinin kurucusu Ebû Mansur el-Mâtürîdî'ye ait olan, sırasıyla kelam ve tefsir alanındaki iki temel eser aşağıdakilerden hangisinde doğru eşleştirilmiştir?",
+      "answerOptions": [
+        {
+          "text": "Kitâbü't-Tevhîd - Te'vîlâtü'l-Kur'ân",
+          "isCorrect": true,
+          "rationale": "Kitâbü't-Tevhîd Mâtürîdî'nin ana kelam eseri, Te'vîlâtü'l-Kur'ân (Te'vîlâtü Ehli's-Sünne) ise tefsir eseridir."
+        },
+        {
+          "text": "el-Fiqhü'l-Ekber - Makâlâtü'l-İslâmiyyîn",
+          "isCorrect": false,
+          "rationale": "el-Fiqhü'l-Ekber Ebû Hanîfe'ye, Makâlâtü'l-İslâmiyyîn ise Eş'arî'ye aittir."
+        },
+        {
+          "text": "el-İbâne - Usûlü'd-Dîn",
+          "isCorrect": false,
+          "rationale": "el-İbâne Eş'arî'ye ait bir kelam eseridir."
+        },
+        {
+          "text": "et-Tebsıra - Dürerü’l-Hukkâm",
+          "isCorrect": false,
+          "rationale": "et-Tebsıra Ebû'l-Mu'în en-Nesefî'ye ait bir kelam kaynağıdır."
+        }
+      ],
+      "hint": "İlk eser tevhidi ve kelami konuları ele alırken, ikincisi bir Kur'an yorumlama çalışmasıdır.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Şîa düşüncesinde Hz. Ali'nin Hz. Peygamber tarafından kendisinden sonraki imam ve halife olarak açıkça tayin edildiğine inanılan tarihsel olay aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Gadir Hum Hadisesi",
+          "isCorrect": true,
+          "rationale": "Şiiler, Hz. Peygamber'in Veda Haccı dönüşü Gadir Hum denilen mevkide Hz. Ali'yi veli ve imam tayin ettiğini kabul ederler."
+        },
+        {
+          "text": "Kırtas Hadisesi",
+          "isCorrect": false,
+          "rationale": "Kırtas Hadisesi, Hz. Peygamber'in vefatına yakın kağıt ve kalem istemesi üzerine yaşanan tartışmayı ifade eder."
+        },
+        {
+          "text": "Hayber'in Fethi",
+          "isCorrect": false,
+          "rationale": "Hayber'in fethi askeri bir gazvedir; imametin ilanı meselesi olarak temellendirilmez."
+        },
+        {
+          "text": "Sedd-i Ebvâb Olayı",
+          "isCorrect": false,
+          "rationale": "Mescid-i Nebevî'ye açılan kapıların kapatılmasıyla ilgili husustur, siyasi vasiyet ilanı kabul edilmez."
+        }
+      ],
+      "hint": "Veda Haccı dönüşünde su birikintisi/vaha yakınında gerçekleşen olayı hatırlayınız.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Şîa'yı Ehl-i Sünnet ve diğer tüm İslami fırkalardan ayıran, dinin asılları (Usûlü'd-Dîn) arasında gördükleri en temel itikadi esas aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "İmâmet",
+          "isCorrect": true,
+          "rationale": "İmamet, Şîa nezdinde sadece siyasi bir idare meselesi değil, dinin ve inancın temel rükünlerinden biridir."
+        },
+        {
+          "text": "Tevhid",
+          "isCorrect": false,
+          "rationale": "Tevhid bütün İslami mezheplerin ortak inanç esasıdır, Şîa'yı diğerlerinden ayıran özgün esas değildir."
+        },
+        {
+          "text": "Nübüvvet",
+          "isCorrect": false,
+          "rationale": "Peygamberlik kurumu tüm Müslüman mezheplerce kabul edilen ortak esastır."
+        },
+        {
+          "text": "Meâd",
+          "isCorrect": false,
+          "rationale": "Ahiret günü ve öldükten sonra dirilme (Meâd) İslam inanç esaslarının tamamında mevcuttur."
+        }
+      ],
+      "hint": "Hz. Peygamber'den sonra Müslümanların dinî ve dünyevi liderliği/masum yöneticiliği ilkesidir.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Günümüzde ana nüfusu Yemen'de varlığını sürdüren, imametin Fatımi soyundan ilim ve kılıçla huruç eden kişiye ait olabileceğini savunan Şîa kolu aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Zeydiyye",
+          "isCorrect": true,
+          "rationale": "Zeyd b. Ali'ye nispet edilen Zeydiyye, Yemen'de yaygın olan ve Ehl-i Sünnet'e görüş itibarıyla en yakın kabul edilen mütadil Şiî koldur."
+        },
+        {
+          "text": "İsnâaşeriyye",
+          "isCorrect": false,
+          "rationale": "İsnâaşeriyye (Ca'feriyye) İran, Irak ve Lübnan'da yaygındır; gizli imam anlayışına dayanır."
+        },
+        {
+          "text": "İsmailiyye",
+          "isCorrect": false,
+          "rationale": "İsmailiyye daha çok Hindistan, Pakistan ve Kanada gibi ülkelerde dağınık yaşar ve yedi imam anlayışına/bâtınî yorumlara odaklanır."
+        },
+        {
+          "text": "Kerbiyye",
+          "isCorrect": false,
+          "rationale": "Kerbiyye tarihte kalmış, günümüze ulaşamamış aşırı (gulat) Şiî kollardandır."
+        }
+      ],
+      "hint": "Şîa'nın Ehl-i Sünnet'e en yakın mütadil kolu kabul edilir.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "İsmailiyye mezhebinin din ve metin anlayışındaki en karakteristik yaklaşım biçimi aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Ayetlerin ve şer'i hükümlerin hem bir 'zahir' hem de gizli bir 'batın' anlamı olduğunu kabul etmek",
+          "isCorrect": true,
+          "rationale": "İsmailiyye, dinî metinlerin dış görünüşünün (zahir) ötesinde sadece imamların öğretebileceği derin bir bâtınî anlam taşıdığına inanır."
+        },
+        {
+          "text": "Büyük günah işleyen kişileri dinden çıkmış kâfirler olarak nitelendirmek",
+          "isCorrect": false,
+          "rationale": "Bu katı yaklaşım Hâricîliğin genel tutumudur."
+        },
+        {
+          "text": "Hilafetin sadece Kureyş kabilesi arasında seçimle belirleneceğini savunmak",
+          "isCorrect": false,
+          "rationale": "Şiilikte ve İsmailiyye'de imamet seçimle değil nass ve tayinle gerçekleşir."
+        },
+        {
+          "text": "İman ile ameli tamamen birbirinden ayırarak ameli önemsizleştirmek",
+          "isCorrect": false,
+          "rationale": "Ameli imandan ayırıp erteleyen yaklaşım Mürcie'ye aittir."
+        }
+      ],
+      "hint": "Bu sebeple bu mezhep tarihsel literatürde 'Bâtıniyye' adıyla da anılmaktadır.",
+      "type": "multiple_choice"
+    }
+  ]
+}

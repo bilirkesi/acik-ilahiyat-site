@@ -1,0 +1,331 @@
+{
+  "unit": 4,
+  "unitTitle": "Ehl-i Sünnet ve Sonraki Mezhepler",
+  "title": "İslam Mezhepleri Testi",
+  "questions": [
+    {
+      "question": "Ehl-i Sünnet ekolünü tanımlamak ve Müslümanların ana gövdesini ifade etmek amacıyla tarih boyunca çeşitli unvan ve tanımlamalar kullanılmıştır. Aşağıdakilerden hangisi bu isimlerden biri değildir?",
+      "answerOptions": [
+        {
+          "text": "Sevâd-ı a'zam",
+          "isCorrect": false,
+          "rationale": "Toplumun büyük çoğunluğunu ve ana gövdesini ifade etmek için kullanılan klasik bir Ehl-i Sünnet unvanıdır."
+        },
+        {
+          "text": "Ehl-i Beyt",
+          "isCorrect": true,
+          "rationale": "Hz. Peygamber'in ev halkını ve soyunu ifade eden bir kavram olup Ehl-i Sünnet'i tanımlayan mezhepsel bir isim veya unvan değildir."
+        },
+        {
+          "text": "Fırka-i nâciye",
+          "isCorrect": false,
+          "rationale": "Kurtuluşa eren topluluk anlamında Ehl-i Sünnet mensuplarını tanımlamada sıklıkla başvurulan bir nitelendirmedir."
+        },
+        {
+          "text": "Ehl-i Hak ve Ehl-i Hüdâ",
+          "isCorrect": false,
+          "rationale": "Doğru yol ve hak üzere olanları tanımlamak amacıyla kullanılan geleneksel Sünni Unvanlardandır."
+        }
+      ],
+      "hint": "Bu kavram mezhepsel bir çatı ismi olmaktan ziyade Hz. Peygamber'in yakın hane halkını ifade eder.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Kelam ve tefsir alanında kaleme aldığı 'Kitâbü't-Tevhîd' ve 'Te'vîlâtü'l-Kur'ân' isimli eserleriyle tanınan ve Ehl-i Sünnet itikadının sistemleşmesine öncülük eden alim aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Ebû'l-Hasan el-Eş'arî",
+          "isCorrect": false,
+          "rationale": "Eş'arî ekolünün kurucusu olup en meşhur mezhepler tarihi eseri 'Makâlâtü'l-İslâmiyyîn'dir."
+        },
+        {
+          "text": "Ebû Mansur el-Mâtürîdî",
+          "isCorrect": true,
+          "rationale": "Söz konusu iki temel eser Mâtürîdîlik ekolünün kurucusu sayılan Ebû Mansur el-Mâtürîdî tarafından kaleme alınmıştır."
+        },
+        {
+          "text": "Ebû'l-Mu'în en-Nesefî",
+          "isCorrect": false,
+          "rationale": "Mâtürîdî kelam düşüncesini daha sonraki dönemlerde sistemleştirip yayan alimlerden biridir."
+        },
+        {
+          "text": "İmam-ı A'zam Ebû Hanîfe",
+          "isCorrect": false,
+          "rationale": "Sünni fıkıh ve itikat geleneğinin öncülerindendir ancak 'Kitâbü't-Tevhîd' ve 'Te'vîlât' eserleri ona ait değildir."
+        }
+      ],
+      "hint": "Semerkand coğrafyasında yetişmiş, akıl ve nakil dengesini kuran Sünni kelam ekolünün kurucu figürüdür.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Selefî anlayışın 18. yüzyılda Vehhâbîlik hareketi çerçevesinde siyasallaşarak Suud hanedanlığı nezdinde resmi bir devlet mezhebine dönüşmesini sağlayan isim aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "İbn Kayyım el-Cevziyye",
+          "isCorrect": false,
+          "rationale": "İbn Teymiyye'nin öğrencisi olup klasik Selefî çizginin orta çağdaki önemli temsilcilerindendir."
+        },
+        {
+          "text": "Şevkânî",
+          "isCorrect": false,
+          "rationale": "Yemen bölgesinde yetişmiş bağımsız içtihat yanlısı ve Hadis ağırlıklı bir alimdir."
+        },
+        {
+          "text": "Muhammed b. Abdülvahhâb",
+          "isCorrect": true,
+          "rationale": "Selefi düşünceyi siyasi bir ittifakla Vehhabilik adı altında kurumsallaştırarak devlet mezhebi haline getirmiştir."
+        },
+        {
+          "text": "İbnü'l-Vezîr",
+          "isCorrect": false,
+          "rationale": "Hadis odaklı düşünceyi savunan ancak Vehhabilik hareketinin kurucusu olmayan bir alimdir."
+        }
+      ],
+      "hint": "Kendi adından türetilen hareketle Suudi Arabistan'ın kuruluş sürecindeki dinsel ve siyasal temeli atmıştır.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "İmam Rabbânî ile Mevlâna Hâlid Bağdâdî'nin Ehl-i Sünnet vurgusu ve tasavvufi yaklaşımı, aşağıdaki dönemlerin hangisinde kaleme alınan Mezhepler Tarihi eserlerine güçlü bir şekilde yansımıştır?",
+      "answerOptions": [
+        {
+          "text": "Emeviler",
+          "isCorrect": false,
+          "rationale": "Söz konusu alimlerin yaşadığı dönemlerden çok daha önceki ilk siyasi mezhepleşme dönemidir."
+        },
+        {
+          "text": "Abbasiler",
+          "isCorrect": false,
+          "rationale": "Mu'tezile ve erken dönem mezhepleşme süreçlerinin öne çıktığı dönemi ifade eder."
+        },
+        {
+          "text": "Osmanlılar",
+          "isCorrect": true,
+          "rationale": "Nakşibendî geleneğin bu iki büyük figürünün Ehl-i Sünnet vurgusu Osmanlı son dönemi mezhepler tarihi metinlerini derinden etkilemiştir."
+        },
+        {
+          "text": "Safeviler",
+          "isCorrect": false,
+          "rationale": "İran coğrafyasında Şii-İmâmiyye anlayışını devlet mezhebi olarak benimseyen yapıya sahiptir."
+        }
+      ],
+      "hint": "Mücellid-i Elf-i Sânî ve Müceddidî kollarıyla Balkanlar ve Anadolu'da etkili olan devlet yapısını düşününüz.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Ebû'l-Hasan el-Eş'arî'nin, İslam mezheplerini ve bu fırkaların temel görüşlerini tarafsız bir üslupta ele aldığı meşhur kaynağı aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Makâlâtü'l-İslâmiyyîn",
+          "isCorrect": true,
+          "rationale": "Eş'arî'nin mezheplerin görüşlerini sistemli ve betimleyici tarzda sunduğu en bilinen klasik eseridir."
+        },
+        {
+          "text": "el-Fark beyne'l-Fırak",
+          "isCorrect": false,
+          "rationale": "Eş'arî kelamcısı Abdülkāhir el-Bağdâdî tarafından kaleme alınan mezhepler tarihi eseridir."
+        },
+        {
+          "text": "el-Milel ve'n-Nihal",
+          "isCorrect": false,
+          "rationale": "Şehristânî'nin dinler ve mezhepler tarihine dair ünlü çalışmasıdır."
+        },
+        {
+          "text": "Kitâbü't-Tevhîd",
+          "isCorrect": false,
+          "rationale": "Ebû Mansur el-Mâtürîdî'nin kelam konularını işlediği temel eseridir."
+        }
+      ],
+      "hint": "Eserin adı 'Müslümanların Makaleleri/Görüşleri' anlamına gelmektedir.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Şîa itikadında Hz. Ali'nin Hz. Peygamber tarafından açıkça vası tayin edildiği ve imametinin ilahi rıza ile kesinleştiği kabul edilen tarihi olay aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Kırtas Hadisesi",
+          "isCorrect": false,
+          "rationale": "Hz. Peygamber'in vefatına yakın vasiyet yazmak istemesi üzerine yaşanan tartışmalı olaydır."
+        },
+        {
+          "text": "Gadir Hum Hadisesi",
+          "isCorrect": true,
+          "rationale": "Şii anlayışa göre Hz. Peygamber'in Veda Haccı dönüşü Hz. Ali'yi veli ve halef ilan ettiği mekandır."
+        },
+        {
+          "text": "Tahkim Olayı",
+          "isCorrect": false,
+          "rationale": "Sıffîn Savaşı sonrasında Hariciliğin doğuşuna zemin hazırlayan siyasi süreçtir."
+        },
+        {
+          "text": "Hayber'in Fethi",
+          "isCorrect": false,
+          "rationale": "Hz. Ali'nin kahramanlık gösterdiği askeri bir zafer olup imametin tespitiyle doğrudan ilgili değildir."
+        }
+      ],
+      "hint": "Veda Haccı dönüşünde Mekke ile Medine arasında yer alan bir su birikintisi ve mevki adıdır.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Şîa mezhebini diğer tüm İslami fırka ve ekollerden ayıran, dinin temel esaslarından biri (aslü'd-dîn) sayılan prensip aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Tevhid",
+          "isCorrect": false,
+          "rationale": "Bütün İslami mezheplerin ortak kabul ettiği Allah'ın birliği esasıdır."
+        },
+        {
+          "text": "Nübüvvet",
+          "isCorrect": false,
+          "rationale": "Peygamberlik müessesesi tüm Müslüman gruplarca kabul gören ortak inanç esasıdır."
+        },
+        {
+          "text": "İmâmet",
+          "isCorrect": true,
+          "rationale": "Devlet başkanlığı ve manevi rehberliğin nass ile tayin edilmiş masum imamlara ait olduğunu savunmak Şîa'nın belirleyici rüknüdür."
+        },
+        {
+          "text": "Meâd",
+          "isCorrect": false,
+          "rationale": "Ahiret gününe ve yeniden dirilişe iman İslam dininin genel ilkesidir."
+        }
+      ],
+      "hint": "Hz. Ali ve soyundan gelenlerin dini ve siyasi liderliğini inanç esaslarına dahil eden görüştür.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Şîa'nın günümüze kadar varlığını sürdürmüş büyük kollarından biri olan ve Yemen'de resmi düzeyde temsil edilen fırka aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Zeydiyye",
+          "isCorrect": true,
+          "rationale": "Zeyd b. Ali'ye nispet edilen ve Ehl-i Sünnet'e en yakın Şii kol olarak Yemen'de varlığını sürdüren gruptur."
+        },
+        {
+          "text": "Kerbiyye",
+          "isCorrect": false,
+          "rationale": "Erken dönemde yok olmuş aşırı (gālî) Şii gruplardandır."
+        },
+        {
+          "text": "Beyâniyye",
+          "isCorrect": false,
+          "rationale": "Tarihte kalmış ve günümüze ulaşamamış gulat-ı Şîa teşekküllerindendir."
+        },
+        {
+          "text": "Muhammire",
+          "isCorrect": false,
+          "rationale": "Kızıl giysiler giyen ve günümüzde yaşayan ana Şii kollardan biri olmayan tarihi bir gruptur."
+        }
+      ],
+      "hint": "İmamet konusunda silahlı kıyamı şart koşan ve Zeyd b. Ali'nin imametini benimseyen fırkadır.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Mu'tezile mezhebinin temel ilkelerinden biri olan 'el-Menzile beyne'l-Menzileteyn' prensibi doğrudan hangi tartışma sonucunda ortaya çıkmıştır?",
+      "answerOptions": [
+        {
+          "text": "Allah'ın sıfatlarının ezeli olup olmaması",
+          "isCorrect": false,
+          "rationale": "Bu konu Mu'tezile'nin 'Tevhid' prensibi kapsamında ele alınmaktadır."
+        },
+        {
+          "text": "Büyük günah işleyen kişinin (mürtekib-i kebîre) imandaki durumu",
+          "isCorrect": true,
+          "rationale": "Büyük günah işleyenin ne tam mümin ne de tam kafir olup ikisi arasında bir konumda bulunacağını ifade eder."
+        },
+        {
+          "text": "Kulların kendi fiillerini yaratması",
+          "isCorrect": false,
+          "rationale": "Bu mesele Mu'tezile'nin 'Adalet' prensibiyle ilişkilidir."
+        },
+        {
+          "text": "İyiliği emredip kötülükten alıkoyma sorumluluğu",
+          "isCorrect": false,
+          "rationale": "Bu ilke 'Emir bi'l-Ma'rûf Nehiy ani'l-Münker' prensibini açıklar."
+        }
+      ],
+      "hint": "Vâsıl b. Atâ'nın hocası Hasan-ı Basrî ile görüş ayrılığına düştüğü ana meseledir.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Dinin özündeki bütünlüğün bozulması, aslından olmayan şeylerin dine sonradan eklenmesi veya icat edilmesi durumunu ifade eden kavram aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Tefrika",
+          "isCorrect": false,
+          "rationale": "Toplumsal ve siyasal ayrışma, gruplaşma ve bölünmeyi ifade eder."
+        },
+        {
+          "text": "Bid’at",
+          "isCorrect": true,
+          "rationale": "Sözlükte önceden benzeri olmadan sonradan icat edilen şey, dini terim olarak dine dahi edilen yenilik anlamındadır."
+        },
+        {
+          "text": "Dalâlet",
+          "isCorrect": false,
+          "rationale": "Doğru yoldan saptırma veya hak yoldan ayrılma durumunu anlatır."
+        },
+        {
+          "text": "Celâdet",
+          "isCorrect": false,
+          "rationale": "Güçlükler karşısında yiğitlik, yiğitçe duruş ve sertlik anlamına gelen kavramdır."
+        }
+      ],
+      "hint": "Sünnet kavramının zıttı olarak dinde sonradan ortaya çıkarılan uygulamaları tanımlar.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Mâtürîdî kelamcılarının; ilahi sıfatlar, Kur'an'ın yaratılmışlığı (halku'l-Kur'an) ve insan fiilleri gibi konularda aşırı ve tutarsız yorumlara giderek nasları göz ardı etmekle eleştirdikleri ekol aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Mu'tezile",
+          "isCorrect": true,
+          "rationale": "Akılcı yorumları aşırıya kaçırarak nasların açık anlamlarını tahrif ettikleri gerekçesiyle Mâtürîdîlerce eleştirilmişlerdir."
+        },
+        {
+          "text": "Hâricîler",
+          "isCorrect": false,
+          "rationale": "Aşırı katı lafızcı ve siyasi olarak tekfirci tutumlarıyla bilinen ilk muhalif fırkadır."
+        },
+        {
+          "text": "Mürcie",
+          "isCorrect": false,
+          "rationale": "Ameli imandan bir cüz saymayıp hükmü erteleyen ilk dönem fırkasıdır."
+        },
+        {
+          "text": "Selefiyye",
+          "isCorrect": false,
+          "rationale": "Müteşâbih naslarda tevil yapmayıp teslimiyeti seçen nakilci yaklaşımdır."
+        }
+      ],
+      "hint": "Akla verdikleri aşırı önem ve 'Beş Esas' (El-Usûlü'l-Hamse) anlayışlarıyla bilinen kelam ekolüdür.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "İsmailî düşünce sisteminin metinleri anlama ve yorumlamadaki en belirleyici prensibi aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Aklın nasların önüne geçirilerek tamamen re'y ile hareket edilmesi",
+          "isCorrect": false,
+          "rationale": "İsmailîlik tamamen akılcılık yerine imamın gizli öğretisine ve batıni teviline dayanır."
+        },
+        {
+          "text": "Kutsal metin ve şer'i hükümlerin zahir ve batın şeklinde iki boyutta değerlendirilmesi",
+          "isCorrect": true,
+          "rationale": "Ayet ve hükümlerin görünür (zahir) anlamının ötesinde gizli ve derin (batın) anlamları olduğunu savunurlar."
+        },
+        {
+          "text": "Kader konusunda insanın tamamen mecbur olduğunu savunmak",
+          "isCorrect": false,
+          "rationale": "İsmailîliğin temeli cebir anlayışı değil, masum imamın batıni rehberliğidir."
+        },
+        {
+          "text": "Büyük günah işleyen kimsenin kafir kabul edilmesi",
+          "isCorrect": false,
+          "rationale": "Bu yaklaşım Haricilik ekolünün temel niteliğidir."
+        }
+      ],
+      "hint": "Bu sebeple söz konusu fırka tarihte sıklıkla 'Bâtınîlik' adıyla da anılmıştır.",
+      "type": "multiple_choice"
+    }
+  ]
+}

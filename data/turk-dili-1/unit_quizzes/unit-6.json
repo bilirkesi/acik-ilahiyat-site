@@ -1,0 +1,331 @@
+{
+  "unit": 6,
+  "unitTitle": "Türkçenin Söz Varlığı",
+  "title": "Söz Varlığı Testi",
+  "questions": [
+    {
+      "question": "Türk dilinin söz varlığı içinde yer alan; toplumsal yaşamda dilek, temenni, dua veya beddua bildirmek amacıyla kullanılan kalıplaşmış söz öbekleri aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Alkış ve kargış",
+          "isCorrect": true,
+          "rationale": "Alkış dua ve iyi dilekleri, kargış ise beddua ve kötü dilekleri ifade eden geleneksel söz varlığı ögesidir."
+        },
+        {
+          "text": "İlişki sözleri",
+          "isCorrect": false,
+          "rationale": "Selamlaşma ve hatır sorma gibi gündelik toplumsal iletişim kalıplarını kapsar."
+        },
+        {
+          "text": "Ağız ögeleri",
+          "isCorrect": false,
+          "rationale": "Bölgesel veya yöresel konuşma farklılıklarından doğan sözcükleri ifade eder."
+        },
+        {
+          "text": "Argo",
+          "isCorrect": false,
+          "rationale": "Belirli grup veya toplumsal katmanların kullandığı özel söz dağarcığına dayanır."
+        }
+      ],
+      "hint": "Halk kültüründe iyilik dileme veya kınama amacıyla kullanılan ikili kavram çiftini düşünün.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Özel bir nesne veya marka adının zamanla o türdeki tüm ürünleri kapsayacak şekilde kullanılmasına 'genelleşme' denir. Aşağıdakilerden hangisi bu yolla söz varlığına katılmış bir kelimedir?",
+      "answerOptions": [
+        {
+          "text": "Jilet",
+          "isCorrect": true,
+          "rationale": "Marka adının zamanla tıraş bıçağının genel adı haline gelmesi genelleşme örneğidir."
+        },
+        {
+          "text": "Uydu",
+          "isCorrect": false,
+          "rationale": "Yabancı sözcük yapısına uygun şekilde türetilmiş bir örnekseme örneğidir."
+        },
+        {
+          "text": "Başkan",
+          "isCorrect": false,
+          "rationale": "Tarihî metinlerden veya ağızlardan taranarak yazı diline kazandırılmış bir sözcüktür."
+        },
+        {
+          "text": "Arge",
+          "isCorrect": false,
+          "rationale": "İki farklı sözcüğün hece birleşimiyle oluşturulmuş karma bir sözcüktür."
+        }
+      ],
+      "hint": "Belli bir markanın bütün tıraş bıçakları için ortak ad haline gelmesini hatırlayın.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Yabancı bir dildeki sözcüğün biçimsel yapısı örnek alınarak Türkçe kök ve eklerle yeni bir kelime oluşturulması işlemine 'örnekseme' denir. Aşağıdakilerden hangisi bu yönteme örnektir?",
+      "answerOptions": [
+        {
+          "text": "Okul",
+          "isCorrect": true,
+          "rationale": "Fransızca 'école' sözcüğünün ses ve yapı bakımından Türkçeye uyarlanıp türetilmesiyle oluşturulmuştur."
+        },
+        {
+          "text": "Santim",
+          "isCorrect": false,
+          "rationale": "Sözcüğün hece eksiltilmesiyle kısaltılması sonucunda ortaya çıkan kırpma örneğidir."
+        },
+        {
+          "text": "Patates",
+          "isCorrect": false,
+          "rationale": "Başka bir dilden Türkçeye doğrudan geçmiş bir kopyalama (alıntı) örneğidir."
+        },
+        {
+          "text": "Yozlaşmak",
+          "isCorrect": false,
+          "rationale": "Halk ağızlarından derlenerek yazı diline aktarılmış bir derleme örneğidir."
+        }
+      ],
+      "hint": "Fransızca 'école' kelimesinin sesletim ve yapısına benzetilerek türetilen sözcüğü arayın.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Tarihî Türk dili metinlerinde geçen ancak unutulmuş olan sözcüklerin taranarak günümüz yazı diline yeniden kazandırılmasına 'tarama' denir. Aşağıdakilerden hangisi tarama yoluyla söz varlığına katılmıştır?",
+      "answerOptions": [
+        {
+          "text": "Başkan",
+          "isCorrect": true,
+          "rationale": "Eski metinlerin taranması sonucu ortaya çıkarılıp modern Türkçe söz varlığına kazandırılmıştır."
+        },
+        {
+          "text": "Kilo",
+          "isCorrect": false,
+          "rationale": "Kilogram sözcüğünün sonundaki hecelerin atılmasıyla oluşmuş bir kırpma örneğidir."
+        },
+        {
+          "text": "Futbol",
+          "isCorrect": false,
+          "rationale": "Yabancı dilden doğrudan alınan bir kopyalama örneğidir."
+        },
+        {
+          "text": "Selpak",
+          "isCorrect": false,
+          "rationale": "Bir markanın nesne adının yerine geçmesiyle oluşan genelleşme örneğidir."
+        }
+      ],
+      "hint": "Eski yazılı metinlerin incelenmesi sonucu günümüz diline kazandırılan yönetsel unvanı düşünün.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Ölçünlü dilde bulunmayan ancak yörelere ait halk ağızlarında yaşayan sözcüklerin toplanıp yazı diline kazandırılmasına 'derleme' adı verilir. Aşağıdakilerden hangisi bu yolla dilimize kazandırılmıştır?",
+      "answerOptions": [
+        {
+          "text": "Alan",
+          "isCorrect": true,
+          "rationale": "Ağız araştırmaları ve halk dilinden toplanıp ölçünlü Türkçeye kazandırılmış bir derleme sözcüğüdür."
+        },
+        {
+          "text": "Bayan",
+          "isCorrect": false,
+          "rationale": "Dil devrimi döneminde bilinçli ve amaçlı bir şekilde türetilen kasıtlı yaratma örneğidir."
+        },
+        {
+          "text": "Ordonat",
+          "isCorrect": false,
+          "rationale": "Ordu ve donatım kelimelerinin birleştirilmesiyle yapılan karma sözcük örneğidir."
+        },
+        {
+          "text": "ASELSAN",
+          "isCorrect": false,
+          "rationale": "Kurum adının baş harflerinden veya ilk hecelerinden oluşan bir kısaltma örneğidir."
+        }
+      ],
+      "hint": "Ağızlardan toplanarak 'saha/meydan' anlamında kullanılan Türkçe sözcüğü hatırlayın.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "İki farklı sözcüğün ilk veya son hecelerinin bir araya getirilmesiyle yeni bir kavramın türetilmesi işlemine 'karma' adı verilir. Aşağıdakilerden hangisi karma yöntemiyle oluşturulmuştur?",
+      "answerOptions": [
+        {
+          "text": "Ordonat",
+          "isCorrect": true,
+          "rationale": "'Ordu' ve 'donatım' sözcüklerinin hece birleşimiyle oluşan karma bir sözcüktür."
+        },
+        {
+          "text": "Deprenmek",
+          "isCorrect": false,
+          "rationale": "Halk ağızlarından toplanarak dilde kullanılan derleme örneğidir."
+        },
+        {
+          "text": "Yöre",
+          "isCorrect": false,
+          "rationale": "Tarihî kaynaklardan taranarak dile kazandırılan tarama örneğidir."
+        },
+        {
+          "text": "Köken",
+          "isCorrect": false,
+          "rationale": "Eski metin araştırmalarıyla günümüz diline aktarılan tarama sözcüğüdür."
+        }
+      ],
+      "hint": "'Ordu' ve 'donatım' sözcüklerinin bir araya getirilerek kısaltılmış yeni bir yapı kazanmasını düşünün.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Başka dillerden biçim veya anlam olarak Türkçeye geçen ve söz varlığında yer alan alıntı kelimelere 'kopyalama' denir. Aşağıdakilerden hangisi kopyalama yoluyla Türkçeye girmiştir?",
+      "answerOptions": [
+        {
+          "text": "Patates",
+          "isCorrect": true,
+          "rationale": "Yabancı bir dilden Türkçeye doğrudan geçen bir kopyalama örneğidir."
+        },
+        {
+          "text": "Yüzde",
+          "isCorrect": false,
+          "rationale": "Sözcük çekim kalıplarının zamanla sabitleşmesiyle oluşan kalıplaşma örneğidir."
+        },
+        {
+          "text": "Çıktı",
+          "isCorrect": false,
+          "rationale": "Eylem türevinin kalıcı isim haline gelmesiyle oluşan kalıplaşma örneğidir."
+        },
+        {
+          "text": "Geliştir",
+          "isCorrect": false,
+          "rationale": "Türkçe kök üzerine türetme eki getirilmesiyle yapılan türetme örneğidir."
+        }
+      ],
+      "hint": "Sebze adı olan ve yabancı dilden dilimize kopyalanarak geçen sözcüğü dikkate alın.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Sözcüğün sonundaki veya içindeki ses ve hecelerin atılarak daha kısa bir biçimde kullanılmasına 'kırpma' denir. Aşağıdakilerden hangisi kırpma örneğidir?",
+      "answerOptions": [
+        {
+          "text": "Pop",
+          "isCorrect": true,
+          "rationale": "'Popüler' sözcüğünün hece eksiltilmesi sonucu oluşan kırpılmış biçimidir."
+        },
+        {
+          "text": "Yazar",
+          "isCorrect": false,
+          "rationale": "Geniş zaman ekinin kalıcı ad yapmasıyla oluşan kalıplaşma örneğidir."
+        },
+        {
+          "text": "Uygar",
+          "isCorrect": false,
+          "rationale": "Kavram ihtiyacını karşılamak üzere bilinçli üretilen kasıtlı yaratma örneğidir."
+        },
+        {
+          "text": "Genel",
+          "isCorrect": false,
+          "rationale": "Fransızca 'général' sözcüğünden hareketle türetilen örnekseme örneğidir."
+        }
+      ],
+      "hint": "'Popüler' müzik türünün dil içinde kısalmış biçimini hatırlayın.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Toplumda belirli kavramları karşılamak amacıyla doğrudan dil bilinciyle ve bilinçli bir planlamayla yeni sözcükler üretilmesine 'kasıtlı yaratma' denir. Aşağıdakilerden hangisi bu yolla türetilmiştir?",
+      "answerOptions": [
+        {
+          "text": "Koşul",
+          "isCorrect": true,
+          "rationale": "Şart kavramını karşılamak üzere bilinçli ve kasıtlı biçimde yaratılmış bir sözcüktür."
+        },
+        {
+          "text": "Belleten",
+          "isCorrect": false,
+          "rationale": "Yabancı sözcük yapısına benzetilerek türetilen örnekseme örneğidir."
+        },
+        {
+          "text": "Toptan",
+          "isCorrect": false,
+          "rationale": "Ek ve kök birleşimiyle kalıplaşmış bir sözcük örneğidir."
+        },
+        {
+          "text": "Sanayağı",
+          "isCorrect": false,
+          "rationale": "Belirli bir margarin markasının nesneye ad olmasıyla gelişen genelleşme örneğidir."
+        }
+      ],
+      "hint": "Arapça 'şart' kelimesine karşılık olarak dil devrimi sürecinde bilinçli oluşturulan kelimeyi düşünün.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Yabancı veya kökeni bilinmeyen kelimelerin halk tarafından bilinen Türkçe ögelere benzetilerek yeniden anlamlandırılmasına 'yerlileştirme' (halk etimolojisi) denir. Kaynakta verilen bilgilere göre aşağıdakilerden hangisi yerlileştirme örneğidir?",
+      "answerOptions": [
+        {
+          "text": "İstanbul",
+          "isCorrect": true,
+          "rationale": "Halk tarafından 'İslam+bol' biçiminde anlamlandırılarak yerlileştirilmiş bir şehir adıdır."
+        },
+        {
+          "text": "Kremlin",
+          "isCorrect": false,
+          "rationale": "Başka bir kurumun yerine kullanılan bir aktarma örneğidir."
+        },
+        {
+          "text": "Führer",
+          "isCorrect": false,
+          "rationale": "Hitler'i zihinde canlandıran bir çağrıştırma anlamı örneğidir."
+        },
+        {
+          "text": "Kol saati",
+          "isCorrect": false,
+          "rationale": "Somut bir varlığı doğrudan adlandıran somut anlam örneğidir."
+        }
+      ],
+      "hint": "Halk arasında 'İslam+bol' yakıştırmasıyla açıklanan şehir adını hatırlayın.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Çekimli eylemlerin veya ek almış biçimlerin zamanla ek fonksiyonunu yitirip kalıcı isim haline gelmesine 'kalıplaşma' adı verilir. Aşağıdakilerden hangisi kalıplaşma yoluyla türetilmiştir?",
+      "answerOptions": [
+        {
+          "text": "Yazar",
+          "isCorrect": true,
+          "rationale": "-ar geniş zaman ekinin zamanla kalıcı ad yapmasıyla oluşan kalıplaşma örneğidir."
+        },
+        {
+          "text": "İmge",
+          "isCorrect": false,
+          "rationale": "Fransızca 'image' sözcüğünden örneksenerek oluşturulmuştur."
+        },
+        {
+          "text": "Sanayağı",
+          "isCorrect": false,
+          "rationale": "Ticari bir markanın ürüne ad olmasıyla oluşan genelleşme örneğidir."
+        },
+        {
+          "text": "Derya",
+          "isCorrect": false,
+          "rationale": "Farsçadan Türkçeye geçmiş bir kopyalama örneğidir."
+        }
+      ],
+      "hint": "Fiil geniş zaman eki alarak zamanla kalıcı meslek/faaliyet adı haline gelmiş sözcüğü düşünün.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Çeşitli bilim, sanat, spor veya meslek alanlarında özel anlamlarıyla kullanılan sözcüklere ne ad verilir?",
+      "answerOptions": [
+        {
+          "text": "Terim",
+          "isCorrect": true,
+          "rationale": "Belirli bir meslek veya bilim dalına özgü kavramları karşılayan özel anlamlı sözcüklerdir."
+        },
+        {
+          "text": "Argo",
+          "isCorrect": false,
+          "rationale": "Belirli sosyal grupların ortak dilden ayrı kullandığı özel söz varlığıdır."
+        },
+        {
+          "text": "Ağız",
+          "isCorrect": false,
+          "rationale": "Bir dilin aynı ülke sınırları içindeki bölgesel söyleyiş farklarıdır."
+        },
+        {
+          "text": "İkileme",
+          "isCorrect": false,
+          "rationale": "Anlamı güçlendirmek için sözcüklerin yinelemesiyle kurulan öbektir."
+        }
+      ],
+      "hint": "Matematik, tıp veya dil bilgisi gibi uzmanlık alanlarına özgü kavram adlarını hatırlayın.",
+      "type": "multiple_choice"
+    }
+  ]
+}
