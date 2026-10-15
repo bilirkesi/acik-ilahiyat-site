@@ -50,13 +50,24 @@ Default section order:
 - Do not duplicate rules across many files unless each scope needs a local version
 - Delete stale notes instead of explaining history
 - Trim obvious statements, repeated rules, misplaced detail, and warnings for risks that no longer exist
+## OKF Pass
+Every change to course content requires an OKF pass before the task is done, the same way every meaningful change requires a DOX pass.
+
+Run it when a change touches `courses.json`, `universities.json`, `data/<slug>/`, `site/interactive.js`, `site/assets/<slug>/`, `site/audio/<slug>/`, or `scripts/export_okf.py`:
+1. Re-export: `py -3 scripts/export_okf.py`
+2. Drop files whose only change is the `generated:` timestamp (`git diff -I 'generated: '` shows none), and drop the `log.md` entry when nothing else changed
+3. If new course data has no OKF page yet, extend `scripts/export_okf.py` rather than hand-writing pages under `okf/`
+4. Commit the remaining `okf/` changes with the content change
+
+Rules for the bundle itself live in `okf/AGENTS.md`.
 ## Closeout
 1. Re-check changed paths against the DOX chain
 2. Update nearest owning docs and any affected parents or children
 3. Refresh every affected Child DOX Index
 4. Remove stale or contradictory text
-5. Run existing verification when relevant
-6. Report any docs intentionally left unchanged and why
+5. Run the OKF pass when course content changed
+6. Run existing verification when relevant
+7. Report any docs intentionally left unchanged and why
 ## User Preferences
 - Language: reply to the user in Turkish; keep code identifiers, commit messages, and this doc hierarchy in English.
 - Prefer stdlib-only Python. Do not add a dependency (pytest, Pillow, …) unless the task cannot be done with the standard library.

@@ -10,7 +10,7 @@
 - `index.md` — bundle index with front matter (`okf_version: "0.2"`, universities, terms, courses).
 - `universities/`, `terms/` — one page per source university and per academic term.
 - `courses/<slug>.md` — the course page; `courses/index.md` lists all courses.
-- `courses/<slug>/chapters/` — one page per study-plan chapter.
+- `courses/<slug>/chapters/` — one page per study-plan chapter, with AÖF and book-unit infographics and the chapter audio overview when the course has them.
 - `courses/<slug>/exams/` — practice exams (vize/final/yaz-kursu) as Markdown.
 - `courses/<slug>/unit-quizzes/` — unit quizzes, one page per unit plus an index.
 - `courses/<slug>/quiz.md`, `units.md`, `artifacts.md` — final quiz, book unit summaries (from `unit_infographics.json`), and artifact catalog.
@@ -20,10 +20,11 @@
 ## Local Contracts
 - Front matter is YAML-ish key/value lines; keep `okf_version: "0.2"` stable.
 - Paths inside the bundle are root-relative Markdown links (`/courses/...`); keep them rooted so the bundle renders from any host.
+- Media links use the site root instead: `/assets/<slug>/…` for images and `/audio/<slug>/…` for chapter audio, matching `site/`. The export only links files that exist there.
 - Exam content follows the same schema as `data/_exam_schema.md`; solutions appear as `### Çözüm` sections.
 
 ## Work Guidance
-- Re-export after any change to `data/` or `courses.json`: `py -3 scripts/export_okf.py`.
+- Re-export through the OKF pass in the root `AGENTS.md`.
 - `assets/` and `artifacts/` are git-ignored. Without them the export links infographics to the published `site/assets/<slug>/*.jpg` and keeps the existing `courses/<slug>/artifacts.md`, so a clean clone still regenerates a complete bundle.
 - Commit only files whose content changed; a re-export rewrites every `generated:` timestamp.
 - Site-only views (concept decks `#/kavram`, word games `#/oyunlar`) are built in the browser from data the bundle already exports; they have no OKF pages.
