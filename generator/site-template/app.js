@@ -1391,7 +1391,7 @@
   function loadStudy() {
     let s = {};
     try { s = JSON.parse(localStorage.getItem(STUDY_KEY)) || {}; } catch (e) { s = {}; }
-    return Object.assign({ v: 1, cards: {}, days: {}, frozen: [], goal: 20, newPerDay: 10, courses: null, goalDone: "", log: [], mocks: [], videos: {}, vrate: 1, listen: {}, lrate: 1, plan: null, kcards: {}, kdir: "kavram", games: {} }, s);
+    return Object.assign({ v: 1, cards: {}, days: {}, frozen: [], goal: 20, newPerDay: 10, courses: null, goalDone: "", log: [], mocks: [], videos: {}, vrate: 1, listen: {}, lrate: 1, plan: null, kcards: {}, kdir: "kavram", games: {}, marks: {} }, s);
   }
   function saveStudy() {
     try { localStorage.setItem(STUDY_KEY, JSON.stringify(study)); } catch (e) { /* özel mod */ }
@@ -1752,6 +1752,7 @@
           <span class="btn ghost">${mist ? "Yanlışlarımı çöz" : "Listeye bak"}</span>
         </a>
         ${kavramDeskHtml()}
+        ${marksDeskHtml()}
       </div>
       <div class="btn-row desk-links"><a class="btn ghost" href="#/karisik">Karışık test</a><a class="btn ghost" href="#/karisik?mod=deneme">Deneme sınavı</a><a class="btn ghost" href="#/analiz">Gelişim analizi</a><a class="btn ghost" href="#/sikcikan">Sık çıkan konular</a><a class="btn ghost" href="#/puan">Not hesaplayıcı</a><a class="btn ghost" href="#/oyunlar">Bulmaca ve kelime oyunları</a></div>
       ${resumeVideoHtml()}
@@ -2357,7 +2358,9 @@
       const chs = ((INTERACTIVE()[c.slug] || {}).chapters) || {};
       c.chapters.forEach((ch, i) => {
         const list = ((chs[String(i + 1)] || {}).concepts || []).filter((k) => k && k.term && k.def);
-        if (list.length) out.push({ slug: c.slug, n: i + 1, title: ch.title, cards: list.map((k) => ({ id: kId(c.slug, i + 1, k.term), term: k.term, def: k.def })) });
+        // Vurgudan yapılan kendi kartların da bölümün destesine girer.
+        const mine = markList(c.slug, i + 1).filter((m) => m.k && m.k.f && m.k.b).map((m) => ({ id: markCardId(m), term: m.k.f, def: m.k.b, mine: true }));
+        if (list.length || mine.length) out.push({ slug: c.slug, n: i + 1, title: ch.title, cards: list.map((k) => ({ id: kId(c.slug, i + 1, k.term), term: k.term, def: k.def })).concat(mine) });
       });
     }
     return out;
@@ -3640,13 +3643,15 @@
       return `<section class="rp-sec">${head}<div class="notes">${text}</div>${actsIn(i).map((a, j) => activityHtml(a, `${id(i)}-${a.kind}-${j}`)).join("")}</section>`;
     }).join("");
     const total = acts.length;
-    return `<div class="rp" data-rp-total="${total}">
+    const marks = markList(c.slug, n).length;
+    return `<div class="rp" data-rp-total="${total}" data-slug="${c.slug}" data-n="${n}">
       <div class="rp-head">
         <h2>Bölüm raporu</h2>
         <p class="muted rp-lead">Çalışma notları kısımlara ayrıldı${total ? `; ${total} etkinlik ilgili kısmın altında. Açmak için karta dokunun.` : "."}</p>
         ${audioPlayerHtml(c, n)}
         ${listenBarHtml(c, n)}
         ${(data.concepts || []).length ? `<p class="rp-lead k-link" data-noprint><a href="#/kavram?ders=${encodeURIComponent(c.slug)}&bolum=${n}&calis=1">Bu bölümün ${data.concepts.length} kavramını desteyle çalış</a></p>` : ""}
+        <p class="muted rp-lead mk-hint" data-noprint>Metni seçerek vurgulayabilir, not ekleyebilir ya da kavram kartı yapabilirsin.<span data-mark-count${marks ? "" : " hidden"}> Bu bölümde <b>${marks}</b> vurgun var · <a href="#/notlarim?ders=${encodeURIComponent(c.slug)}">Notlarım</a></span></p>
         ${c.okunus && "speechSynthesis" in window ? `<p class="muted rp-lead ota-hint">Altı noktalı Osmanlıca kelimelere dokununca okunuşunu dinleyebilirsin.</p>` : ""}
         ${total ? `<div class="rp-progress" aria-live="polite"><span class="rp-bar"><span style="width:0%"></span></span><span class="rp-done">0/${total} etkinlik açıldı</span></div>` : ""}
       </div>
@@ -3675,6 +3680,349 @@
       h.scrollIntoView({ behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" });
       h.focus({ preventScroll: true });
     });
+  }
+
+  // ---- vurgular ve notlar ------------------------------------------------------------
+  // Bölüm raporunda (.rp .notes) seçilen metin sarı/yeşil vurgulanır, isteğe bağlı not ya da kavram
+  // kartı eklenir. Vurgu paragraf sırasına değil metne bağlıdır: seçilen parça (q) ile öncesindeki ve
+  // sonrasındaki birkaç harf (pre/suf) saklanır; notlar yeniden üretilse de parça bulunduğu sürece yerinde kalır.
+  //   marks[id] = { id, s: slug, n, q, pre, suf, c: "y"|"g", note, k: { f, b } | null, t, u, del }
+  // Silinen vurgu yedek birleştirmede geri gelmesin diye { id, del: 1, u } olarak kalır.
+  // Vurgudan yapılan kart kavram destesine girer: kcards["slug:n:m<id>"].
+  const MARK_CTX = 32;
+  const markList = (slug, n) => Object.values(study.marks || {}).filter((m) => m && !m.del && m.q && (!slug || m.s === slug) && (!n || m.n === n));
+  const markCardId = (m) => `${m.s}:${m.n}:m${m.id}`;
+  // Not metnindeki düğümler: alıntı işaretleri ([n]) ve not simgeleri sayılmaz.
+  function markIndex(roots) {
+    const nodes = [];
+    let text = "";
+    for (const root of roots) {
+      const w = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+        acceptNode: (t) => (t.parentElement.closest(".inline-cite, .hl-ind") ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT),
+      });
+      let block = null;
+      for (let t = w.nextNode(); t; t = w.nextNode()) {
+        // Paragraf ve madde sınırı satır sonu sayılır: cümle ve bağlam paragrafı aşmasın.
+        const bl = t.parentElement.closest("p, li, h3, h4, blockquote");
+        if (block && bl !== block) text += "\n";
+        block = bl;
+        nodes.push({ t, a: text.length }); text += t.data;
+      }
+      text += "\n";
+    }
+    return { nodes, text };
+  }
+  function markOffset(ix, node, off) {
+    if (node.nodeType === 3) {
+      const x = ix.nodes.find((y) => y.t === node);
+      return x ? x.a + off : -1;
+    }
+    // Seçim bir öğenin sınırında: o noktadan sonra gelen ilk metin düğümünün başı.
+    const r = document.createRange();
+    r.setStart(node, off);
+    const x = ix.nodes.find((y) => r.comparePoint(y.t, 0) >= 0);
+    return x ? x.a : ix.text.length;
+  }
+  // Saklanan parçayı metinde bulur: aynı parça birden çok yerde geçiyorsa öncesi ve sonrası en çok tutan.
+  function markLocate(text, m) {
+    let best = -1, score = -1;
+    for (let i = text.indexOf(m.q); i >= 0; i = text.indexOf(m.q, i + 1)) {
+      let s = 0;
+      const pre = text.slice(Math.max(0, i - MARK_CTX), i), suf = text.slice(i + m.q.length, i + m.q.length + MARK_CTX);
+      for (let j = 1; j <= Math.min(pre.length, (m.pre || "").length) && pre[pre.length - j] === m.pre[m.pre.length - j]; j++) s++;
+      for (let j = 0; j < Math.min(suf.length, (m.suf || "").length) && suf[j] === m.suf[j]; j++) s++;
+      if (s > score) { score = s; best = i; }
+    }
+    return best;
+  }
+  function markWrap(roots, m) {
+    const ix = markIndex(roots);
+    const a = markLocate(ix.text, m);
+    if (a < 0) return false;
+    const b = a + m.q.length;
+    let last = null;
+    for (const x of ix.nodes) {
+      const s = Math.max(a, x.a), e = Math.min(b, x.a + x.t.data.length);
+      if (s >= e || !x.t.data.slice(s - x.a, e - x.a).trim()) continue;
+      let t = x.t;
+      if (e - x.a < t.data.length) t.splitText(e - x.a);
+      if (s > x.a) t = t.splitText(s - x.a);
+      const el = document.createElement("mark");
+      el.className = "hl hl-" + (m.c === "g" ? "g" : "y");
+      el.dataset.mk = m.id;
+      t.replaceWith(el);
+      el.appendChild(t);
+      last = el;
+    }
+    if (last && (m.note || m.k)) {
+      const ind = document.createElement("button");
+      ind.type = "button";
+      ind.className = "hl-ind";
+      ind.dataset.mk = m.id;
+      ind.setAttribute("aria-label", m.note ? "Notu göster" : "Kavram kartı");
+      ind.textContent = m.note ? "✎" : "◆";
+      last.after(ind);
+    }
+    return !!last;
+  }
+  function paintMarks(roots, slug, n) {
+    roots = roots.filter(Boolean);
+    if (!roots.length) return;
+    roots.forEach((r) => {
+      r.querySelectorAll(".hl-ind").forEach((x) => x.remove());
+      r.querySelectorAll("mark.hl").forEach((x) => { x.replaceWith(...x.childNodes); });
+      r.normalize();
+    });
+    markList(slug, n).sort((x, y) => x.t - y.t).forEach((m) => markWrap(roots, m));
+  }
+  function saveMark(m) {
+    const marks = study.marks || (study.marks = {});
+    m.u = Date.now();
+    marks[m.id] = m;
+    if (m.k && m.k.f && m.k.b) {
+      const kc = study.kcards || (study.kcards = {});
+      if (!kc[markCardId(m)]) kc[markCardId(m)] = { s: 0, d: 0, due: 0, last: 0, reps: 0, lapses: 0, ivl: 0 };
+    }
+    saveStudy();
+  }
+  function dropMark(id) {
+    const m = (study.marks || {})[id];
+    if (!m) return;
+    if (study.kcards) delete study.kcards[markCardId(m)];
+    study.marks[id] = { id, del: 1, u: Date.now() };
+    saveStudy();
+  }
+  // Vurgunun geçtiği cümle: kart arka yüzü için.
+  function markSentence(text, a, b) {
+    let s = a, e = b;
+    while (s > 0 && !/[.!?…\n]/.test(text[s - 1])) s--;
+    while (e < text.length && !/[.!?…\n]/.test(text[e])) e++;
+    return text.slice(s, Math.min(text.length, e + 1)).replace(/\s+/g, " ").trim();
+  }
+
+  // Seçim çubuğu: ekranın altında sabit (telefonun kendi kopyala menüsüyle çakışmaz).
+  let hlSel = null, hlCur = null, hlBarTouch = 0;
+  function hlBar() {
+    let bar = document.getElementById("hl-bar");
+    if (!bar) {
+      bar = document.createElement("div");
+      bar.id = "hl-bar";
+      bar.className = "hl-bar";
+      bar.setAttribute("role", "toolbar");
+      bar.setAttribute("aria-label", "Vurgu");
+      bar.hidden = true;
+      document.body.appendChild(bar);
+      // Düğmeye basınca seçim kaybolmasın (masaüstü); telefonda seçim zaten hlSel'de saklı.
+      bar.addEventListener("mousedown", (e) => { if (e.target.closest("button")) e.preventDefault(); });
+      bar.addEventListener("pointerdown", () => { hlBarTouch = Date.now(); });
+      bar.addEventListener("click", hlAction);
+    }
+    return bar;
+  }
+  function hlHide() {
+    const bar = document.getElementById("hl-bar");
+    if (bar) bar.hidden = true;
+    hlSel = null; hlCur = null;
+  }
+  function hlShowNew() {
+    const bar = hlBar();
+    hlCur = null;
+    bar.innerHTML = `<span class="hl-k">Seçimi</span>
+      <button type="button" class="hl-sw hl-y" data-hl="y">Sarı</button>
+      <button type="button" class="hl-sw hl-g" data-hl="g">Yeşil</button>
+      <button type="button" class="hl-b" data-hl="note">Not ekle</button>
+      <button type="button" class="hl-b" data-hl="card">Kart yap</button>
+      <button type="button" class="hl-x" data-hl="close" aria-label="Kapat">×</button>`;
+    bar.hidden = false;
+  }
+  function hlShowMark(m) {
+    const bar = hlBar();
+    hlSel = null; hlCur = m;
+    bar.innerHTML = `${m.note ? `<p class="hl-note-text">${esc(m.note)}</p>` : ""}
+      <button type="button" class="hl-sw hl-${m.c === "g" ? "y" : "g"}" data-hl="${m.c === "g" ? "y" : "g"}">${m.c === "g" ? "Sarı yap" : "Yeşil yap"}</button>
+      <button type="button" class="hl-b" data-hl="note">${m.note ? "Notu düzenle" : "Not ekle"}</button>
+      <button type="button" class="hl-b" data-hl="card">${m.k ? "Kartı düzenle" : "Kart yap"}</button>
+      <button type="button" class="hl-b hl-del" data-hl="del">Sil</button>
+      <button type="button" class="hl-x" data-hl="close" aria-label="Kapat">×</button>`;
+    bar.hidden = false;
+  }
+  function hlRoots() {
+    return [...document.querySelectorAll(".rp .notes")];
+  }
+  function hlCtx() {
+    const rp = document.querySelector(".rp");
+    return rp ? { slug: rp.dataset.slug, n: +rp.dataset.n } : null;
+  }
+  function hlRepaint() {
+    const ctx = hlCtx();
+    if (ctx) paintMarks(hlRoots(), ctx.slug, ctx.n);
+    const cnt = document.querySelector("[data-mark-count]");
+    if (cnt && ctx) {
+      const k = markList(ctx.slug, ctx.n).length;
+      cnt.hidden = !k;
+      cnt.querySelector("b").textContent = k;
+    }
+  }
+  function hlNewMark(color) {
+    const ctx = hlCtx();
+    if (!hlSel || !ctx) return null;
+    const m = Object.assign({ id: Date.now().toString(36) + Math.random().toString(36).slice(2, 6), s: ctx.slug, n: ctx.n, c: color || "y", note: "", k: null, t: Date.now() }, hlSel);
+    window.getSelection().removeAllRanges();
+    return m;
+  }
+  function hlAction(e) {
+    const b = e.target.closest("[data-hl]");
+    if (!b) return;
+    const act = b.dataset.hl;
+    if (act === "close") { window.getSelection().removeAllRanges(); return hlHide(); }
+    if (act === "y" || act === "g") {
+      if (hlCur) { hlCur.c = act; saveMark(hlCur); }
+      else { const m = hlNewMark(act); if (m) saveMark(m); }
+      hlHide(); hlRepaint(); return;
+    }
+    if (act === "del" && hlCur) { dropMark(hlCur.id); hlHide(); hlRepaint(); showToast("Vurgu silindi."); return; }
+    const m = hlCur || hlNewMark("y");
+    if (!m) return hlHide();
+    hlHide();
+    if (act === "note") markNoteDialog(m);
+    if (act === "card") markCardDialog(m);
+  }
+  function markDialog(html, onSave) {
+    let dlg = document.getElementById("mk-dlg");
+    if (!dlg) {
+      dlg = document.createElement("dialog");
+      dlg.id = "mk-dlg";
+      dlg.className = "dlg";
+      dlg.setAttribute("aria-labelledby", "mk-h");
+      document.body.appendChild(dlg);
+      dlg.addEventListener("click", (e) => { if (e.target === dlg) dlg.close("cancel"); });
+    }
+    dlg.innerHTML = `<form method="dialog" class="pd mk-form">${html}
+      <div class="btn-row"><button class="btn" value="ok">Kaydet</button><button class="btn ghost" value="cancel" formnovalidate>Vazgeç</button></div></form>`;
+    dlg.onclose = () => { if (dlg.returnValue === "ok") { onSave(dlg.querySelector("form")); hlRepaint(); } };
+    if (typeof dlg.showModal === "function") dlg.showModal(); else dlg.setAttribute("open", "");
+    const first = dlg.querySelector("textarea, input");
+    if (first) first.focus();
+  }
+  function markNoteDialog(m) {
+    markDialog(`<h2 id="mk-h">Not</h2>
+      <blockquote class="mk-q hl-${m.c === "g" ? "g" : "y"}">${esc(m.q)}</blockquote>
+      <label class="mk-f"><span>Kendi sözlerinle</span><textarea name="note" rows="4" maxlength="1000" placeholder="Örneğin: sınavda karıştırdığım yer, kısaltma, örnek">${esc(m.note || "")}</textarea></label>`,
+      (f) => { m.note = f.note.value.trim(); saveMark(m); showToast(m.note ? "Not kaydedildi. Hepsi Notlarım sayfasında." : "Vurgu kaydedildi."); });
+  }
+  function markCardDialog(m) {
+    const short = m.q.length <= 60;
+    const front = m.k ? m.k.f : short ? m.q.replace(/\s+/g, " ").trim() : "";
+    const back = m.k ? m.k.b : short ? (m.ctx || m.q) : m.q.replace(/\s+/g, " ").trim();
+    markDialog(`<h2 id="mk-h">Kavram kartı</h2>
+      <p class="muted small">Kart, bu bölümün kavram destesine eklenir ve aralıklı tekrarla sorulur.</p>
+      <label class="mk-f"><span>Ön yüz: kavram ya da soru</span><input name="f" required maxlength="160" value="${esc(front)}" placeholder="Örneğin: Mudanya Mütarekesi ne zaman imzalandı?"></label>
+      <label class="mk-f"><span>Arka yüz: cevap</span><textarea name="b" required rows="4" maxlength="1000">${esc(back)}</textarea></label>`,
+      (f) => {
+        const fv = f.f.value.trim(), bv = f.b.value.trim();
+        if (!fv || !bv) return;
+        m.k = { f: fv, b: bv };
+        saveMark(m);
+        showToast("Kart kavram destesine eklendi.", "Desteyi aç", () => { location.hash = `#/kavram?ders=${encodeURIComponent(m.s)}&bolum=${m.n}&calis=1`; });
+      });
+  }
+  function bindMarks(query) {
+    const roots = hlRoots();
+    const ctx = hlCtx();
+    if (!roots.length || !ctx) return;
+    hlRepaint();
+    if (query && query.vurgu) {
+      const el = document.querySelector(`mark.hl[data-mk="${CSS.escape(query.vurgu)}"]`);
+      if (el) { el.classList.add("hl-flash"); setTimeout(() => el.scrollIntoView({ block: "center" }), 60); }
+    }
+  }
+  document.addEventListener("click", (e) => {
+    const t = e.target.closest("mark.hl, .hl-ind");
+    if (!t || !t.closest(".rp")) return;
+    const sel = window.getSelection();
+    if (sel && !sel.isCollapsed) return;
+    const m = (study.marks || {})[t.dataset.mk];
+    if (m && !m.del) hlShowMark(m);
+  });
+  let hlTimer = 0;
+  document.addEventListener("selectionchange", () => {
+    clearTimeout(hlTimer);
+    hlTimer = setTimeout(() => {
+      const sel = window.getSelection();
+      const bar = document.getElementById("hl-bar");
+      if (!sel || sel.isCollapsed || !sel.rangeCount) {
+        // Telefonda çubuğa dokunmak seçimi siler: o dokunuşta çubuk açık kalsın.
+        if (bar && !bar.hidden && !hlCur && Date.now() - hlBarTouch > 800) { bar.hidden = true; hlSel = null; }
+        return;
+      }
+      const r = sel.getRangeAt(0);
+      const roots = hlRoots();
+      const inside = (node) => roots.some((x) => x.contains(node));
+      if (!roots.length || !inside(r.startContainer) || !inside(r.endContainer)) return;
+      const ix = markIndex(roots);
+      let a = markOffset(ix, r.startContainer, r.startOffset), b = markOffset(ix, r.endContainer, r.endOffset);
+      if (a < 0 || b <= a) return;
+      while (a < b && /\s/.test(ix.text[a])) a++;
+      while (b > a && /\s/.test(ix.text[b - 1])) b--;
+      const q = ix.text.slice(a, b);
+      if (q.length < 2 || q.length > 1500) return;
+      hlSel = { q, pre: ix.text.slice(Math.max(0, a - MARK_CTX), a), suf: ix.text.slice(b, b + MARK_CTX), ctx: markSentence(ix.text, a, b) };
+      hlShowNew();
+    }, 180);
+  });
+  window.addEventListener("hashchange", hlHide);
+
+  // ---- #/notlarim: tüm vurgular ve notlar ----------------------------------------------
+  function viewMarks(query) {
+    const all = markList();
+    const slug = bySlug[query.ders] ? query.ders : "";
+    const head = `<p class="crumbs"><a href="#/calisma">Çalışma masan</a> / Notlarım</p>
+      <p class="eyebrow">Kendi notların</p><h1>Notlarım</h1>`;
+    if (!all.length) return `${head}<div class="desk-card empty-state"><h3>Henüz vurgun yok</h3>
+      <p class="muted">Bir bölüm raporunda metni seç (telefonda kelimeye basılı tut). Ekranın altında çıkan çubuktan sarı ya da yeşil vurgula, not ekle ya da kavram kartı yap. Hepsi burada derse ve bölüme göre toplanır.</p>
+      <div class="btn-row"><a class="btn" href="#/">Derslere git</a></div></div>`;
+    const counts = {};
+    all.forEach((m) => { if (bySlug[m.s]) counts[m.s] = (counts[m.s] || 0) + 1; });
+    const shown = all.filter((m) => bySlug[m.s] && (!slug || m.s === slug));
+    const groups = new Map();
+    shown.sort((x, y) => (x.s === y.s ? x.n - y.n || x.t - y.t : COURSES.indexOf(bySlug[x.s]) - COURSES.indexOf(bySlug[y.s])))
+      .forEach((m) => { const k = m.s + ":" + m.n; if (!groups.has(k)) groups.set(k, []); groups.get(k).push(m); });
+    let lastSlug = "";
+    const body = [...groups.values()].map((list) => {
+      const c = bySlug[list[0].s], n = list[0].n, ch = c.chapters[n - 1];
+      const courseHead = c.slug !== lastSlug ? `<h2 class="mk-course">${esc(c.subject)}</h2>` : "";
+      lastSlug = c.slug;
+      return `${courseHead}<section class="mk-ch">
+        <h3><a href="#/course/${c.slug}/chapter/${n}">${n}. ${esc(ch ? ch.title : "Bölüm")}</a></h3>
+        <ul class="mk-list">${list.map((m) => `<li class="mk-item">
+          <blockquote class="mk-q hl-${m.c === "g" ? "g" : "y"}">${esc(m.q)}</blockquote>
+          ${m.note ? `<p class="mk-note">${esc(m.note)}</p>` : ""}
+          ${m.k ? `<p class="mk-card"><span class="badge">Kart</span> <b>${esc(m.k.f)}</b> · ${esc(m.k.b)}</p>` : ""}
+          <p class="mk-meta" data-noprint><a href="#/course/${c.slug}/chapter/${n}?vurgu=${encodeURIComponent(m.id)}">Bölümde gör</a>
+            <button type="button" class="btn ghost sm-mini" data-mk-del="${esc(m.id)}">Sil</button></p>
+        </li>`).join("")}</ul>
+      </section>`;
+    }).join("");
+    const cards = shown.filter((m) => m.k).length;
+    return `${head}<p class="lead muted">${all.length} vurgu${cards ? `, ${cards} tanesinden kavram kartı yapıldı` : ""}. Yazdır düğmesiyle bu sayfayı kâğıda ya da PDF'e alabilirsin; vurgular yedek koduna dahildir.</p>
+      ${courseFilterHtml("notlarim", slug, counts)}
+      ${body}`;
+  }
+  function bindMarksPage() {
+    app.querySelectorAll("[data-mk-del]").forEach((b) => (b.onclick = () => {
+      if (!b.dataset.armed) { b.dataset.armed = "1"; b.textContent = "Silmek için tekrar dokun"; return; }
+      dropMark(b.dataset.mkDel);
+      route();
+    }));
+  }
+  function marksDeskHtml() {
+    const k = markList().length;
+    return `<a class="desk-card desk-action" href="#/notlarim">
+      <span class="desk-k">Notlarım</span>
+      <b class="desk-n">${k}</b>
+      <span>${k ? "vurgu ve not, derse göre toplu" : "bölüm raporunda metni seçerek vurgula ve not al"}</span>
+      <span class="btn ghost">${k ? "Notlarıma bak" : "Nasıl yapılır?"}</span>
+    </a>`;
   }
 
   // Osmanlıca okunuş: .ota.say öğesine dokununca cihazın Türkçe sesiyle okur.
@@ -4910,6 +5258,9 @@ document.getElementById("zin").focus();
       for (const k of ["s", "g"]) if (Array.isArray(b.calib[k]) && (!cal[k] || b.calib[k][0] > cal[k][0])) cal[k] = b.calib[k].slice(0, 2);
     }
     if (b.grades && typeof b.grades === "object") study.grades = Object.assign({}, b.grades, study.grades || {});
+    // Vurgular: son değiştirilen sürüm kazanır; silinmiş kayıt da bir sürümdür, geri gelmez.
+    const marks = study.marks || (study.marks = {});
+    for (const [id, m] of Object.entries(b.marks || {})) if (m && typeof m === "object" && (!marks[id] || (m.u || 0) > (marks[id].u || 0))) marks[id] = m;
     saveStudy();
   }
 
@@ -5533,6 +5884,7 @@ document.getElementById("zin").focus();
       let root = document.getElementById("print-root");
       if (!root) { root = document.createElement("div"); root.id = "print-root"; body.appendChild(root); }
       root.innerHTML = kind === "sheet" ? printSheetHtml(Object.assign({ answers: prefs.answers }, t.sheet)) : printBookletHtml(t.booklet, prefs);
+      if (kind === "booklet") root.querySelectorAll(".pb-ch").forEach((sec, i) => paintMarks([sec.querySelector(".pb-notes")], t.booklet.slug, i + 1));
       body.classList.add("print-doc");
       typeset(root);
     } else {
@@ -6484,6 +6836,7 @@ document.getElementById("zin").focus();
     else if (parts[0] === "ozet") { need.add("interactive"); need.add("coursegraph"); needExamData(); }
     else if (parts[0] === "ara") need.add("coursegraph");
     else if (parts[0] === "kavram") need.add("interactive");
+    else if (parts[0] === "notlarim") { /* data.js yeterli */ }
     else if (parts[0] === "oyunlar") { need.add("interactive"); if (parts[1]) needExamData(); }
     else if (parts[0] === "transcript" || parts[0] === "certificate" || parts[0] === "calisma") { /* data.js yeterli */ }
     else if (["tekrar", "hatalar", "karisik", "analiz", "plan", "puan"].includes(parts[0])) needExamData();
@@ -6519,6 +6872,7 @@ document.getElementById("zin").focus();
     else if (parts[0] === "puan") { html = viewGrades(); bind = bindGrades; }
     else if (parts[0] === "eklenti") html = viewExtension();
     else if (parts[0] === "kavram") { html = viewKavram(query); bind = bindKavram; }
+    else if (parts[0] === "notlarim") { html = viewMarks(query); bind = bindMarksPage; }
     else if (parts[0] === "oyunlar") {
       const gc = bySlug[parts[1]];
       if (!parts[1]) html = viewGames(query);
@@ -6527,7 +6881,7 @@ document.getElementById("zin").focus();
     }
     else if (parts[0] === "course" && bySlug[parts[1]]) {
       const c = bySlug[parts[1]];
-      if (parts[2] === "chapter") { html = viewChapter(c, +parts[3]); bind = () => { bindReport(); bindListen(query); bindVideos(c); }; }
+      if (parts[2] === "chapter") { html = viewChapter(c, +parts[3]); bind = () => { bindReport(); bindMarks(query); bindListen(query); bindVideos(c); }; }
       else if (parts[2] === "videolar") { html = viewVideos(c, query); bind = () => bindVideos(c); }
       else if (parts[2] === "quiz") { html = viewQuiz(c); bind = () => bindQuiz(c); }
       else if (parts[2] === "unit-quiz") {
@@ -6553,7 +6907,7 @@ document.getElementById("zin").focus();
     document.querySelectorAll(".nav a").forEach((a) => {
       const href = a.getAttribute("href");
       const key = parts[0] || "";
-      const on = href === "#/" + key || (href === "#/calisma" && ["tekrar", "hatalar", "analiz", "plan", "kavram"].includes(key)) || (href === "#/sinavlar" && ["karisik", "sikcikan", "puan"].includes(key));
+      const on = href === "#/" + key || (href === "#/calisma" && ["tekrar", "hatalar", "analiz", "plan", "kavram", "notlarim"].includes(key)) || (href === "#/sinavlar" && ["karisik", "sikcikan", "puan"].includes(key));
       a.classList.toggle("active", on);
       if (on) a.setAttribute("aria-current", "page"); else a.removeAttribute("aria-current");
     });
