@@ -5,13 +5,17 @@ description: Kuvayı Milliye birliklerinin düşman ilerleyişini durdurmada yet
 course: ataturk-ilkeleri-1
 chapter: 5
 status: stable
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-14T17:33:22Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-15T18:02:32Z }
 notebook: "https://notebooklm.google.com/notebook/436f4e9d-25d4-4441-98f1-ed97d01b9b7f"
 ---
 
 # Özet
 
 Kuvayı Milliye birliklerinin düşman ilerleyişini durdurmada yetersiz kalması ve Gediz Taarruzu sonrasında yaşanan gelişmeler düzenli orduya geçişi zorunlu kılmıştır. Türkiye Büyük Millet Meclisi hükümeti, askeri disiplini sağlayarak Batı Cephesi ve diğer bölgelerde ordunun yeniden yapılanmasını gerçekleştirmiştir. Doğu, Güney ve Batı cephelerinde yürütülen mücadelelerle düşman kuvvetleri geriletilmiş ve İstiklal Harbi'nin askeri safhası başarıyla yürütülmüştür.
+
+# Sesli Ders
+
+[Bölüm 5 sesli özeti](/audio/ataturk-ilkeleri-1/chapter-5.mp3) (5:23 dk, MP3)
 
 # AÖF Ünite İnfoğrafik
 

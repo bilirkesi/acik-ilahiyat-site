@@ -5,13 +5,17 @@ description: Birinci Dünya Savaşı sonrasında imzalanan Mondros Mütarekesi, 
 course: ataturk-ilkeleri-1
 chapter: 3
 status: stable
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-14T17:33:22Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-15T18:02:32Z }
 notebook: "https://notebooklm.google.com/notebook/436f4e9d-25d4-4441-98f1-ed97d01b9b7f"
 ---
 
 # Özet
 
 Birinci Dünya Savaşı sonrasında imzalanan Mondros Mütarekesi, İtilaf Devletleri'nin Anadolu'yu haksız bir şekilde işgal etmesine zemin hazırlamıştır. İstanbul Hükümeti'nin işgaller karşısındaki teslimiyetçi tutumu üzerine Türk milleti yerel düzeyde Müdafaa-i Hukuk cemiyetleri ve Kuvayı Milliye birliklerini kurarak direniş başlatmıştır. Mustafa Kemal Paşa'nın İstanbul'daki temaslarının ardından Anadolu'ya geçiş kararı almasıyla Millî Mücadele'nin hazırlık safhası şekillenmiştir.
+
+# Sesli Ders
+
+[Bölüm 3 sesli özeti](/audio/ataturk-ilkeleri-1/chapter-3.mp3) (4:47 dk, MP3)
 
 # AÖF Ünite İnfoğrafik
 

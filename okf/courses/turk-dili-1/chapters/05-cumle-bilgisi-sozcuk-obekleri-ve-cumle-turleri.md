@@ -5,13 +5,17 @@ description: Bu bölümde söz diziminin temel ögeleri olan sözcük öbekleri 
 course: turk-dili-1
 chapter: 5
 status: stable
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-14T17:33:22Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-15T18:02:32Z }
 notebook: "https://notebooklm.google.com/notebook/c702ed26-fe17-463d-b217-202acd0c3d26"
 ---
 
 # Özet
 
 Bu bölümde söz diziminin temel ögeleri olan sözcük öbekleri ve tamlamaların yapısı ele alınmaktadır. Cümlenin temel ögeleri olan yüklem ve özne ile tümleçlerin cümle içindeki görevleri açıklanmaktadır. Cümleler yapısına, yükleminin türüne, öge dizilişine ve anlamına göre farklı kriterler açısından sınıflandırılmaktadır.
+
+# Sesli Ders
+
+[Bölüm 5 sesli özeti](/audio/turk-dili-1/chapter-5.mp3) (6:13 dk, MP3)
 
 # AÖF Ünite İnfoğrafik
 
