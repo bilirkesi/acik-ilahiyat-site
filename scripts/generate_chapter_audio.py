@@ -29,6 +29,7 @@ sys.path.insert(0, str(ROOT / "generator" / "scripts"))
 from common import grounding_rules, load_university, with_authority  # noqa: E402
 
 BITRATE = "64k"
+UUID = re.compile(r"^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$")
 PROMPT = ("Türkçe konuş. Dinleyiciler Anadolu Üniversitesi Açıköğretim İlahiyat ön lisans öğrencileri ve "
           "sınava hazırlanıyorlar. Yalnızca bu bölümün konusunu anlat: \"{title}\". Temel kavramları, kişi, eser ve "
           "mezhep/kurum adlarını, tarihleri ve sınavda sorulabilecek ayrımları açık ve doğru biçimde vurgula; "
@@ -50,10 +51,14 @@ def tool(name, override):
 def generate(nb, chapter, out_raw, args, sources, uni):
     """Ask NotebookLM for the chapter's audio overview and download it to out_raw."""
     prompt = PROMPT.format(title=chapter["title"]) + " " + grounding_rules(uni)
-    cmd = [args.notebooklm, "generate", "audio", prompt.strip(), "-n", nb,
+    cmd = [*args.nlm, "generate", "audio", prompt.strip(), "-n", nb,
            "--format", args.format, "--length", args.length, "--language", args.language, "--wait", "--retry", "2", "--json"]
     tiers = (uni.get("grounding") or {}).get("tiers") or []
+    by_id = {s.get("id"): s for s in sources}
     for sid in with_authority(chapter.get("source_ids", []), sources, tiers):
+        sid = by_id.get(sid, {}).get("nlm_id", sid)  # local ids (e.g. osm1-kitap-1) map to the notebook's id
+        if not UUID.match(sid):
+            sys.exit(f"source {sid!r} has no NotebookLM id; set nlm_id for it in state.json")
         cmd += ["-s", sid]
     res = run(cmd, capture_output=True)
     print(res.stdout.strip())
@@ -64,7 +69,7 @@ def generate(nb, chapter, out_raw, args, sources, uni):
     except ValueError:
         pass
     out_raw.parent.mkdir(parents=True, exist_ok=True)
-    dl = [args.notebooklm, "download", "audio", out_raw, "-n", nb, "--force"]
+    dl = [*args.nlm, "download", "audio", out_raw, "-n", nb, "--force"]
     dl += ["-a", artifact] if artifact else ["--latest"]
     run(dl)
 
@@ -93,6 +98,7 @@ def main():
     ap.add_argument("--force", action="store_true", help="regenerate even if the MP3 exists")
     ap.add_argument("--transcode-only", action="store_true", help="skip NotebookLM; re-encode downloaded files")
     ap.add_argument("--notebooklm", default=None)
+    ap.add_argument("--profile", help="notebooklm-py profile (-p), e.g. a second Google account")
     ap.add_argument("--ffmpeg", default=None)
     ap.add_argument("--ffprobe", default=None)
     args = ap.parse_args()
@@ -100,6 +106,7 @@ def main():
     args.ffprobe = args.ffprobe or shutil.which("ffprobe")  # optional; durations fall back to ffmpeg
     if not args.transcode_only:
         args.notebooklm = tool("notebooklm", args.notebooklm)
+        args.nlm = [args.notebooklm] + (["-p", args.profile] if args.profile else [])
 
     d = ROOT / "data" / args.slug
     manifest = json.loads((d / "manifest.json").read_text(encoding="utf-8-sig"))
