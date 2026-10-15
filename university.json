@@ -28,7 +28,7 @@
       {"label": "the official AÖF textbook (Kitap)", "types": ["book"], "titles": ["Kitap", "ders kitabı"]},
       {"label": "AÖF unit summaries and infographics", "titles": ["İnfografik", "Özet"]},
       {"label": "AÖF past exam questions", "note": "use them for question style and what the exam stresses, not as the source of facts", "titles": ["Çıkmış", "Sınav Soru"]},
-      {"label": "lecture video captions", "note": "auto captions with speech errors; never prefer them over the textbook", "types": ["youtube", "pasted_text"]}
+      {"label": "lecture video captions or audio transcripts", "note": "auto captions with speech errors; never prefer them over the textbook", "types": ["youtube", "pasted_text", "audio"]}
     ],
     "rules": [
       "Use only facts the sources state, at the level of detail they give. If the sources treat a point briefly, keep it brief; do not fill gaps from general knowledge.",
