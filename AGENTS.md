@@ -78,5 +78,6 @@ Default section order:
 - [scripts/](scripts/AGENTS.md) — one-off and pipeline scripts that extract, generate, and export content.
 - [generator/](generator/AGENTS.md) — the `personal-university` skill that rebuilds `site/` from a template plus course data.
 - [site/](site/AGENTS.md) — generated static SPA output; understand which files are regenerated before touching them.
+- [extensions/notebook-nest/](extensions/notebook-nest/AGENTS.md) — modified Notebook-Nest Chrome extension (GPL-3.0) that editors download from `#/eklenti` to folder NotebookLM sources.
 - [okf/](okf/AGENTS.md) — Open Knowledge Format v0.2 Markdown bundle exported from course data.
 - [tests/](tests/AGENTS.md) — stdlib `unittest` suite over the graph, quiz data, and export scripts.

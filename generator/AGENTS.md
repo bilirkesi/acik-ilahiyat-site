@@ -5,7 +5,7 @@
 - Keeps the site builder self-contained so it can be reused for a different project.
 
 ## Ownership
-- `scripts/build.py` — the entry point. Copies `site-template/` into `site/`, injects `university.json` branding, bundles every course that has a `data/<slug>/manifest.json` into `site/data.js`, writes `index.html`, `manifest.webmanifest`, and `sw.js`, and compresses chapter infographics.
+- `scripts/build.py` — the entry point. Copies `site-template/` into `site/`, injects `university.json` branding, bundles every course that has a `data/<slug>/manifest.json` into `site/data.js`, writes `index.html`, `manifest.webmanifest`, and `sw.js`, compresses chapter infographics, and zips each `extensions/<name>/` into `site/downloads/<name>.zip`.
 - `scripts/common.py` — shared project/course helpers.
 - `scripts/pipeline.py`, `preflight.py`, `qa.py`, `redo.py`, `sheet.py` — full generation, validation, and contact-sheet tooling.
 - `scripts/add_course.py`, `new_project.py` — scaffold a course or a new project.
