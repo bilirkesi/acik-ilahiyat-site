@@ -5,13 +5,17 @@ description: Bu bölümde Hz. Peygamber sonrası liderlik tartışmalarıyla ba�
 course: islam-mezhepleri-tarihi
 chapter: 5
 status: stable
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-14T17:33:22Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-15T15:29:24Z }
 notebook: "https://notebooklm.google.com/notebook/ad4a99c9-cc96-4f29-92f5-ca8638bc42c2"
 ---
 
 # Özet
 
 Bu bölümde Hz. Peygamber sonrası liderlik tartışmalarıyla başlayıp zamanla itikadi bir yapıya dönüşen Şiilik düşüncesi ve İmamet nazariyesi ele alınmaktadır. Kerbela olayı ve Tevvabun hareketi gibi tarihsel kırılmaların Şii kimliğin teşekkülündeki belirleyici rolü açıklanmaktadır. Gaybet, takiyye, tenasüh ve Beda gibi Şii kavramlar ile 12 İmam Şiiliğinin (İsnaaşeriyye) temel esasları sunulmaktadır.
+
+# Sesli Ders
+
+[Bölüm 5 sesli özeti](/audio/islam-mezhepleri-tarihi/chapter-5.mp3) (6:16 dk, MP3)
 
 # Ders Kitabı Ünite Özeti
 

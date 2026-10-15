@@ -5,13 +5,17 @@ description: Bu bölümde din ve mezhep kavramları arasındaki ilişki ile Hz. 
 course: islam-mezhepleri-tarihi
 chapter: 1
 status: stable
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-14T17:33:22Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-15T15:29:24Z }
 notebook: "https://notebooklm.google.com/notebook/ad4a99c9-cc96-4f29-92f5-ca8638bc42c2"
 ---
 
 # Özet
 
 Bu bölümde din ve mezhep kavramları arasındaki ilişki ile Hz. Peygamber sonrasında ortaya çıkan beşeri gayretlerin doğası ele alınmaktadır. Bir mezhebin sivil bir inisiyatif olarak başlayıp cemaatleşme, sistemleşme ve kurumsallaşma aşamalarından geçerek nasıl teşekkül ettiği incelenmektedir. Ayrıca mezheplerin ilahi değil, insan unsuru ve sosyo-psikolojik etkenlerle şekillenen dinamik yapılar olduğu vurgulanmaktadır.
+
+# Sesli Ders
+
+[Bölüm 1 sesli özeti](/audio/islam-mezhepleri-tarihi/chapter-1.mp3) (5:27 dk, MP3)
 
 # Ders Kitabı Ünite Özeti
 

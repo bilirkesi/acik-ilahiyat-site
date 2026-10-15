@@ -1,5 +1,8 @@
 # Bundle Log
 
+## 2026-10-15
+* **Update**: Yeniden export; dersler: islam-mezhepleri-tarihi, turk-dili-1, ataturk-ilkeleri-1, osmanlica-1.
+
 ## 2026-10-14
 * **Update**: Yeniden export; dersler: islam-mezhepleri-tarihi, turk-dili-1, ataturk-ilkeleri-1, osmanlica-1.
 

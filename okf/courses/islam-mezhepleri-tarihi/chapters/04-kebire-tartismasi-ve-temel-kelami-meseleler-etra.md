@@ -5,13 +5,17 @@ description: Bu bölümde Haricilerin tekfir söylemine tepki olarak doğan Mür
 course: islam-mezhepleri-tarihi
 chapter: 4
 status: stable
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-14T17:33:22Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-15T15:29:24Z }
 notebook: "https://notebooklm.google.com/notebook/ad4a99c9-cc96-4f29-92f5-ca8638bc42c2"
 ---
 
 # Özet
 
 Bu bölümde Haricilerin tekfir söylemine tepki olarak doğan Mürcie, orta yolu arayan Mu'tezile ve ameli esas alan Ashabü'l-Hadis'in büyük günah meselesine yaklaşımları işlenmektedir. Ayrıca insan fiilleri bağlamında Cebir, Kader ve Kesp görüşleri ile Allah'ın zatı ve sıfatları etrafındaki kelami tartışmalar değerlendirilmektedir. Böylece erken dönem kelami meselelerin mezhepleşme sürecine etkileri bütüncül bir bakışla sunulmaktadır.
+
+# Sesli Ders
+
+[Bölüm 4 sesli özeti](/audio/islam-mezhepleri-tarihi/chapter-4.mp3) (8:30 dk, MP3)
 
 # Ders Kitabı Ünite Özeti
 
