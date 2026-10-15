@@ -5,6 +5,8 @@
  *   bu dosya da değişir ve tarayıcı yeni sürümü kurar.
  * - Ders görselleri (assets/<ders>/) kullanıcı "Çevrimdışı" sayfasından indirirse "pu-pack-<ders>"
  *   önbelleğine girer. Gezinirken görülen görseller sınırlı bir çalışma önbelleğinde tutulur.
+ * - Sesli dersler (audio/<ders>/) indirilirse "pu-pack-<ders>-ses" önbelleğinden aralıklı (206) yanıtla
+ *   sunulur; Safari ses öğesine tam dosya değil Range yanıtı ister. İndirilmemiş ses ağdan gelir.
  * - Önbellek anahtarları sorgu dizesi olmadan tutulur (app.js?v=... ile app.js aynı kayıttır).
  * - Yeni sürüm kendiliğinden devreye girmez; sayfa "Yeni sürüm hazır" der ve kullanıcı onaylayınca
  *   SKIP_WAITING mesajı gelir.
@@ -104,6 +106,28 @@ async function respond(req, url) {
   }
 }
 
+async function audio(req, url) {
+  const hit = await match(url.origin + url.pathname);
+  if (!hit) {
+    try { return await fetch(req); } catch (e) { return new Response("", { status: 504, statusText: "Offline" }); }
+  }
+  const range = req.headers.get("range");
+  if (!range) return hit;
+  const blob = await hit.blob();
+  const size = blob.size;
+  const m = /bytes=(\d*)-(\d*)/.exec(range) || [];
+  let start = m[1] ? +m[1] : 0, end = m[2] ? +m[2] : size - 1;
+  if (!m[1] && m[2]) { start = Math.max(0, size - +m[2]); end = size - 1; }
+  end = Math.min(end, size - 1);
+  if (start > end) return new Response("", { status: 416, headers: { "Content-Range": `bytes */${size}` } });
+  return new Response(blob.slice(start, end + 1), { status: 206, headers: {
+    "Content-Type": hit.headers.get("Content-Type") || "audio/mp4",
+    "Content-Range": `bytes ${start}-${end}/${size}`,
+    "Content-Length": String(end - start + 1),
+    "Accept-Ranges": "bytes",
+  } });
+}
+
 async function navigate(req) {
   const page = await (await caches.open(SHELL_CACHE)).match(abs("index.html"));
   if (page) return page;
@@ -124,6 +148,11 @@ self.addEventListener("fetch", (event) => {
   // Sayfanın ders paketi indirirken yaptığı istekler (assets/...?v=rev) doğrudan ağa gider.
   if (url.pathname.includes("/assets/") && url.searchParams.has("v")) return;
   const path = url.pathname.slice(new URL(scope()).pathname.length);
+  if (path.startsWith("audio/")) {
+    if (url.searchParams.has("v")) return; // paket indirmesi doğrudan ağa gider
+    event.respondWith(audio(req, url));
+    return;
+  }
   if (req.mode === "navigate" && (path === "" || path === "index.html")) {
     event.respondWith(navigate(req));
     return;
