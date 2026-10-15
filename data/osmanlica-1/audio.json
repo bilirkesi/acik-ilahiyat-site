@@ -10,6 +10,20 @@
       "duration": 341.3,
       "bytes": 2731530,
       "generated": "2026-10-15"
+    },
+    {
+      "chapter": 2,
+      "file": "chapter-2.mp3",
+      "duration": 402.1,
+      "bytes": 3217290,
+      "generated": "2026-10-15"
+    },
+    {
+      "chapter": 3,
+      "file": "chapter-3.mp3",
+      "duration": 391.6,
+      "bytes": 3133578,
+      "generated": "2026-10-15"
     }
   ]
 }
