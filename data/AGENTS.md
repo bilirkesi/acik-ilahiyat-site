@@ -14,6 +14,7 @@
 - `data/<slug>/state.json` — learner progress (tracked; the site mirrors it to `localStorage`).
 - `data/<slug>/okunus.json` — Arabic-script run → Latin reading; makes `.ota` runs tappable with Turkish TTS. Only `osmanlica-1` has one.
 - `data/<slug>/interactive.json`, `unit_infographics.json` — interactive panel and infographic metadata for the courses that have them.
+- `data/<slug>/audio.json` — chapter audio overviews (`chapters[]`: `chapter`, `file`, `duration`, `bytes`, `generated`) written by `scripts/generate_chapter_audio.py`; the MP3s live in `site/audio/<slug>/`.
 - `_exam_schema.md` — the exam JSON field reference; keep it in sync with any schema change.
 
 ## Local Contracts

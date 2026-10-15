@@ -15,10 +15,12 @@
 - `interactive.js` — course panel data (concepts/timeline/tree); the builder does not overwrite it.
 - `downloads/` — generated: browser-extension zips packed by `build.py` from `extensions/`.
 - `assets/<slug>/` — course images (jpg/webp) served to the page and packed for offline use.
+- `audio/<slug>/chapter-N.mp3` — committed chapter audio overviews from `scripts/generate_chapter_audio.py`; the builder only lists them (it never writes or deletes them).
 
 ## Local Contracts
 - Lazy bundles load per route via `LAZY_BUNDLES` in `app.js`: `interactive`, `coursegraph`, `past_exams`, `unit_quizzes`. Adding a bundle means adding it to `LAZY_BUNDLES` **and** to `SHELL_FILES` in `generator/scripts/build.py` so it is cached offline.
 - Every bundle assigns to a `window.*` global; `app.js` reads them through accessor functions and falls back to an empty stub if a bundle fails to load.
+- Chapter audio: `c.audio["n"]` = `{src, dur, bytes}` shows a native `<audio>` player (Media Session, resume position in `study.aud`, speed in `study.arate`). Its offline pack is `OFFLINE.packs["<slug>-ses"]` (cache `pu-pack-<slug>-ses`); `sw.js` answers `audio/` requests from that cache with 206 Range responses (Safari requires them) and otherwise passes them to the network.
 - `sw.js` caches the app shell on first visit; new versions wait for the student to tap "Yenile" on the update toast. Course images are downloaded per course from the offline page.
 - Learner progress lives in `localStorage[CONFIG.storageKey]`; study state (concept-deck cards, mock exams, game results, entered grades `grades`, confidence counters `calib`) lives in `localStorage[CONFIG.storageKey + ".study"]`.
 - "Emin misin?": graded questions with an answer key show an optional Eminim/Tahmin row (hidden in mock exams and when `study.confOff`). Cards store `cf` (last confidence) and `sw` (sure-but-wrong count); a guessed correct answer is scheduled as "Zor".

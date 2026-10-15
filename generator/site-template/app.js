@@ -431,6 +431,7 @@
           <div class="btn-row">
             ${notebookButton(c)}
             ${vids.length ? `<a class="btn ghost" href="#/course/${c.slug}/videolar">Ders videoları (${vids.length})</a>` : ""}
+            ${c.audio ? `<a class="btn ghost" href="#/course/${c.slug}/chapter/${Object.keys(c.audio).map(Number).sort((a, b) => a - b)[0]}">Sesli dersler (${Object.keys(c.audio).length})</a>` : ""}
             <a class="btn ghost" href="#/ozet">Ders özeti</a>
             <a class="btn ghost" href="#/course/${c.slug}/quiz">Final (oyun)</a>
             <a class="btn ghost" href="#/course/${c.slug}/exams">Çıkmış / sınavlar</a>
@@ -576,6 +577,7 @@
       <p class="eyebrow">${esc(c.course)} · ${n}. Bölüm</p>
       <h1>${esc(ch.title)}</h1>
       <p class="lead muted" style="font:1.15rem/1.6 var(--serif)">${esc(ch.summary)}</p>
+      ${audioOf(c, n) ? `<div class="btn-row" data-noprint><button class="btn ghost" type="button" data-ap-jump>Sesli dersi dinle (${Math.max(1, Math.round(audioOf(c, n).dur / 60))} dk)</button></div>` : ""}
       ${ch.image ? `<figure class="figure">${imgTag(ch.image, ch.title + " infografiği", " data-zoom")}<figcaption><b>Şekil ${n}.</b> Yalnızca bu bölümün ${noun(c, 2)}lerinden NotebookLM ile üretildi.</figcaption></figure>` : ""}
       ${aofFiguresHtml(ch, n, "figure")}
       ${bookUnitFiguresHtml(c, n, "figure")}
@@ -3642,6 +3644,7 @@
       <div class="rp-head">
         <h2>Bölüm raporu</h2>
         <p class="muted rp-lead">Çalışma notları kısımlara ayrıldı${total ? `; ${total} etkinlik ilgili kısmın altında. Açmak için karta dokunun.` : "."}</p>
+        ${audioPlayerHtml(c, n)}
         ${listenBarHtml(c, n)}
         ${(data.concepts || []).length ? `<p class="rp-lead k-link" data-noprint><a href="#/kavram?ders=${encodeURIComponent(c.slug)}&bolum=${n}&calis=1">Bu bölümün ${data.concepts.length} kavramını desteyle çalış</a></p>` : ""}
         ${c.okunus && "speechSynthesis" in window ? `<p class="muted rp-lead ota-hint">Altı noktalı Osmanlıca kelimelere dokununca okunuşunu dinleyebilirsin.</p>` : ""}
@@ -3718,6 +3721,133 @@
     if ((e.key !== "Enter" && e.key !== " ") || !e.target.matches || !e.target.matches(".ota.say")) return;
     e.preventDefault();
     speakOta(e.target);
+  });
+
+  // ---- sesli dersler: bölümün NotebookLM sesli özeti (gerçek ses dosyası) ---------------------
+  // data/<slug>/audio.json → c.audio["n"] = { src, dur, bytes } (build.py). <audio> öğesiyle çalınır; cihaz
+  // sesinden farklı olarak telefon kilitliyken de sürer, kilit ekranından ve kulaklıktan yönetilir
+  // (Media Session). Konum study.aud["slug:n"] = { at, done }, hız study.arate. İki dakika dinlemek o günü
+  // aktif sayar (day.lis). Çevrimdışı için "<slug>-ses" paketi indirilir; sw.js oradan Range yanıtıyla sunar.
+  const AUDIO_RATES = [1, 1.25, 1.5, 0.8];
+  const audioOf = (c, n) => (c.audio || {})[String(n)] || null;
+  function audioPlayerHtml(c, n) {
+    const a = audioOf(c, n);
+    if (!a) return "";
+    const st = (study.aud || {})[`${c.slug}:${n}`] || {};
+    const rate = study.arate || 1;
+    return `<div class="ap" data-ap="${esc(c.slug)}:${n}" data-noprint>
+      <p class="ap-head"><b>Sesli ders</b> <span class="muted small" data-ap-info>${a.dur ? `${Math.max(1, Math.round(a.dur / 60))} dk · ` : ""}iki sunuculu sohbet${st.done ? " · dinledin" : st.at ? ` · ${fmtClock(st.at)}'da kaldın` : ""}</span></p>
+      <audio controls preload="none" src="${esc(a.src)}"></audio>
+      <div class="ap-row">
+        <button class="lp-btn" type="button" data-ap-act="back" aria-label="15 saniye geri">−15 sn</button>
+        <button class="lp-btn" type="button" data-ap-act="fwd" aria-label="30 saniye ileri">+30 sn</button>
+        <button class="lp-btn lp-rate" type="button" data-ap-act="rate" aria-label="Dinleme hızı">${String(rate).replace(".", ",")}×</button>
+      </div>
+      <p class="muted small ap-note">Bu bölümün kaynaklarından NotebookLM ile üretildi; hata içerebilir, sınav için notları ve kitabı esas al. Ekran kilitliyken de çalar.${PACKS[c.slug + "-ses"] ? ` <a href="#/cevrimdisi">İnternetsiz dinlemek için indir</a>` : ""}</p>
+    </div>`;
+  }
+  const apKey = (el) => { const box = el.closest("[data-ap]"); return box ? box.dataset.ap : ""; };
+  const apSplit = (key) => [key.slice(0, key.lastIndexOf(":")), +key.slice(key.lastIndexOf(":") + 1)];
+  let apSavedAt = 0, apHeard = 0, apLastT = null, apCounted = "";
+  function apSave(el, done) {
+    const key = apKey(el);
+    if (!key) return;
+    const aud = study.aud || (study.aud = {});
+    const prev = aud[key] || {};
+    aud[key] = done ? { at: 0, done: true } : { at: Math.floor(el.currentTime || 0), done: !!prev.done };
+    saveStudy();
+  }
+  function apMedia(el) {
+    if (!("mediaSession" in navigator)) return;
+    const [slug, n] = apSplit(apKey(el));
+    const c = bySlug[slug];
+    if (!c) return;
+    try {
+      navigator.mediaSession.metadata = new MediaMetadata({
+        title: `${n}. ${c.chapters[n - 1].title}`, artist: c.subject, album: `${CONFIG.name} · Sesli dersler`,
+        artwork: [{ src: "icons/icon-192.png", sizes: "192x192", type: "image/png" }, { src: "icons/icon-512.png", sizes: "512x512", type: "image/png" }],
+      });
+      const seek = (d) => () => { el.currentTime = Math.max(0, Math.min(el.duration || 1e9, el.currentTime + d)); };
+      navigator.mediaSession.setActionHandler("seekbackward", seek(-15));
+      navigator.mediaSession.setActionHandler("seekforward", seek(30));
+      navigator.mediaSession.setActionHandler("play", () => el.play());
+      navigator.mediaSession.setActionHandler("pause", () => el.pause());
+    } catch (e) { /* eski tarayıcı */ }
+  }
+  document.addEventListener("loadedmetadata", (e) => {
+    const el = e.target;
+    if (!(el instanceof HTMLAudioElement) || !apKey(el)) return;
+    const st = (study.aud || {})[apKey(el)] || {};
+    if (st.at && !st.done && st.at < (el.duration || 0) - 5) el.currentTime = st.at;
+    el.playbackRate = study.arate || 1;
+  }, true);
+  document.addEventListener("play", (e) => {
+    const el = e.target;
+    if (!(el instanceof HTMLAudioElement) || !apKey(el)) return;
+    lisStop();
+    document.querySelectorAll(".ap audio").forEach((x) => { if (x !== el) x.pause(); });
+    el.playbackRate = study.arate || 1;
+    apLastT = el.currentTime;
+    apMedia(el);
+  }, true);
+  document.addEventListener("timeupdate", (e) => {
+    const el = e.target;
+    if (!(el instanceof HTMLAudioElement) || !apKey(el) || el.paused) return;
+    const t = el.currentTime;
+    if (apLastT !== null && t > apLastT && t - apLastT < 5) apHeard += t - apLastT;
+    apLastT = t;
+    const key = apKey(el);
+    // İki dakika dinlemek seriyi ve günlük çalışmayı sayar (oturum başına bir kez).
+    if (apHeard >= 120 && apCounted !== key + todayKey()) {
+      apCounted = key + todayKey();
+      const day = todayKey(), wasActive = isActive(day);
+      const r = dayRec(day);
+      r.lis = (r.lis || 0) + 1;
+      saveStudy();
+      afterActivity(wasActive, day);
+    }
+    if (Date.now() - apSavedAt > 5000) { apSavedAt = Date.now(); apSave(el, false); }
+  }, true);
+  document.addEventListener("pause", (e) => {
+    const el = e.target;
+    if (el instanceof HTMLAudioElement && apKey(el) && !el.ended) apSave(el, false);
+  }, true);
+  document.addEventListener("ended", (e) => {
+    const el = e.target;
+    if (!(el instanceof HTMLAudioElement) || !apKey(el)) return;
+    apSave(el, true);
+    const [slug, n] = apSplit(apKey(el));
+    const c = bySlug[slug];
+    if (!c) return;
+    if (!readSet(slug).has(n)) showToast("Sesli dersi bitirdin.", "Okundu işaretle", () => { setRead(slug, n, true); paintChapterRead(); });
+    else if (n < c.chapters.length && audioOf(c, n + 1)) showToast("Sesli ders bitti.", "Sonraki bölüme geç", () => { location.hash = `#/course/${slug}/chapter/${n + 1}`; });
+  }, true);
+  document.addEventListener("error", (e) => {
+    const el = e.target;
+    if (!(el instanceof HTMLAudioElement) || !apKey(el)) return;
+    const info = el.closest("[data-ap]").querySelector("[data-ap-info]");
+    if (info) info.textContent = navigator.onLine === false ? "İnternet yok: bu ses cihaza indirilmemiş." : "Ses yüklenemedi; bağlantını kontrol edip tekrar dene.";
+  }, true);
+  document.addEventListener("click", (e) => {
+    if (e.target.closest("[data-ap-jump]")) {
+      const box = document.querySelector("[data-ap]");
+      if (box) { box.scrollIntoView({ behavior: "smooth", block: "center" }); box.querySelector("audio").play(); }
+      return;
+    }
+    const b = e.target.closest("[data-ap-act]");
+    if (!b) return;
+    const el = b.closest("[data-ap]").querySelector("audio");
+    const act = b.dataset.apAct;
+    if (act === "rate") {
+      const i = AUDIO_RATES.indexOf(study.arate || 1);
+      study.arate = AUDIO_RATES[(i + 1) % AUDIO_RATES.length];
+      saveStudy();
+      el.playbackRate = study.arate;
+      b.textContent = String(study.arate).replace(".", ",") + "×";
+      return;
+    }
+    if (el.readyState === 0) { el.play(); return; }
+    el.currentTime = Math.max(0, Math.min(el.duration || 1e9, el.currentTime + (act === "back" ? -15 : 30)));
   });
 
   // ---- notları dinle: bölüm raporunu cihazın Türkçe sesiyle okur ---------------------
@@ -4588,11 +4718,16 @@ document.getElementById("zin").focus();
     await requestPersist();
   }
 
-  function packRowHtml(c) {
-    const pack = PACKS[c.slug];
+  // Paket anahtarı "<ders>" görseller, "<ders>-ses" sesli dersler içindir.
+  const isAudioPack = (key) => key.endsWith("-ses") && !!PACKS[key];
+  const packNoun = (key) => (isAudioPack(key) ? "sesli ders" : "görsel");
+  const packSubject = (key) => { const c = bySlug[isAudioPack(key) ? key.slice(0, -4) : key]; return c ? c.subject : "Ders"; };
+  function packRowHtml(c, key) {
+    key = key || c.slug;
+    const pack = PACKS[key];
     if (!pack) return "";
-    return `<div class="pack" data-pack="${esc(c.slug)}">
-        <div class="pack-text"><b>${esc(c.subject)}</b><span class="muted" data-pack-info>${pack.files.length} görsel · ${mb(pack.bytes)}</span></div>
+    return `<div class="pack" data-pack="${esc(key)}">
+        <div class="pack-text"><b>${esc(c.subject)}${isAudioPack(key) ? " · sesli dersler" : ""}</b><span class="muted" data-pack-info>${pack.files.length} ${packNoun(key)} · ${mb(pack.bytes)}</span></div>
         <div class="pack-bar" hidden><i></i></div>
         <div class="pack-actions" data-pack-actions></div>
       </div>`;
@@ -4602,7 +4737,7 @@ document.getElementById("zin").focus();
     if (!PACKS[c.slug] || !canCache) return "";
     return `<section class="offline-card"><p class="eyebrow">Çevrimdışı</p>
       <p>Ders notları, testler ve çıkmış sorular siteyi bir kez açınca bu cihaza kaydedilir. Görselleri de internetsiz görmek için dersi indirin.</p>
-      ${packRowHtml(c)}
+      ${packRowHtml(c)}${packRowHtml(c, c.slug + "-ses")}
       <p class="muted small"><a href="#/cevrimdisi">Tüm dersler, yedek ve kurulum</a></p></section>`;
   }
 
@@ -4625,13 +4760,13 @@ document.getElementById("zin").focus();
     try { st = await packStatus(slug); } catch (e) { st = null; }
     if (!st) { info.textContent = "Bu tarayıcı indirmeyi desteklemiyor."; actions.innerHTML = ""; return; }
     if (st.ready === st.files) {
-      info.innerHTML = `<span class="badge pass">İndirildi</span> ${pack.files.length} görsel · ${mb(pack.bytes)}`;
+      info.innerHTML = `<span class="badge pass">İndirildi</span> ${pack.files.length} ${packNoun(slug)} · ${mb(pack.bytes)}`;
       actions.innerHTML = `<button class="btn ghost" data-pack-del>Sil</button>`;
     } else if (st.ready > 0) {
       info.innerHTML = `<span class="badge fail">Güncelleme var</span> ${mb(st.missingBytes)} indirilecek`;
       actions.innerHTML = `<button class="btn" data-pack-get>Güncelle</button><button class="btn ghost" data-pack-del>Sil</button>`;
     } else {
-      info.textContent = `${pack.files.length} görsel · ${mb(pack.bytes)}`;
+      info.textContent = `${pack.files.length} ${packNoun(slug)} · ${mb(pack.bytes)}`;
       actions.innerHTML = `<button class="btn" data-pack-get>İndir</button>`;
     }
   }
@@ -4658,7 +4793,7 @@ document.getElementById("zin").focus();
     try {
       await downloadPack(slug, (done, total) => { activeDownloads[slug] = { done, total }; paintPacks(); });
       delete activeDownloads[slug];
-      showToast(`${bySlug[slug] ? bySlug[slug].subject : "Ders"} indirildi. Görseller artık internetsiz de açılır.`);
+      showToast(isAudioPack(slug) ? `${packSubject(slug)} sesli dersleri indirildi. Artık internetsiz dinlenebilir.` : `${packSubject(slug)} indirildi. Görseller artık internetsiz de açılır.`);
     } catch (err) {
       delete activeDownloads[slug];
       const full = err && (err.name === "QuotaExceededError" || /quota/i.test(String(err.message)));
@@ -4697,7 +4832,7 @@ document.getElementById("zin").focus();
   }
 
   function viewOffline() {
-    const rows = COURSES.map(packRowHtml).join("");
+    const rows = COURSES.map((c) => packRowHtml(c) + packRowHtml(c, c.slug + "-ses")).join("");
     return `<p class="eyebrow">İnternetsiz çalışma</p><h1>Çevrimdışı kullanım</h1>
       <p class="lead muted">Siteyi bir kez açtığınızda ders notları, testler, çıkmış sorular ve arama bu cihaza kaydedilir. İnfografikler büyük olduğu için ders ders indirilir.</p>
       <p id="shell-state" class="muted">${canCache ? "Kontrol ediliyor…" : "Bu tarayıcı çevrimdışı kaydı desteklemiyor."}</p>
@@ -4761,6 +4896,7 @@ document.getElementById("zin").focus();
     // Sınav planı ve dinleme konumu: bu cihazda yoksa yedekten gelir.
     if (!study.plan && b.plan && typeof b.plan === "object") study.plan = b.plan;
     study.listen = Object.assign({}, b.listen || {}, study.listen || {});
+    study.aud = Object.assign({}, b.aud || {}, study.aud || {});
     study.kcards = study.kcards || {};
     for (const [id, card] of Object.entries(b.kcards || {})) {
       const a = study.kcards[id];

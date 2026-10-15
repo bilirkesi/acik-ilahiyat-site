@@ -170,7 +170,28 @@ def course_data(proj, slug):
     okunus = d / "okunus.json"
     if okunus.exists():
         course["okunus"] = json.loads(okunus.read_text(encoding="utf-8"))
+    audio = chapter_audio(proj, slug)
+    if audio:
+        course["audio"] = audio
     return course
+
+
+def chapter_audio(proj, slug):
+    """Bölüm sesli dersleri (scripts/generate_chapter_audio.py üretir).
+
+    data/<slug>/audio.json'daki her bölüm için site/audio/<slug>/<file> varsa
+    {"<n>": {src, dur, bytes}} döner; app.js bölüm sayfasında <audio> oynatıcısı gösterir.
+    """
+    spec = proj.root / "data" / slug / "audio.json"
+    if not spec.exists():
+        return None
+    out = {}
+    for a in json.loads(spec.read_text(encoding="utf-8-sig")).get("chapters", []):
+        f = proj.root / "site" / "audio" / slug / a["file"]
+        if f.exists():
+            out[str(a["chapter"])] = {"src": f"audio/{slug}/{a['file']}", "dur": round(a.get("duration", 0)),
+                                      "bytes": f.stat().st_size}
+    return out or None
 
 
 def book_unit_images(proj, slug, out_dir):
@@ -262,6 +283,10 @@ def offline_packs(site, data, images):
                     continue
                 files.append([q, rev(f), f.stat().st_size])
         packs[slug] = {"bytes": sum(x[2] for x in files), "files": files}
+        # Sesli dersler ayrı paket: görsellerden bağımsız indirilip silinebilsin.
+        audio = [[a["src"], rev(site / a["src"]), a["bytes"]] for _, a in sorted((course.get("audio") or {}).items(), key=lambda x: int(x[0]))]
+        if audio:
+            packs[slug + "-ses"] = {"bytes": sum(x[2] for x in audio), "files": audio}
     return {"packs": packs, "images": images}
 
 

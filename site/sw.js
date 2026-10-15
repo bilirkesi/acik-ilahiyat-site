@@ -5,12 +5,14 @@
  *   bu dosya da değişir ve tarayıcı yeni sürümü kurar.
  * - Ders görselleri (assets/<ders>/) kullanıcı "Çevrimdışı" sayfasından indirirse "pu-pack-<ders>"
  *   önbelleğine girer. Gezinirken görülen görseller sınırlı bir çalışma önbelleğinde tutulur.
+ * - Sesli dersler (audio/<ders>/) indirilirse "pu-pack-<ders>-ses" önbelleğinden aralıklı (206) yanıtla
+ *   sunulur; Safari ses öğesine tam dosya değil Range yanıtı ister. İndirilmemiş ses ağdan gelir.
  * - Önbellek anahtarları sorgu dizesi olmadan tutulur (app.js?v=... ile app.js aynı kayıttır).
  * - Yeni sürüm kendiliğinden devreye girmez; sayfa "Yeni sürüm hazır" der ve kullanıcı onaylayınca
  *   SKIP_WAITING mesajı gelir.
  */
-const VERSION = "1792070903";
-const SHELL = [["index.html", "e82a7e68fc"], ["styles.css", "c245fea078"], ["app.js", "703d7c31ce"], ["data.js", "976da7b39b"], ["interactive.js", "96bd801555"], ["coursegraph.js", "f168bc6420"], ["past_exams.js", "097d3a6827"], ["unit_quizzes.js", "1e7154c66c"], ["manifest.webmanifest", "367a1f17e6"], ["favicon.svg", "a87be0e6df"], ["fonts/eb-garamond-latin-ext-wght-italic.woff2", "fa866520f8"], ["fonts/eb-garamond-latin-ext-wght-normal.woff2", "f8d3fa06e2"], ["fonts/eb-garamond-latin-wght-italic.woff2", "c664773f7e"], ["fonts/eb-garamond-latin-wght-normal.woff2", "8860338416"], ["fonts/inter-latin-ext-wght-normal.woff2", "34b9c504ca"], ["fonts/inter-latin-wght-normal.woff2", "3100e775e8"], ["fonts/noto-naskh-arabic-arabic-wght-normal.woff2", "2a10d33e1f"], ["icons/apple-touch-icon.png", "d020f54934"], ["icons/icon-192.png", "abb211f492"], ["icons/icon-512.png", "0704b90520"], ["icons/icon-maskable-512.png", "d818a378b3"]];
+const VERSION = "1792073891";
+const SHELL = [["index.html", "d3817a55d3"], ["styles.css", "587cec6dc6"], ["app.js", "43a3b0643c"], ["data.js", "df796ba08f"], ["interactive.js", "96bd801555"], ["coursegraph.js", "f168bc6420"], ["past_exams.js", "097d3a6827"], ["unit_quizzes.js", "1e7154c66c"], ["manifest.webmanifest", "367a1f17e6"], ["favicon.svg", "a87be0e6df"], ["fonts/eb-garamond-latin-ext-wght-italic.woff2", "fa866520f8"], ["fonts/eb-garamond-latin-ext-wght-normal.woff2", "f8d3fa06e2"], ["fonts/eb-garamond-latin-wght-italic.woff2", "c664773f7e"], ["fonts/eb-garamond-latin-wght-normal.woff2", "8860338416"], ["fonts/inter-latin-ext-wght-normal.woff2", "34b9c504ca"], ["fonts/inter-latin-wght-normal.woff2", "3100e775e8"], ["fonts/noto-naskh-arabic-arabic-wght-normal.woff2", "2a10d33e1f"], ["icons/apple-touch-icon.png", "d020f54934"], ["icons/icon-192.png", "abb211f492"], ["icons/icon-512.png", "0704b90520"], ["icons/icon-maskable-512.png", "d818a378b3"]];
 const SHELL_PREFIX = "pu-shell-";
 const SHELL_CACHE = SHELL_PREFIX + VERSION;
 const PACK_PREFIX = "pu-pack-";
@@ -104,6 +106,28 @@ async function respond(req, url) {
   }
 }
 
+async function audio(req, url) {
+  const hit = await match(url.origin + url.pathname);
+  if (!hit) {
+    try { return await fetch(req); } catch (e) { return new Response("", { status: 504, statusText: "Offline" }); }
+  }
+  const range = req.headers.get("range");
+  if (!range) return hit;
+  const blob = await hit.blob();
+  const size = blob.size;
+  const m = /bytes=(\d*)-(\d*)/.exec(range) || [];
+  let start = m[1] ? +m[1] : 0, end = m[2] ? +m[2] : size - 1;
+  if (!m[1] && m[2]) { start = Math.max(0, size - +m[2]); end = size - 1; }
+  end = Math.min(end, size - 1);
+  if (start > end) return new Response("", { status: 416, headers: { "Content-Range": `bytes */${size}` } });
+  return new Response(blob.slice(start, end + 1), { status: 206, headers: {
+    "Content-Type": hit.headers.get("Content-Type") || "audio/mp4",
+    "Content-Range": `bytes ${start}-${end}/${size}`,
+    "Content-Length": String(end - start + 1),
+    "Accept-Ranges": "bytes",
+  } });
+}
+
 async function navigate(req) {
   const page = await (await caches.open(SHELL_CACHE)).match(abs("index.html"));
   if (page) return page;
@@ -124,6 +148,11 @@ self.addEventListener("fetch", (event) => {
   // Sayfanın ders paketi indirirken yaptığı istekler (assets/...?v=rev) doğrudan ağa gider.
   if (url.pathname.includes("/assets/") && url.searchParams.has("v")) return;
   const path = url.pathname.slice(new URL(scope()).pathname.length);
+  if (path.startsWith("audio/")) {
+    if (url.searchParams.has("v")) return; // paket indirmesi doğrudan ağa gider
+    event.respondWith(audio(req, url));
+    return;
+  }
   if (req.mode === "navigate" && (path === "" || path === "index.html")) {
     event.respondWith(navigate(req));
     return;

@@ -9,6 +9,7 @@
 - `scripts/common.py` — shared project/course helpers.
 - `scripts/pipeline.py`, `preflight.py`, `qa.py`, `redo.py`, `sheet.py` — full generation, validation, and contact-sheet tooling.
 - `scripts/add_course.py`, `new_project.py` — scaffold a course or a new project.
+- `chapter_audio()` in `build.py` reads `data/<slug>/audio.json` and adds `course.audio` for MP3s that exist under `site/audio/<slug>/`; `offline_packs()` exposes them as the separate `<slug>-ses` pack.
 - `scripts/okunus.py` — builds `data/<slug>/okunus.json` (Arabic-script → Latin reading) for tap-to-pronounce.
 - `site-template/` — the SPA source that becomes `site/`: `app.js`, `index.html`, `styles.css`, `interactive.js`, `sw.js`, `manifest.webmanifest`, `favicon.svg`, `fonts/`, `icons/`.
 - `README.md`, `INSTALL_PROMPT.md` — upstream skill docs.
