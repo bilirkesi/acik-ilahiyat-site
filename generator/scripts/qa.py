@@ -20,10 +20,21 @@ site = proj.root / "site"
 fails, warns = [], []
 
 js = (site / "data.js").read_text() if (site / "data.js").exists() else sys.exit("No site/data.js. Run build.py first.")
-m = re.search(r"window\.UNIVERSITY = (.*?);\nwindow\.COURSES = (.*);\s*$", js, re.S)
-if not m:
+# data.js birden fazla global içerir (UNIVERSITY, COURSES, OFFLINE); her birini sırayla çöz.
+dec = json.JSONDecoder()
+
+
+def js_global(name):
+    prefix = f"window.{name} = "
+    i = js.index(prefix)
+    obj, _ = dec.raw_decode(js, i + len(prefix))
+    return obj
+
+
+try:
+    uni, courses = js_global("UNIVERSITY"), js_global("COURSES")
+except (ValueError, json.JSONDecodeError):
     sys.exit("data.js does not have the expected shape")
-uni, courses = json.loads(m.group(1)), json.loads(m.group(2))
 
 for name in ("index.html", "app.js", "styles.css", "data.js"):
     text = (site / name).read_text()
