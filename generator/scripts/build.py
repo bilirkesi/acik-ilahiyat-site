@@ -170,6 +170,10 @@ def course_data(proj, slug):
     okunus = d / "okunus.json"
     if okunus.exists():
         course["okunus"] = json.loads(okunus.read_text(encoding="utf-8"))
+    # Harf atölyesi sözlüğü: kelimenin güncel karşılığı ve örnek cümle (Arap harfli, okunuş, anlam).
+    sozluk = d / "sozluk.json"
+    if sozluk.exists():
+        course["sozluk"] = json.loads(sozluk.read_text(encoding="utf-8"))
     audio = chapter_audio(proj, slug)
     if audio:
         course["audio"] = audio

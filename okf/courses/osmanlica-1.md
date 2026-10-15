@@ -18,7 +18,7 @@ school: Anadolu Üniversitesi Açıköğretim Fakültesi
 mode: sources
 language: tr
 status: active
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-14T21:29:52Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-15T22:46:19Z }
 resource: "https://www.youtube.com/playlist?list=PLfFz63YLe29oglXKkTU5wQ507Sw_z_G7T"
 notebook: "https://notebooklm.google.com/notebook/18b3f791-a3cd-4d19-a002-ced4ebfe16ae"
 sources:
@@ -50,6 +50,7 @@ Bu dersin bölümleri AÖF ders kitabından (Anadolu Üniversitesi, 2018) hazır
 
 * [Bölümler](/courses/osmanlica-1/chapters/index.md) (8)
 * [Ders kitabı üniteleri](/courses/osmanlica-1/units.md) (8)
+* [Kelime sözlüğü](/courses/osmanlica-1/sozluk.md) (227)
 * [Quiz](/courses/osmanlica-1/quiz.md)
 * [Ünite quizleri](/courses/osmanlica-1/unit-quizzes/index.md) (8 ünite, 98 soru)
 * [Sınavlar](/courses/osmanlica-1/exams/index.md) - vize, final, yaz kursu

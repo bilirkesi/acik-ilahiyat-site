@@ -2,7 +2,7 @@
 """Ders verisini OKF (Open Knowledge Format) v0.2 bundle'ına çevirir.
 
 Kaynak:
-  courses.json, data/<slug>/{study_plan,quiz,manifest,unit_infographics}.json,
+  courses.json, data/<slug>/{study_plan,quiz,manifest,unit_infographics,sozluk}.json,
   site/interactive.js (window.INTERACTIVE), artifacts/catalog.json
 
 assets/ ve artifacts/ git'e girmez. Bulunmadıklarında (ör. temiz bir klon)
@@ -444,6 +444,8 @@ def main() -> int:
         references = plan.get("references", [])
         panel = interactive.get(slug, {})
         book_units = load_book_units(slug)
+        sozluk_path = ROOT / "data" / slug / "sozluk.json"
+        sozluk = load_json(sozluk_path) if sozluk_path.exists() else {}
         unit_quizzes = load_unit_quizzes(slug)
         chapter_audio = load_chapter_audio(slug)
 
@@ -493,6 +495,7 @@ def main() -> int:
             f"# Özet\n\n{meta.get('note', '')}\n",
             f"# Yapı\n\n* [Bölümler](/courses/{slug}/chapters/index.md) ({len(chapters)})\n"
             + (f"* [Ders kitabı üniteleri](/courses/{slug}/units.md) ({len(book_units)})\n" if book_units else "")
+            + (f"* [Kelime sözlüğü](/courses/{slug}/sozluk.md) ({len(sozluk)})\n" if sozluk else "")
             + f"* [Quiz](/courses/{slug}/quiz.md)\n"
             + (f"* [Ünite quizleri](/courses/{slug}/unit-quizzes/index.md) "
                f"({len(unit_quizzes)} ünite, {sum(len(u['questions']) for u in unit_quizzes)} soru)\n" if unit_quizzes else "")
@@ -657,6 +660,30 @@ def main() -> int:
                 ("generated", f"{{ by: {ACTOR}, at: {NOW} }}"),
             ]
             write(OKF / "courses" / slug / "units.md", fm(u_fm) + "\n".join(u_lines))
+
+        # harf atölyesi sözlüğü (sozluk.json): okunuş, güncel karşılık, örnek cümle
+        if sozluk:
+            okunus = load_json(ROOT / "data" / slug / "okunus.json") if (ROOT / "data" / slug / "okunus.json").exists() else {}
+            rows = sorted(sozluk.items(), key=lambda kv: okunus.get(kv[0], "").lower())
+            s_lines = [
+                f"# {meta.get('subject', slug)} Kelime Sözlüğü\n",
+                "Sitedeki harf atölyesinin kelime okuma alıştırmasında kullanılan kelimeler. "
+                "Örnek cümleler alıştırma için yazıldı; ders kitabından alınmadı.\n",
+                "| Kelime | Okunuş | Güncel Türkçe | Örnek | Örneğin okunuşu | Anlamı |",
+                "|---|---|---|---|---|---|",
+            ]
+            for k, e in rows:
+                s_lines.append("| " + " | ".join(md_escape_cell(x) for x in (
+                    k, okunus.get(k, ""), e.get("tr", ""), e.get("ornek", ""), e.get("okunus", ""), e.get("anlam", ""))) + " |")
+            s_fm = [
+                ("type", "Glossary"),
+                ("title", f"{meta.get('subject', slug)} kelime sözlüğü"),
+                ("course", slug),
+                ("entry_count", str(len(sozluk))),
+                ("status", "stable"),
+                ("generated", f"{{ by: {ACTOR}, at: {NOW} }}"),
+            ]
+            write(OKF / "courses" / slug / "sozluk.md", fm(s_fm) + "\n".join(s_lines) + "\n")
 
         # quiz
         questions = quiz.get("questions", [])

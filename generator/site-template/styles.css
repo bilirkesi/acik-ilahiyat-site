@@ -1273,3 +1273,13 @@ mark.hl-flash { outline: 2px solid var(--gold); outline-offset: 2px; }
 .hf-formsel select { padding: .45rem .6rem; font: inherit; border: 1px solid var(--line-strong); background: var(--surface); color: inherit; }
 @media (max-width: 480px) { .hf-g { font-size: 1.7rem; } .hf-table th, .hf-table td { padding: .3rem .3rem; } }
 @media print { .hf-trace, #hf-quiz { display: none !important; } }
+.hf-say { background: none; border: 0; padding: 0; color: inherit; cursor: pointer; text-decoration: underline dotted var(--gold); text-decoration-thickness: 1px; text-underline-offset: .35em; }
+.hf-info { margin-top: .8rem; padding-top: .7rem; border-top: 1px solid var(--line); text-align: center; }
+.hf-info p, .hf-dict p { margin: .25rem 0; }
+.hf-ex .ota { font-size: 1.5rem; }
+.hf-exr { font-size: .92rem; }
+.hf-find { display: block; margin: 1rem 0 .6rem; }
+.hf-dict { list-style: none; padding: 0; margin: 0; display: grid; gap: .5rem; }
+.hf-dict > li { background: var(--paper); border: 1px solid var(--line); padding: .7rem .9rem; }
+.hf-dw .ota { font-size: 1.7rem; margin-right: .4rem; }
+.hf-dict .hf-ex .ota { font-size: 1.3rem; }
