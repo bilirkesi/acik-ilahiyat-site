@@ -65,7 +65,7 @@ Default section order:
 ## Project
 - Name: Açık İlahiyat Üniversitesi — a free, static study site for AÖF (Anadolu Üniversitesi) İlahiyat associate-degree courses.
 - Runtime: **no backend**. `site/` is a static SPA (hash router) served from any static host. All data ships as JS bundles that assign to `window.*`.
-- Source of truth for configuration: `university.json` (branding, pass mark, colors), `courses.json` (the four courses), `universities.json`.
+- Source of truth for configuration: `university.json` (branding, pass mark, colors, exam dates, AÖF grading weights and pass threshold), `courses.json` (the four courses), `universities.json`.
 - Source of truth for course content: `data/<slug>/` (see `data/AGENTS.md`).
 - Study materials are generated from NotebookLM notebooks fed with AÖF PDFs and YouTube lecture captions.
 - Python entry points are run as modules from the repo root (`py -3 -m coursegraph.…`) or as scripts (`py -3 scripts/….py`). On Windows the working launcher is `py -3`; `python` is not on PATH.

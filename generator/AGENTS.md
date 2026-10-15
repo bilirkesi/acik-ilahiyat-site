@@ -15,6 +15,7 @@
 
 ## Local Contracts
 - Run from the repo root: `py -3 generator/scripts/build.py .` (Python 3.8+ stdlib; Pillow only to compress new PNGs).
+- `public_config` in `build.py` whitelists the `university.json` keys that reach `window.UNIVERSITY` (incl. `exams`, `grading`); a new config key must be added there.
 - `build.py` reads `university.json`, `courses.json`, and `data/<slug>/`; it does **not** read `okf/` or `coursegraph/index/`.
 - `SHELL_FILES` in `build.py` lists the PWA app shell hashed into `sw.js`: `index.html`, `styles.css`, `app.js`, `data.js`, `interactive.js`, `coursegraph.js`, `past_exams.js`, `unit_quizzes.js`, `manifest.webmanifest`, `favicon.svg`. Adding a new lazy bundle means adding it here too.
 - Cache busting uses a single `{{V}}` token stamped into `index.html`, `styles.css?v=`, and `sw.js`.

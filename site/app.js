@@ -606,12 +606,22 @@
   const TR_FOLD = { "ç": "c", "Ç": "c", "ğ": "g", "Ğ": "g", "ı": "i", "İ": "i", "I": "i", "ö": "o", "Ö": "o", "ş": "s", "Ş": "s", "ü": "u", "Ü": "u", "â": "a", "Â": "a", "î": "i", "Î": "i", "û": "u", "Û": "u" };
   const norm = (s) => String(s || "").replace(/[çÇğĞıİIöÖşŞüÜâÂîÎûÛ]/g, (ch) => TR_FOLD[ch]).toLowerCase().replace(/\$/g, "").replace(/[^a-z0-9.%-]+/g, " ").trim();
 
-  function questionHTML(q, i) {
+  // "Emin misin?" satırı: cevabı kontrol etmeden önce isteğe bağlı Eminim / Tahmin seçimi. Emin olup
+  // yanlış yapılan sorular ("yanlış bildiklerin") Hatalarım'da öne çıkar, tahminle doğrular erken tekrar edilir.
+  // Deneme sınavında ve sonuç listesinde gösterilmez (opts.conf === false).
+  function confHtml(q, i, opts) {
+    if ((opts && opts.conf === false) || study.confOff || !q._qid) return "";
+    if (!Array.isArray(q.answerOptions) || !q.answerOptions.some((o) => o.isCorrect)) return "";
+    return `<div class="conf-row" data-conf><span>Cevabından emin misin?</span>
+      <label class="conf-opt"><input type="radio" name="conf${i}" value="1"><span>Eminim</span></label>
+      <label class="conf-opt"><input type="radio" name="conf${i}" value="0"><span>Tahmin</span></label></div>`;
+  }
+  function questionHTML(q, i, opts) {
     const head = `<div class="qn">Soru ${i + 1}${GRADED.has(q.type) ? "" : " · Tartışma, puanlanmaz"}</div><div class="qt">${stemHtml(q)}</div>`;
     if ((q.type === "multiple_choice" || q.type === "multiple_select") && Array.isArray(q.answerOptions)) {
       const type = q.type === "multiple_choice" ? "radio" : "checkbox";
-      const opts = q.answerOptions.map((o, j) => `<label class="opt" data-opt="${j}"><input type="${type}" name="q${i}" value="${j}"><span>${optHtml(o, true)}</span></label><div class="rationale" data-rat="${j}" hidden>${txt(o.rationale || "")}</div>`).join("");
-      return head + (q.type === "multiple_select" ? `<p class="muted" style="font-size:.85rem;margin-top:-.4rem">Doğru olan tüm seçenekleri işaretleyin.</p>` : "") + opts + (q.hint ? `<details class="hint"><summary>İpucu</summary>${esc(q.hint)}</details>` : "");
+      const opts2 = q.answerOptions.map((o, j) => `<label class="opt" data-opt="${j}"><input type="${type}" name="q${i}" value="${j}"><span>${optHtml(o, true)}</span></label><div class="rationale" data-rat="${j}" hidden>${txt(o.rationale || "")}</div>`).join("");
+      return head + (q.type === "multiple_select" ? `<p class="muted" style="font-size:.85rem;margin-top:-.4rem">Doğru olan tüm seçenekleri işaretleyin.</p>` : "") + opts2 + confHtml(q, i, opts) + (q.hint ? `<details class="hint"><summary>İpucu</summary>${esc(q.hint)}</details>` : "");
     }
     if (q.type === "fill_in_the_blank") {
       return head + `<input type="text" name="q${i}" autocomplete="off" placeholder="Cevabınız">` + (q.hint ? `<details class="hint"><summary>İpucu</summary>${esc(q.hint)}</details>` : "");
@@ -633,6 +643,9 @@
   }
 
   function showFeedback(q, i, ok, box) {
+    const confIn = box.querySelector("[data-conf] input:checked");
+    const conf = confIn ? +confIn.value : null;
+    pendingConf = q._qid ? { id: q._qid, v: conf } : null;
     if ((q.type === "multiple_choice" || q.type === "multiple_select") && Array.isArray(q.answerOptions)) {
       q.answerOptions.forEach((o, j) => {
         const lab = box.querySelector(`[data-opt="${j}"]`);
@@ -659,6 +672,8 @@
       box.appendChild(d);
       typeset(d);
     }
+    if (conf === 1 && ok === false) box.insertAdjacentHTML("beforeend", `<p class="conf-note hc"><b>Emin olduğun bir yanlış.</b> Bunlar en değerli hatalar: doğrusunu şimdi dikkatle okursan kalıcı düzelir. Soru Hatalarım'da en üste alındı.</p>`);
+    else if (conf === 0 && ok === true) box.insertAdjacentHTML("beforeend", `<p class="conf-note"><b>Tahminle doğru.</b> Bu soru bilinmiş sayılmaz; tekrar listesine erken gelecek.</p>`);
     if (Array.isArray(q.chapterMeta) && q.chapterMeta.length) {
       const wrap = document.createElement("div");
       wrap.className = "solution-links";
@@ -942,6 +957,7 @@
         </a>`).join("")}
         ${unitQuizCard(c)}
         <a class="exam-card" href="#/karisik?ders=${c.slug}"><span class="exam-badge">Karışık</span><h3>Karışık test</h3><p>Bu dersten ünite seçerek alıştırma ya da süreli deneme sınavı.</p></a>
+        ${sessions.length ? `<a class="exam-card" href="#/sikcikan?ders=${c.slug}"><span class="exam-badge">Strateji</span><h3>Sık çıkan konular</h3><p>Çıkmış vizelerde ünite dağılımı ve yıllarca tekrar sorulan konular.</p></a>` : ""}
       </div>
       ${sessions.length ? `<h2>Çıkmış vize dönemleri</h2><ul class="past-list">${pastList}</ul>` : ""}`;
   }
@@ -1064,6 +1080,8 @@
         <a class="exam-card" href="#/karisik?mod=deneme"><span class="exam-badge">AÖF formatı</span><h3>Deneme sınavı</h3><p>Seçtiğin derslerden 20 soru, 30 dakika. Sonunda net ve puan; 4 yanlış 1 doğruyu götürür.</p></a>
         <a class="exam-card" href="#/karisik?mod=alistirma"><span class="exam-badge">Karışık</span><h3>Karışık test</h3><p>Ders, kaynak ve ünite seçerek kendi testini oluştur; yanlışlarından ya da hiç çözmediklerinden.</p></a>
         <a class="exam-card" href="#/analiz"><span class="exam-badge">Analiz</span><h3>Gelişim paneli</h3><p>Ünite ünite doğruluk, en zayıf 10 konu ve deneme puanlarının gelişimi.</p></a>
+        <a class="exam-card" href="#/sikcikan"><span class="exam-badge">Strateji</span><h3>Sık çıkan konular</h3><p>Çıkmış vizelerde hangi üniteden kaç soru geldi, hangi konular yıllarca tekrar soruldu.</p></a>
+        <a class="exam-card" href="#/puan"><span class="exam-badge">Hesapla</span><h3>Not hesaplayıcı</h3><p>Finalde kaç alman gerektiği ve bugün sınava girsen tahmini puanın.</p></a>
       </div>
       <h2>Dersler</h2>
       <ul class="past-list">${rows}</ul>`;
@@ -1534,17 +1552,33 @@
 
   // -- cevap kaydı: tüm sınav modları buradan geçer --
   // g verilmezse doğru=İyi(3), yanlış=Tekrar(1) sayılır. kind: "exam" | "review" | "fresh"
+  // Son kontrol edilen sorunun "Emin misin?" seçimi (showFeedback yazar, recordAnswer aynı soru için tüketir).
+  let pendingConf = null;
+  // Kartta cf: son cevaptaki güven (1 eminim, 0 tahmin), sw: emin olup yanlış yapma sayısı.
+  // study.calib = { s: [cevap, doğru], g: [cevap, doğru] } eminim / tahmin cevaplarının isabeti.
   function recordAnswer(id, ok, g, kind) {
     if (!id || ok === null || ok === undefined) return;
+    const conf = pendingConf && pendingConf.id === id ? pendingConf.v : null;
+    pendingConf = null;
     const now = Date.now();
     const key = dayKey(now);
     const wasActive = isActive(key);
     const prev = study.cards[id];
-    const card = fsrsNext(prev, g || (ok ? 3 : 1), now);
+    // Tahminle bulunan doğru "İyi" değil "Zor" sayılır: kart daha erken yeniden gelir.
+    const card = fsrsNext(prev, g || (ok ? (conf === 0 ? 2 : 3) : 1), now);
     card.right = (prev && prev.right || 0) + (ok ? 1 : 0);
     card.wrong = (prev && prev.wrong || 0) + (ok ? 0 : 1);
     if (ok && prev && prev.ok === false) card.fixedAt = now;
     card.ok = !!ok;
+    if (conf === null) delete card.cf;
+    else {
+      card.cf = conf;
+      if (conf === 1 && !ok) card.sw = (card.sw || 0) + 1;
+      const cal = study.calib || (study.calib = { s: [0, 0], g: [0, 0] });
+      const row = cal[conf ? "s" : "g"];
+      row[0]++;
+      if (ok) row[1]++;
+    }
     study.cards[id] = card;
     // Son cevaplar (karışık testte "son 50 cevapta yanlışlarım" süzgeci için), en fazla 3000 kayıt.
     study.log.push([now, id, ok ? 1 : 0]);
@@ -1717,7 +1751,7 @@
         </a>
         ${kavramDeskHtml()}
       </div>
-      <div class="btn-row desk-links"><a class="btn ghost" href="#/karisik">Karışık test</a><a class="btn ghost" href="#/karisik?mod=deneme">Deneme sınavı</a><a class="btn ghost" href="#/analiz">Gelişim analizi</a><a class="btn ghost" href="#/oyunlar">Bulmaca ve kelime oyunları</a></div>
+      <div class="btn-row desk-links"><a class="btn ghost" href="#/karisik">Karışık test</a><a class="btn ghost" href="#/karisik?mod=deneme">Deneme sınavı</a><a class="btn ghost" href="#/analiz">Gelişim analizi</a><a class="btn ghost" href="#/sikcikan">Sık çıkan konular</a><a class="btn ghost" href="#/puan">Not hesaplayıcı</a><a class="btn ghost" href="#/oyunlar">Bulmaca ve kelime oyunları</a></div>
       ${resumeVideoHtml()}
       <h2>Bu hafta</h2>
       <div class="week-grid">
@@ -1747,6 +1781,7 @@
         <label>Günde yeni kart
           <select name="newPerDay">${NEW_OPTIONS.map((n) => `<option value="${n}"${n === study.newPerDay ? " selected" : ""}>${n ? n + " kart" : "Kapalı"}</option>`).join("")}</select>
         </label>
+        <label class="chk"><input type="checkbox" name="conf"${study.confOff ? "" : " checked"}> Soruları kontrol etmeden önce "Emin misin?" diye sor</label>
         <fieldset><legend>Tekrara katılan dersler</legend>
           ${COURSES.map((c) => `<label class="chk"><input type="checkbox" name="course" value="${esc(c.slug)}"${sel.has(c.slug) ? " checked" : ""}> ${esc(c.subject)}</label>`).join("")}
         </fieldset>
@@ -1759,6 +1794,7 @@
     f.addEventListener("change", () => {
       study.goal = +f.goal.value || 20;
       study.newPerDay = +f.newPerDay.value;
+      study.confOff = !f.conf.checked;
       const picked = [...f.querySelectorAll("[name=course]:checked")].map((x) => x.value);
       study.courses = picked.length === COURSES.length ? null : picked;
       saveStudy();
@@ -1955,7 +1991,7 @@
       const read = readSet(slug), units = plan.units[slug];
       const r = units.filter((n) => read.has(n)).length;
       return `<tr><th scope="row">${esc(c.subject)}<small>Ünite ${units.length === unitCount(c) ? "tümü" : units.join(", ")}</small></th>
-        <td>${r}/${units.length}</td><td>${pc.seen}/${pc.total}</td><td>${pc.answered ? pct(pc.ok / pc.answered) : "-"}</td></tr>`;
+        <td>${r}/${units.length}</td><td>${pc.seen}/${pc.total}</td><td>${pc.answered ? pct(pc.ok / pc.answered) : "-"}</td><td><a href="#/puan">${readinessText(readiness(slug, units))}</a></td></tr>`;
     }).join("");
     const phase = plan.days === 0 ? "Sınav günü: yeni konu açma, Hatalarım'a göz at ve dinlen."
       : plan.days <= k.buffer ? "Tekrar dönemindesin: okuma bitti sayılır, soru çöz, deneme yap, yanlışlarını kapat."
@@ -1970,7 +2006,8 @@
       <h2>Bugünün işi</h2>
       <ul class="plan-tasks">${tasks.join("")}</ul>
       <h2>Kapsamdaki durumun</h2>
-      <div class="table-wrap"><table class="plan-table"><thead><tr><th scope="col">Ders</th><th scope="col">Okunan bölüm</th><th scope="col">Görülen soru</th><th scope="col">Doğruluk</th></tr></thead><tbody>${rows}</tbody></table></div>
+      <div class="table-wrap"><table class="plan-table"><thead><tr><th scope="col">Ders</th><th scope="col">Okunan bölüm</th><th scope="col">Görülen soru</th><th scope="col">Doğruluk</th><th scope="col">Tahmini puan</th></tr></thead><tbody>${rows}</tbody></table></div>
+      <p class="muted small">Tahmini puan, çözdüğün soruları bugün ne kadar hatırladığından hesaplanır. <a href="#/puan">Not hesaplayıcı</a> · <a href="#/sikcikan">Sık çıkan konular</a></p>
       ${form}
       <p class="muted small">Plan her gün kalan güne göre yeniden hesaplanır. Ayarlar bu tarayıcıda saklanır ve <a href="#/cevrimdisi?b=yedek">yedek koduna</a> dahildir.</p>`;
   }
@@ -2076,7 +2113,9 @@
   function viewMistakes(query) {
     const slug = bySlug[query.ders] ? query.ders : "";
     const all = openMistakes().filter(([id]) => bySlug[courseOfId(id)]);
-    const list = all.filter(([id]) => !slug || courseOfId(id) === slug).sort((a, b) => (b[1].wrong - a[1].wrong) || (b[1].last - a[1].last));
+    // Emin olup yanlış yaptıkların ("yanlış bildiklerin") en üstte.
+    const sureWrong = (c) => (c.cf === 1 ? 1 : 0);
+    const list = all.filter(([id]) => !slug || courseOfId(id) === slug).sort((a, b) => (sureWrong(b[1]) - sureWrong(a[1])) || (b[1].wrong - a[1].wrong) || (b[1].last - a[1].last));
     const fixedWeek = Object.values(study.cards).filter((c) => c.ok && c.fixedAt && c.fixedAt > addDays(Date.now(), -7)).length;
     const bank = questionBank();
     const units = {};
@@ -2091,7 +2130,7 @@
         <div class="mistake-body">
           <p class="mistake-meta">${esc(c.subject)} · ${esc(x.label)}${x.unit ? ` · Ünite ${x.unit}` : ""}</p>
           <p class="mistake-q">${txt(stem.length > 180 ? stem.slice(0, 177) + "…" : stem)}</p>
-          <p class="mistake-meta">${card.wrong} kez yanlış${card.right ? `, ${card.right} kez doğru` : ""} · son: ${fmtDay(dayKey(card.last))}</p>
+          <p class="mistake-meta">${card.cf === 1 ? `<span class="badge fail conf-badge">Emin olduğun hata</span> ` : ""}${card.wrong} kez yanlış${card.right ? `, ${card.right} kez doğru` : ""} · son: ${fmtDay(dayKey(card.last))}</p>
         </div>
         <div class="mistake-actions">
           <button class="btn sm-mini" type="button" data-ask="${esc(id)}">Soruyu sor</button>
@@ -2244,7 +2283,10 @@
           next();
         };
         actions.querySelectorAll("[data-g]").forEach((b) => (b.onclick = () => rate(+b.dataset.g)));
-        (actions.querySelector('[data-g="3"]') || actions.querySelector('[data-g="1"]')).focus();
+        // Tahminle doğru bulunduysa "Zor" önerilir.
+        const guessed = ok && pendingConf && pendingConf.id === id && pendingConf.v === 0;
+        if (guessed) actions.querySelector(".rate-q").textContent = "Tahminle buldun; Zor işaretlemeni öneririz.";
+        (actions.querySelector(guessed ? '[data-g="2"]' : '[data-g="3"]') || actions.querySelector('[data-g="1"]')).focus();
         setKeys((e) => {
           const g = +e.key;
           if (grades.some(([x]) => x === g)) { e.preventDefault(); rate(g); }
@@ -2505,6 +2547,7 @@
     ["hata", "Yanlışlarım"],
     ["zayif", "Zorlandıklarım"],
     ["son", "Son 50 cevapta yanlışlarım"],
+    ["sik", "Sık çıkan konular"],
   ];
   const MIX_COUNTS = [10, 20, 30, 50];
   const MOCK_MIN_PER_Q = 1.5; // AÖF vize: 20 soru 30 dakika
@@ -2546,6 +2589,7 @@
       if (o.pool === "hata" && !(card && card.ok === false)) continue;
       if (o.pool === "zayif" && !(card && (card.wrong > card.right || card.lapses > 0 || card.s < 3))) continue;
       if (o.pool === "son" && !recent.has(id)) continue;
+      if (o.pool === "sik" && !isFrequentQ(x)) continue;
       out.push(id);
     }
     return out;
@@ -2727,7 +2771,7 @@
       const x = bank.get(ids[i]);
       const a = answers[i];
       box.dataset.state = a.ok === true ? "d" : a.ok === false ? "y" : "b";
-      box.innerHTML = `<p class="review-src"><span class="chip">${esc(bySlug[x.slug].subject)}</span> <span>${esc(x.label)}</span> <span class="badge ${a.ok === true ? "pass" : a.ok === false ? "fail" : "none"}">${a.ok === true ? "Doğru" : a.ok === false ? "Yanlış" : "Boş"}</span></p>${questionHTML(x.q, i)}`;
+      box.innerHTML = `<p class="review-src"><span class="chip">${esc(bySlug[x.slug].subject)}</span> <span>${esc(x.label)}</span> <span class="badge ${a.ok === true ? "pass" : a.ok === false ? "fail" : "none"}">${a.ok === true ? "Doğru" : a.ok === false ? "Yanlış" : "Boş"}</span></p>${questionHTML(x.q, i, { conf: false })}`;
       (a.picked || []).forEach((j) => { const inp = box.querySelector(`[name=q${i}][value="${j}"]`); if (inp) inp.checked = true; });
       showFeedback(x.q, i, a.ok === undefined ? null : a.ok, box);
     });
@@ -2857,7 +2901,7 @@
       const x = bank.get(ids[idx]);
       stage.innerHTML = `<div class="q game-q mock-q" data-q="${idx}">
           <p class="review-src"><span class="chip">${esc(bySlug[x.slug].subject)}</span>${x.unit ? ` <span>Ünite ${x.unit}</span>` : ""}</p>
-          ${questionHTML(x.q, idx)}
+          ${questionHTML(x.q, idx, { conf: false })}
           <div class="btn-row mock-actions">
             <button class="btn ghost" type="button" id="mk-prev"${idx ? "" : " disabled"}>Önceki</button>
             <button class="btn ghost" type="button" id="mk-flag" aria-pressed="${flags.has(idx)}">${flags.has(idx) ? "İşareti kaldır" : "Sonra bak"}</button>
@@ -2901,7 +2945,7 @@
         const a = answers[i];
         if (!a.picked.length) { a.ok = undefined; return; }
         const x = bank.get(id);
-        tmp.innerHTML = questionHTML(x.q, i);
+        tmp.innerHTML = questionHTML(x.q, i, { conf: false });
         a.picked.forEach((j) => { const inp = tmp.querySelector(`[name=q${i}][value="${j}"]`); if (inp) inp.checked = true; });
         a.ok = grade(x.q, i, tmp);
         recordAnswer(id, a.ok, null, "exam");
@@ -2930,6 +2974,267 @@
     show(0);
     tick();
     timer = setInterval(tick, 1000);
+  }
+
+  // ---- #/sikcikan: çıkmış vizelerde sık sorulan üniteler, cevaplar ve kavramlar ------------------
+  // Aynı soru A/B grubunda ya da aynı derlemede iki kez geçebilir; sayımlar soru kökü + doğru cevapla
+  // tekilleştirilir. Bir sorunun "yılı" çıkmış oturumun akademik yılının ilk yılıdır. Kavramlar bölüm
+  // raporundaki kavram kartlarından (INTERACTIVE) gelir; terim soru kökünde ya da doğru cevapta geçiyorsa sayılır.
+  const yearOf = (e) => String(e.year || e.exam_id || "").replace(/\D/g, "").slice(0, 4);
+  const correctText = (q) => {
+    const o = (q.options || q.answerOptions || []).find((x) => x.isCorrect || (q.correct && x.key === q.correct));
+    return o ? String(o.text || "") : "";
+  };
+  // Tek başına konu söylemeyen cevaplar (I ve II, Yalnız III, tek harf) sık cevap listesine girmez.
+  const vagueAnswer = (k) => k.length < 4 || !/[a-z]{3}/.test(k) || /^(yalniz |i ve |ii ve |i ii|hepsi|hicbiri|ikisi )/.test(k);
+  let freqCache = {}, freqSig = "";
+  function pastFreq(slug) {
+    const sig = Object.keys(PAST()).length + ":" + Object.keys(INTERACTIVE()).length;
+    if (freqSig !== sig) { freqCache = {}; freqSig = sig; }
+    if (freqCache[slug]) return freqCache[slug];
+    const exams = pastFor(slug);
+    const seen = new Map();
+    const years = new Set();
+    for (const exam of exams) {
+      const y = yearOf(exam);
+      years.add(y);
+      (exam.questions || []).forEach((q, i) => {
+        const ans = correctText(q);
+        const k = norm(q.stem || q.question).slice(0, 90) + "|" + norm(ans);
+        if (!seen.has(k)) {
+          seen.set(k, { unit: +q.unit || 0, unitTitle: q.unitTitle || "", years: new Set(), ans: norm(ans), ansText: ans.trim(),
+            href: `#/course/${slug}/past/${encodeURIComponent(exam.exam_id)}?mod=rehber&soru=${i + 1}`,
+            text: " " + norm((q.stem || q.question || "") + " " + ans) + " " });
+        }
+        seen.get(k).years.add(y);
+      });
+    }
+    const qs = [...seen.values()];
+    const units = new Map();
+    for (const q of qs) {
+      if (!units.has(q.unit)) units.set(q.unit, { unit: q.unit, title: q.unitTitle, n: 0, years: new Set() });
+      const u = units.get(q.unit);
+      u.n++;
+      q.years.forEach((y) => u.years.add(y));
+      if (!u.title) u.title = q.unitTitle;
+    }
+    const answers = new Map();
+    for (const q of qs) {
+      if (!q.ans || vagueAnswer(q.ans)) continue;
+      if (!answers.has(q.ans)) answers.set(q.ans, { key: q.ans, text: q.ansText, unit: q.unit, years: new Set(), n: 0, href: q.href });
+      const a = answers.get(q.ans);
+      a.n++;
+      q.years.forEach((y) => a.years.add(y));
+    }
+    const frequent = [...answers.values()].filter((a) => a.years.size >= 2)
+      .sort((a, b) => b.years.size - a.years.size || b.n - a.n || a.text.localeCompare(b.text, "tr"));
+    const concepts = [];
+    const chs = ((INTERACTIVE()[slug] || {}).chapters) || {};
+    for (const [n, ch] of Object.entries(chs)) {
+      for (const k of ch.concepts || []) {
+        const t = norm(String(k.term || "").replace(/\(.*?\)/g, ""));
+        if (t.length < 4) continue;
+        const hits = qs.filter((q) => q.text.includes(" " + t));
+        if (!hits.length) continue;
+        concepts.push({ term: k.term, n: +n, q: hits.length, years: new Set(hits.flatMap((q) => [...q.years])).size, href: hits[0].href });
+      }
+    }
+    concepts.sort((a, b) => b.years - a.years || b.q - a.q || a.term.localeCompare(b.term, "tr"));
+    return (freqCache[slug] = {
+      total: qs.length, sessions: exams.length, years: years.size,
+      units: [...units.values()].sort((a, b) => (a.unit || 99) - (b.unit || 99)),
+      frequent, frequentKeys: new Set(frequent.map((a) => a.key)), concepts,
+    });
+  }
+  // Soru bankasındaki bir soru (hangi kaynaktan olursa olsun) sık çıkan bir cevaba mı sahip?
+  const isFrequentQ = (x) => pastFreq(x.slug).frequentKeys.has(norm(correctText(x.q)));
+
+  function viewFrequent(query) {
+    const withPast = COURSES.filter((c) => pastFor(c.slug).length);
+    const head = `<p class="crumbs"><a href="#/sinavlar">Sınavlar</a> / Sık çıkan konular</p><p class="eyebrow">Çıkmış soru haritası</p>`;
+    if (!withPast.length) return `${head}<h1>Sık çıkan konular</h1><p class="muted">Çıkmış sınav arşivi yüklenemedi. İnternete bağlanınca sayfayı yenile.</p>`;
+    const plan = activePlan();
+    const slug = bySlug[query.ders] && pastFor(query.ders).length ? query.ders
+      : (plan && plan.courses.find((s) => pastFor(s).length)) || withPast[0].slug;
+    const c = bySlug[slug];
+    const f = pastFreq(slug);
+    const scope = plan && plan.units[slug] ? new Set(plan.units[slug]) : null;
+    const mine = new Map(unitStats().filter((u) => u.slug === slug).map((u) => [u.unit, u]));
+    // Öncelik: sınavdaki payı yüksek ve senin doğruluğun düşük (ya da hiç çözmediğin) üniteler.
+    const known = f.units.filter((u) => u.unit && (!scope || scope.has(u.unit)));
+    const score = (u) => (u.n / f.total) * (1 - (mine.get(u.unit) && mine.get(u.unit).n >= 3 ? mine.get(u.unit).p : 0.35));
+    const top = new Set(known.slice().sort((a, b) => score(b) - score(a)).slice(0, 2).map((u) => u.unit));
+    const maxN = Math.max(1, ...f.units.map((u) => u.n));
+    const unitRows = f.units.map((u) => {
+      const m = mine.get(u.unit);
+      const out = scope && u.unit && !scope.has(u.unit);
+      const title = u.unit ? `Ünite ${u.unit}` : "Ünitesi belirlenemedi";
+      return `<li class="freq-row${out ? " out" : ""}">
+        <div class="freq-main">
+          <p class="freq-title"><b>${title}</b>${u.title && u.unit ? ` <span class="muted">${esc(u.title)}</span>` : ""}${top.has(u.unit) ? ` <span class="badge fail">Önce bu</span>` : ""}${out ? ` <span class="badge none">Kapsam dışı</span>` : ""}</p>
+          <span class="freq-bar" style="--p:${Math.round((u.n / maxN) * 100)}"><i></i></span>
+          <p class="muted small">${u.n} soru · %${Math.round((u.n / f.total) * 100)} · ${u.years.size}/${f.years} yılda sorulmuş · ${m && m.n ? `senin doğruluğun ${pct(m.p)} (${m.n} cevap)` : "henüz bu üniteden soru çözmedin"}</p>
+        </div>
+        ${u.unit ? `<div class="weak-actions"><a class="btn sm-mini" href="#/karisik?ders=${slug}&unite=${u.unit}&mod=alistirma">Test</a>${u.unit <= c.chapters.length ? `<a class="btn ghost sm-mini" href="#/course/${slug}/chapter/${u.unit}">Konu</a>` : ""}</div>` : ""}
+      </li>`;
+    }).join("");
+    const ansRow = (a) => `<li><a href="${esc(a.href)}">${esc(a.text)}</a> <span class="muted small">${a.years.size} yıl${a.n > a.years.size ? ` · ${a.n} soru` : ""}${a.unit ? ` · Ünite ${a.unit}` : ""}</span></li>`;
+    const conRow = (k) => `<li><a href="#/course/${slug}/chapter/${k.n}">${esc(k.term)}</a> <span class="muted small">${k.years} yıl · ${k.q} soru · ${k.n}. bölüm</span> <a class="small" href="#/kavram?ders=${slug}&bolum=${k.n}&calis=1">desteyle çalış</a></li>`;
+    const chips = withPast.map((x) => `<a class="chip${x.slug === slug ? " active" : ""}" href="#/sikcikan?ders=${x.slug}">${esc(x.subject)}</a>`).join("");
+    return `${head}<h1>Sık çıkan konular</h1>
+      <p class="lead muted">Çıkmış vizelerde hangi üniteden kaç soru geldiği ve hangi konuların yıllar içinde tekrar tekrar sorulduğu. Zamanın azsa önce buradan başla.</p>
+      <div class="chip-row filter-row">${chips}</div>
+      <p class="freq-sum"><b>${esc(c.subject)}</b> · ${f.sessions} oturum · ${f.years} yıl · ${f.total} farklı soru</p>
+      <h2>Ünitelere göre</h2>
+      ${scope ? `<p class="muted small">Sınav planındaki kapsam (${plan.scope === "vize" ? "vize" : "final"}): Ünite ${[...scope].sort((a, b) => a - b).join(", ")}. "Önce bu", kapsamda payı büyük ve senin zayıf olduğun ünitelerdir.</p>` : `<p class="muted small">"Önce bu", sınavda payı büyük ve senin zayıf olduğun (ya da hiç çözmediğin) ünitelerdir.</p>`}
+      <ol class="freq-list">${unitRows}</ol>
+      <h2>Birden çok yıl sorulan konular</h2>
+      ${f.frequent.length ? `<p class="muted">Aşağıdakiler en az iki farklı yılın vizesinde doğru cevap olarak çıktı. Dokununca sorunun çözümü açılır.</p>
+        <ol class="freq-answers">${f.frequent.slice(0, 20).map(ansRow).join("")}</ol>
+        ${f.frequent.length > 20 ? `<details><summary>${f.frequent.length - 20} konu daha</summary><ol class="freq-answers" start="21">${f.frequent.slice(20).map(ansRow).join("")}</ol></details>` : ""}
+        <div class="btn-row"><a class="btn" href="#/karisik?ders=${slug}&havuz=sik&mod=alistirma">Bu konulardan test çöz</a></div>`
+        : `<p class="muted">Bu derste iki farklı yılda aynı cevapla sorulan konu bulunamadı.</p>`}
+      <h2>Sorularda geçen kavramlar</h2>
+      ${f.concepts.length ? `<p class="muted">Bölüm raporlarındaki kavramlardan çıkmış sorularda geçenler, sorulduğu yıl sayısına göre.</p><ol class="freq-answers">${f.concepts.slice(0, 15).map(conRow).join("")}</ol>`
+        : `<p class="muted">Kavram listesi yüklenemedi ya da bu dersin kavramları sorularda geçmiyor.</p>`}
+      <p class="muted small">Sayımlar sitedeki çıkmış vize derlemelerinden yapılır; A/B grupları ve tekrar eden sorular bir kez sayılır. Sorular ünitelere otomatik eşlendiği için birkaçı yanlış üniteye düşmüş olabilir. Geçmiş sorular gelecek sınavı garanti etmez; konuyu bütün olarak çalışmayı unutma.</p>`;
+  }
+
+  // ---- #/puan: not hesaplayıcı ve hazırlık tahmini ----------------------------------------
+  // Başarı notu = vize × ara ağırlık + final × final ağırlığı (university.json "grading"). Geçme alt sınırı
+  // yönetmelikte sayı olarak yazmaz; Senato kararıdır, her dönem kontrol edilmeli. Harf notları bağıl olduğu
+  // için harf notu hesaplanmaz. Girilen puanlar study.grades[slug] = { vize, final } içinde, yedeğe dahil.
+  const GRADING = Object.assign({ midterm: 30, final: 70, passMin: 35, questions: 20 }, U.grading || {});
+  const clamp100 = (v) => Math.max(0, Math.min(100, v));
+  const needFinal = (vize, target) => Math.ceil(((target - (vize * GRADING.midterm) / 100) * 100) / GRADING.final - 1e-9);
+  const successNote = (vize, fin) => (vize * GRADING.midterm + fin * GRADING.final) / 100;
+  // AÖF puanı: 4 yanlış 1 doğruyu götürür, net × (100 / soru sayısı).
+  const netScore = (d, y) => { const net = d - y / 4; return { net, puan: clamp100((net * 100) / GRADING.questions) }; };
+
+  // Hazırlık tahmini: kapsamdaki her ünitenin sınavdaki payı (çıkmış soru dağılımı) ile o ünitedeki
+  // kartlarının bugünkü hatırlanma olasılığı (FSRS) birleşir. Az veri olan ünitede tahmin 0,35'e çekilir
+  // (beş şıkta şans 0,2). Tüm sorular cevaplanmış varsayılır; sonuç aralık olarak verilir.
+  const READY_PRIOR = 0.35, READY_WEIGHT = 3;
+  function readiness(slug, units) {
+    const bank = questionBank();
+    const f = pastFreq(slug);
+    const now = Date.now();
+    const per = new Map(units.map((u) => [u, { unit: u, sum: 0, k: 0 }]));
+    for (const [id, card] of Object.entries(study.cards)) {
+      const x = bank.get(id);
+      if (!x || x.slug !== slug || !per.has(x.unit)) continue;
+      const r = card.ok === false ? 0.25 : retrievability(Math.max(0, (now - card.last) / DAY_MS), card.s || 1);
+      const u = per.get(x.unit);
+      u.sum += r; u.k++;
+    }
+    const weightOf = (u) => ((f.units.find((x) => x.unit === u) || {}).n || 0);
+    let wSum = units.reduce((a, u) => a + weightOf(u), 0);
+    const w = (u) => (wSum ? weightOf(u) / wSum : 1 / units.length);
+    let p = 0, covered = 0, best = null;
+    for (const u of per.values()) {
+      u.p = (u.sum + READY_WEIGHT * READY_PRIOR) / (u.k + READY_WEIGHT);
+      u.w = w(u.unit);
+      p += u.w * u.p;
+      if (u.k >= 5) covered += u.w;
+      const gain = u.w * (0.9 - u.p);
+      if (!best || gain > best.gain) best = { unit: u.unit, gain, p: u.p, k: u.k };
+    }
+    const n = GRADING.questions;
+    const e = n * p, sd = Math.sqrt(n * p * (1 - p));
+    const score = (d) => netScore(d, n - d).puan;
+    return { p, e, lo: Math.max(0, e - sd), hi: Math.min(n, e + sd), puan: score(e), puanLo: score(Math.max(0, e - sd)), puanHi: score(Math.min(n, e + sd)), covered, best };
+  }
+  // Kapsamın dörtte birinden azında veri varsa sayı yerine "veri az" yazılır.
+  const readinessText = (r) => (r.covered < 0.25 ? "veri az" : `${Math.round(r.puanLo)}-${Math.round(r.puanHi)}`);
+
+  function viewGrades() {
+    const plan = activePlan();
+    const grades = study.grades || {};
+    const scopeOf = (c) => (plan && plan.units[c.slug]) || defaultUnits(c, plan ? plan.scope : "vize");
+    const scopeName = plan ? (plan.scope === "vize" ? "vize" : "final") : "vize";
+    const rows = COURSES.map((c) => {
+      const g = grades[c.slug] || {};
+      return `<div class="grade-row" data-row="${esc(c.slug)}"><b class="grade-name">${esc(c.subject)}</b>
+        <div class="grade-cells">
+          <label>Vize <input class="num-in" type="number" inputmode="numeric" min="0" max="100" step="1" name="vize" value="${g.vize ?? ""}"></label>
+          <p class="grade-out"><span>Geçmek için final</span><span data-need></span></p>
+          <label>Final <input class="num-in" type="number" inputmode="numeric" min="0" max="100" step="1" name="final" value="${g.final ?? ""}"></label>
+          <p class="grade-out"><span>Başarı notu</span><span data-total></span></p>
+        </div></div>`;
+    }).join("");
+    const ready = COURSES.filter((c) => pastFor(c.slug).length || Object.keys(unitQuizMap(c.slug)).length).map((c) => {
+      const units = scopeOf(c);
+      const r = readiness(c.slug, units);
+      const low = r.covered < 0.5;
+      return `<li class="freq-row">
+        <div class="freq-main">
+          <p class="freq-title"><b>${esc(c.subject)}</b> <span class="muted">Ünite ${units.join(", ")}</span></p>
+          ${low && r.covered < 0.25 ? `<p class="ready-score"><b>Veri az</b> <span class="muted small">· tahmin için bu kapsamdan daha çok soru çözmelisin</span></p>`
+            : `<p class="ready-score"><b>${readinessText(r)}</b> puan <span class="muted small">· ${GRADING.questions} soruda yaklaşık ${Math.round(r.lo)}-${Math.round(r.hi)} doğru</span></p>`}
+          <span class="freq-bar" style="--p:${Math.round(r.covered * 100)}"><i></i></span>
+          <p class="muted small">Kapsamın %${Math.round(r.covered * 100)} kadarında yeterli verin var.${low ? " Tahmin henüz güvenilir değil; birkaç test çözdükçe netleşir." : ""}${r.best ? ` En çok puanı Ünite ${r.best.unit} kazandırır${r.best.k ? ` (şu an %${Math.round(r.best.p * 100)})` : " (henüz çözmedin)"}.` : ""}</p>
+        </div>
+        ${r.best ? `<div class="weak-actions"><a class="btn sm-mini" href="#/karisik?ders=${c.slug}&unite=${r.best.unit}&mod=alistirma">Ünite ${r.best.unit} testi</a></div>` : ""}
+      </li>`;
+    }).join("");
+    return `<p class="crumbs"><a href="#/sinavlar">Sınavlar</a> / Not hesaplayıcı</p>
+      <p class="eyebrow">Not hesaplayıcı</p><h1>Finalde kaç almalıyım?</h1>
+      <p class="lead muted">Vize puanını gir; geçmek için finalde en az kaç alman gerektiğini hesaplayalım. Final puanını da girersen başarı notunu görürsün.</p>
+      <form class="desk-card" id="grade-form" autocomplete="off">
+        <div class="grade-list">${rows}</div>
+        <p class="muted small">Başarı notu = vize × %${GRADING.midterm} + final × %${GRADING.final}. Geçme alt sınırı ${GRADING.passMin} kabul edildi. Bu değerler ${esc(GRADING.source || "basında aktarılan güncel kurallardır")}; AÖF'ün resmî duyurusunu kontrol et. Harf notları sınava girenlerin ortalamasına göre (bağıl) belirlendiği için burada harf notu verilmez. Yaz okulunda tek sınav %100 sayılır.</p>
+      </form>
+      <h2>Doğru ve yanlıştan puan</h2>
+      <form class="desk-card net-form" id="net-form" autocomplete="off">
+        <label>Doğru <input class="num-in" type="number" inputmode="numeric" min="0" max="${GRADING.questions}" name="d" value=""></label>
+        <label>Yanlış <input class="num-in" type="number" inputmode="numeric" min="0" max="${GRADING.questions}" name="y" value=""></label>
+        <p class="net-out" id="net-out" aria-live="polite">${GRADING.questions} soruluk sınavda doğru ve yanlış sayını gir.</p>
+      </form>
+      <h2>Bugün sınava girsen</h2>
+      <p class="muted">Çözdüğün soruların bugün ne kadarını hatırladığına ve ünitelerin çıkmış sınavlardaki payına göre ${scopeName} kapsamında tahmini puanın. Kesin not değildir; nereye çalışman gerektiğini gösterir.</p>
+      ${ready ? `<ol class="freq-list">${ready}</ol>` : `<p class="muted">Tahmin için soru verisi yüklenemedi.</p>`}
+      <div class="btn-row"><a class="btn ghost" href="#/sikcikan">Sık çıkan konular</a><a class="btn ghost" href="#/plan">Sınav planı</a></div>`;
+  }
+  function bindGrades() {
+    const f = document.getElementById("grade-form");
+    if (!f) return;
+    const num = (inp) => { const v = inp.value.trim(); if (v === "") return null; const n = +v; return isFinite(n) ? clamp100(n) : null; };
+    const paint = () => {
+      f.querySelectorAll("[data-row]").forEach((tr) => {
+        const vize = num(tr.querySelector("[name=vize]")), fin = num(tr.querySelector("[name=final]"));
+        const needCell = tr.querySelector("[data-need]"), totCell = tr.querySelector("[data-total]");
+        if (vize === null) needCell.innerHTML = `<span class="muted">vizeyi gir</span>`;
+        else {
+          const need = Math.max(0, needFinal(vize, GRADING.passMin));
+          const n50 = needFinal(vize, 50), n70 = needFinal(vize, 70);
+          needCell.innerHTML = need > 100 ? `<b class="bad">100 de yetmiyor</b>`
+            : `<b>${need}</b><small>50 için ${n50 > 100 ? "yetmez" : Math.max(0, n50)} · 70 için ${n70 > 100 ? "yetmez" : Math.max(0, n70)}</small>`;
+        }
+        if (vize === null || fin === null) totCell.textContent = "-";
+        else {
+          const t = successNote(vize, fin);
+          totCell.innerHTML = `<b class="${t >= GRADING.passMin ? "good" : "bad"}">${t.toFixed(1).replace(".", ",")}</b><small>${t >= GRADING.passMin ? "geçer" : "kalır"}</small>`;
+        }
+      });
+    };
+    f.addEventListener("input", () => {
+      const grades = study.grades || (study.grades = {});
+      f.querySelectorAll("[data-row]").forEach((tr) => {
+        const vize = num(tr.querySelector("[name=vize]")), fin = num(tr.querySelector("[name=final]"));
+        if (vize === null && fin === null) delete grades[tr.dataset.row];
+        else grades[tr.dataset.row] = Object.assign({}, vize === null ? {} : { vize }, fin === null ? {} : { final: fin });
+      });
+      saveStudy();
+      paint();
+    });
+    paint();
+    const nf = document.getElementById("net-form"), out = document.getElementById("net-out");
+    nf.addEventListener("input", () => {
+      const d = Math.max(0, +nf.d.value || 0), y = Math.max(0, +nf.y.value || 0);
+      if (d + y > GRADING.questions) { out.textContent = `Doğru ve yanlış toplamı ${GRADING.questions}'yi geçemez.`; return; }
+      const r = netScore(d, y);
+      out.innerHTML = `Net <b>${r.net.toFixed(2).replace(".", ",")}</b> · puan <b>${Math.round(r.puan)}</b> · ${GRADING.questions - d - y} boş`;
+    });
   }
 
   // ---- analiz paneli (#/analiz) ---------------------------------------------------
@@ -2992,6 +3297,21 @@
   }
   const accClass = (p) => (p >= 0.8 ? "a4" : p >= 0.65 ? "a3" : p >= 0.5 ? "a2" : "a1");
 
+  // "Emin misin?" isabeti: eminim / tahmin cevaplarının doğruluğu ve hâlâ açık "yanlış bildiklerin".
+  function calibHtml(cards) {
+    const cal = study.calib || {};
+    const [sn, sk] = cal.s || [0, 0], [gn, gk] = cal.g || [0, 0];
+    if (!sn && !gn) return study.confOff ? "" : `<h2>Emin misin?</h2><p class="muted">Soruyu kontrol etmeden önce "Eminim" ya da "Tahmin" seçersen burada neyi bildiğini sandığını ve gerçekte bildiğini karşılaştırırız.</p>`;
+    const sure = cards.filter(([, c]) => c.ok === false && c.cf === 1).length;
+    return `<h2>Emin misin?</h2>
+      <div class="kpi-grid">
+        <div class="desk-card kpi"><span class="desk-k">"Eminim" dediklerin</span><b>${sn ? pct(sk / sn) : "-"}</b><span class="muted small">${sn} cevabın ${sk} tanesi doğru</span></div>
+        <div class="desk-card kpi"><span class="desk-k">"Tahmin" dediklerin</span><b>${gn ? pct(gk / gn) : "-"}</b><span class="muted small">${gn} cevabın ${gk} tanesi doğru</span></div>
+        <a class="desk-card kpi" href="#/hatalar"><span class="desk-k">Yanlış bildiklerin</span><b>${sure}</b><span class="muted small">emin olup yanlış yaptığın, henüz düzeltilmemiş soru</span></a>
+      </div>
+      <p class="muted small">${sn >= 10 && sk / sn < 0.8 ? "Emin olduğun cevapların beşte birinden fazlası yanlış: bazı konuları bildiğini sanıyorsun. Hatalarım'daki \"Emin olduğun hata\" sorularına öncelik ver." : "Emin olup yanılmak en verimli öğrenme anlarından biridir: doğrusunu okuyunca kalıcı düzelir."}</p>`;
+  }
+
   function viewAnalysis(query) {
     const range = [7, 30, 90].includes(+query.gun) ? +query.gun : 30;
     const cards = Object.entries(study.cards).filter(([id]) => bySlug[courseOfId(id)]);
@@ -3017,7 +3337,7 @@
     const mocks = (study.mocks || []).slice(-20);
     const tabs = [7, 30, 90].map((d) => `<a class="chip${d === range ? " active" : ""}" href="#/analiz?gun=${d}">${d} gün</a>`).join("");
     return `<p class="eyebrow">Analiz</p><h1>Gelişim paneli</h1>
-      <p class="lead muted">Hangi derste ve ünitede güçlü, nerede zayıf olduğunu gör; zayıf konulara tek dokunuşla karışık test başlat.</p>
+      <p class="lead muted">Hangi derste ve ünitede güçlü, nerede zayıf olduğunu gör; zayıf konulara tek dokunuşla karışık test başlat. Sınavda neyin çok sorulduğunu <a href="#/sikcikan">sık çıkan konular</a> sayfasında görebilirsin.</p>
       <div class="chip-row filter-row">${tabs}</div>
       <div class="kpi-grid">
         <div class="desk-card kpi"><span class="desk-k">Çözülen soru</span><b>${rN}</b><span class="muted small">son ${range} gün · toplam ${all.n}</span></div>
@@ -3049,6 +3369,7 @@
         return `<div class="unit-map"><h3>${esc(r.c.subject)}</h3><div class="unit-grid">${us.map((u) => `<a class="unit-cell ${accClass(u.p)}" href="#/karisik?ders=${u.slug}&unite=${u.unit}&mod=alistirma" title="${esc(u.title)}"><b>${u.unit}</b><span>${pct(u.p)}</span><small>${u.n} cevap</small></a>`).join("")}</div></div>`;
       }).join("")}
       <p class="muted small acc-legend"><span class="unit-cell a1"></span> %50 altı <span class="unit-cell a2"></span> %50-65 <span class="unit-cell a3"></span> %65-80 <span class="unit-cell a4"></span> %80 üstü</p>
+      ${calibHtml(cards)}
       ${bySource.length > 1 ? `<h2>Kaynağa göre</h2><div class="week-grid">${bySource.map((s) => `<div class="stat"><b>${pct(s.p)}</b><span>${esc(s.label)} · ${s.n} cevap</span></div>`).join("")}</div>` : ""}
       <h2>Deneme sınavları</h2>
       ${mocks.length ? `<section class="desk-card chart-card">${mockChartSvg(mocks)}<p class="desk-meta">Son ${mocks.length} deneme · en yüksek ${Math.round(Math.max(...mocks.map((m) => m.score)))} puan · ortalama ${Math.round(mocks.reduce((a, m) => a + m.score, 0) / mocks.length)} puan</p></section>`
@@ -3074,7 +3395,7 @@
     const b = document.getElementById("reset");
     if (!b) return;
     b.onclick = () => {
-      if (b.dataset.armed) { progress = {}; save(progress); study = loadStudy(); study.cards = {}; study.days = {}; study.frozen = []; study.log = []; study.mocks = []; study.games = {}; saveStudy(); route(); return; }
+      if (b.dataset.armed) { progress = {}; save(progress); study = loadStudy(); study.cards = {}; study.days = {}; study.frozen = []; study.log = []; study.mocks = []; study.games = {}; study.calib = {}; saveStudy(); route(); return; }
       b.dataset.armed = "1";
       b.textContent = "Tüm sonuçları silmek için tekrar tıklayın";
       setTimeout(() => { if (document.body.contains(b)) { delete b.dataset.armed; b.textContent = "İlerlememi sıfırla"; } }, 4000);
@@ -4447,6 +4768,12 @@ document.getElementById("zin").focus();
     }
     // Oyunlar: yıldızda ve puanda büyük olan, oynama sayısında büyük olan kalır.
     for (const [k, r] of Object.entries(b.games || {})) if (r && typeof r === "object") study.games[k] = study.games[k] ? mergeRecord(study.games[k], r) : r;
+    // "Emin misin?" sayaçları büyük olan, girilen notlar bu cihazda yoksa yedekten gelir.
+    if (b.calib && typeof b.calib === "object") {
+      const cal = study.calib || (study.calib = {});
+      for (const k of ["s", "g"]) if (Array.isArray(b.calib[k]) && (!cal[k] || b.calib[k][0] > cal[k][0])) cal[k] = b.calib[k].slice(0, 2);
+    }
+    if (b.grades && typeof b.grades === "object") study.grades = Object.assign({}, b.grades, study.grades || {});
     saveStudy();
   }
 
@@ -6023,7 +6350,8 @@ document.getElementById("zin").focus();
     else if (parts[0] === "kavram") need.add("interactive");
     else if (parts[0] === "oyunlar") { need.add("interactive"); if (parts[1]) needExamData(); }
     else if (parts[0] === "transcript" || parts[0] === "certificate" || parts[0] === "calisma") { /* data.js yeterli */ }
-    else if (["tekrar", "hatalar", "karisik", "analiz", "plan"].includes(parts[0])) needExamData();
+    else if (["tekrar", "hatalar", "karisik", "analiz", "plan", "puan"].includes(parts[0])) needExamData();
+    else if (parts[0] === "sikcikan") { needExamData(); need.add("interactive"); }
     else if (parts[0] === "course" && bySlug[parts[1]]) {
       if (parts[2] === "chapter") { need.add("interactive"); need.add("past_exams"); }
       else if (parts[2] === "quiz") { /* data.js quiz yeterli */ }
@@ -6051,6 +6379,8 @@ document.getElementById("zin").focus();
     else if (parts[0] === "karisik") { html = viewMix(query); bind = bindMix; }
     else if (parts[0] === "analiz") { html = viewAnalysis(query); bind = () => {}; }
     else if (parts[0] === "plan") { html = viewPlan(); bind = bindPlan; }
+    else if (parts[0] === "sikcikan") html = viewFrequent(query);
+    else if (parts[0] === "puan") { html = viewGrades(); bind = bindGrades; }
     else if (parts[0] === "eklenti") html = viewExtension();
     else if (parts[0] === "kavram") { html = viewKavram(query); bind = bindKavram; }
     else if (parts[0] === "oyunlar") {
@@ -6087,7 +6417,7 @@ document.getElementById("zin").focus();
     document.querySelectorAll(".nav a").forEach((a) => {
       const href = a.getAttribute("href");
       const key = parts[0] || "";
-      const on = href === "#/" + key || (href === "#/calisma" && ["tekrar", "hatalar", "analiz", "plan", "kavram"].includes(key)) || (href === "#/sinavlar" && key === "karisik");
+      const on = href === "#/" + key || (href === "#/calisma" && ["tekrar", "hatalar", "analiz", "plan", "kavram"].includes(key)) || (href === "#/sinavlar" && ["karisik", "sikcikan", "puan"].includes(key));
       a.classList.toggle("active", on);
       if (on) a.setAttribute("aria-current", "page"); else a.removeAttribute("aria-current");
     });
