@@ -1,0 +1,1364 @@
+{
+ "آت": {
+  "tr": "at",
+  "ornek": "بو آت چوق كوزلدر",
+  "okunus": "Bu at çok güzeldir.",
+  "anlam": "Bu at çok güzel."
+ },
+ "آتقی": {
+  "tr": "atkı",
+  "ornek": "صوغوقده آتقى طاق",
+  "okunus": "Soğukta atkı tak.",
+  "anlam": "Soğukta atkı tak."
+ },
+ "آز": {
+  "tr": "az",
+  "ornek": "صو آز قالدى",
+  "okunus": "Su az kaldı.",
+  "anlam": "Su az kaldı."
+ },
+ "آش": {
+  "tr": "aş, yemek",
+  "ornek": "آنام آش پيشيردى",
+  "okunus": "Anam aş pişirdi.",
+  "anlam": "Annem yemek pişirdi."
+ },
+ "آغاچلر": {
+  "tr": "ağaçlar",
+  "ornek": "آغاچلر چيچك آچدى",
+  "okunus": "Ağaçlar çiçek açtı.",
+  "anlam": "Ağaçlar çiçek açtı."
+ },
+ "آكل": {
+  "tr": "akıllı",
+  "ornek": "آكل آدم آز سويلر",
+  "okunus": "Âkil âdem az söyler.",
+  "anlam": "Akıllı insan az konuşur."
+ },
+ "آل": {
+  "tr": "al (almak fiilinden)",
+  "ornek": "بو كتابى آل",
+  "okunus": "Bu kitâbı al.",
+  "anlam": "Bu kitabı al."
+ },
+ "آلتون": {
+  "tr": "altın",
+  "ornek": "آلتون صاريدر",
+  "okunus": "Altun sarıdır.",
+  "anlam": "Altın sarıdır."
+ },
+ "آلتى": {
+  "tr": "altı",
+  "ornek": "آلتى كتاب آلدم",
+  "okunus": "Altı kitâb aldım.",
+  "anlam": "Altı kitap aldım."
+ },
+ "آلوب": {
+  "tr": "alıp",
+  "ornek": "كتابى آلوب كلدى",
+  "okunus": "Kitâbı alıp geldi.",
+  "anlam": "Kitabı alıp geldi."
+ },
+ "آمر": {
+  "tr": "emreden, âmir",
+  "ornek": "آمر امر ويردى",
+  "okunus": "Âmir emir verdi.",
+  "anlam": "Amir emir verdi."
+ },
+ "آيرق": {
+  "tr": "ayrı, başka",
+  "ornek": "بو آيرق بر ايشدر",
+  "okunus": "Bu ayruk bir iştir.",
+  "anlam": "Bu başka bir iştir."
+ },
+ "احوال": {
+  "tr": "durumlar, hâller",
+  "ornek": "احوالڭز ناصلدر",
+  "okunus": "Ahvâliniz nasıldır?",
+  "anlam": "Durumunuz nasıl?"
+ },
+ "اخراج": {
+  "tr": "çıkarma",
+  "ornek": "مكتبدن اخراج اولندى",
+  "okunus": "Mektebden ihrâc olundu.",
+  "anlam": "Okuldan çıkarıldı."
+ },
+ "اخفا": {
+  "tr": "gizleme",
+  "ornek": "حقيقتى اخفا ايتمه",
+  "okunus": "Hakîkati ihfâ etme.",
+  "anlam": "Gerçeği gizleme."
+ },
+ "ادب": {
+  "tr": "edep, terbiye",
+  "ornek": "ادب انسانڭ زينتيدر",
+  "okunus": "Edeb insânın zînetidir.",
+  "anlam": "Edep insanın süsüdür."
+ },
+ "افسوس": {
+  "tr": "yazık, eyvah",
+  "ornek": "افسوس كه وقت كچدى",
+  "okunus": "Efsûs ki vakit geçti.",
+  "anlam": "Yazık ki vakit geçti."
+ },
+ "افكار": {
+  "tr": "düşünceler, fikirler",
+  "ornek": "افكار عموميه",
+  "okunus": "Efkâr-ı umûmiyye",
+  "anlam": "Kamuoyu"
+ },
+ "اق": {
+  "tr": "ak, beyaz",
+  "ornek": "اق آقچه قره كون ايچوندر",
+  "okunus": "Ak akçe kara gün içindir.",
+  "anlam": "Biriktirilen para zor gün içindir."
+ },
+ "اقناع": {
+  "tr": "ikna, inandırma",
+  "ornek": "اونى اقناع ايتدم",
+  "okunus": "Onu iknâ' ettim.",
+  "anlam": "Onu ikna ettim."
+ },
+ "اكرام": {
+  "tr": "ikram",
+  "ornek": "مسافره اكرام ايتدى",
+  "okunus": "Müsâfire ikrâm etti.",
+  "anlam": "Misafire ikram etti."
+ },
+ "اڭلامق": {
+  "tr": "anlamak",
+  "ornek": "اڭلامق ايچون اوقو",
+  "okunus": "Anlamak için oku.",
+  "anlam": "Anlamak için oku."
+ },
+ "ال": {
+  "tr": "el",
+  "ornek": "اللرڭى ييقا",
+  "okunus": "Ellerini yıka.",
+  "anlam": "Ellerini yıka."
+ },
+ "اللى": {
+  "tr": "elli",
+  "ornek": "اللى سنه",
+  "okunus": "Elli sene",
+  "anlam": "Elli yıl"
+ },
+ "امدى": {
+  "tr": "şimdi",
+  "ornek": "امدى كل",
+  "okunus": "İmdi gel.",
+  "anlam": "Şimdi gel."
+ },
+ "انسانيت": {
+  "tr": "insanlık",
+  "ornek": "انسانيت بيوك بر فضيلتدر",
+  "okunus": "İnsâniyet büyük bir fazîlettir.",
+  "anlam": "İnsanlık büyük bir erdemdir."
+ },
+ "او": {
+  "tr": "ev",
+  "ornek": "بو او بيوكدر",
+  "okunus": "Bu ev büyüktür.",
+  "anlam": "Bu ev büyüktür."
+ },
+ "اوائل": {
+  "tr": "ilk zamanlar, başlar",
+  "ornek": "عصرڭ اوائلنده",
+  "okunus": "Asrın evâilinde",
+  "anlam": "Yüzyılın başlarında"
+ },
+ "اواخر": {
+  "tr": "son zamanlar, sonlar",
+  "ornek": "آيڭ اواخرنده",
+  "okunus": "Ayın evâhirinde",
+  "anlam": "Ayın sonlarında"
+ },
+ "اواسط": {
+  "tr": "ortalar",
+  "ornek": "آيڭ اواسطنده",
+  "okunus": "Ayın evâsıtında",
+  "anlam": "Ayın ortalarında"
+ },
+ "اودن": {
+  "tr": "evden",
+  "ornek": "اودن چيقدى",
+  "okunus": "Evden çıktı.",
+  "anlam": "Evden çıktı."
+ },
+ "اوقوسه": {
+  "tr": "okusa",
+  "ornek": "اوقوسه اڭلار",
+  "okunus": "Okusa anlar.",
+  "anlam": "Okusa anlar."
+ },
+ "اوكوز": {
+  "tr": "öküz",
+  "ornek": "اوكوز تارلايى سوردى",
+  "okunus": "Öküz tarlayı sürdü.",
+  "anlam": "Öküz tarlayı sürdü."
+ },
+ "اولدى": {
+  "tr": "oldu",
+  "ornek": "آقشام اولدى",
+  "okunus": "Akşam oldu.",
+  "anlam": "Akşam oldu."
+ },
+ "اون": {
+  "tr": "on",
+  "ornek": "اون كون",
+  "okunus": "On gün",
+  "anlam": "On gün"
+ },
+ "اونلر": {
+  "tr": "onlar",
+  "ornek": "اونلر مكتبه كيتدى",
+  "okunus": "Onlar mektebe gitti.",
+  "anlam": "Onlar okula gitti."
+ },
+ "اويوسه": {
+  "tr": "uyusa",
+  "ornek": "ايركن اويوسه ايركن قالقار",
+  "okunus": "Erken uyusa erken kalkar.",
+  "anlam": "Erken uyusa erken kalkar."
+ },
+ "اوچ": {
+  "tr": "üç",
+  "ornek": "اوچ قارداش",
+  "okunus": "Üç kardaş",
+  "anlam": "Üç kardeş"
+ },
+ "اوڭ": {
+  "tr": "ön",
+  "ornek": "اوڭ طرف",
+  "okunus": "Ön taraf",
+  "anlam": "Ön taraf"
+ },
+ "ايت": {
+  "tr": "köpek",
+  "ornek": "ايت اورر كاروان يورر",
+  "okunus": "İt ürür kervân yürür.",
+  "anlam": "Köpek havlar, kervan yürür."
+ },
+ "ايتدى": {
+  "tr": "etti",
+  "ornek": "دعا ايتدى",
+  "okunus": "Duâ etti.",
+  "anlam": "Dua etti."
+ },
+ "ايجاد": {
+  "tr": "icat",
+  "ornek": "تلغرافى كيم ايجاد ايتدى",
+  "okunus": "Telgrafı kim îcâd etti?",
+  "anlam": "Telgrafı kim icat etti?"
+ },
+ "ايدى": {
+  "tr": "idi",
+  "ornek": "هوا كوزل ايدى",
+  "okunus": "Havâ güzel idi.",
+  "anlam": "Hava güzeldi."
+ },
+ "ايسه": {
+  "tr": "ise",
+  "ornek": "بن ايسه كلمدم",
+  "okunus": "Ben ise gelmedim.",
+  "anlam": "Ben ise gelmedim."
+ },
+ "ايش": {
+  "tr": "iş",
+  "ornek": "ايش وقتيدر",
+  "okunus": "İş vaktidir.",
+  "anlam": "İş zamanıdır."
+ },
+ "ايشچى": {
+  "tr": "işçi",
+  "ornek": "ايشچيلر كلدى",
+  "okunus": "İşçiler geldi.",
+  "anlam": "İşçiler geldi."
+ },
+ "ايكى": {
+  "tr": "iki",
+  "ornek": "ايكى كوز",
+  "okunus": "İki göz",
+  "anlam": "İki göz"
+ },
+ "ايله": {
+  "tr": "ile",
+  "ornek": "قلم ايله يازدى",
+  "okunus": "Kalem ile yazdı.",
+  "anlam": "Kalemle yazdı."
+ },
+ "ايمش": {
+  "tr": "imiş",
+  "ornek": "خسته ايمش",
+  "okunus": "Hasta imiş.",
+  "anlam": "Hastaymış."
+ },
+ "ايچملى": {
+  "tr": "içmeli",
+  "ornek": "صو ايچملى",
+  "okunus": "Su içmeli.",
+  "anlam": "Su içmeli."
+ },
+ "ایرماق": {
+  "tr": "ırmak",
+  "ornek": "ایرماق طاشدى",
+  "okunus": "Irmak taştı.",
+  "anlam": "Irmak taştı."
+ },
+ "بابا": {
+  "tr": "baba",
+  "ornek": "بابام كلدى",
+  "okunus": "Babam geldi.",
+  "anlam": "Babam geldi."
+ },
+ "بابايانه": {
+  "tr": "babacan, baba gibi",
+  "ornek": "بابايانه بر آدم",
+  "okunus": "Babayâne bir âdem",
+  "anlam": "Babacan bir adam"
+ },
+ "باش": {
+  "tr": "baş",
+  "ornek": "باشم آغرييور",
+  "okunus": "Başım ağrıyor.",
+  "anlam": "Başım ağrıyor."
+ },
+ "باوقار": {
+  "tr": "ağırbaşlı",
+  "ornek": "باوقار بر آدم",
+  "okunus": "Bâ-vakâr bir âdem",
+  "anlam": "Ağırbaşlı bir adam"
+ },
+ "برّاً": {
+  "tr": "karadan",
+  "ornek": "برّاً و بحراً",
+  "okunus": "Berren ve bahren",
+  "anlam": "Karadan ve denizden"
+ },
+ "بز": {
+  "tr": "biz",
+  "ornek": "بز اوه كيتدك",
+  "okunus": "Biz eve gittik.",
+  "anlam": "Biz eve gittik."
+ },
+ "بزمله": {
+  "tr": "bizimle",
+  "ornek": "بزمله كل",
+  "okunus": "Bizimle gel.",
+  "anlam": "Bizimle gel."
+ },
+ "بش": {
+  "tr": "beş",
+  "ornek": "بش پارمق",
+  "okunus": "Beş parmak",
+  "anlam": "Beş parmak"
+ },
+ "بعده": {
+  "tr": "sonra",
+  "ornek": "بعده كلدى",
+  "okunus": "Ba'de geldi.",
+  "anlam": "Sonra geldi."
+ },
+ "بكله": {
+  "tr": "bekle",
+  "ornek": "بنى بكله",
+  "okunus": "Beni bekle.",
+  "anlam": "Beni bekle."
+ },
+ "بكلمكده": {
+  "tr": "beklemekte",
+  "ornek": "او سنى بكلمكده در",
+  "okunus": "O seni beklemektedir.",
+  "anlam": "O seni bekliyor."
+ },
+ "بللى": {
+  "tr": "belli",
+  "ornek": "بللى اولدى",
+  "okunus": "Belli oldu.",
+  "anlam": "Belli oldu."
+ },
+ "بن": {
+  "tr": "ben",
+  "ornek": "بن مكتبه كيدرم",
+  "okunus": "Ben mektebe giderim.",
+  "anlam": "Ben okula giderim."
+ },
+ "بنام": {
+  "tr": "ünlü, adı sanı belli",
+  "ornek": "بنام بر شاعر",
+  "okunus": "Be-nâm bir şâir",
+  "anlam": "Ünlü bir şair"
+ },
+ "بڭا": {
+  "tr": "bana",
+  "ornek": "بڭا بر كتاب وير",
+  "okunus": "Bana bir kitâb ver.",
+  "anlam": "Bana bir kitap ver."
+ },
+ "بو": {
+  "tr": "bu",
+  "ornek": "بو كتاب",
+  "okunus": "Bu kitâb",
+  "anlam": "Bu kitap"
+ },
+ "بوسه": {
+  "tr": "öpücük",
+  "ornek": "بر بوسه كوندردى",
+  "okunus": "Bir bûse gönderdi.",
+  "anlam": "Bir öpücük gönderdi."
+ },
+ "بيضا": {
+  "tr": "beyaz",
+  "ornek": "يد بيضا",
+  "okunus": "Yed-i beyzâ",
+  "anlam": "Beyaz el, ustalık"
+ },
+ "بِن": {
+  "tr": "bin",
+  "ornek": "بِن سنه",
+  "okunus": "Bin sene",
+  "anlam": "Bin yıl"
+ },
+ "تا": {
+  "tr": "-e kadar",
+  "ornek": "تا صباحه قدر",
+  "okunus": "Tâ sabâha kadar",
+  "anlam": "Ta sabaha kadar"
+ },
+ "تبديل": {
+  "tr": "değiştirme",
+  "ornek": "تبديل قيافت ايتدى",
+  "okunus": "Tebdîl-i kıyâfet etti.",
+  "anlam": "Kılık değiştirdi."
+ },
+ "تبرئه": {
+  "tr": "aklama, suçsuz çıkarma",
+  "ornek": "محكمه اونى تبرئه ايتدى",
+  "okunus": "Mahkeme onu tebriye etti.",
+  "anlam": "Mahkeme onu akladı."
+ },
+ "تجاهل": {
+  "tr": "bilmezlikten gelme",
+  "ornek": "تجاهل عارف",
+  "okunus": "Tecâhül-i ârif",
+  "anlam": "Bilip de bilmezlikten gelme sanatı"
+ },
+ "تحمّل": {
+  "tr": "katlanma",
+  "ornek": "بو درده تحمّل ايتدى",
+  "okunus": "Bu derde tahammül etti.",
+  "anlam": "Bu derde katlandı."
+ },
+ "تداول": {
+  "tr": "dolaşım",
+  "ornek": "پاره تداولده در",
+  "okunus": "Pâre tedâvüldedir.",
+  "anlam": "Para dolaşımdadır."
+ },
+ "تداوى": {
+  "tr": "tedavi",
+  "ornek": "خسته تداوى اولندى",
+  "okunus": "Hasta tedâvî olundu.",
+  "anlam": "Hasta tedavi edildi."
+ },
+ "ترلك": {
+  "tr": "terlik",
+  "ornek": "ترلك كيدى",
+  "okunus": "Terlik giydi.",
+  "anlam": "Terlik giydi."
+ },
+ "ترْك": {
+  "tr": "bırakma, terk",
+  "ornek": "اوى ترك ايتدى",
+  "okunus": "Evi terk etti.",
+  "anlam": "Evi terk etti."
+ },
+ "تعاون": {
+  "tr": "yardımlaşma",
+  "ornek": "تعاون جمعيتى",
+  "okunus": "Teâvün cem'iyyeti",
+  "anlam": "Yardımlaşma derneği"
+ },
+ "تعليم": {
+  "tr": "öğretim",
+  "ornek": "تعليم و تربيه",
+  "okunus": "Ta'lîm ü terbiye",
+  "anlam": "Öğretim ve eğitim"
+ },
+ "تعلّم": {
+  "tr": "öğrenme",
+  "ornek": "تعلّم ايچون اوقور",
+  "okunus": "Teallüm için okur.",
+  "anlam": "Öğrenmek için okur."
+ },
+ "تقديم": {
+  "tr": "sunma",
+  "ornek": "هديه تقديم ايتدى",
+  "okunus": "Hediyye takdîm etti.",
+  "anlam": "Hediye sundu."
+ },
+ "تكبّر": {
+  "tr": "büyüklenme, kibir",
+  "ornek": "تكبّر ايتمه",
+  "okunus": "Tekebbür etme.",
+  "anlam": "Kibirlenme."
+ },
+ "تمنّى": {
+  "tr": "dileme, dilek",
+  "ornek": "سعادتڭزى تمنّى ايدرم",
+  "okunus": "Saâdetinizi temennî ederim.",
+  "anlam": "Mutluluğunuzu dilerim."
+ },
+ "جزء": {
+  "tr": "parça, cüz",
+  "ornek": "قرآنڭ بر جزئى",
+  "okunus": "Kur'ân'ın bir cüz'ü",
+  "anlam": "Kur'an'ın bir cüzü"
+ },
+ "جمعه": {
+  "tr": "cuma",
+  "ornek": "جمعه كونى",
+  "okunus": "Cuma günü",
+  "anlam": "Cuma günü"
+ },
+ "جميل": {
+  "tr": "güzel",
+  "ornek": "الله جميلدر",
+  "okunus": "Allah cemîldir.",
+  "anlam": "Allah güzeldir."
+ },
+ "جنّت": {
+  "tr": "cennet",
+  "ornek": "جنّت آنالرڭ آياقلرى آلتنده در",
+  "okunus": "Cennet anaların ayakları altındadır.",
+  "anlam": "Cennet anaların ayakları altındadır."
+ },
+ "جنتده": {
+  "tr": "cennette",
+  "ornek": "شهيدلر جنتده در",
+  "okunus": "Şehîdler cennettedir.",
+  "anlam": "Şehitler cennettedir."
+ },
+ "حاكم": {
+  "tr": "yargıç, yönetici",
+  "ornek": "حاكم حكم ايتدى",
+  "okunus": "Hâkim hükmetti.",
+  "anlam": "Yargıç karar verdi."
+ },
+ "حق": {
+  "tr": "hak, doğru",
+  "ornek": "حق كلدى باطل كيتدى",
+  "okunus": "Hak geldi, bâtıl gitti.",
+  "anlam": "Doğru geldi, yanlış gitti."
+ },
+ "حقّى": {
+  "tr": "hakkı",
+  "ornek": "هركسڭ حقّى",
+  "okunus": "Herkesin hakkı",
+  "anlam": "Herkesin hakkı"
+ },
+ "حكّام": {
+  "tr": "yöneticiler, yargıçlar",
+  "ornek": "حكّام اجتماع ايتدى",
+  "okunus": "Hükkâm ictimâ' etti.",
+  "anlam": "Yöneticiler toplandı."
+ },
+ "حيف": {
+  "tr": "yazık",
+  "ornek": "حيف اولدى",
+  "okunus": "Hayf oldu.",
+  "anlam": "Yazık oldu."
+ },
+ "حيوانات": {
+  "tr": "hayvanlar",
+  "ornek": "حيوانات باغچه سى",
+  "okunus": "Hayvanât bahçesi",
+  "anlam": "Hayvanat bahçesi"
+ },
+ "خان": {
+  "tr": "han, konaklama yeri",
+  "ornek": "كاروان خانه قوندى",
+  "okunus": "Kervân hâna kondu.",
+  "anlam": "Kervan hana konakladı."
+ },
+ "خروج": {
+  "tr": "çıkış",
+  "ornek": "مصردن خروج",
+  "okunus": "Mısır'dan hurûc",
+  "anlam": "Mısır'dan çıkış"
+ },
+ "دائماً": {
+  "tr": "daima, her zaman",
+  "ornek": "دائماً چاليشير",
+  "okunus": "Dâimen çalışır.",
+  "anlam": "Her zaman çalışır."
+ },
+ "دخول": {
+  "tr": "giriş",
+  "ornek": "دخول ممنوعدر",
+  "okunus": "Dühûl memnû'dur.",
+  "anlam": "Girmek yasaktır."
+ },
+ "درآغوش": {
+  "tr": "kucaklama",
+  "ornek": "دوستنى درآغوش ايتدى",
+  "okunus": "Dostunu der-âgûş etti.",
+  "anlam": "Dostunu kucakladı."
+ },
+ "درحال": {
+  "tr": "hemen",
+  "ornek": "درحال كلدى",
+  "okunus": "Derhâl geldi.",
+  "anlam": "Hemen geldi."
+ },
+ "دردست": {
+  "tr": "yakalanmış, ele geçmiş",
+  "ornek": "خرسز دردست اولندى",
+  "okunus": "Hırsız der-dest olundu.",
+  "anlam": "Hırsız yakalandı."
+ },
+ "دره": {
+  "tr": "dere",
+  "ornek": "دره طاشدى",
+  "okunus": "Dere taştı.",
+  "anlam": "Dere taştı."
+ },
+ "دريغا": {
+  "tr": "yazık, eyvah",
+  "ornek": "دريغا كه كنجلك كچدى",
+  "okunus": "Dirîgâ ki gençlik geçti.",
+  "anlam": "Yazık ki gençlik geçti."
+ },
+ "دستور": {
+  "tr": "izin",
+  "ornek": "دستور ويرڭز",
+  "okunus": "Destûr veriniz.",
+  "anlam": "İzin veriniz."
+ },
+ "دورت": {
+  "tr": "dört",
+  "ornek": "دورت موسم",
+  "okunus": "Dört mevsim",
+  "anlam": "Dört mevsim"
+ },
+ "دوقوز": {
+  "tr": "dokuz",
+  "ornek": "دوقوز آى",
+  "okunus": "Dokuz ay",
+  "anlam": "Dokuz ay"
+ },
+ "دڭز": {
+  "tr": "deniz",
+  "ornek": "دڭز ماويدر",
+  "okunus": "Deniz mâvidir.",
+  "anlam": "Deniz mavidir."
+ },
+ "رجب": {
+  "tr": "recep (ay)",
+  "ornek": "رجب آيى",
+  "okunus": "Receb ayı",
+  "anlam": "Recep ayı"
+ },
+ "رمضان": {
+  "tr": "ramazan",
+  "ornek": "رمضان آيى",
+  "okunus": "Ramazân ayı",
+  "anlam": "Ramazan ayı"
+ },
+ "زينهار": {
+  "tr": "sakın, asla",
+  "ornek": "زينهار يالان سويلمه",
+  "okunus": "Zinhâr yalan söyleme.",
+  "anlam": "Sakın yalan söyleme."
+ },
+ "سالم": {
+  "tr": "sağlam, esen",
+  "ornek": "سالم قالدى",
+  "okunus": "Sâlim kaldı.",
+  "anlam": "Sağ salim kaldı."
+ },
+ "سالماً": {
+  "tr": "sağ salim",
+  "ornek": "سالماً واصل اولدى",
+  "okunus": "Sâlimen vâsıl oldu.",
+  "anlam": "Sağ salim ulaştı."
+ },
+ "سكز": {
+  "tr": "sekiz",
+  "ornek": "سكز ساعت",
+  "okunus": "Sekiz saat",
+  "anlam": "Sekiz saat"
+ },
+ "سن": {
+  "tr": "sen",
+  "ornek": "سن ده كل",
+  "okunus": "Sen de gel.",
+  "anlam": "Sen de gel."
+ },
+ "سوركو": {
+  "tr": "sürgü",
+  "ornek": "قپونڭ سوركوسنى چك",
+  "okunus": "Kapının sürgüsünü çek.",
+  "anlam": "Kapının sürgüsünü çek."
+ },
+ "سوك": {
+  "tr": "sök",
+  "ornek": "بو ديكيشى سوك",
+  "okunus": "Bu dikişi sök.",
+  "anlam": "Bu dikişi sök."
+ },
+ "سويله": {
+  "tr": "söyle",
+  "ornek": "دوغرويى سويله",
+  "okunus": "Doğruyu söyle.",
+  "anlam": "Doğruyu söyle."
+ },
+ "شام": {
+  "tr": "Şam",
+  "ornek": "شام شريف",
+  "okunus": "Şâm-ı şerîf",
+  "anlam": "Şerefli Şam şehri"
+ },
+ "شدّت": {
+  "tr": "şiddet",
+  "ornek": "شدّتله ياغمور ياغدى",
+  "okunus": "Şiddetle yağmur yağdı.",
+  "anlam": "Şiddetli yağmur yağdı."
+ },
+ "شعبان": {
+  "tr": "şaban (ay)",
+  "ornek": "شعبان آيى",
+  "okunus": "Şa'bân ayı",
+  "anlam": "Şaban ayı"
+ },
+ "شعر": {
+  "tr": "şiir",
+  "ornek": "بر شعر اوقودى",
+  "okunus": "Bir şi'r okudu.",
+  "anlam": "Bir şiir okudu."
+ },
+ "شعرا": {
+  "tr": "şairler",
+  "ornek": "ديوان شعراسى",
+  "okunus": "Dîvân şuarâsı",
+  "anlam": "Divan şairleri"
+ },
+ "شكر": {
+  "tr": "şükür",
+  "ornek": "اللهه شكر اولسون",
+  "okunus": "Allah'a şükr olsun.",
+  "anlam": "Allah'a şükür olsun."
+ },
+ "شكران": {
+  "tr": "minnet, teşekkür",
+  "ornek": "شكران بورجى",
+  "okunus": "Şükrân borcu",
+  "anlam": "Teşekkür borcu"
+ },
+ "شو": {
+  "tr": "şu",
+  "ornek": "شو آدم",
+  "okunus": "Şu âdem",
+  "anlam": "Şu adam"
+ },
+ "شوال": {
+  "tr": "şevval (ay)",
+  "ornek": "شوال آيى",
+  "okunus": "Şevvâl ayı",
+  "anlam": "Şevval ayı"
+ },
+ "صالى": {
+  "tr": "salı",
+  "ornek": "صالى كونى",
+  "okunus": "Salı günü",
+  "anlam": "Salı günü"
+ },
+ "صداقت": {
+  "tr": "bağlılık, dürüstlük",
+  "ornek": "صداقت ايله خدمت ايتدى",
+  "okunus": "Sadâkat ile hizmet etti.",
+  "anlam": "Bağlılıkla hizmet etti."
+ },
+ "صفر": {
+  "tr": "sıfır",
+  "ornek": "صفر آلدى",
+  "okunus": "Sıfır aldı.",
+  "anlam": "Sıfır aldı."
+ },
+ "صو": {
+  "tr": "su",
+  "ornek": "صو ايچ",
+  "okunus": "Su iç.",
+  "anlam": "Su iç."
+ },
+ "صوص": {
+  "tr": "sus",
+  "ornek": "صوص و دڭله",
+  "okunus": "Sus ve dinle.",
+  "anlam": "Sus ve dinle."
+ },
+ "طات": {
+  "tr": "tat (tatmak fiilinden)",
+  "ornek": "بو ميوه يى طات",
+  "okunus": "Bu meyveyi tat.",
+  "anlam": "Bu meyveyi tat."
+ },
+ "طاش": {
+  "tr": "taş",
+  "ornek": "طاش ديوار",
+  "okunus": "Taş dîvâr",
+  "anlam": "Taş duvar"
+ },
+ "طرف": {
+  "tr": "taraf, yan",
+  "ornek": "بو طرفه كل",
+  "okunus": "Bu tarafa gel.",
+  "anlam": "Bu tarafa gel."
+ },
+ "طلب": {
+  "tr": "istek",
+  "ornek": "طلبڭز قبول اولندى",
+  "okunus": "Talebiniz kabûl olundu.",
+  "anlam": "İsteğiniz kabul edildi."
+ },
+ "طوت": {
+  "tr": "tut",
+  "ornek": "اليمى طوت",
+  "okunus": "Elimi tut.",
+  "anlam": "Elimi tut."
+ },
+ "ظفر": {
+  "tr": "zafer, utku",
+  "ornek": "ظفر قزاندق",
+  "okunus": "Zafer kazandık.",
+  "anlam": "Zafer kazandık."
+ },
+ "عالم": {
+  "tr": "bilgin",
+  "ornek": "عالم بر كتاب يازدى",
+  "okunus": "Âlim bir kitâb yazdı.",
+  "anlam": "Bilgin bir kitap yazdı."
+ },
+ "عبادت": {
+  "tr": "ibadet, kulluk",
+  "ornek": "عبادت ايتدى",
+  "okunus": "İbâdet etti.",
+  "anlam": "İbadet etti."
+ },
+ "عثمانلى": {
+  "tr": "Osmanlı",
+  "ornek": "عثمانلى دولتى",
+  "okunus": "Osmanlı Devleti",
+  "anlam": "Osmanlı Devleti"
+ },
+ "عرفان": {
+  "tr": "bilgi, kültür",
+  "ornek": "عرفان صاحبى",
+  "okunus": "İrfân sâhibi",
+  "anlam": "Kültürlü kişi"
+ },
+ "علم": {
+  "tr": "ilim, bilim",
+  "ornek": "علم اوكرنمك فرضدر",
+  "okunus": "İlim öğrenmek farzdır.",
+  "anlam": "Bilgi edinmek farzdır."
+ },
+ "علما": {
+  "tr": "âlimler, bilginler",
+  "ornek": "علما طوپلاندى",
+  "okunus": "Ulemâ toplandı.",
+  "anlam": "Bilginler toplandı."
+ },
+ "علوم": {
+  "tr": "ilimler, bilimler",
+  "ornek": "علوم و فنون",
+  "okunus": "Ulûm u fünûn",
+  "anlam": "Bilimler ve fenler"
+ },
+ "عموماً": {
+  "tr": "genellikle",
+  "ornek": "عموماً صباح كلير",
+  "okunus": "Umûmen sabâh gelir.",
+  "anlam": "Genellikle sabah gelir."
+ },
+ "عنايت": {
+  "tr": "yardım, lütuf",
+  "ornek": "الله عنايت ايتسون",
+  "okunus": "Allah inâyet etsin.",
+  "anlam": "Allah yardım etsin."
+ },
+ "غرّه": {
+  "tr": "ayın ilk günü",
+  "ornek": "رمضانڭ غرّه سى",
+  "okunus": "Ramazânın gurresi",
+  "anlam": "Ramazanın ilk günü"
+ },
+ "فاضله": {
+  "tr": "erdemli",
+  "ornek": "مدينه فاضله",
+  "okunus": "Medîne-i fâzıla",
+  "anlam": "Erdemli şehir (ideal toplum)"
+ },
+ "فاعل": {
+  "tr": "yapan, özne",
+  "ornek": "فاعل مجهول",
+  "okunus": "Fâil-i meçhûl",
+  "anlam": "Kimin yaptığı bilinmeyen"
+ },
+ "فامّا": {
+  "tr": "ama, fakat",
+  "ornek": "فامّا بو ممكن دكل",
+  "okunus": "Fe-emmâ bu mümkin değil.",
+  "anlam": "Ama bu mümkün değil."
+ },
+ "قاضى": {
+  "tr": "kadı, yargıç",
+  "ornek": "قاضى حكم ويردى",
+  "okunus": "Kâdî hüküm verdi.",
+  "anlam": "Kadı karar verdi."
+ },
+ "قتل": {
+  "tr": "öldürme",
+  "ornek": "قتل عام",
+  "okunus": "Katl-i âm",
+  "anlam": "Toplu öldürme"
+ },
+ "قنده": {
+  "tr": "nerede",
+  "ornek": "قنده قالدڭ",
+  "okunus": "Kanda kaldın?",
+  "anlam": "Nerede kaldın?"
+ },
+ "قوراق": {
+  "tr": "kurak",
+  "ornek": "هوا قوراق كچدى",
+  "okunus": "Havâ kurak geçti.",
+  "anlam": "Hava kurak geçti."
+ },
+ "قيريق": {
+  "tr": "kırık",
+  "ornek": "قيريق بر قلم",
+  "okunus": "Kırık bir kalem",
+  "anlam": "Kırık bir kalem"
+ },
+ "كاتب": {
+  "tr": "yazıcı, kâtip",
+  "ornek": "كاتب مكتوبى يازدى",
+  "okunus": "Kâtib mektûbu yazdı.",
+  "anlam": "Kâtip mektubu yazdı."
+ },
+ "كبرى": {
+  "tr": "en büyük",
+  "ornek": "مصيبت كبرى",
+  "okunus": "Musîbet-i kübrâ",
+  "anlam": "En büyük felaket"
+ },
+ "كتابلر": {
+  "tr": "kitaplar",
+  "ornek": "كتابلر ماصه ده در",
+  "okunus": "Kitaplar masadadır.",
+  "anlam": "Kitaplar masada."
+ },
+ "كذا": {
+  "tr": "aynı şekilde, keza",
+  "ornek": "كذا بن ده",
+  "okunus": "Kezâ ben de.",
+  "anlam": "Ben de öyle."
+ },
+ "كرم": {
+  "tr": "cömertlik, lütuf",
+  "ornek": "كرم ايدڭ",
+  "okunus": "Kerem ediniz.",
+  "anlam": "Lütfedin."
+ },
+ "كركسه": {
+  "tr": "gerekse",
+  "ornek": "كرك بن كركسه سن",
+  "okunus": "Gerek ben gerekse sen",
+  "anlam": "İster ben ister sen"
+ },
+ "كل": {
+  "tr": "gel",
+  "ornek": "بورايه كل",
+  "okunus": "Buraya gel.",
+  "anlam": "Buraya gel."
+ },
+ "كلدى": {
+  "tr": "geldi",
+  "ornek": "مكتوب كلدى",
+  "okunus": "Mektûb geldi.",
+  "anlam": "Mektup geldi."
+ },
+ "كلسه": {
+  "tr": "gelse",
+  "ornek": "كلسه كوروشورز",
+  "okunus": "Gelse görüşürüz.",
+  "anlam": "Gelse görüşürüz."
+ },
+ "كلوب": {
+  "tr": "gelip",
+  "ornek": "كلوب كيتدى",
+  "okunus": "Gelip gitti.",
+  "anlam": "Gelip gitti."
+ },
+ "كورمك": {
+  "tr": "görmek",
+  "ornek": "سنى كورمك ايسترم",
+  "okunus": "Seni görmek isterim.",
+  "anlam": "Seni görmek isterim."
+ },
+ "كوزلر": {
+  "tr": "gözler",
+  "ornek": "كوزلرڭ كوزلدر",
+  "okunus": "Gözlerin güzeldir.",
+  "anlam": "Gözlerin güzel."
+ },
+ "كيجه": {
+  "tr": "gece",
+  "ornek": "كيجه اولدى",
+  "okunus": "Gece oldu.",
+  "anlam": "Gece oldu."
+ },
+ "كيرسينلر": {
+  "tr": "girsinler",
+  "ornek": "ايچرى كيرسينلر",
+  "okunus": "İçeri girsinler.",
+  "anlam": "İçeri girsinler."
+ },
+ "كچ": {
+  "tr": "geç",
+  "ornek": "ايچرى كچ",
+  "okunus": "İçeri geç.",
+  "anlam": "İçeri geç."
+ },
+ "مالى": {
+  "tr": "malı",
+  "ornek": "بو كيمڭ مالى",
+  "okunus": "Bu kimin malı?",
+  "anlam": "Bu kimin malı?"
+ },
+ "ماعدا": {
+  "tr": "-den başka",
+  "ornek": "بندن ماعدا",
+  "okunus": "Benden mâadâ",
+  "anlam": "Benden başka"
+ },
+ "متباقى": {
+  "tr": "geri kalan",
+  "ornek": "متباقى پاره",
+  "okunus": "Mütebâkî pâre",
+  "anlam": "Kalan para"
+ },
+ "متداول": {
+  "tr": "yaygın, kullanılan",
+  "ornek": "متداول كتابلر",
+  "okunus": "Mütedâvel kitaplar",
+  "anlam": "Yaygın kitaplar"
+ },
+ "مترجم": {
+  "tr": "çevirmen",
+  "ornek": "مترجم كتابى ترجمه ايتدى",
+  "okunus": "Mütercim kitâbı tercüme etti.",
+  "anlam": "Çevirmen kitabı çevirdi."
+ },
+ "متعلّم": {
+  "tr": "öğrenci",
+  "ornek": "متعلّملر درسه باشلادى",
+  "okunus": "Müteallimler derse başladı.",
+  "anlam": "Öğrenciler derse başladı."
+ },
+ "متكبّر": {
+  "tr": "kibirli",
+  "ornek": "متكبّر بر آدم",
+  "okunus": "Mütekebbir bir âdem",
+  "anlam": "Kibirli bir adam"
+ },
+ "مجادله": {
+  "tr": "mücadele, çekişme",
+  "ornek": "حيات بر مجادله در",
+  "okunus": "Hayât bir mücâdeledir.",
+  "anlam": "Hayat bir mücadeledir."
+ },
+ "محاربه": {
+  "tr": "savaş",
+  "ornek": "محاربه باشلادى",
+  "okunus": "Muhârebe başladı.",
+  "anlam": "Savaş başladı."
+ },
+ "محبانه": {
+  "tr": "dostça, sevgiyle",
+  "ornek": "محبانه بر سلام",
+  "okunus": "Muhibbâne bir selâm",
+  "anlam": "Dostça bir selam"
+ },
+ "محبوس": {
+  "tr": "tutuklu",
+  "ornek": "محبوس قالدى",
+  "okunus": "Mahbûs kaldı.",
+  "anlam": "Hapiste kaldı."
+ },
+ "محرم": {
+  "tr": "muharrem (ay)",
+  "ornek": "محرم آيى",
+  "okunus": "Muharrem ayı",
+  "anlam": "Muharrem ayı"
+ },
+ "مخفى": {
+  "tr": "gizli",
+  "ornek": "مخفى بر مكتوب",
+  "okunus": "Muhfî bir mektûb",
+  "anlam": "Gizli bir mektup"
+ },
+ "مدافعه": {
+  "tr": "savunma",
+  "ornek": "مدافعه وطن",
+  "okunus": "Müdâfaa-i vatan",
+  "anlam": "Vatan savunması"
+ },
+ "مسئله": {
+  "tr": "mesele, sorun",
+  "ornek": "بو مسئله مهمدر",
+  "okunus": "Bu mes'ele mühimdir.",
+  "anlam": "Bu sorun önemlidir."
+ },
+ "مسئوليت": {
+  "tr": "sorumluluk",
+  "ornek": "مسئوليت بنمدر",
+  "okunus": "Mes'ûliyet benimdir.",
+  "anlam": "Sorumluluk benim."
+ },
+ "مساجد": {
+  "tr": "camiler",
+  "ornek": "استانبولڭ مساجدى",
+  "okunus": "İstanbul'un mesâcidi",
+  "anlam": "İstanbul'un camileri"
+ },
+ "مصر": {
+  "tr": "Mısır",
+  "ornek": "مصره كيتدى",
+  "okunus": "Mısır'a gitti.",
+  "anlam": "Mısır'a gitti."
+ },
+ "مظلوم": {
+  "tr": "haksızlığa uğramış",
+  "ornek": "مظلومڭ آهى",
+  "okunus": "Mazlûmun âhı",
+  "anlam": "Mazlumun ahı"
+ },
+ "معلّم": {
+  "tr": "öğretmen",
+  "ornek": "معلّم درس ويردى",
+  "okunus": "Muallim ders verdi.",
+  "anlam": "Öğretmen ders verdi."
+ },
+ "معلمين": {
+  "tr": "öğretmenler",
+  "ornek": "دار المعلمين",
+  "okunus": "Dârü'l-muallimîn",
+  "anlam": "Öğretmen okulu"
+ },
+ "معلوم": {
+  "tr": "bilinen",
+  "ornek": "معلومڭز اولسون",
+  "okunus": "Ma'lûmunuz olsun.",
+  "anlam": "Bilginiz olsun."
+ },
+ "مغفرت": {
+  "tr": "bağışlanma",
+  "ornek": "الله مغفرت ايلسون",
+  "okunus": "Allah mağfiret eylesin.",
+  "anlam": "Allah bağışlasın."
+ },
+ "مقيم": {
+  "tr": "oturan, yerleşik",
+  "ornek": "استانبولده مقيم",
+  "okunus": "İstanbul'da mukîm",
+  "anlam": "İstanbul'da oturan"
+ },
+ "مكالمه": {
+  "tr": "konuşma",
+  "ornek": "مكالمه ايتديلر",
+  "okunus": "Mükâleme ettiler.",
+  "anlam": "Konuştular."
+ },
+ "مكتب": {
+  "tr": "okul",
+  "ornek": "مكتبه كيتدى",
+  "okunus": "Mektebe gitti.",
+  "anlam": "Okula gitti."
+ },
+ "مكتوب": {
+  "tr": "mektup",
+  "ornek": "بر مكتوب يازدم",
+  "okunus": "Bir mektûb yazdım.",
+  "anlam": "Bir mektup yazdım."
+ },
+ "مكّه": {
+  "tr": "Mekke",
+  "ornek": "مكّه مكرّمه",
+  "okunus": "Mekke-i Mükerreme",
+  "anlam": "Saygın Mekke"
+ },
+ "ملّت": {
+  "tr": "millet",
+  "ornek": "ملّت مجلسى",
+  "okunus": "Millet Meclisi",
+  "anlam": "Millet Meclisi"
+ },
+ "موجد": {
+  "tr": "mucit",
+  "ornek": "تلغرافڭ موجدى",
+  "okunus": "Telgrafın mûcidi",
+  "anlam": "Telgrafın mucidi"
+ },
+ "ناظر": {
+  "tr": "bakan",
+  "ornek": "معارف ناظرى",
+  "okunus": "Maârif nâzırı",
+  "anlam": "Eğitim bakanı"
+ },
+ "نهى": {
+  "tr": "yasaklama",
+  "ornek": "امر و نهى",
+  "okunus": "Emr ü nehy",
+  "anlam": "Emir ve yasak"
+ },
+ "نيجه": {
+  "tr": "nice, birçok",
+  "ornek": "نيجه سنه لره",
+  "okunus": "Nice senelere!",
+  "anlam": "Nice yıllara!"
+ },
+ "هم": {
+  "tr": "hem",
+  "ornek": "هم اوقور هم يازار",
+  "okunus": "Hem okur hem yazar.",
+  "anlam": "Hem okur hem yazar."
+ },
+ "هيئت": {
+  "tr": "kurul",
+  "ornek": "هيئت طوپلاندى",
+  "okunus": "Hey'et toplandı.",
+  "anlam": "Kurul toplandı."
+ },
+ "وار": {
+  "tr": "var",
+  "ornek": "ايكى كتابم وار",
+  "okunus": "İki kitâbım var.",
+  "anlam": "İki kitabım var."
+ },
+ "واقعا": {
+  "tr": "gerçekten",
+  "ornek": "واقعا كوزلدر",
+  "okunus": "Vâkıa güzeldir.",
+  "anlam": "Gerçekten güzel."
+ },
+ "والدين": {
+  "tr": "anne ve baba",
+  "ornek": "والدينه حرمت",
+  "okunus": "Vâlideyne hürmet",
+  "anlam": "Anne babaya saygı"
+ },
+ "والى": {
+  "tr": "vali",
+  "ornek": "والى كلدى",
+  "okunus": "Vâlî geldi.",
+  "anlam": "Vali geldi."
+ },
+ "وفا": {
+  "tr": "vefa, sözünde durma",
+  "ornek": "وفا بورجى",
+  "okunus": "Vefâ borcu",
+  "anlam": "Vefa borcu"
+ },
+ "وقت": {
+  "tr": "vakit, zaman",
+  "ornek": "وقت نقددر",
+  "okunus": "Vakit nakittir.",
+  "anlam": "Zaman nakittir."
+ },
+ "وقتاكى": {
+  "tr": "ne zaman ki",
+  "ornek": "وقتاكى كلدى",
+  "okunus": "Vaktâki geldi...",
+  "anlam": "Ne zaman ki geldi..."
+ },
+ "ولايت": {
+  "tr": "il",
+  "ornek": "ولايت مركزى",
+  "okunus": "Vilâyet merkezi",
+  "anlam": "İl merkezi"
+ },
+ "ولو": {
+  "tr": "olsa bile",
+  "ornek": "ولو بر كون اولسون",
+  "okunus": "Velev bir gün olsun.",
+  "anlam": "Bir gün bile olsa."
+ },
+ "يا": {
+  "tr": "ey",
+  "ornek": "يا رب",
+  "okunus": "Yâ Rab!",
+  "anlam": "Ey Rabbim!"
+ },
+ "يدى": {
+  "tr": "yedi",
+  "ornek": "يدى كون",
+  "okunus": "Yedi gün",
+  "anlam": "Yedi gün"
+ },
+ "ييقا": {
+  "tr": "yıka",
+  "ornek": "يوزڭى ييقا",
+  "okunus": "Yüzünü yıka.",
+  "anlam": "Yüzünü yıka."
+ },
+ "ييقامقده": {
+  "tr": "yıkamakta",
+  "ornek": "اللرينى ييقامقده در",
+  "okunus": "Ellerini yıkamaktadır.",
+  "anlam": "Ellerini yıkıyor."
+ },
+ "پازار": {
+  "tr": "pazar",
+  "ornek": "پازار كونى",
+  "okunus": "Pazar günü",
+  "anlam": "Pazar günü"
+ },
+ "پازارايرتسى": {
+  "tr": "pazartesi",
+  "ornek": "پازارايرتسى كونى",
+  "okunus": "Pazartesi günü",
+  "anlam": "Pazartesi günü"
+ },
+ "پنجشنبه": {
+  "tr": "perşembe",
+  "ornek": "پنجشنبه كونى",
+  "okunus": "Perşembe günü",
+  "anlam": "Perşembe günü"
+ },
+ "چارشنبه": {
+  "tr": "çarşamba",
+  "ornek": "چارشنبه كونى",
+  "okunus": "Çarşamba günü",
+  "anlam": "Çarşamba günü"
+ },
+ "چالیشمقده": {
+  "tr": "çalışmakta",
+  "ornek": "درسلرينه چالیشمقده در",
+  "okunus": "Derslerine çalışmaktadır.",
+  "anlam": "Derslerine çalışıyor."
+ },
+ "چيقمالى": {
+  "tr": "çıkmalı",
+  "ornek": "ايركن چيقمالى",
+  "okunus": "Erken çıkmalı.",
+  "anlam": "Erken çıkmalı."
+ },
+ "چیق": {
+  "tr": "çık",
+  "ornek": "طيشارى چیق",
+  "okunus": "Dışarı çık.",
+  "anlam": "Dışarı çık."
+ }
+}

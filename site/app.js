@@ -6096,9 +6096,11 @@ document.getElementById("zin").focus();
   const harfForm = (h, f) => (f === "bas" ? (h.sep ? h.ch : h.ch + ZWJ) : f === "orta" ? (h.sep ? ZWJ + h.ch : ZWJ + h.ch + ZWJ) : f === "son" ? ZWJ + h.ch : h.ch);
   const HARF_FORMS = [["tek", "Tek"], ["son", "Sonda"], ["orta", "Ortada"], ["bas", "Başta"]];
   const harfCourse = () => COURSES.find((c) => c.okunus);
+  // Sözlük (data/<slug>/sozluk.json) varsa kelime okuma yalnızca anlamı ve örnek cümlesi yazılmış kelimeleri sorar.
   function harfWords() {
     const c = harfCourse();
     if (!c) return [];
+    if (c.sozluk) return Object.entries(c.sozluk).filter(([k]) => c.okunus[k]).map(([k, s]) => ({ w: k, r: c.okunus[k].trim(), s }));
     const seen = new Set();
     return Object.entries(c.okunus).filter(([k, v]) => !/\s/.test(k.trim()) && k.trim().length >= 2 && v && !/[,;]/.test(v) && !/^(medli |hemze)/.test(v))
       .map(([k, v]) => ({ w: k.trim(), r: v.trim() })).filter((x) => !seen.has(x.r) && seen.add(x.r));
@@ -6118,9 +6120,9 @@ document.getElementById("zin").focus();
   function viewHarfler(query) {
     const c = harfCourse();
     if (!c) return viewNotFound();
-    const tab = ["tani", "oku", "iz"].includes(query.mod) ? query.mod : "tablo";
+    const tab = ["tani", "oku", "iz", "sozluk"].includes(query.mod) && (query.mod !== "sozluk" || c.sozluk) ? query.mod : "tablo";
     const st = harfStat();
-    const tabs = [["tablo", "Harf tablosu"], ["tani", "Harfi tanı"], ["oku", "Kelime oku"], ["iz", "İz sür"]]
+    const tabs = [["tablo", "Harf tablosu"], ["tani", "Harfi tanı"], ["oku", "Kelime oku"], ["iz", "İz sür"]].concat(c.sozluk ? [["sozluk", "Sözlük"]] : [])
       .map(([k, l]) => `<a class="chip${tab === k ? " active" : ""}" href="#/harfler${k === "tablo" ? "" : "?mod=" + k}">${l}</a>`).join("");
     const head = `<p class="crumbs"><a href="#/">Katalog</a> / <a href="#/course/${c.slug}">${esc(c.subject)}</a> / Harf atölyesi</p>
       <p class="eyebrow">${esc(c.subject)}</p><h1>Harf atölyesi</h1>
@@ -6142,6 +6144,12 @@ document.getElementById("zin").focus();
         </ul></div>
         <div class="btn-row"><a class="btn" href="#/harfler?mod=tani">Harfi tanı alıştırması</a><a class="btn ghost" href="#/harfler?mod=oku">Kelime okuma</a></div>`;
     }
+    if (tab === "sozluk") {
+      const items = harfWords().sort((a, b) => a.r.localeCompare(b.r, "tr"));
+      return `${head}<p class="muted">Kelime okuma alıştırmasındaki ${items.length} kelime: okunuşu, bugünkü Türkçe karşılığı ve kısa bir örnek. Arap harfli yazıya dokununca okunuşu sesli okunur. Örnek cümleler alıştırma için yazıldı; ders kitabından alınmadı.</p>
+        <label class="field hf-find"><span class="sr-only">Sözlükte ara</span><input type="search" placeholder="Kelime ya da anlam ara" data-hf-find></label>
+        <ul class="hf-dict">${items.map((x) => `<li data-hf-key="${esc((x.r + " " + x.s.tr + " " + x.s.anlam).toLocaleLowerCase("tr"))}">${harfInfo(x, true)}</li>`).join("")}</ul>`;
+    }
     if (tab === "iz") {
       return `${head}<p class="muted">Soluk harfin üzerinden parmağınla ya da fareyle geç. Arap yazısı sağdan sola ve çoğunlukla yukarıdan aşağıya yazılır; noktaları en sona bırak.</p>
         <div class="hf-trace" id="hf-trace">
@@ -6152,13 +6160,27 @@ document.getElementById("zin").focus();
         </div>`;
     }
     const total = tab === "tani" ? Object.values(st.L).reduce((a, r) => [a[0] + r[0], a[1] + r[1]], [0, 0]) : st.W;
-    return `${head}<p class="muted">${tab === "tani" ? "Gösterilen harfin adını seç. Harf tek başına ya da kelimedeki baş, orta veya son biçimiyle gelir." : "Arap harfli kelimenin okunuşunu seç. Cevaptan sonra doğru okunuş sesli okunur."}
+    return `${head}<p class="muted">${tab === "tani" ? "Gösterilen harfin adını seç. Harf tek başına ya da kelimedeki baş, orta veya son biçimiyle gelir." : "Arap harfli kelimenin okunuşunu seç. Cevaptan sonra doğru okunuş sesli okunur, kelimenin bugünkü karşılığı ve örnek bir cümle görünür."}
       ${total[0] ? ` Şimdiye kadar ${total[0]} cevap, %${Math.round((total[1] / total[0]) * 100)} doğru.` : ""}</p>
       <div id="hf-quiz" data-mod="${tab}"></div>`;
   }
 
+  // Kelimenin güncel karşılığı ve örnek cümlesi (kelime okuma cevabı ve sözlük sekmesi).
+  function harfInfo(x, withWord) {
+    const s = x.s;
+    return `${withWord ? `<p class="hf-dw"><button type="button" class="ota hf-say" lang="ota" dir="rtl" data-hf-say="${esc(x.r)}">${esc(x.w)}</button> <b>${esc(x.r)}</b></p>` : ""}
+      <p class="hf-tr"><span class="muted">Güncel Türkçe:</span> <b>${esc(s.tr)}</b></p>
+      <p class="hf-ex"><button type="button" class="ota hf-say" lang="ota" dir="rtl" data-hf-say="${esc(s.okunus)}">${esc(s.ornek)}</button></p>
+      <p class="hf-exr"><i>${esc(s.okunus)}</i>${s.anlam && s.anlam !== s.okunus ? ` <span class="muted">· ${esc(s.anlam)}</span>` : ""}</p>`;
+  }
+
   function bindHarfler() {
     app.querySelectorAll("[data-hf-say]").forEach((b) => (b.onclick = () => harfSay(b.dataset.hfSay)));
+    const find = app.querySelector("[data-hf-find]");
+    if (find) find.oninput = () => {
+      const q = find.value.trim().toLocaleLowerCase("tr");
+      app.querySelectorAll(".hf-dict > li").forEach((li) => (li.hidden = !!q && !li.dataset.hfKey.includes(q)));
+    };
     const quiz = document.getElementById("hf-quiz");
     if (quiz) runHarfQuiz(quiz);
     const trace = document.getElementById("hf-trace");
@@ -6189,7 +6211,7 @@ document.getElementById("zin").focus();
       const x = words[Math.floor(Math.random() * words.length)];
       const others = shuffle(words.filter((y) => y !== x)).sort((a, b) => Math.abs(a.r.length - x.r.length) - Math.abs(b.r.length - x.r.length)).slice(0, 8);
       const opts = shuffle([x.r].concat(shuffle(others).slice(0, 3).map((y) => y.r)));
-      return { show: x.w, sub: "", opts, right: x.r, say: x.r };
+      return { show: x.w, sub: "", opts, right: x.r, say: x.r, info: x.s ? harfInfo(x) : "" };
     };
     if (mod === "oku" && words.length < 4) { root.innerHTML = `<p class="muted">Okuma alıştırması için yeterli kelime yok.</p>`; return; }
     const ask = () => {
@@ -6210,7 +6232,9 @@ document.getElementById("zin").focus();
         if (mod === "oku") { st.W[0]++; if (good) st.W[1]++; }
         else { const r = st.L[q.key] || (st.L[q.key] = [0, 0]); r[0]++; if (good) r[1]++; }
         saveStudy();
-        root.querySelector(".hf-fb").innerHTML = good ? "<b>Doğru.</b>" : `<b>Doğrusu:</b> ${esc(q.right)}`;
+        const fb = root.querySelector(".hf-fb");
+        fb.innerHTML = (good ? "<b>Doğru.</b>" : `<b>Doğrusu:</b> ${esc(q.right)}`) + (q.info ? `<div class="hf-info">${q.info}</div>` : "");
+        fb.querySelectorAll("[data-hf-say]").forEach((x) => (x.onclick = () => harfSay(x.dataset.hfSay)));
         harfSay(q.say);
         root.querySelector("[data-hf-next-row]").hidden = false;
         const go = root.querySelector("[data-hf-go]");
