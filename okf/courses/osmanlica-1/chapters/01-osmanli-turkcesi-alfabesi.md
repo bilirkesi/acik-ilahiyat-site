@@ -5,13 +5,17 @@ description: "Osmanlı Türkçesinin Türkçenin tarihî bir dönemi olduğunu, 
 course: osmanlica-1
 chapter: 1
 status: stable
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-14T20:00:01Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-15T18:25:20Z }
 notebook: "https://notebooklm.google.com/notebook/18b3f791-a3cd-4d19-a002-ced4ebfe16ae"
 ---
 
 # Özet
 
 Osmanlı Türkçesinin Türkçenin tarihî bir dönemi olduğunu, Arap alfabesine İranlıların ve Türklerin eklediği harflerle oluşan alfabeyi, okumayı kolaylaştıran hareke, med, şedde ve cezm işaretlerini ve harflerin birbirine nasıl bitiştiğini tanıtır.
+
+# Sesli Ders
+
+[Bölüm 1 sesli özeti](/audio/osmanlica-1/chapter-1.mp3) (5:41 dk, MP3)
 
 # Ders Kitabı Ünite Özeti
 
