@@ -6,105 +6,120 @@
    "title": "Osmanlı Türkçesi I ders kitabı, Bölüm 1: Osmanlı Türkçesi Alfabesi",
    "url": "",
    "type": "book",
-   "status": "ready"
+   "status": "ready",
+   "nlm_id": "263cc170-4a61-41f3-9034-caf8b9ab3dbe"
   },
   "kitap-bolum-2": {
    "id": "osm1-kitap-2",
    "title": "Osmanlı Türkçesi I ders kitabı, Bölüm 2: Türkçe Ünlü ve Ünsüzlerin Yazılışı",
    "url": "",
    "type": "book",
-   "status": "ready"
+   "status": "ready",
+   "nlm_id": "263cc170-4a61-41f3-9034-caf8b9ab3dbe"
   },
   "kitap-bolum-3": {
    "id": "osm1-kitap-3",
    "title": "Osmanlı Türkçesi I ders kitabı, Bölüm 3: Türkçe Kelimelerin Yapısı, Türkçe Kiplerin ve Edatların Yazılışı",
    "url": "",
    "type": "book",
-   "status": "ready"
+   "status": "ready",
+   "nlm_id": "263cc170-4a61-41f3-9034-caf8b9ab3dbe"
   },
   "kitap-bolum-4": {
    "id": "osm1-kitap-4",
    "title": "Osmanlı Türkçesi I ders kitabı, Bölüm 4: Türkçe Ek, Zamir, Zarf ve Sayıların Yazılışı",
    "url": "",
    "type": "book",
-   "status": "ready"
+   "status": "ready",
+   "nlm_id": "263cc170-4a61-41f3-9034-caf8b9ab3dbe"
   },
   "kitap-bolum-5": {
    "id": "osm1-kitap-5",
    "title": "Osmanlı Türkçesi I ders kitabı, Bölüm 5: Arapça ve Farsça Kelimelerde Ünlüler ve Yazılışları",
    "url": "",
    "type": "book",
-   "status": "ready"
+   "status": "ready",
+   "nlm_id": "263cc170-4a61-41f3-9034-caf8b9ab3dbe"
   },
   "kitap-bolum-6": {
    "id": "osm1-kitap-6",
    "title": "Osmanlı Türkçesi I ders kitabı, Bölüm 6: Arapça Kelimelerin Yapısı",
    "url": "",
    "type": "book",
-   "status": "ready"
+   "status": "ready",
+   "nlm_id": "263cc170-4a61-41f3-9034-caf8b9ab3dbe"
   },
   "kitap-bolum-7": {
    "id": "osm1-kitap-7",
    "title": "Osmanlı Türkçesi I ders kitabı, Bölüm 7: Aksâm-ı Seb'a, Mücerred Masdarlar, İsm-i Fâil ve İsm-i Mef'ûl",
    "url": "",
    "type": "book",
-   "status": "ready"
+   "status": "ready",
+   "nlm_id": "263cc170-4a61-41f3-9034-caf8b9ab3dbe"
   },
   "kitap-bolum-8": {
    "id": "osm1-kitap-8",
    "title": "Osmanlı Türkçesi I ders kitabı, Bölüm 8: Mezîdünfih Masdarlar (I)",
    "url": "",
    "type": "book",
-   "status": "ready"
+   "status": "ready",
+   "nlm_id": "263cc170-4a61-41f3-9034-caf8b9ab3dbe"
   },
   "k4Cl5j777xs": {
    "id": "osm1-video-1",
    "title": "AÖF Osmanlı Türkçesi I, Ünite 1 Özet videosu",
    "url": "https://www.youtube.com/watch?v=k4Cl5j777xs",
    "type": "youtube",
-   "status": "ready"
+   "status": "ready",
+   "nlm_id": "b7440a56-fb9f-4d41-9549-044a5c5d0d5c"
   },
   "RjVpM8DAUPI": {
    "id": "osm1-video-3",
    "title": "AÖF Osmanlı Türkçesi I, Ünite 3 Özet videosu",
    "url": "https://www.youtube.com/watch?v=RjVpM8DAUPI",
    "type": "youtube",
-   "status": "ready"
+   "status": "ready",
+   "nlm_id": "e14a3423-27b1-4120-a4b6-cc46ea75ac64"
   },
   "0vFS6f94LFA": {
    "id": "osm1-video-4",
    "title": "AÖF Osmanlı Türkçesi I, Ünite 4 Özet videosu",
    "url": "https://www.youtube.com/watch?v=0vFS6f94LFA",
    "type": "youtube",
-   "status": "ready"
+   "status": "ready",
+   "nlm_id": "49158c63-0910-46c6-b1d7-427143034525"
   },
   "3HtOWWxmAD8": {
    "id": "osm1-video-5",
    "title": "AÖF Osmanlı Türkçesi I, Ünite 5 Özet videosu",
    "url": "https://www.youtube.com/watch?v=3HtOWWxmAD8",
    "type": "youtube",
-   "status": "ready"
+   "status": "ready",
+   "nlm_id": "04b1209e-9b9d-43cd-8ae3-8bdb7c0cefae"
   },
   "f_sPl7P0Lpw": {
    "id": "osm1-video-6",
    "title": "AÖF Osmanlı Türkçesi I, Ünite 6 Özet videosu",
    "url": "https://www.youtube.com/watch?v=f_sPl7P0Lpw",
    "type": "youtube",
-   "status": "ready"
+   "status": "ready",
+   "nlm_id": "ce191252-96b9-4794-9a8d-64c5ed8c5295"
   },
   "tO8LLK5-AkI": {
    "id": "osm1-video-7",
    "title": "AÖF Osmanlı Türkçesi I, Ünite 7 Özet videosu",
    "url": "https://www.youtube.com/watch?v=tO8LLK5-AkI",
    "type": "youtube",
-   "status": "ready"
+   "status": "ready",
+   "nlm_id": "3e1aa1e9-cc67-43cf-9d76-f1e8a0c6a502"
   },
   "R-mD_GaXGeM": {
    "id": "osm1-video-8",
    "title": "AÖF Osmanlı Türkçesi I, Ünite 8 Özet videosu",
    "url": "https://www.youtube.com/watch?v=R-mD_GaXGeM",
    "type": "youtube",
-   "status": "ready"
+   "status": "ready",
+   "nlm_id": "fd6b2eef-2336-4964-ada6-9bb30bb95d69"
   },
   "audio-unite-1": {
    "id": "b7440a56-fb9f-4d41-9549-044a5c5d0d5c",
