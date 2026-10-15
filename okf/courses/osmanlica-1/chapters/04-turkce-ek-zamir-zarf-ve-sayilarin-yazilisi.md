@@ -5,13 +5,17 @@ description: Türkçe eklerin Arap harfleriyle kalıplaşmış yazılışların�
 course: osmanlica-1
 chapter: 4
 status: stable
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-14T20:00:01Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-15T21:46:50Z }
 notebook: "https://notebooklm.google.com/notebook/18b3f791-a3cd-4d19-a002-ced4ebfe16ae"
 ---
 
 # Özet
 
 Türkçe eklerin Arap harfleriyle kalıplaşmış yazılışlarını (çokluk, soru, yapım, zarf fiil, sıfat fiil, bildirme, hâl, iyelik ve zaman ekleri), şahıs ve işaret zamirlerinin çekimlerini, Osmanlı metinlerinde sık geçen zarfları ve rakamları anlatır.
+
+# Sesli Ders
+
+[Bölüm 4 sesli özeti](/audio/osmanlica-1/chapter-4.mp3) (5:54 dk, MP3)
 
 # Ders Kitabı Ünite Özeti
 

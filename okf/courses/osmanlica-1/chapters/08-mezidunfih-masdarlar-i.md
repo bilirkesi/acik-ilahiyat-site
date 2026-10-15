@@ -5,13 +5,17 @@ description: Mücerred masdarlara geçişlilik, dönüşlülük, işteşlik gibi
 course: osmanlica-1
 chapter: 8
 status: stable
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-14T20:00:01Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-15T21:46:50Z }
 notebook: "https://notebooklm.google.com/notebook/18b3f791-a3cd-4d19-a002-ced4ebfe16ae"
 ---
 
 # Özet
 
 Mücerred masdarlara geçişlilik, dönüşlülük, işteşlik gibi anlamlar katan mezîdünfih kalıplardan if'âl, tef'îl, tefa''ul, tefâ'ul ve müfâ'ale bâblarını, bu bâbların ism-i fâil ve ism-i mef'ûl vezinlerini ve i'lâlli örneklerini anlatır.
+
+# Sesli Ders
+
+[Bölüm 8 sesli özeti](/audio/osmanlica-1/chapter-8.mp3) (6:39 dk, MP3)
 
 # Ders Kitabı Ünite Özeti
 
