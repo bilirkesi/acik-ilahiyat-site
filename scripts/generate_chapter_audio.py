@@ -26,8 +26,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 BITRATE = "64k"
 PROMPT = ("Türkçe konuş. Dinleyiciler Anadolu Üniversitesi Açıköğretim İlahiyat ön lisans öğrencileri ve "
-          "sınava hazırlanıyorlar. Yalnızca bu bölümün konusunu anlat: \"{title}\". Temel kavramları, kişi ve "
-          "fırka adlarını, tarihleri ve sınavda sorulabilecek ayrımları açık ve doğru biçimde vurgula; "
+          "sınava hazırlanıyorlar. Yalnızca bu bölümün konusunu anlat: \"{title}\". Temel kavramları, kişi, eser ve "
+          "mezhep/kurum adlarını, tarihleri ve sınavda sorulabilecek ayrımları açık ve doğru biçimde vurgula; "
           "kaynaklarda olmayan bilgi ekleme.")
 
 
