@@ -436,6 +436,7 @@
             <a class="btn ghost" href="#/course/${c.slug}/quiz">Final (oyun)</a>
             <a class="btn ghost" href="#/course/${c.slug}/exams">Çıkmış / sınavlar</a>
             <a class="btn ghost" href="#/oyunlar?ders=${c.slug}">Bulmaca ve oyunlar</a>
+            ${c.okunus ? `<a class="btn ghost" href="#/harfler">Harf atölyesi</a>` : ""}
           </div>
           ${credit}
         </aside>
@@ -1391,7 +1392,7 @@
   function loadStudy() {
     let s = {};
     try { s = JSON.parse(localStorage.getItem(STUDY_KEY)) || {}; } catch (e) { s = {}; }
-    return Object.assign({ v: 1, cards: {}, days: {}, frozen: [], goal: 20, newPerDay: 10, courses: null, goalDone: "", log: [], mocks: [], videos: {}, vrate: 1, listen: {}, lrate: 1, plan: null, kcards: {}, kdir: "kavram", games: {}, marks: {} }, s);
+    return Object.assign({ v: 1, cards: {}, days: {}, frozen: [], goal: 20, newPerDay: 10, courses: null, goalDone: "", log: [], mocks: [], videos: {}, vrate: 1, listen: {}, lrate: 1, plan: null, kcards: {}, kdir: "kavram", games: {}, marks: {}, harf: null }, s);
   }
   function saveStudy() {
     try { localStorage.setItem(STUDY_KEY, JSON.stringify(study)); } catch (e) { /* özel mod */ }
@@ -1754,7 +1755,7 @@
         ${kavramDeskHtml()}
         ${marksDeskHtml()}
       </div>
-      <div class="btn-row desk-links"><a class="btn ghost" href="#/karisik">Karışık test</a><a class="btn ghost" href="#/karisik?mod=deneme">Deneme sınavı</a><a class="btn ghost" href="#/analiz">Gelişim analizi</a><a class="btn ghost" href="#/sikcikan">Sık çıkan konular</a><a class="btn ghost" href="#/puan">Not hesaplayıcı</a><a class="btn ghost" href="#/oyunlar">Bulmaca ve kelime oyunları</a></div>
+      <div class="btn-row desk-links"><a class="btn ghost" href="#/karisik">Karışık test</a><a class="btn ghost" href="#/karisik?mod=deneme">Deneme sınavı</a><a class="btn ghost" href="#/analiz">Gelişim analizi</a><a class="btn ghost" href="#/sikcikan">Sık çıkan konular</a><a class="btn ghost" href="#/puan">Not hesaplayıcı</a><a class="btn ghost" href="#/oyunlar">Bulmaca ve kelime oyunları</a>${harfCourse() ? `<a class="btn ghost" href="#/harfler">Osmanlıca harf atölyesi</a>` : ""}</div>
       ${resumeVideoHtml()}
       <h2>Bu hafta</h2>
       <div class="week-grid">
@@ -5261,6 +5262,12 @@ document.getElementById("zin").focus();
     // Vurgular: son değiştirilen sürüm kazanır; silinmiş kayıt da bir sürümdür, geri gelmez.
     const marks = study.marks || (study.marks = {});
     for (const [id, m] of Object.entries(b.marks || {})) if (m && typeof m === "object" && (!marks[id] || (m.u || 0) > (marks[id].u || 0))) marks[id] = m;
+    // Harf atölyesi: her harfte ve kelime okumada daha çok cevaplanmış sayaç kalır.
+    if (b.harf && typeof b.harf === "object") {
+      const hs = harfStat(), big = (a, x) => (Array.isArray(x) && (!a || x[0] > a[0]) ? x.slice(0, 2) : a);
+      for (const [ch, r] of Object.entries(b.harf.L || {})) hs.L[ch] = big(hs.L[ch], r);
+      hs.W = big(hs.W, b.harf.W);
+    }
     saveStudy();
   }
 
@@ -6069,6 +6076,198 @@ document.getElementById("zin").focus();
     } catch (e) { /* özel mod */ }
   }
 
+  // ---- #/harfler: Osmanlıca harf atölyesi ------------------------------------------------
+  // Harflerin dört yazılışı tarayıcının Arap yazısı şekillendirmesiyle üretilir: harfin önüne/arkasına
+  // sıfır genişlikli birleştirici (ZWJ) konunca baş, orta ve son biçimi çizilir; ek dosya gerekmez.
+  // Bitişmeyen harfler (ا د ذ ر ز ژ و) solundaki harfe bağlanmaz: baş biçimi tek, orta biçimi son biçimiyle aynıdır.
+  // Alıştırma sonuçları: study.harf = { L: { "ب": [n, ok] }, W: [n, ok] }.
+  const ZWJ = "‍";
+  const HARFLER = [
+    ["ا", "elif", "a, e", 1], ["ب", "be", "b", 0], ["پ", "pe", "p", 0], ["ت", "te", "t", 0], ["ث", "se", "s", 0],
+    ["ج", "cim", "c", 0], ["چ", "çim", "ç", 0], ["ح", "ha", "h", 0], ["خ", "hı", "h", 0], ["د", "dal", "d", 1],
+    ["ذ", "zel", "z", 1], ["ر", "re", "r", 1], ["ز", "ze", "z", 1], ["ژ", "je", "j", 1], ["س", "sin", "s", 0],
+    ["ش", "şın", "ş", 0], ["ص", "sad", "s", 0], ["ض", "dad", "d, z", 0], ["ط", "tı", "t", 0], ["ظ", "zı", "z", 0],
+    ["ع", "ayın", "ʿ (boğazdan)", 0], ["غ", "gayın", "ğ, g", 0], ["ف", "fe", "f", 0], ["ق", "kaf", "k", 0],
+    ["ك", "kef", "k, g, ğ, n", 0], ["ڭ", "sağır kef", "n (nazal)", 0], ["ل", "lam", "l", 0], ["م", "mim", "m", 0],
+    ["ن", "nun", "n", 0], ["و", "vav", "v, o, ö, u, ü", 1], ["ه", "he", "h, a, e", 0], ["ی", "ye", "y, ı, i", 0],
+  ].map(([ch, name, val, sep]) => ({ ch, name, val, sep: !!sep }));
+  // Birbirine benzeyen harfler: tanıma alıştırmasında çeldirici olarak önce bunlar gelir.
+  const HARF_GROUPS = ["بپتثنی", "جچحخ", "دذ", "رزژ", "سش", "صض", "طظ", "عغ", "فق", "كڭل", "اله", "مه", "وه"];
+  const harfForm = (h, f) => (f === "bas" ? (h.sep ? h.ch : h.ch + ZWJ) : f === "orta" ? (h.sep ? ZWJ + h.ch : ZWJ + h.ch + ZWJ) : f === "son" ? ZWJ + h.ch : h.ch);
+  const HARF_FORMS = [["tek", "Tek"], ["son", "Sonda"], ["orta", "Ortada"], ["bas", "Başta"]];
+  const harfCourse = () => COURSES.find((c) => c.okunus);
+  function harfWords() {
+    const c = harfCourse();
+    if (!c) return [];
+    const seen = new Set();
+    return Object.entries(c.okunus).filter(([k, v]) => !/\s/.test(k.trim()) && k.trim().length >= 2 && v && !/[,;]/.test(v) && !/^(medli |hemze)/.test(v))
+      .map(([k, v]) => ({ w: k.trim(), r: v.trim() })).filter((x) => !seen.has(x.r) && seen.add(x.r));
+  }
+  const harfStat = () => study.harf || (study.harf = { L: {}, W: [0, 0] });
+  function harfSay(text) {
+    if (!("speechSynthesis" in window)) return;
+    if (lis && lis.playing) lisStop();
+    speechSynthesis.cancel();
+    const u = new SpeechSynthesisUtterance(sayText(text));
+    u.lang = "tr-TR"; u.rate = 0.85;
+    const v = trVoice();
+    if (v) u.voice = v;
+    speechSynthesis.speak(u);
+  }
+
+  function viewHarfler(query) {
+    const c = harfCourse();
+    if (!c) return viewNotFound();
+    const tab = ["tani", "oku", "iz"].includes(query.mod) ? query.mod : "tablo";
+    const st = harfStat();
+    const tabs = [["tablo", "Harf tablosu"], ["tani", "Harfi tanı"], ["oku", "Kelime oku"], ["iz", "İz sür"]]
+      .map(([k, l]) => `<a class="chip${tab === k ? " active" : ""}" href="#/harfler${k === "tablo" ? "" : "?mod=" + k}">${l}</a>`).join("");
+    const head = `<p class="crumbs"><a href="#/">Katalog</a> / <a href="#/course/${c.slug}">${esc(c.subject)}</a> / Harf atölyesi</p>
+      <p class="eyebrow">${esc(c.subject)}</p><h1>Harf atölyesi</h1>
+      <div class="chip-row filter-row" role="tablist">${tabs}</div>`;
+    if (tab === "tablo") {
+      const acc = (h) => { const r = st.L[h.ch]; return r && r[0] >= 3 ? Math.round((r[1] / r[0]) * 100) : null; };
+      const rows = HARFLER.map((h) => {
+        const a = acc(h);
+        return `<tr><th scope="row"><button type="button" class="hf-name" data-hf-say="${esc(h.name)}">${esc(h.name)}</button><small>${esc(h.val)}</small>${a !== null ? `<span class="hf-acc${a < 70 ? " low" : ""}">%${a}</span>` : ""}</th>
+          ${HARF_FORMS.map(([f]) => `<td><span class="ota hf-g" lang="ota" dir="rtl">${harfForm(h, f)}</span></td>`).join("")}</tr>`;
+      }).join("");
+      return `${head}<p class="lead muted">Osmanlı Türkçesinde harfler kelimedeki yerine göre biçim değiştirir. Tablo sağdan sola okunur: tek başına, sonda, ortada ve başta. Harf adına dokununca sesli okunur.</p>
+        <div class="hf-wrap"><table class="hf-table"><thead><tr><th scope="col">Harf</th>${HARF_FORMS.map(([, l]) => `<th scope="col">${l}</th>`).join("")}</tr></thead><tbody>${rows}</tbody></table></div>
+        <div class="panel hf-notes"><h3>Bilinmesi gerekenler</h3><ul>
+          <li><b>Bitişmeyen harfler:</b> <span class="ota" lang="ota" dir="rtl">ا د ذ ر ز ژ و</span> kendinden sonraki (solundaki) harfe bağlanmaz; bu yüzden kelime ortasında boşluk varmış gibi görünür.</li>
+          <li><b>Benzer harfler:</b> birçok harf aynı gövdeyi paylaşır, yalnız noktaları ayırır: <span class="ota" lang="ota" dir="rtl">ب پ ت ث</span>, <span class="ota" lang="ota" dir="rtl">ج چ ح خ</span>, <span class="ota" lang="ota" dir="rtl">س ش</span>. Önce noktaların sayısına ve yerine bak.</li>
+          <li><b>Ünlüler:</b> <span class="ota" lang="ota" dir="rtl">ا و ه ی</span> hem ünsüz hem ünlü okunabilir; kısa ünlülerin çoğu yazılmaz.</li>
+          <li><b>Lamelif ve hemze:</b> lam ile elif yan yana gelince <span class="ota" lang="ota" dir="rtl">لا</span> biçimini alır; hemze (<span class="ota" lang="ota" dir="rtl">ء</span>) kesme gibi bir duraklama gösterir.</li>
+        </ul></div>
+        <div class="btn-row"><a class="btn" href="#/harfler?mod=tani">Harfi tanı alıştırması</a><a class="btn ghost" href="#/harfler?mod=oku">Kelime okuma</a></div>`;
+    }
+    if (tab === "iz") {
+      return `${head}<p class="muted">Soluk harfin üzerinden parmağınla ya da fareyle geç. Arap yazısı sağdan sola ve çoğunlukla yukarıdan aşağıya yazılır; noktaları en sona bırak.</p>
+        <div class="hf-trace" id="hf-trace">
+          <div class="hf-trace-top"><b class="ota" lang="ota" dir="rtl" data-hf-cur></b><span data-hf-curname></span>
+            <label class="hf-formsel"><span class="sr-only">Biçim</span><select data-hf-form>${HARF_FORMS.map(([f, l]) => `<option value="${f}">${l}</option>`).join("")}</select></label></div>
+          <canvas width="600" height="600" aria-label="İz sürme alanı"></canvas>
+          <div class="btn-row"><button class="btn ghost" type="button" data-hf-prev>Önceki</button><button class="btn ghost" type="button" data-hf-clear>Temizle</button><button class="btn" type="button" data-hf-next>Sonraki harf</button></div>
+        </div>`;
+    }
+    const total = tab === "tani" ? Object.values(st.L).reduce((a, r) => [a[0] + r[0], a[1] + r[1]], [0, 0]) : st.W;
+    return `${head}<p class="muted">${tab === "tani" ? "Gösterilen harfin adını seç. Harf tek başına ya da kelimedeki baş, orta veya son biçimiyle gelir." : "Arap harfli kelimenin okunuşunu seç. Cevaptan sonra doğru okunuş sesli okunur."}
+      ${total[0] ? ` Şimdiye kadar ${total[0]} cevap, %${Math.round((total[1] / total[0]) * 100)} doğru.` : ""}</p>
+      <div id="hf-quiz" data-mod="${tab}"></div>`;
+  }
+
+  function bindHarfler() {
+    app.querySelectorAll("[data-hf-say]").forEach((b) => (b.onclick = () => harfSay(b.dataset.hfSay)));
+    const quiz = document.getElementById("hf-quiz");
+    if (quiz) runHarfQuiz(quiz);
+    const trace = document.getElementById("hf-trace");
+    if (trace) runHarfTrace(trace);
+  }
+
+  function runHarfQuiz(root) {
+    const mod = root.dataset.mod, st = harfStat();
+    const words = harfWords();
+    const N = 10;
+    let i = 0, ok = 0;
+    const weight = (h) => { const r = st.L[h.ch]; return r ? 1 + (r[0] - r[1]) * 2 / (1 + r[0]) * 3 : 2; }; // zayıf ve yeni harf daha sık
+    const pickLetter = () => {
+      const tot = HARFLER.reduce((a, h) => a + weight(h), 0);
+      let x = Math.random() * tot;
+      return HARFLER.find((h) => (x -= weight(h)) <= 0) || HARFLER[0];
+    };
+    const letterQ = () => {
+      const h = pickLetter();
+      const form = HARF_FORMS[Math.floor(Math.random() * HARF_FORMS.length)][0];
+      const group = HARF_GROUPS.find((g) => g.includes(h.ch)) || "";
+      const near = shuffle(HARFLER.filter((x) => x !== h && group.includes(x.ch)));
+      const rest = shuffle(HARFLER.filter((x) => x !== h && !near.includes(x)));
+      const opts = shuffle([h].concat(near.slice(0, 2), rest).slice(0, 4));
+      return { key: h.ch, show: harfForm(h, form), sub: HARF_FORMS.find(([f]) => f === form)[1] + " biçimi", opts: opts.map((x) => x.name), right: h.name, say: h.name };
+    };
+    const wordQ = () => {
+      const x = words[Math.floor(Math.random() * words.length)];
+      const others = shuffle(words.filter((y) => y !== x)).sort((a, b) => Math.abs(a.r.length - x.r.length) - Math.abs(b.r.length - x.r.length)).slice(0, 8);
+      const opts = shuffle([x.r].concat(shuffle(others).slice(0, 3).map((y) => y.r)));
+      return { show: x.w, sub: "", opts, right: x.r, say: x.r };
+    };
+    if (mod === "oku" && words.length < 4) { root.innerHTML = `<p class="muted">Okuma alıştırması için yeterli kelime yok.</p>`; return; }
+    const ask = () => {
+      if (!document.body.contains(root)) return;
+      if (i >= N) return finish();
+      const q = mod === "oku" ? wordQ() : letterQ();
+      root.innerHTML = `<div class="hud session-hud"><div class="hud-item"><span class="hud-k">Soru</span><span class="hud-v">${i + 1}/${N}</span></div>
+          <div class="hud-item"><span class="hud-k">Doğru</span><span class="hud-v">${ok}</span></div>
+          <div class="hud-bar" aria-hidden="true"><i style="width:${(i / N) * 100}%"></i></div></div>
+        <div class="hf-card"><p class="hf-big ota" lang="ota" dir="rtl">${q.show}</p>${q.sub ? `<p class="muted small">${q.sub}</p>` : ""}
+          <div class="hf-opts">${q.opts.map((o) => `<button class="btn ghost hf-opt" type="button" data-o="${esc(o)}">${esc(o)}</button>`).join("")}</div>
+          <p class="hf-fb" role="status"></p><div class="btn-row" hidden data-hf-next-row><button class="btn" type="button" data-hf-go>${i + 1 < N ? "Sonraki" : "Sonucu gör"}</button></div></div>`;
+      root.querySelectorAll(".hf-opt").forEach((b) => (b.onclick = () => {
+        const good = b.dataset.o === q.right;
+        root.querySelectorAll(".hf-opt").forEach((x) => { x.disabled = true; if (x.dataset.o === q.right) x.classList.add("correct"); });
+        if (!good) b.classList.add("wrong");
+        if (good) ok++;
+        if (mod === "oku") { st.W[0]++; if (good) st.W[1]++; }
+        else { const r = st.L[q.key] || (st.L[q.key] = [0, 0]); r[0]++; if (good) r[1]++; }
+        saveStudy();
+        root.querySelector(".hf-fb").innerHTML = good ? "<b>Doğru.</b>" : `<b>Doğrusu:</b> ${esc(q.right)}`;
+        harfSay(q.say);
+        root.querySelector("[data-hf-next-row]").hidden = false;
+        const go = root.querySelector("[data-hf-go]");
+        go.onclick = () => { i++; ask(); };
+        go.focus();
+      }));
+    };
+    const finish = () => {
+      const key = dayKey(Date.now()), wasActive = isActive(key);
+      const day = dayRec(key);
+      day.game = (day.game || 0) + 1;
+      saveStudy();
+      afterActivity(wasActive, key);
+      root.innerHTML = `<div class="desk-card empty-state"><h3>${ok}/${N} doğru</h3>
+        <p class="muted">${ok >= 9 ? "Çok iyi. Bir sonraki adımda kelime okumayı dene." : ok >= 6 ? "İyi gidiyor. Zorlandığın harfler bir sonraki turda daha sık gelecek." : "Tabloya bir göz atıp yeniden dene; zorlandığın harfler daha sık gelecek."}</p>
+        <div class="btn-row"><button class="btn" type="button" data-hf-again>Yeni tur</button><a class="btn ghost" href="#/harfler">Harf tablosu</a></div></div>`;
+      root.querySelector("[data-hf-again]").onclick = () => { i = 0; ok = 0; ask(); };
+    };
+    ask();
+  }
+
+  function runHarfTrace(root) {
+    const cv = root.querySelector("canvas"), ctx = cv.getContext("2d");
+    const sel = root.querySelector("[data-hf-form]");
+    let idx = 0, drawing = false, last = null;
+    const css = getComputedStyle(document.documentElement);
+    const paint = () => {
+      const h = HARFLER[idx], g = harfForm(h, sel.value);
+      root.querySelector("[data-hf-cur]").textContent = g;
+      root.querySelector("[data-hf-curname]").textContent = `${h.name} · ${h.val}`;
+      ctx.clearRect(0, 0, cv.width, cv.height);
+      ctx.fillStyle = css.getPropertyValue("--line-strong").trim() || "#bbb";
+      ctx.globalAlpha = 0.45;
+      ctx.font = '360px "Noto Naskh Arabic", serif';
+      ctx.textAlign = "center"; ctx.textBaseline = "middle"; ctx.direction = "rtl";
+      ctx.fillText(g, cv.width / 2, cv.height / 2 + 20);
+      ctx.globalAlpha = 1;
+    };
+    const pos = (e) => { const r = cv.getBoundingClientRect(); return [(e.clientX - r.left) * cv.width / r.width, (e.clientY - r.top) * cv.height / r.height]; };
+    cv.addEventListener("pointerdown", (e) => { drawing = true; last = pos(e); cv.setPointerCapture(e.pointerId); e.preventDefault(); });
+    cv.addEventListener("pointermove", (e) => {
+      if (!drawing) return;
+      const p = pos(e);
+      ctx.strokeStyle = css.getPropertyValue("--navy").trim() || "#1b2a4a";
+      ctx.lineWidth = 18; ctx.lineCap = "round"; ctx.lineJoin = "round";
+      ctx.beginPath(); ctx.moveTo(last[0], last[1]); ctx.lineTo(p[0], p[1]); ctx.stroke();
+      last = p;
+    });
+    const end = () => { drawing = false; };
+    cv.addEventListener("pointerup", end); cv.addEventListener("pointercancel", end);
+    root.querySelector("[data-hf-clear]").onclick = paint;
+    root.querySelector("[data-hf-next]").onclick = () => { idx = (idx + 1) % HARFLER.length; paint(); harfSay(HARFLER[idx].name); };
+    root.querySelector("[data-hf-prev]").onclick = () => { idx = (idx + HARFLER.length - 1) % HARFLER.length; paint(); harfSay(HARFLER[idx].name); };
+    sel.onchange = paint;
+    (document.fonts && document.fonts.load ? document.fonts.load('40px "Noto Naskh Arabic"', "ب") : Promise.resolve()).then(paint, paint);
+  }
+
   // ---- oyun merkezi ----
   function viewGames(query) {
     const list = COURSES.filter((c) => gameUnits(c).length);
@@ -6097,7 +6296,8 @@ document.getElementById("zin").focus();
     return `<p class="eyebrow">Kelime oyunları</p><h1>Bulmaca ve kelime oyunları</h1>
       <p class="lead muted">Her ünitenin kavramları ve tanımlarıyla üretilen üç oyun: çapraz bulmaca, karışık harflerden kavram türetme ve kelime avı. İnternetsiz çalışır; bitirdiğin oyunlar yıldızlarıyla burada görünür, seriye sayılır ve yedeğe dahildir.</p>
       <div class="g-kinds">${Object.values(GAME_KINDS).map((k) => `<div><b>${k.name}</b><span class="muted small">${k.desc}</span></div>`).join("")}</div>
-      ${sections}`;
+      ${sections}
+      ${harfCourse() ? `<p class="muted" style="margin-top:1rem">Osmanlıca harfleri tanıma, kelime okuma ve iz sürme için <a href="#/harfler">harf atölyesi</a>.</p>` : ""}`;
   }
 
   // Kavram kartı ekleri: ders notlarından örnek kullanım ve kavramın geçtiği sınav sorusu.
@@ -6836,7 +7036,7 @@ document.getElementById("zin").focus();
     else if (parts[0] === "ozet") { need.add("interactive"); need.add("coursegraph"); needExamData(); }
     else if (parts[0] === "ara") need.add("coursegraph");
     else if (parts[0] === "kavram") need.add("interactive");
-    else if (parts[0] === "notlarim") { /* data.js yeterli */ }
+    else if (parts[0] === "notlarim" || parts[0] === "harfler") { /* data.js yeterli */ }
     else if (parts[0] === "oyunlar") { need.add("interactive"); if (parts[1]) needExamData(); }
     else if (parts[0] === "transcript" || parts[0] === "certificate" || parts[0] === "calisma") { /* data.js yeterli */ }
     else if (["tekrar", "hatalar", "karisik", "analiz", "plan", "puan"].includes(parts[0])) needExamData();
@@ -6873,6 +7073,7 @@ document.getElementById("zin").focus();
     else if (parts[0] === "eklenti") html = viewExtension();
     else if (parts[0] === "kavram") { html = viewKavram(query); bind = bindKavram; }
     else if (parts[0] === "notlarim") { html = viewMarks(query); bind = bindMarksPage; }
+    else if (parts[0] === "harfler") { html = viewHarfler(query); bind = bindHarfler; }
     else if (parts[0] === "oyunlar") {
       const gc = bySlug[parts[1]];
       if (!parts[1]) html = viewGames(query);
@@ -6907,7 +7108,7 @@ document.getElementById("zin").focus();
     document.querySelectorAll(".nav a").forEach((a) => {
       const href = a.getAttribute("href");
       const key = parts[0] || "";
-      const on = href === "#/" + key || (href === "#/calisma" && ["tekrar", "hatalar", "analiz", "plan", "kavram", "notlarim"].includes(key)) || (href === "#/sinavlar" && ["karisik", "sikcikan", "puan"].includes(key));
+      const on = href === "#/" + key || (href === "#/calisma" && ["tekrar", "hatalar", "analiz", "plan", "kavram", "notlarim", "harfler"].includes(key)) || (href === "#/sinavlar" && ["karisik", "sikcikan", "puan"].includes(key));
       a.classList.toggle("active", on);
       if (on) a.setAttribute("aria-current", "page"); else a.removeAttribute("aria-current");
     });
