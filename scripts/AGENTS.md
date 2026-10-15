@@ -10,10 +10,10 @@ Extraction (PDF → `data/`):
 - `extract_aof_infographics.py` — AÖF infographic PDFs → high-DPI page PNGs.
 
 Generation (`data/` → richer content):
-- `generate_unit_quizzes.py` — past-exam sources → `data/<slug>/unit_quizzes/unit-N.json`. Shuffles options; holds per-course NotebookLM ids and unit titles.
+- `generate_unit_quizzes.py` — past-exam + textbook (`Kitap`) sources → `data/<slug>/unit_quizzes/unit-N.json`. Shuffles options; holds per-course NotebookLM ids and unit titles.
 - `render_unit_infographics.py` — book unit summaries → unit infographics.
 - `update_notes_from_kitap.py` — refreshes study notes from `Kitap.pdf`, embedding citations.
-- `generate_chapter_audio.py` — per chapter, a NotebookLM audio overview limited to the chapter's `source_ids` (Turkish, `deep-dive`/`short` by default) → raw `assets/audio/<slug>/chapter-N.mp4` → ffmpeg mono 64 kbps `site/audio/<slug>/chapter-N.mp3` + `data/<slug>/audio.json`. Needs the `notebooklm` CLI (logged in) and ffmpeg with libmp3lame (ffprobe optional; on the owner PC ffmpeg is not on PATH, pass `--ffmpeg`); skips existing MP3s unless `--force`; `--transcode-only` re-encodes downloaded files.
+- `generate_chapter_audio.py` — per chapter, a NotebookLM audio overview limited to the chapter's `source_ids` plus the textbook when the chapter has none (Turkish, `deep-dive`/`short` by default) → raw `assets/audio/<slug>/chapter-N.mp4` → ffmpeg mono 64 kbps `site/audio/<slug>/chapter-N.mp3` + `data/<slug>/audio.json`. Needs the `notebooklm` CLI (logged in) and ffmpeg with libmp3lame (ffprobe optional; on the owner PC ffmpeg is not on PATH, pass `--ffmpeg`); skips existing MP3s unless `--force`; `--transcode-only` re-encodes downloaded files.
 
 Export (`data/` → site/bundle):
 - `export_unit_quizzes_site.py` — `unit_quizzes/*.json` → `site/unit_quizzes.js` (`window.UNIT_QUIZZES`).
@@ -29,11 +29,13 @@ NotebookLM maintenance (needs the `notebooklm-py` CLI):
 
 Validation:
 - `check_quiz_answers.py` — integrity check across all quiz JSON plus `site/unit_quizzes.js` consistency.
+- `audit_sources.py` — per chapter, the `grounding.tiers` rank of assigned and cited sources; flags chapters with no textbook source. `--strict` exits 1 when a course notebook has no textbook at all.
 
 ## Local Contracts
 - Most export scripts define `ROOT` and a `SLUGS` list at module level; tests monkeypatch these to run against a temp directory. Keep them module-level and reassignable.
 - Readers use `encoding="utf-8-sig"`; writers use `ensure_ascii=False`.
 - Several scripts depend on `coursegraph.past_exams` (imported after a `sys.path.insert(0, ROOT)`); keep that import order.
+- NotebookLM generation prompts end with `grounding_rules(university)` and pick sources through `with_authority` (both in `generator/scripts/common.py`, imported after a `sys.path.insert` of `generator/scripts`). New generators must do the same.
 
 ## Work Guidance
 - After editing `data/`, re-run the relevant extract/generate/export script, then regenerate the graph (see `coursegraph/AGENTS.md`) so `site/` and the index stay in sync.
@@ -41,6 +43,7 @@ Validation:
 
 ## Verification
 - `py -3 scripts/check_quiz_answers.py` exits 0 when all quiz data and the site bundle agree.
+- `py -3 scripts/audit_sources.py` before regenerating a course's content, to see which chapters rest only on lecture captions.
 - `py -3 -m unittest discover -s tests` covers `chapter_meta`/`build_solution` and the unit-quiz export (`tests/test_exports.py`).
 
 ## Child DOX Index

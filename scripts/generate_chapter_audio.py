@@ -1,7 +1,8 @@
 """Generate a NotebookLM audio overview per chapter and publish it as a small MP3 for the site.
 
 For each chapter of a course this asks NotebookLM (via the `notebooklm` CLI from notebooklm-py) for an
-audio overview limited to that chapter's sources (`study_plan.json` -> `source_ids`), downloads it to
+audio overview limited to that chapter's sources (`study_plan.json` -> `source_ids`, plus the textbook when
+the chapter has only lecture captions; see `grounding` in university.json), downloads it to
 `assets/audio/<slug>/chapter-N.mp4` (git-ignored), re-encodes it with ffmpeg to a mono speech MP3 at
 `site/audio/<slug>/chapter-N.mp3`, and records it in `data/<slug>/audio.json`. `build.py` then shows a
 player on the chapter page and offers the files as an optional offline pack.
@@ -24,6 +25,9 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(ROOT / "generator" / "scripts"))
+from common import grounding_rules, load_university, with_authority  # noqa: E402
+
 BITRATE = "64k"
 PROMPT = ("Türkçe konuş. Dinleyiciler Anadolu Üniversitesi Açıköğretim İlahiyat ön lisans öğrencileri ve "
           "sınava hazırlanıyorlar. Yalnızca bu bölümün konusunu anlat: \"{title}\". Temel kavramları, kişi ve "
@@ -43,11 +47,13 @@ def tool(name, override):
     return exe
 
 
-def generate(nb, chapter, out_raw, args):
+def generate(nb, chapter, out_raw, args, sources, uni):
     """Ask NotebookLM for the chapter's audio overview and download it to out_raw."""
-    cmd = [args.notebooklm, "generate", "audio", PROMPT.format(title=chapter["title"]), "-n", nb,
+    prompt = PROMPT.format(title=chapter["title"]) + " " + grounding_rules(uni)
+    cmd = [args.notebooklm, "generate", "audio", prompt.strip(), "-n", nb,
            "--format", args.format, "--length", args.length, "--language", args.language, "--wait", "--retry", "2", "--json"]
-    for sid in chapter.get("source_ids", []):
+    tiers = (uni.get("grounding") or {}).get("tiers") or []
+    for sid in with_authority(chapter.get("source_ids", []), sources, tiers):
         cmd += ["-s", sid]
     res = run(cmd, capture_output=True)
     print(res.stdout.strip())
@@ -98,6 +104,9 @@ def main():
     d = ROOT / "data" / args.slug
     manifest = json.loads((d / "manifest.json").read_text(encoding="utf-8-sig"))
     plan = json.loads((d / "study_plan.json").read_text(encoding="utf-8-sig"))
+    uni = load_university(ROOT)
+    state = d / "state.json"
+    sources = list(json.loads(state.read_text(encoding="utf-8-sig")).get("sources", {}).values()) if state.exists() else []
     spec_path = d / "audio.json"
     spec = json.loads(spec_path.read_text(encoding="utf-8-sig")) if spec_path.exists() else {}
     done = {a["chapter"]: a for a in spec.get("chapters", [])}
@@ -111,7 +120,7 @@ def main():
             print(f"chapter {n}: exists, skipped")
             continue
         if not args.transcode_only:
-            generate(manifest["notebook_id"], ch, raw, args)
+            generate(manifest["notebook_id"], ch, raw, args, sources, uni)
         if not raw.exists():
             print(f"chapter {n}: no downloaded file at {raw}", file=sys.stderr)
             continue

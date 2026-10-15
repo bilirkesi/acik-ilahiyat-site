@@ -65,12 +65,13 @@ Default section order:
 ## Project
 - Name: Açık İlahiyat Üniversitesi — a free, static study site for AÖF (Anadolu Üniversitesi) İlahiyat associate-degree courses.
 - Runtime: **no backend**. `site/` is a static SPA (hash router) served from any static host. All data ships as JS bundles that assign to `window.*`.
-- Source of truth for configuration: `university.json` (branding, pass mark, colors, exam dates, AÖF grading weights and pass threshold), `courses.json` (the four courses), `universities.json`.
+- Source of truth for configuration: `university.json` (branding, pass mark, colors, exam dates, AÖF grading weights and pass threshold, `grounding` source ranking and prompt rules for NotebookLM generation), `courses.json` (the four courses), `universities.json`.
 - Source of truth for course content: `data/<slug>/` (see `data/AGENTS.md`).
 - Study materials are generated from NotebookLM notebooks fed with AÖF PDFs and YouTube lecture captions.
 - Python entry points are run as modules from the repo root (`py -3 -m coursegraph.…`) or as scripts (`py -3 scripts/….py`). On Windows the working launcher is `py -3`; `python` is not on PATH.
 - Large local-only material lives in `artifacts/`, `assets/`, and `logs/`; all three are git-ignored. Never reference them as if they ship to the site.
 ## Known Gaps
+- Source quality (`py -3 scripts/audit_sources.py`): chapters of `turk-dili-1`, `ataturk-ilkeleri-1`, `islam-mezhepleri-tarihi` were planned and grounded on lecture captions only; `turk-dili-1` has no textbook in its notebook. Study notes for the three were rebuilt from `Kitap.pdf`, but quizzes, infographics and audio made before the grounding rules were not regenerated.
 - `data/osmanlica-1`: `classify_unit` has no keyword config for units 6-8, so past-exam questions for those units get `unit: null`. Unit quizzes themselves are complete.
 ## Child DOX Index
 - [coursegraph/](coursegraph/AGENTS.md) — knowledge-graph package: indexer, query layer, past-exam unit matching, MCP server, site search export.

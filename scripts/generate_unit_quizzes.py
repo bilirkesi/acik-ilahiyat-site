@@ -16,6 +16,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
+sys.path.insert(0, str(ROOT / "generator" / "scripts"))
+from common import grounding_rules, load_university  # noqa: E402
 CLI = r"C:\Users\Selahattin\AppData\Local\Python\pythoncore-3.14-64\Scripts\notebooklm.exe"
 
 COURSES = {
@@ -150,7 +152,9 @@ def generate_unit_quiz(nb, unit, unit_title, source_ids, max_tries=3, objectives
         "Yalnızca çıkmış vize soruları ve AÖF ders kitabındaki ilgili ünite konularından "
         "10-15 çoktan seçmeli soru üret. "
         "Her soruda 4 seçenek, tek doğru, kısa gerekçe ve ipucu olsun. "
-        "Sorular ünite kapsamı dışına çıkmasın. Türkçe yaz."
+        "Sorular ünite kapsamı dışına çıkmasın. Türkçe yaz. "
+        "Doğru cevap ve gerekçe ders kitabına dayansın; kitapta karşılığı olmayan soruyu üretme. "
+        + grounding_rules(load_university(ROOT))
     )
     last_err = ""
     for attempt in range(1, max_tries + 1):
@@ -283,15 +287,14 @@ def main():
         print(f"  aof kaynak: {len(src_ids)}")
         for sid in src_ids:
             print(f"    - {id_titles.get(sid, sid)[:80]}")
-        # yalnızca çıkmış sınav kaynakları; yoksa kitap; o da yoksa tümü
+        # çıkmış sınavlar soru biçimi için, kitap doğru cevabın dayanağı için; ikisi de yoksa tümü
         past_ids = [
             sid for sid in src_ids
             if "nav Sorular" in id_titles.get(sid, "") or "Snav" in id_titles.get(sid, "")
+            or "Kitap" in id_titles.get(sid, "")
         ]
-        if not past_ids:
-            past_ids = [sid for sid in src_ids if "Kitap" in id_titles.get(sid, "")]
         use_ids = src_ids if meta.get("all_sources") else (past_ids or src_ids)
-        print(f"  üretim kaynağı: {len(use_ids)} (çıkmış odaklı)")
+        print(f"  üretim kaynağı: {len(use_ids)} (çıkmış + kitap)")
         for unit in range(1, meta["units"] + 1):
             if only_unit and unit != only_unit:
                 continue

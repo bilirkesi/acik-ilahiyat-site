@@ -20,6 +20,61 @@ def _load(name: str):
 
 pe = _load("export_past_exams_site")
 uq = _load("export_unit_quizzes_site")
+audit = _load("audit_sources")  # puts generator/scripts on sys.path
+import common  # noqa: E402
+
+TIERS = [
+    {"label": "kitap", "types": ["book"], "titles": ["Kitap"]},
+    {"label": "özet", "titles": ["Özet"]},
+    {"label": "altyazı", "types": ["youtube"]},
+]
+
+
+class TestGrounding(unittest.TestCase):
+    def test_type_wins_over_title(self) -> None:
+        self.assertEqual(common.source_tier({"type": "youtube", "title": "Ünite 1 Özet videosu"}, TIERS), 2)
+        self.assertEqual(common.source_tier({"type": "file", "title": "X - Kitap"}, TIERS), 0)
+        self.assertEqual(common.source_tier({"type": "file", "title": "ünite 2 özet"}, TIERS), 1)
+        self.assertEqual(common.source_tier({"type": "file", "title": "başka"}, TIERS), 3)
+
+    def test_with_authority_adds_textbook_only_when_missing(self) -> None:
+        srcs = [{"id": "v", "type": "youtube", "status": "ready"},
+                {"id": "k", "type": "file", "title": "Kitap", "status": "ready"},
+                {"id": "b", "type": "book", "status": "error"}]
+        self.assertEqual(common.with_authority(["v"], srcs, TIERS), ["v", "k"])
+        self.assertEqual(common.with_authority(["k", "v"], srcs, TIERS), ["k", "v"])
+        self.assertEqual(common.with_authority(["v"], srcs, []), ["v"])
+
+    def test_rules_list_ranking_and_extra_rules(self) -> None:
+        text = common.grounding_rules({"grounding": {"tiers": TIERS, "rules": ["Tahmin etme."]}})
+        self.assertIn("1) kitap; 2) özet; 3) altyazı", text)
+        self.assertTrue(text.endswith("Tahmin etme."))
+        self.assertEqual(common.grounding_rules({}), "")
+
+    def test_real_config_has_tiers(self) -> None:
+        tiers = common.load_university(ROOT)["grounding"]["tiers"]
+        self.assertIn("book", tiers[0]["types"])
+        self.assertIn("youtube", tiers[-1]["types"])
+
+    def test_audit_flags_chapter_without_textbook(self) -> None:
+        import tempfile
+        with tempfile.TemporaryDirectory() as tmp:
+            d = Path(tmp) / "data" / "c"
+            d.mkdir(parents=True)
+            (d / "state.json").write_text(json.dumps({"sources": {
+                "v": {"id": "v", "type": "youtube", "status": "ready"},
+                "k": {"id": "k", "type": "book", "status": "ready"}}}), encoding="utf-8")
+            (d / "study_plan.json").write_text(json.dumps({"chapters": [
+                {"title": "A", "source_ids": ["v"], "grounding": {"references": [{"source_id": "v"}]}},
+                {"title": "B", "source_ids": ["k", "v"]}]}), encoding="utf-8")
+            old, audit.ROOT = audit.ROOT, Path(tmp)
+            try:
+                r = audit.audit("c", TIERS)
+            finally:
+                audit.ROOT = old
+        self.assertTrue(r["has_top"])
+        self.assertEqual([c["weak"] for c in r["chapters"]], [True, False])
+        self.assertEqual(r["chapters"][0]["cited"], {"altyazı": 1})
 
 
 class TestChapterMeta(unittest.TestCase):
