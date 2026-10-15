@@ -1151,3 +1151,45 @@ main:focus, main:focus-visible { outline: none; }
 .result .g-more > summary { color: var(--chrome-soft); }
 .g-card { margin-top: .4rem; color: var(--ink); }
 .ws-def .g-ex, .ws-def .g-q { color: var(--ink); }
+
+/* "Emin misin?" satırı: kontrol etmeden önce isteğe bağlı güven seçimi. */
+.conf-row { display: flex; flex-wrap: wrap; align-items: center; gap: .4rem .6rem; margin: .7rem 0 .2rem; font-size: .9rem; color: var(--muted); }
+.conf-opt { position: relative; display: inline-flex; }
+.conf-opt input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
+.conf-opt span { display: inline-flex; align-items: center; min-height: 40px; padding: .35rem .85rem; border: 1px solid var(--line-strong); border-radius: 999px; background: var(--surface); color: var(--ink); }
+.conf-opt input:checked + span { background: var(--navy); border-color: var(--navy); color: var(--ivory); }
+.conf-opt input:focus-visible + span { outline: 3px solid var(--gold); outline-offset: 2px; }
+.conf-opt input:disabled + span { opacity: .75; cursor: default; }
+.conf-note { margin: .6rem 0 0; padding: .55rem .8rem; border-left: 3px solid var(--gold); background: var(--surface-2); font-size: .92rem; }
+.conf-note.hc { border-left-color: var(--bad); background: var(--bad-bg-2); }
+.conf-badge { font-size: .72rem; margin-right: .2rem; }
+
+/* #/sikcikan ve #/puan */
+.freq-sum { margin: .2rem 0 1rem; }
+.freq-list { list-style: none; padding: 0; margin: 0 0 1.6rem; }
+.freq-row { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: .5rem 1rem; padding: .8rem 0; border-bottom: 1px solid var(--line); }
+.freq-row.out { opacity: .6; }
+.freq-main { flex: 1 1 260px; min-width: 0; }
+.freq-title { margin: 0 0 .35rem; }
+.freq-title .badge { font-size: .72rem; }
+.freq-main p.small { margin: .3rem 0 0; }
+.freq-bar { --p: 0; display: block; height: 8px; background: var(--gold-soft); border-radius: 4px; overflow: hidden; }
+.freq-bar i { display: block; height: 100%; width: calc(var(--p) * 1%); background: var(--navy-2); }
+.freq-answers { margin: 0 0 1rem; padding-left: 1.6rem; }
+.freq-answers li { margin: .35rem 0; }
+.ready-score { margin: 0 0 .4rem; }
+.ready-score b { font: 600 1.5rem/1 var(--serif); color: var(--navy); }
+.num-in { width: 4.6rem; min-height: 40px; padding: .3rem .5rem; font: inherit; border: 1px solid var(--line-strong); border-radius: 6px; background: var(--surface); color: var(--ink); }
+.grade-row { padding: .7rem 0; border-bottom: 1px solid var(--line); }
+.grade-row:first-child { padding-top: 0; }
+.grade-name { display: block; margin-bottom: .45rem; }
+.grade-cells { display: grid; grid-template-columns: auto 1fr; gap: .5rem 1rem; align-items: center; }
+.grade-cells label { display: flex; align-items: center; gap: .5rem; min-width: 7.5rem; justify-content: space-between; }
+.grade-out { margin: 0; display: flex; flex-direction: column; font-size: .92rem; }
+.grade-out > span:first-child { color: var(--muted); font-size: .78rem; }
+.grade-out small { display: block; color: var(--muted); font-size: .78rem; }
+.grade-out .good { color: var(--ok); }
+.grade-out .bad { color: var(--bad); }
+.net-form { display: flex; flex-wrap: wrap; gap: .8rem 1.2rem; align-items: center; }
+.net-form label { display: flex; align-items: center; gap: .5rem; }
+.net-out { flex-basis: 100%; margin: 0; }

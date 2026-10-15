@@ -47,5 +47,12 @@
       "date": "2027-08-21",
       "scope": "final"
     }
-  ]
+  ],
+  "grading": {
+    "midterm": 30,
+    "final": 70,
+    "passMin": 35,
+    "questions": 20,
+    "source": "2025-26 dönemi için basında aktarılan AÖF kurallarıdır (geçme sınırını Senato belirler)"
+  }
 }

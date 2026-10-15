@@ -193,7 +193,7 @@ def book_unit_images(proj, slug, out_dir):
 
 def public_config(u):
     keys = ["name", "shortName", "tagline", "headline", "issuer", "issuerUrl", "passMark", "codePrefix", "colors",
-            "showNotebookLinks", "plannedCourses", "storageKey", "exams"]
+            "showNotebookLinks", "plannedCourses", "storageKey", "exams", "grading"]
     return {k: u[k] for k in keys if k in u}
 
 
