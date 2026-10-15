@@ -71,7 +71,7 @@ Default section order:
 - Python entry points are run as modules from the repo root (`py -3 -m coursegraph.…`) or as scripts (`py -3 scripts/….py`). On Windows the working launcher is `py -3`; `python` is not on PATH.
 - Large local-only material lives in `artifacts/`, `assets/`, and `logs/`; all three are git-ignored. Never reference them as if they ship to the site.
 ## Known Gaps
-- Source quality (`py -3 scripts/audit_sources.py`): chapters of `turk-dili-1`, `ataturk-ilkeleri-1`, `islam-mezhepleri-tarihi` were planned and grounded on lecture captions only; `turk-dili-1` has no textbook in its notebook. Study notes for the three were rebuilt from `Kitap.pdf`, but quizzes, infographics and audio made before the grounding rules were not regenerated.
+- Source quality (`py -3 scripts/audit_sources.py`): chapters of `turk-dili-1`, `ataturk-ilkeleri-1`, `islam-mezhepleri-tarihi` were planned and grounded on lecture captions only. Study notes for the three were rebuilt from `Kitap.pdf`; by owner decision, quizzes, infographics and audio made before the grounding rules stay as they are, and the rules apply to new generation only. `turk-dili-1/state.json` records only the Kitap among the notebook's 14 AÖF PDFs.
 - `data/osmanlica-1`: `classify_unit` has no keyword config for units 6-8, so past-exam questions for those units get `unit: null`. Unit quizzes themselves are complete.
 ## Child DOX Index
 - [coursegraph/](coursegraph/AGENTS.md) — knowledge-graph package: indexer, query layer, past-exam unit matching, MCP server, site search export.
