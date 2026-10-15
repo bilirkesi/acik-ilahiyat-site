@@ -254,7 +254,8 @@
   // paragrafa al; böylece metin hem düzgün görünür hem de sesli okumada kesik kesik okunmaz.
   const LIST_LINE = /^\s*(?:[*•-]\s|#|\d+[.)]\s|[A-ZÇĞİÖŞÜ][.)]\s|---)/;
   // Satır bağlaçla bitiyorsa ("19. ve" / "20. yüzyıl") cümle sürüyordur.
-  const TR_LINK_END = /\s(?:ve|ile|veya|ya da|ya|yahut|ile|bir|olan|için|gibi|de|da|ki|ise|ama|fakat|ancak|hem|ne|en|çok|daha)$/u;
+  const TR_LINK_END = /\s(?:ve|ile|veya|ya da|ya|yahut|ile|bir|olan|için|gibi|de|da|ki|ise|ama|fakat|ancak|hem|ne|en|çok|daha|sonra|önce|kadar|göre|karşı|dolayı|itibaren|beri|üzere|olarak|tarafından)$/u;
+  const TR_MONTH_END = /\s\d{1,2} (?:Ocak|Şubat|Mart|Nisan|Mayıs|Haziran|Temmuz|Ağustos|Eylül|Ekim|Kasım|Aralık)$/u;
   const lowerShare = (s) => {
     const w = s.split(/\s+/).filter((x) => /^\p{L}/u.test(x));
     return w.length ? w.filter((x) => /^\p{Ll}/u.test(x)).length / w.length : 0;
@@ -269,10 +270,16 @@
       // Büyük harfle başlayan satır özel ad da olabilir başlık da: önceki satır uzunsa ya da kelimelerinin
       // çoğu küçük harfliyse (başlıklar Baş Harfleri Büyük yazılır) cümle sürüyor demektir.
       // Satır içi "•" listesi (anahtar sözcükler) ya da bağlaçla biten satır ("19. ve" / "20. yüzyıl") da sürer.
-      const linked = TR_LINK_END.test(p);
       const bulletRun = /^•\s/.test(line) && / • /.test(p);
+      // Noktayla bitmemiş uzun düz yazı paragrafı ya da numaralı öğrenme çıktısı ("1 Mudanya Mütarekesi’nin Millî" /
+      // "Mücadele’deki ...") büyük harfle başlayan özel adla sürebilir; "-bilme" ile biten çıktı ve "öğrenme çıktıları" kutusu biter.
+      const para = out.length ? out[out.length - 1].trim() : "";
+      const open = /[\p{L}\d’']$/u.test(p) && !/bilme$|çıktıları$|(?:Şekil|Tablo|Resim) [\d.]+$/iu.test(p) && !/^\d{1,2} \p{Lu}/u.test(line)
+        && ((para.length >= 80 && lowerShare(para) >= 0.5) || /^\d{1,2} \p{Lu}/u.test(para));
+      const dated = TR_MONTH_END.test(p) && /^\d{4}\b/.test(line); // "1 Kasım" / "1918 tarihinde"
+      const linked = TR_LINK_END.test(p) || dated;
       const join = p && line && (bulletRun || linked || !LIST_LINE.test(line)) && !/^#/.test(p) && !/[.!?:;…"”)]$|⟧$/.test(p)
-        && (bulletRun || linked || /^\p{Ll}/u.test(line) || /^[,.;:)]/.test(line) || /[,-]$/.test(p)
+        && (bulletRun || linked || open || /^\p{Ll}/u.test(line) || /^[,.;:)]/.test(line) || /[,-]$/.test(p)
           || (/[\p{L}\d]$/u.test(p) && (p.length >= 45 || (p.split(/\s+/).length >= 4 && lowerShare(p) >= 0.5)))
           // İki satıra bölünmüş başlık: ikisi de kısa ve Baş Harfleri Büyük ("Bir İmparatorluğun" / "Dönüşümü").
           || (p.split(/\s+/).length >= 3 && p.length <= 50 && line.length <= 40 && !/^\d+\. Ünite/.test(p)
