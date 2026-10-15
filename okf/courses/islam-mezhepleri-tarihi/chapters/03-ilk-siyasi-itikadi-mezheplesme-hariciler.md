@@ -5,13 +5,17 @@ description: Bu bölümde Sıffin Savaşı ve Tahkim Hadisesi sonrasında Hz. Al
 course: islam-mezhepleri-tarihi
 chapter: 3
 status: stable
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-14T17:33:22Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-15T15:29:24Z }
 notebook: "https://notebooklm.google.com/notebook/ad4a99c9-cc96-4f29-92f5-ca8638bc42c2"
 ---
 
 # Özet
 
 Bu bölümde Sıffin Savaşı ve Tahkim Hadisesi sonrasında Hz. Ali ordusundan ayrılarak ortaya çıkan ilk itikadi grup olan Hariciler incelenmektedir. Hariciliğin isimleşme süreci, kabilevi ve sosyal yapısı ile itikadi söylemlerinin gelişim aşamaları ele alınmaktadır. Ayrıca Ezrika gibi radikal kollar ile günümüze ulaşan tek kol olan İbaziyye arasındaki farklar açıklanmaktadır.
+
+# Sesli Ders
+
+[Bölüm 3 sesli özeti](/audio/islam-mezhepleri-tarihi/chapter-3.mp3) (6:43 dk, MP3)
 
 # Ders Kitabı Ünite Özeti
 

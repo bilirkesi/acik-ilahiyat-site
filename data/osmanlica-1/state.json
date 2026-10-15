@@ -105,6 +105,55 @@
    "url": "https://www.youtube.com/watch?v=R-mD_GaXGeM",
    "type": "youtube",
    "status": "ready"
+  },
+  "audio-unite-1": {
+   "id": "b7440a56-fb9f-4d41-9549-044a5c5d0d5c",
+   "title": "Osmanlı Türkçesi I, Ünite 1 özet videosu (ses)",
+   "url": "https://www.youtube.com/watch?v=k4Cl5j777xs",
+   "type": "audio",
+   "status": "ready"
+  },
+  "audio-unite-3": {
+   "id": "e14a3423-27b1-4120-a4b6-cc46ea75ac64",
+   "title": "Osmanlı Türkçesi I, Ünite 3 özet videosu (ses)",
+   "url": "https://www.youtube.com/watch?v=RjVpM8DAUPI",
+   "type": "audio",
+   "status": "ready"
+  },
+  "audio-unite-4": {
+   "id": "49158c63-0910-46c6-b1d7-427143034525",
+   "title": "Osmanlı Türkçesi I, Ünite 4 özet videosu (ses)",
+   "url": "https://www.youtube.com/watch?v=0vFS6f94LFA",
+   "type": "audio",
+   "status": "ready"
+  },
+  "audio-unite-5": {
+   "id": "04b1209e-9b9d-43cd-8ae3-8bdb7c0cefae",
+   "title": "Osmanlı Türkçesi I, Ünite 5 özet videosu (ses)",
+   "url": "https://www.youtube.com/watch?v=3HtOWWxmAD8",
+   "type": "audio",
+   "status": "ready"
+  },
+  "audio-unite-6": {
+   "id": "ce191252-96b9-4794-9a8d-64c5ed8c5295",
+   "title": "Osmanlı Türkçesi I, Ünite 6 özet videosu (ses)",
+   "url": "https://www.youtube.com/watch?v=f_sPl7P0Lpw",
+   "type": "audio",
+   "status": "ready"
+  },
+  "audio-unite-7": {
+   "id": "3e1aa1e9-cc67-43cf-9d76-f1e8a0c6a502",
+   "title": "Osmanlı Türkçesi I, Ünite 7 özet videosu (ses)",
+   "url": "https://www.youtube.com/watch?v=tO8LLK5-AkI",
+   "type": "audio",
+   "status": "ready"
+  },
+  "audio-unite-8": {
+   "id": "fd6b2eef-2336-4964-ada6-9bb30bb95d69",
+   "title": "Osmanlı Türkçesi I, Ünite 8 özet videosu (ses)",
+   "url": "https://www.youtube.com/watch?v=R-mD_GaXGeM",
+   "type": "audio",
+   "status": "ready"
   }
  },
  "order": [

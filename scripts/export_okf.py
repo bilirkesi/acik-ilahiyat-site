@@ -137,6 +137,18 @@ def load_unit_quizzes(slug: str) -> list[dict]:
     return out
 
 
+def load_chapter_audio(slug: str) -> dict[int, dict]:
+    """data/<slug>/audio.json; yalnızca site/audio/<slug>/ altında dosyası olan bölümler."""
+    path = ROOT / "data" / slug / "audio.json"
+    if not path.exists():
+        return {}
+    out = {}
+    for a in load_json(path).get("chapters", []):
+        if (ROOT / "site" / "audio" / slug / a.get("file", "")).is_file():
+            out[int(a["chapter"])] = a
+    return out
+
+
 def load_book_units(slug: str) -> list[dict]:
     path = ROOT / "data" / slug / "unit_infographics.json"
     if not path.exists():
@@ -433,6 +445,7 @@ def main() -> int:
         panel = interactive.get(slug, {})
         book_units = load_book_units(slug)
         unit_quizzes = load_unit_quizzes(slug)
+        chapter_audio = load_chapter_audio(slug)
 
         notebook_id = meta.get("notebook_id") or manifest.get("notebook_id")
         notebook_url = (
@@ -561,8 +574,18 @@ def main() -> int:
                     render_book_unit(slug, u) for u in ch_units
                 )
 
+            audio_block = ""
+            if i in chapter_audio:
+                a = chapter_audio[i]
+                mins, secs = divmod(round(a.get("duration", 0)), 60)
+                audio_block = (
+                    "# Sesli Ders\n\n"
+                    f"[Bölüm {i} sesli özeti](/audio/{slug}/{a['file']}) ({mins}:{secs:02d} dk, MP3)\n"
+                )
+
             ch_body = [
                 f"# Özet\n\n{ch.get('summary', '')}\n",
+                audio_block,
                 aof_block,
                 book_block,
                 f"# Öğrenme Hedefleri\n\n{obj_list}\n" if obj_list else "",

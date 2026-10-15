@@ -5,13 +5,17 @@ description: Bu bölümde ihtilaf ile tefrika arasındaki farklar açıklanarak 
 course: islam-mezhepleri-tarihi
 chapter: 2
 status: stable
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-14T17:33:22Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-15T15:29:24Z }
 notebook: "https://notebooklm.google.com/notebook/ad4a99c9-cc96-4f29-92f5-ca8638bc42c2"
 ---
 
 # Özet
 
 Bu bölümde ihtilaf ile tefrika arasındaki farklar açıklanarak mezheplerin birer zenginlik mi yoksa problem mi olduğu tartışılmaktadır. İslam toplumunda itikadi mezhepleşmeye zemin hazırlayan dış kültürlerle karşılaşma, metinlerin yapısı ve siyasi olaylar ayrıntılı olarak sunulmaktadır. Ayrıca mezhepsizlik ve mezhepçilik gibi uç yaklaşımların tehlikeleri ve hakkaniyetli orta yolun önemi belirtilmektedir.
+
+# Sesli Ders
+
+[Bölüm 2 sesli özeti](/audio/islam-mezhepleri-tarihi/chapter-2.mp3) (4:49 dk, MP3)
 
 # Ders Kitabı Ünite Özeti
 
