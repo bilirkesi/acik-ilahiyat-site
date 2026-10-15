@@ -13,7 +13,7 @@ Generation (`data/` → richer content):
 - `generate_unit_quizzes.py` — past-exam sources → `data/<slug>/unit_quizzes/unit-N.json`. Shuffles options; holds per-course NotebookLM ids and unit titles.
 - `render_unit_infographics.py` — book unit summaries → unit infographics.
 - `update_notes_from_kitap.py` — refreshes study notes from `Kitap.pdf`, embedding citations.
-- `generate_chapter_audio.py` — per chapter, a NotebookLM audio overview limited to the chapter's `source_ids` (Turkish, `deep-dive`/`short` by default) → raw `assets/audio/<slug>/chapter-N.mp4` → ffmpeg mono 64 kbps `site/audio/<slug>/chapter-N.mp3` + `data/<slug>/audio.json`. Needs the `notebooklm` CLI (logged in) and ffmpeg/ffprobe; skips existing MP3s unless `--force`; `--transcode-only` re-encodes downloaded files.
+- `generate_chapter_audio.py` — per chapter, a NotebookLM audio overview limited to the chapter's `source_ids` (Turkish, `deep-dive`/`short` by default) → raw `assets/audio/<slug>/chapter-N.mp4` → ffmpeg mono 64 kbps `site/audio/<slug>/chapter-N.mp3` + `data/<slug>/audio.json`. Needs the `notebooklm` CLI (logged in) and ffmpeg with libmp3lame (ffprobe optional; on the owner PC ffmpeg is not on PATH, pass `--ffmpeg`); skips existing MP3s unless `--force`; `--transcode-only` re-encodes downloaded files.
 
 Export (`data/` → site/bundle):
 - `export_unit_quizzes_site.py` — `unit_quizzes/*.json` → `site/unit_quizzes.js` (`window.UNIT_QUIZZES`).
