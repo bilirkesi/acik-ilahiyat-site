@@ -5,13 +5,17 @@ description: Bu bölümde Türk dilinin biçim bilgisi yapısı, en küçük anl
 course: turk-dili-1
 chapter: 4
 status: stable
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-14T17:33:22Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-15T18:02:32Z }
 notebook: "https://notebooklm.google.com/notebook/c702ed26-fe17-463d-b217-202acd0c3d26"
 ---
 
 # Özet
 
 Bu bölümde Türk dilinin biçim bilgisi yapısı, en küçük anlamlı birim olan kökler ve eklerin işlevleri incelenmektedir. Yeni sözcük türetmeye yarayan yapım ekleri ile sözcükler arası ilişki kuran çekim ekleri ve fiilimsiler örneklendirilmektedir. Ayrıca sözcüklerin anlam sınıfları ve görevlerine göre isim, sıfat, zamir gibi türleri ayrıntılı olarak sunulmaktadır.
+
+# Sesli Ders
+
+[Bölüm 4 sesli özeti](/audio/turk-dili-1/chapter-4.mp3) (5:34 dk, MP3)
 
 # AÖF Ünite İnfoğrafik
 
