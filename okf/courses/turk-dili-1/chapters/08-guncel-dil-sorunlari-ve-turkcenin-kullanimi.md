@@ -5,13 +5,17 @@ description: Bu bölümde Türkçenin günümüzde karşılaştığı yozlaşma 
 course: turk-dili-1
 chapter: 8
 status: stable
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-14T17:33:22Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-15T18:02:32Z }
 notebook: "https://notebooklm.google.com/notebook/c702ed26-fe17-463d-b217-202acd0c3d26"
 ---
 
 # Özet
 
 Bu bölümde Türkçenin günümüzde karşılaştığı yozlaşma ve yabancılaşma sorunları ele alınmaktadır. Kitle iletişim araçları, sosyal medya ve iş hayatında yabancı sözcüklerin bilinçsiz kullanımının olumsuz etkileri tartışılmaktadır. Türkçenin öğretim ve bilim dili olarak korunması ve toplumda ana dili bilincinin geliştirilmesi için yapılması gerekenler açıklanmaktadır.
+
+# Sesli Ders
+
+[Bölüm 8 sesli özeti](/audio/turk-dili-1/chapter-8.mp3) (6:10 dk, MP3)
 
 # AÖF Ünite İnfoğrafik
 

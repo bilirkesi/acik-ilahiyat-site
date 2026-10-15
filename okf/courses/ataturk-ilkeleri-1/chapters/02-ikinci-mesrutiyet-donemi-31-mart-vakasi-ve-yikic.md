@@ -5,13 +5,17 @@ description: İkinci Meşrutiyet'in ilanı sonrasında İttihat ve Terakki Cemiy
 course: ataturk-ilkeleri-1
 chapter: 2
 status: stable
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-14T17:33:22Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-15T18:02:32Z }
 notebook: "https://notebooklm.google.com/notebook/436f4e9d-25d4-4441-98f1-ed97d01b9b7f"
 ---
 
 # Özet
 
 İkinci Meşrutiyet'in ilanı sonrasında İttihat ve Terakki Cemiyeti'nin iktidara gelişi ve 31 Mart Vakası Osmanlı siyasi hayatında köklü değişimlere yol açmıştır. Bu siyasi çalkantıların ardından başlayan Trablusgarp ve Balkan Savaşları, imparatorluğun Kuzey Afrika ile Rumeli'deki varlığına son vererek büyük toprak kayıplarına neden olmuştur. Yaşanan bu askeri felaketler, Osmanlı Devleti'ni Birinci Dünya Savaşı'na sürükleyen süreci hızlandırmıştır.
+
+# Sesli Ders
+
+[Bölüm 2 sesli özeti](/audio/ataturk-ilkeleri-1/chapter-2.mp3) (5:56 dk, MP3)
 
 # AÖF Ünite İnfoğrafik
 

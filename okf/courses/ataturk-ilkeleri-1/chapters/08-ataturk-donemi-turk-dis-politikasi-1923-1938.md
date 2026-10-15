@@ -5,13 +5,17 @@ description: Lozan sonrası dönemde Türkiye, barışçı ve millî bir dış p
 course: ataturk-ilkeleri-1
 chapter: 8
 status: stable
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-14T17:33:22Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-15T18:02:32Z }
 notebook: "https://notebooklm.google.com/notebook/436f4e9d-25d4-4441-98f1-ed97d01b9b7f"
 ---
 
 # Özet
 
 Lozan sonrası dönemde Türkiye, barışçı ve millî bir dış politika izleyerek Musul Meselesi gibi çözülememiş sorunları uluslararası diplomasi yoluyla neticelendirmeye çalışmıştır. 1930'lu yıllarda tırmanan revizyonist tehditlere karşı Milletler Cemiyeti'ne üye olunmuş, Balkan Antantı kurulmuş ve Montrö Boğazlar Sözleşmesi ile Boğazlar üzerinde tam egemenlik sağlanmıştır. Atatürk döneminde izlenen dengeli diplomasi sayesinde Türkiye, bölgesinde ve dünyada saygın ve güvenilir bir konum elde etmiştir.
+
+# Sesli Ders
+
+[Bölüm 8 sesli özeti](/audio/ataturk-ilkeleri-1/chapter-8.mp3) (6:45 dk, MP3)
 
 # AÖF Ünite İnfoğrafik
 

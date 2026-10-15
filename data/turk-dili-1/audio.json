@@ -1,0 +1,64 @@
+{
+  "format": "deep-dive",
+  "length": "short",
+  "language": "tr",
+  "bitrate": "64k",
+  "chapters": [
+    {
+      "chapter": 1,
+      "file": "chapter-1.mp3",
+      "duration": 435.6,
+      "bytes": 3486090,
+      "generated": "2026-10-15"
+    },
+    {
+      "chapter": 2,
+      "file": "chapter-2.mp3",
+      "duration": 318.8,
+      "bytes": 2550858,
+      "generated": "2026-10-15"
+    },
+    {
+      "chapter": 3,
+      "file": "chapter-3.mp3",
+      "duration": 380.0,
+      "bytes": 3040650,
+      "generated": "2026-10-15"
+    },
+    {
+      "chapter": 4,
+      "file": "chapter-4.mp3",
+      "duration": 333.8,
+      "bytes": 2671242,
+      "generated": "2026-10-15"
+    },
+    {
+      "chapter": 5,
+      "file": "chapter-5.mp3",
+      "duration": 373.2,
+      "bytes": 2986698,
+      "generated": "2026-10-15"
+    },
+    {
+      "chapter": 6,
+      "file": "chapter-6.mp3",
+      "duration": 368.5,
+      "bytes": 2948682,
+      "generated": "2026-10-15"
+    },
+    {
+      "chapter": 7,
+      "file": "chapter-7.mp3",
+      "duration": 267.3,
+      "bytes": 2139018,
+      "generated": "2026-10-15"
+    },
+    {
+      "chapter": 8,
+      "file": "chapter-8.mp3",
+      "duration": 370.3,
+      "bytes": 2963466,
+      "generated": "2026-10-15"
+    }
+  ]
+}
