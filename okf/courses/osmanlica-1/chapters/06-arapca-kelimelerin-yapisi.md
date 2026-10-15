@@ -5,13 +5,17 @@ description: "Arapçanın bükünlü yapısını, kelimelerin kök (aslî) ve ek
 course: osmanlica-1
 chapter: 6
 status: stable
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-14T20:00:01Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-15T21:46:50Z }
 notebook: "https://notebooklm.google.com/notebook/18b3f791-a3cd-4d19-a002-ced4ebfe16ae"
 ---
 
 # Özet
 
 Arapçanın bükünlü yapısını, kelimelerin kök (aslî) ve ek (zâid) harflerini, fa'l (ف ع ل) kalıbıyla vezin bulmayı, isimlerde müennes ve müzekkerliği ve tekil, ikil (tesniye) ve çoğul (cem') yapılarını anlatır.
+
+# Sesli Ders
+
+[Bölüm 6 sesli özeti](/audio/osmanlica-1/chapter-6.mp3) (6:43 dk, MP3)
 
 # Ders Kitabı Ünite Özeti
 

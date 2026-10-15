@@ -24,6 +24,41 @@
       "duration": 391.6,
       "bytes": 3133578,
       "generated": "2026-10-15"
+    },
+    {
+      "chapter": 4,
+      "file": "chapter-4.mp3",
+      "duration": 353.6,
+      "bytes": 2829834,
+      "generated": "2026-10-16"
+    },
+    {
+      "chapter": 5,
+      "file": "chapter-5.mp3",
+      "duration": 426.2,
+      "bytes": 3410250,
+      "generated": "2026-10-16"
+    },
+    {
+      "chapter": 6,
+      "file": "chapter-6.mp3",
+      "duration": 403.4,
+      "bytes": 3228426,
+      "generated": "2026-10-16"
+    },
+    {
+      "chapter": 7,
+      "file": "chapter-7.mp3",
+      "duration": 294.9,
+      "bytes": 2360202,
+      "generated": "2026-10-16"
+    },
+    {
+      "chapter": 8,
+      "file": "chapter-8.mp3",
+      "duration": 398.8,
+      "bytes": 3190794,
+      "generated": "2026-10-16"
     }
   ]
 }
