@@ -26,6 +26,8 @@ sys.path.insert(0, str(ROOT))
 OKF = ROOT / "okf"
 NOW = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
 ACTOR = "acik-ilahiyat-exporter/1.0"
+# okf/ altında elle tutulan, export'un silmemesi gereken dosyalar
+KEEP = ("AGENTS.md",)
 
 # Ders listesi courses.json'dan gelir (sıra: main() içinde)
 SLUGS: list[str] = []
@@ -249,11 +251,17 @@ def main() -> int:
     }
     prev_log = (OKF / "log.md").read_text(encoding="utf-8") if (OKF / "log.md").exists() else ""
 
+    # elle yazılan dosyalar (DOX sözleşmesi) yeniden üretimde korunur
+    kept = {n: (OKF / n).read_text(encoding="utf-8") for n in KEEP if (OKF / n).exists()}
+
     # temiz yeniden üretim
     if OKF.exists():
         import shutil
 
         shutil.rmtree(OKF)
+    for n, text in kept.items():
+        (OKF / n).parent.mkdir(parents=True, exist_ok=True)
+        (OKF / n).write_text(text, encoding="utf-8")
 
     courses = load_json(ROOT / "courses.json")
     SLUGS[:] = [s for s in courses if (ROOT / "data" / s / "study_plan.json").exists()]
