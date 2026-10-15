@@ -32,6 +32,7 @@ DEFAULT_UNIVERSITY = {
     "figureStyle": DEFAULT_FIGURE_STYLE,
     "showNotebookLinks": True,
     "plannedCourses": 0,
+    "grounding": {"tiers": [], "rules": []},
 }
 
 
@@ -94,7 +95,7 @@ class Project:
 
 def load_university(root):
     u = dict(DEFAULT_UNIVERSITY)
-    u.update(json.loads((Path(root) / "university.json").read_text()))
+    u.update(json.loads((Path(root) / "university.json").read_text(encoding="utf-8-sig")))
     pm = float(u.get("passMark", 0.7))
     u["passMark"] = pm / 100 if pm > 1 else pm
     ch = u.get("chapters") or {}
@@ -129,6 +130,46 @@ class Lock:
 
     def __exit__(self, *exc):
         self.path.unlink(missing_ok=True)
+
+
+def source_tier(src, tiers):
+    """Rank of a source in `grounding.tiers` (0 = most authoritative). The source `type` decides first (a
+    YouTube "özet" video is still captions), then a case-insensitive title substring; a source no tier
+    matches ranks after the last tier."""
+    title, typ = (src.get("title") or "").casefold(), src.get("type") or ""
+    for i, t in enumerate(tiers):
+        if typ in t.get("types", []):
+            return i
+    for i, t in enumerate(tiers):
+        if any(m.casefold() in title for m in t.get("titles", [])):
+            return i
+    return len(tiers)
+
+
+def with_authority(ids, sources, tiers):
+    """`ids` plus every ready top-tier source when none of `ids` is top tier, so a chapter built from
+    lecture captions is still checked against the textbook. Order of `ids` is kept."""
+    if not tiers:
+        return list(ids)
+    by_id = {s.get("id"): s for s in sources}
+    if any(source_tier(by_id.get(i, {}), tiers) == 0 for i in ids):
+        return list(ids)
+    top = [s["id"] for s in sources if s.get("status") == "ready" and s.get("id") not in ids
+           and source_tier(s, tiers) == 0]
+    return list(ids) + top
+
+
+def grounding_rules(u):
+    """One prompt paragraph from `grounding`: the source ranking plus the extra rules. Empty if unset."""
+    g = u.get("grounding") or {}
+    tiers, rules = g.get("tiers") or [], g.get("rules") or []
+    parts = []
+    if tiers:
+        parts.append("Source ranking, most authoritative first: " + "; ".join(
+            f"{i}) {t['label']}" + (f" ({t['note']})" if t.get("note") else "") for i, t in enumerate(tiers, 1))
+            + ". When sources conflict, follow the higher-ranked source and say so; never blend them.")
+    parts += rules
+    return " ".join(parts)
 
 
 def run_cli(cli, args, timeout=900):

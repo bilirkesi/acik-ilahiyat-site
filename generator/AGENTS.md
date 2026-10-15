@@ -6,7 +6,7 @@
 
 ## Ownership
 - `scripts/build.py` — the entry point. Copies `site-template/` into `site/`, injects `university.json` branding, bundles every course that has a `data/<slug>/manifest.json` into `site/data.js`, writes `index.html`, `manifest.webmanifest`, and `sw.js`, compresses chapter infographics, and zips each `extensions/<name>/` into `site/downloads/<name>.zip`.
-- `scripts/common.py` — shared project/course helpers.
+- `scripts/common.py` — shared project/course helpers, incl. the grounding helpers `source_tier`, `with_authority`, `grounding_rules` that read `university.json` → `grounding`.
 - `scripts/pipeline.py`, `preflight.py`, `qa.py`, `redo.py`, `sheet.py` — full generation, validation, and contact-sheet tooling.
 - `scripts/add_course.py`, `new_project.py` — scaffold a course or a new project.
 - `chapter_audio()` in `build.py` reads `data/<slug>/audio.json` and adds `course.audio` for MP3s that exist under `site/audio/<slug>/`; `offline_packs()` exposes them as the separate `<slug>-ses` pack.
@@ -16,6 +16,7 @@
 
 ## Local Contracts
 - Run from the repo root: `py -3 generator/scripts/build.py .` (Python 3.8+ stdlib; Pillow only to compress new PNGs).
+- `grounding` in `university.json` ranks source kinds (`tiers`: `label`, `note`, `types`, `titles`; first = textbook) and adds prompt `rules`. The `pipeline.py` ground, quiz and infographic stages append `grounding_rules()` to their prompts and add the textbook to a chapter that has none. It is build-time only and stays out of `public_config`.
 - `public_config` in `build.py` whitelists the `university.json` keys that reach `window.UNIVERSITY` (incl. `exams`, `grading`); a new config key must be added there.
 - `build.py` reads `university.json`, `courses.json`, and `data/<slug>/`; it does **not** read `okf/` or `coursegraph/index/`.
 - `SHELL_FILES` in `build.py` lists the PWA app shell hashed into `sw.js`: `index.html`, `styles.css`, `app.js`, `data.js`, `interactive.js`, `coursegraph.js`, `past_exams.js`, `unit_quizzes.js`, `manifest.webmanifest`, `favicon.svg`. Adding a new lazy bundle means adding it here too.

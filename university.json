@@ -23,6 +23,20 @@
     "paper": "#f8f4ea"
   },
   "figureStyle": "light ivory background, deep navy text and shapes, muted gold accents only, flat vector icons, two-column layout",
+  "grounding": {
+    "tiers": [
+      {"label": "the official AÖF textbook (Kitap)", "types": ["book"], "titles": ["Kitap", "ders kitabı"]},
+      {"label": "AÖF unit summaries and infographics", "titles": ["İnfografik", "Özet"]},
+      {"label": "AÖF past exam questions", "note": "use them for question style and what the exam stresses, not as the source of facts", "titles": ["Çıkmış", "Sınav Soru"]},
+      {"label": "lecture video captions", "note": "auto captions with speech errors; never prefer them over the textbook", "types": ["youtube", "pasted_text"]}
+    ],
+    "rules": [
+      "Use only facts the sources state, at the level of detail they give. If the sources treat a point briefly, keep it brief; do not fill gaps from general knowledge.",
+      "Spell names, dates and terms as the textbook does.",
+      "Cite a source only for a claim it fully supports; split compound claims.",
+      "If the sources do not cover something, leave it out rather than guess."
+    ]
+  },
   "showNotebookLinks": true,
   "plannedCourses": 0,
   "storageKey": "a-k-i-lahiyat-niversitesi",

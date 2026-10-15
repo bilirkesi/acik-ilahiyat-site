@@ -18,7 +18,7 @@ State lives in data/<slug>/state.json, so any stage can be re-run and resumes wh
 Only one runner per project is allowed (lock file). Notebooks are never deleted or shared.
 """
 import argparse, json, re, sys, time
-from common import Lock, Project, require_cli, run_cli, run_cli_json
+from common import Lock, Project, grounding_rules, require_cli, run_cli, run_cli_json, source_tier, with_authority
 
 LIMIT_HINTS = re.compile(r"rate.?limit|quota|429|resource.?exhausted|too many|usage limit|limit reached", re.I)
 
@@ -44,6 +44,8 @@ class Runner:
         self.cli = require_cli()
         self.u = proj.uni
         self.lang = self.u.get("language") or "English"
+        self.rules = grounding_rules(self.u)
+        self.tiers = (self.u.get("grounding") or {}).get("tiers") or []
         if self.c.get("mode") == "own" and self.c.get("notebook_id"):
             self.st.d.setdefault("notebook_id", self.c["notebook_id"])
             self.st.save()
@@ -65,6 +67,10 @@ class Runner:
 
     def ready_sources(self):
         return [s for s in self.st.d.get("sources", {}).values() if s.get("status") == "ready"]
+
+    def chapter_sources(self, ch):
+        """The chapter's own sources plus the top-tier ones (textbook) when it has none of its own."""
+        return with_authority(ch["source_ids"], self.ready_sources(), self.tiers)
 
     def note_generation(self, key, ok, detail=""):
         with open(self.p.root / "logs" / "generations.jsonl", "a") as f:
@@ -223,19 +229,22 @@ class Runner:
             if ch.get("grounding"):
                 continue
             q = (f"Using only these {self.noun}s, explain in plain sentences what the student learns for each objective below. "
-                 f"Cite the {self.noun}s. Write for {self.u['audience']}. Write the whole answer in {self.lang}. No em dashes.\n"
+                 f"Cite the {self.noun}s. Write for {self.u['audience']}. Write the whole answer in {self.lang}. No em dashes. "
+                 f"{self.rules}\n"
                  + "\n".join(f"- {o}" for o in ch["objectives"]))
             args = ["ask", q, "-n", self.nb]
-            for sid in ch["source_ids"]:
+            for sid in self.chapter_sources(ch):
                 args += ["-s", sid]
             code, data, out, err = run_cli_json(self.cli, args, timeout=600)
             if code != 0 or not data:
                 self.log(f"ground ch{i} failed: {(err or out)[-200:]}")
                 continue
             refs = data.get("references", [])
-            outside = {r.get("source_id") for r in refs} - set(ch["source_ids"])
+            outside = {r.get("source_id") for r in refs} - set(self.chapter_sources(ch))
+            by_id = {s.get("id"): s for s in self.ready_sources()}
+            top = sum(1 for r in refs if self.tiers and source_tier(by_id.get(r.get("source_id"), {}), self.tiers) == 0)
             ch["grounding"] = {"answer": data["answer"], "references": refs}
-            self.log(f"ground ch{i}: {len(refs)} citations, {len(outside)} outside chapter")
+            self.log(f"ground ch{i}: {len(refs)} citations, {top} from top-tier sources, {len(outside)} outside chapter")
             path.write_text(json.dumps(plan, indent=2, ensure_ascii=False))
 
     def generate(self, key, args):
@@ -279,7 +288,7 @@ class Runner:
         qty = q.get("quantity") or self.u["quiz"]["quantity"]
         aid = self.st.d.get("quiz_artifact") or self.generate(
             "quiz", ["generate", "quiz", f"Cover the core concepts of every {self.noun}. Write for {self.u['audience']}. "
-                     f"Write the entire quiz (questions, options, explanations, hints) in {self.lang}.",
+                     f"Write the entire quiz (questions, options, explanations, hints) in {self.lang}. {self.rules}",
                      "-n", self.nb, "--difficulty", diff, "--quantity", qty])
         if not aid:
             self.log("quiz failed after all tries. Rerun the quiz stage later.")
@@ -309,10 +318,10 @@ class Runner:
                           f"Write every word on the infographic in {self.lang}. "
                           "No university names, logos, seals or crests. No photos. No em dashes. "
                           f"Keep every label short so no text is cut off. "
-                          f"Check every word for correct {self.lang} spelling before rendering.")
+                          f"Check every word for correct {self.lang} spelling before rendering. {self.rules}")
                 args = ["generate", "infographic", prompt, "-n", self.nb, "--orientation", "landscape",
                         "--style", "professional", "--detail", "standard"]
-                for sid in ch["source_ids"]:
+                for sid in self.chapter_sources(ch):
                     args += ["-s", sid]
                 aid = self.generate(key, args)
                 if not aid:
