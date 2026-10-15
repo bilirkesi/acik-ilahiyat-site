@@ -5,13 +5,17 @@ description: "Türkçe kelimelerin Arap harfleriyle nasıl yazıldığını anla
 course: osmanlica-1
 chapter: 2
 status: stable
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-14T20:00:01Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-15T18:25:20Z }
 notebook: "https://notebooklm.google.com/notebook/18b3f791-a3cd-4d19-a002-ced4ebfe16ae"
 ---
 
 # Özet
 
 Türkçe kelimelerin Arap harfleriyle nasıl yazıldığını anlatır: kalın ve ince ünsüz harfleri, genizsi n'yi gösteren kâf-ı nûnîyi, l sesini ve a, e, ı/i, o/ö/u/ü ünlülerinin kelime başında, ortasında ve sonunda yazılışını.
+
+# Sesli Ders
+
+[Bölüm 2 sesli özeti](/audio/osmanlica-1/chapter-2.mp3) (6:42 dk, MP3)
 
 # Ders Kitabı Ünite Özeti
 
