@@ -274,8 +274,11 @@
       // Noktayla bitmemiş uzun düz yazı paragrafı ya da numaralı öğrenme çıktısı ("1 Mudanya Mütarekesi’nin Millî" /
       // "Mücadele’deki ...") büyük harfle başlayan özel adla sürebilir; "-bilme" ile biten çıktı ve "öğrenme çıktıları" kutusu biter.
       const para = out.length ? out[out.length - 1].trim() : "";
-      const open = /[\p{L}\d’']$/u.test(p) && !/bilme$|çıktıları$|(?:Şekil|Tablo|Resim) [\d.]+$/iu.test(p) && !/^\d{1,2} \p{Lu}/u.test(line)
-        && ((para.length >= 80 && lowerShare(para) >= 0.5) || /^\d{1,2} \p{Lu}/u.test(para));
+      const open = /[\p{L}\d’']$/u.test(p) && !/bilme$|çıktıları$|(?:Şekil|Tablo|Resim) [\d.]+$/iu.test(p) && !/^\d+\. Ünite/u.test(p) && !/^\d{1,2} \p{Lu}/u.test(line)
+        && ((para.length >= 80 && (lowerShare(para) >= 0.5 || (/\p{L}, \p{L}/u.test(para) && lowerShare(para) >= 0.3)))
+          || /^\d{1,2} \p{Lu}/u.test(para)
+          // Cümle gibi başlayan satır ("Aynı günlerde ...") ya da satır içi virgül: başlıklar Baş Harfleri Büyük ve virgülsüzdür.
+          || (p.length >= 35 && p.split(/\s+/).length >= 4 && (/^\p{Lu}[\p{Ll}’']+ \p{Ll}/u.test(p) || /\p{L}, \p{L}/u.test(p))));
       const dated = TR_MONTH_END.test(p) && /^\d{4}\b/.test(line); // "1 Kasım" / "1918 tarihinde"
       const linked = TR_LINK_END.test(p) || dated;
       const join = p && line && (bulletRun || linked || !LIST_LINE.test(line)) && !/^#/.test(p) && !/[.!?:;…"”)]$|⟧$/.test(p)
