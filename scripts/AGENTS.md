@@ -17,7 +17,7 @@ Generation (`data/` → richer content):
 Export (`data/` → site/bundle):
 - `export_unit_quizzes_site.py` — `unit_quizzes/*.json` → `site/unit_quizzes.js` (`window.UNIT_QUIZZES`).
 - `export_past_exams_site.py` — `past_exams.json` → `site/past_exams.js` (`window.PAST_EXAMS`); adds unit/chapter tags, answer key, and auto-generated solutions.
-- `export_okf.py` — course data → the `okf/` Markdown bundle.
+- `export_okf.py` — course data → the `okf/` Markdown bundle; wipes `okf/` except `okf/AGENTS.md`.
 
 Infographic QA/repair:
 - `compare_nlm_infographics.py`, `fix_infographic_text.py`, `generate_nlm_infographics.py`.
