@@ -17,6 +17,7 @@ import argparse
 import datetime
 import json
 import os
+import re
 import shutil
 import subprocess
 import sys
@@ -45,7 +46,7 @@ def tool(name, override):
 def generate(nb, chapter, out_raw, args):
     """Ask NotebookLM for the chapter's audio overview and download it to out_raw."""
     cmd = [args.notebooklm, "generate", "audio", PROMPT.format(title=chapter["title"]), "-n", nb,
-           "--format", args.format, "--length", args.length, "--language", args.language, "--wait", "--json"]
+           "--format", args.format, "--length", args.length, "--language", args.language, "--wait", "--retry", "2", "--json"]
     for sid in chapter.get("source_ids", []):
         cmd += ["-s", sid]
     res = run(cmd, capture_output=True)
@@ -53,7 +54,7 @@ def generate(nb, chapter, out_raw, args):
     artifact = ""
     try:
         info = json.loads(res.stdout)
-        artifact = info.get("artifact_id") or info.get("id") or ""
+        artifact = info.get("artifact_id") or info.get("task_id") or info.get("id") or ""
     except ValueError:
         pass
     out_raw.parent.mkdir(parents=True, exist_ok=True)
@@ -66,6 +67,11 @@ def transcode(src, dst, args):
     dst.parent.mkdir(parents=True, exist_ok=True)
     run([args.ffmpeg, "-y", "-loglevel", "error", "-i", src, "-vn", "-ac", "1", "-ar", "24000",
          "-c:a", "libmp3lame", "-b:a", BITRATE, dst])
+    if not args.ffprobe:  # no ffprobe: read "Duration: HH:MM:SS.xx" from ffmpeg's banner instead
+        err = subprocess.run([args.ffmpeg, "-hide_banner", "-i", str(dst)], capture_output=True, text=True,
+                             encoding="utf-8", errors="replace").stderr
+        m = re.search(r"Duration: (\d+):(\d+):([\d.]+)", err)
+        return round(int(m[1]) * 3600 + int(m[2]) * 60 + float(m[3]), 1) if m else 0.0
     out = run([args.ffprobe, "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", dst],
               capture_output=True).stdout
     return round(float(out.strip() or 0), 1)
@@ -84,7 +90,8 @@ def main():
     ap.add_argument("--ffmpeg", default=None)
     ap.add_argument("--ffprobe", default=None)
     args = ap.parse_args()
-    args.ffmpeg, args.ffprobe = tool("ffmpeg", args.ffmpeg), tool("ffprobe", args.ffprobe)
+    args.ffmpeg = tool("ffmpeg", args.ffmpeg)
+    args.ffprobe = args.ffprobe or shutil.which("ffprobe")  # optional; durations fall back to ffmpeg
     if not args.transcode_only:
         args.notebooklm = tool("notebooklm", args.notebooklm)
 
