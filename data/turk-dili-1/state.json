@@ -147,6 +147,14 @@
       "url": "",
       "type": "pasted_text",
       "status": "ready"
+    },
+    "03e31490-de9b-40aa-8d64-76ad02d657ca": {
+      "id": "03e31490-de9b-40aa-8d64-76ad02d657ca",
+      "title": "TÜRK DİLİ I - Kitap",
+      "url": "",
+      "type": "file",
+      "status": "ready",
+      "origin": "aof"
     }
   },
   "order": [
@@ -170,7 +178,8 @@
     "2969046e-5dad-483e-8443-89e87a4bceae",
     "b39debaa-7511-4b0a-a4c3-f9625763ab0e",
     "0473eb57-585b-48f9-8560-25c1bdf06c34",
-    "c67d0580-7a24-4952-81cc-4020384610de"
+    "c67d0580-7a24-4952-81cc-4020384610de",
+    "03e31490-de9b-40aa-8d64-76ad02d657ca"
   ],
   "notebook_title": "Türk Dili I: TÜR201U (AÖF Açıköğretim)",
   "tries": {
