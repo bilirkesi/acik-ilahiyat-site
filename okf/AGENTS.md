@@ -6,13 +6,14 @@
 
 ## Ownership
 - **Generated output.** Written by `py -3 scripts/export_okf.py` from `courses.json` and `data/<slug>/`. Do not hand-edit; change the data and re-export.
+- `AGENTS.md` — the only hand-maintained file; the export keeps it (`KEEP` in `export_okf.py`) when it wipes and rewrites the bundle.
 - `index.md` — bundle index with front matter (`okf_version: "0.2"`, universities, terms, courses).
 - `universities/`, `terms/` — one page per source university and per academic term.
 - `courses/<slug>.md` — the course page; `courses/index.md` lists all courses.
 - `courses/<slug>/chapters/` — one page per study-plan chapter.
 - `courses/<slug>/exams/` — practice exams (vize/final/yaz-kursu) as Markdown.
 - `courses/<slug>/unit-quizzes/` — unit quizzes, one page per unit plus an index.
-- `courses/<slug>/quiz.md`, `units.md`, `artifacts.md` — final quiz, unit index, and artifact catalog.
+- `courses/<slug>/quiz.md`, `units.md`, `artifacts.md` — final quiz, book unit summaries (from `unit_infographics.json`), and artifact catalog.
 - `log.md` — export log.
 - `artifacts/` — artifact catalog index.
 
@@ -23,7 +24,9 @@
 
 ## Work Guidance
 - Re-export after any change to `data/` or `courses.json`: `py -3 scripts/export_okf.py`.
-- The export preserves existing infographic/artifact references when `assets/` and `artifacts/` are absent (they are git-ignored), so a clean clone still regenerates a complete bundle.
+- `assets/` and `artifacts/` are git-ignored. Without them the export links infographics to the published `site/assets/<slug>/*.jpg` and keeps the existing `courses/<slug>/artifacts.md`, so a clean clone still regenerates a complete bundle.
+- Commit only files whose content changed; a re-export rewrites every `generated:` timestamp.
+- Site-only views (concept decks `#/kavram`, word games `#/oyunlar`) are built in the browser from data the bundle already exports; they have no OKF pages.
 
 ## Verification
 - `py -3 -m unittest discover -s tests` guards the quiz data the bundle is derived from.

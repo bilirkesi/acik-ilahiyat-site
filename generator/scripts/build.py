@@ -7,7 +7,7 @@ Copies site-template/ into PROJECT/site/, injects university.json, bundles every
 manifest.json into site/data.js, and compresses chapter infographics (sips, else Pillow, else PNG copy).
 Cleans NotebookLM text: drops citation markers, fixes doubled LaTeX delimiters, removes em dashes.
 """
-import hashlib, html, json, re, shutil, subprocess, sys, time
+import hashlib, html, json, re, shutil, subprocess, sys, time, zipfile
 from pathlib import Path
 from common import TEMPLATE_DIR, Project
 
@@ -181,7 +181,7 @@ def book_unit_images(proj, slug, out_dir):
     """
     spec = proj.root / "data" / slug / "unit_infographics.json"
     if not spec.exists():
-        return []
+        return
     out = []
     for u in json.loads(spec.read_text(encoding="utf-8")).get("units", []):
         name = f"kitap-unite-{u['unit']}.jpg"
@@ -356,6 +356,23 @@ def shell_manifest(site):
     return [[f.relative_to(site).as_posix(), rev(f)] for f in files]
 
 
+def pack_extensions(root, site):
+    """extensions/<ad>/ tarayıcı eklentilerini site/downloads/<ad>.zip olarak paketler.
+    Sabit tarih damgası: içerik değişmedikçe zip baytı da değişmez."""
+    src = root / "extensions"
+    if not src.is_dir():
+        return
+    out = site / "downloads"
+    for ext in sorted(d for d in src.iterdir() if (d / "manifest.json").is_file()):
+        out.mkdir(exist_ok=True)
+        with zipfile.ZipFile(out / f"{ext.name}.zip", "w", zipfile.ZIP_DEFLATED) as z:
+            for f in sorted(p for p in ext.rglob("*") if p.is_file() and p.name != "AGENTS.md"):
+                info = zipfile.ZipInfo(f"{ext.name}/{f.relative_to(ext).as_posix()}", (2020, 1, 1, 0, 0, 0))
+                info.compress_type = zipfile.ZIP_DEFLATED
+                info.external_attr = 0o644 << 16
+                z.writestr(info, f.read_bytes())
+
+
 if __name__ == "__main__":
     if len(sys.argv) < 2:
         sys.exit(__doc__)
@@ -388,6 +405,7 @@ if __name__ == "__main__":
     ):
         if not (site / name).exists():
             (site / name).write_text(stub, encoding="utf-8")
+    pack_extensions(proj.root, site)
     issuer = html.escape(uni.get("issuer") or uni["name"])
     if uni.get("issuerUrl"):
         issuer = f'<a href="{html.escape(uni["issuerUrl"])}" target="_blank" rel="noopener">{issuer}</a>'

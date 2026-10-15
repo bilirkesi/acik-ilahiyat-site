@@ -328,8 +328,23 @@
   }
   document.querySelectorAll("[data-crest]").forEach((el) => (el.innerHTML = crest()));
 
+  // Düzenleyici modu: siteyi bir kez "#/?duzenle=1" ile açan tarayıcı NotebookLM düzenleme düğmesini görür; "#/?duzenle=0" kapatır.
+  const EDITOR_KEY = CONFIG.storageKey + ".editor";
+  function isEditor() {
+    try { return localStorage.getItem(EDITOR_KEY) === "1"; } catch (e) { return false; }
+  }
+  function setEditor(on) {
+    try { if (on) localStorage.setItem(EDITOR_KEY, "1"); else localStorage.removeItem(EDITOR_KEY); } catch (e) { /* özel mod */ }
+  }
+  // NotebookLM'in yeni adresi; Notebook-Nest eklentisi iki adreste de çalışır.
+  const notebookEditUrl = (c) => c.notebook.replace("//notebooklm.google.com", "//notebook.google.com");
+
   function notebookButton(c, ghost) {
-    return CONFIG.showNotebookLinks && c.notebook ? `<a class="btn${ghost ? " ghost" : ""}" href="${esc(c.notebook)}" target="_blank" rel="noopener">NotebookLM'de aç</a>` : "";
+    if (!CONFIG.showNotebookLinks || !c.notebook) return "";
+    const open = `<a class="btn${ghost ? " ghost" : ""}" href="${esc(c.notebook)}" target="_blank" rel="noopener">NotebookLM'de aç</a>`;
+    if (!isEditor()) return open;
+    return open + `<a class="btn ghost" href="${esc(notebookEditUrl(c))}" target="_blank" rel="noopener" title="Notebook-Nest eklentisiyle kaynakları klasörle">NotebookLM'de düzenle</a>`
+      + `<a class="btn ghost" href="#/eklenti">Eklentiyi kur</a>`;
   }
 
   // ---- görünümler ------------------------------------------------------------
@@ -4008,6 +4023,34 @@
   function viewGate(feature) {
     return `<div class="locked"><div class="crest-lg">${crest()}</div><h1>Yalnızca üyelere</h1><p class="muted">${esc(CONFIG.issuer)} üyelerine açıktır.</p></div>`;
   }
+  // ---- Notebook-Nest eklentisi: indirme ve kurulum (#/eklenti) ----
+  function viewExtension() {
+    const rows = COURSES.filter((c) => c.notebook).map((c) =>
+      `<li><a href="${esc(notebookEditUrl(c))}" target="_blank" rel="noopener">${esc(c.subject)}</a></li>`).join("");
+    return `<p class="crumbs"><a href="#/">Katalog</a> / Notebook-Nest</p>
+      <p class="eyebrow">Düzenleyici aracı</p>
+      <h1>NotebookLM'de düzenle: Notebook-Nest</h1>
+      <p class="lead">Notebook-Nest, NotebookLM defterlerinde kaynakları ve Studio çıktılarını iç içe klasörlere ayıran bir Chrome eklentisidir. Bir klasörün onay kutusu o klasördeki bütün kaynakları tek tıkla seçer; böylece sohbet ve Studio üretimleri yalnızca o ünitenin kaynaklarıyla çalışır.</p>
+      <div class="btn-row"><a class="btn" href="downloads/notebook-nest.zip" download>Eklentiyi indir (.zip)</a></div>
+      <h2>Kurulum</h2>
+      <ol>
+        <li>İndirdiğin zip dosyasını bir klasöre çıkar. Eklenti o klasörden çalışır; kurduktan sonra klasörü silme veya taşıma.</li>
+        <li>Chrome'da <code>chrome://extensions</code> sayfasını aç (Edge'de <code>edge://extensions</code>).</li>
+        <li>Sağ üstten <b>Geliştirici modu</b>nu aç.</li>
+        <li><b>Paketlenmemiş öğe yükle</b> düğmesine bas ve zipten çıkan <code>notebook-nest</code> klasörünü seç.</li>
+        <li>Aşağıdaki defterlerden birini aç veya açık sekmeyi yenile; kaynak listesinde klasör ağacı görünür.</li>
+      </ol>
+      <h2>Defterler</h2>
+      <ul>${rows}</ul>
+      <h2>Bilmen gerekenler</h2>
+      <ul>
+        <li>Yalnızca masaüstü Chrome ve Edge'de çalışır; telefonda çalışmaz.</li>
+        <li>Klasörler ve görevler yalnızca bu tarayıcıda saklanır. NotebookLM'e gitmez, defteri paylaştığın kişiler görmez. Eklentiyi kaldırmadan önce eklentideki <b>Export</b> düğmesiyle yedek al.</li>
+        <li>Defterde değişiklik (kaynak ekleme, silme) yapabilmek için defterin sahibi veya düzenleyicisi olman gerekir.</li>
+      </ul>
+      <p class="muted">Notebook-Nest, Benju66'nın <a href="https://github.com/benju66/Notebook-Nest" target="_blank" rel="noopener">NotebookLM Pro Tree</a> eklentisinin değiştirilmiş kopyasıdır (GPL-3.0). Kaynak kodu ve yapılan değişiklikler zip içindeki README ve LICENSE dosyalarındadır. <a href="#/?duzenle=0">Düzenleyici modunu kapat</a></p>`;
+  }
+
   const viewNotFound = () => `<h1>Sayfa bulunamadı</h1><p><a href="#/">Kataloğa dön</a></p>`;
 
   // ---- CourseGraph arama sayfası (#/ara) ------------------------------------
@@ -5967,6 +6010,7 @@ document.getElementById("zin").focus();
     lisStop();
     cleanupPrint();
     const { parts, query } = parseLoc();
+    if (query.duzenle != null) setEditor(query.duzenle !== "0");
     const need = new Set();
     const needExamData = () => { need.add("past_exams"); need.add("unit_quizzes"); };
     if (!parts.length) { /* katalog: yalnızca data.js */ }
@@ -6004,6 +6048,7 @@ document.getElementById("zin").focus();
     else if (parts[0] === "karisik") { html = viewMix(query); bind = bindMix; }
     else if (parts[0] === "analiz") { html = viewAnalysis(query); bind = () => {}; }
     else if (parts[0] === "plan") { html = viewPlan(); bind = bindPlan; }
+    else if (parts[0] === "eklenti") html = viewExtension();
     else if (parts[0] === "kavram") { html = viewKavram(query); bind = bindKavram; }
     else if (parts[0] === "oyunlar") {
       const gc = bySlug[parts[1]];
