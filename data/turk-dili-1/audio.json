@@ -1,0 +1,29 @@
+{
+  "format": "deep-dive",
+  "length": "short",
+  "language": "tr",
+  "bitrate": "64k",
+  "chapters": [
+    {
+      "chapter": 1,
+      "file": "chapter-1.mp3",
+      "duration": 435.6,
+      "bytes": 3486090,
+      "generated": "2026-10-15"
+    },
+    {
+      "chapter": 2,
+      "file": "chapter-2.mp3",
+      "duration": 318.8,
+      "bytes": 2550858,
+      "generated": "2026-10-15"
+    },
+    {
+      "chapter": 3,
+      "file": "chapter-3.mp3",
+      "duration": 380.0,
+      "bytes": 3040650,
+      "generated": "2026-10-15"
+    }
+  ]
+}
