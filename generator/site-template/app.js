@@ -645,6 +645,77 @@
     return null;
   }
 
+  // ---- "Bana açıkla": yanlış cevaplanan soruyu Gemini'nin öğrenme modunda açar ------------------
+  // Soru, şıklar, öğrencinin cevabı, doğru cevap, sitedeki açıklama ve ilgili bölüm tek bir istemde birleşir.
+  // Gemini'nin bu adres biçimi resmî belgelenmemiştir; istem her durumda panoya da kopyalanır. Yalnız çevrimiçi görünür.
+  const AI_URL = "https://gemini.google.com/guided-learning?query=";
+  const AI_MAX = 1800; // adres çubuğu sınırı için istemin üst uzunluğu
+  function plainOf(html) {
+    const d = document.createElement("div");
+    d.innerHTML = String(html || "");
+    const img = d.querySelector("img");
+    return { text: d.textContent.replace(/\s+/g, " ").trim(), img: !!img };
+  }
+  function aiPrompt(q, i, box) {
+    const c = bySlug[q._slug || q.course];
+    const stem = plainOf(stemHtml(q));
+    const lines = [
+      `Anadolu Üniversitesi Açıköğretim İlahiyat ön lisans programında${c ? ` "${c.subject}" dersine` : ""} çalışıyorum. Aşağıdaki soruyu yanlış cevapladım.`,
+      "Doğru cevabı bana adım adım, ara sorular sorarak öğret ve benim cevabımın neden yanlış olduğunu açıkla. Ders kitabıyla çelişen bir şey söyleme; emin olmadığın yeri belirt. Türkçe cevap ver.",
+      "",
+      "Soru: " + (stem.text || "(Soru metni görsel olarak verilmiş.)") + (stem.img ? " [Soruda bir görsel var.]" : ""),
+    ];
+    let mine = "", right = "";
+    if (Array.isArray(q.answerOptions)) {
+      lines.push("Şıklar:");
+      const picked = new Set([...box.querySelectorAll(`[name=q${i}]:checked`)].map((x) => +x.value));
+      q.answerOptions.forEach((o, j) => {
+        const t = `${LETTERS[j]}) ${plainOf(optHtml(o)).text}`;
+        lines.push(t);
+        if (picked.has(j)) mine += (mine ? "; " : "") + t;
+        if (o.isCorrect) right += (right ? "; " : "") + t;
+      });
+      const why = q.answerOptions.filter((o, j) => picked.has(j) && o.rationale).map((o) => plainOf(txt(o.rationale)).text);
+      if (why.length) lines.push("Seçtiğim şık hakkında sitedeki not: " + why.join(" "));
+      const rwhy = q.answerOptions.filter((o, j) => o.isCorrect && !picked.has(j) && o.rationale).map((o) => plainOf(txt(o.rationale)).text);
+      if (rwhy.length) lines.push("Doğru şık hakkında sitedeki not: " + rwhy.join(" "));
+    } else if (q.type === "fill_in_the_blank") {
+      const inp = box.querySelector(`[name=q${i}]`);
+      mine = inp ? inp.value.trim() : "";
+      right = String(q.bestAnswer || "");
+    }
+    lines.push("Benim cevabım: " + (mine || "(boş)"), "Doğru cevap: " + right);
+    const sol = q.solution ? plainOf(txt(q.solution)).text : q.rationale ? String(q.rationale) : "";
+    if (sol) lines.push("Sitedeki açıklama: " + sol);
+    const ch = Array.isArray(q.chapterMeta) && q.chapterMeta[0];
+    if (ch) lines.push(`İlgili bölüm: ${ch.n}. ${ch.title}${ch.summary ? " — " + ch.summary : ""}`);
+    let text = lines.join("\n");
+    if (text.length > AI_MAX) text = text.slice(0, AI_MAX - 1) + "…";
+    return text;
+  }
+  function aiButton(q, i, box) {
+    if (!(q.type === "multiple_choice" || q.type === "multiple_select" || q.type === "fill_in_the_blank")) return;
+    const row = document.createElement("div");
+    row.className = "ai-row";
+    row.dataset.noprint = "";
+    row.hidden = navigator.onLine === false;
+    row.innerHTML = `<button type="button" class="btn ghost ai-btn">Bana açıkla <span class="muted small">· Gemini</span></button>
+      <span class="muted small">Soru ve cevabın hazır bir istemle yapay zekâya gider; istem panoya da kopyalanır.</span>`;
+    box.appendChild(row);
+    row.querySelector("button").onclick = async () => {
+      const text = aiPrompt(q, i, box);
+      let copied = false;
+      try { await navigator.clipboard.writeText(text); copied = true; } catch (e) { /* izin yok */ }
+      const w = window.open(AI_URL + encodeURIComponent(text), "_blank", "noopener");
+      if (!w && !copied) window.prompt("İstemi kopyala:", text);
+      else showToast(copied ? "İstem panoya kopyalandı. Gemini soruyu açmazsa sohbet kutusuna yapıştır." : "Gemini açılıyor.");
+    };
+  }
+
+  const aiOnline = () => document.querySelectorAll(".ai-row").forEach((r) => (r.hidden = navigator.onLine === false));
+  window.addEventListener("online", aiOnline);
+  window.addEventListener("offline", aiOnline);
+
   function showFeedback(q, i, ok, box) {
     const confIn = box.querySelector("[data-conf] input:checked");
     const conf = confIn ? +confIn.value : null;
@@ -698,6 +769,7 @@
         };
       }
     }
+    if (ok === false) aiButton(q, i, box);
     box.querySelectorAll("input,textarea").forEach((x) => (x.disabled = true));
   }
 
