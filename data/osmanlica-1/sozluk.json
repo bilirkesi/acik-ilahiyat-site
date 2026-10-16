@@ -36,10 +36,11 @@
   "anlam": "Akıllı insan az konuşur."
  },
  "آل": {
-  "tr": "al (almak fiilinden)",
-  "ornek": "بو كتابى آل",
-  "okunus": "Bu kitâbı al.",
-  "anlam": "Bu kitabı al."
+  "tr": "al (kırmızı); al (almak fiilinden)",
+  "ornek": "قورقمه سونمز بو شفقلرده يوزن آل سانجاق",
+  "okunus": "Korkma, sönmez bu şafaklarda yüzen al sancak",
+  "anlam": "Korkma, bu şafaklarda dalgalanan al bayrak sönmez.",
+  "kaynak": "Öztürk-Çorak s. 325"
  },
  "آلتون": {
   "tr": "altın",
@@ -109,9 +110,10 @@
  },
  "اق": {
   "tr": "ak, beyaz",
-  "ornek": "اق آقچه قره كون ايچوندر",
-  "okunus": "Ak akçe kara gün içindir.",
-  "anlam": "Biriktirilen para zor gün içindir."
+  "ornek": "نه كيرچ كبى آق",
+  "okunus": "Ne kireç gibi ak",
+  "anlam": "Ne kireç gibi beyaz",
+  "kaynak": "Öztürk-Çorak s. 349"
  },
  "اقناع": {
   "tr": "ikna, inandırma",
@@ -199,9 +201,10 @@
  },
  "اولدى": {
   "tr": "oldu",
-  "ornek": "آقشام اولدى",
-  "okunus": "Akşam oldu.",
-  "anlam": "Akşam oldu."
+  "ornek": "ياردن مهجوره همدرد اولدي نى",
+  "okunus": "Yârdan mehcûra hem-derd oldu ney",
+  "anlam": "Ney, sevgilisinden ayrı düşene dert ortağı oldu.",
+  "kaynak": "Öztürk-Çorak s. 200"
  },
  "اون": {
   "tr": "on",
@@ -241,9 +244,10 @@
  },
  "ايتدى": {
   "tr": "etti",
-  "ornek": "دعا ايتدى",
-  "okunus": "Duâ etti.",
-  "anlam": "Dua etti."
+  "ornek": "دين حق و هدايت كافۀ خلق ايچون بعث و ارسال ايتدي",
+  "okunus": "Dîn-i hak ve hidâyet-i kâffe-i halk için ba's ve irsâl etti.",
+  "anlam": "Hak dini ve hidayeti bütün insanlar için gönderdi.",
+  "kaynak": "Öztürk-Çorak s. 388"
  },
  "ايجاد": {
   "tr": "icat",
@@ -253,9 +257,10 @@
  },
  "ايدى": {
   "tr": "idi",
-  "ornek": "هوا كوزل ايدى",
-  "okunus": "Havâ güzel idi.",
-  "anlam": "Hava güzeldi."
+  "ornek": "او نبى مجتبى ازهر اللون ايدى",
+  "okunus": "O Nebiyy-i Müctebâ ezherü'l-levn idi.",
+  "anlam": "O seçkin peygamberin rengi parlak beyazdı.",
+  "kaynak": "Öztürk-Çorak s. 349"
  },
  "ايسه": {
   "tr": "ise",
@@ -277,15 +282,17 @@
  },
  "ايكى": {
   "tr": "iki",
-  "ornek": "ايكى كوز",
-  "okunus": "İki göz",
-  "anlam": "İki göz"
+  "ornek": "مولانانك آثارى آراسنده نادرا بر ايكى توركجه پارچه يه تصادف اولونور",
+  "okunus": "Mevlânâ'nın âsârı arasında nâdiren bir iki Türkçe parçaya tesâdüf olunur.",
+  "anlam": "Mevlânâ'nın eserleri arasında nadiren bir iki Türkçe parçaya rastlanır.",
+  "kaynak": "Öztürk-Çorak s. 354"
  },
  "ايله": {
   "tr": "ile",
-  "ornek": "قلم ايله يازدى",
-  "okunus": "Kalem ile yazdı.",
-  "anlam": "Kalemle yazdı."
+  "ornek": "آتش عشق ايله در تأثير نى",
+  "okunus": "Âteş-i aşk iledir te'sîr-i ney",
+  "anlam": "Neyin etkisi aşk ateşiyledir.",
+  "kaynak": "Öztürk-Çorak s. 200"
  },
  "ايمش": {
   "tr": "imiş",
@@ -379,9 +386,10 @@
  },
  "بن": {
   "tr": "ben",
-  "ornek": "بن مكتبه كيدرم",
-  "okunus": "Ben mektebe giderim.",
-  "anlam": "Ben okula giderim."
+  "ornek": "بن كه هر جمعيتك نالانيم",
+  "okunus": "Ben ki her cem'iyyetin nâlânıyem",
+  "anlam": "Ben ki her topluluğun inleyeniyim.",
+  "kaynak": "Öztürk-Çorak s. 200"
  },
  "بنام": {
   "tr": "ünlü, adı sanı belli",
@@ -391,15 +399,17 @@
  },
  "بڭا": {
   "tr": "bana",
-  "ornek": "بڭا بر كتاب وير",
-  "okunus": "Bana bir kitâb ver.",
-  "anlam": "Bana bir kitap ver."
+  "ornek": "باكا كوتولك ياپمه",
+  "okunus": "Bana kötülük yapma.",
+  "anlam": "Bana kötülük yapma.",
+  "kaynak": "Öztürk-Çorak s. 324"
  },
  "بو": {
   "tr": "bu",
-  "ornek": "بو كتاب",
-  "okunus": "Bu kitâb",
-  "anlam": "Bu kitap"
+  "ornek": "قورقمه سونمز بو شفقلرده يوزن آل سانجاق",
+  "okunus": "Korkma, sönmez bu şafaklarda yüzen al sancak",
+  "anlam": "Korkma, bu şafaklarda dalgalanan al bayrak sönmez.",
+  "kaynak": "Öztürk-Çorak s. 325"
  },
  "بوسه": {
   "tr": "öpücük",
@@ -547,9 +557,10 @@
  },
  "حق": {
   "tr": "hak, doğru",
-  "ornek": "حق كلدى باطل كيتدى",
-  "okunus": "Hak geldi, bâtıl gitti.",
-  "anlam": "Doğru geldi, yanlış gitti."
+  "ornek": "دين حق",
+  "okunus": "Dîn-i hak",
+  "anlam": "Hak din",
+  "kaynak": "Öztürk-Çorak s. 388"
  },
  "حقّى": {
   "tr": "hakkı",
@@ -565,9 +576,10 @@
  },
  "حيف": {
   "tr": "yazık",
-  "ornek": "حيف اولدى",
-  "okunus": "Hayf oldu.",
-  "anlam": "Yazık oldu."
+  "ornek": "كيمده بو آتش يوغيسه حيف آكا",
+  "okunus": "Kimde bu âteş yoğ ise hayf aña",
+  "anlam": "Bu ateş kimde yoksa yazık ona.",
+  "kaynak": "Öztürk-Çorak s. 200"
  },
  "حيوانات": {
   "tr": "hayvanlar",
@@ -631,9 +643,10 @@
  },
  "دستور": {
   "tr": "izin",
-  "ornek": "دستور ويرڭز",
-  "okunus": "Destûr veriniz.",
-  "anlam": "İzin veriniz."
+  "ornek": "ليك يوق دستور رۇيت جانه بيل",
+  "okunus": "Lîk yok destûr-ı rü'yet câna bil",
+  "anlam": "Ama bil ki cana görme izni verilmemiş.",
+  "kaynak": "Öztürk-Çorak s. 200"
  },
  "دورت": {
   "tr": "dört",
@@ -733,9 +746,10 @@
  },
  "شعر": {
   "tr": "şiir",
-  "ornek": "بر شعر اوقودى",
-  "okunus": "Bir şi'r okudu.",
-  "anlam": "Bir şiir okudu."
+  "ornek": "كوزل كوزل شعرلر سويلمكه باشلدى",
+  "okunus": "Güzel güzel şi'rler söylemeğe başladı.",
+  "anlam": "Güzel güzel şiirler söylemeye başladı.",
+  "kaynak": "Öztürk-Çorak s. 355"
  },
  "شعرا": {
   "tr": "şairler",
@@ -787,9 +801,10 @@
  },
  "صو": {
   "tr": "su",
-  "ornek": "صو ايچ",
-  "okunus": "Su iç.",
-  "anlam": "Su iç."
+  "ornek": "صولرك فيشقروب اقمسي",
+  "okunus": "Suların fışkırıp akması",
+  "anlam": "Suların fışkırıp akması",
+  "kaynak": "Öztürk-Çorak s. 387"
  },
  "صوص": {
   "tr": "sus",
@@ -811,9 +826,10 @@
  },
  "طرف": {
   "tr": "taraf, yan",
-  "ornek": "بو طرفه كل",
-  "okunus": "Bu tarafa gel.",
-  "anlam": "Bu tarafa gel."
+  "ornek": "من طرف الله",
+  "okunus": "Min-tarafi'llâh",
+  "anlam": "Allah tarafından",
+  "kaynak": "Öztürk-Çorak s. 150"
  },
  "طلب": {
   "tr": "istek",
@@ -859,15 +875,17 @@
  },
  "علم": {
   "tr": "ilim, bilim",
-  "ornek": "علم اوكرنمك فرضدر",
-  "okunus": "İlim öğrenmek farzdır.",
-  "anlam": "Bilgi edinmek farzdır."
+  "ornek": "ارباب علم",
+  "okunus": "Erbâb-ı ilm",
+  "anlam": "İlim sahipleri, bilginler",
+  "kaynak": "Öztürk-Çorak s. 147"
  },
  "علما": {
   "tr": "âlimler, bilginler",
-  "ornek": "علما طوپلاندى",
-  "okunus": "Ulemâ toplandı.",
-  "anlam": "Bilginler toplandı."
+  "ornek": "بين العلما",
+  "okunus": "Beyne'l-ulemâ",
+  "anlam": "Âlimler arasında",
+  "kaynak": "Öztürk-Çorak s. 151"
  },
  "علوم": {
   "tr": "ilimler, bilimler",
@@ -913,9 +931,10 @@
  },
  "قاضى": {
   "tr": "kadı, yargıç",
-  "ornek": "قاضى حكم ويردى",
-  "okunus": "Kâdî hüküm verdi.",
-  "anlam": "Kadı karar verdi."
+  "ornek": "طرف سلطنتدن منصوب اولان قاضى",
+  "okunus": "Taraf-ı saltanattan mansûb olan kâdî",
+  "anlam": "Padişah tarafından atanan kadı",
+  "kaynak": "Öztürk-Çorak s. 354"
  },
  "قتل": {
   "tr": "öldürme",
@@ -985,9 +1004,10 @@
  },
  "كلدى": {
   "tr": "geldi",
-  "ornek": "مكتوب كلدى",
-  "okunus": "Mektûb geldi.",
-  "anlam": "Mektup geldi."
+  "ornek": "مكه يه يمندن بر دشمان كلدى",
+  "okunus": "Mekke'ye Yemen'den bir düşman geldi.",
+  "anlam": "Mekke'ye Yemen'den bir düşman geldi.",
+  "kaynak": "Öztürk-Çorak s. 318"
  },
  "كلسه": {
   "tr": "gelse",
@@ -1009,9 +1029,10 @@
  },
  "كوزلر": {
   "tr": "gözler",
-  "ornek": "كوزلرڭ كوزلدر",
-  "okunus": "Gözlerin güzeldir.",
-  "anlam": "Gözlerin güzel."
+  "ornek": "حالبوكه بو اجرامدن بشقه سى كوزلريمزه كلمدى",
+  "okunus": "Hâlbuki bu ecrâmdan başkası gözlerimize gelmedi.",
+  "anlam": "Oysa bu gök cisimlerinden başkası gözümüze görünmedi.",
+  "kaynak": "Öztürk-Çorak s. 388"
  },
  "كيجه": {
   "tr": "gece",
@@ -1195,9 +1216,10 @@
  },
  "مكّه": {
   "tr": "Mekke",
-  "ornek": "مكّه مكرّمه",
-  "okunus": "Mekke-i Mükerreme",
-  "anlam": "Saygın Mekke"
+  "ornek": "مكه يه يمندن بر دشمان كلدى",
+  "okunus": "Mekke'ye Yemen'den bir düşman geldi.",
+  "anlam": "Mekke'ye Yemen'den bir düşman geldi.",
+  "kaynak": "Öztürk-Çorak s. 318"
  },
  "ملّت": {
   "tr": "millet",
@@ -1243,9 +1265,10 @@
  },
  "وار": {
   "tr": "var",
-  "ornek": "ايكى كتابم وار",
-  "okunus": "İki kitâbım var.",
-  "anlam": "İki kitabım var."
+  "ornek": "كوزلرينك آقنده دخى قرمزيلق وار ايدى",
+  "okunus": "Gözlerinin akında dahi kırmızılık var idi.",
+  "anlam": "Gözlerinin akında da kırmızılık vardı.",
+  "kaynak": "Öztürk-Çorak s. 349"
  },
  "واقعا": {
   "tr": "gerçekten",
