@@ -1696,6 +1696,11 @@
   function paintStudyBadges() {
     const n = dueCards().filter(([id]) => bySlug[courseOfId(id)]).length;
     document.querySelectorAll("[data-due-badge]").forEach((b) => { b.hidden = !n; b.textContent = n > 99 ? "99+" : String(n); });
+    // Ana ekrana eklenmiş uygulamanın simgesinde bekleyen tekrar sayısı (destekleyen cihazlarda; iPhone'da bildirim izni ister).
+    try {
+      if (n && navigator.setAppBadge) navigator.setAppBadge(n).catch(() => {});
+      else if (!n && navigator.clearAppBadge) navigator.clearAppBadge().catch(() => {});
+    } catch (e) { /* desteklenmiyor */ }
   }
 
   // Yeni kartlar: seçili derslerden sırayla (ders ders karışık), ünite sırasına göre; hiç görülmemiş sorular.
@@ -1861,8 +1866,29 @@
         <fieldset><legend>Tekrara katılan dersler</legend>
           ${COURSES.map((c) => `<label class="chk"><input type="checkbox" name="course" value="${esc(c.slug)}"${sel.has(c.slug) ? " checked" : ""}> ${esc(c.subject)}</label>`).join("")}
         </fieldset>
-        <p class="muted small">Ayarlar ve tekrar geçmişi bu tarayıcıda saklanır; <a href="#/cevrimdisi?b=yedek">yedek koduna</a> dahildir.</p>
+        <fieldset><legend>Günlük hatırlatıcı</legend>
+          <div class="remind-row"><label>Saat <input type="time" name="remind" value="${esc(study.remind || "20:30")}"></label>
+            <button class="btn ghost" type="button" id="remind-ics">Takvime ekle</button></div>
+          <p class="muted small">Site bildirim gönderemez; her gün bu saatte tekrar eden bir takvim etkinliği indirilir, hatırlatmayı telefonunun takvimi yapar. Saati değiştirirsen eski etkinliği takviminden silip yenisini ekle.</p>
+        </fieldset>
+        <p class="muted small">Ayarlar ve tekrar geçmişi bu tarayıcıda saklanır; <a href="#/cevrimdisi?b=yedek">yedek koduna</a> dahildir. Yazı boyutu, satır aralığı ve yazı tipi üst çubuktaki <b>Aa</b> düğmesinde.</p>
       </form>`;
+  }
+  // Günlük çalışma hatırlatıcısı: her gün aynı saatte tekrar eden, yerel saatli takvim etkinliği.
+  function remindIcs(hhmm) {
+    const [h, m] = (/^\d\d:\d\d$/.test(hhmm) ? hhmm : "20:30").split(":").map(Number);
+    const p2 = (x) => String(x).padStart(2, "0");
+    const now = new Date();
+    const day = `${now.getFullYear()}${p2(now.getMonth() + 1)}${p2(now.getDate())}`;
+    const stamp = now.toISOString().replace(/[-:]/g, "").replace(/\.\d+/, "");
+    const fold = (s) => s.replace(/[\\;,]/g, (x) => "\\" + x);
+    return ["BEGIN:VCALENDAR", "VERSION:2.0", `PRODID:-//${fold(CONFIG.name)}//Gunluk hatirlatici//TR`, "CALSCALE:GREGORIAN", "METHOD:PUBLISH",
+      "BEGIN:VEVENT", `UID:gunluk-${CONFIG.storageKey}@${location.host || "site"}`, `DTSTAMP:${stamp}`,
+      `DTSTART:${day}T${p2(h)}${p2(m)}00`, "DURATION:PT30M", "RRULE:FREQ=DAILY",
+      `SUMMARY:${fold("Ders çalışma zamanı · " + CONFIG.name)}`,
+      `DESCRIPTION:${fold("Bugünün tekrarları ve günlük hedefin: " + location.origin + location.pathname + "#/calisma")}`,
+      "BEGIN:VALARM", "ACTION:DISPLAY", "TRIGGER:PT0M", `DESCRIPTION:${fold("Ders çalışma zamanı")}`, "END:VALARM",
+      "END:VEVENT", "END:VCALENDAR"].join("\r\n") + "\r\n";
   }
   function bindStudyDesk() {
     const f = document.getElementById("study-settings");
@@ -1871,11 +1897,24 @@
       study.goal = +f.goal.value || 20;
       study.newPerDay = +f.newPerDay.value;
       study.confOff = !f.conf.checked;
+      if (/^\d\d:\d\d$/.test(f.remind.value)) study.remind = f.remind.value;
       const picked = [...f.querySelectorAll("[name=course]:checked")].map((x) => x.value);
       study.courses = picked.length === COURSES.length ? null : picked;
       saveStudy();
       showToast("Ayarlar kaydedildi.");
     });
+    document.getElementById("remind-ics").onclick = () => {
+      const t = /^\d\d:\d\d$/.test(f.remind.value) ? f.remind.value : "20:30";
+      study.remind = t;
+      saveStudy();
+      const url = URL.createObjectURL(new Blob([remindIcs(t)], { type: "text/calendar;charset=utf-8" }));
+      const a = Object.assign(document.createElement("a"), { href: url, download: `gunluk-calisma-${t.replace(":", "")}.ics` });
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 4000);
+      showToast(`Takvim dosyası indirildi. Açınca her gün saat ${t} için hatırlatma kurulur.`);
+    };
   }
 
   // -- #/tekrar ve #/hatalar oturumları (aynı motor) --
@@ -7365,6 +7404,62 @@ document.getElementById("zin").focus();
       showToast(THEME_LABEL[next] + (next ? "" : " (cihazın ayarını izler)"));
     };
     window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => applyTheme(currentTheme()));
+  })();
+
+  // ---- okuma ayarları: yazı boyutu, satır aralığı, yazı tipi (index.html'deki betik ilk boyamadan önce uygular) ----
+  // localStorage "pu.read" = { fs: yüzde, lh: 0|1|2, ff: "" | "sans" }; yalnızca bu cihazda saklanır.
+  const READ_KEY = "pu.read";
+  const READ_FS = [87.5, 100, 112.5, 125, 137.5, 150];
+  function readPrefs() { try { return Object.assign({ fs: 100, lh: 0, ff: "" }, JSON.parse(localStorage.getItem(READ_KEY)) || {}); } catch (e) { return { fs: 100, lh: 0, ff: "" }; } }
+  function applyRead(r) {
+    const d = document.documentElement;
+    d.style.fontSize = r.fs && r.fs !== 100 ? r.fs + "%" : "";
+    if (r.lh) d.dataset.lh = r.lh; else delete d.dataset.lh;
+    if (r.ff) d.dataset.ff = r.ff; else delete d.dataset.ff;
+  }
+  (function setupRead() {
+    const btn = document.getElementById("read-toggle"), panel = document.getElementById("read-panel");
+    if (!btn || !panel) return;
+    const save = (r) => {
+      try { if (r.fs === 100 && !r.lh && !r.ff) localStorage.removeItem(READ_KEY); else localStorage.setItem(READ_KEY, JSON.stringify(r)); } catch (e) { /* özel mod */ }
+      applyRead(r);
+      paint();
+    };
+    const seg = (key, opts, r) => `<div class="seg-btns" role="group">${opts.map(([v, l, cls]) => `<button type="button" data-${key}="${v}" aria-pressed="${String(r[key]) === String(v)}"${cls ? ` class="${cls}"` : ""}>${l}</button>`).join("")}</div>`;
+    function paint() {
+      const r = readPrefs();
+      const i = READ_FS.indexOf(+r.fs);
+      panel.innerHTML = `<h2>Okuma ayarları</h2>
+        <p class="rp-label">Yazı boyutu</p>
+        <div class="read-size"><button type="button" data-fsd="-1" aria-label="Yazıyı küçült"${i <= 0 ? " disabled" : ""}>A−</button><output aria-live="polite">%${Math.round(r.fs)}</output><button type="button" data-fsd="1" aria-label="Yazıyı büyüt"${i >= READ_FS.length - 1 ? " disabled" : ""}>A+</button></div>
+        <p class="rp-label">Satır aralığı</p>${seg("lh", [[0, "Normal"], [1, "Geniş"], [2, "Çok geniş"]], r)}
+        <p class="rp-label">Ders notlarının yazı tipi</p>${seg("ff", [["", "Kitap", "read-serif"], ["sans", "Düz"]], r)}
+        <button type="button" class="read-reset" data-read-reset>Varsayılana dön</button>`;
+    }
+    const open = (on) => {
+      panel.hidden = !on;
+      btn.setAttribute("aria-expanded", String(on));
+      if (on) { paint(); const f = panel.querySelector("button:not([disabled])"); if (f) f.focus(); }
+    };
+    btn.onclick = (e) => { e.stopPropagation(); open(panel.hidden); };
+    panel.onclick = (e) => {
+      e.stopPropagation();
+      const b = e.target.closest("button");
+      if (!b) return;
+      const r = readPrefs();
+      if (b.dataset.fsd) { const i = Math.max(0, READ_FS.indexOf(+r.fs)); r.fs = READ_FS[Math.max(0, Math.min(READ_FS.length - 1, i + +b.dataset.fsd))]; }
+      else if (b.dataset.lh !== undefined) r.lh = +b.dataset.lh;
+      else if (b.dataset.ff !== undefined) r.ff = b.dataset.ff;
+      else if (b.hasAttribute("data-read-reset")) { r.fs = 100; r.lh = 0; r.ff = ""; }
+      const sel = b.dataset.fsd ? `[data-fsd="${b.dataset.fsd}"]` : b.dataset.lh !== undefined ? `[data-lh="${b.dataset.lh}"]` : b.dataset.ff !== undefined ? `[data-ff="${b.dataset.ff}"]` : "[data-read-reset]";
+      save(r);
+      const again = panel.querySelector(sel + ":not([disabled])");
+      if (again) again.focus();
+    };
+    document.addEventListener("click", () => { if (!panel.hidden) open(false); });
+    document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !panel.hidden) { open(false); btn.focus(); } });
+    window.addEventListener("hashchange", () => open(false));
+    applyRead(readPrefs());
   })();
 
   // ---- bağlantı rozeti: çevrimdışıyken köşede "Çevrimdışı çalışıyorsun" ----
