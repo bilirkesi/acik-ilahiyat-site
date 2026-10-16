@@ -1278,6 +1278,7 @@ mark.hl-flash { outline: 2px solid var(--gold); outline-offset: 2px; }
 .hf-info p, .hf-dict p { margin: .25rem 0; }
 .hf-ex .ota { font-size: 1.5rem; }
 .hf-exr { font-size: .92rem; }
+.hf-src { font-size: .8rem; }
 .hf-find { display: block; margin: 1rem 0 .6rem; }
 .hf-dict { list-style: none; padding: 0; margin: 0; display: grid; gap: .5rem; }
 .hf-dict > li { background: var(--paper); border: 1px solid var(--line); padding: .7rem .9rem; }

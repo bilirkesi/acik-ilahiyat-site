@@ -6146,7 +6146,7 @@ document.getElementById("zin").focus();
     }
     if (tab === "sozluk") {
       const items = harfWords().sort((a, b) => a.r.localeCompare(b.r, "tr"));
-      return `${head}<p class="muted">Kelime okuma alıştırmasındaki ${items.length} kelime: okunuşu, bugünkü Türkçe karşılığı ve kısa bir örnek. Arap harfli yazıya dokununca okunuşu sesli okunur. Örnek cümleler alıştırma için yazıldı; ders kitabından alınmadı.</p>
+      return `${head}<p class="muted">Kelime okuma alıştırmasındaki ${items.length} kelime: okunuşu, bugünkü Türkçe karşılığı ve kısa bir örnek. Arap harfli yazıya dokununca okunuşu sesli okunur. Kaynağı yazılı örnekler Ali Öztürk ve Reyhan Çorak'ın <i>Osmanlı Türkçesi</i> kitabından (İÜ AUZEF) alındı; diğer örnek cümleler alıştırma için yazıldı.</p>
         <label class="field hf-find"><span class="sr-only">Sözlükte ara</span><input type="search" placeholder="Kelime ya da anlam ara" data-hf-find></label>
         <ul class="hf-dict">${items.map((x) => `<li data-hf-key="${esc((x.r + " " + x.s.tr + " " + x.s.anlam).toLocaleLowerCase("tr"))}">${harfInfo(x, true)}</li>`).join("")}</ul>`;
     }
@@ -6171,7 +6171,8 @@ document.getElementById("zin").focus();
     return `${withWord ? `<p class="hf-dw"><button type="button" class="ota hf-say" lang="ota" dir="rtl" data-hf-say="${esc(x.r)}">${esc(x.w)}</button> <b>${esc(x.r)}</b></p>` : ""}
       <p class="hf-tr"><span class="muted">Güncel Türkçe:</span> <b>${esc(s.tr)}</b></p>
       <p class="hf-ex"><button type="button" class="ota hf-say" lang="ota" dir="rtl" data-hf-say="${esc(s.okunus)}">${esc(s.ornek)}</button></p>
-      <p class="hf-exr"><i>${esc(s.okunus)}</i>${s.anlam && s.anlam !== s.okunus ? ` <span class="muted">· ${esc(s.anlam)}</span>` : ""}</p>`;
+      <p class="hf-exr"><i>${esc(s.okunus)}</i>${s.anlam && s.anlam !== s.okunus ? ` <span class="muted">· ${esc(s.anlam)}</span>` : ""}</p>${s.kaynak ? `
+      <p class="hf-src muted">Kaynak: ${esc(s.kaynak)}</p>` : ""}`;
   }
 
   function bindHarfler() {

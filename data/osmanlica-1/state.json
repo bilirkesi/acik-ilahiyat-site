@@ -169,6 +169,14 @@
    "url": "https://www.youtube.com/watch?v=R-mD_GaXGeM",
    "type": "audio",
    "status": "ready"
+  },
+  "ozturk-corak": {
+   "id": "osm1-ozturk-corak",
+   "title": "Ali Öztürk, Reyhan Çorak: Osmanlı Türkçesi (İstanbul Üniversitesi AUZEF İlahiyat Lisans Tamamlama), yardımcı kaynak kitap",
+   "url": "",
+   "type": "pdf",
+   "status": "ready",
+   "nlm_id": "c1756aaa-656b-4af0-828f-c3ff497997b5"
   }
  },
  "order": [

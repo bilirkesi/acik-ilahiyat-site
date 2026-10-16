@@ -661,20 +661,21 @@ def main() -> int:
             ]
             write(OKF / "courses" / slug / "units.md", fm(u_fm) + "\n".join(u_lines))
 
-        # harf atölyesi sözlüğü (sozluk.json): okunuş, güncel karşılık, örnek cümle
+        # harf atölyesi sözlüğü (sozluk.json): okunuş, güncel karşılık, örnek cümle, kaynak
         if sozluk:
             okunus = load_json(ROOT / "data" / slug / "okunus.json") if (ROOT / "data" / slug / "okunus.json").exists() else {}
             rows = sorted(sozluk.items(), key=lambda kv: okunus.get(kv[0], "").lower())
             s_lines = [
                 f"# {meta.get('subject', slug)} Kelime Sözlüğü\n",
                 "Sitedeki harf atölyesinin kelime okuma alıştırmasında kullanılan kelimeler. "
-                "Örnek cümleler alıştırma için yazıldı; ders kitabından alınmadı.\n",
-                "| Kelime | Okunuş | Güncel Türkçe | Örnek | Örneğin okunuşu | Anlamı |",
-                "|---|---|---|---|---|---|",
+                "Kaynak sütunu dolu olan örnekler Ali Öztürk ve Reyhan Çorak'ın Osmanlı Türkçesi kitabından (İÜ AUZEF) alındı; "
+                "diğer örnek cümleler alıştırma için yazıldı.\n",
+                "| Kelime | Okunuş | Güncel Türkçe | Örnek | Örneğin okunuşu | Anlamı | Kaynak |",
+                "|---|---|---|---|---|---|---|",
             ]
             for k, e in rows:
                 s_lines.append("| " + " | ".join(md_escape_cell(x) for x in (
-                    k, okunus.get(k, ""), e.get("tr", ""), e.get("ornek", ""), e.get("okunus", ""), e.get("anlam", ""))) + " |")
+                    k, okunus.get(k, ""), e.get("tr", ""), e.get("ornek", ""), e.get("okunus", ""), e.get("anlam", ""), e.get("kaynak", ""))) + " |")
             s_fm = [
                 ("type", "Glossary"),
                 ("title", f"{meta.get('subject', slug)} kelime sözlüğü"),
