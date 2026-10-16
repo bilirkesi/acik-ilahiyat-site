@@ -9,7 +9,7 @@
 - `data/<slug>/quiz.json` — the final "game" quiz.
 - `data/<slug>/exams/{vize,final,yaz-kursu}.json` — practice exams; schema in `_exam_schema.md`.
 - `data/<slug>/unit_quizzes/unit-N.json` — per-unit quizzes generated from past-exam questions plus the textbook.
-- `data/<slug>/past_exams.json` — extracted AÖF past midterm questions; `past_exams_notes.json` adds per-question notes where present.
+- `data/<slug>/past_exams.json` — extracted AÖF past midterm questions; `past_exams_notes.json` adds per-question notes (incl. the unit for `osmanlica-1`, whose questions are mostly images) where present.
 - `data/<slug>/manifest.json`, `failed_sources.json`, `study_plan_raw.json` — provenance and generation records.
 - `data/<slug>/state.json` — generation state: the notebook's `sources` (`id`, `title`, `type`, `status`, optional `nlm_id` = the NotebookLM source id when `id` is a local key such as `osm1-kitap-1`), their `order`, and artifact ids. `scripts/audit_sources.py` and the generators rank these sources with `grounding.tiers`. A `type: "audio"` source is a lecture video's audio uploaded to the notebook when the video has no captions (`url` = the YouTube watch URL, `id` = the notebook source id); it ranks with captions. A `type: "pdf"` source such as `osmanlica-1`'s `ozturk-corak` is a supplementary non-AÖF reference and stays unranked.
 - `data/<slug>/okunus.json` — Arabic-script run → Latin reading; makes `.ota` runs tappable with Turkish TTS. Only `osmanlica-1` has one.

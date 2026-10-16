@@ -83,7 +83,7 @@ Rules for the bundle itself live in `okf/AGENTS.md`.
 - Large local-only material lives in `artifacts/`, `assets/`, and `logs/`; all three are git-ignored. Never reference them as if they ship to the site.
 ## Known Gaps
 - Source quality (`py -3 scripts/audit_sources.py`): chapters of `turk-dili-1`, `ataturk-ilkeleri-1`, `islam-mezhepleri-tarihi` were planned and grounded on lecture captions only. Study notes for the three were rebuilt from `Kitap.pdf`; by owner decision, quizzes, infographics and audio made before the grounding rules stay as they are, and the rules apply to new generation only. `turk-dili-1/state.json` records only the Kitap among the notebook's 14 AÖF PDFs.
-- `data/osmanlica-1`: `classify_unit` has no keyword config for units 6-8, so past-exam questions for those units get `unit: null`. Unit quizzes themselves are complete.
+- `data/osmanlica-1`: past-exam units come from `past_exams_notes.json`; the `OSM_UNIT_KEYWORDS` fallback in `coursegraph/past_exams.py` covers units 1-5 only, so a future final-exam question for units 6-8 needs a note entry.
 ## Child DOX Index
 - [coursegraph/](coursegraph/AGENTS.md) — knowledge-graph package: indexer, query layer, past-exam unit matching, MCP server, site search export.
 - [data/](data/AGENTS.md) — per-course content: study plans, quizzes, exams, unit quizzes, past exams, learner state.
