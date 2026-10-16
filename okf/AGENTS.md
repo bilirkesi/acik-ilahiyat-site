@@ -27,7 +27,7 @@
 - Re-export through the OKF pass in the root `AGENTS.md`.
 - `assets/` and `artifacts/` are git-ignored. Without them the export links infographics to the published `site/assets/<slug>/*.jpg` and keeps the existing `courses/<slug>/artifacts.md`, so a clean clone still regenerates a complete bundle.
 - Commit only files whose content changed; a re-export rewrites every `generated:` timestamp.
-- Site-only views (concept decks `#/kavram`, word games `#/oyunlar`) are built in the browser from data the bundle already exports; they have no OKF pages.
+- Site-only views (`#/kavram`, `#/oyunlar`, `#/sikcikan`, `#/puan`, `#/notlarim`, `#/harfler`, `#/meydan`, see `site/AGENTS.md`) are built in the browser from data the bundle already exports or from learner state; they have no OKF pages.
 
 ## Verification
 - `py -3 -m unittest discover -s tests` guards the quiz data the bundle is derived from.
