@@ -1284,3 +1284,18 @@ mark.hl-flash { outline: 2px solid var(--gold); outline-offset: 2px; }
 .hf-dict > li { background: var(--paper); border: 1px solid var(--line); padding: .7rem .9rem; }
 .hf-dw .ota { font-size: 1.7rem; margin-right: .4rem; }
 .hf-dict .hf-ex .ota { font-size: 1.3rem; }
+
+/* Meydan okuma (#/meydan) */
+.ch-share { margin: 0 0 1.5rem; }
+.ch-share .field { display: block; margin: .6rem 0 .2rem; }
+.ch-share .field span { display: block; margin-bottom: .25rem; color: var(--muted); }
+.ch-intro { margin-top: 1rem; }
+.ch-score { display: flex; flex-direction: column; gap: .15rem; }
+.ch-score b { font: 600 1.6rem/1.2 var(--serif); }
+.ch-meta { padding-left: 1.1rem; margin: .6rem 0; }
+.ch-compare { display: grid; grid-template-columns: 1fr 1fr; gap: .6rem; margin: 1rem 0; }
+.ch-side { border: 1px solid rgba(248, 244, 234, .25); padding: .7rem .8rem; display: flex; flex-direction: column; gap: .2rem; }
+.ch-side span { font: 600 .68rem/1.2 var(--sans); letter-spacing: .1em; text-transform: uppercase; color: var(--chrome-soft); overflow-wrap: anywhere; }
+.ch-side b { font-size: 1.05rem; }
+.ch-side.me { border-color: var(--gold); }
+.ch-verdict { grid-column: 1 / -1; margin: .2rem 0 0; font: 600 1.15rem/1.3 var(--serif); }

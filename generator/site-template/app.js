@@ -2634,7 +2634,7 @@
     const o = mixDefaults(query);
     return `<p class="crumbs"><a href="#/sinavlar">Sınavlar</a> / Karışık test</p>
       <p class="eyebrow">Karışık test</p><h1>Kendi testini oluştur</h1>
-      <p class="lead muted">Dersleri, kaynakları ve üniteleri seç; havuzdan ünitelere dengeli dağılmış sorular gelsin. Alıştırma modunda her sorudan sonra açıklamayı görürsün, deneme modunda gerçek sınav gibi süreyle çözüp sonunda puanını alırsın.</p>
+      <p class="lead muted">Dersleri, kaynakları ve üniteleri seç; havuzdan ünitelere dengeli dağılmış sorular gelsin. Alıştırma modunda her sorudan sonra açıklamayı görürsün, deneme modunda gerçek sınav gibi süreyle çözüp sonunda puanını alırsın. Bitirince aynı soruları bir bağlantıyla arkadaşına gönderip meydan okuyabilirsin.</p>
       <form class="mix-form desk-card" id="mix-form">
         <fieldset class="seg"><legend>Mod</legend>
           <label class="seg-opt"><input type="radio" name="mode" value="alistirma"${o.mode === "alistirma" ? " checked" : ""}><span><b>Alıştırma</b><small>Anında geri bildirim, süre yok</small></span></label>
@@ -2847,10 +2847,13 @@
           <p class="eyebrow">Alıştırma bitti</p>
           <h2>${d}/${ids.length} doğru · ${pct(d / ids.length)}</h2>
           <ul class="game-stats"><li><b>${y}</b> yanlış</li><li><b>${b}</b> boş</li><li><b>${fmtMs(Date.now() - t0)}</b> süre</li></ul>
+          ${o.challenge ? challengeCompareHtml(o.challenge, "alistirma", { d, n: ids.length }) : ""}
           <div class="btn-row"><button class="btn ghost on-dark" type="button" id="mx-again">Yeni test</button><a class="btn ghost on-dark" href="#/analiz">Analiz</a>${y ? `<a class="btn ghost on-dark" href="#/hatalar">Hatalarım</a>` : ""}</div>
         </div>
+        ${challengeShareHtml(!!o.challenge)}
         <h2>Ünitelere göre</h2>${unitBreakdownHtml(ids, answers)}`;
-      root.querySelector("#mx-again").onclick = () => route();
+      bindChallengeShare(root, ids, "alistirma", { d });
+      root.querySelector("#mx-again").onclick = () => (o.challenge ? (location.hash = "#/karisik") : route());
       root.scrollIntoView({ behavior: "smooth", block: "start" });
     };
     show();
@@ -2969,17 +2972,128 @@
           <h2>${Math.round(score)} puan · net ${net.toFixed(2)}</h2>
           <ul class="game-stats"><li><b>${d}</b> doğru</li><li><b>${y}</b> yanlış</li><li><b>${b}</b> boş</li><li><b>${fmtMs(dur)}</b> süre</li>${prev ? `<li><b>${score >= prev.score ? "▲" : "▼"} ${Math.abs(Math.round(score - prev.score))}</b> önceki denemeye göre</li>` : ""}</ul>
           <p>Puan, AÖF'deki gibi net üzerinden hesaplandı: her 4 yanlış 1 doğruyu götürür, boşlar puan kaybettirmez. Yanlışların Hatalarım listesine eklendi.</p>
+          ${o.challenge ? challengeCompareHtml(o.challenge, "deneme", { d, n: ids.length, score }) : ""}
           <div class="btn-row"><button class="btn ghost on-dark" type="button" id="mx-again">Yeni deneme</button><a class="btn ghost on-dark" href="#/analiz">Analiz</a>${y ? `<a class="btn ghost on-dark" href="#/hatalar">Hatalarım</a>` : ""}</div>
         </div>
+        ${challengeShareHtml(!!o.challenge)}
         <h2>Ünitelere göre</h2>${unitBreakdownHtml(ids, answers)}
         <h2>Soru soru inceleme</h2>${reviewListHtml(ids)}`;
       paintReviewList(ids, answers);
-      root.querySelector("#mx-again").onclick = () => route();
+      bindChallengeShare(root, ids, "deneme", { d, score });
+      root.querySelector("#mx-again").onclick = () => (o.challenge ? (location.hash = "#/karisik?mod=deneme") : route());
       window.scrollTo(0, 0);
     }
     show(0);
     tick();
     timer = setInterval(tick, 1000);
+  }
+
+  // ---- #/meydan: arkadaşına meydan oku ---------------------------------------------------------
+  // Sunucu yok: bağlantı soru kimliklerini (sırasıyla), modu ve gönderenin sonucunu taşır.
+  // s = kimlikler (ders adı ders sırasına kısaltılır: "p:osmanlica-1:…" → "p:3:…"), m = a (alıştırma) | d (deneme),
+  // p = doğru sayısı, n = soru sayısı, pu = deneme puanı, ad = gönderenin adı (isteğe bağlı).
+  const chEnc = (id) => { const [s, slug, ...r] = id.split(":"); const i = COURSES.findIndex((c) => c.slug === slug); return [s, i < 0 ? slug : i, ...r].join(":"); };
+  const chDec = (id) => { const [s, k, ...r] = id.split(":"); const c = /^\d+$/.test(k) ? COURSES[+k] : bySlug[k]; return c ? [s, c.slug, ...r].join(":") : ""; };
+  const chResText = (mode, d, n, pu) => (mode === "deneme" ? `${pu} puan (${d}/${n} doğru)` : `${d}/${n} doğru`);
+  const chArg = (v) => encodeURIComponent(v).replace(/%3A/gi, ":").replace(/%2C/gi, ",");
+
+  function challengeUrl(ids, mode, res) {
+    const q = [["s", ids.map(chEnc).join(",")], ["m", mode === "deneme" ? "d" : "a"], ["p", res.d], ["n", ids.length]];
+    if (mode === "deneme") q.push(["pu", Math.round(res.score)]);
+    if (study.nick) q.push(["ad", study.nick]);
+    return location.href.split("#")[0] + "#/meydan?" + q.map(([k, v]) => k + "=" + chArg(v)).join("&");
+  }
+
+  function challengeShareHtml(again) {
+    return `<div class="desk-card ch-share" data-noprint>
+        <h3>${again ? "Sen de meydan oku" : "Arkadaşına meydan oku"}</h3>
+        <p class="muted small">Arkadaşın aynı soruları aynı sırayla çözer, sonunda iki sonuç yan yana görünür. Bağlantı yalnızca soruları ve senin sonucunu taşır.</p>
+        <label class="field"><span class="small">Adın (isteğe bağlı)</span><input type="text" maxlength="24" autocomplete="nickname" data-ch-nick value="${esc(study.nick || "")}" placeholder="Arkadaşın seni nasıl tanısın?"></label>
+        <div class="btn-row"><button class="btn" type="button" data-ch-send>Bağlantıyı gönder</button></div>
+      </div>`;
+  }
+
+  function bindChallengeShare(root, ids, mode, res) {
+    const btn = root.querySelector("[data-ch-send]");
+    if (!btn) return;
+    btn.onclick = async () => {
+      const nick = root.querySelector("[data-ch-nick]").value.replace(/\s+/g, " ").trim().slice(0, 24);
+      if (nick !== (study.nick || "")) { study.nick = nick; saveStudy(); }
+      const url = challengeUrl(ids, mode, res);
+      const text = `${nick ? nick + " sana" : "Sana"} ${ids.length} soruluk bir ${mode === "deneme" ? "deneme sınavıyla" : "testle"} meydan okuyor: ${chResText(mode, res.d, ids.length, Math.round(res.score || 0))}. Sen kaç yaparsın?`;
+      if (navigator.share) {
+        try { await navigator.share({ title: `Meydan okuma · ${CONFIG.name}`, text, url }); return; } catch (e) { if (e && e.name === "AbortError") return; }
+      }
+      try { await navigator.clipboard.writeText(text + "\n" + url); showToast("Meydan okuma kopyalandı. WhatsApp'a yapıştırıp gönderebilirsin."); }
+      catch (e) { window.prompt("Bağlantıyı kopyala:", url); }
+    };
+  }
+
+  function challengeFromQuery(query) {
+    const all = String(query.s || "").split(",").filter(Boolean).map(chDec);
+    const bank = questionBank();
+    const ids = Array.from(new Set(all.filter((id) => id && bank.has(id))));
+    const n = Math.max(1, +query.n || all.length || 1);
+    return {
+      all, ids, n,
+      mode: query.m === "d" ? "deneme" : "alistirma",
+      d: Math.max(0, Math.min(n, Math.round(+query.p) || 0)),
+      pu: Math.max(0, Math.min(100, Math.round(+query.pu) || 0)),
+      ad: String(query.ad || "").replace(/\s+/g, " ").trim().slice(0, 24),
+    };
+  }
+
+  function viewChallenge(query) {
+    const ch = challengeFromQuery(query);
+    const head = `<p class="crumbs"><a href="#/sinavlar">Sınavlar</a> / Meydan okuma</p><p class="eyebrow">Meydan okuma</p>`;
+    if (!ch.ids.length) {
+      return `${head}<h1>Meydan okuma açılamadı</h1>
+        <p class="lead muted">${ch.all.length ? "Bu bağlantıdaki sorular sitenin bu sürümünde bulunamadı." : "Bağlantı eksik görünüyor."} Kendi testini oluşturup arkadaşına sen meydan okuyabilirsin.</p>
+        <div class="btn-row"><a class="btn" href="#/karisik">Karışık test</a></div>`;
+    }
+    const bank = questionBank();
+    const courses = Array.from(new Set(ch.ids.map((id) => bank.get(id).slug)));
+    const who = ch.ad ? esc(ch.ad) : "Bir arkadaşın";
+    return `${head}<h1>${who} sana meydan okuyor</h1>
+      <div id="ch-root"><div class="desk-card ch-intro">
+        <p class="ch-score"><span class="muted">${ch.ad ? esc(ch.ad) + " adlı arkadaşının" : "Arkadaşının"} sonucu</span><b>${chResText(ch.mode, ch.d, ch.n, ch.pu)}</b></p>
+        <ul class="ch-meta">
+          <li>${ch.ids.length} soru · ${ch.mode === "deneme" ? `deneme sınavı, ${Math.round(ch.ids.length * MOCK_MIN_PER_Q)} dakika` : "alıştırma, süre yok"}</li>
+          <li>${courses.map((s) => esc(bySlug[s].subject)).join(", ")}</li>
+        </ul>
+        ${ch.ids.length < ch.n ? `<p class="notice warn"><span>Bu bağlantıdaki ${ch.n - ch.ids.length} soru sitenin bu sürümünde yok; kalan ${ch.ids.length} soruyu çözeceksin ve sonuçlar yüzdeyle karşılaştırılacak.</span></p>` : ""}
+        <p class="muted">Sorular arkadaşının çözdüğü sırayla gelir. ${ch.mode === "deneme" ? "Cevaplar sınav bitince değerlendirilir; 4 yanlış 1 doğruyu götürür." : "Her sorudan sonra doğru cevabı ve açıklamayı görürsün."}</p>
+        <div class="btn-row"><button class="btn" type="button" data-ch-go>Meydan okumayı kabul et</button><a class="btn ghost" href="#/karisik">Kendi testimi oluştur</a></div>
+      </div></div>`;
+  }
+
+  function bindChallenge() {
+    const go = app.querySelector("[data-ch-go]");
+    if (!go) return;
+    go.onclick = () => {
+      const ch = challengeFromQuery(parseLoc().query);
+      const bank = questionBank();
+      const courses = Array.from(new Set(ch.ids.map((id) => bank.get(id).slug)));
+      (ch.mode === "deneme" ? runMock : runPractice)(document.getElementById("ch-root"), ch.ids, { mode: ch.mode, courses, challenge: ch });
+    };
+  }
+
+  // Sonuç ekranında iki sonuç yan yana. Soru sayısı tutmazsa (eksik soru) yüzde karşılaştırılır.
+  function challengeCompareHtml(ch, mode, mine) {
+    const same = ch.ids.length === ch.n;
+    const mineV = mode === "deneme" ? mine.score : same ? mine.d : mine.d / mine.n;
+    const theirV = mode === "deneme" ? ch.pu : same ? ch.d : ch.d / ch.n;
+    const who = ch.ad ? esc(ch.ad) : "Arkadaşın";
+    const diff = Math.round(mineV) - Math.round(theirV);
+    const verdict = mode === "deneme" || same
+      ? (diff > 0 ? "Kazandın!" : diff < 0 ? `${who} önde. Bir tur daha?` : "Berabere!")
+      : (mineV > theirV ? "Kazandın!" : mineV < theirV ? `${who} önde. Bir tur daha?` : "Berabere!");
+    const side = (label, text, me) => `<div class="ch-side${me ? " me" : ""}"><span>${label}</span><b>${text}</b></div>`;
+    return `<div class="ch-compare">
+        ${side("Sen", chResText(mode, mine.d, mine.n, Math.round(mine.score || 0)), true)}
+        ${side(who, chResText(mode, ch.d, ch.n, ch.pu), false)}
+        <p class="ch-verdict">${verdict}</p>
+      </div>`;
   }
 
   // ---- #/sikcikan: çıkmış vizelerde sık sorulan üniteler, cevaplar ve kavramlar ------------------
@@ -7064,7 +7178,7 @@ document.getElementById("zin").focus();
     else if (parts[0] === "notlarim" || parts[0] === "harfler") { /* data.js yeterli */ }
     else if (parts[0] === "oyunlar") { need.add("interactive"); if (parts[1]) needExamData(); }
     else if (parts[0] === "transcript" || parts[0] === "certificate" || parts[0] === "calisma") { /* data.js yeterli */ }
-    else if (["tekrar", "hatalar", "karisik", "analiz", "plan", "puan"].includes(parts[0])) needExamData();
+    else if (["tekrar", "hatalar", "karisik", "analiz", "plan", "puan", "meydan"].includes(parts[0])) needExamData();
     else if (parts[0] === "sikcikan") { needExamData(); need.add("interactive"); }
     else if (parts[0] === "course" && bySlug[parts[1]]) {
       if (parts[2] === "chapter") { need.add("interactive"); need.add("past_exams"); }
@@ -7095,6 +7209,7 @@ document.getElementById("zin").focus();
     else if (parts[0] === "plan") { html = viewPlan(); bind = bindPlan; }
     else if (parts[0] === "sikcikan") html = viewFrequent(query);
     else if (parts[0] === "puan") { html = viewGrades(); bind = bindGrades; }
+    else if (parts[0] === "meydan") { html = viewChallenge(query); bind = bindChallenge; }
     else if (parts[0] === "eklenti") html = viewExtension();
     else if (parts[0] === "kavram") { html = viewKavram(query); bind = bindKavram; }
     else if (parts[0] === "notlarim") { html = viewMarks(query); bind = bindMarksPage; }
@@ -7133,7 +7248,7 @@ document.getElementById("zin").focus();
     document.querySelectorAll(".nav a").forEach((a) => {
       const href = a.getAttribute("href");
       const key = parts[0] || "";
-      const on = href === "#/" + key || (href === "#/calisma" && ["tekrar", "hatalar", "analiz", "plan", "kavram", "notlarim", "harfler"].includes(key)) || (href === "#/sinavlar" && ["karisik", "sikcikan", "puan"].includes(key));
+      const on = href === "#/" + key || (href === "#/calisma" && ["tekrar", "hatalar", "analiz", "plan", "kavram", "notlarim", "harfler"].includes(key)) || (href === "#/sinavlar" && ["karisik", "sikcikan", "puan", "meydan"].includes(key));
       a.classList.toggle("active", on);
       if (on) a.setAttribute("aria-current", "page"); else a.removeAttribute("aria-current");
     });
