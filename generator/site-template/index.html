@@ -30,7 +30,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="{{SHORT}}">
 <link rel="stylesheet" href="styles.css?v={{V}}">
-<script>try{var t=localStorage.getItem("pu.theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+<script>try{var d=document.documentElement,t=localStorage.getItem("pu.theme");if(t)d.dataset.theme=t;var r=JSON.parse(localStorage.getItem("pu.read")||"{}");if(r.fs)d.style.fontSize=r.fs+"%";if(r.lh)d.dataset.lh=r.lh;if(r.ff)d.dataset.ff=r.ff}catch(e){}</script>
 </head>
 <body>
 <a class="skip-link" href="#app">İçeriğe geç</a>
@@ -52,6 +52,8 @@
   </nav>
   <div class="mast-tools">
   <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Tema">Tema</button>
+  <button class="theme-toggle read-toggle" id="read-toggle" type="button" aria-label="Okuma ayarları" aria-expanded="false" aria-controls="read-panel"><span class="aa" aria-hidden="true">Aa</span></button>
+  <div class="read-panel" id="read-panel" role="dialog" aria-label="Okuma ayarları" hidden></div>
   <form class="nav-search" id="nav-search" role="search" autocomplete="off">
     <input type="search" id="nav-q" placeholder="Derslerde ara… (Ctrl+K)" aria-label="Derslerde ara">
   </form>
