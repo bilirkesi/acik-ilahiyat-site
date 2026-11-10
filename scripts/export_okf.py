@@ -223,7 +223,10 @@ def write(path: Path, content: str) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     # OKF ve site house rule: em dash yasak
     content = content.replace("\u2014", "-")
-    path.write_text(content, encoding="utf-8")
+    # newline="\n": paket her platformda ayni baytlari uretsin. Varsayilan satir sonu
+    # Windows'ta CRLF olur ve yeniden export her dosyayi degistirilmis gosterirdi.
+    with open(path, "w", encoding="utf-8", newline="\n") as fh:
+        fh.write(content)
 
 
 def md_escape_cell(s: str) -> str:
@@ -266,15 +269,8 @@ def main() -> int:
     # elle yazılan dosyalar (DOX sözleşmesi) yeniden üretimde korunur
     kept = {n: (OKF / n).read_text(encoding="utf-8") for n in KEEP if (OKF / n).exists()}
 
-    # temiz yeniden üretim
-    if OKF.exists():
-        import shutil
-
-        shutil.rmtree(OKF)
-    for n, text in kept.items():
-        (OKF / n).parent.mkdir(parents=True, exist_ok=True)
-        (OKF / n).write_text(text, encoding="utf-8")
-
+    # Girdiler önce okunur: okf/ silindikten sonra bir hata (bozuk JSON, eksik node)
+    # paketi silinmiş ya da yarım bırakılmış halde bırakmasın.
     courses = load_json(ROOT / "courses.json")
     SLUGS[:] = [s for s in courses if (ROOT / "data" / s / "study_plan.json").exists()]
     unis = load_json(ROOT / "universities.json") if (ROOT / "universities.json").exists() else {}
@@ -296,6 +292,15 @@ def main() -> int:
         sem = c.get("semester") or "guz"
         by_uni.setdefault(uid, []).append(s)
         by_term.setdefault((year, sem), []).append(s)
+
+    # temiz yeniden üretim: bütün girdiler okundu, artık paketi silebiliriz
+    if OKF.exists():
+        import shutil
+
+        shutil.rmtree(OKF)
+    for n, text in kept.items():
+        (OKF / n).parent.mkdir(parents=True, exist_ok=True)
+        (OKF / n).write_text(text, encoding="utf-8")
 
     write(
         OKF / "index.md",
