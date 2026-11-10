@@ -223,8 +223,14 @@ def public_config(u):
 
 
 def rev(path):
-    """İçerik özeti: service worker ve indirme paketleri dosyanın değişip değişmediğini buna bakarak anlar."""
-    return hashlib.sha256(path.read_bytes()).hexdigest()[:10]
+    """İçerik özeti: service worker ve indirme paketleri dosyanın değişip değişmediğini buna bakarak anlar.
+    Metin dosyalarında satır sonları normalleştirilir: Windows'ta core.autocrlf ile çalışma ağacı CRLF
+    olur, depoda LF; hash her iki yerde aynı olmalı ki cache-bust çalışsın. İkili dosyalar (png, woff2)
+    ham baytlarıyla hash'lenir."""
+    data = path.read_bytes()
+    if b"\x00" not in data:
+        data = data.replace(b"\r\n", b"\n")
+    return hashlib.sha256(data).hexdigest()[:10]
 
 
 SMALL_WIDTH = 640

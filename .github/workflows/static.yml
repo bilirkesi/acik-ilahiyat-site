@@ -41,3 +41,7 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v5
+        # Artifact 140 MB'tan büyüdü (sesli dersler); Pages dağıtımı 10 dakikada
+        # iptal ediliyordu. 1 saat bekle.
+        with:
+          timeout: 3600000
