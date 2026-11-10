@@ -2,6 +2,10 @@
 /artifacts/
 /assets/
 /logs/
+
+# Pipeline kilidi (calisma aninda olusur)
+/.pipeline.lock
+
 __pycache__/
 *.pyc
 *.pyo

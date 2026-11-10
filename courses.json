@@ -163,6 +163,7 @@
           "Use only facts the sources state, at the level of detail they give. If the sources treat a point briefly, keep it brief; do not fill gaps from general knowledge.",
           "Spell product names, versions, parameters and acronyms exactly as the sources do (for example Oracle Database 19c, Oracle 26ai, IFS Cloud 23R2, 25R1 and 26R2, RAC, Data Guard, RMAN, AWR, ASH, ADDM, OEM).",
           "Name the version a statement belongs to whenever the sources distinguish versions (19c versus 26ai, IFS Cloud 23R2 versus 26R2). If the sources do not say which version applies, say so instead of guessing.",
+          "Write Oracle identifiers and data dictionary views exactly as the sources write them (for example CDB$ROOT, PDB$SEED, V$CLUSTER_INTERCONNECTS); do not escape them as math.",
           "Cite a source only for a claim it fully supports; split compound claims.",
           "If the sources do not cover something, leave it out rather than guess."
         ]

@@ -734,7 +734,12 @@
   ],
   "notebook_title": "IFS Enterprise Oracle Architecture & DBA Training Program",
   "tries": {
-    "quiz": 2
+    "quiz": 2,
+    "infographic-1": 1,
+    "infographic-2": 1,
+    "infographic-3": 1,
+    "infographic-4": 1,
+    "infographic-5": 1
   },
   "errors": [
     {
@@ -743,5 +748,11 @@
       "msg": "{\n  \"error\": true,\n  \"code\": \"UNEXPECTED_ERROR\",\n  \"message\": \"Unexpected error: \"\n}\n"
     }
   ],
-  "quiz_artifact": "47ac6f7b-ccb7-4f84-8cd1-60a33c997a7d"
+  "quiz_artifact": "47ac6f7b-ccb7-4f84-8cd1-60a33c997a7d",
+  "infographics": {
+    "infographic-1": "a43cb526-00d3-478d-9835-a921b2e53cea",
+    "infographic-2": "657cd8d2-f712-414a-885e-3861c383f87f",
+    "infographic-3": "7ac6e396-eabd-42f7-b9bf-602f9523019a",
+    "infographic-4": "780504a2-2b9d-4da6-8a43-926a9a23fae8"
+  }
 }
