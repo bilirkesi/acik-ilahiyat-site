@@ -13,7 +13,10 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 LOGS = ROOT / "logs"
 OUT = ROOT / "artifacts" / "nlm-infographics"
-NLM = Path.home() / "AppData/Local/Python/pythoncore-3.14-64/Scripts/notebooklm.exe"
+sys.path.insert(0, str(ROOT / "generator" / "scripts"))
+from common import find_cli, require_cli  # noqa: E402
+
+NLM = find_cli()  # yoksa ilk çağrıda require_cli() kullanıcıya yol gösterir
 
 COURSES = {
     "turk-dili-1": {
@@ -46,7 +49,7 @@ def chapter_titles():
 def run(args, timeout=900):
     env = {"PYTHONUTF8": "1", "PATH": ""}
     proc = subprocess.run(
-        [str(NLM), *[str(a) for a in args]],
+        [str(NLM or require_cli()), *[str(a) for a in args]],
         capture_output=True,
         timeout=timeout,
         encoding="utf-8",

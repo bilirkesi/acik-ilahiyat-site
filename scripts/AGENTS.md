@@ -18,7 +18,7 @@ Generation (`data/` → richer content):
 Export (`data/` → site/bundle):
 - `export_unit_quizzes_site.py` — `unit_quizzes/*.json` → `site/unit_quizzes.js` (`window.UNIT_QUIZZES`).
 - `export_past_exams_site.py` — `past_exams.json` → `site/past_exams.js` (`window.PAST_EXAMS`); adds unit/chapter tags, answer key, and auto-generated solutions.
-- `export_okf.py` — course data → the `okf/` Markdown bundle; wipes `okf/` except `okf/AGENTS.md`.
+- `export_okf.py` — course data → the `okf/` Markdown bundle; wipes `okf/` except `okf/AGENTS.md`. Every input is read before the wipe, so a broken JSON file or a missing `node` leaves the previous bundle intact instead of a half-written one.
 
 Infographic QA/repair:
 - `compare_nlm_infographics.py`, `fix_infographic_text.py`, `generate_nlm_infographics.py`.
@@ -28,7 +28,7 @@ NotebookLM maintenance (needs the `notebooklm-py` CLI):
 - `add_aof_sources_to_notebooks.py`, `dedupe_notebook_sources.py`.
 
 Validation:
-- `check_quiz_answers.py` — integrity check across all quiz JSON plus `site/unit_quizzes.js` consistency.
+- `check_quiz_answers.py` — integrity check across all quiz JSON plus `site/unit_quizzes.js` consistency. Question types come from `generator/scripts/quiz_types.py`; a type outside that list is reported as unknown.
 - `audit_sources.py` — per chapter, the `grounding.tiers` rank of assigned and cited sources; flags chapters with no textbook source. `--strict` exits 1 when a course notebook has no textbook at all.
 
 ## Local Contracts
@@ -36,6 +36,7 @@ Validation:
 - Readers use `encoding="utf-8-sig"`; writers use `ensure_ascii=False`.
 - Several scripts depend on `coursegraph.past_exams` (imported after a `sys.path.insert(0, ROOT)`); keep that import order.
 - NotebookLM generation prompts end with `grounding_rules(university)` and pick sources through `with_authority` (both in `generator/scripts/common.py`, imported after a `sys.path.insert` of `generator/scripts`). New generators must do the same.
+- The NotebookLM CLI comes from `notebooklm-py` (`py -3 -m pip install "notebooklm-py[browser]"`, then `notebooklm login` once; the browser download happens on first login). Scripts never hardcode a machine-specific path: `add_aof_sources_to_notebooks.py`, `dedupe_notebook_sources.py`, `generate_unit_quizzes.py`, and `generate_nlm_infographics.py` resolve it with `find_cli()` from `generator/scripts/common.py` (PATH, then the running interpreter's `Scripts` folder, then `~/.local/bin` and `~/.cargo/bin`) and fall back to `require_cli()`, which prints the install instructions. `generate_chapter_audio.py` resolves `notebooklm` from PATH instead (override with `--notebooklm`).
 
 ## Work Guidance
 - After editing `data/`, re-run the relevant extract/generate/export script, then regenerate the graph (see `coursegraph/AGENTS.md`) so `site/` and the index stay in sync.
@@ -44,7 +45,7 @@ Validation:
 ## Verification
 - `py -3 scripts/check_quiz_answers.py` exits 0 when all quiz data and the site bundle agree.
 - `py -3 scripts/audit_sources.py` before regenerating a course's content, to see which chapters rest only on lecture captions.
-- `py -3 -m unittest discover -s tests` covers `chapter_meta`/`build_solution` and the unit-quiz export (`tests/test_exports.py`).
+- `py -3 -m unittest discover -s tests` covers `chapter_meta`/`build_solution`, the unit-quiz export, and the OKF export's "a broken input leaves the bundle intact" guarantee (`tests/test_exports.py`).
 
 ## Child DOX Index
 - None. Scripts are a flat list, not nested boundaries.
