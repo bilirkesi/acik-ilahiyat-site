@@ -403,6 +403,22 @@ OSM_UNIT_TITLES = {
 
 OSM_UNIT_TO_CHAPTERS = {i: [i] for i in range(1, 9)}
 
+# Teknik Gelişim (IFS Cloud & Oracle DBA eğitim programı): ünite = bölüm.
+# Başlıklar data/teknik-gelistirim/study_plan.json ile aynı olmalı.
+TEK_UNIT_TITLES = {
+    1: "Program Orientation and IFS Cloud Oracle Architecture",
+    2: "Multitenant Database Administration: CDB and PDB",
+    3: "Release Lifecycle and Patching: RU, RUR and Upgrades",
+    4: "Storage, ASM and Capacity Management",
+    5: "RAC and Grid Infrastructure",
+    6: "Data Guard, MAA Standards and Failover Operations",
+    7: "Application Continuity and Resilience",
+    8: "Performance Management and Tuning",
+    9: "Monitoring, Alerting and Incident Management",
+    10: "Backup, Recovery and Operational Practice",
+}
+TEK_UNIT_TO_CHAPTERS = {i: [i] for i in range(1, len(TEK_UNIT_TITLES) + 1)}
+
 # Osmanlıca soruların çoğu Arap harfli görseldir; ünite her soru için elle
 # data/osmanlica-1/past_exams_notes.json'da verilir. Anahtar kelimeler yalnızca yedektir.
 OSM_UNIT_KEYWORDS: dict[int, list[str]] = {
@@ -434,6 +450,11 @@ COURSE_UNIT_CONFIGS = {
         "titles": OSM_UNIT_TITLES,
         "chapters": OSM_UNIT_TO_CHAPTERS,
         "keywords": OSM_UNIT_KEYWORDS,
+    },
+    "teknik-gelistirim": {
+        "titles": TEK_UNIT_TITLES,
+        "chapters": TEK_UNIT_TO_CHAPTERS,
+        "keywords": {},  # bu derste çıkmış sınav yok, ünite eşleştirmesi gerekmiyor
     },
 }
 

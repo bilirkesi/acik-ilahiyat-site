@@ -117,5 +117,57 @@
     "course_name": "Osmanlı Türkçesi I",
     "status": "active",
     "notebook_id": "18b3f791-a3cd-4d19-a002-ced4ebfe16ae"
+  },
+  "teknik-gelistirim": {
+    "mode": "own",
+    "notebook_id": "d9fbd16b-86fb-45ab-af81-dc503b2c5aad",
+    "subject": "Teknik Gelişim",
+    "course": "IFS Enterprise Oracle Architecture & DBA Training Program",
+    "school": "IFS Cloud & Oracle DBA Eğitim Programı",
+    "note": "Kurumsal Oracle veritabanı ve IFS Cloud işletim eğitimi: yüksek erişilebilirlik (RAC, Data Guard, MAA), uygulama sürekliliği (Application Continuity / TAC), performans yönetimi (AWR, ASH, ADDM) ve işletim gözetimi (OEM, Server Alert Log). Kaynaklar Oracle ile IFS resmî dokümanları ve eğitim programının kendi çalışma notlarıdır.",
+    "university_id": "teknik",
+    "academic_year": "2026-2027",
+    "semester": "guz",
+    "term_code": "20262027-1",
+    "level": 1,
+    "course_code": "TEK-ORA",
+    "course_name": "IFS Enterprise Oracle Architecture & DBA Training Program",
+    "status": "active",
+    "config": {
+      "language": "English",
+      "audience": "enterprise Oracle database administrators and IFS Cloud operations engineers",
+      "chapters": {"min": 8, "max": 10},
+      "quiz": {"difficulty": "medium", "quantity": "standard"},
+      "grounding": {
+        "tiers": [
+          {
+            "label": "the official Oracle and IFS documentation",
+            "types": ["web_page", "pdf"],
+            "max_add": 3,
+            "exclude_titles": ["slideshare", "blogspot", "tanelpoder", "learnomate", "dbnexus", "oracle-base", "iusoltsev", "bugraparlayan", "asktheway", "prabirkrkundu", "rackspace"]
+          },
+          {
+            "label": "the training program's own architecture notes",
+            "types": ["markdown"]
+          },
+          {
+            "label": "the training program's own working notes",
+            "types": ["gemini_chat"]
+          },
+          {
+            "label": "the training program's own incident notes",
+            "types": ["docx"]
+          }
+        ],
+        "rules": [
+          "Use only facts the sources state, at the level of detail they give. If the sources treat a point briefly, keep it brief; do not fill gaps from general knowledge.",
+          "Spell product names, versions, parameters and acronyms exactly as the sources do (for example Oracle Database 19c, Oracle 26ai, IFS Cloud 23R2, 25R1 and 26R2, RAC, Data Guard, RMAN, AWR, ASH, ADDM, OEM).",
+          "Name the version a statement belongs to whenever the sources distinguish versions (19c versus 26ai, IFS Cloud 23R2 versus 26R2). If the sources do not say which version applies, say so instead of guessing.",
+          "Write Oracle identifiers and data dictionary views exactly as the sources write them (for example CDB$ROOT, PDB$SEED, V$CLUSTER_INTERCONNECTS); do not escape them as math.",
+          "Cite a source only for a claim it fully supports; split compound claims.",
+          "If the sources do not cover something, leave it out rather than guess."
+        ]
+      }
+    }
   }
 }

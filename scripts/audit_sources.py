@@ -19,9 +19,9 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "generator" / "scripts"))
-from common import load_university, source_tier  # noqa: E402
+from common import course_slugs, load_university, source_tier  # noqa: E402
 
-SLUGS = ["turk-dili-1", "ataturk-ilkeleri-1", "islam-mezhepleri-tarihi", "osmanlica-1"]
+SLUGS = course_slugs(ROOT)
 
 
 def read(path):
@@ -60,6 +60,11 @@ def main():
         sys.exit("university.json has no grounding.tiers; nothing to audit.")
     missing = []
     for slug in args.slugs or SLUGS:
+        # a course may rank its own sources (courses.json -> config -> grounding)
+        tiers = (load_university(ROOT, slug).get("grounding") or {}).get("tiers") or []
+        if not tiers:
+            print(f"\n== {slug}: no grounding.tiers; skipped")
+            continue
         r = audit(slug, tiers)
         flag = "" if r["has_top"] else f"  << no '{tiers[0]['label']}' source in the notebook"
         print(f"\n== {slug}: {fmt(r['sources'])}{flag}")

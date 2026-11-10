@@ -17,7 +17,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
 sys.path.insert(0, str(ROOT / "generator" / "scripts"))
-from common import find_cli, grounding_rules, load_university, require_cli  # noqa: E402
+from common import find_cli, grounding_rules, load_university, normalize_quiz_questions, require_cli  # noqa: E402
 
 CLI = find_cli()  # yoksa ilk çağrıda require_cli() kullanıcıya yol gösterir
 
@@ -141,7 +141,7 @@ def unit_objectives(slug, unit):
     return chapters[unit - 1].get("objectives") or []
 
 
-def generate_unit_quiz(nb, unit, unit_title, source_ids, max_tries=3, objectives=None):
+def generate_unit_quiz(nb, unit, unit_title, source_ids, max_tries=3, objectives=None, slug=None):
     focus = ""
     if objectives:
         focus = (
@@ -155,7 +155,7 @@ def generate_unit_quiz(nb, unit, unit_title, source_ids, max_tries=3, objectives
         "Her soruda 4 seçenek, tek doğru, kısa gerekçe ve ipucu olsun. "
         "Sorular ünite kapsamı dışına çıkmasın. Türkçe yaz. "
         "Doğru cevap ve gerekçe ders kitabına dayansın; kitapta karşılığı olmayan soruyu üretme. "
-        + grounding_rules(load_university(ROOT))
+        + grounding_rules(load_university(ROOT, slug))
     )
     last_err = ""
     for attempt in range(1, max_tries + 1):
@@ -212,7 +212,7 @@ def download_quiz(nb, aid, dest: Path):
     return dest
 
 
-def normalize_quiz(path: Path, unit: int, unit_title: str) -> dict:
+def normalize_quiz(path: Path, unit: int, unit_title: str, title_prefix: str = "Ünite") -> dict:
     raw = path.read_text(encoding="utf-8-sig")
     try:
         data = json.loads(raw)
@@ -221,52 +221,21 @@ def normalize_quiz(path: Path, unit: int, unit_title: str) -> dict:
         return {
             "unit": unit,
             "unitTitle": unit_title,
-            "title": f"Ünite {unit} Quiz",
+            "title": f"{title_prefix} {unit} Quiz",
             "questions": [],
             "raw_preview": raw[:200],
             "error": "not-json",
         }
     if isinstance(data, list):
         questions = data
-        title = f"Ünite {unit} Quiz"
+        title = f"{title_prefix} {unit} Quiz"
     else:
         questions = data.get("questions") or data.get("quiz") or []
         if isinstance(questions, dict):
             questions = questions.get("questions") or []
-        title = data.get("title") or f"Ünite {unit}: {unit_title}"
+        title = data.get("title") or f"{title_prefix} {unit}: {unit_title}"
     # site şemasına yaklaştır
-    out_qs = []
-    for q in questions:
-        if not isinstance(q, dict):
-            continue
-        opts = q.get("answerOptions") or q.get("options") or []
-        norm_opts = []
-        for o in opts:
-            if isinstance(o, str):
-                norm_opts.append({"text": o, "isCorrect": False, "rationale": ""})
-            elif isinstance(o, dict):
-                norm_opts.append(
-                    {
-                        "text": o.get("text") or "",
-                        "isCorrect": bool(o.get("isCorrect") or o.get("correct")),
-                        "rationale": o.get("rationale") or o.get("explanation") or "",
-                    }
-                )
-        # correct letter map
-        correct = q.get("correct") or q.get("answer")
-        if correct and not any(x["isCorrect"] for x in norm_opts) and isinstance(correct, str):
-            letter = correct.strip().upper()[:1]
-            idx = ord(letter) - ord("A")
-            if 0 <= idx < len(norm_opts):
-                norm_opts[idx]["isCorrect"] = True
-        out_qs.append(
-            {
-                "question": q.get("question") or q.get("stem") or q.get("prompt") or "",
-                "answerOptions": norm_opts,
-                "hint": q.get("hint") or "",
-                "type": "multiple_choice",
-            }
-        )
+    out_qs = normalize_quiz_questions(questions)
     return {
         "unit": unit,
         "unitTitle": unit_title,
@@ -313,7 +282,7 @@ def main():
             print(f"  unit {unit}: {title}", flush=True)
             try:
                 objectives = unit_objectives(slug, unit) if meta.get("focus_objectives") else None
-                aid, status = generate_unit_quiz(nb, unit, title, use_ids, objectives=objectives)
+                aid, status = generate_unit_quiz(nb, unit, title, use_ids, objectives=objectives, slug=slug)
                 print(f"    artifact {aid} ({status})", flush=True)
                 download_quiz(nb, aid, dest)
                 norm = normalize_quiz(dest, unit, title)

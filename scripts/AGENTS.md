@@ -10,7 +10,8 @@ Extraction (PDF → `data/`):
 - `extract_aof_infographics.py` — AÖF infographic PDFs → high-DPI page PNGs.
 
 Generation (`data/` → richer content):
-- `generate_unit_quizzes.py` — past-exam + textbook (`Kitap`) sources → `data/<slug>/unit_quizzes/unit-N.json`. Shuffles options; holds per-course NotebookLM ids and unit titles.
+- `generate_unit_quizzes.py` — past-exam + textbook (`Kitap`) sources → `data/<slug>/unit_quizzes/unit-N.json`. Shuffles options; holds per-course NotebookLM ids and unit titles. Only for the AÖF courses; a course that has no past exams uses `generate_assessments.py`.
+- `generate_assessments.py` — for a course whose units are its chapters: one unit quiz per chapter, limited to that chapter's own sources, plus the three practice exams (`vize`, `final`, `yaz-kursu`) → `data/<slug>/unit_quizzes/unit-N.json` and `data/<slug>/exams/*.json`. Reads the plan, the sources and the course's own `grounding` from `courses.json`.
 - `render_unit_infographics.py` — book unit summaries → unit infographics.
 - `update_notes_from_kitap.py` — refreshes study notes from `Kitap.pdf`, embedding citations.
 - `generate_chapter_audio.py` — per chapter, a NotebookLM audio overview limited to the chapter's `source_ids` plus the textbook when the chapter has none (Turkish, `deep-dive`/`short` by default) → raw `assets/audio/<slug>/chapter-N.mp4` → ffmpeg mono 64 kbps `site/audio/<slug>/chapter-N.mp3` + `data/<slug>/audio.json`. Needs the `notebooklm` CLI (logged in) and ffmpeg with libmp3lame (ffprobe optional; on the owner PC ffmpeg is not on PATH, pass `--ffmpeg`); skips existing MP3s unless `--force`; `--transcode-only` re-encodes downloaded files; `--profile` picks a notebooklm-py profile (a second Google account with the notebook shared to it, for its own audio quota). A source whose state `id` is local (not a NotebookLM UUID) is sent as its `nlm_id`; the script exits if neither is a UUID.
@@ -32,8 +33,9 @@ Validation:
 - `audit_sources.py` — per chapter, the `grounding.tiers` rank of assigned and cited sources; flags chapters with no textbook source. `--strict` exits 1 when a course notebook has no textbook at all.
 
 ## Local Contracts
-- Most export scripts define `ROOT` and a `SLUGS` list at module level; tests monkeypatch these to run against a temp directory. Keep them module-level and reassignable.
+- Most export scripts define `ROOT` and a `SLUGS` list at module level; tests monkeypatch these to run against a temp directory. Keep them module-level and reassignable. `SLUGS` comes from `courses.json` (`course_slugs()` in `generator/scripts/common.py`), so a new course needs no edit in the export scripts.
 - Readers use `encoding="utf-8-sig"`; writers use `ensure_ascii=False`.
+- Bundle writers use `newline="\n"`, so a published bundle is the same bytes on every platform.
 - Several scripts depend on `coursegraph.past_exams` (imported after a `sys.path.insert(0, ROOT)`); keep that import order.
 - NotebookLM generation prompts end with `grounding_rules(university)` and pick sources through `with_authority` (both in `generator/scripts/common.py`, imported after a `sys.path.insert` of `generator/scripts`). New generators must do the same.
 - The NotebookLM CLI comes from `notebooklm-py` (`py -3 -m pip install "notebooklm-py[browser]"`, then `notebooklm login` once; the browser download happens on first login). Scripts never hardcode a machine-specific path: `add_aof_sources_to_notebooks.py`, `dedupe_notebook_sources.py`, `generate_unit_quizzes.py`, and `generate_nlm_infographics.py` resolve it with `find_cli()` from `generator/scripts/common.py` (PATH, then the running interpreter's `Scripts` folder, then `~/.local/bin` and `~/.cargo/bin`) and fall back to `require_cli()`, which prints the install instructions. `generate_chapter_audio.py` resolves `notebooklm` from PATH instead (override with `--notebooklm`).

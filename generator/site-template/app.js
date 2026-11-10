@@ -226,16 +226,43 @@
     if (window.renderMathInElement) return Promise.resolve();
     if (katexP) return katexP;
     const base = "https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/";
-    katexP = Promise.all([
-      new Promise((res, rej) => { const s = document.createElement("script"); s.src = base + "katex.min.js"; s.onload = res; s.onerror = rej; document.head.appendChild(s); }),
-      new Promise((res, rej) => { const s = document.createElement("script"); s.src = base + "contrib/auto-render.min.js"; s.onload = res; s.onerror = rej; document.head.appendChild(s); }),
-    ]).catch(() => { katexP = null; });
+    const load = (src) => new Promise((res, rej) => {
+      const s = document.createElement("script"); s.src = src; s.onload = res; s.onerror = rej;
+      document.head.appendChild(s);
+    });
+    // auto-render, katex yüklendikten sonra gelmeli: paralel yüklemede katex henuz tanimli
+    // olmadigi icin auto-render "ParseError" okumaya calisiyor ve hata veriyordu.
+    katexP = load(base + "katex.min.js")
+      .then(() => load(base + "contrib/auto-render.min.js"))
+      .catch(() => { katexP = null; });
     return katexP;
+  }
+
+  // KaTeX'in auto-render'i metindeki herhangi iki "$" isaretini eslestirir. Urun adlarindaki
+  // isaretler (CDB$ROOT, $ORACLE_HOME) formul degildir: isaretin solunda ya da saginda harf
+  // varsa ya da icerigi boslukla basliyorsa matematik sayilmaz. LaTeX ayraci olanlar
+  // (\\(, \\)) yalnizca eslesmis bir cift varsa sayilir.
+  const MATH_MARK = /(^|[^\w$])\$(?:[^$\s][^$\n]*[^$\s]|[^$\s])\$(?![\w$])|\\\([\s\S]*?\\\)|\\\[[\s\S]*?\\\]/;
+
+  // Gecerli matematik ciftleri disinda kalan "$" sayisi: urun adlarindaki isaretler.
+  function strayDollars(text) {
+    const total = (text.match(/\$/g) || []).length;
+    let inMath = 0;
+    const re = new RegExp(MATH_MARK.source, "g");
+    let m;
+    while ((m = re.exec(text)) !== null) {
+      for (let i = 0; i < m[0].length; i++) if (m[0][i] === "$") inMath++;
+    }
+    return total - inMath;
   }
 
   function typeset(el) {
     // KaTeX yalnızca metinde formül işareti varsa yüklenir (dış sunucuya gereksiz istek ve çevrimdışı hata olmasın).
-    if (!/\$|\\\(|\\\[/.test(el.textContent || "")) return;
+    const text = el.textContent || "";
+    if (!MATH_MARK.test(text)) return;
+    // Matematik disi "$" isareti varsa (CDB$ROOT gibi urun adlari) bu ogeyi hic typeset etme:
+    // KaTeX'in auto-render'i iki isareti de eslestirip urun adini bozardi.
+    if (strayDollars(text) > 0) return;
     ensureKatex().then(() => {
       if (window.renderMathInElement) {
         window.renderMathInElement(el, {

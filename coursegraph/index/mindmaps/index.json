@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-14T21:34:00Z",
+  "generated_at": "2026-11-10T11:20:23Z",
   "courses": [
     {
       "course": "ataturk-ilkeleri-1",
@@ -63,6 +63,18 @@
           "id": "graph-derived",
           "title": "osmanlica-1 kavram ağacı (graf)",
           "nodes": 15,
+          "source": "coursegraph"
+        }
+      ]
+    },
+    {
+      "course": "teknik-gelistirim",
+      "title": "Teknik Gelişim",
+      "mindmaps": [
+        {
+          "id": "graph-derived",
+          "title": "teknik-gelistirim kavram ağacı (graf)",
+          "nodes": 11,
           "source": "coursegraph"
         }
       ]

@@ -1,0 +1,331 @@
+{
+  "unit": 9,
+  "unitTitle": "Monitoring, Alerting and Incident Management",
+  "title": "IFS Quiz",
+  "questions": [
+    {
+      "question": "In IFS Cloud 25R1 EFK stack log monitoring, what is the default data retention period for Elasticsearch logs before older records are deleted by the daily curator-cronjob?",
+      "answerOptions": [
+        {
+          "text": "7 days",
+          "isCorrect": true,
+          "rationale": "Elasticsearch data retention in IFS Cloud 25R1 is set to 7 days, after which a daily curator-cronjob checks and removes older log entries."
+        },
+        {
+          "text": "14 days",
+          "isCorrect": false,
+          "rationale": "This duration exceeds the standard 7-day retention period maintained by the daily curator cronjob."
+        },
+        {
+          "text": "30 days",
+          "isCorrect": false,
+          "rationale": "This period is significantly longer than the 7-day log retention window configured for Elasticsearch storage."
+        },
+        {
+          "text": "24 hours",
+          "isCorrect": false,
+          "rationale": "Although the curator-cronjob runs daily, it retains data for up to 7 full days rather than purging logs every 24 hours."
+        }
+      ],
+      "hint": "Think about the daily scheduled cronjob that cleans up historical log data in Elasticsearch.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Which core Oracle Enterprise Manager (OEM) component runs as a middle-tier Java EE application on Oracle WebLogic Server to process metrics, render the management console, and dispatch administrative jobs?",
+      "answerOptions": [
+        {
+          "text": "Oracle Management Service (OMS)",
+          "isCorrect": true,
+          "rationale": "The OMS functions as the middle-tier Java EE application running on WebLogic Server to process agent metrics and render the browser-based Cloud Control management console."
+        },
+        {
+          "text": "Oracle Management Agent (OMA)",
+          "isCorrect": false,
+          "rationale": "The OMA is a lightweight process deployed directly on host servers to collect target metrics rather than acting as the WebLogic middle-tier service."
+        },
+        {
+          "text": "Oracle Management Repository (OMR)",
+          "isCorrect": false,
+          "rationale": "The OMR is a dedicated Oracle Database schema storing configuration and metric data rather than the Java EE middle-tier application."
+        },
+        {
+          "text": "Management Plug-in",
+          "isCorrect": false,
+          "rationale": "Plug-ins are modular software extensions used to extend monitoring capabilities rather than serving as the central middle-tier application server."
+        }
+      ],
+      "hint": "Consider the middle-tier application server component responsible for rendering the administrative web interface.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "When troubleshooting delayed telemetry following an IFS deployment, which command should an administrator execute on a host node to force immediate metric synchronization from the Oracle Management Agent (OMA) to the OMS?",
+      "answerOptions": [
+        {
+          "text": "./emctl upload agent",
+          "isCorrect": true,
+          "rationale": "Executing `./emctl upload agent` forces immediate metric synchronization, transferring accumulated payload files directly to the OMS repository."
+        },
+        {
+          "text": "./emctl status agent",
+          "isCorrect": false,
+          "rationale": "Running `status agent` inspects process health and upload connection status without forcing a manual payload transfer."
+        },
+        {
+          "text": "./emctl sync repository",
+          "isCorrect": false,
+          "rationale": "This is not a standard emctl command syntax for triggering agent metric uploads."
+        },
+        {
+          "text": "./emctl start oma",
+          "isCorrect": false,
+          "rationale": "The command to manage agent processes uses `emctl start agent` rather than `start oma`, and starting the agent does not manually trigger an immediate upload step."
+        }
+      ],
+      "hint": "Focus on the specific emctl sub-command designed to push collected telemetry payload files immediately.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Which repository view inside the sysman schema can DBAs query to inspect recent critical incidents logged in the central Oracle Management Repository (OMR)?",
+      "answerOptions": [
+        {
+          "text": "sysman.em_incidents",
+          "isCorrect": true,
+          "rationale": "OEM logs tracked incidents, creation dates, and severity levels inside the `sysman.em_incidents` repository view."
+        },
+        {
+          "text": "sysman.em_alert_logs",
+          "isCorrect": false,
+          "rationale": "This view name does not represent the repository table holding OEM operational incident lifecycle data."
+        },
+        {
+          "text": "sysman.oem_events_hist",
+          "isCorrect": false,
+          "rationale": "Raw target events are managed separately from promoted actionable operational incidents stored in `em_incidents`."
+        },
+        {
+          "text": "sysman.mgmt_system_alerts",
+          "isCorrect": false,
+          "rationale": "OEM relies on the dedicated `sysman.em_incidents` view for tracking and querying critical incident records."
+        }
+      ],
+      "hint": "Look for the specific view named directly after the incident management framework entities in OEM.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "In IFS Cloud 26R2 Application Monitoring Metrics (AMM), what concept is defined as providing the operational health status (Critical, Warning, OK, or Unknown) for a metric based on supplied thresholds?",
+      "answerOptions": [
+        {
+          "text": "Service",
+          "isCorrect": true,
+          "rationale": "In AMM concepts, a Service provides the operational health status for a metric by evaluating supplied threshold values."
+        },
+        {
+          "text": "Expression",
+          "isCorrect": false,
+          "rationale": "An Expression represents a logical description in documentation explaining how to determine a Service Group status rather than evaluating individual metric status."
+        },
+        {
+          "text": "Metric Group",
+          "isCorrect": false,
+          "rationale": "This term is not one of the formal AMM concepts defined for evaluating and reporting metric status."
+        },
+        {
+          "text": "Service Group",
+          "isCorrect": false,
+          "rationale": "A Service Group is used to group one or more services together to simplify administration and configuration."
+        }
+      ],
+      "hint": "Identify the structural element that evaluates metric values against threshold limits to determine health status.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "In IFS Cloud 26R2 Application Monitoring Metrics (AMM), how frequently is the BATCH_QUEUE_CONFIG metric sampled to verify whether background work queues are defined?",
+      "answerOptions": [
+        {
+          "text": "Every 10 minutes",
+          "isCorrect": true,
+          "rationale": "The `BATCH_QUEUE_CONFIG` metric is sampled every 10 minutes to verify whether any background work queues are defined in the system."
+        },
+        {
+          "text": "Every minute",
+          "isCorrect": false,
+          "rationale": "One-minute sampling intervals are utilized for rapid queue tracking metrics such as `QUEUE_EXEC` or `QUEUE_ERROR`."
+        },
+        {
+          "text": "Every 2 hours",
+          "isCorrect": false,
+          "rationale": "Two-hour intervals are used for longer-term monitoring metrics such as `DEFERRED_JOBS_EXECUTING_12H`."
+        },
+        {
+          "text": "Every 24 hours",
+          "isCorrect": false,
+          "rationale": "Daily sampling intervals are reserved for static checks like application system certificates (`CERT_APP_SYSTEM`)."
+        }
+      ],
+      "hint": "Recall the standard short interval shared by several batch queue configuration checks.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "On the Custom Field Runtime Performance Overview screen in IFS Cloud 26R2, what automatic filtering criterion is applied to isolate slow SQL statements?",
+      "answerOptions": [
+        {
+          "text": "Elapsed Time / Exec (s) greater than 2 seconds",
+          "isCorrect": true,
+          "rationale": "The Custom Field Runtime Performance screen automatically filters for custom field queries where the average elapsed time per execution exceeds 2 seconds."
+        },
+        {
+          "text": "CPU Time / Exec (s) greater than 10 seconds",
+          "isCorrect": false,
+          "rationale": "CPU time per execution is tracked in the table display, but the primary automatic filter criterion targets average elapsed time exceeding 2 seconds."
+        },
+        {
+          "text": "Accumulated physical I/O reads exceeding 1,000 blocks",
+          "isCorrect": false,
+          "rationale": "Physical I/O metrics are collected for database capacity trending, but do not form the filter logic for this custom field screen."
+        },
+        {
+          "text": "Blocked database sessions waiting over 5 seconds",
+          "isCorrect": false,
+          "rationale": "Database lock waits are monitored using specific database tier metrics (`BLOCKED_SESSIONS`) rather than the Custom Field Runtime Performance Overview screen."
+        }
+      ],
+      "hint": "Consider the specific threshold for average execution duration used by this custom field overview page.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "In IFS Cloud 26R2 Server Alert Log Categories, which field specifies the duration for retaining log records when Heavy Cleanup runs?",
+      "answerOptions": [
+        {
+          "text": "Days to keep",
+          "isCorrect": true,
+          "rationale": "The 'Days to keep' column in the Server Log Categories configuration screen defines how many days a log is retained before Heavy Cleanup purges it."
+        },
+        {
+          "text": "Retention Period",
+          "isCorrect": false,
+          "rationale": "While describing log retention conceptually, the exact field name in the Server Log Categories form is 'Days to keep'."
+        },
+        {
+          "text": "Cleanup Interval",
+          "isCorrect": false,
+          "rationale": "Cleanup interval refers to the schedule or frequency of cleanup tasks rather than the specific number of days log entries are kept."
+        },
+        {
+          "text": "Expiry Threshold",
+          "isCorrect": false,
+          "rationale": "This parameter name is not present in the IFS Cloud Server Alert Log Categories configuration interface."
+        }
+      ],
+      "hint": "Think of the specific column name in the Server Log Categories configuration table that specifies a number of days.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "In IFS Cloud 26R2, which scheduled job controls the lifecycle of background tasks and updates their state so end users can receive Streams notifications upon completion?",
+      "answerOptions": [
+        {
+          "text": "Transaction_SYS.Process_All_Pending__",
+          "isCorrect": true,
+          "rationale": "The `Transaction_SYS.Process_All_Pending__` procedure runs background jobs and updates their completion state to notify end users via Streams for Background Jobs and Reports."
+        },
+        {
+          "text": "Batch_SYS.New_Batch_Schedule__",
+          "isCorrect": false,
+          "rationale": "This API posts new scheduled batch jobs rather than executing pending jobs and updating completion state information."
+        },
+        {
+          "text": "Stream_SYS.Notify_User__",
+          "isCorrect": false,
+          "rationale": "Background job Streams notifications rely on underlying transaction processing jobs rather than a standalone `Stream_SYS` execution package."
+        },
+        {
+          "text": "Event_SYS.Execute_Actions__",
+          "isCorrect": false,
+          "rationale": "Event actions handle custom business event execution rather than background job lifecycle state updates."
+        }
+      ],
+      "hint": "Focus on the system procedure named for processing all pending transactions in the background job framework.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "In Oracle Enterprise Manager Cloud Control, what feature should administrators configure during planned maintenance windows to temporarily suppress notifications and avoid false alerts?",
+      "answerOptions": [
+        {
+          "text": "Administrative Blackouts",
+          "isCorrect": true,
+          "rationale": "Administrative Blackouts are scheduled during maintenance windows to suppress notification dispatches and prevent false-positive alerts across managed targets."
+        },
+        {
+          "text": "Metric Disablement",
+          "isCorrect": false,
+          "rationale": "Disabling metrics stops metric collection entirely rather than scheduling a temporary suppression window for planned maintenance."
+        },
+        {
+          "text": "Notification Rules Override",
+          "isCorrect": false,
+          "rationale": "OEM relies on scheduled Blackouts rather than ad-hoc rule overrides to pause notification pipelines during maintenance."
+        },
+        {
+          "text": "Subscriber Suppression Mode",
+          "isCorrect": false,
+          "rationale": "Suppressing alerts during maintenance is managed at the target or system level using Blackouts rather than modifying individual subscriber settings."
+        }
+      ],
+      "hint": "Look for the formal OEM feature designed specifically to temporarily pause monitoring alerts during scheduled downtime.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "In IFS Cloud 25R1 EFK stack log monitoring, which query language is used within the Kibana interface to filter and query log data stored in Elasticsearch?",
+      "answerOptions": [
+        {
+          "text": "Kibana Query Language (KQL)",
+          "isCorrect": true,
+          "rationale": "KQL is the query language used inside Kibana search filter text boxes to query log data stored in Elasticsearch."
+        },
+        {
+          "text": "Elasticsearch SQL (E-SQL)",
+          "isCorrect": false,
+          "rationale": "KQL is specifically designated in the documentation as the query language used for Kibana log discovery and filtering."
+        },
+        {
+          "text": "Fluentd Search Syntax (FSS)",
+          "isCorrect": false,
+          "rationale": "Fluentd acts as the log collection agent/shipper rather than providing a query language for Kibana."
+        },
+        {
+          "text": "Lucene Expression Language (LEL)",
+          "isCorrect": false,
+          "rationale": "The documentation specifies KQL (Kibana Query Language) for querying Elasticsearch log indices."
+        }
+      ],
+      "hint": "Recall the native query language abbreviation specific to Kibana interface search fields.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "What default bidirectional TCP port is used by the Oracle Management Agent (OMA) to communicate securely with the central Oracle Management Service (OMS)?",
+      "answerOptions": [
+        {
+          "text": "3872",
+          "isCorrect": true,
+          "rationale": "Oracle Management Agents communicate with the central OMS middle tier over default bidirectional TCP port 3872 using HTTP/HTTPS."
+        },
+        {
+          "text": "1521",
+          "isCorrect": false,
+          "rationale": "Port 1521 is the standard Oracle Database listener port rather than the OEM agent communication port."
+        },
+        {
+          "text": "7001",
+          "isCorrect": false,
+          "rationale": "Port 7001 is typically standard for WebLogic Server administration console connections rather than agent-to-OMS communication."
+        },
+        {
+          "text": "8080",
+          "isCorrect": false,
+          "rationale": "Port 8080 is a generic HTTP port, whereas OEM agent telemetry communication defaults to port 3872."
+        }
+      ],
+      "hint": "Identify the standard OEM agent port number referenced in the agent administration topology notes.",
+      "type": "multiple_choice"
+    }
+  ]
+}

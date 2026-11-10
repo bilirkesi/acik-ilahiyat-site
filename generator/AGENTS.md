@@ -23,6 +23,7 @@
 - `SHELL_FILES` in `build.py` lists the PWA app shell hashed into `sw.js`: `index.html`, `styles.css`, `app.js`, `data.js`, `interactive.js`, `coursegraph.js`, `past_exams.js`, `unit_quizzes.js`, `manifest.webmanifest`, `favicon.svg`. Adding a new lazy bundle means adding it here too.
 - Cache busting uses a single `{{V}}` token stamped into `index.html`, `styles.css?v=`, and `sw.js`.
 - `build.py` writes a **stub** for a shell bundle that does not exist yet, so a fresh build never 404s.
+- `pipeline.py` keeps the plan ask under `MAX_PLAN_PROMPT` characters: NotebookLM's chat rejects a prompt that is too long (around 6000 characters for a multi-line prompt), so the source listing is shortened when a course has many sources. The model answers with the source numbers, so the titles only have to stay recognisable.
 - `common.Lock` creates `.pipeline.lock` with `O_CREAT|O_EXCL` (atomic everywhere) and clears a leftover file only after checking the recorded pid with `_pid_alive`. `_pid_alive` uses `os.kill(pid, 0)` on POSIX and `OpenProcess`/`GetExitCodeProcess` on Windows, where `os.kill(pid, 0)` is a `CTRL_C_EVENT` and raises `WinError 87` for a dead pid.
 
 ## Work Guidance

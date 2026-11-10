@@ -10,7 +10,10 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-SLUGS = ["turk-dili-1", "ataturk-ilkeleri-1", "islam-mezhepleri-tarihi", "osmanlica-1"]
+sys.path.insert(0, str(ROOT / "generator" / "scripts"))
+from common import course_slugs  # noqa: E402
+
+SLUGS = course_slugs(ROOT)
 
 
 def shuffle_options(q: dict) -> dict:
