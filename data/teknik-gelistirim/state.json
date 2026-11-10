@@ -1,0 +1,747 @@
+{
+  "notebook_id": "d9fbd16b-86fb-45ab-af81-dc503b2c5aad",
+  "sources": {
+    "f3d4231d-7739-446f-a447-2c7906358ca3": {
+      "id": "f3d4231d-7739-446f-a447-2c7906358ca3",
+      "title": "IFS Applications & Cloud Oracle Infrastructure Architecture Guidelines",
+      "url": "",
+      "type": "markdown",
+      "status": "ready"
+    },
+    "239ebccb-fa0b-4409-9edf-967814bc054f": {
+      "id": "239ebccb-fa0b-4409-9edf-967814bc054f",
+      "title": "IFS Oracle DBA Training Setup",
+      "url": "",
+      "type": "gemini_chat",
+      "status": "ready"
+    },
+    "14af7919-6307-4898-8b35-3cdf88367336": {
+      "id": "14af7919-6307-4898-8b35-3cdf88367336",
+      "title": "Container Database (CDB) Administration",
+      "url": "",
+      "type": "gemini_chat",
+      "status": "ready"
+    },
+    "2f16cb24-12cc-447e-b1d9-730f21ba89d3": {
+      "id": "2f16cb24-12cc-447e-b1d9-730f21ba89d3",
+      "title": "Release Update (RU) & Release Update Revision (RUR) Lifecycle",
+      "url": "",
+      "type": "gemini_chat",
+      "status": "ready"
+    },
+    "1d3414e6-6bca-4230-b212-d0f61550560c": {
+      "id": "1d3414e6-6bca-4230-b212-d0f61550560c",
+      "title": "Memory Architecture Tuning (sga_target & pga_aggregate_target)",
+      "url": "",
+      "type": "gemini_chat",
+      "status": "ready"
+    },
+    "489d856f-f87e-4687-b920-4f6a8cc61ee8": {
+      "id": "489d856f-f87e-4687-b920-4f6a8cc61ee8",
+      "title": "Chapter 1 Core Topics Overview",
+      "url": "",
+      "type": "gemini_chat",
+      "status": "ready"
+    },
+    "65c64754-fed7-4cdb-bcf3-e8fe3fdffe7c": {
+      "id": "65c64754-fed7-4cdb-bcf3-e8fe3fdffe7c",
+      "title": "Active-Active Node Clustering",
+      "url": "",
+      "type": "gemini_chat",
+      "status": "ready"
+    },
+    "dbe6ef64-6bf2-4686-a45f-7046ef47a754": {
+      "id": "dbe6ef64-6bf2-4686-a45f-7046ef47a754",
+      "title": "Pluggable Database (PDB) Isolation & Operations",
+      "url": "",
+      "type": "gemini_chat",
+      "status": "ready"
+    },
+    "f712b4df-f0dd-42b8-a4cf-2775f6992718": {
+      "id": "f712b4df-f0dd-42b8-a4cf-2775f6992718",
+      "title": "Patch Application Execution",
+      "url": "",
+      "type": "gemini_chat",
+      "status": "ready"
+    },
+    "4ebecd4a-16c1-4397-82eb-0db7fbfbdabd": {
+      "id": "4ebecd4a-16c1-4397-82eb-0db7fbfbdabd",
+      "title": "Session & Cursor Capacity Parameter Tuning (open_cursors & processes)",
+      "url": "",
+      "type": "gemini_chat",
+      "status": "ready"
+    },
+    "0fe5fc0b-dbd0-4138-b90d-133c75d3abec": {
+      "id": "0fe5fc0b-dbd0-4138-b90d-133c75d3abec",
+      "title": "RAC Grid Infrastructure & Interconnect Configuration",
+      "url": "",
+      "type": "gemini_chat",
+      "status": "ready"
+    },
+    "1b04476c-4a75-4cff-b885-92515534b16e": {
+      "id": "1b04476c-4a75-4cff-b885-92515534b16e",
+      "title": "Disk Group Architecture (DATA & RECO)",
+      "url": "",
+      "type": "gemini_chat",
+      "status": "ready"
+    },
+    "f793ad75-751e-4c83-8ca8-28d381bab07b": {
+      "id": "f793ad75-751e-4c83-8ca8-28d381bab07b",
+      "title": "ASM Striping & Redundancy for OLTP",
+      "url": "",
+      "type": "gemini_chat",
+      "status": "ready"
+    },
+    "ccb29a2f-aa1f-47a3-a142-befdc1c2624e": {
+      "id": "ccb29a2f-aa1f-47a3-a142-befdc1c2624e",
+      "title": "Execution Plan Profiling & Index Strategies",
+      "url": "",
+      "type": "gemini_chat",
+      "status": "ready"
+    },
+    "e7afec70-f348-431b-baa5-f856ab0d8631": {
+      "id": "e7afec70-f348-431b-baa5-f856ab0d8631",
+      "title": "OEM 13c/14c Infrastructure Setup",
+      "url": "",
+      "type": "gemini_chat",
+      "status": "ready"
+    },
+    "4fab3e98-5068-47b1-aa07-37a106464d38": {
+      "id": "4fab3e98-5068-47b1-aa07-37a106464d38",
+      "title": "ADDM Report Analysis & Proactive Recommendations",
+      "url": "",
+      "type": "gemini_chat",
+      "status": "ready"
+    },
+    "56218126-5b69-4170-afb4-a3f353aa9cbf": {
+      "id": "56218126-5b69-4170-afb4-a3f353aa9cbf",
+      "title": "Automated Switchover & Failover Runbooks",
+      "url": "",
+      "type": "gemini_chat",
+      "status": "ready"
+    },
+    "7903b197-ddd2-465f-8faa-0ae76a992be0": {
+      "id": "7903b197-ddd2-465f-8faa-0ae76a992be0",
+      "title": "Gold & Platinum MAA Standards Implementation",
+      "url": "",
+      "type": "gemini_chat",
+      "status": "ready"
+    },
+    "a027bf96-9d7a-43d6-a04d-2cfd37f3f0e5": {
+      "id": "a027bf96-9d7a-43d6-a04d-2cfd37f3f0e5",
+      "title": "RPO & RTO High Availability Optimization",
+      "url": "",
+      "type": "gemini_chat",
+      "status": "ready"
+    },
+    "64e17649-95cc-4200-ae0b-f756d52ffbb1": {
+      "id": "64e17649-95cc-4200-ae0b-f756d52ffbb1",
+      "title": "Table Partitioning for Massive Transaction Tables",
+      "url": "",
+      "type": "gemini_chat",
+      "status": "ready"
+    },
+    "e35c14f2-93a3-48bc-97bb-919d2dbc6af8": {
+      "id": "e35c14f2-93a3-48bc-97bb-919d2dbc6af8",
+      "title": "IFS Enterprise Oracle Architecture & DBA Training Program Practice Test",
+      "url": "",
+      "type": "gemini_chat",
+      "status": "ready"
+    },
+    "3d916d1d-84f9-4986-998c-0fa6a07c6a66": {
+      "id": "3d916d1d-84f9-4986-998c-0fa6a07c6a66",
+      "title": "Real-Time Replica Synchronization",
+      "url": "",
+      "type": "gemini_chat",
+      "status": "ready"
+    },
+    "a9510843-a2a8-4a5d-8c6b-0df37bdf8077": {
+      "id": "a9510843-a2a8-4a5d-8c6b-0df37bdf8077",
+      "title": "Read-Only Query & Reporting Offloading",
+      "url": "",
+      "type": "gemini_chat",
+      "status": "ready"
+    },
+    "3d088243-3b09-4681-89e4-2a1a550147e9": {
+      "id": "3d088243-3b09-4681-89e4-2a1a550147e9",
+      "title": "IFS Mid-Tier Re-connection Logic Testing",
+      "url": "",
+      "type": "gemini_chat",
+      "status": "ready"
+    },
+    "748b8d41-2aa0-49aa-9ecd-8a3de6b850d9": {
+      "id": "748b8d41-2aa0-49aa-9ecd-8a3de6b850d9",
+      "title": "Peak Hours & Batch Run AWR Generation",
+      "url": "",
+      "type": "gemini_chat",
+      "status": "ready"
+    },
+    "b4fb30df-ece6-4bb1-96cd-28c0ef4d8f3c": {
+      "id": "b4fb30df-ece6-4bb1-96cd-28c0ef4d8f3c",
+      "title": "I/O Bottleneck Identification",
+      "url": "",
+      "type": "gemini_chat",
+      "status": "ready"
+    },
+    "f63c42ec-7ed9-44c7-80cb-d09716eeb506": {
+      "id": "f63c42ec-7ed9-44c7-80cb-d09716eeb506",
+      "title": "OEM Agent Administration across Nodes",
+      "url": "",
+      "type": "gemini_chat",
+      "status": "ready"
+    },
+    "864e9db2-d8b7-49d5-ba58-f597500b415f": {
+      "id": "864e9db2-d8b7-49d5-ba58-f597500b415f",
+      "title": "Tablespace & ASM Disk Space Thresholds",
+      "url": "",
+      "type": "gemini_chat",
+      "status": "ready"
+    },
+    "475de504-e92a-4488-85d7-228e05f21e02": {
+      "id": "475de504-e92a-4488-85d7-228e05f21e02",
+      "title": "CPU Utilization & Data Guard Lag Thresholds",
+      "url": "",
+      "type": "gemini_chat",
+      "status": "ready"
+    },
+    "6788fff9-3d2b-4877-86aa-77fb3cb937de": {
+      "id": "6788fff9-3d2b-4877-86aa-77fb3cb937de",
+      "title": "AWR Performance Metrics Interpretation",
+      "url": "",
+      "type": "gemini_chat",
+      "status": "ready"
+    },
+    "dd60e449-4458-4561-92f0-7e84b9b2701d": {
+      "id": "dd60e449-4458-4561-92f0-7e84b9b2701d",
+      "title": "Locking & Latch Contention Drill-Downs",
+      "url": "",
+      "type": "gemini_chat",
+      "status": "ready"
+    },
+    "32cb5d69-b326-4f17-b312-0230a7c855d0": {
+      "id": "32cb5d69-b326-4f17-b312-0230a7c855d0",
+      "title": "Automated Incident Rule sets & Notifications",
+      "url": "",
+      "type": "gemini_chat",
+      "status": "ready"
+    },
+    "2bbb340b-2864-4e94-9a73-76eeaa5eafa5": {
+      "id": "2bbb340b-2864-4e94-9a73-76eeaa5eafa5",
+      "title": "screencapture-docs-ifs-techdocs-25r1-070-remote-deploy-010-installing-fresh-system-010-planning-installation-010-storage-tier-considerations-010-oracle-db-19c-Oracle-19c-Enterprise-Edition-19c-options-and-feat.pdf",
+      "url": "",
+      "type": "pdf",
+      "status": "ready"
+    },
+    "a2830143-a7ee-43f3-8047-313346a164cd": {
+      "id": "a2830143-a7ee-43f3-8047-313346a164cd",
+      "title": "screencapture-docs-ifs-techdocs-25r1-070-remote-deploy-010-installing-fresh-system-030-preparing-server-54-log-monitoring-010-response-time-detail-view-dashboard-2026-11-08-09_29_51.pdf",
+      "url": "",
+      "type": "pdf",
+      "status": "ready"
+    },
+    "77a5ea42-ab87-4cbb-83f2-34855168abed": {
+      "id": "77a5ea42-ab87-4cbb-83f2-34855168abed",
+      "title": "screencapture-docs-ifs-techdocs-25r1-070-remote-deploy-010-installing-fresh-system-030-preparing-server-54-log-monitoring-2026-11-08-09_27_30.pdf",
+      "url": "",
+      "type": "pdf",
+      "status": "ready"
+    },
+    "616bc55c-014f-43c8-b15b-1931ffae437e": {
+      "id": "616bc55c-014f-43c8-b15b-1931ffae437e",
+      "title": "screencapture-docs-ifs-techdocs-25r1-060-development-025-operational-reporting-2026-11-08-09_42_53.pdf",
+      "url": "",
+      "type": "pdf",
+      "status": "ready"
+    },
+    "4d0ecd0a-f694-4af2-9ff9-418504a8ebff": {
+      "id": "4d0ecd0a-f694-4af2-9ff9-418504a8ebff",
+      "title": "screencapture-docs-ifs-techdocs-26r2-030-administration-120-monitoring-047-database-alert-log-categories-2026-11-08-10_11_21.pdf",
+      "url": "",
+      "type": "pdf",
+      "status": "ready"
+    },
+    "7a268338-833c-4b04-b4ee-b4b9290d557d": {
+      "id": "7a268338-833c-4b04-b4ee-b4b9290d557d",
+      "title": "screencapture-docs-ifs-techdocs-26r2-030-administration-120-monitoring-020-app-mon-120-app-mon-console-2026-11-08-10_12_26.pdf",
+      "url": "",
+      "type": "pdf",
+      "status": "ready"
+    },
+    "973a447c-30ca-4ae2-8915-f0da6242afd4": {
+      "id": "973a447c-30ca-4ae2-8915-f0da6242afd4",
+      "title": "screencapture-docs-ifs-techdocs-26r2-030-administration-120-monitoring-about-streams-background-jobs-2026-11-08-10_13_04.pdf",
+      "url": "",
+      "type": "pdf",
+      "status": "ready"
+    },
+    "65877721-8800-43e7-a699-f8583908e370": {
+      "id": "65877721-8800-43e7-a699-f8583908e370",
+      "title": "screencapture-docs-ifs-techdocs-26r2-030-administration-120-monitoring-2026-11-08-10_09_39.pdf",
+      "url": "",
+      "type": "pdf",
+      "status": "ready"
+    },
+    "904f1647-1f0b-4d2d-a274-e421d1a003d4": {
+      "id": "904f1647-1f0b-4d2d-a274-e421d1a003d4",
+      "title": "screencapture-docs-ifs-techdocs-26r2-030-administration-120-monitoring-020-app-mon-100-app-mon-metrics-008-metrics-details-2026-11-08-10_22_28.pdf",
+      "url": "",
+      "type": "pdf",
+      "status": "ready"
+    },
+    "6a588993-d227-428a-9859-3a67d5583e7b": {
+      "id": "6a588993-d227-428a-9859-3a67d5583e7b",
+      "title": "screencapture-docs-ifs-techdocs-26r2-030-administration-120-monitoring-020-app-mon-100-app-mon-metrics-010-app-mon-metrics-concepts-2026-11-08-10_31_31.pdf",
+      "url": "",
+      "type": "pdf",
+      "status": "ready"
+    },
+    "aacb746e-7471-4005-8c02-71ce163a18de": {
+      "id": "aacb746e-7471-4005-8c02-71ce163a18de",
+      "title": "screencapture-docs-ifs-techdocs-26r2-030-administration-120-monitoring-020-app-mon-100-app-mon-metrics-030-app-mon-metrics-2026-11-08-10_34_44.pdf",
+      "url": "",
+      "type": "pdf",
+      "status": "ready"
+    },
+    "f317d051-6a57-41ae-8473-e98554c786af": {
+      "id": "f317d051-6a57-41ae-8473-e98554c786af",
+      "title": "screencapture-docs-ifs-techdocs-26r2-030-administration-120-monitoring-080-oracle-queues-2026-11-08-10_35_49.pdf",
+      "url": "",
+      "type": "pdf",
+      "status": "ready"
+    },
+    "1d057a25-8c1e-415f-925b-d4d6a46bfebc": {
+      "id": "1d057a25-8c1e-415f-925b-d4d6a46bfebc",
+      "title": "screencapture-docs-ifs-techdocs-26r2-030-administration-140-system-info-and-util-022-system-performance-2026-11-08-10_40_05.pdf",
+      "url": "",
+      "type": "pdf",
+      "status": "ready"
+    },
+    "dd88611e-e6bf-4f32-996e-ea2a85ed30c1": {
+      "id": "dd88611e-e6bf-4f32-996e-ea2a85ed30c1",
+      "title": "IFS Oracle DBA Training Progress",
+      "url": "",
+      "type": "gemini_chat",
+      "status": "ready"
+    },
+    "494eab94-0a7b-410f-912a-9983479c88f7": {
+      "id": "494eab94-0a7b-410f-912a-9983479c88f7",
+      "title": "IFS Oracle DBA Eğitim Güncellemesi",
+      "url": "",
+      "type": "gemini_chat",
+      "status": "ready"
+    },
+    "f76cc808-6644-4ee4-95fa-7b0e0730e5f9": {
+      "id": "f76cc808-6644-4ee4-95fa-7b0e0730e5f9",
+      "title": "Training Progress and Chapter 6 Start",
+      "url": "",
+      "type": "gemini_chat",
+      "status": "ready"
+    },
+    "bb9376f9-7c81-4843-a754-a6b6f0e41bc1": {
+      "id": "bb9376f9-7c81-4843-a754-a6b6f0e41bc1",
+      "title": "Kesinti incelemesi hazırlığı — 11.11.2026.docx",
+      "url": "",
+      "type": "docx",
+      "status": "ready"
+    },
+    "fe661ac6-8702-4032-a9a5-bb196794fe4a": {
+      "id": "fe661ac6-8702-4032-a9a5-bb196794fe4a",
+      "title": "IFS Oracle Eğitim İçeriği Güncellemesi",
+      "url": "",
+      "type": "gemini_chat",
+      "status": "ready"
+    },
+    "7eedf1cb-fad7-4386-b919-18be8fb65007": {
+      "id": "7eedf1cb-fad7-4386-b919-18be8fb65007",
+      "title": "28 Application Continuity for Java - Database - Oracle Help Center",
+      "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/jjdbc/application-continuity.html",
+      "type": "web_page",
+      "status": "ready"
+    },
+    "5b9a7056-8a08-482f-a8e7-1a760f2e8b82": {
+      "id": "5b9a7056-8a08-482f-a8e7-1a760f2e8b82",
+      "title": "7 High Availability Architectures",
+      "url": "http://www.asktheway.org/official-documents/oracle/E50529_01/HAOVW/architectures.htm",
+      "type": "web_page",
+      "status": "ready"
+    },
+    "76617f6a-6b47-409f-99ad-c5c27e68bdb9": {
+      "id": "76617f6a-6b47-409f-99ad-c5c27e68bdb9",
+      "title": "Advanced Architectures for Oracle E-Business Suite | PDF - Slideshare",
+      "url": "https://www.slideshare.net/slideshow/advanced-architectures-for-oracle-ebusiness-suite/54860428",
+      "type": "web_page",
+      "status": "ready"
+    },
+    "2b498d6c-9371-4784-b2ce-35dee646323e": {
+      "id": "2b498d6c-9371-4784-b2ce-35dee646323e",
+      "title": "Application Continuity for the Oracle Database",
+      "url": "https://www.oracle.com/docs/tech/database/applicationcontinuityformaa.pdf",
+      "type": "pdf",
+      "status": "ready"
+    },
+    "c478de5c-7f28-44d7-aa60-9c89de9da148": {
+      "id": "c478de5c-7f28-44d7-aa60-9c89de9da148",
+      "title": "Architectural Blueprint for Oracle 19c Maximum Availability Architecture in Enterprise ERP Workloads",
+      "url": "",
+      "type": "markdown",
+      "status": "ready"
+    },
+    "8522cce5-b552-4642-98f9-b77660b7c496": {
+      "id": "8522cce5-b552-4642-98f9-b77660b7c496",
+      "title": "Best Practices for the Most Impactful Oracle Database 18c and 19c Features | PDF",
+      "url": "https://www.slideshare.net/slideshow/best-practices-for-the-most-impactful-oracle-database-18c-and-19c-features/175671795",
+      "type": "web_page",
+      "status": "ready"
+    },
+    "9a96c24e-77c7-4dc1-acc2-8becadcb3d70": {
+      "id": "9a96c24e-77c7-4dc1-acc2-8becadcb3d70",
+      "title": "C.3 Descriptions of Wait Events - Oracle Help Center",
+      "url": "https://docs.oracle.com/en/database/oracle/oracle-database/18/refrn/descriptions-of-wait-events.html",
+      "type": "web_page",
+      "status": "ready"
+    },
+    "a20dcff8-a3f4-436e-aad7-fba62eeb1eac": {
+      "id": "a20dcff8-a3f4-436e-aad7-fba62eeb1eac",
+      "title": "How to Configure TAC in Oracle RAC – Step-by-Step Guide - Learnomate Technologies",
+      "url": "https://learnomate.org/configure-tac-in-oracle-rac-oracle-rac/",
+      "type": "web_page",
+      "status": "ready"
+    },
+    "610ba785-ac7b-42c9-9df1-a26c41af7ac1": {
+      "id": "610ba785-ac7b-42c9-9df1-a26c41af7ac1",
+      "title": "Maximum Availability Architecture(MAA): - Oracle E-Business Suite Release 12",
+      "url": "https://www.oracle.com/technetwork/articles/oem/298391-132409.pdf",
+      "type": "pdf",
+      "status": "ready"
+    },
+    "cdb96ddd-9f69-4b98-a1c2-71919a96fb0f": {
+      "id": "cdb96ddd-9f69-4b98-a1c2-71919a96fb0f",
+      "title": "Optimizing Alert Monitoring with Oracle Enterprise Manager | PPTX - Slideshare",
+      "url": "https://www.slideshare.net/slideshow/optimizing-alert-monitoring-with-oracle-enterprise-manager/32504308",
+      "type": "web_page",
+      "status": "ready"
+    },
+    "9e785eef-c017-4d65-9f93-362af60a3444": {
+      "id": "9e785eef-c017-4d65-9f93-362af60a3444",
+      "title": "Oracle 19c Data Guard & Data Guard Broker",
+      "url": "http://appsdbaworkshop.blogspot.com/2026/03/oracle-19c-data-guard-data-guard-broker.html",
+      "type": "web_page",
+      "status": "ready"
+    },
+    "42981782-a6d0-4c39-a675-8bf5565b7613": {
+      "id": "42981782-a6d0-4c39-a675-8bf5565b7613",
+      "title": "Oracle Application Continuity (AC & TAC) - Bugra Parlayan",
+      "url": "https://www.bugraparlayan.com.tr/oracle-application-continuity-ac-tac.html",
+      "type": "web_page",
+      "status": "ready"
+    },
+    "69cf0036-74c0-45d9-ad5f-91a557293747": {
+      "id": "69cf0036-74c0-45d9-ad5f-91a557293747",
+      "title": "Oracle Database Backup and Recovery Reference - Oracle Help",
+      "url": "https://docs.oracle.com/en/database/oracle//oracle-database/19/rcmrf/oracle-ai-database-backup-and-recovery-reference.pdf",
+      "type": "pdf",
+      "status": "ready"
+    },
+    "34f0cc1f-fe1e-435f-8b3d-9bd0542309f4": {
+      "id": "34f0cc1f-fe1e-435f-8b3d-9bd0542309f4",
+      "title": "Oracle MAA Best Practices - Applications Considerations | PDF - Slideshare",
+      "url": "https://www.slideshare.net/slideshow/oracle-maa-best-practices-applications-considerations/140817516",
+      "type": "web_page",
+      "status": "ready"
+    },
+    "399a3765-7361-4822-bd56-c0d8f8f5a596": {
+      "id": "399a3765-7361-4822-bd56-c0d8f8f5a596",
+      "title": "Oracle for SAP Cloud and Infrastructure Update",
+      "url": "https://www.oracle.com/a/ocom/docs/oracle-sap-cloud-infrastructure-update.pdf",
+      "type": "pdf",
+      "status": "ready"
+    },
+    "c228343b-b3bb-400d-a65d-bf7606a93b5d": {
+      "id": "c228343b-b3bb-400d-a65d-bf7606a93b5d",
+      "title": "Real Application Clusters Administration and Deployment Guide - Oracle Help Center",
+      "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/racad/real-application-clusters-administration-and-deployment-guide.pdf",
+      "type": "pdf",
+      "status": "ready"
+    },
+    "46117042-721a-4c55-8d5a-5e719dbddbbc": {
+      "id": "46117042-721a-4c55-8d5a-5e719dbddbbc",
+      "title": "Recover a Dropped Table in Oracle 19c & 26ai — RMAN Table",
+      "url": "https://www.dbnexus.co.in/post/recover-a-dropped-table-in-oracle-19c-26ai-rman-table-level-pitr-lab-in-20-minutes-2026",
+      "type": "web_page",
+      "status": "ready"
+    },
+    "74d0f7e7-dd58-48e2-8f06-d19d98932bc0": {
+      "id": "74d0f7e7-dd58-48e2-8f06-d19d98932bc0",
+      "title": "Recovery Manager (RMAN) Table Point In Time Recovery (PITR) in Oracle Database 12c Release 1 and 2 (12.1 and 12.2)",
+      "url": "https://oracle-base.com/articles/12c/rman-table-point-in-time-recovery-12cr1",
+      "type": "web_page",
+      "status": "ready"
+    },
+    "5ac6afd8-67c5-4dd6-995b-69766ceb459b": {
+      "id": "5ac6afd8-67c5-4dd6-995b-69766ceb459b",
+      "title": "Video: Troubleshooting Complex Oracle Issues Part 2 | Tanel Poder Blog",
+      "url": "https://tanelpoder.com/videos/troubleshooting-complex-oracle-issues-part-2/",
+      "type": "web_page",
+      "status": "ready"
+    },
+    "b985c5f8-c5ce-43bf-9d5a-5e2892555a8f": {
+      "id": "b985c5f8-c5ce-43bf-9d5a-5e2892555a8f",
+      "title": "Ожидания, статистики, коэффициенты - Oracle mechanics - WordPress.com",
+      "url": "https://iusoltsev.wordpress.com/profile/oracle_tools/wait-events-and-statistics/",
+      "type": "web_page",
+      "status": "ready"
+    },
+    "54fe9696-9a03-4ed9-8525-b0b6a68930fc": {
+      "id": "54fe9696-9a03-4ed9-8525-b0b6a68930fc",
+      "title": "About Server Alert Log - Technical Documentation For IFS Cloud",
+      "url": "https://docs.ifs.com/techdocs/23r2/030_administration/120_monitoring/about_db_alert_log/",
+      "type": "web_page",
+      "status": "ready"
+    },
+    "fb3e40f1-7f6c-4f7d-b4a6-5fd27b7e8cbd": {
+      "id": "fb3e40f1-7f6c-4f7d-b4a6-5fd27b7e8cbd",
+      "title": "Application Monitoring Console - Technical Documentation For IFS Cloud",
+      "url": "https://docs.ifs.com/techdocs/26r2/030_administration/120_monitoring/020_app_mon/120_app_mon_console/",
+      "type": "web_page",
+      "status": "ready"
+    },
+    "0d1e7a30-2e89-468f-b423-36a36ccd5477": {
+      "id": "0d1e7a30-2e89-468f-b423-36a36ccd5477",
+      "title": "Configure Scheduled Tasks - Technical Documentation For IFS Cloud",
+      "url": "https://docs.ifs.com/techdocs/23r2/070_remote_deploy/010_installing_fresh_system/300_initial_system_configuration/007_background_processing/020_configure_scheduled_tasks/",
+      "type": "web_page",
+      "status": "ready"
+    },
+    "3478a28d-34c2-4b40-b268-a32e9d1fa4c5": {
+      "id": "3478a28d-34c2-4b40-b268-a32e9d1fa4c5",
+      "title": "Monitor Server Alert Log - Technical Documentation For IFS Cloud",
+      "url": "https://docs.ifs.com/techdocs/23r2/030_administration/120_monitoring/045_database_alert_log/",
+      "type": "web_page",
+      "status": "ready"
+    },
+    "2d66b353-981c-4f84-854e-3f43ecdb8185": {
+      "id": "2d66b353-981c-4f84-854e-3f43ecdb8185",
+      "title": "Monitoring - Technical Documentation For IFS Cloud",
+      "url": "https://docs.ifs.com/techdocs/26r2/030_administration/120_monitoring/",
+      "type": "web_page",
+      "status": "ready"
+    },
+    "2ac34d8a-8a27-4e29-96df-b28f71fd8ba0": {
+      "id": "2ac34d8a-8a27-4e29-96df-b28f71fd8ba0",
+      "title": "Preparing Installation - Technical Documentation For IFS Cloud",
+      "url": "https://docs.ifs.com/techdocs/26r2/070_remote_deploy/010_installing_fresh_system/010_planning_installation/",
+      "type": "web_page",
+      "status": "ready"
+    },
+    "3c509258-844c-4657-9b03-94c3e07e130a": {
+      "id": "3c509258-844c-4657-9b03-94c3e07e130a",
+      "title": "Server Alert Log Categories - Technical Documentation For IFS Cloud",
+      "url": "https://docs.ifs.com/techdocs/23r2/030_administration/120_monitoring/047_database_alert_log_categories/",
+      "type": "web_page",
+      "status": "ready"
+    },
+    "8aea0ce6-8040-4f16-975c-45ec98debcb4": {
+      "id": "8aea0ce6-8040-4f16-975c-45ec98debcb4",
+      "title": "Technical Administration and Operational Governance in IFS Cloud 26R2",
+      "url": "",
+      "type": "markdown",
+      "status": "ready"
+    },
+    "7706b3f1-6058-4487-a86c-dc2125297e3c": {
+      "id": "7706b3f1-6058-4487-a86c-dc2125297e3c",
+      "title": "Technical Documentation For IFS Cloud",
+      "url": "https://docs.ifs.com/techdocs/26r2/",
+      "type": "web_page",
+      "status": "ready"
+    },
+    "fb991bc1-c217-4dc6-a8e2-d4332a5e6a9b": {
+      "id": "fb991bc1-c217-4dc6-a8e2-d4332a5e6a9b",
+      "title": "Database Performance Tuning Guide",
+      "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/tgdba/",
+      "type": "web_page",
+      "status": "ready"
+    },
+    "4101ab09-ff0d-4b11-b109-5c5cfc602472": {
+      "id": "4101ab09-ff0d-4b11-b109-5c5cfc602472",
+      "title": "Oracle Data Guard Concepts and Administration, 19c",
+      "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/sbydb/",
+      "type": "web_page",
+      "status": "ready"
+    },
+    "a2c969ff-fe28-4362-a2d6-81807bf8d55c": {
+      "id": "a2c969ff-fe28-4362-a2d6-81807bf8d55c",
+      "title": "Backup and Recovery User Guide",
+      "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/bradv/",
+      "type": "web_page",
+      "status": "ready"
+    },
+    "667e3b8a-819a-4cdf-ae3c-94d88a2cbcbb": {
+      "id": "667e3b8a-819a-4cdf-ae3c-94d88a2cbcbb",
+      "title": "Oracle Automatic Storage Management Administrator's Guide",
+      "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/ostmg/",
+      "type": "web_page",
+      "status": "ready"
+    },
+    "e3ee6100-2d00-472d-a88d-3958b21025fd": {
+      "id": "e3ee6100-2d00-472d-a88d-3958b21025fd",
+      "title": "Oracle Real Application Clusters Real Application Clusters Administration and Deployment Guide, 19c",
+      "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/racad/",
+      "type": "web_page",
+      "status": "ready"
+    },
+    "4b420ef3-e08b-4c97-98ed-a14ff57fc023": {
+      "id": "4b420ef3-e08b-4c97-98ed-a14ff57fc023",
+      "title": "High Availability Best Practices and Overview",
+      "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/haovw/",
+      "type": "web_page",
+      "status": "ready"
+    },
+    "e8ccb72a-074a-4053-a8bc-54c864851e88": {
+      "id": "e8ccb72a-074a-4053-a8bc-54c864851e88",
+      "title": "Oracle Database Database Reference, 19c",
+      "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/refrn/",
+      "type": "web_page",
+      "status": "ready"
+    },
+    "aaaf38c9-d233-4e21-871e-e5375b696663": {
+      "id": "aaaf38c9-d233-4e21-871e-e5375b696663",
+      "title": "Oracle Database Database Administrator's Guide, 19c",
+      "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/admin/",
+      "type": "web_page",
+      "status": "ready"
+    },
+    "eebd95b3-55c6-4178-a201-1ffd89aa06d8": {
+      "id": "eebd95b3-55c6-4178-a201-1ffd89aa06d8",
+      "title": "Oracle Database Database Concepts, 19c",
+      "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/cncpt/",
+      "type": "web_page",
+      "status": "ready"
+    },
+    "6d64ce46-7a82-4114-b656-4fa48e39707a": {
+      "id": "6d64ce46-7a82-4114-b656-4fa48e39707a",
+      "title": "Oracle Database Database Upgrade Guide, 19c",
+      "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/upgrd/",
+      "type": "web_page",
+      "status": "ready"
+    },
+    "30c8d921-9b1a-45f2-9e13-aeb376263794": {
+      "id": "30c8d921-9b1a-45f2-9e13-aeb376263794",
+      "title": "screencapture-medium-prabirkrkundu-oracle-maa-silver-and-gold-deployment-for-e-business-suite-on-oracle-database-azure-84cfaf11e336-2026-11-10-09_39_28.pdf",
+      "url": "",
+      "type": "pdf",
+      "status": "ready"
+    },
+    "41a61ccb-4737-4a41-9a83-d74d9b1b76a6": {
+      "id": "41a61ccb-4737-4a41-9a83-d74d9b1b76a6",
+      "title": "screencapture-web-archive-org-web-20231203162938-https-www-rackspace-com-blog-understanding-oracle-19c-transparent-application-continuity-2026-11-10-09_45_44.pdf",
+      "url": "",
+      "type": "pdf",
+      "status": "ready"
+    }
+  },
+  "order": [
+    "f3d4231d-7739-446f-a447-2c7906358ca3",
+    "239ebccb-fa0b-4409-9edf-967814bc054f",
+    "14af7919-6307-4898-8b35-3cdf88367336",
+    "2f16cb24-12cc-447e-b1d9-730f21ba89d3",
+    "1d3414e6-6bca-4230-b212-d0f61550560c",
+    "489d856f-f87e-4687-b920-4f6a8cc61ee8",
+    "65c64754-fed7-4cdb-bcf3-e8fe3fdffe7c",
+    "dbe6ef64-6bf2-4686-a45f-7046ef47a754",
+    "f712b4df-f0dd-42b8-a4cf-2775f6992718",
+    "4ebecd4a-16c1-4397-82eb-0db7fbfbdabd",
+    "0fe5fc0b-dbd0-4138-b90d-133c75d3abec",
+    "1b04476c-4a75-4cff-b885-92515534b16e",
+    "f793ad75-751e-4c83-8ca8-28d381bab07b",
+    "ccb29a2f-aa1f-47a3-a142-befdc1c2624e",
+    "e7afec70-f348-431b-baa5-f856ab0d8631",
+    "4fab3e98-5068-47b1-aa07-37a106464d38",
+    "56218126-5b69-4170-afb4-a3f353aa9cbf",
+    "7903b197-ddd2-465f-8faa-0ae76a992be0",
+    "a027bf96-9d7a-43d6-a04d-2cfd37f3f0e5",
+    "64e17649-95cc-4200-ae0b-f756d52ffbb1",
+    "e35c14f2-93a3-48bc-97bb-919d2dbc6af8",
+    "3d916d1d-84f9-4986-998c-0fa6a07c6a66",
+    "a9510843-a2a8-4a5d-8c6b-0df37bdf8077",
+    "3d088243-3b09-4681-89e4-2a1a550147e9",
+    "748b8d41-2aa0-49aa-9ecd-8a3de6b850d9",
+    "b4fb30df-ece6-4bb1-96cd-28c0ef4d8f3c",
+    "f63c42ec-7ed9-44c7-80cb-d09716eeb506",
+    "864e9db2-d8b7-49d5-ba58-f597500b415f",
+    "475de504-e92a-4488-85d7-228e05f21e02",
+    "6788fff9-3d2b-4877-86aa-77fb3cb937de",
+    "dd60e449-4458-4561-92f0-7e84b9b2701d",
+    "32cb5d69-b326-4f17-b312-0230a7c855d0",
+    "2bbb340b-2864-4e94-9a73-76eeaa5eafa5",
+    "a2830143-a7ee-43f3-8047-313346a164cd",
+    "77a5ea42-ab87-4cbb-83f2-34855168abed",
+    "616bc55c-014f-43c8-b15b-1931ffae437e",
+    "4d0ecd0a-f694-4af2-9ff9-418504a8ebff",
+    "7a268338-833c-4b04-b4ee-b4b9290d557d",
+    "973a447c-30ca-4ae2-8915-f0da6242afd4",
+    "65877721-8800-43e7-a699-f8583908e370",
+    "904f1647-1f0b-4d2d-a274-e421d1a003d4",
+    "6a588993-d227-428a-9859-3a67d5583e7b",
+    "aacb746e-7471-4005-8c02-71ce163a18de",
+    "f317d051-6a57-41ae-8473-e98554c786af",
+    "1d057a25-8c1e-415f-925b-d4d6a46bfebc",
+    "dd88611e-e6bf-4f32-996e-ea2a85ed30c1",
+    "494eab94-0a7b-410f-912a-9983479c88f7",
+    "f76cc808-6644-4ee4-95fa-7b0e0730e5f9",
+    "bb9376f9-7c81-4843-a754-a6b6f0e41bc1",
+    "fe661ac6-8702-4032-a9a5-bb196794fe4a",
+    "7eedf1cb-fad7-4386-b919-18be8fb65007",
+    "5b9a7056-8a08-482f-a8e7-1a760f2e8b82",
+    "76617f6a-6b47-409f-99ad-c5c27e68bdb9",
+    "2b498d6c-9371-4784-b2ce-35dee646323e",
+    "c478de5c-7f28-44d7-aa60-9c89de9da148",
+    "8522cce5-b552-4642-98f9-b77660b7c496",
+    "9a96c24e-77c7-4dc1-acc2-8becadcb3d70",
+    "a20dcff8-a3f4-436e-aad7-fba62eeb1eac",
+    "610ba785-ac7b-42c9-9df1-a26c41af7ac1",
+    "cdb96ddd-9f69-4b98-a1c2-71919a96fb0f",
+    "9e785eef-c017-4d65-9f93-362af60a3444",
+    "42981782-a6d0-4c39-a675-8bf5565b7613",
+    "69cf0036-74c0-45d9-ad5f-91a557293747",
+    "34f0cc1f-fe1e-435f-8b3d-9bd0542309f4",
+    "399a3765-7361-4822-bd56-c0d8f8f5a596",
+    "c228343b-b3bb-400d-a65d-bf7606a93b5d",
+    "46117042-721a-4c55-8d5a-5e719dbddbbc",
+    "74d0f7e7-dd58-48e2-8f06-d19d98932bc0",
+    "5ac6afd8-67c5-4dd6-995b-69766ceb459b",
+    "b985c5f8-c5ce-43bf-9d5a-5e2892555a8f",
+    "54fe9696-9a03-4ed9-8525-b0b6a68930fc",
+    "fb3e40f1-7f6c-4f7d-b4a6-5fd27b7e8cbd",
+    "0d1e7a30-2e89-468f-b423-36a36ccd5477",
+    "3478a28d-34c2-4b40-b268-a32e9d1fa4c5",
+    "2d66b353-981c-4f84-854e-3f43ecdb8185",
+    "2ac34d8a-8a27-4e29-96df-b28f71fd8ba0",
+    "3c509258-844c-4657-9b03-94c3e07e130a",
+    "8aea0ce6-8040-4f16-975c-45ec98debcb4",
+    "7706b3f1-6058-4487-a86c-dc2125297e3c",
+    "fb991bc1-c217-4dc6-a8e2-d4332a5e6a9b",
+    "4101ab09-ff0d-4b11-b109-5c5cfc602472",
+    "a2c969ff-fe28-4362-a2d6-81807bf8d55c",
+    "667e3b8a-819a-4cdf-ae3c-94d88a2cbcbb",
+    "e3ee6100-2d00-472d-a88d-3958b21025fd",
+    "4b420ef3-e08b-4c97-98ed-a14ff57fc023",
+    "e8ccb72a-074a-4053-a8bc-54c864851e88",
+    "aaaf38c9-d233-4e21-871e-e5375b696663",
+    "eebd95b3-55c6-4178-a201-1ffd89aa06d8",
+    "6d64ce46-7a82-4114-b656-4fa48e39707a",
+    "30c8d921-9b1a-45f2-9e13-aeb376263794",
+    "41a61ccb-4737-4a41-9a83-d74d9b1b76a6"
+  ],
+  "notebook_title": "IFS Enterprise Oracle Architecture & DBA Training Program",
+  "tries": {
+    "quiz": 2
+  },
+  "errors": [
+    {
+      "key": "quiz",
+      "at": "2026-11-10 14:00:20",
+      "msg": "{\n  \"error\": true,\n  \"code\": \"UNEXPECTED_ERROR\",\n  \"message\": \"Unexpected error: \"\n}\n"
+    }
+  ],
+  "quiz_artifact": "47ac6f7b-ccb7-4f84-8cd1-60a33c997a7d"
+}

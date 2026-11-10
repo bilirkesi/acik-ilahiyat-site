@@ -76,7 +76,8 @@ Rules for the bundle itself live in `okf/AGENTS.md`.
 ## Project
 - Name: Açık İlahiyat Üniversitesi — a free, static study site for AÖF (Anadolu Üniversitesi) İlahiyat associate-degree courses.
 - Runtime: **no backend**. `site/` is a static SPA (hash router) served from any static host. All data ships as JS bundles that assign to `window.*`.
-- Source of truth for configuration: `university.json` (branding, pass mark, colors, exam dates, AÖF grading weights and pass threshold, `grounding` source ranking and prompt rules for NotebookLM generation), `courses.json` (the four courses), `universities.json`.
+- Source of truth for configuration: `university.json` (branding, pass mark, colors, exam dates, AÖF grading weights and pass threshold, `grounding` source ranking and prompt rules for NotebookLM generation), `courses.json` (the five courses), `universities.json`.
+- A course overrides the university-wide settings it needs in `courses.json[course].config`: the `language` and `audience` of its material, how many `chapters` it has, and its own `grounding` (source ranking and prompt rules). `load_university(root, course)` applies the override; `pipeline.py`, `audit_sources.py` and `generate_chapter_audio.py` use it, so a course can be built in another language or on another source hierarchy.
 - Source of truth for course content: `data/<slug>/` (see `data/AGENTS.md`).
 - Study materials are generated from NotebookLM notebooks fed with AÖF PDFs and YouTube lecture captions. Generation goes through the external `notebooklm` CLI from `notebooklm-py` (`py -3 -m pip install "notebooklm-py[browser]"`, then `notebooklm login` once); no Python module in this repo imports it, so the stdlib-only rule still holds.
 - Python entry points are run as modules from the repo root (`py -3 -m coursegraph.…`) or as scripts (`py -3 scripts/….py`). On Windows the working launcher is `py -3`; `python` is not on PATH.
@@ -85,6 +86,7 @@ Rules for the bundle itself live in `okf/AGENTS.md`.
 - `README.md` is the entry point for newcomers: what the project is, how to run it, how the pieces fit together.
 - Large local-only material lives in `artifacts/`, `assets/`, and `logs/`; all three are git-ignored. Never reference them as if they ship to the site.
 ## Known Gaps
+- `data/teknik-gelistirim` is the only course that is not a university course: it is an IFS Cloud and Oracle DBA training program, its material is in English, its units are its chapters and it has no past exams. `coursegraph/past_exams.py` holds its unit titles; they must stay equal to the chapter titles in `data/teknik-gelistirim/study_plan.json` (a test checks this).
 - Source quality (`py -3 scripts/audit_sources.py`): chapters of `turk-dili-1`, `ataturk-ilkeleri-1`, `islam-mezhepleri-tarihi` were planned and grounded on lecture captions only. Study notes for the three were rebuilt from `Kitap.pdf`; by owner decision, quizzes, infographics and audio made before the grounding rules stay as they are, and the rules apply to new generation only. `turk-dili-1/state.json` records only the Kitap among the notebook's 14 AÖF PDFs.
 - `data/osmanlica-1`: past-exam units come from `past_exams_notes.json`; the `OSM_UNIT_KEYWORDS` fallback in `coursegraph/past_exams.py` covers units 1-5 only, so a future final-exam question for units 6-8 needs a note entry.
 ## Child DOX Index

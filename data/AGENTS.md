@@ -6,6 +6,7 @@
 
 ## Ownership
 - `data/<slug>/study_plan.json` — chapters with `title`, `summary`, `objectives`, `lectures`, `source_ids`, optional `grounding` and `cites`. The site's chapter pages are built from this.
+- `data/teknik-gelistirim/` — the IFS Cloud and Oracle DBA training program, the one course that is not a university course. Its material is in English, its units are its chapters (the unit titles live in `coursegraph/past_exams.py` and must equal the chapter titles here), it has no past exams, and its `state.json` records the 91 sources of an existing NotebookLM notebook in `mode: own` — the pipeline only reads that notebook, it never adds or removes a source there.
 - `data/<slug>/quiz.json` — the final "game" quiz.
 - `data/<slug>/exams/{vize,final,yaz-kursu}.json` — practice exams; schema in `_exam_schema.md`.
 - `data/<slug>/unit_quizzes/unit-N.json` — per-unit quizzes generated from past-exam questions plus the textbook.

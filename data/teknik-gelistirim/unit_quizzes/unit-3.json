@@ -1,0 +1,331 @@
+{
+  "unit": 3,
+  "unitTitle": "Release Lifecycle and Patching: RU, RUR and Upgrades",
+  "title": "Oracle Quiz",
+  "questions": [
+    {
+      "question": "In the Oracle Database patching lifecycle, what primary content distinguishes a Release Update Revision (RUR) from a standard Release Update (RU)?",
+      "answerOptions": [
+        {
+          "text": "RURs include new functional bug fixes from subsequent RUs, whereas RUs only contain security patches.",
+          "isCorrect": false,
+          "rationale": "Release Updates (RUs) contain new functional bug fixes alongside security patches, whereas RURs exclude new functional bug fixes from subsequent RUs."
+        },
+        {
+          "text": "RURs deliver strictly critical security fixes and regression fixes for a specific RU without incorporating new functional bug fixes from subsequent RUs.",
+          "isCorrect": true,
+          "rationale": "RURs are designed to extend an existing RU's lifespan by providing essential security and regression fixes while maintaining stability."
+        },
+        {
+          "text": "RURs modify major release numbers, while RUs only increment the database patch revision digit.",
+          "isCorrect": false,
+          "rationale": "RUs increment the minor release version number, whereas RURs increment the patch revision digit."
+        },
+        {
+          "text": "RURs replace binary files in $ORACLE_HOME without requiring datapatch to update SQL dictionary metadata.",
+          "isCorrect": false,
+          "rationale": "Both RUs and RURs require running datapatch to update data dictionary metadata after applying binary updates."
+        }
+      ],
+      "hint": "Think about which patch type is designed to extend an existing RU's lifespan with minimal functional change.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "How does applying a Release Update Revision (RUR) impact the Oracle Database version string compared to applying a Release Update (RU)?",
+      "answerOptions": [
+        {
+          "text": "Applying an RU increments the revision digit, while an RUR increments the minor version digit.",
+          "isCorrect": false,
+          "rationale": "RUs increment the minor release version (such as 19.11 to 19.12), whereas RURs increment the revision digit."
+        },
+        {
+          "text": "Applying an RU increments the major release version, while an RUR increments the minor release version.",
+          "isCorrect": false,
+          "rationale": "Major release version upgrades represent separate database releases rather than quarterly patch updates."
+        },
+        {
+          "text": "Applying an RU increments the minor version digit (e.g., 19.11 to 19.12), whereas an RUR increments the revision digit (e.g., 19.11.0 to 19.11.1).",
+          "isCorrect": true,
+          "rationale": "RUs advance the database minor version, whereas RURs track maintenance iterations of a specific baseline RU."
+        },
+        {
+          "text": "Applying an RUR removes the version string completely from the dba_registry_sqlpatch view.",
+          "isCorrect": false,
+          "rationale": "Database view dba_registry_sqlpatch records and displays detailed version and patch registry entries for both RUs and RURs."
+        }
+      ],
+      "hint": "Consider which digit changes when staying on a baseline RU while applying critical maintenance revisions.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "During the two-stage Oracle Database patching process, what is the primary role of the datapatch utility?",
+      "answerOptions": [
+        {
+          "text": "It replaces executable binaries, libraries, and header files inside $ORACLE_HOME while database services are stopped.",
+          "isCorrect": false,
+          "rationale": "Binary replacement within the Oracle home is performed by opatch apply while database services are down."
+        },
+        {
+          "text": "It updates SQL metadata, data dictionary objects, and PL/SQL packages inside CDB$ROOT and all pluggable databases after reopening the database.",
+          "isCorrect": true,
+          "rationale": "Datapatch automates post-patch SQL execution against data dictionary objects once the database is open."
+        },
+        {
+          "text": "It performs pre-patch conflict detection against active background processes while the database is mounted.",
+          "isCorrect": false,
+          "rationale": "Conflict detection is an opatch pre-installation check performed prior to stopping services and applying binaries."
+        },
+        {
+          "text": "It automates the upgrade of the OPatch binary utility to its minimum required version.",
+          "isCorrect": false,
+          "rationale": "DBAs must manually update OPatch to the minimum version specified in the patch Readme before running patch commands."
+        }
+      ],
+      "hint": "Recall which step occurs after binary patching has finished and database services are started.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Which prerequisite action must a database administrator perform prior to executing binary patch installation using opatch apply?",
+      "answerOptions": [
+        {
+          "text": "Verify that OPatch meets the minimum required version in the Readme and perform conflict detection against $ORACLE_HOME.",
+          "isCorrect": true,
+          "rationale": "Ensuring OPatch version compatibility and running conflict checks prevents partial patch applications and software issues."
+        },
+        {
+          "text": "Execute datapatch while the database is shut down to clear existing patch registry entries.",
+          "isCorrect": false,
+          "rationale": "Datapatch requires the database to be open and cannot run while database services are down."
+        },
+        {
+          "text": "Convert the Oracle ASFU database license to an FU license to grant binary modification permissions.",
+          "isCorrect": false,
+          "rationale": "Licensing models govern usage rights and third-party access, not binary patching mechanics."
+        },
+        {
+          "text": "Compile all PL/SQL packages across all pluggable databases using Oracle Data Pump.",
+          "isCorrect": false,
+          "rationale": "Data Pump is used for data migration and export/import rather than pre-patch validation."
+        }
+      ],
+      "hint": "Consider what must be checked regarding the patching tool itself and existing software components before stopping services.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Which database views allow a database administrator to inspect and confirm applied RU or RUR revision history in an Oracle Database environment?",
+      "answerOptions": [
+        {
+          "text": "v$instance and v$database",
+          "isCorrect": false,
+          "rationale": "Views v$instance and v$database show general database instance status but do not track detailed SQL patch execution history."
+        },
+        {
+          "text": "registry$history and dba_registry_sqlpatch",
+          "isCorrect": true,
+          "rationale": "These views maintain records of applied patch histories, SQL patch execution statuses, and database registry updates."
+        },
+        {
+          "text": "dba_tablespaces and dba_data_files",
+          "isCorrect": false,
+          "rationale": "These catalog views store physical storage layout details rather than software patching registry information."
+        },
+        {
+          "text": "opatch_log_history and dba_patch_conflicts",
+          "isCorrect": false,
+          "rationale": "These are not valid system views for inspecting applied database SQL patches."
+        }
+      ],
+      "hint": "Look for dictionary views specifically dedicated to registry history and SQL patch information.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "According to the patching lifecycle guidelines for IFS/Oracle environments, what is the primary recommendation for production systems with strict change-management policies?",
+      "answerOptions": [
+        {
+          "text": "Apply Release Updates (RUs) quarterly to introduce new functional enhancements immediately.",
+          "isCorrect": false,
+          "rationale": "Broad functional changes in RUs increase execution plan variance, making them less ideal for locked production baselines."
+        },
+        {
+          "text": "Apply Release Update Revisions (RURs) to lock core execution behavior while maintaining security compliance between major upgrade windows.",
+          "isCorrect": true,
+          "rationale": "RURs deliver critical security and regression fixes without altering broad application behavior or query execution plans."
+        },
+        {
+          "text": "Skip binary patching entirely and apply SQL updates only via datapatch.",
+          "isCorrect": false,
+          "rationale": "Binary patching with opatch apply is required to update underlying executables before SQL scripts can be run."
+        },
+        {
+          "text": "Deploy RUs exclusively in production while applying RURs in non-production development environments.",
+          "isCorrect": false,
+          "rationale": "RUs are recommended for non-production environments to test and validate functional updates before major upgrades."
+        }
+      ],
+      "hint": "Reflect on which strategy minimizes change scope and execution plan variance for mission-critical production systems.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "According to the table of contents of Oracle Database Database Upgrade Guide 19c, which tool is featured in Chapter 3 for database upgrades?",
+      "answerOptions": [
+        {
+          "text": "Database Upgrade Assistant (DBUA)",
+          "isCorrect": false,
+          "rationale": "Upgrading with Database Upgrade Assistant (DBUA) is covered in Appendix C."
+        },
+        {
+          "text": "AutoUpgrade",
+          "isCorrect": true,
+          "rationale": "Chapter 3 is dedicated to using AutoUpgrade for Oracle Database upgrades."
+        },
+        {
+          "text": "Parallel Upgrade Utility",
+          "isCorrect": false,
+          "rationale": "Manual upgrades using Parallel Upgrade Utility are detailed in Chapter 4."
+        },
+        {
+          "text": "Oracle Data Pump",
+          "isCorrect": false,
+          "rationale": "Data migration using Oracle Data Pump is covered in Chapter 9."
+        }
+      ],
+      "hint": "Appendix C covers DBUA and Chapter 4 covers the Parallel Upgrade Utility, so think about what Chapter 3 specifically focuses on.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "In Procedure 3 of cloud database migration for SAP on Oracle, which RMAN command creates an exact copy of the source database in the cloud without requiring a backup buffer?",
+      "answerOptions": [
+        {
+          "text": "opatch apply",
+          "isCorrect": false,
+          "rationale": "The opatch apply command is used for applying software patches to an Oracle home, not database copying."
+        },
+        {
+          "text": "brbackup",
+          "isCorrect": false,
+          "rationale": "The brbackup tool relies on backup files staged on file systems or cloud object storage."
+        },
+        {
+          "text": "duplicate database from active database",
+          "isCorrect": true,
+          "rationale": "RMAN duplicate database from active database transfers data over the network directly from the active source to the target."
+        },
+        {
+          "text": "cross platform transportable tablespaces",
+          "isCorrect": false,
+          "rationale": "Transportable tablespaces require staging backup files and metadata exports to a shared filesystem."
+        }
+      ],
+      "hint": "This procedure allows building an active copy directly over the network without stage-buffering export files or backups.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Which procedure should be used when migrating an SAP Oracle database to Oracle Cloud Infrastructure across platforms with different endian types?",
+      "answerOptions": [
+        {
+          "text": "RMAN duplicate database from active database",
+          "isCorrect": false,
+          "rationale": "Direct active database duplication requires compatible source and target platform endian formats."
+        },
+        {
+          "text": "RMAN cross platform transportable tablespaces command",
+          "isCorrect": true,
+          "rationale": "Cross platform transportable tablespaces enable data movement between platforms with differing endianness."
+        },
+        {
+          "text": "BR*Tools brbackup with Object Storage",
+          "isCorrect": false,
+          "rationale": "Standard BR*Tools backup and restore requires compatible operating system platform types."
+        },
+        {
+          "text": "OPatch binary staging procedure",
+          "isCorrect": false,
+          "rationale": "OPatch updates executable software binaries in an Oracle home rather than migrating user database data across platforms."
+        }
+      ],
+      "hint": "Focus on the RMAN feature specifically designed to handle platform architecture differences like endianness.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Which cloud database migration method for SAP on Oracle enables a transparent database upgrade as part of the data movement process?",
+      "answerOptions": [
+        {
+          "text": "RMAN duplicate database from active database",
+          "isCorrect": false,
+          "rationale": "Database duplication creates an exact replica and does not support release upgrades during the duplication process."
+        },
+        {
+          "text": "Procedure 1 (RMAN via Object Storage)",
+          "isCorrect": false,
+          "rationale": "Procedure 1 performs standard restore and recovery without executing transparent database version upgrades."
+        },
+        {
+          "text": "Oracle Lifecycle Migration Service (O2O / OOO)",
+          "isCorrect": true,
+          "rationale": "O2O creates a new target database in the cloud, allowing transparent database upgrades during data transfer."
+        },
+        {
+          "text": "OPatch binary replacement method",
+          "isCorrect": false,
+          "rationale": "OPatch applies interim patches and updates to an existing release rather than performing database release upgrades."
+        }
+      ],
+      "hint": "This service generates custom scripts to create a target database, allowing structural and feature adjustments during migration.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "What key functional difference distinguishes an Oracle Database with an Application Specific Full Use (ASFU) license from one with a Full Use (FU) license?",
+      "answerOptions": [
+        {
+          "text": "ASFU databases lack support for Oracle Advanced Security encryption features.",
+          "isCorrect": false,
+          "rationale": "Oracle Advanced Security encryption is fully included in the SAP ASFU database license."
+        },
+        {
+          "text": "ASFU databases cannot be deployed on Oracle Exadata hardware.",
+          "isCorrect": false,
+          "rationale": "ASFU databases are fully supported on Oracle Exadata systems and Oracle Cloud Infrastructure."
+        },
+        {
+          "text": "ASFU databases may only be used by SAP ECC/NetWeaver applications, whereas FU databases allow access by non-SAP tools and third-party applications.",
+          "isCorrect": true,
+          "rationale": "ASFU licensing restricts direct database access exclusively to the bundled SAP application suite."
+        },
+        {
+          "text": "ASFU license fees are calculated per processor core, whereas FU licenses are based on SAP contract percentages.",
+          "isCorrect": false,
+          "rationale": "ASFU fees are calculated as a fixed percentage of the SAP contract, whereas FU licensing is based on processor cores."
+        }
+      ],
+      "hint": "Consider how license scope affects access to data from non-SAP software.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "What benefit is gained by incorporating Oracle GoldenGate into the Oracle Lifecycle Migration Service (changing O2O into the OOO procedure)?",
+      "answerOptions": [
+        {
+          "text": "It eliminates the requirement to execute post-patch SQL automation via datapatch.",
+          "isCorrect": false,
+          "rationale": "Datapatch remains mandatory for updating dictionary metadata after binary patching regardless of data replication."
+        },
+        {
+          "text": "It captures changes made during data transfer, enabling online migration and reducing SAP downtime to a short switchover.",
+          "isCorrect": true,
+          "rationale": "GoldenGate continuously replicates transactions so that the application remains online until the final switchover."
+        },
+        {
+          "text": "It automatically converts an ASFU database license into a public cloud FU subscription.",
+          "isCorrect": false,
+          "rationale": "GoldenGate is a replication technology and does not alter database license classification rules."
+        },
+        {
+          "text": "It performs automatic cross-platform byte swapping without pausing database operations.",
+          "isCorrect": false,
+          "rationale": "Byte swapping is handled by RMAN transportable tablespaces, not GoldenGate replication."
+        }
+      ],
+      "hint": "GoldenGate's real-time data replication allows application activity to continue while initial data movement is taking place.",
+      "type": "multiple_choice"
+    }
+  ]
+}
