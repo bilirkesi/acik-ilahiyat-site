@@ -6,7 +6,8 @@
 
 ## Ownership
 - `scripts/build.py` — the entry point. Copies `site-template/` into `site/`, injects `university.json` branding, bundles every course that has a `data/<slug>/manifest.json` into `site/data.js`, writes `index.html`, `manifest.webmanifest`, and `sw.js`, compresses chapter infographics, and zips each `extensions/<name>/` into `site/downloads/<name>.zip`.
-- `scripts/common.py` — shared project/course helpers, incl. the grounding helpers `source_tier`, `with_authority`, `grounding_rules` that read `university.json` → `grounding`.
+- `scripts/common.py` — shared project/course helpers, incl. the grounding helpers `source_tier`, `with_authority`, `grounding_rules` that read `university.json` → `grounding`, the `Lock` that keeps a single pipeline runner per project, and `find_cli`/`require_cli` that locate the `notebooklm` CLI without hardcoded machine paths.
+- `scripts/quiz_types.py` — the canonical list of quiz question types (`GRADED`, `KNOWN`); `qa.py` and `scripts/check_quiz_answers.py` both import it, and a test asserts it matches the site's `GRADED` set in `app.js`.
 - `scripts/pipeline.py`, `preflight.py`, `qa.py`, `redo.py`, `sheet.py` — full generation, validation, and contact-sheet tooling.
 - `scripts/add_course.py`, `new_project.py` — scaffold a course or a new project.
 - `chapter_audio()` in `build.py` reads `data/<slug>/audio.json` and adds `course.audio` for MP3s that exist under `site/audio/<slug>/`; `offline_packs()` exposes them as the separate `<slug>-ses` pack.
@@ -22,6 +23,7 @@
 - `SHELL_FILES` in `build.py` lists the PWA app shell hashed into `sw.js`: `index.html`, `styles.css`, `app.js`, `data.js`, `interactive.js`, `coursegraph.js`, `past_exams.js`, `unit_quizzes.js`, `manifest.webmanifest`, `favicon.svg`. Adding a new lazy bundle means adding it here too.
 - Cache busting uses a single `{{V}}` token stamped into `index.html`, `styles.css?v=`, and `sw.js`.
 - `build.py` writes a **stub** for a shell bundle that does not exist yet, so a fresh build never 404s.
+- `common.Lock` creates `.pipeline.lock` with `O_CREAT|O_EXCL` (atomic everywhere) and clears a leftover file only after checking the recorded pid with `_pid_alive`. `_pid_alive` uses `os.kill(pid, 0)` on POSIX and `OpenProcess`/`GetExitCodeProcess` on Windows, where `os.kill(pid, 0)` is a `CTRL_C_EVENT` and raises `WinError 87` for a dead pid.
 
 ## Work Guidance
 - Change SPA behavior or styling in `site-template/`, then rebuild — do not hand-edit the generated `site/` copy (see `site/AGENTS.md`).

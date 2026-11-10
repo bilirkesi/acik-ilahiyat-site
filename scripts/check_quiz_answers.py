@@ -19,6 +19,10 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
+# Soru tipleri tek kaynaktan gelir (generator/scripts/quiz_types.py); burada ayrı bir liste
+# tutmak, geçerli bir sorunun "bilinmeyen tip" diye reddedilmesine yol açıyordu.
+sys.path.insert(0, str(ROOT / "generator" / "scripts"))
+from quiz_types import KNOWN  # noqa: E402
 
 
 def fold(s: str) -> str:
@@ -63,7 +67,7 @@ def check_questions(questions: list, where: str, problems: list) -> Counter:
         for o in opts:
             if not str(o.get("text", "")).strip():
                 problems.append(f"{label}: boş şık metni")
-        if q.get("type") not in (None, "test", "multiple_choice", "true_false"):
+        if q.get("type") not in KNOWN:
             problems.append(f"{label}: bilinmeyen type={q.get('type')!r}")
     return dupes
 

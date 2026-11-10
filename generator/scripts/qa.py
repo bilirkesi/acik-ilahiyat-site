@@ -11,9 +11,9 @@ plan validation issues, chapters without notes or images, quiz questions of unkn
 """
 import json, re, sys
 from common import Project
+from quiz_types import GRADED, KNOWN
 
 BANNED = re.compile(r"\b(MBA|degrees?|accredited)\b", re.I)
-GRADED = {"multiple_choice", "multiple_select", "fill_in_the_blank", "short_answer"}
 
 proj = Project(sys.argv[1]) if len(sys.argv) > 1 else sys.exit(__doc__)
 site = proj.root / "site"
@@ -65,9 +65,13 @@ for c in courses:
         fails.append(f"{tag}: no chapters")
     if not c["quiz"]:
         fails.append(f"{tag}: no quiz questions")
-    types = {q.get("type") for q in c["quiz"]} - GRADED
-    if types:
-        warns.append(f"{tag}: unknown quiz types {types} (shown as reflection questions)")
+    types = {q.get("type") for q in c["quiz"]}
+    unknown = {t for t in types if t not in KNOWN}
+    if unknown:
+        warns.append(f"{tag}: unknown quiz types {unknown}")
+    reflection = types - GRADED - unknown
+    if reflection:
+        warns.append(f"{tag}: reflection quiz types {reflection} (not auto-graded)")
     for i, ch in enumerate(c["chapters"], 1):
         if ch["image"] and not (site / ch["image"]).exists():
             fails.append(f"{tag} ch{i}: image {ch['image']} missing")
@@ -77,10 +81,14 @@ for c in courses:
             warns.append(f"{tag} ch{i}: no study notes (ground stage)")
         if not ch["lectures"]:
             warns.append(f"{tag} ch{i}: no sources mapped")
-    plan = json.loads((proj.root / "data" / tag / "study_plan.json").read_text())
-    bad = {k: v for k, v in plan.get("validation", {}).items() if v}
-    if bad:
-        warns.append(f"{tag}: plan validation {bad}")
+    plan_path = proj.root / "data" / tag / "study_plan.json"
+    if not plan_path.exists():
+        warns.append(f"{tag}: no study_plan.json")
+    else:
+        plan = json.loads(plan_path.read_text(encoding="utf-8-sig"))
+        bad = {k: v for k, v in plan.get("validation", {}).items() if v}
+        if bad:
+            warns.append(f"{tag}: plan validation {bad}")
     blob = json.dumps(c, ensure_ascii=False)
     for mm in BANNED.finditer(blob):
         ctx = blob[max(0, mm.start() - 50): mm.end() + 50].replace("\n", " ")
