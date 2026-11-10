@@ -256,7 +256,12 @@ class Runner:
         """One generate call at a time. On failure back off, then retry. Stops the run if the usage limit is hit."""
         tries = self.st.d.setdefault("tries", {})
         limit_errors = 0
-        while tries.get(key, 0) < self.args.attempts:
+        # Denemeler bu calistirmaya aittir: state.json'deki sayac toplam denemeyi tutar, ama
+        # bir sonraki calistirma kendi denemelerini yapabilmelidir (aksi halde gecici bir hata
+        # sonrasi o anahtar bir daha denenmez).
+        attempt = 0
+        while attempt < self.args.attempts:
+            attempt += 1
             tries[key] = tries.get(key, 0) + 1
             self.st.save()
             t0 = time.time()

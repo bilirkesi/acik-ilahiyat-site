@@ -16,9 +16,9 @@ tarayıcıda çalışıyor.
 | Türk Dili I | TÜR201U | 8 | 8 | 115 | 3 | 8 |
 | Atatürk İlkeleri ve İnkılap Tarihi I | TAR201U | 8 | 8 | 108 | 3 | 8 |
 | Osmanlı Türkçesi I | TAR111U | 8 | 8 | 123 | – | 8 |
-| Teknik Gelişim: IFS Cloud & Oracle DBA | TEK-ORA | 10 | 10 | – | 3 | – |
+| Teknik Gelişim: IFS Cloud & Oracle DBA | TEK-ORA | 10 | 10 | 129 | 3 | 10 |
 
-30 AÖF chapters plus a 10 chapter Oracle and IFS Cloud DBA training program. 436 AÖF questions
+30 AÖF chapters plus a 10 chapter Oracle and IFS Cloud DBA training program, 435 AÖF questions
 and the past midterm (çıkmış vize) of the last five academic years.
 
 The last course is not a university course: it is a professional Oracle and IFS Cloud training

@@ -739,13 +739,43 @@
     "infographic-2": 1,
     "infographic-3": 1,
     "infographic-4": 1,
-    "infographic-5": 1
+    "infographic-5": 1,
+    "infographic-6": 1,
+    "infographic-7": 1,
+    "infographic-8": 1,
+    "infographic-9": 4,
+    "infographic-10": 3
   },
   "errors": [
     {
       "key": "quiz",
       "at": "2026-11-10 14:00:20",
       "msg": "{\n  \"error\": true,\n  \"code\": \"UNEXPECTED_ERROR\",\n  \"message\": \"Unexpected error: \"\n}\n"
+    },
+    {
+      "key": "infographic-9",
+      "at": "2026-11-10 14:50:34",
+      "msg": "cutor] [req=40285691] RPC CREATE_ARTIFACT failed after 1.393s: RateLimitError rpc_code=USER_DISPLAYABLE_ERROR\n14:46:32 ERROR [notebooklm._rpc_executor] [req=221366eb] RPC CREATE_ARTIFACT failed after 1.699s: RateLimitError rpc_code=USER_DISPLAYABLE_ERROR\n14:50:33 ERROR [notebooklm._rpc_executor] [req=572bced4] RPC CREATE_ARTIFACT failed after 1.455s: RateLimitError rpc_code=USER_DISPLAYABLE_ERROR\n"
+    },
+    {
+      "key": "infographic-9",
+      "at": "2026-11-10 15:30:15",
+      "msg": "{\n  \"error\": true,\n  \"code\": \"AUTH_ERROR\",\n  \"message\": \"Authentication error: Authentication expired or invalid. https://notebook.google.com/ served a signed-out page, and its sign-in check redirected to https://accounts.google.com/<redacted>\\nRun 'notebooklm login' to re-authenticate.\"\n}\n"
+    },
+    {
+      "key": "infographic-9",
+      "at": "2026-11-10 15:37:18",
+      "msg": "{\n  \"error\": true,\n  \"code\": \"AUTH_ERROR\",\n  \"message\": \"Authentication error: Authentication expired or invalid. https://notebook.google.com/ served a signed-out page, and its sign-in check redirected to https://accounts.google.com/<redacted>\\nRun 'notebooklm login' to re-authenticate.\"\n}\n"
+    },
+    {
+      "key": "infographic-10",
+      "at": "2026-11-10 15:37:20",
+      "msg": "{\n  \"error\": true,\n  \"code\": \"AUTH_ERROR\",\n  \"message\": \"Authentication error: Authentication expired or invalid. https://notebook.google.com/ served a signed-out page, and its sign-in check redirected to https://accounts.google.com/<redacted>\\nRun 'notebooklm login' to re-authenticate.\"\n}\n"
+    },
+    {
+      "key": "infographic-10",
+      "at": "2026-11-10 15:44:22",
+      "msg": "{\n  \"error\": true,\n  \"code\": \"AUTH_ERROR\",\n  \"message\": \"Authentication error: Authentication expired or invalid. https://notebook.google.com/ served a signed-out page, and its sign-in check redirected to https://accounts.google.com/<redacted>\\nRun 'notebooklm login' to re-authenticate.\"\n}\n"
     }
   ],
   "quiz_artifact": "47ac6f7b-ccb7-4f84-8cd1-60a33c997a7d",
@@ -753,6 +783,12 @@
     "infographic-1": "a43cb526-00d3-478d-9835-a921b2e53cea",
     "infographic-2": "657cd8d2-f712-414a-885e-3861c383f87f",
     "infographic-3": "7ac6e396-eabd-42f7-b9bf-602f9523019a",
-    "infographic-4": "780504a2-2b9d-4da6-8a43-926a9a23fae8"
+    "infographic-4": "780504a2-2b9d-4da6-8a43-926a9a23fae8",
+    "infographic-5": "a9e04f0b-d713-4fc6-b3d6-ae1df68113cc",
+    "infographic-6": "bd85ba56-5e8d-4078-8954-797d1ec8d3f4",
+    "infographic-7": "031b81e2-2798-421b-be04-39b79ce7155d",
+    "infographic-8": "c1e6d38c-ed14-4f49-a87a-8588a87481c1",
+    "infographic-10": "37b28ed1-7a9f-4303-9c04-8dbee4f9b454",
+    "infographic-9": "526cae78-ca7c-46df-8610-511d190840fc"
   }
 }
