@@ -20,6 +20,7 @@ def _load(name: str):
 
 pe = _load("export_past_exams_site")
 uq = _load("export_unit_quizzes_site")
+eokf = _load("export_okf")
 audit = _load("audit_sources")  # puts generator/scripts on sys.path
 import common  # noqa: E402
 
@@ -167,6 +168,29 @@ class TestExportUnitQuizzes(unittest.TestCase):
     def test_slugs_cover_all_courses(self) -> None:
         courses = json.loads((ROOT / "courses.json").read_text(encoding="utf-8"))
         self.assertEqual(set(uq.SLUGS), set(courses))
+
+
+class TestExportOkf(unittest.TestCase):
+    """export_okf.main(): girdiler okunmadan okf/ silinmemeli."""
+
+    def test_broken_input_leaves_the_bundle_intact(self) -> None:
+        import tempfile
+
+        with tempfile.TemporaryDirectory() as td:
+            troot = Path(td)
+            okf = troot / "okf"
+            (okf / "courses").mkdir(parents=True)
+            (okf / "index.md").write_text("mevcut paket", encoding="utf-8")
+            (troot / "courses.json").write_text("{ bozuk", encoding="utf-8")
+            old_root, old_okf = eokf.ROOT, eokf.OKF
+            eokf.ROOT, eokf.OKF = troot, okf
+            try:
+                with self.assertRaises(ValueError):  # JSONDecodeError
+                    eokf.main()
+            finally:
+                eokf.ROOT, eokf.OKF = old_root, old_okf
+            self.assertTrue((okf / "index.md").exists(), "paket silinmiş/yarım kalmış")
+            self.assertEqual((okf / "index.md").read_text(encoding="utf-8"), "mevcut paket")
 
 
 class TestSiteBundleContracts(unittest.TestCase):

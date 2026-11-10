@@ -20,7 +20,7 @@
 
 ## Local Contracts
 - Every quiz-style file uses `questions[].answerOptions[]` with `isCorrect`; a question must have **exactly one** correct option.
-- Question `type` is one of `test`, `multiple_choice`, `true_false` (or omitted).
+- Question `type` is one of `multiple_choice`, `multiple_select`, `fill_in_the_blank`, `short_answer`, `test`, `true_false` (or omitted). The canonical list is `generator/scripts/quiz_types.py` (`KNOWN`), shared by `scripts/check_quiz_answers.py` and `generator/scripts/qa.py`. The site auto-grades `multiple_choice`, `multiple_select` and `fill_in_the_blank` (`GRADED` in `app.js`); `short_answer` is graded by hand and `test`/`true_false` are legacy names kept for compatibility.
 - Option text is compared exactly for duplicate detection, so Ottoman Turkish diacritics (şedde/şerif) that distinguish meaning must be preserved — do not normalize them away.
 - Slugs are stable: `islam-mezhepleri-tarihi`, `turk-dili-1`, `ataturk-ilkeleri-1`, `osmanlica-1`.
 

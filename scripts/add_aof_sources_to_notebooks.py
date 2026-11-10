@@ -15,7 +15,10 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
-CLI = r"C:\Users\Selahattin\AppData\Local\Python\pythoncore-3.14-64\Scripts\notebooklm.exe"
+sys.path.insert(0, str(ROOT / "generator" / "scripts"))
+from common import find_cli, require_cli  # noqa: E402
+
+CLI = find_cli()  # yoksa ilk çağrıda require_cli() kullanıcıya yol gösterir
 
 COURSES = {
     "turk-dili-1": "c702ed26-fe17-463d-b217-202acd0c3d26",
@@ -26,7 +29,7 @@ COURSES = {
 
 def run(args: list[str], timeout: int = 300) -> tuple[int, str, str]:
     p = subprocess.run(
-        [CLI, *args],
+        [CLI or require_cli(), *args],
         capture_output=True,
         text=True,
         encoding="utf-8",
@@ -93,7 +96,7 @@ def wait_ready(nb: str, sid: str, timeout: int = 180) -> str:
 
 
 def main() -> int:
-    if not Path(CLI).exists():
+    if not find_cli():
         print("notebooklm CLI yok", file=sys.stderr)
         return 2
     for slug, nb in COURSES.items():

@@ -45,10 +45,9 @@ def main() -> int:
             out[slug] = units
     dest = ROOT / "site" / "unit_quizzes.js"
     dest.parent.mkdir(exist_ok=True)
-    dest.write_text(
-        "window.UNIT_QUIZZES = " + json.dumps(out, ensure_ascii=False) + ";\n",
-        encoding="utf-8",
-    )
+    # newline="\n": paket her platformda ayni baytlari uretsin (Windows'ta varsayilan CRLF olur).
+    with open(dest, "w", encoding="utf-8", newline="\n") as fh:
+        fh.write("window.UNIT_QUIZZES = " + json.dumps(out, ensure_ascii=False) + ";\n")
     n = sum(len(v) for v in out.values())
     print(f"site/unit_quizzes.js: {len(out)} course(s), {n} unit quiz(es), {total_q} question(s)")
     return 0

@@ -37,10 +37,20 @@ DEFAULT_UNIVERSITY = {
 
 
 def find_cli():
-    """Locate the notebooklm binary: PATH first, then the usual uv/pipx install folders."""
+    """Locate the notebooklm binary.
+
+    PATH first, then the folder of the running interpreter (pip installs console scripts
+    there), then the usual uv/pipx install folders. Machine-specific absolute paths are
+    never hardcoded, so the repo works on every machine that has the CLI installed.
+    """
     hit = shutil.which("notebooklm")
     if hit:
         return hit
+    base = Path(sys.executable).resolve().parent
+    for p in (base / "notebooklm.exe", base / "notebooklm",
+              base / "Scripts" / "notebooklm.exe", base / "Scripts" / "notebooklm"):
+        if p.exists():
+            return str(p)
     for p in (Path.home() / ".local/bin/notebooklm", Path.home() / ".cargo/bin/notebooklm"):
         if p.exists():
             return str(p)
@@ -107,8 +117,51 @@ def load_university(root):
     return u
 
 
+def _pid_alive(pid: int) -> bool:
+    """True if a process with this pid is running.
+
+    POSIX'te os.kill(pid, 0) yalnızca erişim kontrolü yapar, süreci etkilemez. Windows'ta
+    aynı çağrı süreci sonlandırır (TerminateProcess), bu yüzden orada OpenProcess +
+    GetExitCodeProcess ile sorgulanır.
+    """
+    if os.name == "nt":
+        import ctypes
+
+        PROCESS_QUERY_LIMITED_INFORMATION = 0x1000
+        STILL_ACTIVE = 259
+        kernel32 = ctypes.WinDLL("kernel32", use_last_error=True)
+        kernel32.OpenProcess.argtypes = [ctypes.c_uint32, ctypes.c_int, ctypes.c_uint32]
+        kernel32.OpenProcess.restype = ctypes.c_void_p
+        kernel32.GetExitCodeProcess.argtypes = [ctypes.c_void_p, ctypes.POINTER(ctypes.c_uint32)]
+        kernel32.GetExitCodeProcess.restype = ctypes.c_int
+        kernel32.CloseHandle.argtypes = [ctypes.c_void_p]
+        kernel32.CloseHandle.restype = ctypes.c_int
+        handle = kernel32.OpenProcess(PROCESS_QUERY_LIMITED_INFORMATION, False, pid)
+        if not handle:
+            return False
+        try:
+            code = ctypes.c_uint32()
+            if not kernel32.GetExitCodeProcess(handle, ctypes.byref(code)):
+                return False
+            return code.value == STILL_ACTIVE
+        finally:
+            kernel32.CloseHandle(handle)
+    try:
+        os.kill(pid, 0)
+    except ProcessLookupError:
+        return False
+    except PermissionError:
+        return True  # var ama başka kullanıcıya ait
+    return True
+
+
 class Lock:
-    """One pipeline runner per project. A second runner doubles NotebookLM generations, so refuse it."""
+    """One pipeline runner per project. A second runner doubles NotebookLM generations, so refuse it.
+
+    The lock file is created with O_CREAT|O_EXCL, which is atomic everywhere. A leftover file
+    from a crashed run is cleared after checking the recorded pid with _pid_alive (which does
+    not kill the process on Windows, unlike os.kill(pid, 0)).
+    """
 
     def __init__(self, root):
         self.path = Path(root) / ".pipeline.lock"
@@ -116,16 +169,26 @@ class Lock:
     def __enter__(self):
         if self.path.exists():
             try:
-                pid = int(self.path.read_text().split()[0])
-                os.kill(pid, 0)
-                sys.exit(f"Another pipeline runner is active (pid {pid}). Wait for it, or remove {self.path} if it is dead.")
-            except (ValueError, ProcessLookupError, IndexError):
-                self.path.unlink(missing_ok=True)  # stale lock from a crashed run
-            except PermissionError:
-                sys.exit(f"Lock held by pid in {self.path}. Wait for that runner to finish.")
-        fd = os.open(self.path, os.O_CREAT | os.O_EXCL | os.O_WRONLY)
-        os.write(fd, f"{os.getpid()} {time.strftime('%Y-%m-%d %H:%M:%S')}\n".encode())
-        os.close(fd)
+                pid = int(self.path.read_text(encoding="utf-8").split()[0])
+            except (OSError, ValueError, IndexError):
+                pid = 0
+            if pid and _pid_alive(pid):
+                sys.exit(
+                    f"Another pipeline runner is active (pid {pid}). "
+                    f"Wait for it, or remove {self.path} if it is dead."
+                )
+            self.path.unlink(missing_ok=True)  # stale lock from a crashed run
+        try:
+            fd = os.open(self.path, os.O_CREAT | os.O_EXCL | os.O_WRONLY)
+        except FileExistsError:
+            sys.exit(
+                f"Another pipeline runner is active. Wait for it, or remove {self.path} "
+                "if it is dead."
+            )
+        try:
+            os.write(fd, f"{os.getpid()} {time.strftime('%Y-%m-%d %H:%M:%S')}\n".encode())
+        finally:
+            os.close(fd)
         return self
 
     def __exit__(self, *exc):

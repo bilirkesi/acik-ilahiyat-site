@@ -78,8 +78,11 @@ Rules for the bundle itself live in `okf/AGENTS.md`.
 - Runtime: **no backend**. `site/` is a static SPA (hash router) served from any static host. All data ships as JS bundles that assign to `window.*`.
 - Source of truth for configuration: `university.json` (branding, pass mark, colors, exam dates, AÖF grading weights and pass threshold, `grounding` source ranking and prompt rules for NotebookLM generation), `courses.json` (the four courses), `universities.json`.
 - Source of truth for course content: `data/<slug>/` (see `data/AGENTS.md`).
-- Study materials are generated from NotebookLM notebooks fed with AÖF PDFs and YouTube lecture captions.
+- Study materials are generated from NotebookLM notebooks fed with AÖF PDFs and YouTube lecture captions. Generation goes through the external `notebooklm` CLI from `notebooklm-py` (`py -3 -m pip install "notebooklm-py[browser]"`, then `notebooklm login` once); no Python module in this repo imports it, so the stdlib-only rule still holds.
 - Python entry points are run as modules from the repo root (`py -3 -m coursegraph.…`) or as scripts (`py -3 scripts/….py`). On Windows the working launcher is `py -3`; `python` is not on PATH.
+- Node.js is required to rebuild the graph and the OKF bundle: `dump_interactive()` shells out to `node` to read `site/interactive.js`. Python alone is not enough.
+- License: GPL-3.0 (`LICENSE` at the repo root). The vendored `extensions/notebook-nest/` keeps its own GPL-3.0 notice.
+- `README.md` is the entry point for newcomers: what the project is, how to run it, how the pieces fit together.
 - Large local-only material lives in `artifacts/`, `assets/`, and `logs/`; all three are git-ignored. Never reference them as if they ship to the site.
 ## Known Gaps
 - Source quality (`py -3 scripts/audit_sources.py`): chapters of `turk-dili-1`, `ataturk-ilkeleri-1`, `islam-mezhepleri-tarihi` were planned and grounded on lecture captions only. Study notes for the three were rebuilt from `Kitap.pdf`; by owner decision, quizzes, infographics and audio made before the grounding rules stay as they are, and the rules apply to new generation only. `turk-dili-1/state.json` records only the Kitap among the notebook's 14 AÖF PDFs.

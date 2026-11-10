@@ -12,7 +12,11 @@ import sys
 from collections import defaultdict
 from pathlib import Path
 
-CLI = r"C:\Users\Selahattin\AppData\Local\Python\pythoncore-3.14-64\Scripts\notebooklm.exe"
+ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(ROOT / "generator" / "scripts"))
+from common import find_cli, require_cli  # noqa: E402
+
+CLI = find_cli()  # yoksa ilk çağrıda require_cli() kullanıcıya yol gösterir
 
 COURSES = {
     "turk-dili-1": "c702ed26-fe17-463d-b217-202acd0c3d26",
@@ -23,7 +27,7 @@ COURSES = {
 
 def run(args, timeout=180):
     p = subprocess.run(
-        [CLI, *args],
+        [CLI or require_cli(), *args],
         capture_output=True,
         text=True,
         encoding="utf-8",

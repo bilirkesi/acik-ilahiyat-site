@@ -2,7 +2,7 @@
 
 ## Purpose
 - Builds and serves a local knowledge graph over course content so the agent can query it precisely instead of scanning raw JSON.
-- Provides the MCP server (`opencode.json` → `mcp.coursegraph`) and the browser search index the site loads lazily.
+- Provides the MCP server (`opencode.json` → `mcp.servers.coursegraph`) and the browser search index the site loads lazily.
 
 ## Ownership
 - `indexer.py` — reads `courses.json`, `universities.json`, `data/*/`, `site/interactive.js`, `artifacts/catalog.json`; writes `index/graph.json` + `index/meta.json`. Exports `fold`, `tokenize`, `GraphBuilder`.
@@ -10,7 +10,7 @@
 - `past_exams.py` — unit/keyword config per course (`COURSE_UNIT_CONFIGS`), `classify_unit`, `extract_keywords`, `annotate_questions`, `unit_coverage`. Consumed by `indexer.py` and the export scripts.
 - `mindmap.py` — writes `index/mindmaps/<slug>.json|.html` and `index.json`/`index.html` (Cytoscape) from NotebookLM `mind-map__*.json` plus interactive trees.
 - `site_export.py` — writes `site/coursegraph.js` (`window.CG`), the browser search index.
-- `server.py` — stdio MCP server exposing the graph to the agent.
+- `server.py` — stdlib-only stdio MCP server exposing the graph to the agent: JSON-RPC 2.0, one message per line, no third-party dependency (`py -3 -m coursegraph.server`).
 - `watch.py` — polling watcher that rebuilds on change (`--once` for a single pass).
 - `index/` — generated but **tracked**. Treat it as build output; regenerate rather than hand-edit.
 
@@ -20,6 +20,8 @@
 - Relation names: `has_course`, `contains_course`, `has_chapter`, `cites_source`, `defines_concept`, `mentions_concept`, `has_timeline_event`, `mentions_event`, `has_quiz`, `has_exam`, `has_unit`, `has_unit_quiz`, `in_unit`, `in_chapter`, `unit_chapter`, `has_question`, `has_past_exam`, `covers_unit`, `covers_chapter`, `has_keyword`, `cites_past_question`, `has_artifact`.
 - `search()` adds `+10` for an exact folded-title phrase key (`inverted["__phr__…"]`), `+3` for title substring, `+1` per inverted-index token hit.
 - `build()` shells out to `node` via `dump_interactive()` to read `site/interactive.js`; `node` must be on PATH to rebuild.
+- MCP tools in `server.py` are registered with the local `tool(name, description, inputSchema)` decorator; adding a tool means adding one decorated function. `initialize`, `ping`, `tools/list`, `tools/call` (and the `notifications/*` no-ops) are handled in `_handle`: bad arguments answer JSON-RPC `-32602`, a tool exception answers an `isError: true` text result, and stdout carries protocol messages only.
+- `opencode.json` starts the server as `py -3 -m coursegraph.server` with `cwd: "."` (the repo root), so `coursegraph` is importable without an absolute `PYTHONPATH`. Never hardcode a machine-specific interpreter path or `PYTHONPATH` there; on POSIX use `python3` instead of `py -3`.
 - Unknown course slug in `course_unit_cfg()` falls back to the islam-mezhepleri-tarihi config (backward compatibility).
 
 ## Work Guidance
@@ -28,7 +30,7 @@
 - When adding a course, add its unit titles/chapters/keywords to `COURSE_UNIT_CONFIGS` in `past_exams.py` before building.
 
 ## Verification
-- `py -3 -m unittest discover -s tests` covers `indexer` (`test_indexer.py`), `past_exams` (`test_past_exams.py`), and the `CourseGraph` query layer (`test_graph.py`).
+- `py -3 -m unittest discover -s tests` covers `indexer` (`test_indexer.py`), `past_exams` (`test_past_exams.py`), the `CourseGraph` query layer (`test_graph.py`), and the MCP server's JSON-RPC contract (`test_mcp_server.py`).
 
 ## Child DOX Index
 - None. `index/` is generated graph output (see Ownership), not a code boundary.

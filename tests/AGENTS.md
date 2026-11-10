@@ -9,12 +9,15 @@
 - `test_past_exams.py` — unit configs, keyword extraction, unit classification.
 - `test_graph.py` — `CourseGraph` query layer on a temporary fixture graph (search ranking, explore, impact, overview, chapter detail, missing-index error).
 - `test_quiz_data.py` — the quiz checker's own behavior on synthetic bad input, plus real-data integrity and `site/unit_quizzes.js` consistency.
-- `test_exports.py` — `chapter_meta`/`build_solution`, the unit-quiz export in a sandboxed `ROOT`, the `past_exams.js`/`unit_quizzes.js` bundle contracts, and the grounding helpers plus `audit_sources.audit`.
+- `test_exports.py` — `chapter_meta`/`build_solution`, the unit-quiz export in a sandboxed `ROOT`, the `past_exams.js`/`unit_quizzes.js` bundle contracts, the OKF export's "a broken input leaves the bundle intact" guarantee, and the grounding helpers plus `audit_sources.audit`.
+- `test_common.py` — `generator/scripts/common.py`: the pipeline `Lock` (second runner refused, stale lock cleared) and `_pid_alive` (Windows needs `OpenProcess`, `os.kill(pid, 0)` is a `CTRL_C_EVENT` there); `generator/scripts/quiz_types.py` and its agreement with the site's `GRADED` set.
+- `test_mcp_server.py` — the MCP server's JSON-RPC contract over stdio: `initialize`, `tools/list`, `tools/call`, unknown tool → `-32602`, malformed JSON → `-32700`.
 - `__init__.py` — package marker for discovery.
 
 ## Local Contracts
 - Tests load `scripts/` modules by file path (`importlib.util.spec_from_file_location`) because `scripts/` is not a package.
 - Tests that touch the filesystem monkeypatch module-level `ROOT`/`SLUGS` to a temp directory; never write into the real `data/` or `site/`.
+- Tests that need `generator/scripts/` put it on `sys.path` (it is not a package either).
 - Assertions must reflect real behavior; fix a wrong expectation rather than weakening the assertion.
 
 ## Work Guidance
@@ -22,7 +25,7 @@
 - Keep the suite stdlib-only (`unittest`); do not add pytest.
 
 ## Verification
-- `py -3 -m unittest discover -s tests` — 68 tests, must exit 0. Run after any change to `data/`, `coursegraph/`, or the export scripts.
+- `py -3 -m unittest discover -s tests` — 85 tests, must exit 0. Run after any change to `data/`, `coursegraph/`, or the export scripts.
 
 ## Child DOX Index
 - None. Flat set of test modules.

@@ -122,7 +122,9 @@ def main() -> int:
     site = ROOT / "site"
     site.mkdir(exist_ok=True)
     payload = "window.PAST_EXAMS = " + json.dumps(out, ensure_ascii=False) + ";\n"
-    (site / "past_exams.js").write_text(payload, encoding="utf-8")
+    # newline="\n": paket her platformda ayni baytlari uretsin (Windows'ta varsayilan CRLF olur).
+    with open(site / "past_exams.js", "w", encoding="utf-8", newline="\n") as fh:
+        fh.write(payload)
     n = sum(len(e["questions"]) for rows in out.values() for e in rows)
     sol = sum(1 for rows in out.values() for e in rows for q in e["questions"] if q.get("solution"))
     print(f"site/past_exams.js: {len(out)} course(s), {n} question(s), {sol} with solution")

@@ -17,8 +17,9 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
 sys.path.insert(0, str(ROOT / "generator" / "scripts"))
-from common import grounding_rules, load_university  # noqa: E402
-CLI = r"C:\Users\Selahattin\AppData\Local\Python\pythoncore-3.14-64\Scripts\notebooklm.exe"
+from common import find_cli, grounding_rules, load_university, require_cli  # noqa: E402
+
+CLI = find_cli()  # yoksa ilk çağrıda require_cli() kullanıcıya yol gösterir
 
 COURSES = {
     "turk-dili-1": {
@@ -86,7 +87,7 @@ LIMIT_HINTS = re.compile(r"limit|quota|rate.?limit|too many|429|usage", re.I)
 
 def run(args, timeout=1500, stdin_close=True):
     p = subprocess.run(
-        [CLI, *args],
+        [CLI or require_cli(), *args],
         stdin=subprocess.DEVNULL if stdin_close else None,
         capture_output=True,
         text=True,

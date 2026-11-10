@@ -688,7 +688,7 @@
     const sol = q.solution ? plainOf(txt(q.solution)).text : q.rationale ? String(q.rationale) : "";
     if (sol) lines.push("Sitedeki açıklama: " + sol);
     const ch = Array.isArray(q.chapterMeta) && q.chapterMeta[0];
-    if (ch) lines.push(`İlgili bölüm: ${ch.n}. ${ch.title}${ch.summary ? " — " + ch.summary : ""}`);
+    if (ch) lines.push(`İlgili bölüm: ${ch.n}. ${ch.title}${ch.summary ? ", " + ch.summary : ""}`);
     let text = lines.join("\n");
     if (text.length > AI_MAX) text = text.slice(0, AI_MAX - 1) + "…";
     return text;
@@ -1461,10 +1461,19 @@
   const DAY_MS = 86400000;
   const GOAL_OPTIONS = [10, 20, 30, 50];
   const NEW_OPTIONS = [0, 5, 10, 20, 30];
+  // Çalışma durumunun tam varsayılanları. Yedek birleştirmesi "bu ayar hâlâ varsayılanda mı"
+  // diye bununla karşılaştırır, bu yüzden burada tanımlı olmayan bir alan yedekten gelemez.
+  const STUDY_DEFAULTS = {
+    v: 1, cards: {}, days: {}, frozen: [], goal: 20, newPerDay: 10, courses: null, goalDone: "",
+    log: [], mocks: [], videos: {}, vrate: 1, listen: {}, lrate: 1, arate: 1, plan: null,
+    kcards: {}, kdir: "kavram", games: {}, marks: {}, harf: null,
+    calib: { s: [0, 0], g: [0, 0] }, grades: {}, mix: null, nick: "", remind: null, confOff: false, aud: {},
+  };
   function loadStudy() {
     let s = {};
     try { s = JSON.parse(localStorage.getItem(STUDY_KEY)) || {}; } catch (e) { s = {}; }
-    return Object.assign({ v: 1, cards: {}, days: {}, frozen: [], goal: 20, newPerDay: 10, courses: null, goalDone: "", log: [], mocks: [], videos: {}, vrate: 1, listen: {}, lrate: 1, plan: null, kcards: {}, kdir: "kavram", games: {}, marks: {}, harf: null }, s);
+    // Varsayılanlar her çağrıda yeniden üretilir: paylaşılan nesne mutasyona uğramasın.
+    return Object.assign(JSON.parse(JSON.stringify(STUDY_DEFAULTS)), s);
   }
   function saveStudy() {
     try { localStorage.setItem(STUDY_KEY, JSON.stringify(study)); } catch (e) { /* özel mod */ }
@@ -2946,8 +2955,10 @@
         if (!picked.length) { root.querySelector("#px-check").textContent = "Önce bir seçenek işaretle"; return; }
         const ok = grade(x.q, idx, root);
         answers[idx] = { ok, picked };
-        recordAnswer(ids[idx], ok, null, "exam");
+        // Sıra önemli: showFeedback "Emin misin?" seçimini pendingConf'e yazar,
+        // recordAnswer onu aynı soru için okur. Önce kaydedilirse güven skoru kaybolur.
         after(ok);
+        recordAnswer(ids[idx], ok, null, "exam");
       };
       root.querySelector("#px-skip").onclick = () => { answers[idx] = { picked: [] }; after(undefined); };
     };
@@ -3617,6 +3628,7 @@
     }).join("");
     return `<p class="eyebrow">Akademik kayıt</p><h1>Transkriptiniz</h1>
       <p class="muted">İlerleme yalnızca bu tarayıcıda saklanır. Site verilerini temizlerseniz sıfırlanır. <a href="#/cevrimdisi?b=yedek">İlerlemenizi yedekleyin</a>.</p>
+      <p class="muted small">Sıfırlama quiz sonuçlarını, günlük sayaçlarını ve girilen not puanlarını siler; vurgularınız, notlarınız ve sınav planınız korunur.</p>
       <div class="progress" aria-label="${total} dersten ${done} geçildi"><i style="width:${total ? (done / total) * 100 : 0}%"></i></div>
       <p><strong>${total} dersten ${done}</strong> ders geçildi. ${done >= total && total ? `<a href="#/certificate">Belgenizi alın.</a>` : `Belgenizi açmak için ${total === 1 ? "bu dersi" : `tüm ${total} dersi`} geçin.`}</p>
       <div class="table-wrap"><table class="transcript"><thead><tr><th>Kod</th><th>Ders</th><th>En iyi puan</th><th>Deneme</th><th>Durum</th></tr></thead><tbody>${rows}</tbody></table></div>
@@ -3626,7 +3638,16 @@
     const b = document.getElementById("reset");
     if (!b) return;
     b.onclick = () => {
-      if (b.dataset.armed) { progress = {}; save(progress); study = loadStudy(); study.cards = {}; study.days = {}; study.frozen = []; study.log = []; study.mocks = []; study.games = {}; study.calib = {}; saveStudy(); route(); return; }
+      if (b.dataset.armed) {
+        progress = {}; save(progress);
+        study = loadStudy();
+        // Sonuçlar ve sayaçlar silinir; öğrencinin kendi içeriği (vurgular, notlar, kavram
+        // kartları, video notları, sınav planı) korunur.
+        // Varsayılan nesneler kopyalanır: STUDY_DEFAULTS paylaşılan referans olmasın.
+        const clone = (v) => (v && typeof v === "object" ? JSON.parse(JSON.stringify(v)) : v);
+        for (const k of ["cards", "days", "frozen", "log", "mocks", "games", "calib", "grades", "harf", "aud"]) study[k] = clone(STUDY_DEFAULTS[k]);
+        saveStudy(); route(); return;
+      }
       b.dataset.armed = "1";
       b.textContent = "Tüm sonuçları silmek için tekrar tıklayın";
       setTimeout(() => { if (document.body.contains(b)) { delete b.dataset.armed; b.textContent = "İlerlememi sıfırla"; } }, 4000);
@@ -5492,6 +5513,15 @@ document.getElementById("zin").focus();
       const hs = harfStat(), big = (a, x) => (Array.isArray(x) && (!a || x[0] > a[0]) ? x.slice(0, 2) : a);
       for (const [ch, r] of Object.entries(b.harf.L || {})) hs.L[ch] = big(hs.L[ch], r);
       hs.W = big(hs.W, b.harf.W);
+    }
+    // Ayarlar ve seçimler: bu cihaz hâlâ varsayılan değerdeyse yedekteki seçim gelir;
+    // elle değiştirilmişse bu cihazınki korunur (yerel tercih, mergeRecord'in ölçek kuralı).
+    // Bu alanlar önceden hiç aktarılmıyordu; yedek başka bir cihazda geri yüklendiğinde kayboluyordu.
+    for (const k of ["goal", "newPerDay", "courses", "goalDone", "kdir", "vrate", "lrate", "arate",
+                     "mix", "nick", "remind", "confOff"]) {
+      if (b[k] === undefined || b[k] === null) continue;
+      const cur = study[k] === undefined ? null : study[k];
+      if (JSON.stringify(cur ?? null) === JSON.stringify(STUDY_DEFAULTS[k] ?? null)) study[k] = b[k];
     }
     saveStudy();
   }

@@ -70,6 +70,13 @@ class TestCheckQuestions(unittest.TestCase):
         problems, _ = self._run([_q("Soru?", [("A", True)], qtype="acik_ufuk")])
         self.assertTrue(any("bilinmeyen type" in p for p in problems), problems)
 
+    def test_site_types_are_accepted(self) -> None:
+        """Sitenin tanıdığı tipler 'bilinmeyen tip' sayılmamalı (liste quiz_types.py'den gelir)."""
+        for qtype in ("multiple_choice", "multiple_select", "fill_in_the_blank",
+                      "short_answer", "test", "true_false"):
+            problems, _ = self._run([_q("Soru?", [("A", True)], qtype=qtype)])
+            self.assertEqual(problems, [], f"{qtype}: {problems}")
+
     def test_duplicate_stems_counted_not_problemed(self) -> None:
         same = _q("Aynı soru?", [("A", True)])
         problems, dupes = self._run([same, dict(same)])
