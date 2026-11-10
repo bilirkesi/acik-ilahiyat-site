@@ -13,10 +13,12 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
+sys.path.insert(0, str(ROOT / "generator" / "scripts"))
 
 from coursegraph.past_exams import annotate_questions, unit_titles, unit_to_chapters  # noqa: E402
+from common import course_slugs  # noqa: E402
 
-SLUGS = ["ataturk-ilkeleri-1", "turk-dili-1", "islam-mezhepleri-tarihi", "osmanlica-1"]
+SLUGS = course_slugs(ROOT)
 
 
 def load_plan(slug: str) -> dict:

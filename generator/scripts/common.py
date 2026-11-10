@@ -1,4 +1,5 @@
 """Shared helpers for Personal University scripts. Standard library only."""
+import contextlib
 import json, os, re, shutil, subprocess, sys, time
 from pathlib import Path
 
@@ -85,6 +86,10 @@ class Project:
     def save_courses(self):
         (self.root / "courses.json").write_text(json.dumps(self.courses, indent=2, ensure_ascii=False))
 
+    def uni_for(self, slug: str) -> dict:
+        """The university config with this course's own overrides applied (see `course_config`)."""
+        return load_university(self.root, slug)
+
     def data(self, slug):
         d = self.root / "data" / slug
         d.mkdir(parents=True, exist_ok=True)
@@ -103,9 +108,10 @@ class Project:
             f.write(line + "\n")
 
 
-def load_university(root):
+def load_university(root, course: str | None = None):
     u = dict(DEFAULT_UNIVERSITY)
     u.update(json.loads((Path(root) / "university.json").read_text(encoding="utf-8-sig")))
+    u.update(course_config(root, course))
     pm = float(u.get("passMark", 0.7))
     u["passMark"] = pm / 100 if pm > 1 else pm
     ch = u.get("chapters") or {}
@@ -115,6 +121,36 @@ def load_university(root):
     u["quiz"] = {**DEFAULT_UNIVERSITY["quiz"], **(u.get("quiz") or {})}
     u["colors"] = {**DEFAULT_UNIVERSITY["colors"], **(u.get("colors") or {})}
     return u
+
+
+def course_slugs(root) -> list[str]:
+    """The slugs in courses.json, the single source of truth for which courses exist."""
+    path = Path(root) / "courses.json"
+    if not path.exists():
+        return []
+    try:
+        return list(json.loads(path.read_text(encoding="utf-8-sig")))
+    except (OSError, ValueError):
+        return []
+
+
+def course_config(root, course: str | None) -> dict:
+    """Per-course overrides from `courses.json[course]["config"]`.
+
+    A course may override the university-wide settings its own material needs: the language and audience
+    of the notes, how many chapters it has, and the source ranking (`grounding`) its notes and questions
+    are built on. Everything it does not override keeps the university value.
+    """
+    if not course:
+        return {}
+    path = Path(root) / "courses.json"
+    if not path.exists():
+        return {}
+    try:
+        courses = json.loads(path.read_text(encoding="utf-8-sig"))
+    except (OSError, ValueError):
+        return {}
+    return (courses.get(course) or {}).get("config") or {}
 
 
 def _pid_alive(pid: int) -> bool:
@@ -197,21 +233,31 @@ class Lock:
 
 def source_tier(src, tiers):
     """Rank of a source in `grounding.tiers` (0 = most authoritative). The source `type` decides first (a
-    YouTube "özet" video is still captions), then a case-insensitive title substring; a source no tier
-    matches ranks after the last tier."""
-    title, typ = (src.get("title") or "").casefold(), src.get("type") or ""
+    YouTube "özet" video is still captions), then a case-insensitive title or URL substring; a source no tier
+    matches ranks after the last tier. A tier's optional `exclude_titles` keeps a source out of that tier
+    (third-party write-ups and personal screenshots share the type of the official documentation)."""
+    title = (src.get("title") or "").casefold()
+    url = (src.get("url") or "").casefold()
+    haystack = title + " " + url
+    typ = src.get("type") or ""
     for i, t in enumerate(tiers):
-        if typ in t.get("types", []):
+        if typ in t.get("types", []) and not _excluded(haystack, t):
             return i
     for i, t in enumerate(tiers):
-        if any(m.casefold() in title for m in t.get("titles", [])):
+        if any(m.casefold() in haystack for m in t.get("titles", [])):
             return i
     return len(tiers)
 
 
+def _excluded(haystack: str, tier: dict) -> bool:
+    return any(m.casefold() in haystack for m in tier.get("exclude_titles", []))
+
+
 def with_authority(ids, sources, tiers):
     """`ids` plus every ready top-tier source when none of `ids` is top tier, so a chapter built from
-    lecture captions is still checked against the textbook. Order of `ids` is kept."""
+    lecture captions is still checked against the textbook. Order of `ids` is kept. The top tier's optional
+    `max_add` caps how many of its sources are added, so a course with many top-tier documents does not
+    flood every chapter."""
     if not tiers:
         return list(ids)
     by_id = {s.get("id"): s for s in sources}
@@ -219,7 +265,8 @@ def with_authority(ids, sources, tiers):
         return list(ids)
     top = [s["id"] for s in sources if s.get("status") == "ready" and s.get("id") not in ids
            and source_tier(s, tiers) == 0]
-    return list(ids) + top
+    limit = (tiers[0] or {}).get("max_add")
+    return list(ids) + (top[:limit] if limit else top)
 
 
 def grounding_rules(u):
@@ -251,3 +298,79 @@ def run_cli_json(cli, args, timeout=900):
     except json.JSONDecodeError:
         data = None
     return code, data, out, err
+
+
+def normalize_quiz_questions(questions, default_type="multiple_choice", extra=()) -> list[dict]:
+    """The site's question shape for questions that come from NotebookLM.
+
+    The site auto-grades only the types in `quiz_types.GRADED`; a question without a type
+    would be shown as a free text box and could not be scored. NotebookLM's quiz export
+    carries no type at all, so it is set here. Fields named in `extra` are kept as they are.
+    """
+    out = []
+    for q in questions or []:
+        if not isinstance(q, dict):
+            continue
+        opts = []
+        for o in q.get("answerOptions") or q.get("options") or []:
+            if isinstance(o, str):
+                opts.append({"text": o, "isCorrect": False, "rationale": ""})
+            elif isinstance(o, dict):
+                opts.append({
+                    "text": o.get("text") or "",
+                    "isCorrect": bool(o.get("isCorrect") or o.get("correct")),
+                    "rationale": o.get("rationale") or o.get("explanation") or "",
+                })
+        correct = q.get("correct") or q.get("answer")
+        if correct and not any(o["isCorrect"] for o in opts) and isinstance(correct, str):
+            idx = ord(correct.strip().upper()[:1]) - ord("A")
+            if 0 <= idx < len(opts):
+                opts[idx]["isCorrect"] = True
+        item = {
+            "question": q.get("question") or q.get("stem") or q.get("prompt") or "",
+            "answerOptions": opts,
+            "hint": q.get("hint") or "",
+            "type": q.get("type") or default_type,
+        }
+        for k in extra:
+            if q.get(k):
+                item[k] = q[k]
+        out.append(item)
+    return out
+
+
+def language_code(uni) -> str:
+    """The artifact language code of a course ('tr', 'en', ...).
+
+    The notebooklm CLI keeps one global output language for artifact generation, so a course
+    that is written in another language has to set it while it generates.
+    """
+    lang = (uni.get("language") or "Turkish").casefold().replace("-", " ").split(" ")[0]
+    if lang.startswith(("tr", "turk")):
+        return "tr"
+    if lang.startswith("en"):
+        return "en"
+    return lang[:2]
+
+
+def cli_language_get(cli) -> str:
+    """The CLI's current global output language ('' when it cannot be read)."""
+    code, out, err = run_cli(cli, ["language", "get"], timeout=60)
+    m = re.search(r"Language:\s*(\S+)", out or "")
+    return m.group(1) if m else ""
+
+
+@contextlib.contextmanager
+def cli_language(cli, lang: str):
+    """Set the CLI's global output language for the duration, then restore the old one.
+
+    The setting is account wide, so it is put back even when the generation fails.
+    """
+    old = cli_language_get(cli)
+    if old and old != lang:
+        run_cli(cli, ["language", "set", lang], timeout=60)
+    try:
+        yield
+    finally:
+        if old and old != lang:
+            run_cli(cli, ["language", "set", old], timeout=60)

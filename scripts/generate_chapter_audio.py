@@ -26,7 +26,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "generator" / "scripts"))
-from common import grounding_rules, load_university, with_authority  # noqa: E402
+from common import grounding_rules, language_code, load_university, with_authority  # noqa: E402
 
 BITRATE = "64k"
 UUID = re.compile(r"^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$")
@@ -34,6 +34,22 @@ PROMPT = ("Türkçe konuş. Dinleyiciler Anadolu Üniversitesi Açıköğretim �
           "sınava hazırlanıyorlar. Yalnızca bu bölümün konusunu anlat: \"{title}\". Temel kavramları, kişi, eser ve "
           "mezhep/kurum adlarını, tarihleri ve sınavda sorulabilecek ayrımları açık ve doğru biçimde vurgula; "
           "kaynaklarda olmayan bilgi ekleme.")
+PROMPT_EN = ("Speak {language}. The listeners are {audience}. Explain only this chapter's topic: \"{title}\". "
+             "Make the key concepts, names, product versions and distinctions explicit and correct; "
+             "do not add information that is not in the sources.")
+
+
+def audio_prompt(uni, title):
+    """The prompt follows the course's own language and audience (courses.json -> config)."""
+    lang = uni.get("language") or "Turkish"
+    if _is_turkish(lang):
+        return PROMPT.format(title=title)
+    return PROMPT_EN.format(language=lang, audience=uni.get("audience") or "the students", title=title)
+
+
+def _is_turkish(lang):
+    """'Turkish', 'tr' ve 'tr-TR' aynı dildir."""
+    return lang.casefold().replace("-", " ").split(" ")[0].startswith(("tr", "turk"))
 
 
 def run(cmd, **kw):
@@ -50,7 +66,7 @@ def tool(name, override):
 
 def generate(nb, chapter, out_raw, args, sources, uni):
     """Ask NotebookLM for the chapter's audio overview and download it to out_raw."""
-    prompt = PROMPT.format(title=chapter["title"]) + " " + grounding_rules(uni)
+    prompt = audio_prompt(uni, chapter["title"]) + " " + grounding_rules(uni)
     cmd = [*args.nlm, "generate", "audio", prompt.strip(), "-n", nb,
            "--format", args.format, "--length", args.length, "--language", args.language, "--wait", "--retry", "2", "--json"]
     tiers = (uni.get("grounding") or {}).get("tiers") or []
@@ -94,7 +110,7 @@ def main():
     ap.add_argument("--chapters", help="comma list, e.g. 1,2,5 (default: all)")
     ap.add_argument("--format", default="deep-dive", choices=["deep-dive", "brief", "critique", "debate"])
     ap.add_argument("--length", default="short", choices=["short", "default", "long"])
-    ap.add_argument("--language", default="tr")
+    ap.add_argument("--language", default=None, help="ses dili (varsayilan: dersin dili)")
     ap.add_argument("--force", action="store_true", help="regenerate even if the MP3 exists")
     ap.add_argument("--transcode-only", action="store_true", help="skip NotebookLM; re-encode downloaded files")
     ap.add_argument("--notebooklm", default=None)
@@ -111,7 +127,8 @@ def main():
     d = ROOT / "data" / args.slug
     manifest = json.loads((d / "manifest.json").read_text(encoding="utf-8-sig"))
     plan = json.loads((d / "study_plan.json").read_text(encoding="utf-8-sig"))
-    uni = load_university(ROOT)
+    uni = load_university(ROOT, args.slug)
+    args.language = args.language or language_code(uni)
     state = d / "state.json"
     sources = list(json.loads(state.read_text(encoding="utf-8-sig")).get("sources", {}).values()) if state.exists() else []
     spec_path = d / "audio.json"

@@ -18,7 +18,8 @@ State lives in data/<slug>/state.json, so any stage can be re-run and resumes wh
 Only one runner per project is allowed (lock file). Notebooks are never deleted or shared.
 """
 import argparse, json, re, sys, time
-from common import Lock, Project, grounding_rules, require_cli, run_cli, run_cli_json, source_tier, with_authority
+from common import (Lock, Project, cli_language, grounding_rules, language_code, normalize_quiz_questions,
+                    require_cli, run_cli, run_cli_json, source_tier, with_authority)
 
 LIMIT_HINTS = re.compile(r"rate.?limit|quota|429|resource.?exhausted|too many|usage limit|limit reached", re.I)
 
@@ -42,7 +43,7 @@ class Runner:
         self.c = proj.courses[slug]
         self.st = State(proj, slug)
         self.cli = require_cli()
-        self.u = proj.uni
+        self.u = proj.uni_for(slug)
         self.lang = self.u.get("language") or "English"
         self.rules = grounding_rules(self.u)
         self.tiers = (self.u.get("grounding") or {}).get("tiers") or []
@@ -163,7 +164,11 @@ class Runner:
         noun = self.noun
         coverage = (f"Every {noun} appears in exactly one chapter." if n >= lo else
                     f"There are fewer {noun}s than chapters, so split the material into topics. A {noun} may appear in several chapters.")
-        listing = "\n".join(f"{i}. {s['title']}" for i, s in enumerate(srcs, 1))
+        # NotebookLM's chat rejects a prompt that is too long. The source listing is truncated to fit:
+        # the model answers with the numbers, so the titles only have to stay recognisable.
+        budget = max(30, (MAX_PLAN_PROMPT - 1200) // max(1, n) - 4)
+        titles = [s["title"][:budget] for s in srcs]
+        listing = "\n".join(f"{i}. {t}" for i, t in enumerate(titles, 1))
         prompt = (f"Group this course's {noun}s into {count} chapters that follow the order below.\n"
                   "Return ONLY a JSON object, no prose, no markdown fences, in this exact shape:\n"
                   '{"chapters": [{"title": "...", "summary": "2 to 3 sentences", "objectives": ["...", "...", "..."], '
@@ -187,7 +192,7 @@ class Runner:
         except json.JSONDecodeError as e:
             self.log(f"plan JSON parse failed: {e}; snippet around error: {snippet[max(0, e.pos-80):e.pos+80]!r}")
             sys.exit(1)
-        by_title = {s["title"].strip().lower(): s for s in srcs}
+        by_title = {t.strip().lower(): s for t, s in zip(titles, srcs)}
         missing = []
         for ch in plan["chapters"]:
             ch["source_ids"], ch["lectures_raw"] = [], ch.get("lectures", [])
@@ -286,10 +291,14 @@ class Runner:
         q = self.c.get("quiz") or {}
         diff = q.get("difficulty") or self.u["quiz"]["difficulty"]
         qty = q.get("quantity") or self.u["quiz"]["quantity"]
-        aid = self.st.d.get("quiz_artifact") or self.generate(
-            "quiz", ["generate", "quiz", f"Cover the core concepts of every {self.noun}. Write for {self.u['audience']}. "
-                     f"Write the entire quiz (questions, options, explanations, hints) in {self.lang}. {self.rules}",
-                     "-n", self.nb, "--difficulty", diff, "--quantity", qty])
+        aid = self.st.d.get("quiz_artifact")
+        if not aid:
+            # Artifact dili CLI'da global bir ayar; dersin diliyle üret, sonra eski diline dön.
+            with cli_language(self.cli, language_code(self.u)):
+                aid = self.generate(
+                    "quiz", ["generate", "quiz", f"Cover the core concepts of every {self.noun}. Write for {self.u['audience']}. "
+                             f"Write the entire quiz (questions, options, explanations, hints) in {self.lang}. {self.rules}",
+                             "-n", self.nb, "--difficulty", diff, "--quantity", qty])
         if not aid:
             self.log("quiz failed after all tries. Rerun the quiz stage later.")
             return
@@ -297,40 +306,58 @@ class Runner:
         self.st.save()
         code, out, err = run_cli(self.cli, ["download", "quiz", str(out_path), "-n", self.nb, "-a", aid, "--format", "json", "--force"])
         self.log(f"quiz download code {code}: {(err or out).strip()[-160:]}")
+        # NotebookLM's export has no question type; the site only auto-grades the types in
+        # quiz_types.GRADED, so the type is set here.
+        try:
+            data = json.loads(out_path.read_text(encoding="utf-8-sig"))
+        except (OSError, ValueError):
+            return
+        qs = data.get("questions") if isinstance(data, dict) else data
+        if not isinstance(qs, list) or not qs:
+            return
+        normalized = normalize_quiz_questions(qs)
+        if isinstance(data, dict):
+            data["questions"] = normalized
+            out_path.write_text(json.dumps(data, indent=2, ensure_ascii=False), encoding="utf-8")
+        else:
+            out_path.write_text(json.dumps(normalized, indent=2, ensure_ascii=False), encoding="utf-8")
+        self.log(f"quiz normalized: {len(normalized)} questions, type={normalized[0]['type']}")
 
     def infographics(self):
         _, plan = self._plan()
         done = self.st.d.setdefault("infographics", {})
         only = {int(x) for x in self.args.chapters.split(",")} if self.args.chapters else None
-        for i, ch in enumerate(plan["chapters"], 1):
-            if only and i not in only:
-                continue
-            dest = self.p.assets(self.slug) / f"chapter-{i}.png"
-            if dest.exists():
-                continue
-            key = f"infographic-{i}"
-            aid = done.get(key)
-            if not aid:
-                header = f"Chapter {i}: {ch['title']}"
-                prompt = (f"Study infographic for {header}. Summarize the key ideas, models and takeaways of these {self.noun}s "
-                          f"for {self.u['audience']}. Locked house style, follow exactly: {self.u['figureStyle']}, "
-                          f"one header band at the top reading '{header}', shown once only. "
-                          f"Write every word on the infographic in {self.lang}. "
-                          "No university names, logos, seals or crests. No photos. No em dashes. "
-                          f"Keep every label short so no text is cut off. "
-                          f"Check every word for correct {self.lang} spelling before rendering. {self.rules}")
-                args = ["generate", "infographic", prompt, "-n", self.nb, "--orientation", "landscape",
-                        "--style", "professional", "--detail", "standard"]
-                for sid in self.chapter_sources(ch):
-                    args += ["-s", sid]
-                aid = self.generate(key, args)
-                if not aid:
-                    self.log(f"{key} failed after all tries")
+        # Artifact dili CLI'da global bir ayar; dersin diliyle üret, sonra eski diline dön.
+        with cli_language(self.cli, language_code(self.u)):
+            for i, ch in enumerate(plan["chapters"], 1):
+                if only and i not in only:
                     continue
-                done[key] = aid
-                self.st.save()
-            code, out, err = run_cli(self.cli, ["download", "infographic", str(dest), "-n", self.nb, "-a", aid, "--force"])
-            self.log(f"{key} download code {code}")
+                dest = self.p.assets(self.slug) / f"chapter-{i}.png"
+                if dest.exists():
+                    continue
+                key = f"infographic-{i}"
+                aid = done.get(key)
+                if not aid:
+                    header = f"Chapter {i}: {ch['title']}"
+                    prompt = (f"Study infographic for {header}. Summarize the key ideas, models and takeaways of these {self.noun}s "
+                              f"for {self.u['audience']}. Locked house style, follow exactly: {self.u['figureStyle']}, "
+                              f"one header band at the top reading '{header}', shown once only. "
+                              f"Write every word on the infographic in {self.lang}. "
+                              "No university names, logos, seals or crests. No photos. No em dashes. "
+                              f"Keep every label short so no text is cut off. "
+                              f"Check every word for correct {self.lang} spelling before rendering. {self.rules}")
+                    args = ["generate", "infographic", prompt, "-n", self.nb, "--orientation", "landscape",
+                            "--style", "professional", "--detail", "standard"]
+                    for sid in self.chapter_sources(ch):
+                        args += ["-s", sid]
+                    aid = self.generate(key, args)
+                    if not aid:
+                        self.log(f"{key} failed after all tries")
+                        continue
+                    done[key] = aid
+                    self.st.save()
+                code, out, err = run_cli(self.cli, ["download", "infographic", str(dest), "-n", self.nb, "-a", aid, "--force"])
+                self.log(f"{key} download code {code}")
 
     def manifest(self):
         d = self.p.data(self.slug)
@@ -355,6 +382,10 @@ class Runner:
 
 
 STAGES = ["create", "sources", "plan", "ground", "quiz", "infographics", "manifest"]
+
+# NotebookLM's chat rejects a long prompt; the plan stage keeps the whole ask under this many
+# characters by shortening the source listing.
+MAX_PLAN_PROMPT = 6000
 
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
