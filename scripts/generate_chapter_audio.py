@@ -146,6 +146,7 @@ def main():
     done = {a["chapter"]: a for a in spec.get("chapters", [])}
     wanted = [int(x) for x in args.chapters.split(",")] if args.chapters else range(1, len(plan["chapters"]) + 1)
 
+    failed = []
     for n in wanted:
         ch = plan["chapters"][n - 1]
         raw = ROOT / "assets" / "audio" / args.slug / f"chapter-{n}.mp4"
@@ -154,8 +155,15 @@ def main():
             print(f"chapter {n}: exists, skipped")
             continue
         if not args.transcode_only:
-            generate(manifest["notebook_id"], ch, raw, args, sources, uni, default_audience)
+            # Bir bolumun uretimi basarisiz olursa (kota, oturum) digerleri atlanmaz.
+            try:
+                generate(manifest["notebook_id"], ch, raw, args, sources, uni, default_audience)
+            except Exception as e:
+                failed.append(n)
+                print(f"chapter {n}: uretilemedi ({str(e)[:120]})", file=sys.stderr)
+                continue
         if not raw.exists():
+            failed.append(n)
             print(f"chapter {n}: no downloaded file at {raw}", file=sys.stderr)
             continue
         dur = transcode(raw, mp3, args)
@@ -165,9 +173,12 @@ def main():
         spec = {"format": args.format, "length": args.length, "language": args.language, "bitrate": BITRATE,
                 "chapters": [done[k] for k in sorted(done)]}
         spec_path.write_text(json.dumps(spec, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    if failed:
+        print(f"uretilemeyen bolumler: {failed}", file=sys.stderr)
     print(f"wrote {spec_path.relative_to(ROOT)}; now run: py -3 generator/scripts/build.py .")
+    return 1 if failed else 0
 
 
 if __name__ == "__main__":
     os.chdir(ROOT)
-    main()
+    sys.exit(main())
