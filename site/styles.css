@@ -197,6 +197,12 @@ main { max-width: 1120px; margin: 0 auto; padding: clamp(24px, 5vw, 56px) clamp(
 .gl-add-row .field { flex: 1 1 200px; }
 .gl-list { list-style: none; padding: 0; margin: 0; }
 .gl-row { display: flex; gap: 1rem; justify-content: space-between; align-items: start; padding: .6rem 0; border-bottom: 1px solid var(--line); }
+/* Çalışma masasında sözlük: ders ders tekrar bekleyen kelime sayısı. */
+.gl-desk-list { list-style: none; padding: 0; margin: .6rem 0 0; }
+.gl-desk-list li + li { border-top: 1px solid var(--line); }
+.gl-desk-list a { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; padding: .55rem 0; color: inherit; }
+.gl-desk-list a:hover b, .gl-desk-list a:focus-visible b { text-decoration: underline; }
+.gl-desk-list b { font-weight: 600; }
 .lectures { list-style: none; padding: 0; margin: 0; }
 .lectures li { border-bottom: 1px solid var(--line); }
 .lectures a { display: flex; gap: .8rem; padding: .7rem 0; text-decoration: none; color: var(--ink); font-size: .92rem; }

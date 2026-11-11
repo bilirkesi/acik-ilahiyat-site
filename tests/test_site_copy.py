@@ -179,6 +179,10 @@ class TestBothContentPaths(unittest.TestCase):
         self.assertIn("day.gl = (day.gl || 0) + 1;", src)
         self.assertIn("${glossDeskHtml()}", src)
         self.assertIn("kelime bugün tekrar bekliyor", src)
+        # Masa kartı ders ders ayrılır: her ders kendi destesine bağlanır.
+        self.assertIn("gl-desk-list", src)
+        self.assertIn("href=\"#/course/${x.c.slug}/sozluk\"", src)
+        self.assertIn("${x.due ? `${x.due} sırada` : \"bugün yok\"} · ${x.total} kelime", src)
 
     def test_the_published_copy_is_the_built_template(self) -> None:
         """site/ elle düzenlenmez: yayınlanan kopya şablonun aynısı olmalı."""

@@ -6437,20 +6437,22 @@ document.getElementById("zin").focus();
   document.addEventListener("visibilitychange", () => { if (document.visibilityState === "hidden") vidSave(true); });
   window.addEventListener("pagehide", () => vidSave(true));
 
-  // Çalışma masasında sözlük: ders ders bugün tekrar bekleyen kelime sayısı.
+  // Çalışma masasında sözlük: her ders kendi destesiyle, bugün tekrar bekleyen kelime sayısıyla.
   function glossDeskHtml() {
     const rows = COURSES.map((c) => ({ c, due: glossDue(c.slug).length, total: glossDeck(c.slug).length }))
       .filter((x) => x.total);
+    if (!rows.length) return "";
     const due = rows.reduce((n, x) => n + x.due, 0);
     const total = rows.reduce((n, x) => n + x.total, 0);
-    if (!total) return "";
-    const first = rows.find((x) => x.due) || rows[0];
-    return `<a class="desk-card desk-action" href="#/course/${first.c.slug}/sozluk">
-      <span class="desk-k">Sözlük destesi</span>
-      <b class="desk-n">${due}</b>
-      <span>${due ? "kelime bugün tekrar bekliyor" : "tekrar bekleyen kelime yok"} · ${total} kelime</span>
-      <span class="btn ghost">${due ? "Kelimeleri tekrar et" : "Desteye bak"}</span>
-    </a>`;
+    const items = rows.map((x) => `<li><a href="#/course/${x.c.slug}/sozluk">
+        <b>${esc(x.c.subject)}</b>
+        <span class="muted small">${x.due ? `${x.due} sırada` : "bugün yok"} · ${x.total} kelime</span>
+      </a></li>`).join("");
+    return `<section class="desk-card desk-gloss">
+      <h3>Sözlük destesi</h3>
+      <p class="muted">${due ? `${due} kelime bugün tekrar bekliyor.` : "Bugün tekrar bekleyen kelime yok."} ${rows.length} derste ${total} kelime.</p>
+      <ul class="gl-desk-list">${items}</ul>
+    </section>`;
   }
 
   // Çalışma masası: yarıda kalan son video.
