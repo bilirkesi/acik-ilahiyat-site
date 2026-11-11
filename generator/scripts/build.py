@@ -9,7 +9,7 @@ Cleans NotebookLM text: drops citation markers, fixes doubled LaTeX delimiters, 
 """
 import hashlib, html, json, re, shutil, subprocess, sys, time, zipfile
 from pathlib import Path
-from common import TEMPLATE_DIR, Project
+from common import TEMPLATE_DIR, Project, language_code, load_university
 
 
 def dash(obj):
@@ -168,11 +168,13 @@ def course_data(proj, slug):
             "nlmInfographic": nlm_infographics.get(i),
         })
     mode = c.get("mode", "lectures")
+    # Dersin dili: site bu dili sesli okuma ve ekran okuyucu icin kullanir (İngilizce ders Türkçe okunmaz).
+    lang = language_code(load_university(proj.root, slug))
     course = {"slug": slug, "subject": c["subject"], "course": c["course"], "professor": c.get("professor", ""),
             "school": c.get("school", ""), "playlist": c.get("playlist", ""), "note": c.get("note", ""),
             "kind": "lectures" if mode == "lectures" else "sources",
             "notebook": m["notebook_url"], "sourceCount": m["source_count"],
-            "chapters": chapters, "quiz": questions}
+            "language": lang, "chapters": chapters, "quiz": questions}
     book_units = book_unit_images(proj, slug, out_dir)
     if book_units:
         course["bookUnits"] = book_units

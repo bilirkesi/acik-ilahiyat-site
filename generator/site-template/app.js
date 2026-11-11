@@ -2575,16 +2575,17 @@
     if (root) runKavram(root);
   }
 
-  function kSpeak(text) {
+  function kSpeak(text, slug) {
     const synth = window.speechSynthesis;
     if (!synth) return;
     if (lis && lis.playing) lisStop();
     synth.cancel();
     const u = new SpeechSynthesisUtterance(String(text).replace(OTA_RUN, " ").replace(/\s+/g, " ").trim());
-    u.lang = "tr-TR";
+    const lang = courseLang(slug);
+    u.lang = speechTag(lang);
     u.rate = study.lrate || 1;
-    const v = trVoice();
-    if (v) u.voice = v;
+    const v = voiceFor(lang);
+    if (v) { try { u.voice = v; } catch (e) { /* ses atanamadi */ } }
     synth.speak(u);
   }
 
@@ -2639,7 +2640,7 @@
           <div class="k-a" hidden><p>${txt(back)}${speak ? ` <button class="lp-btn k-say" type="button" data-say-k="b" aria-label="Sesli oku">🔊</button>` : ""}</p></div>
           <div class="btn-row game-actions" id="k-actions"><button class="btn" type="button" id="k-show">${reverse ? "Kavramı göster" : "Tanımı göster"}</button></div>
         </div>`;
-      root.querySelectorAll("[data-say-k]").forEach((b) => (b.onclick = () => kSpeak(b.dataset.sayK === "f" ? front : back)));
+      root.querySelectorAll("[data-say-k]").forEach((b) => (b.onclick = () => kSpeak(b.dataset.sayK === "f" ? front : back, k.slug)));
       const actions = root.querySelector("#k-actions");
       const show = () => {
         root.querySelector(".k-a").hidden = false;
@@ -3914,7 +3915,8 @@
     const body = sections.map((s, i) => {
       const text = notesHtmlWithCites({ notes: s.body }, cites, c.slug);
       const head = sections.length > 1 || s.title ? `<h3 class="rp-h" id="${id(i)}" tabindex="-1">${ota(esc(title(s, i)))}</h3>` : "";
-      return `<section class="rp-sec">${head}<div class="notes">${text}</div>${actsIn(i).map((a, j) => activityHtml(a, `${id(i)}-${a.kind}-${j}`)).join("")}</section>`;
+      // Notlar dersin dilinde yazildigi icin ekran okuyucu ve tireleme dili dogru olsun.
+      return `<section class="rp-sec">${head}<div class="notes" lang="${c.language || "tr"}">${text}</div>${actsIn(i).map((a, j) => activityHtml(a, `${id(i)}-${a.kind}-${j}`)).join("")}</section>`;
     }).join("");
     const total = acts.length;
     const marks = markList(c.slug, n).length;
@@ -4299,11 +4301,26 @@
     </a>`;
   }
 
-  // Osmanlıca okunuş: .ota.say öğesine dokununca cihazın Türkçe sesiyle okur.
-  // Önce cihazda kurulu (localService) Türkçe ses seçilir; o, internetsiz de çalışır.
-  function trVoice() {
-    const all = speechSynthesis.getVoices().filter((v) => /^tr\b/i.test(v.lang.replace("_", "-")));
+  // Okuma sesi: dersin diline göre seçilir. Türkçe derslerde Türkçe, İngilizce derste İngilizce
+  // ses kullanılır; yoksa cihazın varsayılan sesiyle okunur. Önce cihazda kurulu (localService)
+  // ses seçilir, o internetsiz de çalışır.
+  const SPEECH_TAG = { tr: "tr-TR", en: "en-US" };
+  function voiceFor(lang) {
+    const code = String(lang || "tr").toLowerCase().slice(0, 2);
+    const all = speechSynthesis.getVoices().filter((v) => (v.lang || "").replace("_", "-").toLowerCase().startsWith(code));
     return all.find((v) => v.localService) || all[0] || null;
+  }
+  // Dersin dili ("tr", "en"): courses.json -> config.language, derlenirken data.js'e yazilir.
+  function courseLang(slug) {
+    const c = COURSES.find((x) => x.slug === slug);
+    return (c && c.language) || "tr";
+  }
+  const speechTag = (code) => SPEECH_TAG[code] || code;
+  const langName = (code) => (code === "en" ? "İngilizce" : "Türkçe");
+
+  // Osmanlıca okunuş: .ota.say öğesine dokununca cihazın Türkçe sesiyle okur.
+  function trVoice() {
+    return voiceFor("tr");
   }
   // Çeviriyazı işaretlerini sese uygun hâle getirir: ñ → n, ez-ber → ezber, çık- → çık.
   // Şapkalı ünlüler düz ünlüye iner (bazı Türkçe sesler baştaki â'yı yutar: âmir → "mir"),
@@ -4323,7 +4340,7 @@
     u.lang = "tr-TR";
     u.rate = 0.85;
     const v = trVoice();
-    if (v) u.voice = v;
+    if (v) { try { u.voice = v; } catch (e) { /* ses atanamadi */ } }
     else if (synth.getVoices().length) showToast("Bu cihazda Türkçe okuma sesi bulunamadı. Telefon ayarlarındaki Metin okuma (TTS) bölümünden Türkçe sesi indirebilirsin.");
     const done = () => { el.classList.remove("speaking"); if (saying === el) saying = null; };
     u.onend = done;
@@ -4585,12 +4602,14 @@
     lisMark(true);
     lisPaint();
     const chunks = listenChunks(lis.blocks[lis.i].text);
-    const v = trVoice();
+    const lang = courseLang(lis.slug);
+    const v = voiceFor(lang);
     chunks.forEach((t, j) => {
       const u = new SpeechSynthesisUtterance(t);
-      u.lang = "tr-TR";
+      u.lang = speechTag(lang);
       u.rate = study.lrate || 1;
-      if (v) u.voice = v;
+      // Ses atamasi bazi tarayicilarda hata verir; o zaman yalnizca dil belirleyerek oku.
+      if (v) { try { u.voice = v; } catch (e) { /* ses atanamadi */ } }
       if (j === chunks.length - 1) u.onend = () => {
         if (!lis || lis.token !== token) return;
         lis.i++;
@@ -4663,7 +4682,8 @@
   function lisStart(bar) {
     if (!lisInit(bar)) return;
     lis.start = lis.i;
-    if (window.speechSynthesis.getVoices().length && !trVoice()) showToast("Bu cihazda Türkçe okuma sesi bulunamadı. Telefon ayarlarındaki Metin okuma (TTS) bölümünden Türkçe sesi indirebilirsin.");
+    const lang = courseLang(lis.slug);
+    if (window.speechSynthesis.getVoices().length && !voiceFor(lang)) showToast(`Bu cihazda ${langName(lang)} okuma sesi bulunamadı. Telefon ayarlarındaki Metin okuma (TTS) bölümünden ${langName(lang)} sesi indirebilirsin.`);
     lisLock(true);
     lisSpeak();
   }
