@@ -1038,9 +1038,11 @@
       {
         kind: "final",
         title: "Final (oyun modu)",
-        desc: `${quizN} soru · anlık HUD, seri ve XP. Geçme notu ${pct(CONFIG.passMark)}.`,
-        href: `#/course/${c.slug}/quiz`,
-        badge: "Puanlanır",
+        desc: quizN
+          ? `${quizN} soru · anlık HUD, seri ve XP. Geçme notu ${pct(CONFIG.passMark)}.`
+          : "Bu ders için final soruları henüz yok.",
+        href: quizN ? `#/course/${c.slug}/quiz` : null,
+        badge: quizN ? "Puanlanır" : "Yakında",
       },
       {
         kind: "vize",
@@ -1054,7 +1056,7 @@
       {
         kind: "yaz",
         title: "Yaz okulu tekrarı",
-        desc: "Yaz dönemi için hızlı final turu; aynı oyun motorunu kullanır.",
+        desc: quizN ? "Yaz dönemi için hızlı final turu; aynı oyun motorunu kullanır." : "Final soruları eklendiğinde yaz turu da açılır.",
         href: quizN ? `#/course/${c.slug}/quiz` : null,
         badge: "Tekrar",
       },
@@ -1076,7 +1078,7 @@
     return `<p class="crumbs"><a href="#/">Katalog</a> / <a href="#/course/${c.slug}">${esc(c.subject)}</a> / Sınavlar</p>
       <p class="eyebrow">Sınav modları</p>
       <h1>${esc(c.subject)}</h1>
-      <p class="muted">Cevap anahtarı PDF'in son sayfasından alınmıştır. Puan, süre ve seri anlık HUD'da izlenir.</p>
+      <p class="muted">${sessions.length ? "Cevap anahtarı PDF'in son sayfasından alınmıştır. " : ""}Puan, süre ve seri anlık HUD'da izlenir.</p>
       <div class="exam-cards">
         ${cards.map((x) => `<a class="exam-card${x.href ? "" : " disabled"}" ${x.href ? `href="${x.href}"` : 'aria-disabled="true"'}>
           <span class="exam-badge">${esc(x.badge)}</span>

@@ -18,7 +18,8 @@
   It also checks `site/app.js` is the built template. The behavioural test runs the extracted JS
   block with `node` and skips itself when `node` is not on PATH. It also locks the closed quiz path:
   a course with no questions hides `Final (oyun)`, the `Sınav` row and `Sınavı çöz`, and its quiz
-  route renders `viewNoQuiz()`.
+  route renders `viewNoQuiz()`, the exam hub's final card has no link, and the mixed test page
+  refuses an empty pool.
 - `test_build.py` — `generator/scripts/build.py`'s `clean()`: numbered and by-title citation markers are dropped, markdown links and the reference list survive, and an escaped product identifier (`V\\(CLUSTER_INTERCONNECTS`) is restored to `V$CLUSTER_INTERCONNECTS` while real LaTeX is kept.
 - `test_mcp_server.py` — the MCP server's JSON-RPC contract over stdio: `initialize`, `tools/list`, `tools/call`, unknown tool → `-32602`, malformed JSON → `-32700`.
 - `__init__.py` — package marker for discovery.
@@ -34,7 +35,7 @@
 - Keep the suite stdlib-only (`unittest`); do not add pytest.
 
 ## Verification
-- `py -3 -m unittest discover -s tests` — 130 tests, must exit 0. Run after any change to `data/`, `coursegraph/`, or the export scripts.
+- `py -3 -m unittest discover -s tests` — 132 tests, must exit 0. Run after any change to `data/`, `coursegraph/`, or the export scripts.
 - CI runs the same command on every push to `main` and on every pull request (`.github/workflows/tests.yml`).
 
 ## Child DOX Index

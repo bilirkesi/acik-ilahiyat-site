@@ -119,6 +119,21 @@ class TestBothContentPaths(unittest.TestCase):
         for line in guarded:
             self.assertIn("(c.quiz || []).length", line)
 
+    def test_the_exam_hub_does_not_offer_a_missing_final(self) -> None:
+        """Soru yoksa sınav merkezindeki "Final (oyun modu)" kartı bağlantısız olmalı."""
+        src = template_source()
+        self.assertIn("href: quizN ? `#/course/${c.slug}/quiz` : null,", src)
+        self.assertIn('"Bu ders için final soruları henüz yok."', src)
+        # Statik kart özelliği kalmamalı; soru bankasındaki `href` yalnız var olan sorulara takılır.
+        self.assertNotIn("href: `#/course/${c.slug}/quiz`,", src)
+        self.assertNotIn("Cevap anahtarı PDF'in son sayfasından alınmıştır. Puan", src)
+
+    def test_the_mixed_test_page_refuses_an_empty_pool(self) -> None:
+        """Karışık testte havuz boşsa "Teste başla" kapalı kalmalı."""
+        src = template_source()
+        self.assertIn('"Bu seçimde soru yok."', src)
+        self.assertIn("go.disabled = !pool.length", src)
+
     def test_the_published_copy_is_the_built_template(self) -> None:
         """site/ elle düzenlenmez: yayınlanan kopya şablonun aynısı olmalı."""
         if not BUILT.exists():

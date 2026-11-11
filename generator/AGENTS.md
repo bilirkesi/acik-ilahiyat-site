@@ -25,7 +25,8 @@
 - A course without questions has no quiz path: the course page hides the "Final (oyun)" button and
   the "Sınav" row, the last chapter drops "Sınavı çöz", and `#/course/<slug>/quiz` renders
   `viewNoQuiz()` instead of an empty game. That is the normal state of a hand-written draft, not a
-  bug; `tests/test_site_copy.py` locks the gates.
+  bug; `tests/test_site_copy.py` locks the gates. The exam hub disables its final and summer cards
+  the same way, and the mixed test page keeps its start button disabled while the pool is empty.
 - `add_course.py --offline` writes the data files only when they are missing, so it can be re-run after the
   chapters are written. Such a course is `mode: "manual"` with `notebook_url: ""`; `build.py` treats it as a
   `sources` course and the site hides the NotebookLM buttons for it.
