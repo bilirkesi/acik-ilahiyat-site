@@ -18,8 +18,8 @@ State lives in data/<slug>/state.json, so any stage can be re-run and resumes wh
 Only one runner per project is allowed (lock file). Notebooks are never deleted or shared.
 """
 import argparse, json, re, sys, time
-from common import (Lock, Project, cli_language, grounding_rules, language_code, normalize_quiz_questions,
-                    require_cli, run_cli, run_cli_json, source_tier, with_authority)
+from common import (Lock, Project, cli_language, excluded_from_grounding, grounding_rules, language_code,
+                    normalize_quiz_questions, require_cli, run_cli, run_cli_json, source_tier, with_authority)
 
 LIMIT_HINTS = re.compile(r"rate.?limit|quota|429|resource.?exhausted|too many|usage limit|limit reached", re.I)
 
@@ -159,6 +159,9 @@ class Runner:
     def plan(self):
         order = self.st.d.get("order") or list(self.st.d["sources"])
         srcs = [self.st.d["sources"][k] for k in order if self.st.d["sources"].get(k, {}).get("status") == "ready"]
+        # Kaynaklarin tier siralamasi disinda kalan gürültü kaynaklari (ucuncu taraf yazilari, kisisel ekran
+        # goruntuleri) modele sunulmaz: plan onlari bolumlere daagitir ve sonra notlarda atif alirlar.
+        srcs = [s for s in srcs if not excluded_from_grounding(s, self.tiers)]
         lo, hi, n = self.u["chapters"]["min"], self.u["chapters"]["max"], len(srcs)
         count = f"exactly {lo}" if lo == hi else f"{lo} to {hi}"
         noun = self.noun
@@ -228,10 +231,14 @@ class Runner:
         return path, json.loads(path.read_text())
 
     def ground(self):
-        """Pure-JSON asks return 0 citations, so re-ask each chapter against only its own sources."""
+        """Pure-JSON asks return 0 citations, so re-ask each chapter against only its own sources.
+        `--chapters` limits the stage to those chapters; `--force` re-asks the ones already grounded."""
         path, plan = self._plan()
+        only = {int(x) for x in self.args.chapters.split(",")} if self.args.chapters else None
         for i, ch in enumerate(plan["chapters"], 1):
-            if ch.get("grounding"):
+            if only and i not in only:
+                continue
+            if ch.get("grounding") and not self.args.force:
                 continue
             q = (f"Using only these {self.noun}s, explain in plain sentences what the student learns for each objective below. "
                  f"Cite the {self.noun}s. Write for {self.u['audience']}. Write the whole answer in {self.lang}. No em dashes. "
@@ -397,7 +404,8 @@ if __name__ == "__main__":
     ap.add_argument("project")
     ap.add_argument("slug")
     ap.add_argument("stage", choices=STAGES + ["all"])
-    ap.add_argument("--chapters", help="infographics only: comma list of chapter numbers")
+    ap.add_argument("--chapters", help="ground and infographics only: comma list of chapter numbers")
+    ap.add_argument("--force", action="store_true", help="ground only: re-ask chapters that already have notes")
     ap.add_argument("--backoff", type=int, default=420, help="seconds to wait after a failed generation (default 7 min)")
     ap.add_argument("--attempts", type=int, default=3)
     a = ap.parse_args()

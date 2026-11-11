@@ -6,7 +6,7 @@
 
 ## Ownership
 - `scripts/build.py` — the entry point. Copies `site-template/` into `site/`, injects `university.json` branding, bundles every course that has a `data/<slug>/manifest.json` into `site/data.js`, writes `index.html`, `manifest.webmanifest`, and `sw.js`, compresses chapter infographics, and zips each `extensions/<name>/` into `site/downloads/<name>.zip`.
-- `scripts/common.py` — shared project/course helpers, incl. the grounding helpers `source_tier`, `with_authority`, `grounding_rules` that read `university.json` → `grounding`, the `Lock` that keeps a single pipeline runner per project, and `find_cli`/`require_cli` that locate the `notebooklm` CLI without hardcoded machine paths.
+- `scripts/common.py` — shared project/course helpers, incl. the grounding helpers `source_tier`, `excluded_from_grounding`, `with_authority`, `grounding_rules` that read `university.json` → `grounding`, the `Lock` that keeps a single pipeline runner per project, and `find_cli`/`require_cli` that locate the `notebooklm` CLI without hardcoded machine paths.
 - `scripts/quiz_types.py` — the canonical list of quiz question types (`GRADED`, `KNOWN`); `qa.py` and `scripts/check_quiz_answers.py` both import it, and a test asserts it matches the site's `GRADED` set in `app.js`.
 - `scripts/pipeline.py`, `preflight.py`, `qa.py`, `redo.py`, `sheet.py` — full generation, validation, and contact-sheet tooling.
 - `scripts/add_course.py`, `new_project.py` — scaffold a course or a new project.
@@ -17,13 +17,16 @@
 
 ## Local Contracts
 - Run from the repo root: `py -3 generator/scripts/build.py .` (Python 3.8+ stdlib; Pillow only to compress new PNGs).
-- `grounding` in `university.json` ranks source kinds (`tiers`: `label`, `note`, `types`, `titles`; first = textbook) and adds prompt `rules`. The `pipeline.py` ground, quiz and infographic stages append `grounding_rules()` to their prompts and add the textbook to a chapter that has none. It is build-time only and stays out of `public_config`.
+- `grounding` in `university.json` ranks source kinds (`tiers`: `label`, `note`, `types`, `titles`, `exclude_titles`; first = textbook) and adds prompt `rules`. The `pipeline.py` ground, quiz and infographic stages append `grounding_rules()` to their prompts and add the textbook to a chapter that has none. It is build-time only and stays out of `public_config`.
+- A tier's `exclude_titles` marks sources that share its type without sharing its authority (third-party write-ups, personal screenshots, uploads of other people's slides). `excluded_from_grounding()` drops them from the source list: ranking them below every tier is not enough, because they would still be handed to NotebookLM with `-s` and end up cited in the notes. The `plan` stage does not offer them to the model either, so they never reach a chapter's source list.
 - `public_config` in `build.py` whitelists the `university.json` keys that reach `window.UNIVERSITY` (incl. `exams`, `grading`); a new config key must be added there.
 - `build.py` reads `university.json`, `courses.json`, and `data/<slug>/`; it does **not** read `okf/` or `coursegraph/index/`.
 - `SHELL_FILES` in `build.py` lists the PWA app shell hashed into `sw.js`: `index.html`, `styles.css`, `app.js`, `data.js`, `interactive.js`, `coursegraph.js`, `past_exams.js`, `unit_quizzes.js`, `manifest.webmanifest`, `favicon.svg`. Adding a new lazy bundle means adding it here too.
 - Cache busting uses a single `{{V}}` token stamped into `index.html`, `styles.css?v=`, and `sw.js`.
 - `build.py` writes a **stub** for a shell bundle that does not exist yet, so a fresh build never 404s.
 - `pipeline.py` keeps the plan ask under `MAX_PLAN_PROMPT` characters: NotebookLM's chat rejects a prompt that is too long (around 6000 characters for a multi-line prompt), so the source listing is shortened when a course has many sources. The model answers with the source numbers, so the titles only have to stay recognisable.
+- `pipeline.py ground --chapters 5,6 --force` re-asks the listed chapters even when they already have notes; `--chapters` alone limits the stage, `--force` overwrites.
+- `build.py`'s `clean()` prepares NotebookLM text for the site: it drops citation markers (numbered `[1]`, `[2-4]`, `[1, 3]` and by-title `[Recovering Tables and Table Partitions]`), restores a product identifier whose `$` NotebookLM wrote as a LaTeX escape (`V\\(CLUSTER_INTERCONNECTS` → `V$CLUSTER_INTERCONNECTS`), and keeps markdown links, the reference list and real LaTeX. It runs on `notes`, `summary` and `objectives` — every field the site renders.
 - `common.Lock` creates `.pipeline.lock` with `O_CREAT|O_EXCL` (atomic everywhere) and clears a leftover file only after checking the recorded pid with `_pid_alive`. `_pid_alive` uses `os.kill(pid, 0)` on POSIX and `OpenProcess`/`GetExitCodeProcess` on Windows, where `os.kill(pid, 0)` is a `CTRL_C_EVENT` and raises `WinError 87` for a dead pid.
 
 ## Work Guidance

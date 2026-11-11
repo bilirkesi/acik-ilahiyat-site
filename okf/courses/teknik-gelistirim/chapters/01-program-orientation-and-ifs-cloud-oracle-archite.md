@@ -5,13 +5,17 @@ description: In this chapter, the student learns the foundational enterprise arc
 course: teknik-gelistirim
 chapter: 1
 status: stable
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-11-10T11:25:36Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-11-11T05:06:34Z }
 notebook: "https://notebooklm.google.com/notebook/d9fbd16b-86fb-45ab-af81-dc503b2c5aad"
 ---
 
 # Özet
 
 In this chapter, the student learns the foundational enterprise architecture and administration practices required to manage Oracle Database 19c environments for IFS Applications and IFS Cloud. The curriculum covers Multitenant Container Database (CDB) and Pluggable Database (PDB) isolation, dynamic memory architecture tuning for sga_target and pga_aggregate_target, and Release Update (RU) and Release Update Revision (RUR) patch lifecycles. Students also master operational governance, background job lifecycle management, deployment prerequisites, and telemetry monitoring using the Application Monitoring Console in IFS Cloud 26R2, alongside operational report development in IFS Cloud 25R1.
+
+# Sesli Ders
+
+[Bölüm 1 sesli özeti](/audio/teknik-gelistirim/chapter-1.mp3) (5:30 dk, MP3)
 
 # Öğrenme Hedefleri
 
@@ -49,7 +53,7 @@ Based on the provided sources, here is the detailed explanation of what the stud
 
 For this objective, the student learns the following:
 
-* **CDB and PDB Architecture:** Managing the single root container database CDB\\(ROOT, which handles background processes, shared system metadata, and global memory [1]. The student learns to create and administer dedicated pluggable databases, including PDB\\)SEED and User PDBs such as IFS_PROD, IFS_TEST, and DEV, to isolate distinct IFS application instances on shared server hardware [1-4].
+* **CDB and PDB Architecture:** Managing the single root container database CDB$ROOT, which handles background processes, shared system metadata, and global memory [1]. The student learns to create and administer dedicated pluggable databases, including PDB$SEED and User PDBs such as IFS_PROD, IFS_TEST, and DEV, to isolate distinct IFS application instances on shared server hardware [1-4].
 * **Tenant Isolation and Session Management:** Managing PDB states, switching container contexts, and isolating transactional schema objects across environments [1, 4].
 * **Resource Manager Governance:** Configuring Oracle Resource Manager policies using `CREATE_CDB_PLAN` to assign CPU shares (`shares`) and utilization limits (`utilization_limit`) at the CDB level, preventing non-production environments from starving production resources [2-4].
 * **Dynamic Memory Tuning:** Configuring `sga_target` under Automatic Shared Memory Management (ASMM) to dynamically balance the Buffer Cache, Shared Pool, and Large Pool for high-volume OLTP transactions [1]. Configuring `pga_aggregate_target` optimizes per-process memory for sort operations and hash joins, preventing temporary tablespace spilling during large batch runs [1].
