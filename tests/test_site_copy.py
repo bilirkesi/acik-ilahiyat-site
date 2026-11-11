@@ -107,6 +107,18 @@ class TestBothContentPaths(unittest.TestCase):
         self.assertIsNotNone(lead)
         self.assertIn("(c.quiz || []).length", lead.group(0))
 
+    def test_a_course_without_questions_has_no_quiz_path(self) -> None:
+        """Soru bankası boşsa "Final (oyun)" düğmesi, "Sınav" satırı ve sınav rotası kapalı olmalı."""
+        src = template_source()
+        for line in src.splitlines():
+            if "Final (oyun)" in line:
+                self.assertIn("(c.quiz || []).length", line)
+        self.assertIn("viewNoQuiz(c)", src)
+        guarded = [ln for ln in src.splitlines() if "viewQuiz(c)" in ln and "parts[2]" not in ln]
+        self.assertTrue(guarded, "sınav rotası viewQuiz çağırmıyor")
+        for line in guarded:
+            self.assertIn("(c.quiz || []).length", line)
+
     def test_the_published_copy_is_the_built_template(self) -> None:
         """site/ elle düzenlenmez: yayınlanan kopya şablonun aynısı olmalı."""
         if not BUILT.exists():

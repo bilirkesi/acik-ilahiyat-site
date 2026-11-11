@@ -22,6 +22,10 @@
 - The template supports both content paths: `HAS_NOTEBOOK` (any course with `notebook`) and `HAS_QUIZ` gate
   every NotebookLM credit and the "pass the exam" sentence, so a hand-written project never advertises a
   notebook it does not have. Keep new copy behind the same flags.
+- A course without questions has no quiz path: the course page hides the "Final (oyun)" button and
+  the "Sınav" row, the last chapter drops "Sınavı çöz", and `#/course/<slug>/quiz` renders
+  `viewNoQuiz()` instead of an empty game. That is the normal state of a hand-written draft, not a
+  bug; `tests/test_site_copy.py` locks the gates.
 - `add_course.py --offline` writes the data files only when they are missing, so it can be re-run after the
   chapters are written. Such a course is `mode: "manual"` with `notebook_url: ""`; `build.py` treats it as a
   `sources` course and the site hides the NotebookLM buttons for it.
@@ -35,6 +39,7 @@
 - `pipeline.py` keeps the plan ask under `MAX_PLAN_PROMPT` characters: NotebookLM's chat rejects a prompt that is too long (around 6000 characters for a multi-line prompt), so the source listing is shortened when a course has many sources. The model answers with the source numbers, so the titles only have to stay recognisable.
 - The plan answer is JSON the model writes by hand, and it sometimes escapes characters JSON does not allow (`"CDB\$ROOT"`). `fix_json_escapes()` in `pipeline.py` drops those escapes before parsing; the valid ones (`\\`, `\"`, `\n`, `\uXXXX`) are kept, and a leftover `\$` in the text is repaired by `clean()` in `build.py`.
 - `pipeline.py ground --chapters 5,6 --force` re-asks the listed chapters even when they already have notes; `--chapters` alone limits the stage, `--force` overwrites.
+- An infographic's header comes from `chapter_header()`: the course's language decides the word ("Chapter" / "Bölüm"), and a title that already carries it ("Bölüm 1: …") is used as it is so the number is not repeated.
 - `build.py`'s `clean()` prepares NotebookLM text for the site: it drops citation markers (numbered `[1]`, `[2-4]`, `[1, 3]` and by-title `[Recovering Tables and Table Partitions]`), restores a product identifier whose `$` NotebookLM wrote as a LaTeX escape (`V\\(CLUSTER_INTERCONNECTS` → `V$CLUSTER_INTERCONNECTS`), and keeps markdown links, the reference list and real LaTeX. It runs on `notes`, `summary` and `objectives` — every field the site renders.
 - `build.py` writes each course's `language` ("tr"/"en") into `data.js`, taken from `courses.json` → `config.language` (`language_code()` in `common.py`). The site reads it for the read-aloud voice (`voiceFor()` in `app.js` picks the voice of that language; the Ottoman Turkish word reading stays Turkish) and for the `lang` attribute on the notes, so a screen reader reads English notes in English.- `common.Lock` creates `.pipeline.lock` with `O_CREAT|O_EXCL` (atomic everywhere) and clears a leftover file only after checking the recorded pid with `_pid_alive`. `_pid_alive` uses `os.kill(pid, 0)` on POSIX and `OpenProcess`/`GetExitCodeProcess` on Windows, where `os.kill(pid, 0)` is a `CTRL_C_EVENT` and raises `WinError 87` for a dead pid.
 

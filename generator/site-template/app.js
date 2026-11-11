@@ -468,7 +468,7 @@
             ${c.professor ? `<dt>Öğretim üyesi</dt><dd>${esc(c.professor)}</dd>` : ""}
             ${c.school ? `<dt>Özgün ders</dt><dd>${esc(c.school)}</dd>` : ""}
             <dt>${cap(noun(c, 2))}</dt><dd>${c.sourceCount}</dd>
-            <dt>Sınav</dt><dd>${c.quiz.length} soru</dd>
+            ${(c.quiz || []).length ? `<dt>Sınav</dt><dd>${c.quiz.length} soru</dd>` : ""}
             <dt>Durum</dt><dd><span class="badge ${s.cls}">${s.label}</span></dd>
           </dl>
           <div class="btn-row">
@@ -476,7 +476,7 @@
             ${vids.length ? `<a class="btn ghost" href="#/course/${c.slug}/videolar">Ders videoları (${vids.length})</a>` : ""}
             ${c.audio ? `<a class="btn ghost" href="#/course/${c.slug}/chapter/${Object.keys(c.audio).map(Number).sort((a, b) => a - b)[0]}">Sesli dersler (${Object.keys(c.audio).length})</a>` : ""}
             <a class="btn ghost" href="#/ozet">Ders özeti</a>
-            <a class="btn ghost" href="#/course/${c.slug}/quiz">Final (oyun)</a>
+            ${(c.quiz || []).length ? `<a class="btn ghost" href="#/course/${c.slug}/quiz">Final (oyun)</a>` : ""}
             <a class="btn ghost" href="#/course/${c.slug}/exams">Çıkmış / sınavlar</a>
             <a class="btn ghost" href="#/oyunlar?ders=${c.slug}">Bulmaca ve oyunlar</a>
             ${c.okunus ? `<a class="btn ghost" href="#/harfler">Harf atölyesi</a>` : ""}
@@ -614,7 +614,9 @@
       return `<li>${l.url ? `<a href="${esc(l.url)}" target="_blank" rel="noopener"${yt ? ` data-yt="${yt}"` : ""}>${inner}</a>` : `<span class="src">${inner}</span>`}</li>`;
     }).join("");
     const prev = n > 1 ? `<a class="btn ghost" href="#/course/${c.slug}/chapter/${n - 1}">Önceki bölüm</a>` : `<a class="btn ghost" href="#/course/${c.slug}">Ders planına dön</a>`;
-    const next = n < c.chapters.length ? `<a class="btn" href="#/course/${c.slug}/chapter/${n + 1}">Sonraki bölüm</a>` : `<a class="btn" href="#/course/${c.slug}/quiz">Sınavı çöz</a>`;
+    const next = n < c.chapters.length
+      ? `<a class="btn" href="#/course/${c.slug}/chapter/${n + 1}">Sonraki bölüm</a>`
+      : (c.quiz || []).length ? `<a class="btn" href="#/course/${c.slug}/quiz">Sınavı çöz</a>` : "";
     const nb = notebookButton(c);
     const allVids = courseVideos(c), chVids = allVids.filter((v) => v.ch === n);
     return `<p class="crumbs"><a href="#/">Katalog</a> / <a href="#/course/${c.slug}">${esc(c.subject)}</a> / ${n}. Bölüm</p>
@@ -855,6 +857,14 @@
       <div class="hud-item hud-best"><span class="hud-k">Rekor</span><span class="hud-v">${g.bestXp} XP · seri ${g.bestStreak}</span></div>
       <div class="hud-bar" aria-hidden="true"><i id="hud-bar" style="width:${(idx / total) * 100}%"></i></div>
     </div>`;
+  }
+
+  // Soru bankası boş olan ders (elle yazılmış taslak): sınav yolu kapalı, boş oyun açılmaz.
+  function viewNoQuiz(c) {
+    return `<p class="crumbs"><a href="#/">Katalog</a> / <a href="#/course/${esc(c.slug)}">${esc(c.subject)}</a> / Sınav</p>
+      <h1>Bu derste henüz soru yok</h1>
+      <p class="lead muted">${esc(c.course)} için soru bankası boş. Sorular eklendiğinde final sınavı burada açılır.</p>
+      <div class="btn-row"><a class="btn" href="#/course/${esc(c.slug)}">Ders planına dön</a></div>`;
   }
 
   function viewQuiz(c, opts) {
@@ -7634,7 +7644,10 @@ document.getElementById("zin").focus();
       const c = bySlug[parts[1]];
       if (parts[2] === "chapter") { html = viewChapter(c, +parts[3]); bind = () => { bindReport(); bindMarks(query); bindListen(query); bindVideos(c); }; }
       else if (parts[2] === "videolar") { html = viewVideos(c, query); bind = () => bindVideos(c); }
-      else if (parts[2] === "quiz") { html = viewQuiz(c); bind = () => bindQuiz(c); }
+      else if (parts[2] === "quiz") {
+        if ((c.quiz || []).length) { html = viewQuiz(c); bind = () => bindQuiz(c); }
+        else html = viewNoQuiz(c);
+      }
       else if (parts[2] === "unit-quiz") {
         const n = +parts[3];
         if (n >= 1) { html = viewUnitQuiz(c, n); bind = () => bindUnitQuiz(c, n); }
