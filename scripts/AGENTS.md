@@ -28,6 +28,13 @@ Infographic QA/repair:
 NotebookLM maintenance (needs the `notebooklm-py` CLI):
 - `add_aof_sources_to_notebooks.py`, `dedupe_notebook_sources.py`.
 
+OCR (Windows-only, for image-based PDFs that NotebookLM indexes as page images only):
+- `ocr_pdf_win.ps1` — rasterizes PDF pages with `Windows.Data.Pdf` and recognizes them with `Windows.Media.Ocr`, so no poppler/ghostscript/tesseract is needed. `-Path` (one or many), `-Dpi` (200), `-MaxWidth` (3000), `-Pages "1-10"`, `-Lang` (defaults to the first installed recognizer), `-OutDir`/`-OutFile`; stdout carries `=== <file> | sayfa N/M ===` page markers.
+- `ocr_win.ps1` — the same WinRT bridge for a single image file.
+- Both are PowerShell 5.1 scripts (the WinRT `IAsyncOperation`→`Task` bridging is why they are not Python) and need a Windows OCR language pack; the owner PC has only `tr`, which reads Latin text but turns `I` into `İ`.
+- To make an already-uploaded image-only source searchable, pipe the text back into it: `powershell -File scripts/ocr_pdf_win.ps1 -Path belge.pdf | notebooklm source append <source-id> -` (no extra source slot is used).
+- These two scripts are currently listed in `.git/info/exclude`, so they exist only on this machine.
+
 Validation:
 - `check_quiz_answers.py` — integrity check across all quiz JSON plus `site/unit_quizzes.js` consistency. Question types come from `generator/scripts/quiz_types.py`; a type outside that list is reported as unknown.
 - `audit_sources.py` — per chapter, the `grounding.tiers` rank of assigned and cited sources; flags chapters with no textbook source. `--strict` exits 1 when a course notebook has no textbook at all.
