@@ -1907,7 +1907,7 @@
             <button class="btn ghost" type="button" id="remind-ics">Takvime ekle</button></div>
           <p class="muted small">Site bildirim gönderemez; her gün bu saatte tekrar eden bir takvim etkinliği indirilir, hatırlatmayı telefonunun takvimi yapar. Saati değiştirirsen eski etkinliği takviminden silip yenisini ekle.</p>
         </fieldset>
-        <p class="muted small">Ayarlar ve tekrar geçmişi bu tarayıcıda saklanır; <a href="#/cevrimdisi?b=yedek">yedek koduna</a> dahildir. Yazı boyutu, satır aralığı ve yazı tipi üst çubuktaki <b>Aa</b> düğmesinde.</p>
+        <p class="muted small">Ayarlar ve tekrar geçmişi bu tarayıcıda saklanır; <a href="#/cevrimdisi?b=yedek">yedek koduna</a> dahildir. Yazı boyutu, satır aralığı ve yazı tipi üst çubuktaki <b>Aa</b> düğmesinde. Notlar dinlenirken cihazın <b>okuma sesi</b> kullanılır; eksik dilin nasıl ekleneceğini <a href="#/ses">Okuma sesi</a> sayfasında anlatıyoruz.</p>
       </form>`;
   }
   // Günlük çalışma hatırlatıcısı: her gün aynı saatte tekrar eden, yerel saatli takvim etkinliği.
@@ -2584,7 +2584,7 @@
     const vs = await voicesReady(1500);
     const v = pickVoice(vs, lang);
     if (!v) {
-      showToast(`Bu cihazda ${langName(lang)} okuma sesi bulunamadı. Metin okuma (TTS) ayarlarından ${langName(lang)} sesi ekleyin.`);
+      showToast(`Bu cihazda ${langName(lang)} okuma sesi bulunamadı.`, "Nasıl eklerim?", () => { location.hash = "#/ses"; });
       return;
     }
     const u = new SpeechSynthesisUtterance(String(text).replace(OTA_RUN, " ").replace(/\s+/g, " ").trim());
@@ -4345,6 +4345,66 @@
   const speechTag = (code) => SPEECH_TAG[code] || code;
   const langName = (code) => (code === "en" ? "İngilizce" : "Türkçe");
 
+  // ---- okuma sesi yardimi ---------------------------------------------------
+  // Cihazin hangi dilleri okuyabildigini gosterir ve eksik dilin nasil eklenecegini
+  // anlatir. "Notlari dinle" derse dilinde okur; cihazda o dilin sesi yoksa notlar
+  // yanlis telaffuzla okunacagi icin okuma durur ve buraya yonlendirilir.
+  const VOICE_STEPS = {
+    windows: [
+      "Ayarlar → Zaman ve dil → <b>Dil ve bölge</b> (Windows 11) ya da Ayarlar → Zaman ve dil → <b>Konuşma</b> (Windows 10).",
+      "İngilizce (United States) dilini ekleyin.",
+      "Konuşma bölümünde <b>Manage voices / Sesleri yönet</b> (ya da <b>Add voices / Ses ekle</b>) düğmesine basın.",
+      "Listedeki bir İngilizce sesi seçip <b>Add / Ekle</b> (indirme) düğmesine basın ve indirmeyi bekleyin.",
+      "Tarayıcıyı tamamen kapatıp yeniden açın.",
+    ],
+    android: [
+      "Ayarlar → Sistem → <b>Dil ve giriş yöntemleri</b> → <b>Metin okuma</b> (Text-to-speech).",
+      "<b>Tercih edilen motor</b> olarak <b>Google Konuşma</b> (Speech Services by Google) seçili olmalı.",
+      "Diller listesinde <b>English (United States)</b> satırının yanındaki indirme simgesine basın.",
+      "Play Store'dan <b>Speech Recognition &amp; Synthesis</b> uygulamasını güncelleyin.",
+      "Tarayıcıyı kapatıp yeniden açın.",
+    ],
+    ios: [
+      "Ayarlar → <b>Erişilebilirlik</b> → <b>Sesli İçerik</b> → <b>Konuşma</b> → <b>Sesler</b>.",
+      "<b>English (United States)</b> (ya da UK) sesini seçip indirin.",
+      "İndirme bittikten sonra tarayıcıyı kapatıp yeniden açın.",
+      "İndirdiğiniz sesi tarayıcıya tanıtmak gerekirse: Ayarlar → Erişilebilirlik → Sesli İçerik → Konuşma → Sesler bölümünde yeni sesin <b>...</b> menüsünden tarayıcı seçin.",
+    ],
+    macos: [
+      "Sistem Ayarları → <b>Erişilebilirlik</b> → <b>Konuşma içeriği</b> → <b>Sistem sesi</b> → <b>Yönet</b>.",
+      "İngilizce seslerin yanındaki indirme düğmesine basın.",
+      "İndirdiğiniz sesi seçip <b>Manage Voices / Sesleri yönet</b> bölümünden tarayıcıya tanıtın.",
+      "Tarayıcıyı kapatıp yeniden açın.",
+    ],
+    chromeos: [
+      "Ayarlar → <b>Erişilebilirlik</b> → <b>Konuşma</b> → <b>Yeni ses ekle</b>.",
+      "İngilizce (United States) sesini indirin.",
+      "Tarayıcıyı kapatıp yeniden açın.",
+    ],
+    linux: [
+      "Sistemde konuşma motoru kurulu olmalı. Debian/Ubuntu'da: <code>sudo apt install speech-dispatcher espeak-ng</code>",
+      "Sonra tarayıcıyı kapatıp yeniden açın.",
+      "İngilizce sesi sistemde kurulu değilse, <code>espeak-ng</code> paketinin İngilizce verisi yeterlidir.",
+    ],
+  };
+  function voicePlatform() {
+    const ua = navigator.userAgent || "";
+    if (/Windows/i.test(ua)) return "windows";
+    if (/Android/i.test(ua)) return "android";
+    if (/iPhone|iPad|iPod/i.test(ua)) return "ios";
+    if (/CrOS/i.test(ua)) return "chromeos";
+    if (/Macintosh|Mac OS X/i.test(ua)) return "macos";
+    if (/Linux|X11/i.test(ua)) return "linux";
+    return "windows";
+  }
+  const VOICE_PLATFORM_NAME = {
+    windows: "Windows", android: "Android", ios: "iPhone / iPad",
+    macos: "macOS", chromeos: "ChromeOS", linux: "Linux",
+  };
+  // Dersin okunabilmesi icin gereken diller (site diline gore).
+  const courseLangCodes = () => [...new Set(COURSES.map((c) => c.language || "tr"))];
+  const voiceByLang = (voices, lang) => pickVoice(voices, lang);
+
   // Osmanlıca okunuş: .ota.say öğesine dokununca cihazın Türkçe sesiyle okur.
   function trVoice() {
     return voiceFor("tr");
@@ -4538,6 +4598,7 @@
       <button class="lp-btn" type="button" data-lp-act="next" aria-label="Sonraki paragraf" disabled>${ICON_NEXT}</button>
       <button class="lp-btn lp-rate" type="button" data-lp-act="rate" aria-label="Okuma hızı">${String(study.lrate || 1).replace(".", ",")}×</button>
       <span class="lp-status" aria-live="polite"></span>
+      <a class="lp-voice" href="#/ses">Okuma sesi</a>
     </div>`;
   }
 
@@ -4715,7 +4776,7 @@
     if (!lis.voice) {
       // Dersin dilinde bir ses yok. Başka dildeki sesle okumak (Ingilizce metni Türkçe sesle
       // okutmak) yanlış olur; bunun yerine bölümün dogru dildeki sesli ozetini oner.
-      showToast(`Bu cihazda ${langName(lang)} okuma sesi bulunamadı. Telefon/bilgisayar ayarlarındaki Metin okuma (TTS) bölümünden ${langName(lang)} sesi ekleyin ya da yukarıdaki "Sesli ders" kaydını dinleyin.`);
+      showToast(`Bu cihazda ${langName(lang)} okuma sesi bulunamadı.`, "Nasıl eklerim?", () => { location.hash = "#/ses"; });
       const au = document.querySelector(".ap audio");
       if (au) au.scrollIntoView({ behavior: "smooth", block: "center" });
       return;
@@ -5507,6 +5568,114 @@ document.getElementById("zin").focus();
     if (isIOS) return `<p>iPhone ve iPad'de siteyi ana ekrana ekleyin. Safari, ana ekrana eklenmemiş sitelerin kayıtlı verilerini bir süre girilmeyince silebiliyor; ana ekrandaki uygulama bundan korunur.</p>
       <ol class="steps"><li>Safari'de alttaki <b>Paylaş</b> düğmesine dokunun.</li><li><b>Ana Ekrana Ekle</b>'yi seçin.</li><li>Sonra siteyi ana ekrandaki simgeden açın ve dersleri oradan indirin.</li></ol>`;
     return `<p>Tarayıcı menüsünden <b>Uygulamayı yükle</b> ya da <b>Ana ekrana ekle</b>'yi seçerek siteyi uygulama gibi kurabilirsiniz.</p>`;
+  }
+
+  // ---- okuma sesi sayfasi: cihazdaki sesler ve eksik dilin eklenmesi -------------
+  function viewVoices() {
+    if (!("speechSynthesis" in window)) {
+      return `<p class="eyebrow">Okuma</p><h1>Okuma sesi</h1>
+        <p class="lead muted">Bu tarayıcı metin okumayı (TTS) desteklemiyor, bu yüzden notlar
+        ekranda okunmuyor. Bölümlerin <b>sesli ders</b> kayıtları her cihazda çalışır.</p>`;
+    }
+    const plat = voicePlatform();
+    const langs = courseLangCodes();
+    return `<p class="eyebrow">Okuma</p><h1>Okuma sesi</h1>
+      <p class="lead muted">Notlar <b>dilin sesinde</b> okunur. Bu cihazda o dilin sesi yoksa notlar
+      yanlış telaffuzla okunmasın diye okuma durur ve <b>sesli ders</b> kaydı önerilir.</p>
+
+      <h2>Bu cihazdaki sesler</h2>
+      <p id="voice-state" class="muted">Sesler aranıyor…</p>
+      <div id="voice-list" class="voice-list"></div>
+      <div class="btn-row"><button class="btn ghost" type="button" id="voice-refresh">Sesleri yeniden tara</button></div>
+
+      <h2>Ders dilleri</h2>
+      <div id="voice-courses" class="voice-list"></div>
+
+      <h2>${esc(VOICE_PLATFORM_NAME[plat])} cihazda İngilizce sesi eklemek</h2>
+      <ol class="voice-steps">${(VOICE_STEPS[plat] || VOICE_STEPS.windows).map((s) => `<li>${s}</li>`).join("")}</ol>
+      <details class="voice-steps"><summary>Başka bir cihaz için adımlar</summary>
+        ${Object.keys(VOICE_STEPS).filter((k) => k !== plat).map((k) => `
+          <h3>${esc(VOICE_PLATFORM_NAME[k])}</h3>
+          <ol>${VOICE_STEPS[k].map((s) => `<li>${s}</li>`).join("")}</ol>`).join("")}
+      </details>
+
+      <h2>Sesi hemen dene</h2>
+      <p class="muted small">Eklediğiniz sesi dinleyin; doğru telaffuz olduğundan emin olun.</p>
+      <div class="btn-row" id="voice-test"></div>
+
+      <h2>Sesli ders kaydı</h2>
+      <p>Her bölümün başında <b>sesli ders</b> kaydı vardır: NotebookLM'in o bölümü İngilizce anlattığı
+      sesli özet. Cihazda hangi dil olursa olsun doğru dilde çalar ve telefonda çevrimdışı da
+      dinlenebilir. <a href="#/cevrimdisi">Sesli dersleri indirin</a>.</p>`;
+  }
+
+  async function bindVoices() {
+    const list = document.getElementById("voice-list");
+    const state = document.getElementById("voice-state");
+    const courses = document.getElementById("voice-courses");
+    const test = document.getElementById("voice-test");
+    if (!list || !state) return;
+
+    const paint = async () => {
+      const vs = await voicesReady(1200);
+      const groups = new Map();
+      for (const v of vs) {
+        const code = (v.lang || "").replace("_", "-").split("-")[0].toLowerCase();
+        if (!groups.has(code)) groups.set(code, []);
+        groups.get(code).push(v);
+      }
+      state.textContent = vs.length
+        ? `${vs.length} ses bulundu.`
+        : "Bu cihazda henüz ses görünmüyor. Tarayıcıyı yeniden başlatmayı deneyin.";
+      list.innerHTML = vs.length
+        ? [...groups.entries()].map(([code, arr]) => `
+            <div class="voice-row">
+              <b>${esc(langName(code) + " (" + code.toUpperCase() + ")")}</b>
+              <span class="muted small">${arr.map((v) => esc(v.name)).join(" · ")}</span>
+            </div>`).join("")
+        : `<p class="muted small">Cihazınızda "Metin okuma" (TTS) sesleri kurulu değil ya da tarayıcı henüz
+             yükleyemedi. Aşağıdaki adımlarla ekleyin.</p>`;
+
+      const langs = courseLangCodes();
+      courses.innerHTML = langs.map((code) => {
+        const v = voiceByLang(vs, code);
+        const dersler = COURSES.filter((c) => (c.language || "tr") === code);
+        return `<div class="voice-row">
+          <b>${esc(langName(code))}</b>
+          ${v ? `<span class="voice-ok">${esc(v.name)}</span>`
+               : `<span class="voice-no">bu cihazda yok</span>`}
+          <span class="muted small">${dersler.map((c) => esc(c.subject)).join(", ")}</span>
+        </div>`;
+      }).join("");
+
+      if (test) {
+        test.innerHTML = langs.map((code) => {
+          const v = voiceByLang(vs, code);
+          const metin = code === "en"
+            ? "This chapter explains Oracle multitenant architecture, data guard, and performance tuning."
+            : "Bu bölüm Oracle çok kiracılı mimarisini, veri koruma ve başarım ayarlamasını anlatıyor.";
+          return `<button class="btn ghost" type="button" data-vtest="${code}"${v ? "" : " disabled"}>
+            ${esc(langName(code))} sesini dene</button>`;
+        }).join("");
+        test.querySelectorAll("[data-vtest]").forEach((b) => {
+          b.onclick = () => {
+            const code = b.dataset.vtest;
+            const u = new SpeechSynthesisUtterance(code === "en"
+              ? "This chapter explains Oracle multitenant architecture."
+              : "Bu bölüm Oracle çok kiracılı mimarisini anlatıyor.");
+            u.lang = speechTag(code);
+            const v = voiceByLang(vs, code);
+            if (v) { try { u.voice = v; } catch (e) { /* ses atanamadi */ } }
+            speechSynthesis.cancel();
+            speechSynthesis.speak(u);
+          };
+        });
+      }
+    };
+
+    await paint();
+    const refresh = document.getElementById("voice-refresh");
+    if (refresh) refresh.onclick = () => paint();
   }
 
   function viewOffline() {
@@ -7425,6 +7594,7 @@ document.getElementById("zin").focus();
     else if (parts[0] === "transcript") { html = viewTranscript(); bind = bindTranscript; }
     else if (parts[0] === "certificate") { html = viewCertificate(); bind = bindCertificate; }
     else if (parts[0] === "cevrimdisi") { html = viewOffline(); bind = bindOffline; }
+    else if (parts[0] === "ses") { html = viewVoices(); bind = bindVoices; }
     else if (parts[0] === "calisma") { html = viewStudyDesk(); bind = bindStudyDesk; }
     else if (parts[0] === "tekrar") { html = viewReview(query); bind = bindReview; }
     else if (parts[0] === "hatalar") { html = viewMistakes(query); bind = bindMistakes; }
