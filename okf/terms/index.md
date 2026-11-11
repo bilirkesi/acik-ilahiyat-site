@@ -1,3 +1,3 @@
 # Akademik Dönemler
 
-* [2026-2027 Güz](2026-2027/guz.md) - 5 ders
+* [2026-2027 Güz](2026-2027/guz.md) - 6 ders

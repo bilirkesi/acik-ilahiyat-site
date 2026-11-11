@@ -73,6 +73,14 @@ class Runner:
         """The chapter's own sources plus the top-tier ones (textbook) when it has none of its own."""
         return with_authority(ch["source_ids"], self.ready_sources(), self.tiers)
 
+    def chapter_header(self, n, title):
+        """The chapter's heading for an infographic. The course's language decides the word; a title that
+        already carries it ("Bölüm 1: ...") is used as it is, so the number is not repeated."""
+        word = "Bölüm" if language_code(self.u) == "tr" else "Chapter"
+        if title.casefold().startswith(word.casefold()):
+            return title
+        return f"{word} {n}: {title}"
+
     def note_generation(self, key, ok, detail=""):
         with open(self.p.root / "logs" / "generations.jsonl", "a") as f:
             f.write(json.dumps({"at": time.strftime("%Y-%m-%d %H:%M:%S"), "course": self.slug, "key": key,
@@ -193,8 +201,16 @@ class Runner:
         try:
             plan = json.loads(snippet)
         except json.JSONDecodeError as e:
-            self.log(f"plan JSON parse failed: {e}; snippet around error: {snippet[max(0, e.pos-80):e.pos+80]!r}")
-            sys.exit(1)
+            # Model bazen JSON'da gecersiz kacis yazar ("CDB\\$ROOT"): "$" isareti Markdown'da
+            # kacis bekler ama JSON'da "\" gecersiz bir kacis karakteridir. Gecersiz olan dusurulur,
+            # gecerli olan ("\\\\(") korunur; o metin `clean()` ile "$ROOT" haline gelir.
+            fixed = fix_json_escapes(snippet)
+            try:
+                plan = json.loads(fixed)
+                self.log("plan JSON: gecersiz kacislar duzeltildi")
+            except json.JSONDecodeError:
+                self.log(f"plan JSON parse failed: {e}; snippet around error: {snippet[max(0, e.pos-80):e.pos+80]!r}")
+                sys.exit(1)
         by_title = {t.strip().lower(): s for t, s in zip(titles, srcs)}
         missing = []
         for ch in plan["chapters"]:
@@ -350,7 +366,7 @@ class Runner:
                 key = f"infographic-{i}"
                 aid = done.get(key)
                 if not aid:
-                    header = f"Chapter {i}: {ch['title']}"
+                    header = self.chapter_header(i, ch["title"])
                     prompt = (f"Study infographic for {header}. Summarize the key ideas, models and takeaways of these {self.noun}s "
                               f"for {self.u['audience']}. Locked house style, follow exactly: {self.u['figureStyle']}, "
                               f"one header band at the top reading '{header}', shown once only. "
@@ -398,6 +414,22 @@ STAGES = ["create", "sources", "plan", "ground", "quiz", "infographics", "manife
 # NotebookLM's chat rejects a long prompt; the plan stage keeps the whole ask under this many
 # characters by shortening the source listing.
 MAX_PLAN_PROMPT = 6000
+
+# JSON'da gecerli kacislar. Model bunlardan baska bir kacis yazarsa ("\$" gibi) JSON okunamaz;
+# bu kacislar dusurulur, gecerli olanlar (\\, \", \n, \uXXXX) korunur.
+_JSON_ESCAPE = re.compile(r'\\(?:["\\/bfnrtu]|u[0-9a-fA-F]{4})|\\.', re.S)
+
+
+def fix_json_escapes(text):
+    """Metindeki gecersiz JSON kacislarini kaldirir; gecerli olanlara dokunmaz."""
+    def repl(m):
+        tok = m.group(0)
+        if len(tok) == 2 and tok[1] in '"\\/bfnrtu':
+            return tok
+        if len(tok) == 6 and tok[1] == "u":
+            return tok
+        return tok[1]  # gecersiz kacis: yalnizca ters slash atilir
+    return _JSON_ESCAPE.sub(repl, text)
 
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()

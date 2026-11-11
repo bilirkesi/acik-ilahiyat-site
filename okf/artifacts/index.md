@@ -7,3 +7,4 @@ NotebookLM çıktı kataloğu. Fiziksel dosyalar repo kökündeki `artifacts/` a
 * [Atatürk İlkeleri ve İnkılap Tarihi](/courses/ataturk-ilkeleri-1/artifacts.md)
 * [Osmanlı Türkçesi I](/courses/osmanlica-1/artifacts.md)
 * [Teknik Gelişim](/courses/teknik-gelistirim/artifacts.md)
+* [Teknik Gelişim (Türkçe)](/courses/teknik-gelistirim-tr/artifacts.md)

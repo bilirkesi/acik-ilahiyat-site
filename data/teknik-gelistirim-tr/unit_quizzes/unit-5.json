@@ -1,0 +1,331 @@
+{
+  "unit": 5,
+  "unitTitle": "Bölüm 5: RAC ve Grid Infrastructure Kümeleme Mimarisi",
+  "title": "Oracle RAC Quiz",
+  "questions": [
+    {
+      "question": "Oracle Database 19c (19.3) sürümüyle sunulan 'Dynamic Services Fallback Option' özelliğinin temel işlevi nedir?",
+      "answerOptions": [
+        {
+          "text": "Tercih edilen (preferred) bir örnek kullanılamaz hale gelip servis kullanılabilir (available) bir örneğe devredildikten sonra, tercih edilen örnek tekrar aktifleştiğinde servisin otomatik olarak bu örneğe geri dönmesini sağlamak.",
+          "isCorrect": true,
+          "rationale": "Bu özellik, bir servisin failover sonrasında tercih edilen örneği tekrar kullanılabilir olduğunda otomatik olarak ilk yerine geri dönmesini sağlayarak servis konumlandırmasında daha fazla kontrol sunar."
+        },
+        {
+          "text": "Veritabanı istemcilerinin TCP/IP zaman aşımı sürelerini devre dışı bırakarak doğrudan ONS üzerinden bağlanmasını zorunlu kılmak.",
+          "isCorrect": false,
+          "rationale": "Zaman aşımı sürelerini kesmek ve ONS üzerinden bildirim almak bu özelliğe değil, Fast Application Notification (FAN) mimarisine aittir."
+        },
+        {
+          "text": "XA işlemlerindeki tüm dalları kümedeki rastgele bir örneğe dağıtarak yük dengesini eşitlemek.",
+          "isCorrect": false,
+          "rationale": "XA işlemlerinde dalların aynı örneğe yönlendirilmesi XA affinity prensibidir; bu seçenekteki rastgele dağıtım aksine performansı düşürür."
+        },
+        {
+          "text": "Grid Infrastructure kurulumunda GIMR veritabanının zorunlu olarak yüklenmesini sağlamak.",
+          "isCorrect": false,
+          "rationale": "Oracle Grid Infrastructure 19c ile GIMR kurulumu Standalone Cluster için zorunlu olmaktan çıkıp isteğe bağlı hale getirilmiştir."
+        }
+      ],
+      "hint": "Servislerin planlanan öncelikli sunucularda çalıştırılmasını garanti altına alan erişilebilirlik seçeneğini düşünün.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Oracle Database release 19.3 ile tanıtılan 'colocation_tag' parametresi bağlantı dizesinde (CONNECT_DATA) tanımlandığında ne sağlar?",
+      "answerOptions": [
+        {
+          "text": "Aynı etiket değerine sahip istemci oturumlarının, örnekler arası iletişimi azaltmak amacıyla mümkün olduğunda aynı veritabanı örneğine yönlendirilmesini sağlar.",
+          "isCorrect": true,
+          "rationale": "Co-location tag, aynı etiketi paylaşan istemcileri aynı örneğe yönlendirerek inter-instance Cache Fusion trafiğini düşürmeyi ve performansı artırmayı hedefler."
+        },
+        {
+          "text": "Oturumları bellek baskısı durumunda otomatik olarak Free server pool alanına taşır.",
+          "isCorrect": false,
+          "rationale": "Bellek baskısı durumunda yeni oturumların rötarlanması Memory Guard bileşeni tarafından yönetilir."
+        },
+        {
+          "text": "Bir DTP (Distributed Transaction Processing) servisini yalnızca tek bir örnekte çalışacak şekilde sınırlar.",
+          "isCorrect": false,
+          "rationale": "Servislerin tek bir örnekte çalışması singleton servis yapılandırması ile ilgilidir, bağlantı etiketi yönlendirmesi değildir."
+        },
+        {
+          "text": "Sunucu tarafında FAN callout betiklerinin çalışmasını engeller.",
+          "isCorrect": false,
+          "rationale": "İstemci bağlantı etiketleri sunucu tarafındaki FAN callout mekanizmalarının çalışmasını durdurmaz."
+        }
+      ],
+      "hint": "Örnekler arası (inter-instance) iletişimi azaltmak için aynı iş yüküne sahip oturumların gruplanmasını düşünün.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Oracle Grid Infrastructure mimarisinde Cluster Synchronization Services (CSS) bileşeninin temel görevi nedir?",
+      "answerOptions": [
+        {
+          "text": "Kümedeki düğüm üyeliğini yönetmek, düğüm durumlarını izlemek ve split-brain senaryolarını önlemek için yanıt vermeyen düğümleri kümeden tahliye (eviction) etmek.",
+          "isCorrect": true,
+          "rationale": "CSS, küme genelinde tutarlı bir üyelik görünümü sağlar ve iletişimini kaybeden düğümleri kümeden çıkararak veri bütünlüğünü korur."
+        },
+        {
+          "text": "VIP adresleri, SCAN dinleyicileri ve veritabanı servisleri gibi yüksek erişilebilirlik kaynaklarını otomatik olarak başlatmak.",
+          "isCorrect": false,
+          "rationale": "Yüksek erişilebilirlik kaynaklarının lifecycle ve failover yönetimini CSS değil Cluster Ready Services (CRS) yürütür."
+        },
+        {
+          "text": "Düğümler arası Cache Fusion veri bloğu transferlerini yönetmek.",
+          "isCorrect": false,
+          "rationale": "Bellek bloklarının doğrudan küme ağından aktarımı Global Cache Service (GCS) ve Global Enqueue Service (GES) tarafından yapılır."
+        },
+        {
+          "text": "Küme olaylarını yayınlayarak sunucu tarafı betiklerini (callouts) tetiklemek.",
+          "isCorrect": false,
+          "rationale": "Olay bildirimlerinin yayınlanması Event Manager (EVM) bileşeninin sorumluluğundadır."
+        }
+      ],
+      "hint": "Küme üyeliğinin takibi ve bölünmüş küme (split-brain) durumlarının engellenmesi sürecini hatırlayın.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Oracle Database 12c release 2 (12.2) ve sonraki sürümlerde tüm istemciler Fast Application Notification (FAN) bildirimlerini almak için hangi mekanizmayı kullanır?",
+      "answerOptions": [
+        {
+          "text": "Oracle Notification Service (ONS)",
+          "isCorrect": true,
+          "rationale": "Oracle Database 12c release 2 (12.2) itibarıyla tüm istemciler FAN olaylarına abone olmak için standart olarak ONS kullanır."
+        },
+        {
+          "text": "Oracle GoldenGate Advanced Queueing (AQ)",
+          "isCorrect": false,
+          "rationale": "Advanced Queueing (AQ), 12.2 öncesi eski OCI ve ODP.NET istemcileri tarafından kullanılan ve yerini ONS'e bırakan yöntemdir."
+        },
+        {
+          "text": "Single Client Access Name (SCAN) Listener direct socket",
+          "isCorrect": false,
+          "rationale": "SCAN listener yalnızca ilk bağlantı kurma aşamasında yük dengelemesi yapar, FAN olay yayınlarını iletmez."
+        },
+        {
+          "text": "Global Enqueue Service (GES)",
+          "isCorrect": false,
+          "rationale": "GES, veritabanı örnekleri arasındaki kilit ve enqueue kaynaklarını yönetir, istemcilere FAN olayı yayınlamaz."
+        }
+      ],
+      "hint": "12.2 sürümüyle birlikte tüm istemciler için standartlaştırılan bildirim daemon servisini düşünün.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Oracle RAC veritabanı yayım modellerinden biri olan 'Policy-managed' (Politika yönetimli) konuşlandırma modelinin ayırt edici özelliği nedir?",
+      "answerOptions": [
+        {
+          "text": "Veritabanı örneklerinin ve servislerinin Sunucu Havuzları (Server Pools) üzerinde tanımlanan kardinaliteye göre esnek ve dinamik olarak çalıştırılması.",
+          "isCorrect": true,
+          "rationale": "Policy-managed modelde veritabanı belirli bir sunucu listesine statik adımlarla atanmaz; sunucu havuzlarında tanımlı kurallara göre dinamik olarak konumlandırılır."
+        },
+        {
+          "text": "Her veritabanı örneğinin belirli bir düğüm üzerinde çalışacak şekilde statik olarak yapılandırılması ve servislerin tercih edilen/yedek örneklere elle atanması.",
+          "isCorrect": false,
+          "rationale": "Örneklerin ve servislerin düğümlere statik olarak bağlanması Administrator-managed modelin tanımıdır."
+        },
+        {
+          "text": "Veritabanının yalnızca tek bir sunucu üzerinde çalışmasına izin verilip failover seçeneklerinin kapatılması.",
+          "isCorrect": false,
+          "rationale": "Policy-managed model esnek genişleme ve yüksek erişilebilirlik sunar, tek sunucu kısıtlaması getirmez."
+        },
+        {
+          "text": "Servislerin doğrudan IP adresleri üzerinden yönetilip Clusterware kontrolünden çıkarılması.",
+          "isCorrect": false,
+          "rationale": "Policy-managed servisler tamamen Oracle Clusterware ve Server Pool kuralları altında yönetilir."
+        }
+      ],
+      "hint": "Statik örnek ve düğüm eşleştirmeleri yerine Server Pool ve kardinalite kavramlarına dayanan yapıyı hatırlayın.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Oracle RAC mimarisinde özel Interconnect ağında kullanılan High Availability IP (HAIP) teknolojisinin temel amacı nedir?",
+      "answerOptions": [
+        {
+          "text": "Birden fazla fiziksel ağ arabirimi (NIC) üzerinden yedeklilik ve yük dağıtımı sağlayarak Interconnect arızalarında kesintisiz Cache Fusion iletişimini sürdürmek.",
+          "isCorrect": true,
+          "rationale": "HAIP, Interconnect için birden fazla fiziksel ağ kartını birleştirerek yüksek bant genişliği ve kart arızalarına karşı sıfır kesinti koruması sunar."
+        },
+        {
+          "text": "SCAN IP adreslerini dış ağdan gelen istemci isteklerine dinamik olarak dağıtmak.",
+          "isCorrect": false,
+          "rationale": "SCAN IP'leri kamusal (public) ağ üzerinde çalışır ve istemci bağlantılarını karşılar; HAIP ise özel Interconnect ağında çalışır."
+        },
+        {
+          "text": "Veritabanı istemcilerinin doğrudan ASM disk grubuna erişmesini sağlamak.",
+          "isCorrect": false,
+          "rationale": "İstemciler veritabanı katmanına bağlanır; depolama alanına doğrudan erişim HAIP fonksiyonu değildir."
+        },
+        {
+          "text": "RMAN yedekleme trafiğini otomatik olarak ayrı bir kanala yönlendirmek.",
+          "isCorrect": false,
+          "rationale": "HAIP, bellek içi Cache Fusion trafiği ve küme içi iletişim içindir; RMAN kanallarını yönetmez."
+        }
+      ],
+      "hint": "Özel küme ağında donanımsal NIC arızalarına karşı sunulan sanal IP yedekleme katmanını düşünün.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Dağıtılmış İşlem İşlemede (Distributed Transaction Processing - DTP) Oracle RAC üzerinde XA affinity kullanmanın temel avantajı nedir?",
+      "answerOptions": [
+        {
+          "text": "Aynı XA işlemine ait tüm dalları kümedeki tek bir örneğe yönlendirerek örnekler arası senkronizasyon maliyetini düşürmek ve performansı artırmak.",
+          "isCorrect": true,
+          "rationale": "XA affinity, aynı küresel işlemin dallarını aynı RAC örneğinde toplayarak küme içi kilit ve bellek eşitleme yükünü minimize eder."
+        },
+        {
+          "text": "Dağıtılmış bir işlemin her bir dalını farklı bir RAC düğümüne zorunlu olarak dağıtarak düğüm yüklerini eşitlemek.",
+          "isCorrect": false,
+          "rationale": "İşlem dallarını farklı örneklere dağıtmak örnekler arası blok ping'lerine ve performans kaybına sebep olur."
+        },
+        {
+          "text": "Dağıtılmış işlemlerde veritabanı undo alanının kullanımını tamamen devre dışı bırakmak.",
+          "isCorrect": false,
+          "rationale": "XA işlemleri de veri tutarlılığı ve geri alma için standart undo alanlarını kullanmak zorundadır."
+        },
+        {
+          "text": "İşlemlerin sadece Okuma Düğümleri (Reader Nodes) üzerinde çalışmasını zorunlu kılmak.",
+          "isCorrect": false,
+          "rationale": "Reader Node'lar yalnızca okuma amaçlıdır; DTP ve XA yazma işlemleri yürütmez."
+        }
+      ],
+      "hint": "Aynı XA işlem dallarının (branches) aynı sunucuda toplanmasının inter-node iletişime etkisini hatırlayın.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Oracle RAC ortamlarında Load Balancing Advisory (Yük Dengeleme Danışmanı) bileşeninin çalışma prensibi nedir?",
+      "answerOptions": [
+        {
+          "text": "Servislerin anlık performans ve kalite metriklerini izleyerek gelen iş isteklerinin en iyi hizmeti sunacak örneklere yönlendirilmesi için FAN bildirimleriyle istemci havuzlarına tavsiyeler yayınlamak.",
+          "isCorrect": true,
+          "rationale": "Load Balancing Advisory, servis seviyesi performans metriklerini değerlendirerek bağlantı havuzlarının (UCP, GridLink vb.) iş yükünü en uygun örneğe yönlendirmesini sağlar."
+        },
+        {
+          "text": "Düğümler arasındaki CPU kullanımını izleyip sınırı aşan sunuculardaki veritabanı örneklerini otomatik olarak kapatmak.",
+          "isCorrect": false,
+          "rationale": "Danışman mekanizması örnek kapatmaz, yalnızca bağlantıların ve iş yükünün doğru örneklere yönlendirilmesi için yön gösterme olayı yayınlar."
+        },
+        {
+          "text": "Her yeni istemci bağlantısını sırayla (round-robin) tüm küme düğümlerine eşit sayıda dağıtmak.",
+          "isCorrect": false,
+          "rationale": "Statik round-robin yerine, anlık performans ve servis kalitesi metriklerine dayalı dinamik bir yönlendirme yapılır."
+        },
+        {
+          "text": "Interconnect ağındaki paket kayıplarını tespit edip bant genişliğini dinamik olarak artırmak.",
+          "isCorrect": false,
+          "rationale": "Ağ bant genişliğini değiştirmek işletim sistemi ve donanım katmanının işidir; danışman uygulama seviyesi iş yükünü yönlendirir."
+        }
+      ],
+      "hint": "Statik dağıtım yerine veritabanı örneklerinin anlık yük durumuna göre yönlendirme önerisi sunan mekanizmayı düşünün.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Oracle RAC veritabanlarını, örneklerini ve servislerini komut satırından yönetmek için kullanılan temel araç hangisidir?",
+      "answerOptions": [
+        {
+          "text": "SRVCTL (Server Control Utility)",
+          "isCorrect": true,
+          "rationale": "SRVCTL, veritabanı, örnek, servis ve VIP gibi tüm küme kaynaklarını tek bir noktadan yönetmeye yarayan standart komut satırı aracıdır."
+        },
+        {
+          "text": "RMAN (Recovery Manager)",
+          "isCorrect": false,
+          "rationale": "RMAN veritabanı yedekleme ve kurtarma işlemleri için kullanılır, küme kaynak yönetimi yapmaz."
+        },
+        {
+          "text": "ADRCI (Automatic Diagnostic Repository Command Interpreter)",
+          "isCorrect": false,
+          "rationale": "ADRCI, izleme ve tanılama (diagnostic) verilerini incelemek için kullanılan bir araçtır."
+        },
+        {
+          "text": "OIFCFG (Oracle Interface Configuration Tool)",
+          "isCorrect": false,
+          "rationale": "OIFCFG yalnızca ağ arabirim kartlarının tahsis edilmesi ve küme bileşenlerine atanması için kullanılır."
+        }
+      ],
+      "hint": "Servislerin, örneklerin ve küme veritabanının durumunu değiştirmek için kullanılan 'srvctl' kısaltmalı komut aracını hatırlayın.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Oracle RAC One Node veritabanı seçeneği ile sunulan 'Online Database Relocation' özelliğinin belirleyici niteliği nedir?",
+      "answerOptions": [
+        {
+          "text": "Planlı bir yer değiştirme sırasında hedef düğümde geçici olarak ikinci bir örnek oluşturularak veritabanı oturumlarının ve servislerin kesintisiz biçimde taşınması.",
+          "isCorrect": true,
+          "rationale": "Online Database Relocation sırasında canlı oturumlar korunarak ikinci bir örnek başlatılır ve oturumlar aktarıldıktan sonra ilk örnek kapatılır."
+        },
+        {
+          "text": "Veri dosyalarını veritabanı çalışırken farklı bir SAN depolama ünitesine kopyalaması.",
+          "isCorrect": false,
+          "rationale": "Bu işlem depolama katmanı taşımasıdır; yer değiştirme (relocation) veritabanı örneğinin başka bir sunucuya taşınmasını ifade eder."
+        },
+        {
+          "text": "Tüm çok düğümlü RAC veritabanlarında sunucu çökmesi anında otomatik olarak devreye girmesi.",
+          "isCorrect": false,
+          "rationale": "Online Database Relocation yalnızca Oracle RAC One Node veritabanlarında planlı taşıma senaryoları için geçerlidir."
+        },
+        {
+          "text": "Sadece Okuma Düğümleri (Reader Nodes) arasında bellek eşitlemesi yapması.",
+          "isCorrect": false,
+          "rationale": "RAC One Node tek bir aktif örneğe sahiptir ve Reader Node mimarisinden farklı bir konsolidasyon çözümüdür."
+        }
+      ],
+      "hint": "Planlı bakım sırasında sunucu değiştirilirken uygulamanın kesinti yaşamaması için geçici olarak başlatılan ikinci örneği düşünün.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Oracle RAC mimarisinde sunucu tarafında tanımlanan 'FAN Callouts' programlarının çalıştırma mantığı nedir?",
+      "answerOptions": [
+        {
+          "text": "Kümede yüksek erişilebilirlik olayları (DOWN, UP vb.) gerçekleştiğinde otomatik olarak tetiklenerek arıza kaydı açma, e-posta gönderme veya harici uygulamaları başlatma/durdurma işlevlerini yürütmek.",
+          "isCorrect": true,
+          "rationale": "FAN Callouts, sunucu tarafında olay dizininde yer alan ve bir bildirim geldiğinde Otomatik olarak Clusterware tarafından çalıştırılan betiklerdir."
+        },
+        {
+          "text": "İstemci tarafında her SQL sorgusu derlendiğinde çalıştırma planını denetlemek.",
+          "isCorrect": false,
+          "rationale": "Sorgu derleme ve optimizasyon veritabanı çekirdeği (CBO) tarafından yapılır, FAN callout ile ilgisi yoktur."
+        },
+        {
+          "text": "Veritabanı başlatılırken SGA bellek boyutunu dinamik olarak büyütmek.",
+          "isCorrect": false,
+          "rationale": "SGA yönetimi veritabanı bellek yönetim parametreleri ve SGA Runtime Management bileşenlerince yapılır."
+        },
+        {
+          "text": "Interconnect ağındaki paket gecikmelerini düzeltmek amacıyla NIC sürücülerini yeniden başlatmak.",
+          "isCorrect": false,
+          "rationale": "Ağ sürücülerinin yönetimi işletim sistemi seviyesindedir ve küme olay betikleriyle sürücü resetlenmez."
+        }
+      ],
+      "hint": "Kümede bir düğüm veya servis çöktüğünde/açıldığında sunucuda otomatik çalışan olay betiklerini (scripts) düşünün.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Oracle Grid Infrastructure katmanında yer alan Cluster Ready Services (CRS) daemon'ının temel sorumluluğu nedir?",
+      "answerOptions": [
+        {
+          "text": "VIP adresleri, SCAN dinleyicileri, veritabanı örnekleri ve servisler gibi yüksek erişilebilirlik kaynaklarını yönetmek, arızalanan kaynakları otomatik olarak yeniden başlatmak veya başka düğüme taşımak.",
+          "isCorrect": true,
+          "rationale": "CRS daemon (CRSD), tanımlı yüksek erişilebilirlik kaynaklarının durumunu ve bağımlılıklarını takip ederek otomatik restart ve failover işlemlerini yönetir."
+        },
+        {
+          "text": "Yalnızca düğümler arasındaki kalp atışı (heartbeat) ağ sinyallerini denetlemek.",
+          "isCorrect": false,
+          "rationale": "Düğüm kalp atışlarını ve üyeliği denetleyen bileşen CSS (OCSSD) bileşenidir."
+        },
+        {
+          "text": "Veritabanı yedekleme dosyalarının RMAN tarafından otomatik olarak taranmasını sağlamak.",
+          "isCorrect": false,
+          "rationale": "Yedekleme ve tarama işlemleri RMAN ve veritabanı süreçlerinin işidir."
+        },
+        {
+          "text": "ONS mesajlarını sadece küme dışındaki istemcilere iletmek.",
+          "isCorrect": false,
+          "rationale": "ONS olaylarının iletimi ONS daemon tarafından yönetilir; kaynak yönetiminden CRS sorumludur."
+        }
+      ],
+      "hint": "VIP, SCAN listener, veritabanı ve servis gibi yüksek erişilebilirlik (HA) kaynaklarının yönetimini yapan ana süreci hatırlayın.",
+      "type": "multiple_choice"
+    }
+  ]
+}

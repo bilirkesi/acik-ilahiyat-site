@@ -1,0 +1,630 @@
+{
+  "id": "yaz-kursu",
+  "type": "yaz-kursu",
+  "title": "Uygulama Sınavı",
+  "description": "Programın tamamına yayılan senaryo soruları.",
+  "exam_window": "summer",
+  "pass_mark": 0.7,
+  "questions": [
+    {
+      "question": "Oracle Multitenant mimarisinde, tüm Pluggable Database (PDB) yapıları tarafından paylaşılan sistem meta verilerini, ortak kullanıcı hesaplarını (common users) ve küresel veritabanı parametrelerini yöneten ana kök konteyner hangisidir?",
+      "answerOptions": [
+        {
+          "text": "CDB$ROOT",
+          "isCorrect": true,
+          "rationale": "CDB$ROOT, Oracle Multitenant mimarisinde ortak sistem verilerini, arka plan süreçlerini ve global veritabanı ayarlarını barındıran ana konteynerdir."
+        },
+        {
+          "text": "PDB$SEED",
+          "isCorrect": false,
+          "rationale": "PDB$SEED, yeni PDB'lerin hızlıca provizyonlanması için kullanılan sistem şablonudur; genel küresel yönetimi üstlenmez."
+        },
+        {
+          "text": "User PDB",
+          "isCorrect": false,
+          "rationale": "Kullanıcı PDB'leri yalnızca kendi uygulama verilerini ve özel şemalarını izole olarak barındırır."
+        },
+        {
+          "text": "Application Root",
+          "isCorrect": false,
+          "rationale": "Application Root yalnızca belirli uygulama konteyner grubuna özel nesneleri yönetir, CDB genelindeki tüm yapıyı değil."
+        }
+      ],
+      "hint": "Veritabanı altyapısının en üst seviyesinde yer alan ana kök konteyner adını hatırlayın.",
+      "type": "test",
+      "points": 1,
+      "tags": [
+        "chapter-1"
+      ]
+    },
+    {
+      "question": "Oracle yama yaşam döngüsünde (patch management lifecycle), güvenlik açıklarını kapatan ve kritik kararlılık iyileştirmeleri sunarak minor veritabanı sürümünü artıran üç aylık kümülatif yama türü hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Release Updates (RU)",
+          "isCorrect": true,
+          "rationale": "Release Updates (RU), veritabanı sürüm numaralarını güncelleyen üç aylık kümülatif güvenlik ve işlevsel hata düzeltme paketleridir."
+        },
+        {
+          "text": "Release Update Revisions (RUR)",
+          "isCorrect": false,
+          "rationale": "RUR paketleri mevcut bir RU'nun ömrünü uzatmak için regresyon ve güvenlik odaklı yamaları içerir, yeni minor sürüm yükseltmesi yapmaz."
+        },
+        {
+          "text": "Interim Patch",
+          "isCorrect": false,
+          "rationale": "Interim Patch (One-off), yalnızca spesifik bir hatayı çözmek üzere yayınlanan geçici yama türüdür."
+        },
+        {
+          "text": "Diagnostic Patch",
+          "isCorrect": false,
+          "rationale": "Diagnostic Patch, sorun tespiti ve veri toplama amacıyla kullanılan kümülatif olmayan özel yamadır."
+        }
+      ],
+      "hint": "Üç aylık periyotlarla yayınlanan ana kümülatif güncelleme paketinin adını düşünün.",
+      "type": "test",
+      "points": 1,
+      "tags": [
+        "chapter-1"
+      ]
+    },
+    {
+      "question": "Automatic Shared Memory Management (ASMM) etkinleştirilip sga_target değeri belirlendiğinde, Oracle Veritabanı hangi bellek alanlarının boyutunu dinamik olarak otomatik düzenler?",
+      "answerOptions": [
+        {
+          "text": "Buffer Cache, Shared Pool ve Large Pool",
+          "isCorrect": true,
+          "rationale": "sga_target ayarlandığında ASMM; Buffer Cache, Shared Pool, Large Pool ve Java Pool gibi SGA dinamik bileşenlerini otomatik dengeler."
+        },
+        {
+          "text": "Process Sort Area ve Hash Join Work Area",
+          "isCorrect": false,
+          "rationale": "Sıralama ve hash katılım alanları SGA değil, pga_aggregate_target kontrolündeki PGA bellek yapısına aittir."
+        },
+        {
+          "text": "Redo Log Buffer ve User Session PGA",
+          "isCorrect": false,
+          "rationale": "Redo Log Buffer sabit boyutlu SGA alanıdır ve pga_aggregate_target oturum PGA'lerini yönetir."
+        },
+        {
+          "text": "Private SQL Area ve Call Stack",
+          "isCorrect": false,
+          "rationale": "Private SQL Area ve çağrı yığını her bir sunucu sürecine özel PGA bünyesinde yer alır."
+        }
+      ],
+      "hint": "SGA bünyesindeki paylaşılan bellek havuzlarını göz önüne getirin.",
+      "type": "test",
+      "points": 1,
+      "tags": [
+        "chapter-1"
+      ]
+    },
+    {
+      "question": "Oracle Automatic Storage Management (ASM) mimarisinde Online Redo Log (ORL), Control File ve Flashback Log gibi düşük gecikmeli hızlı yazma gerektiren dosyalar için hangi şeritlenme (striping) stratejisi uygulanır?",
+      "answerOptions": [
+        {
+          "text": "Fine-Grained Striping (128 KB)",
+          "isCorrect": true,
+          "rationale": "Fine-Grained Striping, Allocation Unit parçalarını 128 KB'lık küçük stripe setlerine bölerek hızlı ve eşzamanlı redo/kontrol dosyası yazmalarını optimize eder."
+        },
+        {
+          "text": "Coarse-Grained Striping (1 MB - 4 MB)",
+          "isCorrect": false,
+          "rationale": "Coarse-Grained Striping büyük sıralı veri dosyaları, temporary dosyalar ve RMAN yedekleri için tercih edilir."
+        },
+        {
+          "text": "External Mirroring Striping",
+          "isCorrect": false,
+          "rationale": "External Mirroring bir ASM şeritlenme stratejisi değil, veri korumasının donanımsal RAID'e devredildiği bir yedeklilik modelidir."
+        },
+        {
+          "text": "High Redundancy Striping",
+          "isCorrect": false,
+          "rationale": "High Redundancy bir şeritlenme tipi değil, 3 yollu aynalama sağlayan bir ASM yedeklilik (redundancy) modelidir."
+        }
+      ],
+      "hint": "Redo loglar gibi düşük gecikmeli küçük yazma operasyonları için kullanılan ince taneli striping seçeneğidir.",
+      "type": "test",
+      "points": 1,
+      "tags": [
+        "chapter-2"
+      ]
+    },
+    {
+      "question": "Kurumsal veritabanı altyapılarında veritabanı verilerinin +DATA, kurtarma ve log varlıklarının ise +RECO disk gruplarına ayrılmasının temel mimari sebebi nedir?",
+      "answerOptions": [
+        {
+          "text": "Kurtarma ve arşiv log I/O trafiğini ana transactional veri I/O trafiğinden izole etmek",
+          "isCorrect": true,
+          "rationale": "RECO disk grubunun ayrılması, yedekleme ve arşivleme yükünün active OLTP veri dosyalarının disk bant genişliğiyle yarışmasını önler."
+        },
+        {
+          "text": "SGA belleğinin taşmasını engellemek ve PGA kotasını artırmak",
+          "isCorrect": false,
+          "rationale": "Disk grubu mimarisi fiziksel depolama ile ilgilidir, SGA/PGA bellek alanlarının kontrolünü sağlamaz."
+        },
+        {
+          "text": "PDB'lerin otomatik olarak silinmesini engellemek",
+          "isCorrect": false,
+          "rationale": "PDB izolasyonu ve yaşam döngüsü veritabanı mantıksal katmanında yönetilir, disk grubu isimlerinden bağımsızdır."
+        },
+        {
+          "text": "Kümedeki RAC node sayısına eşit miktarda disk grubu oluşturma zorunluluğu",
+          "isCorrect": false,
+          "rationale": "Disk grubu sayısı RAC node sayısına bağlı değildir; tüm nodelar aynı paylaşımlı disk gruplarına erişir."
+        }
+      ],
+      "hint": "Arşivleme ve yedekleme trafiğinin ana veri okuma/yazma performansı üzerindeki olumsuz etkisini düşünün.",
+      "type": "test",
+      "points": 1,
+      "tags": [
+        "chapter-2"
+      ]
+    },
+    {
+      "question": "Oracle RAC aktif-aktif kümeleme altyapısında, düğümler (nodes) arasında veri bloklarının disk I/O yapılmadan doğrudan bellekten belleğe yüksek hızlı private Interconnect üzerinden aktarılmasını sağlayan teknoloji hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Cache Fusion",
+          "isCorrect": true,
+          "rationale": "Cache Fusion, RAC kümesindeki SGA'lar arasında veri bloklarını özel Interconnect ağı üzerinden doğrudan transfer ederek disk yazma zorunluluğunu ortadan kaldırır."
+        },
+        {
+          "text": "Automatic Shared Memory Management",
+          "isCorrect": false,
+          "rationale": "ASMM tekil veritabanı örneği içinde SGA havuzlarının boyutlandırılmasını yönetir."
+        },
+        {
+          "text": "Block Change Tracking",
+          "isCorrect": false,
+          "rationale": "Block Change Tracking, RMAN artımlı yedeklemelerini hızlandırmak için değişen blokları izleyen bir mekanizmadır."
+        },
+        {
+          "text": "Managed Recovery Process",
+          "isCorrect": false,
+          "rationale": "Managed Recovery Process (MRP), Active Data Guard yapısında redo verilerini standby veritabanına uygulayan süreçtir."
+        }
+      ],
+      "hint": "RAC düğümleri arasındaki yüksek hızlı önbellek senkronizasyonu teknolojisidir.",
+      "type": "test",
+      "points": 1,
+      "tags": [
+        "chapter-3"
+      ]
+    },
+    {
+      "question": "Oracle Maximum Availability Architecture (MAA) Gold/Platinum standartlarında sıfır veri kaybı ($RPO = 0$) garantisi sağlamak için Data Guard mimarisinde hangi redo aktarım modu yapılandırılmalıdır?",
+      "answerOptions": [
+        {
+          "text": "Synchronous Redo Transport (Senkron Redo Aktarımı)",
+          "isCorrect": true,
+          "rationale": "$RPO = 0$ gereksinimi, birincil veritabanındaki bir işlemin commit edilmeden önce standby tarafına yazılmasını zorunlu kılan senkron aktarım ile sağlanır."
+        },
+        {
+          "text": "Asynchronous Redo Transport (Asenkron Redo Aktarımı)",
+          "isCorrect": false,
+          "rationale": "Asenkron aktarım performans avantajı sağlasa da ağ gecikmelerinde veri kaybı riski ($RPO > 0$) doğurabilir."
+        },
+        {
+          "text": "Periodic Flashback Logging",
+          "isCorrect": false,
+          "rationale": "Flashback logları mantıksal hatalardan geri dönmeyi sağlar, standby tarafına veri iletim mekanizması değildir."
+        },
+        {
+          "text": "Manual Archivelog Shipping",
+          "isCorrect": false,
+          "rationale": "Manuel arşiv iletimi gecikmeli olup yüksek RPO değerlerine sebep olur."
+        }
+      ],
+      "hint": "Birincil sunucudaki commit işleminin yedek sunucu onayına bağlandığı aktarım seçeneğidir.",
+      "type": "test",
+      "points": 1,
+      "tags": [
+        "chapter-3"
+      ]
+    },
+    {
+      "question": "Oracle Data Guard Broker yapısında yer alan ve Observer sürecinin birincil veritabanı hatasını algılayıp otomatik failover tetiklemesine kadar bekleyeceği süreyi belirleyen FastStartFailoverThreshold parametresinin birimi nedir?",
+      "answerOptions": [
+        {
+          "text": "Saniye (Second)",
+          "isCorrect": true,
+          "rationale": "FastStartFailoverThreshold parametresi, otomatik kesinti geçişi kararı verilmeden önce beklenilecek süreyi saniye cinsinden ifade eder."
+        },
+        {
+          "text": "Dakika (Minute)",
+          "isCorrect": false,
+          "rationale": "Parametre dakika birimini kullanmaz; dakika kullanımı otomatik failover için çok yüksek gecikmelere sebep olurdu."
+        },
+        {
+          "text": "Milisaniye (Millisecond)",
+          "isCorrect": false,
+          "rationale": "Milisaniye ağ dalgalanmalarında hatalı failover kararlarına sebep olacağı için threshold saniye bazındadır."
+        },
+        {
+          "text": "Saat (Hour)",
+          "isCorrect": false,
+          "rationale": "Saat bazlı bir eşik, yüksek erişilebilirlik (HA) standartlarına aykırıdır."
+        }
+      ],
+      "hint": "Zaman aşımı eşiğini tanımlamak için kullanılan temel standart zaman birimidir.",
+      "type": "test",
+      "points": 1,
+      "tags": [
+        "chapter-4"
+      ]
+    },
+    {
+      "question": "RMAN artımlı (incremental) yedekleme süreçlerinde veritabanı veri dosyalarının tamamını taramadan yalnızca değişen blokları tespit etmek ve yedekleme süresini kısaltmak için kullanılan özellik hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Block Change Tracking (BCT)",
+          "isCorrect": true,
+          "rationale": "Block Change Tracking (BCT), değişen veritabanı bloklarını küçük bir dosyada takip ederek RMAN'in verisetini taramadan doğrudan değişen blokları okumasını sağlar."
+        },
+        {
+          "text": "Automatic Storage Management (ASM)",
+          "isCorrect": false,
+          "rationale": "ASM bir depolama ve dosya sistemi yönetimidir, blok değişiklik geçmişini tutmaz."
+        },
+        {
+          "text": "Transparent Data Encryption (TDE)",
+          "isCorrect": false,
+          "rationale": "TDE veritabanı veri ve tamsayılı verilerini şifreleme mekanizmasıdır."
+        },
+        {
+          "text": "Application Continuity (AC)",
+          "isCorrect": false,
+          "rationale": "Application Continuity, kesinti anında uygulama oturumlarının şeffaf biçimde yeniden bağlanmasını sağlar."
+        }
+      ],
+      "hint": "Değişen blokların izini sürerek disk taramasını engelleyen mekanizmadır.",
+      "type": "test",
+      "points": 1,
+      "tags": [
+        "chapter-4"
+      ]
+    },
+    {
+      "question": "Active Session History (ASH) raporlarında ve v$active_session_history görünümünde bir SQL sorgusunun yoğun olarak db file sequential read bekleme olayı ürettiği görülüyorsa bu durum neye işaret eder?",
+      "answerOptions": [
+        {
+          "text": "Sorgunun bir indeks kullanarak diskten tekil/rastgele veri blokları okuduğuna",
+          "isCorrect": true,
+          "rationale": "db file sequential read bekleme olayı, adındaki sıradanlığın aksine B-Tree indeksler üzerinden yapılan tekil blok erişimlerini temsil eder."
+        },
+        {
+          "text": "Sorgunun büyük bir tabloda Full Table Scan (çoklu blok okuma) yaptığına",
+          "isCorrect": false,
+          "rationale": "Full Table Scan işlemleri genellikle db file scattered read bekleme olayı oluşturur."
+        },
+        {
+          "text": "Redo log dosyasına veri yazılırken I/O darboğazı yaşandığına",
+          "isCorrect": false,
+          "rationale": "Redo yazma olayları log file sync veya log file parallel write beklemeleri üretir."
+        },
+        {
+          "text": "Shared Pool üzerinde kilitlenme (latch) meydana geldiğine",
+          "isCorrect": false,
+          "rationale": "Shared pool latch sorunları latch: shared pool bekleme olayında görünür, User I/O sınıfında değil."
+        }
+      ],
+      "hint": "Bekleme adında 'sequential' geçmesine rağmen indeksli tekil erişimlerde oluşan olayı düşünün.",
+      "type": "test",
+      "points": 1,
+      "tags": [
+        "chapter-5"
+      ]
+    },
+    {
+      "question": "DBMS_XPLAN.DISPLAY_CURSOR veya AWR çalışma planı çıktısında yer alan E-Rows (Tahmini Satır Sayısı) ile A-Rows (Gerçekleşen Satır Sayısı) değerleri arasında uçurum olması temel olarak hangi sorunu gösterir?",
+      "answerOptions": [
+        {
+          "text": "Tablo ve indeks istatistiklerinin bayat (stale) veya eksik olduğunu",
+          "isCorrect": true,
+          "rationale": "E-Rows ve A-Rows arasındaki büyük sapmalar, Cost-Based Optimizer'ın (CBO) güncel olmayan istatistikler nedeniyle hatalı satır tahmini yaptığını gösterir."
+        },
+        {
+          "text": "PGA alanının tamamen dolduğunu ve diske yazma yapıldığını",
+          "isCorrect": false,
+          "rationale": "PGA doluluğu temp tablespace kullanımına sebep olur, satır sayısı tahmin sapmasını doğrudan açıklamaz."
+        },
+        {
+          "text": "ASM disk grubunda yetersiz alan kaldığını",
+          "isCorrect": false,
+          "rationale": "ASM disk alanı kısıtları veritabanı depolama hatası verir, CBO sorgu planı tahminlerini etkilemez."
+        },
+        {
+          "text": "Active Data Guard senkronizasyonunun tamamen koptuğunu",
+          "isCorrect": false,
+          "rationale": "Data Guard senkronizasyonu çalışma planındaki satır tahmin sapmaları ile ilgili değildir."
+        }
+      ],
+      "hint": "CBO'nun çalışma planını oluştururken temel aldığı istatistiksel verileri hatırlayın.",
+      "type": "test",
+      "points": 1,
+      "tags": [
+        "chapter-5"
+      ]
+    },
+    {
+      "question": "Active Session History (ASH) verilerinin bellek içi SGA ring buffer alanından diskteki AWR depolarına (WRH$_ACTIVE_SESSION_HISTORY) düzenli olarak aktarılmasını (flush) sağlayan veritabanı arka plan süreci hangisidir?",
+      "answerOptions": [
+        {
+          "text": "MMON (Memory Monitor)",
+          "isCorrect": true,
+          "rationale": "MMON arka plan süreci, bellek içi AWR/ASH örneklerini toplar ve bunları düzenli aralıklarla diske kaydeder."
+        },
+        {
+          "text": "LMS (Global Cache Service Process)",
+          "isCorrect": false,
+          "rationale": "LMS süreçleri RAC ortamında Cache Fusion blok transferlerini yönetir."
+        },
+        {
+          "text": "PMON (Process Monitor)",
+          "isCorrect": false,
+          "rationale": "PMON çöken kullanıcı süreçlerinin kaynaklarını temizlemekle görevlidir."
+        },
+        {
+          "text": "CKPT (Checkpoint)",
+          "isCorrect": false,
+          "rationale": "CKPT veritabanı checkpoint bilgilerini veri dosyaları ve kontrol dosyalarına günceller."
+        }
+      ],
+      "hint": "Bellek izleme ve istatistik toplama işlerini yürüten ana monitor sürecini düşünün.",
+      "type": "test",
+      "points": 1,
+      "tags": [
+        "chapter-6"
+      ]
+    },
+    {
+      "question": "Oracle Enterprise Manager (OEM) Cloud Control mimarisinde, izlenen hedef sunucularda konuşlanarak sistem metriklerini toplayan ve Oracle Management Server (OMS) bileşenine ileten yapı hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Oracle Management Agent (OMA)",
+          "isCorrect": true,
+          "rationale": "OMA, izlenen hedef konaklarda (host) çalışan ve topladığı metrik verilerini OMS'e aktaran agent yazılımıdır."
+        },
+        {
+          "text": "Oracle Management Repository (OMR)",
+          "isCorrect": false,
+          "rationale": "OMR, OEM verilerinin ve geçmişinin saklandığı Oracle veritabanıdır."
+        },
+        {
+          "text": "Global Resource Directory (GRD)",
+          "isCorrect": false,
+          "rationale": "GRD, RAC mimarisinde kaynak kilitlerini ve blok durumlarını izleyen bellek dizinidir."
+        },
+        {
+          "text": "Grid Infrastructure (GI)",
+          "isCorrect": false,
+          "rationale": "Grid Infrastructure, RAC ve ASM yapılarını yöneten kümeleme katmanıdır."
+        }
+      ],
+      "hint": "Hedef makineler üzerinde çalışan yönetim ajanı bileşenidir.",
+      "type": "test",
+      "points": 1,
+      "tags": [
+        "chapter-6"
+      ]
+    },
+    {
+      "question": "OEM Cloud Control sisteminde ham metrik uyarılarının (Event) incelenip idari müdahale gerektiren bir olaya (Incident) dönüştürülmesini ve e-posta/ITSM bildirimlerinin tetiklenmesini sağlayan yapı mantığı nedir?",
+      "answerOptions": [
+        {
+          "text": "Incident Rule Sets (Olay Kural Setleri)",
+          "isCorrect": true,
+          "rationale": "Incident Rule Sets, OEM bünyesinde hangi olayların incident seviyesine yükseltileceğini ve hangi bildirim kanallarının işletileceğini belirleyen kurallar dizisidir."
+        },
+        {
+          "text": "Resource Manager Profiles",
+          "isCorrect": false,
+          "rationale": "Resource Manager profilleri CPU ve oturum sınırlarını düzenler, alarm yönetimini yapmaz."
+        },
+        {
+          "text": "Fast-Start Failover Observer",
+          "isCorrect": false,
+          "rationale": "FSFO Observer yalnızca Data Guard otomatik kesinti süreçlerini izler."
+        },
+        {
+          "text": "Automatic Workload Repository (AWR)",
+          "isCorrect": false,
+          "rationale": "AWR geçmiş performans verilerini depolar, olay bildirim kurallarını çalıştırmaz."
+        }
+      ],
+      "hint": "Olay yükseltme ve bildirim yönlendirme mantığını barındıran kural kümesidir.",
+      "type": "test",
+      "points": 1,
+      "tags": [
+        "chapter-7"
+      ]
+    },
+    {
+      "question": "11.11.2026 kesinti inceleme verilerine ve operasyonel teknik standartlara göre, IFS arka plan işleyicilerinin (job handlers) takıldığını gösteren ve izlemede ilk eklenmesi gereken kritik sinyal hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Oracle Advanced Queue (AQ) mesaj birikmesi (ifs_aq)",
+          "isCorrect": true,
+          "rationale": "Kuyrukta bekleyen (ready) mesaj sayısının uzun süre düşmemesi (AQ birikmesi), arka plan işleyicisinin takıldığını gösteren en hızlı kök sinyaldir."
+        },
+        {
+          "text": "SGA Buffer Cache doluluk oranı",
+          "isCorrect": false,
+          "rationale": "Buffer cache doluluğu normal veritabanı çalışmasının doğal bir sonucudur, arka plan iş kilitlenmesini doğrudan göstermez."
+        },
+        {
+          "text": "Host CPU utilization limit aşımı",
+          "isCorrect": false,
+          "rationale": "CPU artışı genel bir yük göstergesidir, takılan ve bekleyen işlerde CPU tüketimi düşebilir."
+        },
+        {
+          "text": "Flashback log alanının tükenmesi",
+          "isCorrect": false,
+          "rationale": "Flashback alanının tükenmesi veritabanını durdurabilir ancak işleyicinin takılmasına yönelik spesifik uygulama sinyali değildir."
+        }
+      ],
+      "hint": "İşleme alınmayı bekleyen mesajların biriktiği veritabanı kuyruk metriğidir.",
+      "type": "test",
+      "points": 1,
+      "tags": [
+        "chapter-7"
+      ]
+    },
+    {
+      "question": "Extra Diagnostics veya Tuning Pack lisansı bulunmayan Oracle ortamlarda (ADR-0005 uyumlu), zamanlanmış görevlerin (Scheduled Tasks) geçmişini sorgulamak için hangi standart veri sözlüğü görünümü kullanılmalıdır?",
+      "answerOptions": [
+        {
+          "text": "DBA_SCHEDULER_JOB_RUN_DETAILS",
+          "isCorrect": true,
+          "rationale": "DBA_SCHEDULER_JOB_RUN_DETAILS görünümü, ilave paket lisansı gerektirmeden standart Oracle Scheduler iş detaylarını ve geçmişini sunar."
+        },
+        {
+          "text": "DBA_HIST_ACTIVE_SESS_HISTORY",
+          "isCorrect": false,
+          "rationale": "DBA_HIST_ACTIVE_SESS_HISTORY tablosu Oracle Diagnostics Pack lisansı gerektirir."
+        },
+        {
+          "text": "V$AWR_DATA",
+          "isCorrect": false,
+          "rationale": "AWR verileri de opsiyonel lisans paketlerine tabidir ve doğrudan iş detay geçmişini bu yapıda vermez."
+        },
+        {
+          "text": "V$SQL_PLAN_STATISTICS_ALL",
+          "isCorrect": false,
+          "rationale": "Bu görünüm çalışma planı istatistiklerini tutar, scheduler iş çalışma durum ve hata geçmişini vermez."
+        }
+      ],
+      "hint": "Ek paket lisansı gerektirmeyen standart Oracle Scheduler iş detay görünümüdür.",
+      "type": "test",
+      "points": 1,
+      "tags": [
+        "chapter-8"
+      ]
+    },
+    {
+      "question": "IFS Cloud ve ERP ortamlarında güncelleme veya deploy işlemleri öncesinde nesnelerin INVALID duruma düşmesini ve veri kilitlenmelerini engellemek için deploy kontrol listesinde bulunması gereken temel şart nedir?",
+      "answerOptions": [
+        {
+          "text": "Açık veya çalışan arka plan işinin (background job) kalmadığının doğrulanması",
+          "isCorrect": true,
+          "rationale": "Deploy öncesi açık/çalışan batch işlerin temizlenmesi, deployment sırasında paketlerin ve nesnelerin kilitlenmesini ya da geçersizleşmesini önler."
+        },
+        {
+          "text": "Tüm B-Tree indekslerinin geçici olarak silinmesi",
+          "isCorrect": false,
+          "rationale": "İndekslerin silinmesi performans felaketine yol açar, deploy prerequisite adımı değildir."
+        },
+        {
+          "text": "SGA ve PGA boyutlarının sıfırlanması",
+          "isCorrect": false,
+          "rationale": "Bellek boyutlarının sıfırlanması veritabanının çalışamamasına sebep olur."
+        },
+        {
+          "text": "Online Redo Log gruplarının silinip tek gruba düşürülmesi",
+          "isCorrect": false,
+          "rationale": "Redo log gruplarının silinmesi veritabanı bütünlüğünü ve kurtarılabilirliğini riske atar."
+        }
+      ],
+      "hint": "Deploy başlatılmadan önce arka planda yürütülen süreçlerin durumunu kontrol etme adımıdır.",
+      "type": "test",
+      "points": 1,
+      "tags": [
+        "chapter-8"
+      ]
+    },
+    {
+      "question": "Paylaşımlı bir Multitenant CDB ortamında, alt test PDB'si (örneğin IFS_TEST) üzerinde pga_aggregate_limit veya sga_target değerlerinin kısıtlanmasının temel amacı nedir?",
+      "answerOptions": [
+        {
+          "text": "Non-production iş yüklerinin bellek sömürmesini ve üretim (IFS_PROD) PDB'sini yavaşlatmasını önlemek",
+          "isCorrect": true,
+          "rationale": "PDB düzeyinde bellek sınırları belirlemek, alt ortamlardaki kontrolsüz sorguların sunucudaki tüm RAM'i tüketmesini engelleyerek üretim izolasyonunu korur."
+        },
+        {
+          "text": "RAC Interconnect bant genişliğini otomatik olarak iki katına çıkarmak",
+          "isCorrect": false,
+          "rationale": "PDB bellek limitleri donanımsal ağ bant genişliğini değiştiremez."
+        },
+        {
+          "text": "RMAN artımlı yedeklemelerini tamamen devre dışı bırakmak",
+          "isCorrect": false,
+          "rationale": "Bellek limitleri yedekleme mekanizmasını iptal etmez."
+        },
+        {
+          "text": "Redo log dosyalarını Coarse Striping yapmaya zorlamak",
+          "isCorrect": false,
+          "rationale": "Striping stratejileri ASM disk grubu ve şablon seviyesinde belirlenir, PDB bellek sınırlarıyla ilgili değildir."
+        }
+      ],
+      "hint": "Çok kiracılı ortamda alt veritabanlarının üretimin kaynağını tüketmesini engelleme hedefini düşünün.",
+      "type": "test",
+      "points": 1,
+      "tags": [
+        "chapter-9"
+      ]
+    },
+    {
+      "question": "IFS Cloud 26R2 mimarisinde sistem performansını ve uyarılara ilişkin eşik değerlerini değerlendirerek durum güncellemesi yapan zamanlanmış görev (Scheduled Task) hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Foundation1 Monitoring",
+          "isCorrect": true,
+          "rationale": "IFS Cloud 26R2 teknik dokümantasyonuna göre Foundation1 Monitoring görevi, sistem eşik limitlerini değerlendirip durum üreten temel arka plan görevidir."
+        },
+        {
+          "text": "Transaction_SYS Cleanup",
+          "isCorrect": false,
+          "rationale": "Transaction_SYS cleanup görevi eski arka plan iş kayıtlarını ve geçici verileri temizler, izleme durumlarını değerlendirmez."
+        },
+        {
+          "text": "Automatic Database Diagnostic Monitor",
+          "isCorrect": false,
+          "rationale": "ADDM, veritabanı seviyesinde AWR verilerini analiz eden Oracle çekirdek motoru aracıdır."
+        },
+        {
+          "text": "Oracle Management Agent",
+          "isCorrect": false,
+          "rationale": "OMA, OEM altyapısına ait bir işletim sistemi ajanıdır; IFS Cloud uygulama içi zamanlanmış görevi değildir."
+        }
+      ],
+      "hint": "IFS çekirdek altyapısında izleme eşiklerini kontrol eden scheduled task adını düşünün.",
+      "type": "test",
+      "points": 1,
+      "tags": [
+        "chapter-9"
+      ]
+    },
+    {
+      "question": "Active Data Guard altyapısında physical standby veritabanının verileri güncel tutarken aynı zamanda salt okunur (read-only) raporlama sorgularına hizmet vermesini sağlayan temel süreç ikilisi hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Standby Redo Logs (SRLs) ve Managed Recovery Process (MRP)",
+          "isCorrect": true,
+          "rationale": "Active Data Guard, Standby Redo Log'lar vasıtasıyla gelen redo verisini Managed Recovery Process (MRP) ile canlı uygulayarak veritabanının okuma amaçlı açık kalmasını sağlar."
+        },
+        {
+          "text": "Memory Monitor (MMON) ve Process Monitor (PMON)",
+          "isCorrect": false,
+          "rationale": "MMON ve PMON standart veritabanı arka plan süreçleridir, Data Guard redo uygulama işlevini yürütmez."
+        },
+        {
+          "text": "Global Cache Service (LMS) ve Global Enqueue Service (GES)",
+          "isCorrect": false,
+          "rationale": "LMS ve GES, Data Guard için değil Oracle RAC küme içi senkronizasyon için kullanılır."
+        },
+        {
+          "text": "Oracle Management Agent (OMA) ve Listener",
+          "isCorrect": false,
+          "rationale": "OMA ve Listener izleme ve ağ bağlantı yönetim bileşenleridir."
+        }
+      ],
+      "hint": "Yedek veritabanında redo verilerini anlık uygulayan recovery sürecini ve log yapısını hatırlayın.",
+      "type": "test",
+      "points": 1,
+      "tags": [
+        "chapter-10"
+      ]
+    }
+  ]
+}

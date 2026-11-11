@@ -26,16 +26,32 @@ sys.path.insert(0, str(ROOT))
 sys.path.insert(0, str(ROOT / "generator" / "scripts"))
 
 from common import (cli_language, find_cli, grounding_rules, language_code, load_university,  # noqa: E402
-                    normalize_quiz_questions, require_cli, with_authority)
+                    normalize_quiz_questions, require_cli, text_language, with_authority)
 from scripts.generate_unit_quizzes import download_quiz, normalize_quiz  # noqa: E402
 
 LIMIT_HINTS = re.compile(r"limit|quota|rate.?limit|too many|capacity", re.I)
 
-# Pratik sınavlar: id -> (başlık, açıklama, soru sayısı, kapsam)
+# Pratik sınavlar: id -> (soru sayısı, kapsam). Başlık ve açıklama dersin dilinde yazılır.
 EXAMS = {
-    "vize": ("Midterm Assessment", "Covers the first half of the program.", 20, "first half"),
-    "final": ("Final Assessment", "Covers the whole program.", 25, "whole"),
-    "yaz-kursu": ("Practical Assessment", "Scenario questions across the whole program.", 20, "whole"),
+    "vize": (20, "first half"),
+    "final": (25, "whole"),
+    "yaz-kursu": (20, "whole"),
+}
+EXAM_TEXT = {
+    "en": {
+        "vize": ("Midterm Assessment", "Covers the first half of the program."),
+        "final": ("Final Assessment", "Covers the whole program."),
+        "yaz-kursu": ("Practical Assessment", "Scenario questions across the whole program."),
+    },
+    "tr": {
+        "vize": ("Ara Sınav", "Programın ilk yarısını kapsar."),
+        "final": ("Final Sınavı", "Programın tamamını kapsar."),
+        "yaz-kursu": ("Uygulama Sınavı", "Programın tamamına yayılan senaryo soruları."),
+    },
+}
+SCOPE_TEXT = {
+    "en": {"first half": "only the first {n} chapters", "whole": "every chapter"},
+    "tr": {"first half": "yalnızca ilk {n} bölüm", "whole": "bütün bölümler"},
 }
 
 
@@ -108,6 +124,7 @@ def main() -> int:
         sys.exit(f"{args.slug}: state.json has no notebook_id")
     cli = find_cli() or require_cli()
     lang = language_code(uni)
+    lang_code = lang
     sources = [s for s in state.get("sources", {}).values() if s.get("status") == "ready"]
     chapters = plan.get("chapters", [])
 
@@ -115,6 +132,8 @@ def main() -> int:
     tmp.mkdir(parents=True, exist_ok=True)
     out_dir = d / "unit_quizzes"
     out_dir.mkdir(parents=True, exist_ok=True)
+    # Bolum quizi basligi dile gore: Turkce derste "Bolum", Ingilizce derste "Unit".
+    unit_prefix = "Bölüm" if lang_code == "tr" else "Unit"
 
     # ---- unit quizzes: one per chapter ----
     for n, ch in enumerate(chapters, 1):
@@ -135,13 +154,24 @@ def main() -> int:
             + rules
         )
         print(f"  unit {n}: {ch['title'][:60]} ({len(ids)} sources)", flush=True)
-        with cli_language(cli, lang):
-            aid, _ = generate_quiz(cli, nb, desc, ids, attempts=args.attempts)
-        raw = tmp / f"unit-{n}.json"
-        download_quiz(nb, aid, raw)
-        data = normalize_quiz(raw, n, ch["title"], title_prefix="Unit")
-        if not data.get("questions"):
-            print(f"  unit {n}: no questions came back, skipped", flush=True)
+        # Quizin dili denetlenir: CLI'nin global dil ayari okunamazsa sorular yanlis dilde
+        # uretilebiliyor (unit-10 Turkce soru yerine Ingilizce geldi). Yanlis dilde gelirse
+        # uretim tekrarlanir.
+        for attempt in range(1, args.attempts + 1):
+            with cli_language(cli, lang):
+                aid, _ = generate_quiz(cli, nb, desc, ids, attempts=args.attempts)
+            raw = tmp / f"unit-{n}.json"
+            download_quiz(nb, aid, raw)
+            data = normalize_quiz(raw, n, ch["title"], title_prefix=unit_prefix)
+            if not data.get("questions"):
+                print(f"  unit {n}: no questions came back, skipped", flush=True)
+                break
+            got = text_language(json.dumps(data["questions"], ensure_ascii=False))
+            if got in ("", lang_code):
+                break
+            print(f"  unit {n}: sorular {got} dilinde geldi ({lang_code} bekleniyordu), tekrar uretiliyor", flush=True)
+        else:
+            print(f"  unit {n}: dil {lang_code} olarak dogrulanamadi, yazilmiyor", flush=True)
             continue
         dest.write_text(json.dumps(data, indent=2, ensure_ascii=False), encoding="utf-8")
         print(f"  unit {n}: {len(data['questions'])} questions -> {dest.name}", flush=True)
@@ -150,17 +180,21 @@ def main() -> int:
     exam_dir = d / "exams"
     exam_dir.mkdir(parents=True, exist_ok=True)
     half = max(1, len(chapters) // 2)
-    for eid, (title, descr, count, scope) in EXAMS.items():
+    lang_code = language_code(uni)
+    texts = EXAM_TEXT.get(lang_code, EXAM_TEXT["en"])
+    scopes = SCOPE_TEXT.get(lang_code, SCOPE_TEXT["en"])
+    for eid, (count, scope) in EXAMS.items():
         dest = exam_dir / f"{eid}.json"
         if dest.exists() and not args.force:
             print(f"  exam {eid}: exists, skipped", flush=True)
             continue
+        title, descr = texts[eid]
         if scope == "first half":
             picked = chapters[:half]
-            scope_note = f"only the first {half} chapters"
+            scope_note = scopes["first half"].format(n=half)
         else:
             picked = chapters
-            scope_note = "every chapter"
+            scope_note = scopes["whole"]
         ids = []
         for ch in picked:
             for sid in chapter_sources(ch, sources, tiers):
@@ -176,18 +210,27 @@ def main() -> int:
             + rules
         )
         print(f"  exam {eid}: {title} ({len(ids)} sources)", flush=True)
-        with cli_language(cli, lang):
-            aid, _ = generate_quiz(cli, nb, desc, ids, attempts=args.attempts)
         raw = tmp / f"exam-{eid}.json"
-        download_quiz(nb, aid, raw)
-        try:
-            rawdata = json.loads(raw.read_text(encoding="utf-8-sig"))
-        except json.JSONDecodeError:
-            print(f"  exam {eid}: download is not json, skipped", flush=True)
+        qs = []
+        for attempt in range(1, args.attempts + 1):
+            with cli_language(cli, lang):
+                aid, _ = generate_quiz(cli, nb, desc, ids, attempts=args.attempts)
+            download_quiz(nb, aid, raw)
+            try:
+                rawdata = json.loads(raw.read_text(encoding="utf-8-sig"))
+            except (OSError, json.JSONDecodeError):
+                print(f"  exam {eid}: download is not json, skipped", flush=True)
+                break
+            qs = rawdata.get("questions") if isinstance(rawdata, dict) else rawdata
+            if isinstance(qs, dict):
+                qs = qs.get("questions") or []
+            got = text_language(json.dumps(qs, ensure_ascii=False))
+            if got in ("", lang_code):
+                break
+            print(f"  exam {eid}: sorular {got} dilinde geldi ({lang_code} bekleniyordu), tekrar uretiliyor", flush=True)
+        else:
+            print(f"  exam {eid}: dil {lang_code} olarak dogrulanamadi, yazilmiyor", flush=True)
             continue
-        qs = rawdata.get("questions") if isinstance(rawdata, dict) else rawdata
-        if isinstance(qs, dict):
-            qs = qs.get("questions") or []
         exam = {
             "id": eid,
             "type": eid,

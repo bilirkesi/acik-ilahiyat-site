@@ -1,0 +1,785 @@
+{
+  "id": "final",
+  "type": "final",
+  "title": "Final Sınavı",
+  "description": "Programın tamamını kapsar.",
+  "exam_window": "final",
+  "pass_mark": 0.7,
+  "questions": [
+    {
+      "question": "Oracle ASM mimarisinde fine-grained (ince taneli) şeritleme stratejisinde Tahsis Birimleri (Allocation Unit - AU) kaç KB'lık şerit setlerine bölünür ve öncelikli olarak hangi dosya türlerini hedefler?",
+      "answerOptions": [
+        {
+          "text": "128 KB şerit setleri; Online Redo Loglar (ORL), Kontrol Dosyaları ve Flashback Loglar.",
+          "isCorrect": true,
+          "rationale": "İnce taneli şeritleme, küçük boyutlu ve düşük gecikme gerektiren yazma operasyonlarını optimize etmek için AU yapısını 128 KB'lık parçalara böler."
+        },
+        {
+          "text": "1 MB şerit setleri; Veritabanı veri dosyaları ve indeks tablo alanları.",
+          "isCorrect": false,
+          "rationale": "Tam AU boyutlarını (1 MB ile 4 MB arası) kullanan yapı Coarse-Grained (kaba taneli) şeritlemedir ve büyük ardışık I/O gerektiren veri dosyalarını hedefler."
+        },
+        {
+          "text": "512 KB şerit setleri; RMAN yedek setleri ve geçici (temporary) dosyalar.",
+          "isCorrect": false,
+          "rationale": "RMAN yedek setleri ve geçici dosyalar büyük sıralı okuma/yazma yaptıkları için fine-grained değil coarse-grained şeritleme kullanırlar."
+        },
+        {
+          "text": "64 KB şerit setleri; Sistem tablo alanları (SYSTEM, SYSAUX).",
+          "isCorrect": false,
+          "rationale": "SYSTEM ve SYSAUX gibi veritabanı tablo alanları veri dosyaları sınıfında yer aldığından coarse-grained şeritlemeye tabidir."
+        }
+      ],
+      "hint": "Gecikmeye duyarlı ve hızlı concurrent yazma gerektiren redo log ve kontrol dosyası erişim kalıplarını düşünün.",
+      "type": "test",
+      "points": 1,
+      "tags": [
+        "chapter-1"
+      ]
+    },
+    {
+      "question": "IFS uygulamalarının kritik üretim ortamlarında maksimum kullanılabilirlik (high availability) sağlamak üzere standart kabul edilen ve en az 3 Başarısızlık Grubu (Failure Group) gerektiren ASM esneklik modeli hangisidir?",
+      "answerOptions": [
+        {
+          "text": "High Redundancy",
+          "isCorrect": true,
+          "rationale": "High Redundancy modeli 3 yönlü aynalama (3-way mirroring) sağlar ve veri koruması için en az 3 ayrı Failure Group gerektirir."
+        },
+        {
+          "text": "Normal Redundancy",
+          "isCorrect": false,
+          "rationale": "Normal Redundancy modeli 2 yönlü aynalama (2-way mirroring) uygular ve en az 2 Failure Group ile çalışır."
+        },
+        {
+          "text": "External Redundancy",
+          "isCorrect": false,
+          "rationale": "External Redundancy modelinde ASM seviyesinde aynalama yapılmaz; veri koruması donanımsal SAN veya RAID kontrolcücülere devredilir."
+        },
+        {
+          "text": "Dynamic Redundancy",
+          "isCorrect": false,
+          "rationale": "Oracle ASM mimarisinde Dynamic Redundancy adında bir varsayılan esneklik katmanı bulunmamaktadır."
+        }
+      ],
+      "hint": "Üç yönlü aynalama (3-way mirroring) sağlayan yüksek kullanılabilirlik seçeneğini hatırlayın.",
+      "type": "test",
+      "points": 1,
+      "tags": [
+        "chapter-1"
+      ]
+    },
+    {
+      "question": "Oracle veritabanı kesinti ve failover çözümleri matrisine göre, uygulamanın nasıl kodlandığının bilinmediği ve bağlantı havuzu (connection pool) kullanılmadığı durumlarda destek sunan mimari çözüm hangisidir?",
+      "answerOptions": [
+        {
+          "text": "TAC (Transparent Application Continuity)",
+          "isCorrect": true,
+          "rationale": "TAC, uygulama kod mimarisi bilinmese ve connection pool kullanılmasa bile işlem durumunu koruyup failover sağlayabilir."
+        },
+        {
+          "text": "AC (Application Continuity)",
+          "isCorrect": false,
+          "rationale": "AC çözümü, kod mimarisi bilinmediğinde veya connection pool kullanılmadığında destek sağlamaz."
+        },
+        {
+          "text": "TAF (Transparent Application Failover)",
+          "isCorrect": false,
+          "rationale": "TAF, planlanmamış tranzaksiyonel kesintilerde işlem durumu koruması ve kod bağımsızlığı sunmada yetersizdir."
+        },
+        {
+          "text": "Draining",
+          "isCorrect": false,
+          "rationale": "Draining yalnızca planlı bakım esnasında oturumların kademeli boşaltılmasını sağlar, anlık failover replaysi gerçekleştirmez."
+        }
+      ],
+      "hint": "Uygulama kodunda değişiklik gerektirmeyen ve bağlantı havuzuna bağımlı olmayan şeffaf süreklilik seçeneğine odaklanın.",
+      "type": "test",
+      "points": 1,
+      "tags": [
+        "chapter-1"
+      ]
+    },
+    {
+      "question": "TAC (Transparent Application Continuity) failover diziliminde, istemci sürücüsü (client driver) sunucu çökmesi sonrasında işlem durumunu doğrulamak için surviving RAC örneğindeki Transaction Guard'ı hangi veri ile sorgular?",
+      "answerOptions": [
+        {
+          "text": "Oturuma atanan LTXID (Logical Transaction ID) değeri",
+          "isCorrect": true,
+          "rationale": "Sürücü, kesintiye uğrayan oturumun LTXID değerini Transaction Guard'a sorarak işlemin çökme öncesinde committed olup olmadığını teyit eder."
+        },
+        {
+          "text": "Veritabanı SCN (System Change Number) damgası",
+          "isCorrect": false,
+          "rationale": "SCN tüm veritabanı zaman çizelgesini izler; tekil istemci oturumunun commit sonucunu doğrulamak için LTXID kullanılır."
+        },
+        {
+          "text": "GCS blok sahiplik kilidi adresi",
+          "isCorrect": false,
+          "rationale": "GCS blok kilitleri bellek bloklarının tutarlılığını yönetir, istemci düzeyindeki işlem taahhüt durumunu sorgulamaz."
+        },
+        {
+          "text": "İşletim sistemi PID ve SID eşleşme kimliği",
+          "isCorrect": false,
+          "rationale": "Process ID ve SID bilgileri sunucu lokal süreçleridir, failover sonrası işlem durumu doğrulamasında işlev görmezler."
+        }
+      ],
+      "hint": "Transaction Guard'ın mantıksal işlem takibi yapmak için kullandığı benzersiz tanımlayıcıyı düşünün.",
+      "type": "test",
+      "points": 1,
+      "tags": [
+        "chapter-1"
+      ]
+    },
+    {
+      "question": "Oracle RAC ortamında 'gc buffer busy acquire' bekleme olayının kök nedeni ve önerilen operasyonel iyileştirme stratejisi hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Yerel düğümün uzaktaki düğümden yoldaki bloğu beklemesi; Tabloları/indeksleri hash bölümleme ve yazma servisleri için düğüm meyniyeti (node affinity) yapılandırma.",
+          "isCorrect": true,
+          "rationale": "gc buffer busy acquire olayı, blokların düğümler arasında taşınırken yerel düğümde beklemesinden kaynaklanır; partitioning ve node affinity bu trafiği azaltır."
+        },
+        {
+          "text": "Uzaktaki düğümün bloğu exclusive modda tutması ve yavaş serbest bırakması; Jumbo Frames (MTU 9000) yapılandırma.",
+          "isCorrect": false,
+          "rationale": "Uzaktaki düğümün bloğu exclusive modda yavaş serbest bırakması 'gc buffer busy release' bekleme olayının kök nedenidir."
+        },
+        {
+          "text": "Eşzamanlı işlemlerin aynı satırları güncellemesi; İndekssiz foreign key sütunlarına indeks ekleme.",
+          "isCorrect": false,
+          "rationale": "Aynı satırların güncellenmesi 'enq: TX - row lock contention' olayıdır; FK indeks eksikliği ise 'enq: TM - contention' yaratır."
+        },
+        {
+          "text": "Veri sözlüğünde dizi numarası üretimi çekişmesi; CACHE değerini artırma.",
+          "isCorrect": false,
+          "rationale": "Sıra numarası üretimi çekişmesi 'row cache lock (DC_SEQUENCES)' olayına karşılık gelir."
+        }
+      ],
+      "hint": "Bir düğümün yoldaki (in-flight) bir bloğu beklediği durumu ve veri erişimini düğümlere göre ayırma yöntemini hatırlayın.",
+      "type": "test",
+      "points": 1,
+      "tags": [
+        "chapter-2"
+      ]
+    },
+    {
+      "question": "Oracle RAC ortamında dizi numarası (sequence generation) üretimi sırasında veri sözlüğü çekişmesinden kaynaklanan 'row cache lock (DC_SEQUENCES)' beklemesini gidermek için hangi adım atılmalıdır?",
+      "answerOptions": [
+        {
+          "text": "Sıraları (sequences) CACHE 1000 veya daha yüksek bir değere yükseltmek ve NOORDER ayarlamak.",
+          "isCorrect": true,
+          "rationale": "Sequence belleğini artırmak (CACHE >= 1000) ve kesin sıralama zorunluluğunu (NOORDER) kaldırmak veri sözlüğü kilit çekişmesini engeller."
+        },
+        {
+          "text": "Ağ arabiriminde Jumbo Frames (MTU 9000) yapılandırmak.",
+          "isCorrect": false,
+          "rationale": "Jumbo Frames kullanımı Interconnect üzerindeki blok transfer performansını artırır ancak row cache kilidini doğrudan çözmez."
+        },
+        {
+          "text": "Sıraları CYCLE ve ORDER moduna getirmek.",
+          "isCorrect": false,
+          "rationale": "ORDER modunun ayarlanması RAC düğümleri arasında senkronizasyon zorunluluğu yaratarak row cache kilidini daha da kötüleştirir."
+        },
+        {
+          "text": "Shared Pool boyutunu küçülterek kilit alanını daraltmak.",
+          "isCorrect": false,
+          "rationale": "Shared Pool boyutunun küçültülmesi bellek yetersizliğine ve ek parsing sorunlarına yol açar."
+        }
+      ],
+      "hint": "Düğümler arası sıra senkronizasyon zorunluluğunu kaldıran ve bellekten numara tahsisini artıran parametre grubunu düşünün.",
+      "type": "test",
+      "points": 1,
+      "tags": [
+        "chapter-2"
+      ]
+    },
+    {
+      "question": "Oracle Multitenant mimarisinde ortak arka plan süreçlerini, sistem meta verilerini ve küresel bellek alanını yöneten bileşen ile yeni PDB'ler provizyonlamak için kullanılan şablon sırasıyla hangileridir?",
+      "answerOptions": [
+        {
+          "text": "CDB$ROOT ve PDB$SEED",
+          "isCorrect": true,
+          "rationale": "CDB$ROOT ana sistem metadata ve bellek alanını yönetirken, PDB$SEED yeni veritabanları klonlamak için hazır sistem şablonudur."
+        },
+        {
+          "text": "PDB$SEED ve User PDB",
+          "isCorrect": false,
+          "rationale": "PDB$SEED şablon işlevi görür; küresel bellek ve ortak süreçlerin yönetimi PDB seviyesinde değil CDB$ROOT seviyesindedir."
+        },
+        {
+          "text": "CDB$ROOT ve SYSTEM$PDB",
+          "isCorrect": false,
+          "rationale": "Oracle Multitenant mimarisinde şablon konteynerin adı SYSTEM$PDB değil PDB$SEED'dir."
+        },
+        {
+          "text": "User PDB ve PDB$ROOT",
+          "isCorrect": false,
+          "rationale": "PDB$ROOT şeklinde bir bileşen adı bulunmamaktadır; ana konteyner CDB$ROOT olarak adlandırılır."
+        }
+      ],
+      "hint": "Kök konteyner adı ile veritabanı kopyalamada kullanılan tohum şablon adını hatırlayın.",
+      "type": "test",
+      "points": 1,
+      "tags": [
+        "chapter-2"
+      ]
+    },
+    {
+      "question": "Oracle veritabanı bakım döngülerinde Release Update (RU) ile Release Update Revision (RUR) arasındaki temel fark nedir?",
+      "answerOptions": [
+        {
+          "text": "RU, minor sürümü artıran üç aylık kümülatif güncellemeler sunarken; RUR, yeni fonksiyonel hata düzeltmesi eklemeden mevcut RU'nun ömrünü uzatan güvenlik ve regresyon odaklı yamadır.",
+          "isCorrect": true,
+          "rationale": "RU yeni işlevsel düzeltmeler ve ikincil sürüm artışı sağlarken, RUR mevcut RU sürümünün kararlılığını fonksiyonel değişiklik yapmadan sürdürür."
+        },
+        {
+          "text": "RU sadece güvenlik yamalarını içerirken; RUR tüm veritabanı çekirdeğini majör sürüme yükseltir.",
+          "isCorrect": false,
+          "rationale": "RU kapsamlı kümülatif yamadır; majör sürüm yükseltmeleri RU veya RUR paketiyle değil versiyon geçişleriyle sağlanır."
+        },
+        {
+          "text": "RU alt ortamlara uygulanırken; RUR sadece CDB$ROOT konteynerine uygulanır.",
+          "isCorrect": false,
+          "rationale": "Hem RU hem RUR tüm veritabanı (CDB ve PDB'ler) mimarisine uygulanabilir, ortam kısıtlaması bulunmaz."
+        },
+        {
+          "text": "RUR üç ayda bir kümülatif yeni özellikler getirirken; RU sadece kritik acil durumlarda yayımlanır.",
+          "isCorrect": false,
+          "rationale": "Üç aylık kümülatif döngüye sahip olan paket RU'dur; RUR ise bu paketlerin kararlılığını uzatmayı hedefler."
+        }
+      ],
+      "hint": "Hangi paketin fonksiyonel içerik eklemeden sadece güvenlik ve regresyona odaklanarak mevcut sürümün ömrünü uzattığını düşünün.",
+      "type": "test",
+      "points": 1,
+      "tags": [
+        "chapter-3"
+      ]
+    },
+    {
+      "question": "Oracle Otomatik Paylaşımlı Bellek Yönetimi (ASMM) etkinleştirildiğinde sga_target parametresi tarafından dinamik olarak yönetilen bellek havuzları hangileridir?",
+      "answerOptions": [
+        {
+          "text": "Buffer Cache, Shared Pool, Large Pool ve Java Pool.",
+          "isCorrect": true,
+          "rationale": "ASMM etkinleştirildiğinde Oracle, sga_target altındaki Buffer Cache, Shared Pool, Large Pool ve Java Pool boyutlarını otomatik dengeler."
+        },
+        {
+          "text": "Sort Area, Hash Join Area ve Bitmap Merge Area.",
+          "isCorrect": false,
+          "rationale": "Sort Area ve Hash Join alanları SGA içinde değil, her bir sunucu sürecine özel PGA bünyesinde yönetilir."
+        },
+        {
+          "text": "PGA Aggregate Target, Process Memory ve Redo Log Buffer.",
+          "isCorrect": false,
+          "rationale": "PGA ayrı bir bellek parametresidir; Redo Log Buffer ise sga_target tarafından dinamik olarak yeniden boyutlandırılamayan sabit bir alandır."
+        },
+        {
+          "text": "Shared Pool, PGA Target ve Temporary Tablespace.",
+          "isCorrect": false,
+          "rationale": "PGA Target ve Temporary Tablespace yapıları SGA'nın parçası değildir."
+        }
+      ],
+      "hint": "ASMM çatısı altında dinamik olarak yeniden boyutlandırılabilen paylaşımlı bellek havuzlarını hatırlayın.",
+      "type": "test",
+      "points": 1,
+      "tags": [
+        "chapter-3"
+      ]
+    },
+    {
+      "question": "IFS altyapı standartlarında DATA disk grubu ile RECO disk grubu arasındaki görev ayrımı nasıl tanımlanmıştır?",
+      "answerOptions": [
+        {
+          "text": "DATA; aktif veri/indeks dosyaları ve online redo logları barındırırken, RECO; arşiv logları, RMAN yedekleri, flashback logları ve redo log kopyalarını barındırır.",
+          "isCorrect": true,
+          "rationale": "DATA transactional I/O yükünü üstlenirken, RECO recovery ve kurtarma bileşenlerini izole ederek disk bant genişliği çakışmasını önler."
+        },
+        {
+          "text": "DATA sadece geçici (temp) dosyaları tutarken; RECO tüm üretim veri dosyalarını barındırır.",
+          "isCorrect": false,
+          "rationale": "Ana veri dosyaları ve indeksler RECO grubunda değil, DATA disk grubunda yer alır."
+        },
+        {
+          "text": "DATA arşiv loglarını ve yedek setlerini; RECO ise aktif sistem tablo alanlarını barındırır.",
+          "isCorrect": false,
+          "rationale": "Bu tanımlama rollerin tam tersidir; yedekler ve arşivler RECO grubuna aittir."
+        },
+        {
+          "text": "DATA harici depolama birimlerine bağlanırken; RECO yerel disklerde çalışmak zorundadır.",
+          "isCorrect": false,
+          "rationale": "Her iki disk grubu da ASM mimarisinde paylaşımlı depolama (SAN/ASM) üzerinde yapılandırılır."
+        }
+      ],
+      "hint": "Transactional I/O ile kurtarma/yedekleme (recovery) I/O yüklerinin ayrıştırıldığı depolama gruplarını düşünün.",
+      "type": "test",
+      "points": 1,
+      "tags": [
+        "chapter-4"
+      ]
+    },
+    {
+      "question": "Data Guard Broker yapılandırmasında Fast-Start Failover sürecini otomatik tetiklemek için kullanılan FastStartFailoverThreshold parametresinin zaman birimi nedir?",
+      "answerOptions": [
+        {
+          "text": "Saniye (second)",
+          "isCorrect": true,
+          "rationale": "FastStartFailoverThreshold parametresi, Observer'ın birincil veritabanı kesintisini tespit ettikten sonra failover başlatması için geçecek süreyi saniye cinsinden tanımlar."
+        },
+        {
+          "text": "Dakika (minute)",
+          "isCorrect": false,
+          "rationale": "Otomatik failover eşikleri milisaniyelik veya dakikalık değil, doğrudan saniye birimiyle ifade edilir."
+        },
+        {
+          "text": "Milisaniye (millisecond)",
+          "isCorrect": false,
+          "rationale": "Data Guard Broker eşik parametrelerinde varsayılan ölçü birimi milisaniye değildir."
+        },
+        {
+          "text": "Saat (hour)",
+          "isCorrect": false,
+          "rationale": "Saat birimi, yüksek kullanılabilirlik ve hızlı failover hedefleri için son derece büyüktür."
+        }
+      ],
+      "hint": "Observer'ın ana veritabanı yanıt vermediğinde failover başlatmadan önce beklediği standart zaman birimini hatırlayın.",
+      "type": "test",
+      "points": 1,
+      "tags": [
+        "chapter-4"
+      ]
+    },
+    {
+      "question": "Oracle RAC mimarisinde Cache Fusion mekanizmasının veritabanı bloklarını diske yazmadan örnekler (SGA) arasında aktarmasını sağlayan altyapı bileşeni nedir?",
+      "answerOptions": [
+        {
+          "text": "Yüksek hızlı özel ağ olan Interconnect (ve HAIP/bonding)",
+          "isCorrect": true,
+          "rationale": "Cache Fusion, blok transferlerini düğümler arasındaki dedicated yüksek hızlı Interconnect ağı üzerinden doğrudan RAM-to-RAM şeklinde gerçekleştirir."
+        },
+        {
+          "text": "SCAN Listener ve VIP adresleri",
+          "isCorrect": false,
+          "rationale": "SCAN ve VIP adresleri istemci bağlantı yönlendirmesi ve yük dengelemesi içindir, bellek blok transferi yapmaz."
+        },
+        {
+          "text": "ASM Rebalance motoru",
+          "isCorrect": false,
+          "rationale": "ASM Rebalance motoru disk gruplarındaki veri dağılımını dengeler, canlı SGA bellek aktarımı yapmaz."
+        },
+        {
+          "text": "Enterprise Manager OMA Ajanı",
+          "isCorrect": false,
+          "rationale": "OMA ajanı izleme ve metrik toplama işlevi görür, tranzaksiyonel bellek aktarım süreçlerine katılmaz."
+        }
+      ],
+      "hint": "Düğümler arası bellek bloklarının fiziksel disklere yazılmadan aktarıldığı özel ağ altyapısını düşünün.",
+      "type": "test",
+      "points": 1,
+      "tags": [
+        "chapter-4"
+      ]
+    },
+    {
+      "question": "Oracle Veritabanı bekleme olaylarında 'library cache pin' neyi yönetir ve istemci nesneyi incelemek veya değiştirmek için kilit sonrasında ne elde etmelidir?",
+      "answerOptions": [
+        {
+          "text": "Library cache eşzamanlılığını yönetir ve nesnenin yığınlarını (heaps) belleğe yüklemek için pin almalıdır.",
+          "isCorrect": true,
+          "rationale": "Library cache pin, nesne heaps yapılarını belleğe yükler; istemci nesneyi incelemek veya değiştirmek için lock edindikten sonra pin almak zorundadır."
+        },
+        {
+          "text": "Tablo satır seviyesindeki kilitlemeyi yönetir ve kilit sonrası TX enqueue almalıdır.",
+          "isCorrect": false,
+          "rationale": "Satır seviyesindeki kilitler Enqueue (TX) mekanizmasıyla yönetilir, library cache pin ile ilişkili değildir."
+        },
+        {
+          "text": "Veri bloğunun diske yazılmasını yönetir ve DBWR sürecini tetiklemelidir.",
+          "isCorrect": false,
+          "rationale": "Diske yazma DBWR arka plan süreci ve Buffer Cache mekanizmasıdır."
+        },
+        {
+          "text": "Veri sözlüğü dizilerini yönetir ve DC_SEQUENCES kilidi almalıdır.",
+          "isCorrect": false,
+          "rationale": "Veri sözlüğü dizi kilitleri row cache lock olayıdır."
+        }
+      ],
+      "hint": "Kütüphane önbelleğindeki (library cache) nesne yığınlarının (heaps) belleğe yüklenmesi ve incelenmesi sürecini düşünün.",
+      "type": "test",
+      "points": 1,
+      "tags": [
+        "chapter-5"
+      ]
+    },
+    {
+      "question": "IFS Cloud 26R2 Uzaktan Dağıtım (Remote Deployment) modelinde harici kullanıcı oturumlarının dağıtım betikleri çalışırken şemayı değiştirmesini engellemek için zorunlu kılınan güvenlik adımı hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Uygulama Sahibi Hesabının (Lock Application Owner Account - IFSAPP) kilitlenmesi",
+          "isCorrect": true,
+          "rationale": "Dağıtım öncesinde IFSAPP hesabının kilitlenmesi, harici kullanıcıların ve servislerin canlı şemayı değiştirmesini engellemek için zorunludur."
+        },
+        {
+          "text": "PDB$SEED konteynerinin silinmesi",
+          "isCorrect": false,
+          "rationale": "PDB$SEED sistem şablonudur ve silinmesi veritabanının yeni PDB provizyonlama yeteneğini bozar."
+        },
+        {
+          "text": "RMAN kataloğunun tamamen sıfırlanması",
+          "isCorrect": false,
+          "rationale": "Yedek kataloğunun sıfırlanması veritabanı kurtarma yeteneğini ortadan kaldırır."
+        },
+        {
+          "text": "Kubernetes worker düğümlerinin etiketlerinin temizlenmesi",
+          "isCorrect": false,
+          "rationale": "Kubernetes etiketleri altyapı pod yerleşimi içindir; veritabanı seviyesindeki oturum erişimini engellemez."
+        }
+      ],
+      "hint": "Dağıtım esnasında veritabanı şema sahibi hesabının dış oturumlara kapatılması kuralını düşünün.",
+      "type": "test",
+      "points": 1,
+      "tags": [
+        "chapter-5"
+      ]
+    },
+    {
+      "question": "IFS Cloud operasyonel yönetişim standartlarına göre tamamlanan arka plan işleri (completed background jobs) ve Hata (Error) durumundaki işler için varsayılan temizlik yaş limitleri sırasıyla kaç gündür?",
+      "answerOptions": [
+        {
+          "text": "Tamamlanan işler için 7 gün; Hata durumundaki işler için 180 gün.",
+          "isCorrect": true,
+          "rationale": "Veritabanını lehte tutmak için tamamlanan işler 7 günde temizlenirken, hata analiz geçmişini korumak için hatalı işler 180 gün saklanır."
+        },
+        {
+          "text": "Tamamlanan işler için 30 gün; Hata durumundaki işler için 90 gün.",
+          "isCorrect": false,
+          "rationale": "Tamamlanan işleri 30 gün tutmak tablo boyutlarını aşırı büyütür; standart temizlik sınırı 7 gündür."
+        },
+        {
+          "text": "Tamamlanan işler için 1 gün; Hata durumundaki işler için 365 gün.",
+          "isCorrect": false,
+          "rationale": "Tamamlanan işlerin 1 günde silinmesi operasyonel takibi zorlaştırır; standart parametre 7 gündür."
+        },
+        {
+          "text": "Tamamlanan işler için 14 gün; Hata durumundaki işler için 30 gün.",
+          "isCorrect": false,
+          "rationale": "Hatalı işlerin 30 günde silinmesi karmaşık sorun teşhisleri için yetersizdir; bu süre 180 gündür."
+        }
+      ],
+      "hint": "Başarılı işlerin kısa sürede temizlenmesi ve başarısız işlerin kök neden analizi için uzun süre saklanması mantığını hatırlayın.",
+      "type": "test",
+      "points": 1,
+      "tags": [
+        "chapter-6"
+      ]
+    },
+    {
+      "question": "IFS Cloud sisteminde Uygulama İzleme Metriklerini (AMM) eşik değerlerine göre günlük olarak değerlendirip sistem uyarılarını tetikleyen zamanlanmış görev (scheduled task) hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Foundation1 Monitoring",
+          "isCorrect": true,
+          "rationale": "Foundation1 Monitoring görevi günlük çalışarak AMM metriklerini uyarı limitleriyle karşılaştırır ve eşik ihlallerinde sistem alarmı üretir."
+        },
+        {
+          "text": "AMM Evaluator Daemon",
+          "isCorrect": false,
+          "rationale": "IFS Cloud mimarisinde bu isimde bağımsız bir zamanlanmış arka plan daemon'ı bulunmamaktadır."
+        },
+        {
+          "text": "Database Alert Log Checker",
+          "isCorrect": false,
+          "rationale": "Alert Log Checker veritabanı alert log hatalarını tarar, AMM metriklerini değerlendirmez."
+        },
+        {
+          "text": "Transaction_SYS Clean Task",
+          "isCorrect": false,
+          "rationale": "Transaction_SYS temizlik işleri tamamlanmış arka plan tranzaksiyon kayıtlarını temizlemekle görevlidir."
+        }
+      ],
+      "hint": "IFS Foundation1 altyapısının izleme metriklerini değerlendiren zamanlanmış görev adını düşünün.",
+      "type": "test",
+      "points": 1,
+      "tags": [
+        "chapter-6"
+      ]
+    },
+    {
+      "question": "IFS Cloud log izleme mimarisindeki EFK (Elasticsearch, Fluentd, Kibana) yığınında Elasticsearch veri saklama süresi (retention period) kaç gündür?",
+      "answerOptions": [
+        {
+          "text": "7 gün (günlük çalışan curator-cronjob eski logları siler)",
+          "isCorrect": true,
+          "rationale": "Elasticsearch veri saklama süresi varsayılan olarak 7 gündür ve günlük çalışan curator-cronjob 7 günden eski logları temizler."
+        },
+        {
+          "text": "30 gün",
+          "isCorrect": false,
+          "rationale": "EFK yığınındaki varsayılan retention süresi 30 gün değildir."
+        },
+        {
+          "text": "90 gün",
+          "isCorrect": false,
+          "rationale": "EFK konteyner loglarında 90 günlük saklama disk boyutlarını aşırı büyüteceği için varsayılan limit 7 gündür."
+        },
+        {
+          "text": "1 gün",
+          "isCorrect": false,
+          "rationale": "Logların 1 gün saklanması geçmiş analizleri ve Kibana panoları için yetersizdir."
+        }
+      ],
+      "hint": "EFK yığınında günlük curator görevi tarafından uygulanan standart saklama gün sayısını hatırlayın.",
+      "type": "test",
+      "points": 1,
+      "tags": [
+        "chapter-6"
+      ]
+    },
+    {
+      "question": "Tek örnekli (single-instance) bir Oracle veritabanı Oracle RAC mimarisine dönüştürüldüğünde, GCS (Global Cache Service) her bir tampon (buffer) için yaklaşık 350 bayt ek alan gerektirdiği için SGA'da hangi parametrelerin artırılması önerilir?",
+      "answerOptions": [
+        {
+          "text": "DB_CACHE_SIZE ve DB_nK_CACHE_SIZE",
+          "isCorrect": true,
+          "rationale": "RAC dönüşümünde GCS tampon başına 350 bayt ek yük getirdiğinden swapping ve paging'i önlemek için DB_CACHE_SIZE ve DB_nK_CACHE_SIZE büyütülmelidir."
+        },
+        {
+          "text": "PGA_AGGREGATE_TARGET ve SGA_MAX_SIZE",
+          "isCorrect": false,
+          "rationale": "GCS tampon yapıları Buffer Cache içerisinde yer aldığından öncelikle DB_CACHE_SIZE ayarlanmalıdır."
+        },
+        {
+          "text": "SHARED_POOL_SIZE ve LOG_BUFFER",
+          "isCorrect": false,
+          "rationale": "LOG_BUFFER redo log yazmaları içindir; GCS tampon başı overhead'i buffer cache parametrelerini ilgilendirir."
+        },
+        {
+          "text": "CLUSTER_INTERCONNECTS ve PARALLEL_MAX_SERVERS",
+          "isCorrect": false,
+          "rationale": "Bu parametreler ağ arabirimlerini ve paralellik limitlerini yönetir, SGA tampon boyutunu doğrudan değiştirmez."
+        }
+      ],
+      "hint": "Veri tampon önbelleğini (buffer cache) doğrudan yöneten initialization parametrelerini düşünün.",
+      "type": "test",
+      "points": 1,
+      "tags": [
+        "chapter-7"
+      ]
+    },
+    {
+      "question": "Oracle RAC mimarisinde Global Cache Service (GCS) ve Global Enqueue Service (GES) tarafından yönetilen Global Resource Directory (GRD) bellek miktarı toplam SGA'nın yaklaşık % kaçını tüketir?",
+      "answerOptions": [
+        {
+          "text": "Yaklaşık %10'unu",
+          "isCorrect": true,
+          "rationale": "GRD ve diğer Cache Fusion bileşenleri, küresel önbellek tutarlılığını yönetebilmek için toplam SGA belleğinin yaklaşık %10'unu tüketir."
+        },
+        {
+          "text": "Yaklaşık %50'sini",
+          "isCorrect": false,
+          "rationale": "Belleğin %50'sinin GRD'ye ayrılması veri tamponu ve shared pool alanlarını yetersiz bırakır."
+        },
+        {
+          "text": "Yaklaşık %2'sini",
+          "isCorrect": false,
+          "rationale": "%2 gibi düşük bir oran tüm küresel kilit ve blok dizin haritasını tutmak için yetersizdir."
+        },
+        {
+          "text": "Yaklaşık %30'unu",
+          "isCorrect": false,
+          "rationale": "GRD bellek tüketim standardı dokümantasyonda %10 olarak belirtilmiştir."
+        }
+      ],
+      "hint": "RAC kurulumunda tekil sunucudan RAC'a geçerken SGA artış planlamasında dikkate alınan yüzdeyi hatırlayın.",
+      "type": "test",
+      "points": 1,
+      "tags": [
+        "chapter-7"
+      ]
+    },
+    {
+      "question": "Veritabanında 'enq: TM - contention' bekleme olayının yaşanmasının temel kök nedeni ve operasyonel çözüm adımı nedir?",
+      "answerOptions": [
+        {
+          "text": "Çocuk FK (Foreign Key) sütunlarında indeks bulunmayan üst (parent) tabloda DML çalıştırılması; Tüm eksik FK sütunlarına indeks oluşturulması.",
+          "isCorrect": true,
+          "rationale": "İndekssiz FK sütunları parent tabloda yapılan DML işlemlerinde tüm child tabloyu kilitleyerek enq: TM contention oluşturur; indeks eklemek bunu çözer."
+        },
+        {
+          "text": "İki farklı oturumun aynı satırı güncellemeye çalışması; Oturumlara hemen ROLLBACK yaptırılması.",
+          "isCorrect": false,
+          "rationale": "Aynı satırın güncellenmesi durumu 'enq: TX - row lock contention' olayıdır."
+        },
+        {
+          "text": "Eşzamanlı UNIQUE indeks eklemeleri; İndeksin REBUILD edilmesi.",
+          "isCorrect": false,
+          "rationale": "UNIQUE indeks çakışmaları enq: TX seviyesinde ORA-0001 kontrolü için bekleme yaratır."
+        },
+        {
+          "text": "Sequence değerlerinin önbelleksiz kullanılması; CACHE parametresinin artırılması.",
+          "isCorrect": false,
+          "rationale": "Sequence önbellek çekişmesi 'row cache lock (DC_SEQUENCES)' olayına sebep olur."
+        }
+      ],
+      "hint": "Parent ve child tablolar arasındaki ilişkiyi ve kilitlenmeyi önleyen eksik indeksleme adımını düşünün.",
+      "type": "test",
+      "points": 1,
+      "tags": [
+        "chapter-8"
+      ]
+    },
+    {
+      "question": "Paylaşımlı bir multitenant ortamında hedef bir PDB'nin (örneğin ifstest) ana üretim üzerindeki bellek kaynağını tüketmesini önlemek için PDB düzeyinde hangi parametreler sınırlandırılabilir?",
+      "answerOptions": [
+        {
+          "text": "pga_aggregate_limit ve sga_target",
+          "isCorrect": true,
+          "rationale": "PDB düzeyinde sga_target ve pga_aggregate_limit parametreleri ayarlanarak ilgili konteynerin bellek tüketim tavanı izole edilebilir."
+        },
+        {
+          "text": "db_create_file_dest ve log_archive_dest",
+          "isCorrect": false,
+          "rationale": "Bu parametreler veritabanı dosya konumlarını ve arşiv log hedeflerini belirler, bellek sınırlandırması yapmaz."
+        },
+        {
+          "text": "processes ve open_cursors",
+          "isCorrect": false,
+          "rationale": "Bu parametreler süreç sayısı ve imleç limitleridir, direkt olarak bellek alan tavanını sınırlandırmaz."
+        },
+        {
+          "text": "audit_trail ve remote_login_passwordfile",
+          "isCorrect": false,
+          "rationale": "Güvenlik ve denetim parametreleridir; bellek izolasyonu ile ilgisi yoktur."
+        }
+      ],
+      "hint": "PDB seviyesinde PGA ve SGA bellek tavanlarını kontrol eden parametre isimlerini hatırlayın.",
+      "type": "test",
+      "points": 1,
+      "tags": [
+        "chapter-8"
+      ]
+    },
+    {
+      "question": "Oracle Clusterware altyapısında veritabanı, instance, servis, listener ve VIP gibi CRS kaynaklarını yönetmek ve komutların kaynaklar üzerindeki etkisini değerlendirmek için kullanılan araç ve mod hangisidir?",
+      "answerOptions": [
+        {
+          "text": "SRVCTL komutu ve evaluate modu",
+          "isCorrect": true,
+          "rationale": "SRVCTL, Oracle tarafından tanımlı CRS kaynaklarını yönetir; evaluate modu ise komutun küme kaynakları üzerindeki etkisini önceden raporlar."
+        },
+        {
+          "text": "RMAN komut satırı ve report seçeneği",
+          "isCorrect": false,
+          "rationale": "RMAN ve report seçeneği yedekleme ve kurtarma dosyalarının durumunu raporlar, CRS kaynak yönetimi yapmaz."
+        },
+        {
+          "text": "ASMCMD yardımcı programı ve ls-l parametresi",
+          "isCorrect": false,
+          "rationale": "ASMCMD ASM disk grubu dosyalarını listeler ve yönetir, veritabanı ve servis gibi CRS kaynak durumunu değerlendirmez."
+        },
+        {
+          "text": "SQL*Plus ve ALTER SYSTEM komutu",
+          "isCorrect": false,
+          "rationale": "SQL*Plus veritabanı içi parametre ve SQL yönetimi içindir; Clusterware CRS kaynaklarını doğrudan yönetmez."
+        }
+      ],
+      "hint": "Server Control Utility adıyla bilinen ve kaynak etkilerini simüle edebilen komut modunu düşünün.",
+      "type": "test",
+      "points": 1,
+      "tags": [
+        "chapter-8"
+      ]
+    },
+    {
+      "question": "IFS Cloud 26R2 altyapı gereksinimlerine göre middle-tier Kubernetes podlarının (örneğin ifsapp-connect) out-of-memory (OOM) çökmelerini önlemek için bellek direktifleri hangi yapılandırma dosyasında belirtilmelidir?",
+      "answerOptions": [
+        {
+          "text": "ifscloud-values.yaml",
+          "isCorrect": true,
+          "rationale": "ifscloud-values.yaml dosyası middle-tier podlarının (ifsapp-connect gibi) Kubernetes bellek sınırlarını ve kaynak ayarlarını içerir."
+        },
+        {
+          "text": "oracle-sga-config.xml",
+          "isCorrect": false,
+          "rationale": "Kubernetes pod bellek sınırları veritabanı XML konfigürasyon dosyalarında tanımlanmaz."
+        },
+        {
+          "text": "vmanomaly-config.yml",
+          "isCorrect": false,
+          "rationale": "vmanomaly dosyası makine öğrenmesi anomali tespiti içindir, Kubernetes pod bellek kaynaklarını yönetmez."
+        },
+        {
+          "text": "tnsnames.ora",
+          "isCorrect": false,
+          "rationale": "tnsnames.ora veritabanı ağ bağlantı tanımlarını tutan dosyadır."
+        }
+      ],
+      "hint": "IFS Cloud Helm/Kubernetes dağıtım değerlerini belirleyen ana değerler (values) dosyasını hatırlayın.",
+      "type": "test",
+      "points": 1,
+      "tags": [
+        "chapter-9"
+      ]
+    },
+    {
+      "question": "IFS veritabanı performans optimizasyonunda, seçici olmayan (kötü) bir B-Tree indeksin kullanılması durumunda veritabanında aşırı CPU tüketimine ve disk kilitlenmesine yol açan wait event hangisidir?",
+      "answerOptions": [
+        {
+          "text": "db file sequential read",
+          "isCorrect": true,
+          "rationale": "Seçici olmayan bir indeks üzerinden milyonlarca tekil blok okuması yapılması sistemi 'db file sequential read' döngüsüne sokarak diski kilitler."
+        },
+        {
+          "text": "db file scattered read",
+          "isCorrect": false,
+          "rationale": "db file scattered read beklemesi tablonun tamamının okunduğu Full Table Scan durumlarında ortaya çıkar."
+        },
+        {
+          "text": "direct path read",
+          "isCorrect": false,
+          "rationale": "Direct path read doğrudan sıralama veya paralel sorgu okumalarında tampon önbellek bypass edilerek yapılır."
+        },
+        {
+          "text": "log file sync",
+          "isCorrect": false,
+          "rationale": "Log file sync oturumun commit sonrasında LGWR'nin redo kayıtlarını diske yazmasını beklemesidir."
+        }
+      ],
+      "hint": "İndeks üzerinden tekil veri bloğu okumalarında tetiklenen sıralı okuma bekleme adını hatırlayın.",
+      "type": "test",
+      "points": 1,
+      "tags": [
+        "chapter-9"
+      ]
+    },
+    {
+      "question": "TAC (Transparent Application Continuity) failover sürecinde kesintiye uğrayan uncommitted (taahhüt edilmemiş) bir işlem için oturum durumu tutarlılık kontrolleri başarılı olursa TAC ne yapar?",
+      "answerOptions": [
+        {
+          "text": "Oturum durumunu yeniden yapılandırır ve belirlenen istek sınırları (request boundary) dahilinde SQL ifadelerini yeniden oynatır (replay eder).",
+          "isCorrect": true,
+          "rationale": "TAC, uncommitted işlemler için oturum tutarlılığı doğrulandıktan sonra SQL komutlarını request boundary dahilinde otomatik replay ederek kesintisiz çalışmayı sağlar."
+        },
+        {
+          "text": "İşlemi derhal ROLLBACK eder ve uygulamaya hata kodu ORA-0001 döner.",
+          "isCorrect": false,
+          "rationale": "TAC hatayı uygulamaya döndürmek yerine işlemi şeffaf bir şekilde yeniden oynatmak üzere tasarlanmıştır."
+        },
+        {
+          "text": "İşlemi yürütmeden doğrudan COMMIT edilmiş sayarak istemciye başarı mesajı gönderir.",
+          "isCorrect": false,
+          "rationale": "Çalıştırılmamış SQL'lerin doğrudan commit edilmesi veri tutarsızlığına yol açacağı için replay süreci yürütülür."
+        },
+        {
+          "text": "Oturumu pasif moda alıp veritabanı örneğini kapatır.",
+          "isCorrect": false,
+          "rationale": "TAC'ın amacı kesintisiz erişim sağlamaktır, oturumu kapatmaz veya veritabanını durdurmaz."
+        }
+      ],
+      "hint": "TAC'ın uygulama tarafına hata hissettirmeden SQL komutlarını istek sınırları içinde yapma sürecini düşünün.",
+      "type": "test",
+      "points": 1,
+      "tags": [
+        "chapter-10"
+      ]
+    }
+  ]
+}

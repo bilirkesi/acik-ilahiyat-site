@@ -1,0 +1,331 @@
+{
+  "unit": 1,
+  "unitTitle": "Bölüm 1: Program Oryantasyonu ve IFS Cloud Oracle Altyapı Mimarisi",
+  "title": "Oracle Veritabanı Testi",
+  "questions": [
+    {
+      "question": "IFS Enterprise Oracle altyapı mimarisinde CDB$ROOT kapsayıcı veritabanının temel görevi aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Arka plan süreçlerini, paylaşılan sistem meta verilerini ve küresel belleği yönetmek.",
+          "isCorrect": true,
+          "rationale": "CDB$ROOT, multitenant mimarisinde arka plan süreçlerinin yürütüldüğü, ortak sistem meta verilerinin ve küresel bellek kaynaklarının yönetildiği ana kök kapsayıcıdır."
+        },
+        {
+          "text": "Farklı IFS uygulama ortamlarına ait transactional şema nesnelerini birbirinden izole etmek.",
+          "isCorrect": false,
+          "rationale": "Uygulama ortamlarının ve şema nesnelerinin izolasyonu kök veritabanı tarafından değil, takılabilir veritabanları (PDB) tarafından sağlanır."
+        },
+        {
+          "text": "Yeni veritabanlarının hızlıca klonlanabilmesi için salt okunur bir şablon sunmak.",
+          "isCorrect": false,
+          "rationale": "Salt okunur şablon veritabanı işlevini CDB$ROOT değil, PDB$SEED yapısı yerine getirir."
+        },
+        {
+          "text": "Yalnızca RMAN yedekleme süreçlerini ve gömülü JVM işlemlerini yürütmek.",
+          "isCorrect": false,
+          "rationale": "Bu işlevler CDB$ROOT'un genel sorumluluğu değil, SGA içindeki Large Pool ve Java Pool alanlarının özel görevleridir."
+        }
+      ],
+      "hint": "Kök container yapısının tüm veritabanı genelindeki sistem düzeyindeki sorumluluklarını düşünün.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "DEV, TEST ve PROD gibi farklı IFS uygulama ortamlarını aynı sunucu donanımı üzerinde izole ederek çalıştırmak için hangi mimari bileşen kullanılır?",
+      "answerOptions": [
+        {
+          "text": "Pluggable Databases (PDBs)",
+          "isCorrect": true,
+          "rationale": "PDB'ler, ortak sunucu donanımını paylaşırken DEV, TEST ve PROD gibi ayrı IFS uygulama örneklerini ve transactional şemaları birbirinden izole etmeyi sağlar."
+        },
+        {
+          "text": "CDB$ROOT",
+          "isCorrect": false,
+          "rationale": "CDB$ROOT bireysel uygulama ortamlarını izole etmek için değil, sistem genelindeki ortak süreçleri ve meta verileri yönetmek için kullanılır."
+        },
+        {
+          "text": "Automatic Storage Management (ASM) Disk Grupları",
+          "isCorrect": false,
+          "rationale": "ASM, veri depolama ve I/O katmanını yöneten bir depolama mimarisidir; veritabanı mantıksal uygulama izolasyonunu sağlayan yapı değildir."
+        },
+        {
+          "text": "Release Update Revisions (RUR)",
+          "isCorrect": false,
+          "rationale": "RUR bir veritabanı depolama veya izolasyon bileşeni değil, veritabanı kararlılığını sağlayan bir yama türüdür."
+        }
+      ],
+      "hint": "Tek bir kök veritabanına takılıp çıkarılabilen bağımsız veritabanı birimlerini hatırlayın.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Oracle veritabanı yama yönetiminde Release Update (RU) paketlerinin temel özelliği aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Güvenlik açığı düzeltmeleri, yüksek değerli hata düzeltmeleri içeren ve ikincil sürüm numarasını artıran üç aylık birikimli yamalardır.",
+          "isCorrect": true,
+          "rationale": "RU yamaları üç ayda bir yayımlanan, güvenlik ve kritik hata düzeltmelerini içeren ve minor sürüm numarasını güncelleyen birikimli paketlerdir."
+        },
+        {
+          "text": "Yeni fonksiyonel hata düzeltmeleri sunmadan sadece mevcut RU'nun ömrünü uzatan güvenlik odaklı yamalardır.",
+          "isCorrect": false,
+          "rationale": "Yeni fonksiyonel hata düzeltmesi içermeyip mevcut RU'yu uzatan yamalar RU değil, Release Update Revision (RUR) olarak adlandırılır."
+        },
+        {
+          "text": "Yalnızca yılda bir kez yayımlanan ve veritabanı mimarisini tamamen değiştiren ana sürüm yamalarıdır.",
+          "isCorrect": false,
+          "rationale": "RU yamaları yıllık değil üç aylık periyotlarla yayımlanır ve ana sürüm mimarisini değiştirmez."
+        },
+        {
+          "text": "Yalnızca bellek parametrelerini sıfırlayan ve geçici tabloları temizleyen yama betikleridir.",
+          "isCorrect": false,
+          "rationale": "RU yamaları geniş kapsamlı güvenlik ve kararlılık kod düzeltmeleri içerir, sadece bellek parametresi betiklerinden oluşmaz."
+        }
+      ],
+      "hint": "Üç aylık periyotlarda yayımlanan ve minor sürüm numarasını güncelleyen paket türüne odaklanın.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Üretim ortamlarının kararlılığını korumak amacıyla, yeni fonksiyonel hata düzeltmeleri eklemeden mevcut bir RU'nun ömrünü uzatan yama türü hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Release Update Revision (RUR)",
+          "isCorrect": true,
+          "rationale": "RUR, yeni fonksiyonel değişiklik getirmeden güvenlik ve regresyon odaklı düzeltmelerle mevcut RU'nun kararlı kalmasını sağlar."
+        },
+        {
+          "text": "Release Update (RU)",
+          "isCorrect": false,
+          "rationale": "RU yamaları yeni yüksek değerli hata düzeltmeleri ve fonksiyonel iyileştirmeler içerir."
+        },
+        {
+          "text": "Major Release Patch",
+          "isCorrect": false,
+          "rationale": "Major sürüm güncellemeleri köklü değişiklikler ve yeni özellikler getirir, mevcut sürümü kararlı kılma odaklı yama revizyonu değildir."
+        },
+        {
+          "text": "ASMM Dynamic Patch",
+          "isCorrect": false,
+          "rationale": "ASMM bir bellek yönetim mimarisidir, yama türü veya bakım döngüsü adı değildir."
+        }
+      ],
+      "hint": "Var olan üç aylık güncellemeyi yeni işlevsellik katmadan revize eden yapıyı düşünün.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Automatic Shared Memory Management (ASMM) altında sga_target parametresi yapılandırıldığında aşağıdaki bellek alanlarından hangileri dinamik olarak dengelenir?",
+      "answerOptions": [
+        {
+          "text": "Buffer Cache, Shared Pool ve Large Pool",
+          "isCorrect": true,
+          "rationale": "ASMM etkinleştirildiğinde sga_target parametresi Buffer Cache, Shared Pool ve Large Pool gibi SGA dinamik bileşenlerini otomatik yönetir."
+        },
+        {
+          "text": "PGA süreç başına sıralama (sort) alanları",
+          "isCorrect": false,
+          "rationale": "Süreç başına sıralama alanları SGA içinde değil PGA içinde yer alır ve pga_aggregate_target ile kontrol edilir."
+        },
+        {
+          "text": "İşletim sistemi kullanıcı süreç sınırları (processes)",
+          "isCorrect": false,
+          "rationale": "processes parametresi bellek havuzu değil, işletim seviyesindeki maksimum bağlantı sayısını belirleyen statik bir parametredir."
+        },
+        {
+          "text": "Oturum imleç sınırları (open_cursors)",
+          "isCorrect": false,
+          "rationale": "open_cursors, oturum başına özel SQL alanındaki açık imleç sayısını belirler, SGA dinamik bellek havuzlarından biri değildir."
+        }
+      ],
+      "hint": "ASMM'nin paylaşılan bellek (SGA) havuzlarını dinamik olarak nasıl paylaştırdığını hatırlayın.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Yoğun toplu işler (batch runs) sırasında sıralama (ORDER BY) ve hash join işlemlerinin geçici tablos alanına (temp tablespace) taşmasını önlemek için hangi parametre kullanılır?",
+      "answerOptions": [
+        {
+          "text": "pga_aggregate_target",
+          "isCorrect": true,
+          "rationale": "pga_aggregate_target, tüm oturumların PGA bellek alanlarını dinamik yöneterek bellek içi sıralama ve birleştirme işlemlerini optimize eder ve disk/temp kullanımını engeller."
+        },
+        {
+          "text": "sga_target",
+          "isCorrect": false,
+          "rationale": "sga_target paylaşılan bellek alanlarını yönetir, süreç bazlı sıralama ve hash join alanlarının bellek hedefini belirlemez."
+        },
+        {
+          "text": "open_cursors",
+          "isCorrect": false,
+          "rationale": "open_cursors oturum başına açık imleç sayısını sınırlar, bellek alanı sıralama kapasitesini doğrudan düzenlemez."
+        },
+        {
+          "text": "processes",
+          "isCorrect": false,
+          "rationale": "processes işletim sistemi düzeyindeki eşzamanlı veritabanı bağlantı sayısını sınırlar."
+        }
+      ],
+      "hint": "Süreç başına özel olan ve bellek içi sıralama/birleştirme işlemlerini yöneten parametreyi düşünün.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "IFS orta katman oturumlarının yeniden kullanımı için ayrıştırılmış SQL, PL/SQL kodlarını ve yürütme planlarını saklayan SGA bellek havuzu hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Shared Pool",
+          "isCorrect": true,
+          "rationale": "Shared Pool, ayrıştırılmış (parsed) SQL, PL/SQL kodları, veri sözlüğü bilgileri ve execution plan'ları tutarak sabit ayrıştırma (hard parse) maliyetlerini önler."
+        },
+        {
+          "text": "Buffer Cache",
+          "isCorrect": false,
+          "rationale": "Buffer Cache kodları veya planları değil, diskten okunan veri bloklarını bellekte saklar."
+        },
+        {
+          "text": "Large Pool",
+          "isCorrect": false,
+          "rationale": "Large Pool esas olarak paralel yürütme, RMAN yedeklemeleri ve büyük girdi/çıktı işlemleri için kullanılır."
+        },
+        {
+          "text": "Private SQL Area",
+          "isCorrect": false,
+          "rationale": "Private SQL Area paylaşılan SGA içinde değil, her oturuma özel PGA belleğinde yer alır."
+        }
+      ],
+      "hint": "Sorgu yürütme planlarının ve veri sözlüğünün tüm oturumlarca ortak paylaşıldığı bellek havuzunu hatırlayın.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Veritabanına eşzamanlı bağlanabilecek maksimum işletim sistemi süreç sayısını belirleyen processes parametresi yetersiz kaldığında hangi hatayla karşılaşılır?",
+      "answerOptions": [
+        {
+          "text": "ORA-00020: maximum number of processes exceeded",
+          "isCorrect": true,
+          "rationale": "processes parametresi aşıldığında veritabanı yeni gelen orta katman bağlantı taleplerini reddeder ve ORA-00020 hatası verir."
+        },
+        {
+          "text": "ORA-01000: maximum open cursors exceeded",
+          "isCorrect": false,
+          "rationale": "ORA-01000 hatası süreç sayısının değil, open_cursors parametresinin aşılması durumunda ortaya çıkar."
+        },
+        {
+          "text": "ORA-00942: table or view does not exist",
+          "isCorrect": false,
+          "rationale": "ORA-00942 hatası süreç sınırı ile ilgili değil, var olmayan bir tablo veya görünüme erişilmeye çalışıldığında alınır."
+        },
+        {
+          "text": "ORA-03113: end-of-file on communication channel",
+          "isCorrect": false,
+          "rationale": "ORA-03113 genellikle ağ kesintisi veya beklenmeyen süreç sonlanmalarında alınır; süreç sınırı parametre hatası ORA-00020'dir."
+        }
+      ],
+      "hint": "İşletim sistemi süreç (process) sınırının dolduğunu gösteren standart Oracle hata kodunu hatırlayın.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "IFS orta katmanındaki Java/JDBC bağlantı havuzlarının deyim imleçlerini (statement handles) önbelleğe alabilmesini sağlayan ve oturum başına sınırı belirleyen parametre hangisidir?",
+      "answerOptions": [
+        {
+          "text": "open_cursors",
+          "isCorrect": true,
+          "rationale": "open_cursors parametresi, tek bir oturumun aynı anda açık tutabileceği maksimum imleç sayısını düzenleyerek ORA-01000 hatasını önler."
+        },
+        {
+          "text": "processes",
+          "isCorrect": false,
+          "rationale": "processes parametresi imleç sayısını değil, toplam eşzamanlı bağlantı/süreç limitini belirler."
+        },
+        {
+          "text": "sga_target",
+          "isCorrect": false,
+          "rationale": "sga_target bir oturum parametresi değil, tüm veritabanı örneği için SGA toplam alanını belirleyen parametredir."
+        },
+        {
+          "text": "pga_aggregate_target",
+          "isCorrect": false,
+          "rationale": "pga_aggregate_target oturum imleç sayısını değil, toplam PGA bellek miktarını hedefler."
+        }
+      ],
+      "hint": "Oturum bazında 'ORA-01000' hatasının oluşmasını engelleyen parametreyi hatırlayın.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "SGA dinamik bileşen boyutlarını ve PGA toplam tahsisatını gerçek zamanlı izlemek için hangi V$ dynamic performance görünümleri sorgulanır?",
+      "answerOptions": [
+        {
+          "text": "V$SGA_DYNAMIC_COMPONENTS ve V$PGASTAT",
+          "isCorrect": true,
+          "rationale": "Eğitim kaynaklarındaki örneklerde V$SGA_DYNAMIC_COMPONENTS bileşen boyutlarını, V$PGASTAT ise PGA hedef ve toplam tahsis miktarını izlemek için kullanılır."
+        },
+        {
+          "text": "V$INSTANCE ve V$DATABASE",
+          "isCorrect": false,
+          "rationale": "Bu görünümler veritabanı ve örnek genel durumunu gösterir, dinamik bellek bileşen detaylarını sunmaz."
+        },
+        {
+          "text": "V$CLUSTER_INTERCONNECTS ve V$ASM_DISKGROUP",
+          "isCorrect": false,
+          "rationale": "Bu görünümler RAC ağ ara bağlantıları ve ASM depolama alanları ile ilgilidir."
+        },
+        {
+          "text": "V$SESSION ve V$PROCESS",
+          "isCorrect": false,
+          "rationale": "Bu görünümler aktif oturum ve süreç detaylarını verir, bellek bileşenlerinin dinamik boyutlandırma istatistiklerini sunmaz."
+        }
+      ],
+      "hint": "SGA dinamik bileşenlerini ve PGA istatistiklerini veren 'dynamic components' ve 'pgastat' görünümlerini arayın.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "IFS veritabanı altyapısında sga_target ve pga_aggregate_target parametrelerinin SQL komutu ile hem canlı bellekte hem de başlatma dosyasında güncellenmesi için hangi deyim kullanılır?",
+      "answerOptions": [
+        {
+          "text": "SCOPE = BOTH",
+          "isCorrect": true,
+          "rationale": "SCOPE = BOTH kullanımı, parametre değişikliğinin hem çalışan veritabanı belleğinde hem de SPFILE yapılandırma dosyasında geçerli olmasını sağlar."
+        },
+        {
+          "text": "SCOPE = MEMORY",
+          "isCorrect": false,
+          "rationale": "SCOPE = MEMORY değişikliği sadece o andaki bellekte yapar, veritabanı yeniden başlatıldığında ayar kaybolur."
+        },
+        {
+          "text": "SCOPE = SPFILE",
+          "isCorrect": false,
+          "rationale": "SCOPE = SPFILE ayarı sadece başlatma dosyasına yazar, çalışan canlı bellekte anında etki göstermez."
+        },
+        {
+          "text": "SCOPE = INSTANCE",
+          "isCorrect": false,
+          "rationale": "Oracle ALTER SYSTEM komutunda SCOPE = INSTANCE şeklinde geçerli bir parametre seçeneği bulunmamaktadır."
+        }
+      ],
+      "hint": "Hem canlı bellek (memory) hem de parametre dosyası (spfile) üzerine aynı anda yazan seçeneği hatırlayın.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "SGA bellek mimarisinde yer alan Buffer Cache bileşeninin temel işlevi aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Sık sorulan sorgularda yanıt süresini optimize etmek için diskten okunan veri bloklarını bellekte tutmak.",
+          "isCorrect": true,
+          "rationale": "Buffer Cache, disk I/O darboğazlarını azaltmak amacıyla veritabanı veri bloklarını bellekte önbelleğe alır."
+        },
+        {
+          "text": "Sadece sıralama (ORDER BY) ve hash join iş yüklerini barındırmak.",
+          "isCorrect": false,
+          "rationale": "Sıralama ve hash join alanları Buffer Cache'de değil, her oturuma özel PGA içerisinde yönetilir."
+        },
+        {
+          "text": "RMAN yedekleme tamponlarını ve paralel sorgu süreçlerini yönetmek.",
+          "isCorrect": false,
+          "rationale": "RMAN ve paralel sorgu süreç bellekleri Buffer Cache yerine Large Pool bileşeninde tutulur."
+        },
+        {
+          "text": "Veri sözlüğü ve önceden derlenmiş PL/SQL kodlarını depolamak.",
+          "isCorrect": false,
+          "rationale": "Veri sözlüğü ve PL/SQL kod önbelleği Buffer Cache'te değil Shared Pool'da saklanır."
+        }
+      ],
+      "hint": "Diske erişim ihtiyacını azaltmak için veri bloklarını bellekte saklayan bileşeni düşünün.",
+      "type": "multiple_choice"
+    }
+  ]
+}
