@@ -154,6 +154,10 @@
     if (n === 0 && (form === "acc" || form === "abl")) return base;
     return (NOUN_FORMS[base] || {})[form] || base;
   }
+  // Site iki yoldan da beslenebilir: NotebookLM defterleri ya da elle yazilmis dersler.
+  // Bu iki bayrak, NotebookLM'e atif yapan her metni yalnizca gercekten defter varsa gosterir.
+  const HAS_NOTEBOOK = COURSES.some((c) => !!c.notebook);
+  const HAS_QUIZ = COURSES.some((c) => (c.quiz || []).length > 0);
   const byline = (c) => [c.professor, c.school].filter(Boolean).join(", ");
   const isYouTube = (u) => /youtube\.com|youtu\.be/.test(u || "");
   // Görseller: build.py her JPG için boyutu ve WebP kopyalarını (tam boy + varsa 640px -sm)
@@ -412,7 +416,7 @@
         <div>
           <p class="eyebrow">Ders kataloğu</p>
           <h1>${headline}</h1>
-          <p class="lead">Buradaki her ders kendi NotebookLM defterinde yaşar. Ders planını oku. Her bölümü çalış. Sınavı geç. ${finish} ve Tamamlama Belgesi'ni kazan.</p>
+          <p class="lead">${HAS_NOTEBOOK ? "Buradaki her ders kendi NotebookLM defterinde yaşar. " : "Her ders kendi kaynaklarından derlenmiş notlarla gelir. "}Ders planını oku. Her bölümü çalış.${HAS_QUIZ ? " Sınavı geç." : ""} ${finish} ve Tamamlama Belgesi'ni kazan.</p>
           <div class="stats">
             <div class="stat"><b>${COURSES.length}</b><span>Açık ders</span></div>
             <div class="stat"><b>${sources}</b><span>${allLectures ? "Ders" : "Kaynak"}</span></div>
@@ -430,7 +434,7 @@
     if (c.professor && c.school) parts.push(`Ders ${esc(c.professor)} tarafından ${esc(c.school)} bünyesinde verilmektedir.`);
     else if (byline(c)) parts.push(`${esc(byline(c))} kaynağından derlenmiştir.`);
     if (c.kind !== "sources" && isYouTube(c.playlist)) parts.push("Her ders YouTube'da ücretsizdir.");
-    parts.push(`Bu sayfa ${c.sourceCount} ${nounForm(c, "acc", c.sourceCount)} ${c.chapters.length} bölüme düzenler; çalışma notları ve bir final sınavı içerir.`);
+    parts.push(`Bu sayfa ${c.sourceCount} ${nounForm(c, "acc", c.sourceCount)} ${c.chapters.length} bölüme düzenler; çalışma notları${(c.quiz || []).length ? " ve bir final sınavı" : ""} içerir.`);
     return parts.join(" ");
   }
 
@@ -443,7 +447,7 @@
           <p class="count">${ch.lectures.length} ${noun(c, ch.lectures.length)}</p>
           <p>${esc(ch.summary)}</p>
           <ul class="objectives">${ch.objectives.map((o) => `<li>${esc(o)}</li>`).join("")}</ul>
-          ${ch.image ? `<figure class="plate">${imgTag(ch.image, ch.title + " infografiği", " data-zoom")}<figcaption><b>Şekil ${i + 1}.</b> ${esc(ch.title)}. Bu bölümün ${ch.lectures.length} ${nounForm(c, "abl", ch.lectures.length)} NotebookLM ile üretildi.</figcaption></figure>` : ""}
+          ${ch.image ? `<figure class="plate">${imgTag(ch.image, ch.title + " infografiği", " data-zoom")}<figcaption><b>Şekil ${i + 1}.</b> ${esc(ch.title)}.${ch.lectures.length ? ` Bu bölümün ${ch.lectures.length} ${nounForm(c, "abl", ch.lectures.length)} ${c.notebook ? "NotebookLM ile üretildi" : "kullanıldı"}.` : ""}</figcaption></figure>` : ""}
           ${aofFiguresHtml(ch, i + 1, "plate")}
           ${bookUnitFiguresHtml(c, i + 1, "plate")}
         </div>
@@ -618,7 +622,7 @@
       <h1>${esc(ch.title)}</h1>
       <p class="lead muted" style="font:1.15rem/1.6 var(--serif)">${esc(ch.summary)}</p>
       ${audioOf(c, n) ? `<div class="btn-row" data-noprint><button class="btn ghost" type="button" data-ap-jump>Sesli dersi dinle (${Math.max(1, Math.round(audioOf(c, n).dur / 60))} dk)</button></div>` : ""}
-      ${ch.image ? `<figure class="figure">${imgTag(ch.image, ch.title + " infografiği", " data-zoom")}<figcaption><b>Şekil ${n}.</b> Yalnızca bu bölümün ${nounForm(c, "plAbl", 2)} NotebookLM ile üretildi.</figcaption></figure>` : ""}
+      ${ch.image ? `<figure class="figure">${imgTag(ch.image, ch.title + " infografiği", " data-zoom")}<figcaption><b>Şekil ${n}.</b> Yalnızca bu bölümün ${nounForm(c, "plAbl", 2)} ${c.notebook ? "NotebookLM ile üretildi" : "kullanıldı"}.</figcaption></figure>` : ""}
       ${aofFiguresHtml(ch, n, "figure")}
       ${bookUnitFiguresHtml(c, n, "figure")}
       ${chVids.length ? `<h2 id="videolar">Bu bölümün videoları</h2>${videoPlayerHtml(c, chVids, { chapter: n })}${allVids.length > chVids.length ? `<p class="muted small" data-noprint><a href="#/course/${c.slug}/videolar">Dersin tüm videoları (${allVids.length})</a></p>` : ""}` : ""}
@@ -6311,7 +6315,7 @@ document.getElementById("zin").focus();
       </section>
       <section class="pb-toc"><h2>İçindekiler</h2><ol>${c.chapters.map((ch) => `<li>${esc(ch.title)}</li>`).join("")}</ol></section>
       ${chapters}
-      <p class="ps-foot">Notlar NotebookLM ile ders kaynaklarından üretilmiştir. Kaynakların tüm hakları sahiplerine aittir.</p>
+      <p class="ps-foot">${HAS_NOTEBOOK ? "Notlar NotebookLM ile ders kaynaklarından üretilmiştir." : "Notlar ders kaynaklarından derlenmiştir."} Kaynakların tüm hakları sahiplerine aittir.</p>
     </article>`;
   }
 

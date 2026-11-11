@@ -25,6 +25,19 @@ JS data bundles, fonts in `fonts/`, icons in `icons/`) is cached on the first
 visit; course images are downloaded per course from the `#/cevrimdisi` page. New versions wait until
 the student taps "Yenile" on the update toast.
 
+## Two ways to fill a course
+
+| | NotebookLM | Hand-written |
+|---|---|---|
+| Add the course | `add_course.py ... --notebook ID` or `--playlist URL` | `add_course.py ... --offline` |
+| Fill it | `pipeline.py all` (plan, notes, quiz, infographics, manifest) | write `data/<slug>/study_plan.json` and `quiz.json` |
+| Needs | the `notebooklm` CLI and a Google account | nothing but Python |
+| Site | notes, quiz and infographics generated from the sources | the same site, with your own text |
+
+Both can live in one project. A course whose `manifest.json` has a `notebook_url` shows the NotebookLM
+buttons and the "generated with NotebookLM" credits; a hand-written course shows neither, and the
+catalog does not claim a notebook the project does not have.
+
 ## Start without NotebookLM
 
 A course can go live before any notebook exists. `add_course.py --offline` registers the course and

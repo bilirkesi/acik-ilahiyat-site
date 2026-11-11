@@ -19,6 +19,9 @@
 
 ## Local Contracts
 - Run from the repo root: `py -3 generator/scripts/build.py .` (Python 3.8+ stdlib; Pillow only to compress new PNGs).
+- The template supports both content paths: `HAS_NOTEBOOK` (any course with `notebook`) and `HAS_QUIZ` gate
+  every NotebookLM credit and the "pass the exam" sentence, so a hand-written project never advertises a
+  notebook it does not have. Keep new copy behind the same flags.
 - `add_course.py --offline` writes the data files only when they are missing, so it can be re-run after the
   chapters are written. Such a course is `mode: "manual"` with `notebook_url: ""`; `build.py` treats it as a
   `sources` course and the site hides the NotebookLM buttons for it.
