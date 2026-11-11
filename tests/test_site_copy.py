@@ -172,6 +172,14 @@ class TestBothContentPaths(unittest.TestCase):
         self.assertIn("for (const [slug, list] of Object.entries(b.gloss || {})) {", src)
         self.assertIn("item.due = addDays(Date.now(), GLOSS_STEPS[item.box]);", src)
 
+    def test_a_reviewed_word_counts_as_the_day_and_reaches_the_desk(self) -> None:
+        """Sözlük tekrarı seriye sayar ve çalışma masasında sırada görünür."""
+        src = template_source()
+        self.assertIn("r.kav || r.game || r.gl", src)
+        self.assertIn("day.gl = (day.gl || 0) + 1;", src)
+        self.assertIn("${glossDeskHtml()}", src)
+        self.assertIn("kelime bugün tekrar bekliyor", src)
+
     def test_the_published_copy_is_the_built_template(self) -> None:
         """site/ elle düzenlenmez: yayınlanan kopya şablonun aynısı olmalı."""
         if not BUILT.exists():

@@ -33,7 +33,9 @@
   `{w, m, src, box, due, t, seen, lapses}`; review walks the Leitner boxes in `GLOSS_STEPS = [0, 1, 3, 7,
   16, 35]` days — "Bilmiyorum" drops to box 0 and due now, "Zor" one box down, "İyi" one up, "Kolay" two up.
   The backup merge keeps the more-reviewed copy of a word, and "İlerlememi sıfırla" keeps the deck because it
-  is the learner's own content.
+  is the learner's own content. Evaluating a word also counts as the day's activity (`day.gl`, so the streak
+  and the daily summary include it), and the study desk links to the deck of the first course with dues
+  (`glossDeskHtml`), showing the total due and word count across courses.
 - `sw.js` caches the app shell on first visit; new versions wait for the student to tap "Yenile" on the update toast. Course images are downloaded per course from the offline page.
 - Learner progress lives in `localStorage[CONFIG.storageKey]`; study state (concept-deck cards, mock exams, game results, entered grades `grades`, confidence counters `calib`) lives in `localStorage[CONFIG.storageKey + ".study"]`.
 - The study state defaults live in one place, `STUDY_DEFAULTS` in `app.js`; `loadStudy()` merges them under the stored object. The backup merge uses that list to tell "still at the default" from "chosen on this device": a setting that is still at its default takes the backup's value, a setting the learner changed is kept.

@@ -1588,7 +1588,7 @@
   function dayRec(key) {
     return study.days[key] || (study.days[key] = { n: 0, ok: 0, rev: 0, fresh: 0, read: 0 });
   }
-  const isActive = (key) => { const r = study.days[key]; return !!(r && (r.n || r.read || r.vid || r.lis || r.kav || r.game)) || study.frozen.includes(key); };
+  const isActive = (key) => { const r = study.days[key]; return !!(r && (r.n || r.read || r.vid || r.lis || r.kav || r.game || r.gl)) || study.frozen.includes(key); };
 
   // Seri: bugünden (bugün henüz çalışılmadıysa dünden) geriye kesintisiz aktif gün sayısı.
   function streakInfo() {
@@ -1913,7 +1913,7 @@
       <div class="desk-grid">
         <section class="desk-card desk-streak${st.today ? " lit" : ""}">
           <div class="desk-big">${FLAME}<b>${st.n}</b><span>gün seri</span></div>
-          <p class="muted">${st.today ? "Bugün çalıştın, seri güvende." : st.n ? "Seriyi korumak için bugün en az bir soru çöz ya da bir bölüm oku." : "Bir soru çözerek ya da bir bölüm okuyarak seriyi başlat."}</p>
+          <p class="muted">${st.today ? "Bugün çalıştın, seri güvende." : st.n ? "Seriyi korumak için bugün en az bir soru çöz, bir bölüm oku ya da bir kelime tekrar et." : "Bir soru çözerek ya da bir bölüm okuyarak seriyi başlat."}</p>
           <p class="desk-meta">En uzun seri: <b>${Math.max(bestStreak(), st.n)}</b> gün · Seri dondurma: ${frz ? `bu ay ${fmtDay(frz)} günü kullanıldı` : "bu ay 1 hakkın var (tek boş gün seriyi bozmaz)"}</p>
         </section>
         <section class="desk-card desk-goal">
@@ -1921,7 +1921,7 @@
           <div>
             <h3>Bugünkü hedef</h3>
             <p class="muted">${day.n >= study.goal ? "Hedef tamam. Ekstra her soru bir sonraki tekrarı kolaylaştırır." : `Hedefe ${study.goal - day.n} soru kaldı.`}</p>
-            <p class="desk-meta">${day.ok} doğru · ${day.rev} tekrar · ${day.read} bölüm okundu${day.vid ? ` · ${day.vid} video` : ""}${day.lis ? ` · ${day.lis} bölüm dinlendi` : ""}${day.kav ? ` · ${day.kav} kavram` : ""}${day.game ? ` · ${day.game} oyun` : ""}</p>
+            <p class="desk-meta">${day.ok} doğru · ${day.rev} tekrar · ${day.read} bölüm okundu${day.vid ? ` · ${day.vid} video` : ""}${day.lis ? ` · ${day.lis} bölüm dinlendi` : ""}${day.kav ? ` · ${day.kav} kavram` : ""}${day.gl ? ` · ${day.gl} kelime` : ""}${day.game ? ` · ${day.game} oyun` : ""}</p>
           </div>
         </section>
         <a class="desk-card desk-action" href="#/tekrar">
@@ -1937,6 +1937,7 @@
           <span class="btn ghost">${mist ? "Yanlışlarımı çöz" : "Listeye bak"}</span>
         </a>
         ${kavramDeskHtml()}
+        ${glossDeskHtml()}
         ${marksDeskHtml()}
       </div>
       <div class="btn-row desk-links"><a class="btn ghost" href="#/karisik">Karışık test</a><a class="btn ghost" href="#/karisik?mod=deneme">Deneme sınavı</a><a class="btn ghost" href="#/analiz">Gelişim analizi</a><a class="btn ghost" href="#/sikcikan">Sık çıkan konular</a><a class="btn ghost" href="#/puan">Not hesaplayıcı</a><a class="btn ghost" href="#/oyunlar">Bulmaca ve kelime oyunları</a>${harfCourse() ? `<a class="btn ghost" href="#/harfler">Osmanlıca harf atölyesi</a>` : ""}</div>
@@ -4471,7 +4472,15 @@
       };
       card.querySelectorAll("[data-gl-rate]").forEach((b) => (b.onclick = () => {
         const item = glossDeck(c.slug).find((x) => GLOSS_KEY(x.w) === GLOSS_KEY(w));
-        if (item) { glossNext(item, b.dataset.glRate); saveStudy(); }
+        if (item) {
+          glossNext(item, b.dataset.glRate);
+          // Tekrar edilen kelime de günün aktivitesidir: seri ve günlük özet bunu sayar.
+          const key = dayKey(Date.now()), wasActive = isActive(key);
+          const day = dayRec(key);
+          day.gl = (day.gl || 0) + 1;
+          saveStudy();
+          afterActivity(wasActive, key);
+        }
         route();
       }));
     }
@@ -6427,6 +6436,22 @@ document.getElementById("zin").focus();
   }, true);
   document.addEventListener("visibilitychange", () => { if (document.visibilityState === "hidden") vidSave(true); });
   window.addEventListener("pagehide", () => vidSave(true));
+
+  // Çalışma masasında sözlük: ders ders bugün tekrar bekleyen kelime sayısı.
+  function glossDeskHtml() {
+    const rows = COURSES.map((c) => ({ c, due: glossDue(c.slug).length, total: glossDeck(c.slug).length }))
+      .filter((x) => x.total);
+    const due = rows.reduce((n, x) => n + x.due, 0);
+    const total = rows.reduce((n, x) => n + x.total, 0);
+    if (!total) return "";
+    const first = rows.find((x) => x.due) || rows[0];
+    return `<a class="desk-card desk-action" href="#/course/${first.c.slug}/sozluk">
+      <span class="desk-k">Sözlük destesi</span>
+      <b class="desk-n">${due}</b>
+      <span>${due ? "kelime bugün tekrar bekliyor" : "tekrar bekleyen kelime yok"} · ${total} kelime</span>
+      <span class="btn ghost">${due ? "Kelimeleri tekrar et" : "Desteye bak"}</span>
+    </a>`;
+  }
 
   // Çalışma masası: yarıda kalan son video.
   function resumeVideoHtml() {
