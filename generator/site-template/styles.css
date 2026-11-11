@@ -1019,11 +1019,24 @@ main:focus, main:focus-visible { outline: none; }
 .lp-btn:disabled { opacity: .4; cursor: default; }
 .lp-btn:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
 .lp-status { font-size: .82rem; color: var(--muted); margin-left: .2rem; }
+.lp-voice { font-size: .8rem; color: var(--muted); text-decoration: underline; margin-left: .2rem; }
+.lp-voice:hover { color: var(--navy); }
 .lp.on { position: sticky; top: .5rem; z-index: 5; background: var(--paper); border: 1px solid var(--line); padding: .45rem .55rem; box-shadow: 0 8px 20px -14px var(--shadow); }
 .lp-on { background: var(--gold-soft); box-shadow: 0 0 0 .35rem var(--gold-soft); border-radius: 2px; }
 .ch-read-row { margin: 2rem 0 0; }
 .ch-read.is-read { border-color: var(--ok); color: var(--ok); }
 @media print { .lp, .ch-read-row { display: none !important; } .lp-on { background: none; box-shadow: none; } }
+
+/* okuma sesi yardimi (#/ses) */
+.voice-list { display: grid; gap: .5rem; margin: .8rem 0 1.2rem; }
+.voice-row { display: flex; flex-wrap: wrap; align-items: baseline; gap: .5rem .8rem; padding: .6rem .8rem; border: 1px solid var(--line); background: var(--surface); }
+.voice-row b { min-width: 9rem; }
+.voice-ok { color: var(--ok); font-weight: 600; }
+.voice-no { color: var(--gold-text); font-weight: 600; }
+.voice-steps { margin: .6rem 0 1.2rem; padding-left: 1.4rem; }
+.voice-steps li { margin: .45rem 0; }
+.voice-steps h3 { margin: 1rem 0 .3rem; font-size: .95rem; }
+.voice-steps code { font-family: var(--mono, ui-monospace, monospace); font-size: .85em; background: var(--gold-soft); padding: .1rem .3rem; }
 
 /* kavram desteleri (#/kavram) */
 .k-top { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin: 1.2rem 0; }
