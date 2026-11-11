@@ -11,6 +11,12 @@
 - `test_quiz_data.py` — the quiz checker's own behavior on synthetic bad input, plus real-data integrity and `site/unit_quizzes.js` consistency.
 - `test_exports.py` — `chapter_meta`/`build_solution`, the unit-quiz export in a sandboxed `ROOT`, the `past_exams.js`/`unit_quizzes.js` bundle contracts, the OKF export's "a broken input leaves the bundle intact" guarantee, and the grounding helpers plus `audit_sources.audit`.
 - `test_common.py` — `generator/scripts/common.py`: the pipeline `Lock` (second runner refused, stale lock cleared), `_pid_alive` (Windows needs `OpenProcess`, `os.kill(pid, 0)` is a `CTRL_C_EVENT` there), `source_tier` (type, title and URL matching, `exclude_titles`), `excluded_from_grounding` and `with_authority` (an excluded source never grounds a chapter, `max_add`), the per-course config (`courses.json` → `config`) and `generator/scripts/quiz_types.py` with its agreement with the site's `GRADED` set. Also checks that the technical course's unit titles equal its chapter titles.
+- `test_site_copy.py` — the site template's copy contract: the Turkish noun table
+  (`NOUN_FORMS`/`nounForm`: "0 kaynak", "kaynağı", "kaynakların"), the absence of glued suffixes
+  (`noun(c, n) + "yı"`), the "puanlık soru" quiz header, and the both-paths copy
+  (`HAS_NOTEBOOK`/`HAS_QUIZ` guard every NotebookLM credit, a course only promises the exam it has).
+  It also checks `site/app.js` is the built template. The behavioural test runs the extracted JS
+  block with `node` and skips itself when `node` is not on PATH.
 - `test_build.py` — `generator/scripts/build.py`'s `clean()`: numbered and by-title citation markers are dropped, markdown links and the reference list survive, and an escaped product identifier (`V\\(CLUSTER_INTERCONNECTS`) is restored to `V$CLUSTER_INTERCONNECTS` while real LaTeX is kept.
 - `test_mcp_server.py` — the MCP server's JSON-RPC contract over stdio: `initialize`, `tools/list`, `tools/call`, unknown tool → `-32602`, malformed JSON → `-32700`.
 - `__init__.py` — package marker for discovery.
@@ -26,7 +32,7 @@
 - Keep the suite stdlib-only (`unittest`); do not add pytest.
 
 ## Verification
-- `py -3 -m unittest discover -s tests` — 117 tests, must exit 0. Run after any change to `data/`, `coursegraph/`, or the export scripts.
+- `py -3 -m unittest discover -s tests` — 129 tests, must exit 0. Run after any change to `data/`, `coursegraph/`, or the export scripts.
 - CI runs the same command on every push to `main` and on every pull request (`.github/workflows/tests.yml`).
 
 ## Child DOX Index
