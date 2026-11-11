@@ -2575,17 +2575,22 @@
     if (root) runKavram(root);
   }
 
-  function kSpeak(text, slug) {
+  async function kSpeak(text, slug) {
     const synth = window.speechSynthesis;
     if (!synth) return;
     if (lis && lis.playing) lisStop();
     synth.cancel();
-    const u = new SpeechSynthesisUtterance(String(text).replace(OTA_RUN, " ").replace(/\s+/g, " ").trim());
     const lang = courseLang(slug);
+    const vs = await voicesReady(1500);
+    const v = pickVoice(vs, lang);
+    if (!v) {
+      showToast(`Bu cihazda ${langName(lang)} okuma sesi bulunamadı. Metin okuma (TTS) ayarlarından ${langName(lang)} sesi ekleyin.`);
+      return;
+    }
+    const u = new SpeechSynthesisUtterance(String(text).replace(OTA_RUN, " ").replace(/\s+/g, " ").trim());
     u.lang = speechTag(lang);
     u.rate = study.lrate || 1;
-    const v = voiceFor(lang);
-    if (v) { try { u.voice = v; } catch (e) { /* ses atanamadi */ } }
+    try { u.voice = v; } catch (e) { /* ses atanamadi */ }
     synth.speak(u);
   }
 
@@ -4302,13 +4307,35 @@
   }
 
   // Okuma sesi: dersin diline göre seçilir. Türkçe derslerde Türkçe, İngilizce derste İngilizce
-  // ses kullanılır; yoksa cihazın varsayılan sesiyle okunur. Önce cihazda kurulu (localService)
-  // ses seçilir, o internetsiz de çalışır.
+  // ses kullanılır. Önce cihazda kurulu (localService) ses seçilir, o internetsiz de çalışır.
   const SPEECH_TAG = { tr: "tr-TR", en: "en-US" };
-  function voiceFor(lang) {
+  // Cihazdaki sesler asenkron yüklenir: getVoices() ilk çağrıda boş liste döner. Ses hazır olana
+  // kadar beklenir, yoksa doğru dildeki ses bulunamaz ve tarayıcı varsayılan sese düşer.
+  let voicesWait = null;
+  function voicesReady(timeout) {
+    const vs = speechSynthesis.getVoices();
+    if (vs.length) return Promise.resolve(vs);
+    if (voicesWait) return voicesWait;
+    voicesWait = new Promise((resolve) => {
+      let done = false;
+      const finish = () => {
+        if (done) return;
+        done = true;
+        if (speechSynthesis.removeEventListener) speechSynthesis.removeEventListener("voiceschanged", finish);
+        resolve(speechSynthesis.getVoices());
+      };
+      if (speechSynthesis.addEventListener) speechSynthesis.addEventListener("voiceschanged", finish);
+      setTimeout(finish, timeout || 1500);
+    }).then((v) => { voicesWait = null; return v; });
+    return voicesWait;
+  }
+  function pickVoice(voices, lang) {
     const code = String(lang || "tr").toLowerCase().slice(0, 2);
-    const all = speechSynthesis.getVoices().filter((v) => (v.lang || "").replace("_", "-").toLowerCase().startsWith(code));
+    const all = (voices || []).filter((v) => (v.lang || "").replace("_", "-").toLowerCase().startsWith(code));
     return all.find((v) => v.localService) || all[0] || null;
+  }
+  function voiceFor(lang) {
+    return pickVoice(speechSynthesis.getVoices(), lang);
   }
   // Dersin dili ("tr", "en"): courses.json -> config.language, derlenirken data.js'e yazilir.
   function courseLang(slug) {
@@ -4603,7 +4630,7 @@
     lisPaint();
     const chunks = listenChunks(lis.blocks[lis.i].text);
     const lang = courseLang(lis.slug);
-    const v = voiceFor(lang);
+    const v = lis.voice || voiceFor(lang);
     chunks.forEach((t, j) => {
       const u = new SpeechSynthesisUtterance(t);
       u.lang = speechTag(lang);
@@ -4675,15 +4702,24 @@
       const [slug, n] = [key.slice(0, key.lastIndexOf(":")), +key.slice(key.lastIndexOf(":") + 1)];
       const blocks = listenBlocks(rp);
       const pos = (study.listen || {})[key] || 0;
-      lis = { key, slug, n, blocks, i: pos < blocks.length ? pos : 0, playing: false, token: 0, lock: null, counted: false };
+      lis = { key, slug, n, blocks, i: pos < blocks.length ? pos : 0, playing: false, token: 0, lock: null, counted: false, voice: null };
     }
     return lis.blocks.length > 0;
   }
-  function lisStart(bar) {
+  async function lisStart(bar) {
     if (!lisInit(bar)) return;
     lis.start = lis.i;
     const lang = courseLang(lis.slug);
-    if (window.speechSynthesis.getVoices().length && !voiceFor(lang)) showToast(`Bu cihazda ${langName(lang)} okuma sesi bulunamadı. Telefon ayarlarındaki Metin okuma (TTS) bölümünden ${langName(lang)} sesi indirebilirsin.`);
+    const vs = await voicesReady(1500);
+    lis.voice = pickVoice(vs, lang);
+    if (!lis.voice) {
+      // Dersin dilinde bir ses yok. Başka dildeki sesle okumak (Ingilizce metni Türkçe sesle
+      // okutmak) yanlış olur; bunun yerine bölümün dogru dildeki sesli ozetini oner.
+      showToast(`Bu cihazda ${langName(lang)} okuma sesi bulunamadı. Telefon/bilgisayar ayarlarındaki Metin okuma (TTS) bölümünden ${langName(lang)} sesi ekleyin ya da yukarıdaki "Sesli ders" kaydını dinleyin.`);
+      const au = document.querySelector(".ap audio");
+      if (au) au.scrollIntoView({ behavior: "smooth", block: "center" });
+      return;
+    }
     lisLock(true);
     lisSpeak();
   }
