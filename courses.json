@@ -119,6 +119,7 @@
     "notebook_id": "18b3f791-a3cd-4d19-a002-ced4ebfe16ae"
   },
   "teknik-gelistirim": {
+    "pair": "teknik-gelistirim-tr",
     "mode": "own",
     "notebook_id": "d9fbd16b-86fb-45ab-af81-dc503b2c5aad",
     "subject": "Teknik Gelişim",
@@ -205,6 +206,7 @@
     }
   },
   "teknik-gelistirim-tr": {
+    "pair": "teknik-gelistirim",
     "mode": "own",
     "notebook_id": "d9fbd16b-86fb-45ab-af81-dc503b2c5aad",
     "subject": "Teknik Gelişim (Türkçe)",

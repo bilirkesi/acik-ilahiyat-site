@@ -134,6 +134,44 @@ class TestBothContentPaths(unittest.TestCase):
         self.assertIn('"Bu seçimde soru yok."', src)
         self.assertIn("go.disabled = !pool.length", src)
 
+    def test_the_parallel_reading_view_only_appears_for_a_paired_course(self) -> None:
+        """Çift dilli okuma yalnız `pair` taşıyan ve karşı bölümü olan derste görünür."""
+        src = template_source()
+        self.assertIn("function viewParallel(c, n) {", src)
+        self.assertIn("return p && p.chapters[n - 1] ? p : null;", src)
+        self.assertIn('else if (parts[2] === "cift") html = viewParallel(c, +parts[3]);', src)
+        self.assertIn("Çift dilli oku", src)
+
+    def test_the_paired_courses_are_exported_with_their_counterpart(self) -> None:
+        """Kardeş dersler birbirini `pair` ile gösterir ve build bunu data.js'e yazar."""
+        import json
+        from pathlib import Path
+
+        data = (Path(__file__).resolve().parents[1] / "site" / "data.js").read_text(encoding="utf-8")
+        start = data.index("window.COURSES = ") + len("window.COURSES = ")
+        courses, _ = json.JSONDecoder().raw_decode(data[start:])
+        by = {c["slug"]: c for c in courses}
+        self.assertEqual(by["teknik-gelistirim"].get("pair"), "teknik-gelistirim-tr")
+        self.assertEqual(by["teknik-gelistirim-tr"].get("pair"), "teknik-gelistirim")
+        self.assertEqual(by["teknik-gelistirim"]["language"], "en")
+        self.assertEqual(by["teknik-gelistirim-tr"]["language"], "tr")
+
+    def test_the_glossary_deck_is_wired_to_the_course(self) -> None:
+        """Kelime destesi dersten açılır ve seçim çubuğundan kelime alır."""
+        src = template_source()
+        self.assertIn("function viewGloss(c) {", src)
+        self.assertIn('else if (parts[2] === "sozluk") { html = viewGloss(c); bind = () => bindGloss(c); }', src)
+        self.assertIn('data-hl="word"', src)
+        self.assertIn("Sözlük destesi", src)
+
+    def test_the_glossary_deck_schedules_with_growing_intervals(self) -> None:
+        """Tekrar kutuları büyür, deste yedekle birleşir ve varsayılan olarak boştur."""
+        src = template_source()
+        self.assertIn("const GLOSS_STEPS = [0, 1, 3, 7, 16, 35];", src)
+        self.assertIn("harf: null, gloss: {},", src)
+        self.assertIn("for (const [slug, list] of Object.entries(b.gloss || {})) {", src)
+        self.assertIn("item.due = addDays(Date.now(), GLOSS_STEPS[item.box]);", src)
+
     def test_the_published_copy_is_the_built_template(self) -> None:
         """site/ elle düzenlenmez: yayınlanan kopya şablonun aynısı olmalı."""
         if not BUILT.exists():

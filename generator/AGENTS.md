@@ -42,6 +42,10 @@
 - `pipeline.py ground --chapters 5,6 --force` re-asks the listed chapters even when they already have notes; `--chapters` alone limits the stage, `--force` overwrites.
 - An infographic's header comes from `chapter_header()`: the course's language decides the word ("Chapter" / "Bölüm"), and a title that already carries it ("Bölüm 1: …") is used as it is so the number is not repeated.
 - `build.py`'s `clean()` prepares NotebookLM text for the site: it drops citation markers (numbered `[1]`, `[2-4]`, `[1, 3]` and by-title `[Recovering Tables and Table Partitions]`), restores a product identifier whose `$` NotebookLM wrote as a LaTeX escape (`V\\(CLUSTER_INTERCONNECTS` → `V$CLUSTER_INTERCONNECTS`), and keeps markdown links, the reference list and real LaTeX. It runs on `notes`, `summary` and `objectives` — every field the site renders.
+- `courses.json` may carry a `pair` slug: the same program published in another language. `build.py` copies it
+  to `data.js` only when the paired slug is a configured course; the site then offers
+  `#/course/<slug>/cift/<n>`, which prints chapter `n` of both courses side by side (each column carries its
+  own `lang`), and hides the entry for every course without a pair or without that chapter.
 - `build.py` writes each course's `language` ("tr"/"en") into `data.js`, taken from `courses.json` → `config.language` (`language_code()` in `common.py`). The site reads it for the read-aloud voice (`voiceFor()` in `app.js` picks the voice of that language; the Ottoman Turkish word reading stays Turkish) and for the `lang` attribute on the notes, so a screen reader reads English notes in English.- `common.Lock` creates `.pipeline.lock` with `O_CREAT|O_EXCL` (atomic everywhere) and clears a leftover file only after checking the recorded pid with `_pid_alive`. `_pid_alive` uses `os.kill(pid, 0)` on POSIX and `OpenProcess`/`GetExitCodeProcess` on Windows, where `os.kill(pid, 0)` is a `CTRL_C_EVENT` and raises `WinError 87` for a dead pid.
 
 ## Work Guidance

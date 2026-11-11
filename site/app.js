@@ -438,6 +438,20 @@
     return parts.join(" ");
   }
 
+  // Çift dilli okuma: courses.json'daki "pair" aynı programın iki dildeki sürümünü eşler.
+  // Karşı dildeki bölüm aynı numaradır; eş ders ya da o numaralı bölüm yoksa düğme hiç basılmaz.
+  function pairedCourse(c) {
+    const p = c && c.pair ? bySlug[c.pair] : null;
+    return p && (p.chapters || []).length ? p : null;
+  }
+  function pairedChapter(c, n) {
+    const p = pairedCourse(c);
+    return p && p.chapters[n - 1] ? p : null;
+  }
+  function pairLangName(c) {
+    return c && c.language === "en" ? "İngilizce" : c && c.language === "tr" ? "Türkçe" : (c && c.language) || "";
+  }
+
   function viewCourse(c) {
     const s = courseStatus(c.slug);
     const vids = courseVideos(c);
@@ -480,6 +494,8 @@
             <a class="btn ghost" href="#/course/${c.slug}/exams">Çıkmış / sınavlar</a>
             <a class="btn ghost" href="#/oyunlar?ders=${c.slug}">Bulmaca ve oyunlar</a>
             ${c.okunus ? `<a class="btn ghost" href="#/harfler">Harf atölyesi</a>` : ""}
+            ${pairedChapter(c, 1) ? `<a class="btn ghost" href="#/course/${c.slug}/cift/1">Çift dilli oku (${esc(pairLangName(pairedCourse(c)))})</a>` : ""}
+            <a class="btn ghost" href="#/course/${c.slug}/sozluk">Sözlük destesi${glossDeck(c.slug).length ? ` (${glossDeck(c.slug).length})` : ""}</a>
           </div>
           ${credit}
         </aside>
@@ -623,6 +639,7 @@
       <p class="eyebrow">${esc(c.course)} · ${n}. Bölüm</p>
       <h1>${esc(ch.title)}</h1>
       <p class="lead muted" style="font:1.15rem/1.6 var(--serif)">${esc(ch.summary)}</p>
+      ${pairedChapter(c, n) ? `<div class="btn-row" data-noprint><a class="btn ghost" href="#/course/${c.slug}/cift/${n}">Çift dilli oku (${esc(pairLangName(pairedCourse(c)))})</a></div>` : ""}
       ${audioOf(c, n) ? `<div class="btn-row" data-noprint><button class="btn ghost" type="button" data-ap-jump>Sesli dersi dinle (${Math.max(1, Math.round(audioOf(c, n).dur / 60))} dk)</button></div>` : ""}
       ${ch.image ? `<figure class="figure">${imgTag(ch.image, ch.title + " infografiği", " data-zoom")}<figcaption><b>Şekil ${n}.</b> Yalnızca bu bölümün ${nounForm(c, "plAbl", 2)} ${c.notebook ? "NotebookLM ile üretildi" : "kullanıldı"}.</figcaption></figure>` : ""}
       ${aofFiguresHtml(ch, n, "figure")}
@@ -645,6 +662,32 @@
       </div>
       <div class="ch-read-row" data-noprint>${chapterReadHtml(c, n)}</div>
       ${gameStripHtml(c, n)}
+      <div class="pager">${prev}${next}</div>`;
+  }
+
+  // Çift dilli okuma: aynı bölümün iki dildeki metni yan yana. Sütunların `lang` değeri ayrı
+  // yazılır, böylece ekran okuyucu ve tireleme her metni kendi dilinde işler.
+  function viewParallel(c, n) {
+    const p = pairedChapter(c, n);
+    if (!p) return viewNotFound();
+    const col = (course, chapter) => `<section class="par-col" lang="${course.language || "tr"}">
+        <p class="eyebrow">${esc(course.subject)} · ${esc(pairLangName(course))}</p>
+        <h2>${esc(chapter.title)}</h2>
+        <p class="muted">${esc(chapter.summary)}</p>
+        <div class="notes">${chapter.notes ? md(chapter.notes) : `<p class="muted">Bu bölümün çalışma notları henüz hazır değil.</p>`}</div>
+      </section>`;
+    const pages = Math.min(c.chapters.length, p.chapters.length);
+    const prev = n > 1 ? `<a class="btn ghost" href="#/course/${c.slug}/cift/${n - 1}">Önceki bölüm</a>` : "";
+    const next = n < pages ? `<a class="btn" href="#/course/${c.slug}/cift/${n + 1}">Sonraki bölüm</a>` : "";
+    return `<p class="crumbs"><a href="#/">Katalog</a> / <a href="#/course/${c.slug}">${esc(c.subject)}</a> / <a href="#/course/${c.slug}/chapter/${n}">${n}. Bölüm</a> / Çift dilli</p>
+      <p class="eyebrow">${esc(c.course)} · ${n}. Bölüm</p>
+      <h1>Çift dilli okuma</h1>
+      <p class="lead muted">Aynı bölümün iki dildeki metni yan yana: solda <b>${esc(pairLangName(c))}</b>, sağda <b>${esc(pairLangName(p))}</b>. Önce bir paragraf oku, sonra karşılığıyla karşılaştır; takıldığın yeri diğer sütundan takip et.</p>
+      <div class="btn-row" data-noprint>
+        <a class="btn ghost" href="#/course/${p.slug}/cift/${n}">Sürümü değiştir (${esc(pairLangName(c))} sağda)</a>
+        <a class="btn ghost" href="#/course/${c.slug}/chapter/${n}">Tek dilli bölüm</a>
+      </div>
+      <div class="par-grid">${col(c, c.chapters[n - 1])}${col(p, p.chapters[n - 1])}</div>
       <div class="pager">${prev}${next}</div>`;
   }
 
@@ -1521,7 +1564,7 @@
   const STUDY_DEFAULTS = {
     v: 1, cards: {}, days: {}, frozen: [], goal: 20, newPerDay: 10, courses: null, goalDone: "",
     log: [], mocks: [], videos: {}, vrate: 1, listen: {}, lrate: 1, arate: 1, plan: null,
-    kcards: {}, kdir: "kavram", games: {}, marks: {}, harf: null,
+    kcards: {}, kdir: "kavram", games: {}, marks: {}, harf: null, gloss: {},
     calib: { s: [0, 0], g: [0, 0] }, grades: {}, mix: null, nick: "", remind: null, confOff: false, aud: {},
   };
   function loadStudy() {
@@ -3960,7 +4003,7 @@
         ${audioPlayerHtml(c, n)}
         ${listenBarHtml(c, n)}
         ${(data.concepts || []).length ? `<p class="rp-lead k-link" data-noprint><a href="#/kavram?ders=${encodeURIComponent(c.slug)}&bolum=${n}&calis=1">Bu bölümün ${data.concepts.length} kavramını desteyle çalış</a></p>` : ""}
-        <p class="muted rp-lead mk-hint" data-noprint>Metni seçerek vurgulayabilir, not ekleyebilir ya da kavram kartı yapabilirsin.<span data-mark-count${marks ? "" : " hidden"}> Bu bölümde <b>${marks}</b> vurgun var · <a href="#/notlarim?ders=${encodeURIComponent(c.slug)}">Notlarım</a></span></p>
+        <p class="muted rp-lead mk-hint" data-noprint>Metni seçerek vurgulayabilir, not ekleyebilir, kavram kartı yapabilir ya da kelimeyi sözlük destesine atabilirsin.<span data-mark-count${marks ? "" : " hidden"}> Bu bölümde <b>${marks}</b> vurgun var · <a href="#/notlarim?ders=${encodeURIComponent(c.slug)}">Notlarım</a></span></p>
         ${c.okunus && "speechSynthesis" in window ? `<p class="muted rp-lead ota-hint">Altı noktalı Osmanlıca kelimelere dokununca okunuşunu dinleyebilirsin.</p>` : ""}
         ${total ? `<div class="rp-progress" aria-live="polite"><span class="rp-bar"><span style="width:0%"></span></span><span class="rp-done">0/${total} etkinlik açıldı</span></div>` : ""}
       </div>
@@ -4141,6 +4184,7 @@
       <button type="button" class="hl-sw hl-g" data-hl="g">Yeşil</button>
       <button type="button" class="hl-b" data-hl="note">Not ekle</button>
       <button type="button" class="hl-b" data-hl="card">Kart yap</button>
+      <button type="button" class="hl-b" data-hl="word">Kelime</button>
       <button type="button" class="hl-x" data-hl="close" aria-label="Kapat">×</button>`;
     bar.hidden = false;
   }
@@ -4190,6 +4234,13 @@
       hlHide(); hlRepaint(); return;
     }
     if (act === "del" && hlCur) { dropMark(hlCur.id); hlHide(); hlRepaint(); showToast("Vurgu silindi."); return; }
+    if (act === "word") {
+      const ctx = hlCtx();
+      const term = hlCur ? hlCur.q : (hlSel && hlSel.q) || "";
+      hlHide();
+      if (ctx && term) glossDialog(term, ctx.slug, ctx.n);
+      return;
+    }
     const m = hlCur || hlNewMark("y");
     if (!m) return hlHide();
     hlHide();
@@ -4280,6 +4331,158 @@
     }, 180);
   });
   window.addEventListener("hashchange", hlHide);
+
+  // ---- #/course/<slug>/sozluk: kelime destesi ------------------------------------------
+  // Öğrenci okurken seçtiği kelimeyi kendi anlamıyla desteye atar; tekrar Leitner kutularıyla
+  // yürür. Bir kutuyu geçen kelime 3, 7, 16 ve 35 güne yayılır, bilinmeyen en alta döner.
+  const GLOSS_STEPS = [0, 1, 3, 7, 16, 35]; // gün
+  const GLOSS_KEY = (w) => String(w || "").trim().toLocaleLowerCase("tr").replace(/\s+/g, " ");
+  function glossDeck(slug) {
+    return (study.gloss && study.gloss[slug]) || [];
+  }
+  function glossDue(slug, now) {
+    const t = now || Date.now();
+    return glossDeck(slug).filter((x) => (x.due || 0) <= t);
+  }
+  function glossNext(item, rating) {
+    const box = Math.max(0, Math.min(GLOSS_STEPS.length - 1, item.box || 0));
+    item.seen = (item.seen || 0) + 1;
+    if (rating === "again") {
+      item.box = 0;
+      item.lapses = (item.lapses || 0) + 1;
+      item.due = Date.now();
+      return item;
+    }
+    if (rating === "hard") item.box = Math.max(0, box - 1);
+    else if (rating === "easy") item.box = Math.min(GLOSS_STEPS.length - 1, box + 2);
+    else item.box = Math.min(GLOSS_STEPS.length - 1, box + 1);
+    item.due = addDays(Date.now(), GLOSS_STEPS[item.box]);
+    return item;
+  }
+  function saveGlossItem(slug, item) {
+    const gloss = study.gloss || (study.gloss = {});
+    const deck = gloss[slug] || (gloss[slug] = []);
+    const key = GLOSS_KEY(item.w);
+    const i = deck.findIndex((x) => GLOSS_KEY(x.w) === key);
+    if (i >= 0) deck[i] = Object.assign(deck[i], item);
+    else deck.push(item);
+    saveStudy();
+    return deck;
+  }
+  // Okurken seçilen kelime: çubuktan açılır, kelime hazır gelir, anlamı öğrenci yazar.
+  function glossDialog(term, slug, n) {
+    const known = glossDeck(slug).find((x) => GLOSS_KEY(x.w) === GLOSS_KEY(term));
+    markDialog(`<h2 id="mk-h">Sözlüğe kelime ekle</h2>
+      <p class="muted small">Kelime bu dersin destesine girer ve aralıklı tekrarla sorulur. Anlamı kendi cümlelerinle yaz.</p>
+      <label class="mk-f"><span>Kelime</span><input name="w" required maxlength="80" value="${esc(term || "")}"></label>
+      <label class="mk-f"><span>Anlamı</span><input name="m" maxlength="200" value="${esc(known && known.m ? known.m : "")}" placeholder="Türkçe karşılığı ya da kısa tanımı"></label>`,
+      (f) => {
+        const w = f.w.value.trim();
+        if (!w) return;
+        saveGlossItem(slug, Object.assign({}, known || {}, {
+          w, m: f.m.value.trim(), src: n || (known && known.src) || 0,
+          box: (known && known.box) || 0, due: Date.now(),
+          t: (known && known.t) || Date.now(), seen: (known && known.seen) || 0,
+          lapses: (known && known.lapses) || 0,
+        }));
+        showToast(known ? "Kelime güncellendi." : "Kelime desteye eklendi.", "Desteyi aç", () => { location.hash = `#/course/${slug}/sozluk`; });
+      });
+  }
+  function glossAddHtml(c) {
+    return `<form class="gl-add" data-gl-add>
+      <h2>Kelime ekle</h2>
+      <div class="gl-add-row">
+        <label class="field"><span>Kelime</span><input name="w" required maxlength="80" lang="${c.language || "tr"}" placeholder="${c.language === "en" ? "Örn. failover" : "Örn. istiare"}"></label>
+        <label class="field"><span>Anlamı</span><input name="m" maxlength="200" placeholder="Kendi cümlenle"></label>
+        <button class="btn" type="submit">Ekle</button>
+      </div>
+    </form>`;
+  }
+  function viewGloss(c) {
+    const deck = glossDeck(c.slug);
+    const due = glossDue(c.slug);
+    const head = `<p class="crumbs"><a href="#/">Katalog</a> / <a href="#/course/${c.slug}">${esc(c.subject)}</a> / Sözlük</p>
+      <p class="eyebrow">${esc(c.course)} · Kelime destesi</p>
+      <h1>Sözlük destesi</h1>`;
+    if (!deck.length) {
+      return `${head}
+        <p class="lead muted">Okurken seçtiğin kelimeyi bu desteye atarsın; site onu artan aralıklarla sorar. İlk kelimeni aşağıdan ekle ya da bir bölümde metni seçip çubuktan <b>Kelime</b>'ye dokun.</p>
+        ${glossAddHtml(c)}
+        <div class="desk-card empty-state"><h3>Deste boş</h3>
+        <p class="muted">${c.language === "en" ? "İngilizce metinde anlamadığın terimi seç, Türkçe karşılığını yaz." : "Anlamını karıştırdığın terimi seç, kısa bir tanım yaz."}</p>
+        <div class="btn-row"><a class="btn ghost" href="#/course/${c.slug}/chapter/1">İlk bölüme git</a></div></div>`;
+    }
+    const now = Date.now();
+    const cur = due.slice().sort((a, b) => (a.due || 0) - (b.due || 0) || (a.t || 0) - (b.t || 0))[0];
+    const boxes = GLOSS_STEPS.map((_, i) => deck.filter((x) => (x.box || 0) === i).length);
+    const card = cur ? `<section class="gl-card" data-gl-w="${esc(cur.w)}">
+        <p class="gl-kicker">${due.length} kelime sırada</p>
+        <p class="gl-front" lang="${c.language || "tr"}">${esc(cur.w)}</p>
+        ${cur.src ? `<p class="muted small">${cur.src}. bölümden</p>` : ""}
+        <div class="gl-reveal" hidden>
+          <p class="gl-back" lang="tr">${cur.m ? esc(cur.m) : '<span class="muted">Anlam yazmamışsın.</span>'}</p>
+          <div class="btn-row">
+            <button type="button" class="btn ghost" data-gl-rate="again">Bilmiyorum</button>
+            <button type="button" class="btn ghost" data-gl-rate="hard">Zor</button>
+            <button type="button" class="btn" data-gl-rate="good">İyi</button>
+            <button type="button" class="btn ghost" data-gl-rate="easy">Kolay</button>
+          </div>
+        </div>
+        <div class="btn-row gl-start"><button type="button" class="btn" data-gl-show>Anlamı göster</button></div>
+      </section>` : `<section class="desk-card"><h3>Bugünlük bitti</h3><p class="muted">Tekrarı gelmiş kelime yok. Yeni kelime ekleyebilir ya da okumaya dönebilirsin.</p></section>`;
+    const rows = deck.slice().sort((a, b) => (a.box || 0) - (b.box || 0) || (a.due || 0) - (b.due || 0)).map((x) => {
+      const when = (x.due || 0) <= now ? "şimdi" : fmtDay(dayKey(x.due));
+      return `<li class="gl-row">
+        <div><b lang="${c.language || "tr"}">${esc(x.w)}</b>${x.m ? ` <span class="muted">· ${esc(x.m)}</span>` : ""}
+        <div class="muted small">Kutu ${(x.box || 0) + 1} · ${when}${x.src ? ` · ${x.src}. bölüm` : ""}${x.seen ? ` · ${x.seen} tekrar` : " · yeni"}</div></div>
+        <button type="button" class="btn ghost sm-mini" data-gl-del="${esc(x.w)}">Sil</button>
+      </li>`;
+    }).join("");
+    return `${head}
+      <p class="lead muted">${deck.length} kelime. ${due.length ? `<b>${due.length}</b> tanesi bugün sırada.` : "Bugün sırada kelime yok."} Yanlış bildiğin kelime başa döner; iyi bildiklerin 3, 7, 16 ve 35 güne yayılır.</p>
+      ${card}
+      ${glossAddHtml(c)}
+      <h2>Tüm kelimeler</h2>
+      <ul class="gl-list">${rows}</ul>
+      <p class="muted small">Kutular: ${boxes.map((n, i) => `${i + 1}. kutu ${n}`).join(" · ")}</p>`;
+  }
+  function bindGloss(c) {
+    const form = app.querySelector("[data-gl-add]");
+    if (form) form.onsubmit = (e) => {
+      e.preventDefault();
+      const w = form.w.value.trim();
+      if (!w) return;
+      const known = glossDeck(c.slug).find((x) => GLOSS_KEY(x.w) === GLOSS_KEY(w));
+      saveGlossItem(c.slug, Object.assign({}, known || {}, {
+        w, m: form.m.value.trim(), src: (known && known.src) || 0,
+        box: (known && known.box) || 0, due: Date.now(),
+        t: (known && known.t) || Date.now(), seen: (known && known.seen) || 0,
+        lapses: (known && known.lapses) || 0,
+      }));
+      route();
+    };
+    const card = app.querySelector(".gl-card");
+    if (card) {
+      const w = card.dataset.glW;
+      const show = card.querySelector("[data-gl-show]");
+      if (show) show.onclick = () => {
+        card.querySelector(".gl-reveal").hidden = false;
+        card.querySelector(".gl-start").hidden = true;
+      };
+      card.querySelectorAll("[data-gl-rate]").forEach((b) => (b.onclick = () => {
+        const item = glossDeck(c.slug).find((x) => GLOSS_KEY(x.w) === GLOSS_KEY(w));
+        if (item) { glossNext(item, b.dataset.glRate); saveStudy(); }
+        route();
+      }));
+    }
+    app.querySelectorAll("[data-gl-del]").forEach((b) => (b.onclick = () => {
+      if (!b.dataset.armed) { b.dataset.armed = "1"; b.textContent = "Emin misin?"; return; }
+      const key = GLOSS_KEY(b.dataset.glDel);
+      study.gloss[c.slug] = glossDeck(c.slug).filter((x) => GLOSS_KEY(x.w) !== key);
+      saveStudy();
+      route();
+    }));
+  }
 
   // ---- #/notlarim: tüm vurgular ve notlar ----------------------------------------------
   function viewMarks(query) {
@@ -5788,6 +5991,18 @@ document.getElementById("zin").focus();
     // Vurgular: son değiştirilen sürüm kazanır; silinmiş kayıt da bir sürümdür, geri gelmez.
     const marks = study.marks || (study.marks = {});
     for (const [id, m] of Object.entries(b.marks || {})) if (m && typeof m === "object" && (!marks[id] || (m.u || 0) > (marks[id].u || 0))) marks[id] = m;
+    // Kelime destesi: aynı kelime iki cihazda varsa daha çok tekrarlanmış sürüm kalır.
+    const gloss = study.gloss || (study.gloss = {});
+    for (const [slug, list] of Object.entries(b.gloss || {})) {
+      if (!Array.isArray(list)) continue;
+      const deck = gloss[slug] || (gloss[slug] = []);
+      for (const item of list) {
+        if (!item || !item.w) continue;
+        const i = deck.findIndex((x) => GLOSS_KEY(x.w) === GLOSS_KEY(item.w));
+        if (i < 0) deck.push(item);
+        else if ((item.seen || 0) > (deck[i].seen || 0) || ((item.seen || 0) === (deck[i].seen || 0) && (item.t || 0) > (deck[i].t || 0))) deck[i] = item;
+      }
+    }
     // Harf atölyesi: her harfte ve kelime okumada daha çok cevaplanmış sayaç kalır.
     if (b.harf && typeof b.harf === "object") {
       const hs = harfStat(), big = (a, x) => (Array.isArray(x) && (!a || x[0] > a[0]) ? x.slice(0, 2) : a);
@@ -7645,6 +7860,8 @@ document.getElementById("zin").focus();
     else if (parts[0] === "course" && bySlug[parts[1]]) {
       const c = bySlug[parts[1]];
       if (parts[2] === "chapter") { html = viewChapter(c, +parts[3]); bind = () => { bindReport(); bindMarks(query); bindListen(query); bindVideos(c); }; }
+      else if (parts[2] === "cift") html = viewParallel(c, +parts[3]);
+      else if (parts[2] === "sozluk") { html = viewGloss(c); bind = () => bindGloss(c); }
       else if (parts[2] === "videolar") { html = viewVideos(c, query); bind = () => bindVideos(c); }
       else if (parts[2] === "quiz") {
         if ((c.quiz || []).length) { html = viewQuiz(c); bind = () => bindQuiz(c); }

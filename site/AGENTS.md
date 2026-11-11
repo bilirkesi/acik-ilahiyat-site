@@ -6,7 +6,7 @@
 
 ## Ownership
 - **Generated output.** Produced by `py -3 generator/scripts/build.py .` from `generator/site-template/` plus `data/` and root config. Do not hand-edit; change the template or the data and rebuild.
-- `app.js` — router, views, quiz/exam engine, concept decks (`#/kavram`), word games (`#/oyunlar`), past-exam frequency map (`#/sikcikan`), grade calculator and readiness estimate (`#/puan`), highlights and notes (`#/notlarim`), Osmanlıca letter workshop (`#/harfler`), friend challenge (`#/meydan`), offline page. Built from `generator/site-template/app.js`.
+- `app.js` — router, views, quiz/exam engine, concept decks (`#/kavram`), word games (`#/oyunlar`), past-exam frequency map (`#/sikcikan`), grade calculator and readiness estimate (`#/puan`), highlights and notes (`#/notlarim`), Osmanlıca letter workshop (`#/harfler`), parallel reading of a paired course in the other language (`#/course/<slug>/cift/<n>`), friend challenge (`#/meydan`), offline page. Built from `generator/site-template/app.js`.
 - `data.js` — generated: `window.UNIVERSITY`, `window.COURSES`, `window.OFFLINE`.
 - `index.html`, `styles.css`, `sw.js`, `manifest.webmanifest`, `favicon.svg`, `fonts/`, `icons/` — from the template with `{{V}}` cache-bust stamped in.
 - The catalog shows every course that has `data/<slug>/manifest.json`, in `courses.json` order. `CONFIG.totalCourses` is `max(courses, plannedCourses)`: it drives the "N ders" headline and the "Ders yakında" placeholders.
@@ -24,6 +24,16 @@
 - Chapter audio: `c.audio["n"]` = `{src, dur, bytes}` shows a native `<audio>` player (Media Session, resume position in `study.aud`, speed in `study.arate`). Its offline pack is `OFFLINE.packs["<slug>-ses"]` (cache `pu-pack-<slug>-ses`); `sw.js` answers `audio/` requests from that cache with 206 Range responses (Safari requires them) and otherwise passes them to the network.
 - Read-aloud ("Notları dinle") and the concept cards use the course's own language: `voiceFor()` in `app.js` picks a voice of `c.language` ("tr"/"en", written into `data.js` by the builder) and the utterance's `lang` follows it. The Ottoman Turkish word reading stays Turkish on purpose. Two guards matter: the device's voice list loads asynchronously, so `voicesReady()` waits for `voiceschanged` before deciding; and when no voice of the course's language exists the text is **not** read with another language's voice (the Turkish voice would read English with a Turkish pronunciation) — the learner gets a message and is pointed at the chapter's audio instead.
 - `#/ses` ("Okuma sesi") is the learner-facing help for that case: it lists the voices the device actually has, says which course languages can be read, gives the step-by-step "add an English voice" instructions for the detected platform (Windows, Android, iOS, macOS, ChromeOS, Linux) with the other platforms collapsed, and plays a short sample per language to check the result. The "Notları dinle" toast links straight to it.
+- Parallel reading: `courses.json` → `pair` (exported to `data.js`) links a course to the same program in another
+  language; the view prints chapter `n` of both under `.par-grid` (two columns, stacked under 860px, sequential in
+  print). Every other course hides the entry: `pairedChapter()` returns null when the pair is missing or the paired
+  course has fewer chapters.
+- Glossary deck (`#/course/<slug>/sozluk`): the learner saves a word while reading (highlight bar →
+  "Kelime", or the form on the deck page) together with its meaning. `study.gloss[<slug>]` holds
+  `{w, m, src, box, due, t, seen, lapses}`; review walks the Leitner boxes in `GLOSS_STEPS = [0, 1, 3, 7,
+  16, 35]` days — "Bilmiyorum" drops to box 0 and due now, "Zor" one box down, "İyi" one up, "Kolay" two up.
+  The backup merge keeps the more-reviewed copy of a word, and "İlerlememi sıfırla" keeps the deck because it
+  is the learner's own content.
 - `sw.js` caches the app shell on first visit; new versions wait for the student to tap "Yenile" on the update toast. Course images are downloaded per course from the offline page.
 - Learner progress lives in `localStorage[CONFIG.storageKey]`; study state (concept-deck cards, mock exams, game results, entered grades `grades`, confidence counters `calib`) lives in `localStorage[CONFIG.storageKey + ".study"]`.
 - The study state defaults live in one place, `STUDY_DEFAULTS` in `app.js`; `loadStudy()` merges them under the stored object. The backup merge uses that list to tell "still at the default" from "chosen on this device": a setting that is still at its default takes the backup's value, a setting the learner changed is kept.
