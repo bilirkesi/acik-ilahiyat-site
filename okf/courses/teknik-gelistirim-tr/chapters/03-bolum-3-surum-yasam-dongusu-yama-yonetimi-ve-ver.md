@@ -5,13 +5,17 @@ description: Öğrenci, Oracle Database 19c proaktif yama stratejilerini, Releas
 course: teknik-gelistirim-tr
 chapter: 3
 status: stable
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-11-11T07:22:53Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-11-11T19:31:19Z }
 notebook: "https://notebooklm.google.com/notebook/d9fbd16b-86fb-45ab-af81-dc503b2c5aad"
 ---
 
 # Özet
 
 Öğrenci, Oracle Database 19c proaktif yama stratejilerini, Release Update (RU) ve Release Update Revision (RUR) yaşam döngüsünü öğrenir. OPatch ve datapatch araçlarını kullanarak ikili dosya ve SQL metadata güncellemelerini iki aşamalı olarak IFS bakım pencerelerine hizalamayı kavrar. Ayrıca AutoUpgrade, DBUA ve Parallel Upgrade Utility araçları ile Oracle 19c veritabanı yükseltme süreçlerini yönetir.
+
+# Sesli Ders
+
+[Bölüm 3 sesli özeti](/audio/teknik-gelistirim-tr/chapter-3.mp3) (5:57 dk, MP3)
 
 # Öğrenme Hedefleri
 

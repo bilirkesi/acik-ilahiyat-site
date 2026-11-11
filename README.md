@@ -17,7 +17,7 @@ tarayıcıda çalışıyor.
 | Atatürk İlkeleri ve İnkılap Tarihi I | TAR201U | 8 | 8 | 108 | 3 | 8 |
 | Osmanlı Türkçesi I | TAR111U | 8 | 8 | 123 | – | 8 |
 | Teknik Gelişim: IFS Cloud & Oracle DBA | TEK-ORA | 10 | 10 | 129 | 3 | 10 |
-| Teknik Gelişim (Türkçe) | TEK-ORA-TR | 10 | 10 | 194 | 3 | – |
+| Teknik Gelişim (Türkçe) | TEK-ORA-TR | 10 | 10 | 194 | 3 | 10 |
 
 30 AÖF chapters plus a 10 chapter Oracle and IFS Cloud DBA training program, 435 AÖF questions
 and the past midterm (çıkmış vize) of the last five academic years.

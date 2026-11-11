@@ -11,6 +11,9 @@ Free lecture playlist (verified with yt-dlp first, then stored as a video list):
   add_course.py PROJECT SLUG --playlist URL [--playlist URL2] --subject S --course C [--professor P] [--school X] [--max 50]
 
 Extra web or PDF links (any mode without --notebook) can be added with --url URL (repeatable).
+
+Hand-written course, no NotebookLM (scaffolds data/<slug>/ so build.py lists it at once):
+  add_course.py PROJECT SLUG --offline --subject S --course C [--chapters 4] [--chapter "Ad" ...]
 """
 import argparse, json, re, shutil, subprocess, sys
 from common import Project, find_cli, notebook_id, run_cli_json
@@ -55,6 +58,10 @@ ap.add_argument("--professor", default="")
 ap.add_argument("--school", default="")
 ap.add_argument("--note", default="")
 ap.add_argument("--max", type=int, default=50, help="NotebookLM caps sources per notebook (50 on the free plan)")
+ap.add_argument("--offline", action="store_true",
+                help="hand-written course: create data/<slug>/ with empty chapters, no notebook")
+ap.add_argument("--chapters", type=int, default=3, help="chapter count for --offline (default 3)")
+ap.add_argument("--chapter", action="append", default=[], help="repeatable: chapter title for --offline")
 a = ap.parse_args()
 
 if a.check:
@@ -72,6 +79,41 @@ proj = Project(a.project)
 slug = slugify(a.slug)
 c = proj.courses.get(slug, {})
 
+if a.offline:
+    if a.notebook or a.playlist or a.url:
+        sys.exit("--offline cannot be combined with --notebook, --playlist or --url")
+    if not (a.subject and a.course):
+        sys.exit("--subject and --course are required for an offline course")
+    titles = a.chapter or [f"Bolum {i}" for i in range(1, max(1, a.chapters) + 1)]
+    c.update({"mode": "manual", "subject": a.subject, "course": a.course, "professor": a.professor,
+              "school": a.school, "playlist": "", "note": a.note})
+    d = proj.data(slug)
+    d.mkdir(parents=True, exist_ok=True)
+    written = []
+    plan_path = d / "study_plan.json"
+    if not plan_path.exists():
+        plan = {"chapters": [{"title": t, "summary": "", "objectives": [], "source_ids": []}
+                             for t in titles]}
+        plan_path.write_text(json.dumps(plan, indent=2, ensure_ascii=False), encoding="utf-8")
+        written.append(plan_path.name)
+    state_path = d / "state.json"
+    if not state_path.exists():
+        state_path.write_text(json.dumps({"sources": {}}, indent=2), encoding="utf-8")
+        written.append(state_path.name)
+    manifest_path = d / "manifest.json"
+    if not manifest_path.exists():
+        m = {"slug": slug, "subject": a.subject, "course": a.course, "mode": "manual",
+             "notebook_id": "", "notebook_url": "", "source_count": 0, "source_total": 0,
+             "chapter_count": len(titles), "quiz_question_count": 0, "infographics": []}
+        manifest_path.write_text(json.dumps(m, indent=2, ensure_ascii=False), encoding="utf-8")
+        written.append(manifest_path.name)
+    proj.courses[slug] = c
+    proj.save_courses()
+    print(f"saved course '{slug}' in {proj.root / 'courses.json'}"
+          + (f"; created {', '.join(written)} in data/{slug}/" if written
+             else f"; data/{slug}/ already had its files, nothing overwritten"))
+    print(f"Next: write the chapters in {plan_path}, then run generator/scripts/build.py <project>")
+    sys.exit(0)
 if a.notebook:
     nid = notebook_id(a.notebook)
     if not nid:

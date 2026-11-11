@@ -5,13 +5,17 @@ description: "Öğrenci, Oracle Maximum Availability Architecture (MAA) Silver, 
 course: teknik-gelistirim-tr
 chapter: 6
 status: stable
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-11-11T07:22:53Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-11-11T19:31:19Z }
 notebook: "https://notebooklm.google.com/notebook/d9fbd16b-86fb-45ab-af81-dc503b2c5aad"
 ---
 
 # Özet
 
 Öğrenci, Oracle Maximum Availability Architecture (MAA) Silver, Gold ve Platinum referans mimarilerini ve Oracle Database@Azure entegrasyonunu öğrenir. Data Guard Broker (dgmgrl) ile otomatik planlı switchover ve acil durum failover runbook'larını çalıştırmayı kavrar. Standby Redo Logs (SRLs) ve Real-Time Redo Apply yapılandırması ile RPO = 0 ve RTO < 5 dakika hedeflerine ulaşmayı sağlar.
+
+# Sesli Ders
+
+[Bölüm 6 sesli özeti](/audio/teknik-gelistirim-tr/chapter-6.mp3) (6:09 dk, MP3)
 
 # Öğrenme Hedefleri
 
@@ -110,7 +114,6 @@ Seçili kaynaklara dayanarak, belirtilen öğrenme hedefleri doğrultusunda öğ
 * NotebookLM kaynağı `3d916d1d-84f9-4986-998c-0fa6a07c6a66`
 * NotebookLM kaynağı `a9510843-a2a8-4a5d-8c6b-0df37bdf8077`
 * NotebookLM kaynağı `475de504-e92a-4488-85d7-228e05f21e02`
-* NotebookLM kaynağı `f317d051-6a57-41ae-8473-e98554c786af`
 * NotebookLM kaynağı `c478de5c-7f28-44d7-aa60-9c89de9da148`
 * NotebookLM kaynağı `610ba785-ac7b-42c9-9df1-a26c41af7ac1`
 * NotebookLM kaynağı `4b420ef3-e08b-4c97-98ed-a14ff57fc023`

@@ -9,7 +9,9 @@
 - `scripts/common.py` — shared project/course helpers, incl. the grounding helpers `source_tier`, `excluded_from_grounding`, `with_authority`, `grounding_rules` that read `university.json` → `grounding`, the `Lock` that keeps a single pipeline runner per project, and `find_cli`/`require_cli` that locate the `notebooklm` CLI without hardcoded machine paths.
 - `scripts/quiz_types.py` — the canonical list of quiz question types (`GRADED`, `KNOWN`); `qa.py` and `scripts/check_quiz_answers.py` both import it, and a test asserts it matches the site's `GRADED` set in `app.js`.
 - `scripts/pipeline.py`, `preflight.py`, `qa.py`, `redo.py`, `sheet.py` — full generation, validation, and contact-sheet tooling.
-- `scripts/add_course.py`, `new_project.py` — scaffold a course or a new project.
+- `scripts/add_course.py`, `new_project.py` — scaffold a course or a new project. `add_course.py --offline`
+  writes `data/<slug>/{state,study_plan,manifest}.json` so `build.py` lists a hand-written course before
+  any NotebookLM run.
 - `chapter_audio()` in `build.py` reads `data/<slug>/audio.json` and adds `course.audio` for MP3s that exist under `site/audio/<slug>/`; `offline_packs()` exposes them as the separate `<slug>-ses` pack.
 - `scripts/okunus.py` — builds `data/<slug>/okunus.json` (Arabic-script → Latin reading) for tap-to-pronounce.
 - `site-template/` — the SPA source that becomes `site/`: `app.js`, `index.html`, `styles.css`, `interactive.js`, `sw.js`, `manifest.webmanifest`, `favicon.svg`, `fonts/`, `icons/`.
@@ -17,6 +19,9 @@
 
 ## Local Contracts
 - Run from the repo root: `py -3 generator/scripts/build.py .` (Python 3.8+ stdlib; Pillow only to compress new PNGs).
+- `add_course.py --offline` writes the data files only when they are missing, so it can be re-run after the
+  chapters are written. Such a course is `mode: "manual"` with `notebook_url: ""`; `build.py` treats it as a
+  `sources` course and the site hides the NotebookLM buttons for it.
 - `grounding` in `university.json` ranks source kinds (`tiers`: `label`, `note`, `types`, `titles`, `exclude_titles`; first = textbook) and adds prompt `rules`. The `pipeline.py` ground, quiz and infographic stages append `grounding_rules()` to their prompts and add the textbook to a chapter that has none. It is build-time only and stays out of `public_config`.
 - A tier's `exclude_titles` marks sources that share its type without sharing its authority (third-party write-ups, personal screenshots, uploads of other people's slides). `excluded_from_grounding()` drops them from the source list: ranking them below every tier is not enough, because they would still be handed to NotebookLM with `-s` and end up cited in the notes. The `plan` stage does not offer them to the model either, so they never reach a chapter's source list.
 - `public_config` in `build.py` whitelists the `university.json` keys that reach `window.UNIVERSITY` (incl. `exams`, `grading`); a new config key must be added there.

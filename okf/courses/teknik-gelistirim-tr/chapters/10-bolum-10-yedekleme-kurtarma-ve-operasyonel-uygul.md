@@ -5,13 +5,17 @@ description: Öğrenci, Recovery Manager (RMAN) yedekleme, geri yükleme ve kurt
 course: teknik-gelistirim-tr
 chapter: 10
 status: stable
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-11-11T07:22:53Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-11-11T19:31:19Z }
 notebook: "https://notebooklm.google.com/notebook/d9fbd16b-86fb-45ab-af81-dc503b2c5aad"
 ---
 
 # Özet
 
 Öğrenci, Recovery Manager (RMAN) yedekleme, geri yükleme ve kurtarma operasyonlarını Oracle Database 19c ve 26ai ortamlarında yönetmeyi öğrenir. RMAN RECOVER TABLE PITR ile silinen tabloları auxiliary destination kullanarak veritabanı kesintisi olmadan kurtarır. Ayrıca kesinti incelemesi hazırlığı, dba_scheduler_job_run_details ve v$diag_alert_ext sorguları ile canlıya geçiş öncesi kontrol listelerini ve eğitim ilerleme durumunu değerlendirir.
+
+# Sesli Ders
+
+[Bölüm 10 sesli özeti](/audio/teknik-gelistirim-tr/chapter-10.mp3) (5:40 dk, MP3)
 
 # Öğrenme Hedefleri
 
@@ -89,7 +93,6 @@ Bu bölümün içinde yaşadığı ders paneli: [Teknik Gelişim (Türkçe) pane
 * NotebookLM kaynağı `bb9376f9-7c81-4843-a754-a6b6f0e41bc1`
 * NotebookLM kaynağı `fe661ac6-8702-4032-a9a5-bb196794fe4a`
 * NotebookLM kaynağı `69cf0036-74c0-45d9-ad5f-91a557293747`
-* NotebookLM kaynağı `0d1e7a30-2e89-468f-b423-36a36ccd5477`
 * NotebookLM kaynağı `a2c969ff-fe28-4362-a2d6-81807bf8d55c`
 * NotebookLM kaynağı `9f88730c-e303-430d-af33-93a576c6f98d`
 * NotebookLM kaynağı `d7d4fb71-bfab-4126-87a9-b52b14a6b928`

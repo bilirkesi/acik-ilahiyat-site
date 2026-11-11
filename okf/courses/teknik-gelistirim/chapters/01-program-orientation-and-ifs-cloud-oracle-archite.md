@@ -5,7 +5,7 @@ description: In this chapter, the student learns the foundational enterprise arc
 course: teknik-gelistirim
 chapter: 1
 status: stable
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-11-11T05:06:34Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-11-11T19:31:19Z }
 notebook: "https://notebooklm.google.com/notebook/d9fbd16b-86fb-45ab-af81-dc503b2c5aad"
 ---
 
@@ -97,8 +97,4 @@ For this objective, the student learns the following from official IFS Cloud 26R
 * NotebookLM kaynağı `494eab94-0a7b-410f-912a-9983479c88f7`
 * NotebookLM kaynağı `f76cc808-6644-4ee4-95fa-7b0e0730e5f9`
 * NotebookLM kaynağı `fe661ac6-8702-4032-a9a5-bb196794fe4a`
-* NotebookLM kaynağı `0d1e7a30-2e89-468f-b423-36a36ccd5477`
-* NotebookLM kaynağı `2d66b353-981c-4f84-854e-3f43ecdb8185`
-* NotebookLM kaynağı `2ac34d8a-8a27-4e29-96df-b28f71fd8ba0`
 * NotebookLM kaynağı `8aea0ce6-8040-4f16-975c-45ec98debcb4`
-* NotebookLM kaynağı `7706b3f1-6058-4487-a86c-dc2125297e3c`

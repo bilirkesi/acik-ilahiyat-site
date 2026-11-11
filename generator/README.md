@@ -25,6 +25,24 @@ JS data bundles, fonts in `fonts/`, icons in `icons/`) is cached on the first
 visit; course images are downloaded per course from the `#/cevrimdisi` page. New versions wait until
 the student taps "Yenile" on the update toast.
 
+## Start without NotebookLM
+
+A course can go live before any notebook exists. `add_course.py --offline` registers the course and
+writes the three files `build.py` needs, so it shows up on the site straight away:
+
+```bash
+python3 generator/scripts/new_project.py ~/my-university --name "Atlas University"
+python3 generator/scripts/add_course.py ~/my-university linear-algebra --offline \r
+    --subject "Linear Algebra" --course "MAT101 - Linear Algebra" --chapters 4
+python3 generator/scripts/build.py ~/my-university
+cd ~/my-university/site && python3 -m http.server 8000
+```
+
+Then write the chapters by hand in `data/linear-algebra/study_plan.json` (`title`, `summary`,
+`objectives`, and `grounding.answer` for the notes) and rebuild. An optional `quiz.json` adds the final
+exam. Re-running `--offline` never overwrites files that already exist, and a later NotebookLM run takes
+the course over: the pipeline rewrites `manifest.json`.
+
 ---
 
 # Personal University

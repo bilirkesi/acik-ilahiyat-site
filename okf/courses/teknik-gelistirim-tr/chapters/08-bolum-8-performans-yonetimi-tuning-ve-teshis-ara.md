@@ -5,13 +5,17 @@ description: "Öğrenci, SGA bellek havuzlarını (sga_target, pga_aggregate_tar
 course: teknik-gelistirim-tr
 chapter: 8
 status: stable
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-11-11T07:22:53Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-11-11T19:31:19Z }
 notebook: "https://notebooklm.google.com/notebook/d9fbd16b-86fb-45ab-af81-dc503b2c5aad"
 ---
 
 # Özet
 
 Öğrenci, SGA bellek havuzlarını (sga_target, pga_aggregate_target) ve oturum kapasite parametrelerini (open_cursors, processes) optimize etmeyi öğrenir. AWR raporları, ADDM önerileri ve ASH saniyelik örnekleme verilerini analiz ederek I/O darboğazlarını, satır seviyesi kilitlenmeleri ve bellek latch çekişmelerini tespit eder. Execution plan profilleme ve indeks stratejileri ile SQL sorgularını iyileştirir.
+
+# Sesli Ders
+
+[Bölüm 8 sesli özeti](/audio/teknik-gelistirim-tr/chapter-8.mp3) (6:03 dk, MP3)
 
 # Öğrenme Hedefleri
 
