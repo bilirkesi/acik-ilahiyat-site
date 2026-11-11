@@ -5,13 +5,17 @@ description: Öğrenci, Oracle Real Application Clusters (RAC) ve Grid Infrastru
 course: teknik-gelistirim-tr
 chapter: 5
 status: stable
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-11-11T07:22:53Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-11-11T19:31:19Z }
 notebook: "https://notebooklm.google.com/notebook/d9fbd16b-86fb-45ab-af81-dc503b2c5aad"
 ---
 
 # Özet
 
 Öğrenci, Oracle Real Application Clusters (RAC) ve Grid Infrastructure bileşenlerini, private Interconnect ve High Availability IP (HAIP) yapılandırmasını öğrenir. Cache Fusion veri bloğu transferleri ve Global Resource Directory (GRD) kilit koordinasyon mekanizmalarını yönetmeyi kavrar. Dynamic Database Services, SCAN dinleyicileri ve Fast Application Notification (FAN) ile yük dengeleme ve kesintisiz bağlantı failover yapısını kurar.
+
+# Sesli Ders
+
+[Bölüm 5 sesli özeti](/audio/teknik-gelistirim-tr/chapter-5.mp3) (5:28 dk, MP3)
 
 # Öğrenme Hedefleri
 

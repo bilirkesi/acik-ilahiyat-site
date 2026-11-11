@@ -5,13 +5,17 @@ description: Öğrenci, Oracle Application Continuity (AC) ve Transparent Applic
 course: teknik-gelistirim-tr
 chapter: 7
 status: stable
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-11-11T07:22:53Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-11-11T19:31:19Z }
 notebook: "https://notebooklm.google.com/notebook/d9fbd16b-86fb-45ab-af81-dc503b2c5aad"
 ---
 
 # Özet
 
 Öğrenci, Oracle Application Continuity (AC) ve Transparent Application Continuity (TAC) servis parametrelerini srvctl ile yapılandırmayı öğrenir. Transaction Guard ve Logical Transaction ID (LTXID) mekanizmaları ile kesinti anında işlemlerin tekrarlanmasını ve kesintisiz oturum failover'ını kavrar. IFS orta katman bağlantı yeniden kurma mantığını ve Fast Connection Failover (FCF) entegrasyonunu test eder.
+
+# Sesli Ders
+
+[Bölüm 7 sesli özeti](/audio/teknik-gelistirim-tr/chapter-7.mp3) (6:32 dk, MP3)
 
 # Öğrenme Hedefleri
 
@@ -78,7 +82,5 @@ Bu bölümün içinde yaşadığı ders paneli: [Teknik Gelişim (Türkçe) pane
 # Kaynaklar
 
 * NotebookLM kaynağı `3d088243-3b09-4681-89e4-2a1a550147e9`
-* NotebookLM kaynağı `1d057a25-8c1e-415f-925b-d4d6a46bfebc`
 * NotebookLM kaynağı `7eedf1cb-fad7-4386-b919-18be8fb65007`
 * NotebookLM kaynağı `2b498d6c-9371-4784-b2ce-35dee646323e`
-* NotebookLM kaynağı `2d66b353-981c-4f84-854e-3f43ecdb8185`

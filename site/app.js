@@ -142,6 +142,18 @@
   const cap = (s) => s.charAt(0).toUpperCase() + s.slice(1);
   const code = (i) => `${CONFIG.codePrefix} ${101 + i * 10}`;
   const noun = (c, n) => (c.kind === "sources" ? "kaynak" : "ders");
+  // Türkçe ad çekimi: sayı addan önce geldiğinde ad tekil kalır ("0 kaynak", "5 kaynak"),
+  // eki ise adın kendi yapısı belirler (kaynak → kaynağı, ders → dersi).
+  const NOUN_FORMS = {
+    kaynak: { acc: "kaynağı", abl: "kaynağından", pl: "kaynaklar", plGen: "kaynakların", plAbl: "kaynaklarından" },
+    ders: { acc: "dersi", abl: "dersinden", pl: "dersler", plGen: "derslerin", plAbl: "derslerinden" },
+  };
+  function nounForm(c, form, n) {
+    const base = noun(c, n);
+    // 0 kaynak: belirtme ve -den eki düşer, ad yalın kalır.
+    if (n === 0 && (form === "acc" || form === "abl")) return base;
+    return (NOUN_FORMS[base] || {})[form] || base;
+  }
   const byline = (c) => [c.professor, c.school].filter(Boolean).join(", ");
   const isYouTube = (u) => /youtube\.com|youtu\.be/.test(u || "");
   // Görseller: build.py her JPG için boyutu ve WebP kopyalarını (tam boy + varsa 640px -sm)
@@ -418,7 +430,7 @@
     if (c.professor && c.school) parts.push(`Ders ${esc(c.professor)} tarafından ${esc(c.school)} bünyesinde verilmektedir.`);
     else if (byline(c)) parts.push(`${esc(byline(c))} kaynağından derlenmiştir.`);
     if (c.kind !== "sources" && isYouTube(c.playlist)) parts.push("Her ders YouTube'da ücretsizdir.");
-    parts.push(`Bu sayfa ${c.sourceCount} ${noun(c, c.sourceCount)}yı ${c.chapters.length} bölüme düzenler; çalışma notları ve bir final sınavı içerir.`);
+    parts.push(`Bu sayfa ${c.sourceCount} ${nounForm(c, "acc", c.sourceCount)} ${c.chapters.length} bölüme düzenler; çalışma notları ve bir final sınavı içerir.`);
     return parts.join(" ");
   }
 
@@ -431,14 +443,14 @@
           <p class="count">${ch.lectures.length} ${noun(c, ch.lectures.length)}</p>
           <p>${esc(ch.summary)}</p>
           <ul class="objectives">${ch.objectives.map((o) => `<li>${esc(o)}</li>`).join("")}</ul>
-          ${ch.image ? `<figure class="plate">${imgTag(ch.image, ch.title + " infografiği", " data-zoom")}<figcaption><b>Şekil ${i + 1}.</b> ${esc(ch.title)}. Bu bölümün ${ch.lectures.length} ${noun(c, ch.lectures.length)}ından NotebookLM ile üretildi.</figcaption></figure>` : ""}
+          ${ch.image ? `<figure class="plate">${imgTag(ch.image, ch.title + " infografiği", " data-zoom")}<figcaption><b>Şekil ${i + 1}.</b> ${esc(ch.title)}. Bu bölümün ${ch.lectures.length} ${nounForm(c, "abl", ch.lectures.length)} NotebookLM ile üretildi.</figcaption></figure>` : ""}
           ${aofFiguresHtml(ch, i + 1, "plate")}
           ${bookUnitFiguresHtml(c, i + 1, "plate")}
         </div>
       </li>`).join("");
     const credit = c.playlist
       ? `<p class="muted" style="font-size:.82rem;margin:.9rem 0 0">${c.kind === "sources" ? "Kaynaklar" : "Dersler"}: <a href="${esc(c.playlist)}" target="_blank" rel="noopener">özgün kaynak</a>.${byline(c) ? ` Tüm hakları ${esc(byline(c))}ye aittir.` : " Tüm hakları özgün sahiplerine aittir."}</p>`
-      : `<p class="muted" style="font-size:.82rem;margin:.9rem 0 0">Bu ${noun(c, 2)}lerin tüm hakları özgün sahiplerine aittir.</p>`;
+      : `<p class="muted" style="font-size:.82rem;margin:.9rem 0 0">Bu ${nounForm(c, "plGen", 2)} tüm hakları özgün sahiplerine aittir.</p>`;
     return `<p class="crumbs"><a href="#/">Katalog</a> / ${esc(c.subject)}</p>
       <section class="course-head">
         <div>
@@ -606,7 +618,7 @@
       <h1>${esc(ch.title)}</h1>
       <p class="lead muted" style="font:1.15rem/1.6 var(--serif)">${esc(ch.summary)}</p>
       ${audioOf(c, n) ? `<div class="btn-row" data-noprint><button class="btn ghost" type="button" data-ap-jump>Sesli dersi dinle (${Math.max(1, Math.round(audioOf(c, n).dur / 60))} dk)</button></div>` : ""}
-      ${ch.image ? `<figure class="figure">${imgTag(ch.image, ch.title + " infografiği", " data-zoom")}<figcaption><b>Şekil ${n}.</b> Yalnızca bu bölümün ${noun(c, 2)}lerinden NotebookLM ile üretildi.</figcaption></figure>` : ""}
+      ${ch.image ? `<figure class="figure">${imgTag(ch.image, ch.title + " infografiği", " data-zoom")}<figcaption><b>Şekil ${n}.</b> Yalnızca bu bölümün ${nounForm(c, "plAbl", 2)} NotebookLM ile üretildi.</figcaption></figure>` : ""}
       ${aofFiguresHtml(ch, n, "figure")}
       ${bookUnitFiguresHtml(c, n, "figure")}
       ${chVids.length ? `<h2 id="videolar">Bu bölümün videoları</h2>${videoPlayerHtml(c, chVids, { chapter: n })}${allVids.length > chVids.length ? `<p class="muted small" data-noprint><a href="#/course/${c.slug}/videolar">Dersin tüm videoları (${allVids.length})</a></p>` : ""}` : ""}
@@ -620,7 +632,7 @@
             <h3>Öğrenme amaçları</h3>
             <ul class="objectives">${ch.objectives.map((o) => `<li>${esc(o)}</li>`).join("")}</ul>
           </div>
-          <h3 style="margin-top:1.8rem">Bu bölümdeki ${noun(c, 2)}ler</h3>
+          <h3 style="margin-top:1.8rem">Bu bölümdeki ${nounForm(c, "pl", 2)}</h3>
           <ul class="lectures">${lectures}</ul>
           ${nb ? `<div class="btn-row">${nb}</div>` : ""}
         </aside>
@@ -853,7 +865,7 @@
     return `<p class="crumbs">${o.crumbs || `<a href="#/">Katalog</a> / <a href="#/course/${c.slug}">${esc(c.subject)}</a> / Sınav`}</p>
       <div class="quiz-head">
         <div><p class="eyebrow">${esc(eyebrow)}</p><h1 style="margin:0">${esc(o.heading || c.course)}</h1></div>
-        <div class="muted" style="font-size:.9rem">${graded} puanlı soru · geçme ${pct(CONFIG.passMark)}${r ? ` · en iyi ${pct(r.best)}` : ""}</div>
+        <div class="muted" style="font-size:.9rem">${graded} puanlık soru · geçme ${pct(CONFIG.passMark)}${r ? ` · en iyi ${pct(r.best)}` : ""}</div>
       </div>
       <p class="muted">${o.lead || "Sorular sırayla gelir. Her doğru <strong>+10</strong>; seri katlayarak bonus verir. Yanlış seriyi sıfırlar."}</p>
       <div id="game-root" data-course="${esc(c.slug)}">

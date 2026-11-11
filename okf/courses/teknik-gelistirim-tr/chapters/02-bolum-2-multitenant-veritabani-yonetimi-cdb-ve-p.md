@@ -5,13 +5,17 @@ description: Öğrenci, Oracle Database 19c Multitenant mimarisinde CDB\(ROOT, P
 course: teknik-gelistirim-tr
 chapter: 2
 status: stable
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-11-11T07:22:53Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-11-11T19:31:19Z }
 notebook: "https://notebooklm.google.com/notebook/d9fbd16b-86fb-45ab-af81-dc503b2c5aad"
 ---
 
 # Özet
 
 Öğrenci, Oracle Database 19c Multitenant mimarisinde CDB\(ROOT, PDB\)SEED ve kullanıcı Pluggable Database (PDB) yapılarını yönetmeyi öğrenir. Farklı IFS ortamları (PROD, TEST, DEV) arasında veritabanı seviyesinde izolasyon sağlama, PDB kaynak yöneticisi profillerini yapılandırma ve PDB yaşam döngüsü operasyonları kapsanmaktadır. PDB klonlama, takma/çıkarma ve PDB seviyesinde SGA/PGA kaynak sınırlandırmaları detaylandırılır.
+
+# Sesli Ders
+
+[Bölüm 2 sesli özeti](/audio/teknik-gelistirim-tr/chapter-2.mp3) (5:55 dk, MP3)
 
 # Öğrenme Hedefleri
 
@@ -75,5 +79,4 @@ Bu bölümün içinde yaşadığı ders paneli: [Teknik Gelişim (Türkçe) pane
 * NotebookLM kaynağı `14af7919-6307-4898-8b35-3cdf88367336`
 * NotebookLM kaynağı `dbe6ef64-6bf2-4686-a45f-7046ef47a754`
 * NotebookLM kaynağı `64e17649-95cc-4200-ae0b-f756d52ffbb1`
-* NotebookLM kaynağı `54fe9696-9a03-4ed9-8525-b0b6a68930fc`
 * NotebookLM kaynağı `aaaf38c9-d233-4e21-871e-e5375b696663`

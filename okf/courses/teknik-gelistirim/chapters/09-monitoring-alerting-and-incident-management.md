@@ -5,7 +5,7 @@ description: In this chapter, the student learns how to establish and maintain c
 course: teknik-gelistirim
 chapter: 9
 status: stable
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-11-11T05:06:34Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-11-11T19:31:19Z }
 notebook: "https://notebooklm.google.com/notebook/d9fbd16b-86fb-45ab-af81-dc503b2c5aad"
 ---
 
@@ -108,7 +108,3 @@ Based on the provided sources, here is what the student learns for each specifie
 * NotebookLM kaynağı `aacb746e-7471-4005-8c02-71ce163a18de`
 * NotebookLM kaynağı `f317d051-6a57-41ae-8473-e98554c786af`
 * NotebookLM kaynağı `1d057a25-8c1e-415f-925b-d4d6a46bfebc`
-* NotebookLM kaynağı `54fe9696-9a03-4ed9-8525-b0b6a68930fc`
-* NotebookLM kaynağı `fb3e40f1-7f6c-4f7d-b4a6-5fd27b7e8cbd`
-* NotebookLM kaynağı `3478a28d-34c2-4b40-b268-a32e9d1fa4c5`
-* NotebookLM kaynağı `3c509258-844c-4657-9b03-94c3e07e130a`
