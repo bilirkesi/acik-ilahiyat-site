@@ -27,6 +27,7 @@
 
 ## Verification
 - `py -3 -m unittest discover -s tests` — 117 tests, must exit 0. Run after any change to `data/`, `coursegraph/`, or the export scripts.
+- CI runs the same command on every push to `main` and on every pull request (`.github/workflows/tests.yml`).
 
 ## Child DOX Index
 - None. Flat set of test modules.

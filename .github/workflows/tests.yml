@@ -1,0 +1,35 @@
+# Runs the stdlib unittest suite on every push to main and on every pull request.
+# The suite is stdlib-only (no requirements file), so there is nothing to install;
+# the deploy workflow (.github/workflows/static.yml) only publishes site/.
+name: Tests
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+# A newer push or PR update makes the older run pointless; unlike the Pages deploy,
+# nothing here publishes, so cancelling in-flight runs is safe.
+concurrency:
+  group: tests-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  unittest:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - name: Run the unittest suite
+        # Discovered from the repository root: the tests import coursegraph/ and
+        # generator/scripts/ by path, so they need that working directory.
+        run: python -m unittest discover -s tests
