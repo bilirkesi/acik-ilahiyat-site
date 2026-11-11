@@ -46,6 +46,8 @@ def clean(text):
     # bas harfinden once gelmez (buyuk harf veya alt cizgi).
     text = re.sub(r"(?<=[A-Z_])\\\((?=[A-Za-z_])", "$", text)
     text = re.sub(r"(?<=[A-Z_])\\\)(?=[A-Za-z_])", "$", text)
+    # "$" isareti kacisli kalmissa ("CDB\\$ROOT") kacis kaldirilir: KaTeX onu ayrac sanir.
+    text = re.sub(r"\\(?=\$)", "", text)
     lines = text.strip().split("\n")
     if lines and lines[0].rstrip().endswith(":") and re.match(r"(Here is|Here are|Based on)", lines[0]):
         lines = lines[1:]

@@ -34,17 +34,26 @@ PROMPT = ("Türkçe konuş. Dinleyiciler Anadolu Üniversitesi Açıköğretim �
           "sınava hazırlanıyorlar. Yalnızca bu bölümün konusunu anlat: \"{title}\". Temel kavramları, kişi, eser ve "
           "mezhep/kurum adlarını, tarihleri ve sınavda sorulabilecek ayrımları açık ve doğru biçimde vurgula; "
           "kaynaklarda olmayan bilgi ekleme.")
+# Dersin kendi kitlesi olan Turkce dersler icin (AÖF dili degil, kendi alani): teknik terimler ve
+# surumler onemli.
+PROMPT_TR = ("Türkçe konuş. Dinleyiciler {audience}. Yalnızca bu bölümün konusunu anlat: \"{title}\". "
+             "Temel kavramları, ürün adlarını, sürümleri ve sınavda sorulabilecek ayrımları açık ve doğru "
+             "biçimde vurgula; kaynaklarda olmayan bilgi ekleme.")
 PROMPT_EN = ("Speak {language}. The listeners are {audience}. Explain only this chapter's topic: \"{title}\". "
              "Make the key concepts, names, product versions and distinctions explicit and correct; "
              "do not add information that is not in the sources.")
 
 
-def audio_prompt(uni, title):
+def audio_prompt(uni, title, default_audience=None):
     """The prompt follows the course's own language and audience (courses.json -> config)."""
     lang = uni.get("language") or "Turkish"
+    audience = uni.get("audience") or "öğrenciler"
     if _is_turkish(lang):
-        return PROMPT.format(title=title)
-    return PROMPT_EN.format(language=lang, audience=uni.get("audience") or "the students", title=title)
+        # AÖF dersleri universite kitlesini kullanir; kendi kitlesi olan dersler kendi istemini alir.
+        if default_audience and audience == default_audience:
+            return PROMPT.format(title=title)
+        return PROMPT_TR.format(audience=audience, title=title)
+    return PROMPT_EN.format(language=lang, audience=audience, title=title)
 
 
 def _is_turkish(lang):
@@ -64,9 +73,9 @@ def tool(name, override):
     return exe
 
 
-def generate(nb, chapter, out_raw, args, sources, uni):
+def generate(nb, chapter, out_raw, args, sources, uni, default_audience=None):
     """Ask NotebookLM for the chapter's audio overview and download it to out_raw."""
-    prompt = audio_prompt(uni, chapter["title"]) + " " + grounding_rules(uni)
+    prompt = audio_prompt(uni, chapter["title"], default_audience) + " " + grounding_rules(uni)
     cmd = [*args.nlm, "generate", "audio", prompt.strip(), "-n", nb,
            "--format", args.format, "--length", args.length, "--language", args.language, "--wait", "--retry", "2", "--json"]
     tiers = (uni.get("grounding") or {}).get("tiers") or []
@@ -128,6 +137,7 @@ def main():
     manifest = json.loads((d / "manifest.json").read_text(encoding="utf-8-sig"))
     plan = json.loads((d / "study_plan.json").read_text(encoding="utf-8-sig"))
     uni = load_university(ROOT, args.slug)
+    default_audience = load_university(ROOT).get("audience")
     args.language = args.language or language_code(uni)
     state = d / "state.json"
     sources = list(json.loads(state.read_text(encoding="utf-8-sig")).get("sources", {}).values()) if state.exists() else []
@@ -144,7 +154,7 @@ def main():
             print(f"chapter {n}: exists, skipped")
             continue
         if not args.transcode_only:
-            generate(manifest["notebook_id"], ch, raw, args, sources, uni)
+            generate(manifest["notebook_id"], ch, raw, args, sources, uni, default_audience)
         if not raw.exists():
             print(f"chapter {n}: no downloaded file at {raw}", file=sys.stderr)
             continue

@@ -1,0 +1,331 @@
+{
+  "unit": 4,
+  "unitTitle": "Bölüm 4: Depolama Mimarisi, ASM ve Kapasite Yönetimi",
+  "title": "Oracle ASM Bilgi Testi",
+  "questions": [
+    {
+      "question": "Oracle ASM mimarisinde coarse-grained striping (kaba taneli şeritlenme) stratejisinin hedeflendiği veri varlıkları aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Online Redo Log (ORL), Control File ve Flashback Log",
+          "isCorrect": false,
+          "rationale": "Bu dosyalar sık ve düşük gecikmeli yazma operasyonları gerektirdiğinden fine-grained striping ile yapılandırılır."
+        },
+        {
+          "text": "Veritabanı veri dosyaları, indeks tablo alanları, geçici dosyalar ve RMAN yedek setleri",
+          "isCorrect": true,
+          "rationale": "Coarse-grained striping, büyük ve sıralı I/O işlemlerinde bitişik veri bloklarını okuyup yazarak sıralı bant genişliğini maksimuma çıkarmak için tasarlanmıştır."
+        },
+        {
+          "text": "Yalnızca multiplexed online redo log kopyaları",
+          "isCorrect": false,
+          "rationale": "Redo log kopyaları düşük gecikmeli yazma performansına ihtiyaç duyduğu için kaba taneli şeritlenme kullanılmaz."
+        },
+        {
+          "text": "Sadece işletim sistemi swap alanları ve audit izleme dosyaları",
+          "isCorrect": false,
+          "rationale": "ASM disk grupları işletim sistemi seviyesindeki takas dosyalarını değil, veritabanı depolama varlıklarını yönetir."
+        }
+      ],
+      "hint": "Büyük ve sıralı I/O erişim modeline sahip depolama bileşenlerini düşünün.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Fine-grained striping (ince taneli şeritlenme) uygulamasında Allocation Unit (AU) verileri kaç KB'lık şerit setlerine bölünerek disklere dağıtılır?",
+      "answerOptions": [
+        {
+          "text": "64 KB",
+          "isCorrect": false,
+          "rationale": "Fine-grained striping için kullanılan alt bölüm boyutu 64 KB değildir."
+        },
+        {
+          "text": "128 KB",
+          "isCorrect": true,
+          "rationale": "Fine-grained striping, Allocation Unit yapılarını 128 KB boyutundaki şerit setlerine bölerek hızlı ve eş zamanlı yazma gecikmesini en aza indirir."
+        },
+        {
+          "text": "512 KB",
+          "isCorrect": false,
+          "rationale": "128 KB üzeri boyutlar fine-grained alt bölümleme için standart olarak tanımlanmamıştır."
+        },
+        {
+          "text": "1 MB",
+          "isCorrect": false,
+          "rationale": "1 MB ve üzerindeki boyutlar Coarse-grained striping seviyesinde tam Allocation Unit kullanımı için geçerlidir."
+        }
+      ],
+      "hint": "Düşük gecikmeli, küçük boyutlu yazma operasyonları için kullanılan standart alt bölüm boyutunu hatırlayın.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Mission-critical IFS kurulumlarında maksimum kullanılabilirlik sağlamak için önerilen High Redundancy (Yüksek Yedeklilik) modeli kaç yönlü aynalama yapar ve en az kaç Failure Group gerektirir?",
+      "answerOptions": [
+        {
+          "text": "2 yönlü aynalama, en az 2 Failure Group",
+          "isCorrect": false,
+          "rationale": "İki yönlü aynalama ve en az iki Failure Group gereksinimi Normal Redundancy modeline aittir."
+        },
+        {
+          "text": "3 yönlü aynalama, en az 3 Failure Group",
+          "isCorrect": true,
+          "rationale": "High Redundancy modeli verileri 3 yönlü (3-way) aynalar ve tekil disk veya dizi arızalarına karşı en az üç farklı Failure Group bulunmasını zorunlu kılar."
+        },
+        {
+          "text": "4 yönlü aynalama, en az 4 Failure Group",
+          "isCorrect": false,
+          "rationale": "ASM varsayılan yüksek yedeklilik mimarisinde 4 yönlü aynalama seçeneği yer almamaktadır."
+        },
+        {
+          "text": "Aynalama yapılmaz, en az 1 Failure Group",
+          "isCorrect": false,
+          "rationale": "Aynalamanın yapılmadığı durum External Redundancy modelini tanımlar."
+        }
+      ],
+      "hint": "En yüksek veri güvenliği sağlayan üçlü koruma yapısını göz önüne alın.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "ASM mimarisinde DATA disk grubunun üstlendiği temel rol aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Sadece arşiv logları ve RMAN yedek setlerini depolayan ikincil alandır.",
+          "isCorrect": false,
+          "rationale": "Arşiv logları ve RMAN yedekleri DATA grubunda değil, RECO disk grubunda izole edilir."
+        },
+        {
+          "text": "Aktif veri dosyalarını, indeks tablo alanlarını, SYSTEM/SYSAUX alanlarını, geçici dosyaları ve online redo log gruplarını barındıran birincil operasyonel alandır.",
+          "isCorrect": true,
+          "rationale": "DATA disk grubu canlı IFS işlemlerini desteklemek amacıyla yüksek okuma/yazma IOPS performansı sunan ana operasyonel depolama havuzudur."
+        },
+        {
+          "text": "Sadece Flashback logları ve kontrol dosyası kopyalarını saklayan felaket kurtarma havuzudur.",
+          "isCorrect": false,
+          "rationale": "Flashback logları kurtarma odaklı yapılar olup RECO disk grubunda konumlandırılır."
+        },
+        {
+          "text": "Yalnızca Oracle Enterprise Manager (OEM) log verilerini tutan geçici alandır.",
+          "isCorrect": false,
+          "rationale": "DATA disk grubu OEM sistem logları için değil, veritabanının canlı operasyonel verileri için kullanılır."
+        }
+      ],
+      "hint": "Canlı veritabanı işlemlerinin gereksinim duyduğu birincil depolama bileşenlerini düşünün.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "RECO (veya FRA) disk grubunun veri mimarisindeki temel amacı aşağıdakilerden hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Canlı veritabanı tablolarının okuma performansını artırmak için önbellekleme yapmak",
+          "isCorrect": false,
+          "rationale": "RECO disk grubu aktif veri tablolarının performansını artırmak için önbellek olarak kullanılmaz."
+        },
+        {
+          "text": "Kurtarma trafiğini izole ederek yedekleme ve arşivleme operasyonlarının ana veri I/O bant genişliğiyle yarışmasını önlemek",
+          "isCorrect": true,
+          "rationale": "RECO; arşiv logları, RMAN yedekleri, Flashback logları ve multiplexed redo log kopyalarını ayrı tutarak ana transactional disk performansını korur."
+        },
+        {
+          "text": "Geçici (TEMP) veritabanı tablolarını ana veriden ayırarak disk şişmesini engellemek",
+          "isCorrect": false,
+          "rationale": "Geçici dosyalar kurtarma depolama alanında değil, DATA disk grubunda barındırılır."
+        },
+        {
+          "text": "ASM failure group yapılandırmasını tamamen devre dışı bırakmak",
+          "isCorrect": false,
+          "rationale": "RECO disk grubu da verilerini korumak için ASM redundancy ve failure group kurallarına tabidir."
+        }
+      ],
+      "hint": "Yedekleme ve kurtarma operasyonlarının birincil veri trafiğinden ayrılması gerekçesini hatırlayın.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Oracle Enterprise Manager (OEM) ortamında depolama kapasitesi yönetimi için tanımlanan Uyarı (Warning) ve Kritik (Critical) varsayılan eşik değerleri yüzde kaçtır?",
+      "answerOptions": [
+        {
+          "text": "%75 Uyarı / %85 Kritik",
+          "isCorrect": false,
+          "rationale": "Sistem genelinde tanımlanan standart eşik başlangıcı %75 değildir."
+        },
+        {
+          "text": "%85 Uyarı / %95 Kritik",
+          "isCorrect": true,
+          "rationale": "OEM mimarisinde %85 doluluk inceleme/planlama gerektiren Uyarı seviyesini, %95 doluluk ise acil müdahale gerektiren Kritik seviyeyi temsil eder."
+        },
+        {
+          "text": "%80 Uyarı / %90 Kritik",
+          "isCorrect": false,
+          "rationale": "%80 ve %90 değerleri standart OEM baseline eşik tanımlamalarıyla uyuşmamaktadır."
+        },
+        {
+          "text": "%90 Uyarı / %99 Kritik",
+          "isCorrect": false,
+          "rationale": "%99 kritik seviye, olası veritabanı durmalarını engellemek açısından müdahale için çok geç bir eşiktir."
+        }
+      ],
+      "hint": "Erken müdahale imkanı tanıyan ilk uyarı yüzdesini ve acil müdahale gerektiren son sınır değerini hatırlayın.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Veritabanı yöneticileri bir ASM örneğinde (`+ASM`) veri dosyalarının fine-grained veya coarse-grained şeritlenme durumunu denetlemek için hangi veri sözlüğü görünümlerini sorgular?",
+      "answerOptions": [
+        {
+          "text": "V$ASM_FILE ve V$ASM_ALIAS",
+          "isCorrect": true,
+          "rationale": "ASM örneğine bağlı DBAs, dosya düzeyinde şeritlenme niteliklerini ve alias yapılarını doğrulamak için V$ASM_FILE ve V$ASM_ALIAS görünümlerini kullanır."
+        },
+        {
+          "text": "DBA_TABLESPACES ve DBA_DATA_FILES",
+          "isCorrect": false,
+          "rationale": "Bu görünümler veritabanı örneği (RDBMS) içerisindeki mantıksal yapıları gösterir, ASM örneği seviyesindeki şeritlenme detaylarını sunmaz."
+        },
+        {
+          "text": "V$SESSION ve V$PROCESS",
+          "isCorrect": false,
+          "rationale": "Bu görünümler veritabanı oturumlarını ve arka plan süreçlerini izlemek içindir."
+        },
+        {
+          "text": "V$INSTANCE ve V$DATABASE",
+          "isCorrect": false,
+          "rationale": "Bu görünümler veritabanı ve örnek durum bilgilerini sağlar, ASM dosya şeritlenme özelliklerini listelemez."
+        }
+      ],
+      "hint": "Doğrudan ASM instance üzerinde yer alan ve dosya ile takma ad bilgilerini saklayan dynamic performance görünümlerini düşünün.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Tablespace alan eşik uyarıları ile ASM Disk Group alan eşik uyarıları arasındaki temel izleme odağı farkı nedir?",
+      "answerOptions": [
+        {
+          "text": "Tablespace eşikleri physical diskleri izlerken, ASM Disk Group eşikleri mantıksal tabloları izler.",
+          "isCorrect": false,
+          "rationale": "Tablespace mantıksal seviyeyi, ASM Disk Group ise fiziksel depolama seviyesini izler; roller ters ifade edilmiştir."
+        },
+        {
+          "text": "Tablespace eşikleri veri dosyaları ve CDB/PDB içindeki mantıksal alan kullanımını; ASM Disk Group eşikleri ise DATA ve RECO gibi havuzlardaki fiziksel boş alanı izler.",
+          "isCorrect": true,
+          "rationale": "Tablespace uyarıları mantıksal veri alanı doluluğunu kontrol ederken, ASM uyarıları fiziksel disklerin ve failure group'ların toplam kapasitesini izler."
+        },
+        {
+          "text": "Tablespace eşikleri yalnızca RMAN yedeklerini; ASM Disk Group eşikleri ise sadece online redo logları denetler.",
+          "isCorrect": false,
+          "rationale": "Eşikler belirli dosya türleriyle sınırlı olmayıp genel alan doluluğunu izler."
+        },
+        {
+          "text": "Tablespace eşikleri yalnızca geçici (TEMP) alanları izler, diğer yapılar ASM Disk Group tarafından yönetilir.",
+          "isCorrect": false,
+          "rationale": "Tablespace eşikleri kalıcı ve geçici tüm mantıksal tablo alanlarını kapsar."
+        }
+      ],
+      "hint": "Mantıksal veritabanı nesne sınırları ile fiziksel depolama havuzları arasındaki ayrımı düşünün.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "`DBMS_SERVER_ALERT.SET_THRESHOLD` prosedürü kullanılarak bir tablo alanı için alan kullanım eşikleri ayarlanırken `metric_id` parametresine hangi değer atanmalıdır?",
+      "answerOptions": [
+        {
+          "text": "DBMS_SERVER_ALERT.ASM_DISKGROUP_FREE_SPACE",
+          "isCorrect": false,
+          "rationale": "Bu değer ASM disk grubu düzeyindeki boş alan ölçümleri için geçerlidir."
+        },
+        {
+          "text": "DBMS_SERVER_ALERT.TABLESPACE_SPACE_USAGE",
+          "isCorrect": true,
+          "rationale": "Tablo alanı seviyesindeki mantıksal alan kullanım oranını programatik olarak yapılandırmak için bu metrik sabiti kullanılır."
+        },
+        {
+          "text": "DBMS_SERVER_ALERT.DATABASE_RECOVERY_USAGE",
+          "isCorrect": false,
+          "rationale": "Kurtarma alanı kullanımı için bu isimde bir tablespace metriği kullanılmaz."
+        },
+        {
+          "text": "DBMS_SERVER_ALERT.DATAFILE_WRITE_TIME",
+          "isCorrect": false,
+          "rationale": "Bu metrik alan doluluğunu değil, yazma süresi performansını temsil eder."
+        }
+      ],
+      "hint": "Tablo alanı düzeyindeki mantıksal alan kullanımını ifade eden metrik adını hatırlayın.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Bir ASM örneğinde (`+ASM`) `DATA` ve `RECO` disk gruplarının toplam kapasitesini, boş alanını ve yüzde kullanım oranını hesaplamak için hangi dinamik performans görünümü sorgulanmalıdır?",
+      "answerOptions": [
+        {
+          "text": "V$ASM_FILE",
+          "isCorrect": false,
+          "rationale": "V$ASM_FILE görünümü grup bazlı toplam kapasiteyi değil, bireysel dosya niteliklerini gösterir."
+        },
+        {
+          "text": "V$ASM_DISKGROUP",
+          "isCorrect": true,
+          "rationale": "V$ASM_DISKGROUP görünümü; total_mb, free_mb ve disk grubu adı gibi temel kapasite metriklerini sorgulamak için kullanılır."
+        },
+        {
+          "text": "DBA_THRESHOLDS",
+          "isCorrect": false,
+          "rationale": "DBA_THRESHOLDS görünümü disk kapasitelerini değil, tanımlanmış olan alarm eşik değerlerini saklar."
+        },
+        {
+          "text": "V$ASM_TEMPLATE",
+          "isCorrect": false,
+          "rationale": "V$ASM_TEMPLATE görünümü alan kullanımını değil, disk grubunda tanımlı şablon ayarlarını listeler."
+        }
+      ],
+      "hint": "Disk gruplarının genel boyut ve boş alan metriklerini tutan ASM görünümünü düşünün.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "ASM External Redundancy (Dış Yedeklilik) modeli seçildiğinde veri koruması nasıl sağlanır?",
+      "answerOptions": [
+        {
+          "text": "ASM seviyesinde 2 yönlü otomatik aynalama yapılarak",
+          "isCorrect": false,
+          "rationale": "2 yönlü aynalama Normal Redundancy seviyesinde gerçekleşir."
+        },
+        {
+          "text": "ASM seviyesinde 3 yönlü otomatik aynalama yapılarak",
+          "isCorrect": false,
+          "rationale": "3 yönlü aynalama High Redundancy seviyesinde gerçekleşir."
+        },
+        {
+          "text": "ASM içinde hiçbir aynalama yapılmayıp, veri koruması tamamen altta yatan kurumsal SAN donanımına veya RAID denetleyicilerine (ör. RAID 10) devredilerek",
+          "isCorrect": true,
+          "rationale": "External Redundancy modelinde ASM yazılımsal aynalama yapmaz, veri güvenliğini donanım katmanındaki RAID/SAN yapılandırmasına bırakır."
+        },
+        {
+          "text": "Veriler sadece RMAN ile yedeklenerek, disk seviyesinde koruma tamamen devreden çıkarılarak",
+          "isCorrect": false,
+          "rationale": "External Redundancy donanım düzeyinde korumanın (RAID/SAN) var olduğunu varsayar."
+        }
+      ],
+      "hint": "Aynalamanın ASM yazılımı yerine dış donanım denetleyicilerine bırakıldığı modeli düşünün.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Yeni oluşturulacak online redo log dosyalarının otomatik olarak fine-grained striping ve high redundancy özelliklerini almasını zorunlu kılmak için veritabanı yöneticisi hangi ASM yapısını değiştirmelidir?",
+      "answerOptions": [
+        {
+          "text": "Disk Grubu Şablonları (Disk Group Templates)",
+          "isCorrect": true,
+          "rationale": "DBA'ler disk grubu şablonlarını (templates) alter ederek yeni oluşturulacak online redo log'ların otomatik olarak fine-grained ve high redundancy nitelikleriyle yaratılmasını sağlar."
+        },
+        {
+          "text": "V$ASM_ALIAS Görünümü",
+          "isCorrect": false,
+          "rationale": "Dinamik performans görünümleri sorgulama amaçlıdır, konfigürasyon kuralı koymak için değiştirilemezler."
+        },
+        {
+          "text": "DBMS_SERVER_ALERT Paketi",
+          "isCorrect": false,
+          "rationale": "DBMS_SERVER_ALERT paketi alan uyarısı eşiklerini yönetmek içindir, dosya şeritlenme niteliklerini belirlemez."
+        },
+        {
+          "text": "Coarse-Grained AU Boyutu Parametresi",
+          "isCorrect": false,
+          "rationale": "AU boyutunun değiştirilmesi fine-grained şablon atama kurallarının yerini almaz."
+        }
+      ],
+      "hint": "Yeni oluşturulan ASM dosyalarına varsayılan nitelikler atayan kural kümesini hatırlayın.",
+      "type": "multiple_choice"
+    }
+  ]
+}

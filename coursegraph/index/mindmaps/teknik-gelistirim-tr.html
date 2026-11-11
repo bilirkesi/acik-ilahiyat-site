@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8"/>
+<title>teknik-gelistirim-tr zihin haritası</title>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<script src="https://unpkg.com/cytoscape@3.30.2/dist/cytoscape.min.js"></script>
+<style>
+  body { margin:0; font-family: system-ui, sans-serif; background:#f8f4ea; color:#1b2a4a; }
+  header { padding:12px 16px; background:#1b2a4a; color:#f8f4ea; display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
+  header select { font-size:14px; padding:4px 8px; }
+  #cy { width:100vw; height:calc(100vh - 52px); }
+  #detail { position:fixed; right:12px; bottom:12px; max-width:360px; background:#fff; border:1px solid #b08d4a; border-radius:8px; padding:12px; display:none; box-shadow:0 4px 16px rgba(0,0,0,.12); }
+  #detail h3 { margin:0 0 6px; font-size:14px; color:#b08d4a; }
+  #detail p { margin:0; font-size:13px; line-height:1.4; }
+</style>
+</head>
+<body>
+<header>
+  <strong>teknik-gelistirim-tr</strong>
+  <select id="mapSel"></select>
+  <span id="meta" style="opacity:.8;font-size:12px"></span>
+</header>
+<div id="cy"></div>
+<div id="detail"><h3 id="dTitle"></h3><p id="dBody"></p></div>
+<script>
+const DATA = {"course": "teknik-gelistirim-tr", "mindmaps": [{"id": "graph-derived", "title": "teknik-gelistirim-tr kavram ağacı (graf)", "source": "coursegraph", "nodes": [{"id": "mm:teknik-gelistirim-tr:graph-derived:0:1:teknik gelisim (turkce)", "label": "Teknik Gelişim (Türkçe)", "desc": "", "depth": 0, "mindmap": "graph-derived", "course": "teknik-gelistirim-tr"}, {"id": "mm:teknik-gelistirim-tr:graph-derived:1:1:bolum 1: program oryantasyonu ve", "label": "Bölüm 1: Program Oryantasyonu ve IFS Cloud Oracle Altyapı Mimarisi", "desc": "", "depth": 1, "mindmap": "graph-derived", "course": "teknik-gelistirim-tr", "chapter": 1, "href": "#/course/teknik-gelistirim-tr/chapter/1"}, {"id": "mm:teknik-gelistirim-tr:graph-derived:1:2:bolum 2: multitenant veritabani ", "label": "Bölüm 2: Multitenant Veritabanı Yönetimi: CDB ve PDB İzolasyonu", "desc": "", "depth": 1, "mindmap": "graph-derived", "course": "teknik-gelistirim-tr", "chapter": 2, "href": "#/course/teknik-gelistirim-tr/chapter/2"}, {"id": "mm:teknik-gelistirim-tr:graph-derived:1:3:bolum 3: surum yasam dongusu, ya", "label": "Bölüm 3: Sürüm Yaşam Döngüsü, Yama Yönetimi ve Veritabanı Yükseltme", "desc": "", "depth": 1, "mindmap": "graph-derived", "course": "teknik-gelistirim-tr", "chapter": 3, "href": "#/course/teknik-gelistirim-tr/chapter/3"}, {"id": "mm:teknik-gelistirim-tr:graph-derived:1:4:bolum 4: depolama mimarisi, asm ", "label": "Bölüm 4: Depolama Mimarisi, ASM ve Kapasite Yönetimi", "desc": "", "depth": 1, "mindmap": "graph-derived", "course": "teknik-gelistirim-tr", "chapter": 4, "href": "#/course/teknik-gelistirim-tr/chapter/4"}, {"id": "mm:teknik-gelistirim-tr:graph-derived:1:5:bolum 5: rac ve grid infrastruct", "label": "Bölüm 5: RAC ve Grid Infrastructure Kümeleme Mimarisi", "desc": "", "depth": 1, "mindmap": "graph-derived", "course": "teknik-gelistirim-tr", "chapter": 5, "href": "#/course/teknik-gelistirim-tr/chapter/5"}, {"id": "mm:teknik-gelistirim-tr:graph-derived:1:6:bolum 6: data guard, maa standar", "label": "Bölüm 6: Data Guard, MAA Standartları ve Felaket Kurtarma Operasyonları", "desc": "", "depth": 1, "mindmap": "graph-derived", "course": "teknik-gelistirim-tr", "chapter": 6, "href": "#/course/teknik-gelistirim-tr/chapter/6"}, {"id": "mm:teknik-gelistirim-tr:graph-derived:1:7:bolum 7: uygulama surekliligi ve", "label": "Bölüm 7: Uygulama Sürekliliği ve Dayanıklılık Mimarisi", "desc": "", "depth": 1, "mindmap": "graph-derived", "course": "teknik-gelistirim-tr", "chapter": 7, "href": "#/course/teknik-gelistirim-tr/chapter/7"}, {"id": "mm:teknik-gelistirim-tr:graph-derived:1:8:bolum 8: performans yonetimi, tu", "label": "Bölüm 8: Performans Yönetimi, Tuning ve Teşhis Araçları", "desc": "", "depth": 1, "mindmap": "graph-derived", "course": "teknik-gelistirim-tr", "chapter": 8, "href": "#/course/teknik-gelistirim-tr/chapter/8"}, {"id": "mm:teknik-gelistirim-tr:graph-derived:1:9:bolum 9: izleme, alarm ve olay y", "label": "Bölüm 9: İzleme, Alarm ve Olay Yönetimi Mimarisi", "desc": "", "depth": 1, "mindmap": "graph-derived", "course": "teknik-gelistirim-tr", "chapter": 9, "href": "#/course/teknik-gelistirim-tr/chapter/9"}, {"id": "mm:teknik-gelistirim-tr:graph-derived:1:10:bolum 10: yedekleme, kurtarma ve", "label": "Bölüm 10: Yedekleme, Kurtarma ve Operasyonel Uygulama", "desc": "", "depth": 1, "mindmap": "graph-derived", "course": "teknik-gelistirim-tr", "chapter": 10, "href": "#/course/teknik-gelistirim-tr/chapter/10"}], "edges": [{"source": "mm:teknik-gelistirim-tr:graph-derived:0:1:teknik gelisim (turkce)", "target": "mm:teknik-gelistirim-tr:graph-derived:1:1:bolum 1: program oryantasyonu ve"}, {"source": "mm:teknik-gelistirim-tr:graph-derived:0:1:teknik gelisim (turkce)", "target": "mm:teknik-gelistirim-tr:graph-derived:1:2:bolum 2: multitenant veritabani "}, {"source": "mm:teknik-gelistirim-tr:graph-derived:0:1:teknik gelisim (turkce)", "target": "mm:teknik-gelistirim-tr:graph-derived:1:3:bolum 3: surum yasam dongusu, ya"}, {"source": "mm:teknik-gelistirim-tr:graph-derived:0:1:teknik gelisim (turkce)", "target": "mm:teknik-gelistirim-tr:graph-derived:1:4:bolum 4: depolama mimarisi, asm "}, {"source": "mm:teknik-gelistirim-tr:graph-derived:0:1:teknik gelisim (turkce)", "target": "mm:teknik-gelistirim-tr:graph-derived:1:5:bolum 5: rac ve grid infrastruct"}, {"source": "mm:teknik-gelistirim-tr:graph-derived:0:1:teknik gelisim (turkce)", "target": "mm:teknik-gelistirim-tr:graph-derived:1:6:bolum 6: data guard, maa standar"}, {"source": "mm:teknik-gelistirim-tr:graph-derived:0:1:teknik gelisim (turkce)", "target": "mm:teknik-gelistirim-tr:graph-derived:1:7:bolum 7: uygulama surekliligi ve"}, {"source": "mm:teknik-gelistirim-tr:graph-derived:0:1:teknik gelisim (turkce)", "target": "mm:teknik-gelistirim-tr:graph-derived:1:8:bolum 8: performans yonetimi, tu"}, {"source": "mm:teknik-gelistirim-tr:graph-derived:0:1:teknik gelisim (turkce)", "target": "mm:teknik-gelistirim-tr:graph-derived:1:9:bolum 9: izleme, alarm ve olay y"}, {"source": "mm:teknik-gelistirim-tr:graph-derived:0:1:teknik gelisim (turkce)", "target": "mm:teknik-gelistirim-tr:graph-derived:1:10:bolum 10: yedekleme, kurtarma ve"}]}]};
+const sel = document.getElementById('mapSel');
+DATA.mindmaps.forEach((m, i) => {
+  const o = document.createElement('option');
+  o.value = i; o.textContent = m.title + ' (' + m.nodes.length + ')';
+  sel.appendChild(o);
+});
+let cy;
+function build(idx) {
+  const m = DATA.mindmaps[idx];
+  document.getElementById('meta').textContent = m.source;
+  const nodes = m.nodes.map(n => ({
+    data: { id: n.id, label: n.label, desc: n.desc || '' },
+    classes: 'd' + Math.min(n.depth || 0, 4)
+  }));
+  const edges = m.edges.map((e, i) => ({ data: { id: 'e'+i, source: e.source, target: e.target } }));
+  if (cy) cy.destroy();
+  cy = cytoscape({
+    container: document.getElementById('cy'),
+    elements: nodes.concat(edges),
+    style: [
+      { selector: 'node', style: {
+        'label': 'data(label)', 'text-wrap':'wrap', 'text-max-width':'140px',
+        'font-size':'11px', 'text-valign':'bottom', 'text-margin-y':'6px',
+        'background-color':'#1b2a4a', 'color':'#1b2a4a',
+        'width': 18, 'height': 18, 'shape':'ellipse'
+      } },
+      { selector: 'edge', style: { 'curve-style':'bezier', 'target-arrow-shape':'triangle', 'line-color':'#b08d4a', 'target-arrow-color':'#b08d4a', 'width':1.5 } },
+      { selector: 'node.d0', style: { 'background-color':'#b08d4a', 'width':28, 'height':28, 'font-weight':'bold', 'font-size':'13px' } },
+      { selector: 'node.d2', style: { 'background-color':'#3d5a80' } },
+      { selector: 'node.d3, node.d4', style: { 'background-color':'#6b7c93', 'width':12, 'height':12 } },
+      { selector: '.highlight', style: { 'border-width':3, 'border-color':'#b08d4a' } }
+    ],
+    layout: { name:'cose', animate:false, padding:40 }
+  });
+  cy.on('tap', 'node', evt => {
+    const n = evt.target;
+    document.getElementById('dTitle').textContent = n.data('label');
+    document.getElementById('dBody').textContent = n.data('desc') || '';
+    document.getElementById('detail').style.display = 'block';
+  });
+  cy.on('tap', evt => { if (evt.target === cy) document.getElementById('detail').style.display = 'none'; });
+}
+sel.onchange = () => build(+sel.value);
+build(0);
+</script>
+</body>
+</html>

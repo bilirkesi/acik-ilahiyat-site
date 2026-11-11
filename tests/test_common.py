@@ -16,6 +16,7 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "generator" / "scripts"))
 
 import common  # noqa: E402
+import pipeline  # noqa: E402
 import quiz_types  # noqa: E402
 
 
@@ -211,21 +212,47 @@ class TestExcludedFromGrounding(unittest.TestCase):
         self.assertNotIn("g1", common.with_authority(["n1"], self.SOURCES, self.TIERS))
 
 
+class TestFixJsonEscapes(unittest.TestCase):
+    """Modelin plan JSON'unda yazdigi gecersiz kacislar duzeltilir; gecerli olanlar korunur."""
+
+    def test_an_invalid_dollar_escape_is_dropped(self) -> None:
+        self.assertEqual(pipeline.fix_json_escapes(r"CDB\$ROOT"), "CDB$ROOT")
+
+    def test_a_valid_backslash_escape_survives(self) -> None:
+        self.assertEqual(pipeline.fix_json_escapes(r"CDB\\(ROOT"), r"CDB\\(ROOT")
+
+    def test_ordinary_json_escapes_survive(self) -> None:
+        for s in (r'\"', r"\\", r"\n", r"\t", r"\u00e9"):
+            self.assertEqual(pipeline.fix_json_escapes(s), s)
+
+    def test_the_result_is_valid_json(self) -> None:
+        raw = '{"a": "CDB\\$ROOT ve PDB\\\\)SEED", "b": "satir\\niki"}'
+        data = json.loads(pipeline.fix_json_escapes(raw))
+        self.assertEqual(data["a"], "CDB$ROOT ve PDB\\)SEED")
+        self.assertEqual(data["b"], "satir\niki")
+
+
 class TestTechnicalCourseUnits(unittest.TestCase):
     """coursegraph'teki unite basliklari dersin bolum basliklariyla ayni olmali."""
 
-    def test_unit_titles_match_the_study_plan(self) -> None:
+    def _check(self, slug):
         from coursegraph.past_exams import unit_titles
 
-        plan_path = ROOT / "data" / "teknik-gelistirim" / "study_plan.json"
+        plan_path = ROOT / "data" / slug / "study_plan.json"
         if not plan_path.exists():
-            self.skipTest("teknik-gelistirim study plan yok")
+            self.skipTest(f"{slug} study plan yok")
         plan = json.loads(plan_path.read_text(encoding="utf-8-sig"))
         chapters = plan.get("chapters", [])
-        titles = unit_titles("teknik-gelistirim")
+        titles = unit_titles(slug)
         self.assertEqual(len(titles), len(chapters), "bolum sayisi ile unite sayisi farkli")
         for i, ch in enumerate(chapters, 1):
-            self.assertEqual(titles[i], ch["title"], f"{i}. bolum basligi degismis")
+            self.assertEqual(titles[i], ch["title"], f"{slug} {i}. bolum basligi degismis")
+
+    def test_unit_titles_match_the_study_plan(self) -> None:
+        self._check("teknik-gelistirim")
+
+    def test_turkish_unit_titles_match_the_study_plan(self) -> None:
+        self._check("teknik-gelistirim-tr")
 
 
 if __name__ == "__main__":

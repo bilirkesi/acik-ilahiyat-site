@@ -1,0 +1,331 @@
+{
+  "unit": 6,
+  "unitTitle": "Bölüm 6: Data Guard, MAA Standartları ve Felaket Kurtarma Operasyonları",
+  "title": "Oracle MAA Quiz",
+  "questions": [
+    {
+      "question": "Oracle MAA mimarisinde enterprise ERP sistemleri (Oracle EBS, SAP) için zorunlu kılınan, yerel RAC aktif-aktif kümelenmesi ile remote site Active Data Guard (ADG) felaket kurtarma yapısını birleştiren katman hangisidir?",
+      "answerOptions": [
+        {
+          "text": "Gold Tier",
+          "isCorrect": true,
+          "rationale": "Gold MAA Tier, misyon kritik ERP sistemleri için zorunlu mimari olup sıfır veri kaybı ($\\text{RPO} = 0$) ve 1 dakikadan az kurtarma süresi ($\\text{RTO} < 1\\text{ dk}$) sunar."
+        },
+        {
+          "text": "Bronze Tier",
+          "isCorrect": false,
+          "rationale": "Bronze Tier yalnızca non-production, geliştirme ve sandbox ortamları için tasarlanmış tek birincil sunuculu yedekleme mimarisidir."
+        },
+        {
+          "text": "Silver Tier",
+          "isCorrect": false,
+          "rationale": "Silver Tier yerel compute düzeyinde yüksek erişilebilirlik sağlasa da uzak site aktif-aktif felaket kurtarma için Gold Tier gereklidir."
+        },
+        {
+          "text": "Platinum Tier",
+          "isCorrect": false,
+          "rationale": "Platinum Tier, Gold katmanının üzerine kesintisiz online bakım için GoldenGate ve EBR ekleyen daha üst seviye bir mimaridir."
+        }
+      ],
+      "hint": "Misyon kritik ERP ortamları için zorunlu kabul edilen ve sıfır veri kaybı hedefleyen mimari katmanı düşünün.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Oracle Data Guard mimarisinde Maximum Availability koruma modunda Standby Redo Log (SRL) grup sayısını hesaplamak için kullanılan formül hangisidir?",
+      "answerOptions": [
+        {
+          "text": "$\\text{Minimum SRL Grubu} = \\text{Thread Başına ORL Grubu} + 1$",
+          "isCorrect": true,
+          "rationale": "Standby Redo Log grup sayısı, rol değişimlerinde kesintisiz redo aktarımı için her thread'deki Online Redo Log grup sayısının en az 1 fazlası olmalıdır."
+        },
+        {
+          "text": "$\\text{Minimum SRL Grubu} = \\text{Thread Başına ORL Grubu} \\times 2$",
+          "isCorrect": false,
+          "rationale": "ORL sayısını ikiyle çarpmak gereksiz disk kaynağı tüketir; resmi MAA standartı $N+1$ kuralına dayanır."
+        },
+        {
+          "text": "$\\text{Minimum SRL Grubu} = \\text{RAC Düğüm Sayısı} + 1$",
+          "isCorrect": false,
+          "rationale": "SRL hesaplamasında düğüm sayısı değil, thread başına düşen ORL grup sayısı esas alınır."
+        },
+        {
+          "text": "$\\text{Minimum SRL Grubu} = \\text{Thread Başına ORL Grubu} - 1$",
+          "isCorrect": false,
+          "rationale": "ORL sayısından 1 eksik SRL tanımlamak redo akışında darboğaza ve duraksamalara yol açar."
+        }
+      ],
+      "hint": "Her bir thread için tanımlı online redo log grup sayısına ilave edilen minimum grup kuralını hatırlayın.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Data Guard Broker yapılandırması sırasında karşılaşılan 'ORA-16698: member has a LOG_ARCHIVE_DEST_n parameter with SERVICE attribute set' hatasını gidermek için hangi işlem yapılmalıdır?",
+      "answerOptions": [
+        {
+          "text": "Manuel olarak ayarlanmış LOG_ARCHIVE_DEST_n (örneğin LOG_ARCHIVE_DEST_2) parametre değerini temizlemek",
+          "isCorrect": true,
+          "rationale": "Manuel arşiv destinasyon parametreleri Broker'ın dinamik taşıma ayarlarıyla çakıştığı için temizlenmesi gereklidir."
+        },
+        {
+          "text": "Primary veritabanını kapatıp STARTUP MOUNT modunda açmak",
+          "isCorrect": false,
+          "rationale": "Veritabanını mount moduna almak ORA-16698 parametre çakışmasını kendiliğinden çözmez."
+        },
+        {
+          "text": "Standby veritabanında FLASHBACK DATABASE özelliğini devre dışı bırakmak",
+          "isCorrect": false,
+          "rationale": "Flashback özelliğinin kapatılması arşiv destinasyon parametre çakışmasıyla ilgili değildir."
+        },
+        {
+          "text": "FastStartFailoverThreshold parametresini 0 saniyeye çekmek",
+          "isCorrect": false,
+          "rationale": "FSFO eşik değerini değiştirmek Broker başlatma sırasındaki taşıma parametresi çakışmasını engellemez."
+        }
+      ],
+      "hint": "Broker dinamik yönetime geçmeden önce çakışan manuel arşiv hedeflerine ne yapılması gerektiğini hatırlayın.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Oracle Data Guard Broker mimarisinde otomatik failover sağlayan Fast-Start Failover (FSFO) bileşeninde FastStartFailoverThreshold parametresinin zaman birimi ve temel işlevi nedir?",
+      "answerOptions": [
+        {
+          "text": "Saniye (second) cinsindendir; Observer sürecinin primary yanıt veremediğinde failover başlatmak için beklediği süredir.",
+          "isCorrect": true,
+          "rationale": "Bu parametre saniye cinsinden olup Observer'ın birincil sunucudaki kesintiyi doğrulayıp otomatik failover'ı tetikleme sınırını belirler."
+        },
+        {
+          "text": "Dakika (minute) cinsindendir; MRP0 sürecinin Standby Redo Log yazma süresini ifade eder.",
+          "isCorrect": false,
+          "rationale": "Parametre dakika değil saniye cinsinden ölçülür ve MRP süreciyle değil Observer süresiyle ilgilidir."
+        },
+        {
+          "text": "Milisaniye (ms) cinsindendir; Cache Fusion üzerindeki blok kilitleme süresini ayarlar.",
+          "isCorrect": false,
+          "rationale": "Milisaniye cinsinden olan parametreler RAC interconnect gecikmeleri ile ilgilidir, FSFO ile ilgili değildir."
+        },
+        {
+          "text": "Saat (hour) cinsindendir; yedekleme penceresi süresini tanımlar.",
+          "isCorrect": false,
+          "rationale": "FSFO acil durum failover mekanizması olup saatlik birikimli süreçleri kapsamaz."
+        }
+      ],
+      "hint": "Observer bağımsız sürecinin kesintiyi algılayıp failover başlatma zaman ölçüsünü düşünün.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Fast-Start Failover (FSFO) mekanizmasında veri bütünlüğünü korumak ve 'split-brain' durumunu engellemek için hangi iki kritik gereksinim birlikte zorunludur?",
+      "answerOptions": [
+        {
+          "text": "Flashback Database zorunluluğu ve bağımsız 3. bir konumdaki Observer sürecinin heartbeat kilidi",
+          "isCorrect": true,
+          "rationale": "FSFO için Flashback Database kesinlikle zorunludur ve split-brain durumunu engellemek için Observer kalb atışı (heartbeat) denetimi yapıp kilitleme uygular."
+        },
+        {
+          "text": "Asenkron redo nakli ve manuel DBA komutu ile rol değişimi onaylama",
+          "isCorrect": false,
+          "rationale": "FSFO otomatik bir süreçtir, manuel onay gerektirmez ve Maximum Availability modunda SYNC nakil kullanır."
+        },
+        {
+          "text": "Primary sunucuda çalışan Observer ve LOG_ARCHIVE_DEST_2 parametresinin silinmesi",
+          "isCorrect": false,
+          "rationale": "Observer kesinlikle birincil veya ikincil veritabanı sunucularından bağımsız 3. bir konumda bulunmalıdır."
+        },
+        {
+          "text": "RMAN seviyesinde BCT dosyasının kapatılması ve RAC düğümlerinin durdurulması",
+          "isCorrect": false,
+          "rationale": "BCT yedekleme optimizasyonu ile ilgilidir; FSFO split-brain engelleme mekanizmasıyla doğrudan bağlantısı yoktur."
+        }
+      ],
+      "hint": "Otomatik failover sonrası eski birincil veritabanını geri döndürme teknolojisini ve 3. konumdaki kontrolcüyü hatırlayın.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Oracle Enterprise Manager (OEM) izleme standartlarına göre Data Guard Apply Lag (Uygulama Gecikmesi) metriği için önerilen Uyarı (Warning) ve Kritik (Critical) eşik değerleri sırasıyla nedir?",
+      "answerOptions": [
+        {
+          "text": "$> 60 \\text{ saniye}$ ve $> 300 \\text{ saniye}$",
+          "isCorrect": true,
+          "rationale": "OEM MAA izleme standartlarında Apply Lag için 60 saniye üzeri uyarı, 300 saniye üzeri ise kritik alarm olarak belirlenmiştir."
+        },
+        {
+          "text": "$> 10 \\text{ saniye}$ ve $> 30 \\text{ saniye}$",
+          "isCorrect": false,
+          "rationale": "10 ve 30 saniye gibi düşük değerler kısa süreli ağ dalgalanmalarında yanlış alarmlara yol açabilir."
+        },
+        {
+          "text": "$> 300 \\text{ saniye}$ ve $> 900 \\text{ saniye}$",
+          "isCorrect": false,
+          "rationale": "300 ve 900 saniye değerleri genel sistem yükü eşikleri olabilir ancak OEM MAA tablosunda standart Apply Lag ikaz sınırları 60s/300s'dir."
+        },
+        {
+          "text": "$> 120 \\text{ saniye}$ ve $> 600 \\text{ saniye}$",
+          "isCorrect": false,
+          "rationale": "Bu değerler standart OEM MAA Data Guard sağlık tablosundaki eşiklerle örtüşmemektedir."
+        }
+      ],
+      "hint": "Standart OEM MAA tablosundaki Apply Lag ikaz ve acil durum uyarı sürelerini düşünün.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Oracle Active Data Guard mimarisinde ikincil veritabanının salt okunur (read-only) açık durumdayken aynı zamanda canlı veri senkronizasyonunu sürdürmesini sağlayan teknik özellik nedir?",
+      "answerOptions": [
+        {
+          "text": "Real-Time Apply (Gerçek Zamanlı Uygulama) ile Standby Redo Log (SRL) kullanımı",
+          "isCorrect": true,
+          "rationale": "Active Data Guard, MRP0 sürecinin aktif SRL'lerden redo değişikliklerini anında uygulaması sayesinde veritabanı açıkken eşzamanlı senkronizasyon sağlar."
+        },
+        {
+          "text": "Saatlik RMAN arşiv log aktarımı",
+          "isCorrect": false,
+          "rationale": "Geleneksel arşiv log aktarımı veritabanı açıkken gerçek zamanlı uygulama sağlayamaz."
+        },
+        {
+          "text": "Edition-Based Redefinition (EBR) şema katmanı",
+          "isCorrect": false,
+          "rationale": "EBR veritabanı içi online uygulama güncellemeleri içindir, fiziksel standby canlı redo uygulamasını yönetmez."
+        },
+        {
+          "text": "Cache Fusion üzerinden LMD bellek eşitlemesi",
+          "isCorrect": false,
+          "rationale": "LMD ve Cache Fusion yerel RAC düğümleri arası bellek transferidir; Data Guard uzak site senkronizasyonunu üstlenmez."
+        }
+      ],
+      "hint": "Arşiv loglarının dolmasını beklemeden gelen veri akışını anında uygulayan mekanizmayı hatırlayın.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Real-Time Redo Apply sürecinde birincil (primary) veritabanındaki LNS sürecinden gelen redo akışını standby tarafında karşılayıp Standby Redo Log (SRL) dosyalarına yazan arka plan süreci hangisidir?",
+      "answerOptions": [
+        {
+          "text": "RFS (Remote File Server)",
+          "isCorrect": true,
+          "rationale": "RFS süreci birincil siteden ağ üzerinden gelen redo kayıtlarını alarak doğrudan Standby Redo Log dosyalarına yazar."
+        },
+        {
+          "text": "MRP0 (Managed Recovery Process)",
+          "isCorrect": false,
+          "rationale": "MRP0 gelen redo verisini yazmaz, SRL dosyalarına yazılmış olan redo verisini veritabanı veri bloklarına uygular."
+        },
+        {
+          "text": "LMS (Global Cache Service)",
+          "isCorrect": false,
+          "rationale": "LMS süreci RAC kümesi içerisinde düğümler arası Cache Fusion blok transferini yönetir."
+        },
+        {
+          "text": "BCT (Block Change Tracking)",
+          "isCorrect": false,
+          "rationale": "BCT bir arka plan süreci değildir; RMAN artımlı yedeklemelerini hızlandıran ikili izleme dosyası mekanizmasıdır."
+        }
+      ],
+      "hint": "Uzak siteden gelen dosya/redo akışını karşılayan sunucu sürecini düşünün.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "MAA Platinum Tier katmanını Gold Tier katmanından ayıran ve veritabanı bakım ile şema güncellemelerinde sıfır planlı kesinti (zero downtime maintenance) sağlayan temel teknolojiler hangileridir?",
+      "answerOptions": [
+        {
+          "text": "Oracle GoldenGate ve Edition-Based Redefinition (EBR)",
+          "isCorrect": true,
+          "rationale": "Platinum Tier, Gold mimarisine ek olarak çift yönlü/aktif-aktif GoldenGate replikasyonu ve EBR ile kesintisiz online bakım olanağı sunar."
+        },
+        {
+          "text": "Oracle RAC ve Single Client Access Name (SCAN)",
+          "isCorrect": false,
+          "rationale": "RAC ve SCAN temel yerel yüksek erişilebilirlik bileşenleri olup Gold Tier kapsamında da mevcuttur."
+        },
+        {
+          "text": "Active Data Guard ve Fast-Start Failover (FSFO)",
+          "isCorrect": false,
+          "rationale": "ADG ve FSFO Gold katmanının felaket kurtarma standartlarıdır."
+        },
+        {
+          "text": "Block Change Tracking (BCT) ve RMAN Table PITR",
+          "isCorrect": false,
+          "rationale": "BCT ve Table PITR yedekleme ve lokal veri kurtarma teknolojileridir."
+        }
+      ],
+      "hint": "Güncelleme esnasında şema versiyonlaması sağlayan veritabanı özelliği ile aktif-aktif veri replikasyon aracını hatırlayın.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Oracle Data Guard koruma modlarından Maximum Availability modunun, bir ikincil site/ağ kesintisi yaşandığında Maximum Protection modundan temel farkı nedir?",
+      "answerOptions": [
+        {
+          "text": "Primary veritabanı kapanmak yerine geçici olarak Asenkron (ASYNC) moda düşerek üretime devam eder.",
+          "isCorrect": true,
+          "rationale": "Maximum Availability modunda ikincil site erişilmez olduğunda birincil veritabanı çalışmayı kesmez, ASYNC moda geçerek kullanılabilirliği korur."
+        },
+        {
+          "text": "Primary veritabanı veri kaybını önlemek için derhal kendini kapatır (shutdown).",
+          "isCorrect": false,
+          "rationale": "Standby erişilemez olduğunda derhal kapanma davranışı Maximum Protection moduna özgüdür."
+        },
+        {
+          "text": "Primary veritabanı otomatik olarak read-only moduna geçer.",
+          "isCorrect": false,
+          "rationale": "Birincil veritabanı ağ kesintisinde read-only moda geçmez; yazma işlemlerini ASYNC olarak sürdürür."
+        },
+        {
+          "text": "Data Guard Broker yapılandırmayı otomatik olarak siler.",
+          "isCorrect": false,
+          "rationale": "Broker yapılandırması silinmez, ağ düzeldiğinde tekrar SYNC moda otomatik dönüş sağlanır."
+        }
+      ],
+      "hint": "İş sürekliliğini veri koruma katılığına tercih ederek birincil veritabanının açık kalmasını sağlayan mekanizmayı düşünün.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Kurumsal ERP ortamlarında uzun süren kritik bir batch işinin geçici bir ağ dalgalanması sebebiyle istenmeyen bir Fast-Start Failover (FSFO) tetiklemesini önlemek için önerilen yöntemlerden biri nedir?",
+      "answerOptions": [
+        {
+          "text": "FastStartFailoverThreshold parametre süresini uzatmak veya devasa batch penceresinde FSFO'yu geçici olarak manuel moda almak",
+          "isCorrect": true,
+          "rationale": "FSFO threshold süresini uzatmak veya batch süresince manuel moda geçmek, geçici yük ve ağ gecikmelerinde hatalı failover oluşmasını engeller."
+        },
+        {
+          "text": "LOG_ARCHIVE_DEST_2 parametresini tamamen silip Broker'ı kapatmak",
+          "isCorrect": false,
+          "rationale": "Broker ve log taşıma parametrelerini silmek Data Guard felaket korumasını tamamen ortadan kaldırır."
+        },
+        {
+          "text": "Primary veritabanında FORCE LOGGING modunu devreden çıkarmak",
+          "isCorrect": false,
+          "rationale": "Force logging modunu kapatmak standby veritabanında veri tutarsızlıklarına yol açar."
+        },
+        {
+          "text": "Standby veritabanını kapatıp SHUTDOWN IMMEDIATE konumuna getirmek",
+          "isCorrect": false,
+          "rationale": "Standby veritabanını kapatmak koruma seviyesini sıfırlar ve kurtarma RPO/RTO hedeflerini bozar."
+        }
+      ],
+      "hint": "Observer izleme tolerans süresini ayarlamayı veya batch süresince otomatik failover'ı geçici duraklatmayı düşünün.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Oracle Data Guard rol değişim operasyonlarında Planlı Switchover ile Plansız Failover karşılaştırıldığında, Switchover işlemi hakkında hangisi doğrudur?",
+      "answerOptions": [
+        {
+          "text": "Temiz, iki yönlü bir rol değişimi olup sıfır veri kaybı ($\\text{RPO} = 0$) sağlar ve veritabanının yeniden kurulmasını gerektirmez.",
+          "isCorrect": true,
+          "rationale": "Switchover planlı bakımlarda primary ve standby rollerini karşılıklı olarak sorunsuz şekilde değiştirir ve veri kaybı yaşatmaz."
+        },
+        {
+          "text": "Veritabanının yeniden oluşturulmasını (re-creation) gerektiren tek yönlü bir acil durum işlemidir.",
+          "isCorrect": false,
+          "rationale": "Tek yönlü ve acil durum odaklı işlem Failover'dır; Switchover veritabanı yeniden kurulumu gerektirmez."
+        },
+        {
+          "text": "Yalnızca asenkron (ASYNC) taşıma modunda çalıştırılabilen riskli bir işlemdir.",
+          "isCorrect": false,
+          "rationale": "Switchover hem SYNC hem de düzgün yönetilen ortamlarda tam veri tutarlılığı ile çalıştırılır."
+        },
+        {
+          "text": "Yalnızca 3. konumdaki Observer süreci tarafından otomatik olarak tetiklenebilir.",
+          "isCorrect": false,
+          "rationale": "Switchover yöneticiler tarafından dgmgrl üzerinden planlı bakım zamanlarında manuel olarak başlatılır."
+        }
+      ],
+      "hint": "Bakım zamanlarında iki veritabanı arasında yapılan temiz ve çift yönlü rol değişimini hatırlayın.",
+      "type": "multiple_choice"
+    }
+  ]
+}

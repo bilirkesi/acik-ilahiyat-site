@@ -419,6 +419,22 @@ TEK_UNIT_TITLES = {
 }
 TEK_UNIT_TO_CHAPTERS = {i: [i] for i in range(1, len(TEK_UNIT_TITLES) + 1)}
 
+# Teknik Gelişim'in Türkçe sürümü: aynı defter, kendi bölüm başlıkları.
+# Başlıklar data/teknik-gelistirim-tr/study_plan.json ile aynı olmalı.
+TEK_TR_UNIT_TITLES = {
+    1: "Bölüm 1: Program Oryantasyonu ve IFS Cloud Oracle Altyapı Mimarisi",
+    2: "Bölüm 2: Multitenant Veritabanı Yönetimi: CDB ve PDB İzolasyonu",
+    3: "Bölüm 3: Sürüm Yaşam Döngüsü, Yama Yönetimi ve Veritabanı Yükseltme",
+    4: "Bölüm 4: Depolama Mimarisi, ASM ve Kapasite Yönetimi",
+    5: "Bölüm 5: RAC ve Grid Infrastructure Kümeleme Mimarisi",
+    6: "Bölüm 6: Data Guard, MAA Standartları ve Felaket Kurtarma Operasyonları",
+    7: "Bölüm 7: Uygulama Sürekliliği ve Dayanıklılık Mimarisi",
+    8: "Bölüm 8: Performans Yönetimi, Tuning ve Teşhis Araçları",
+    9: "Bölüm 9: İzleme, Alarm ve Olay Yönetimi Mimarisi",
+    10: "Bölüm 10: Yedekleme, Kurtarma ve Operasyonel Uygulama",
+}
+TEK_TR_UNIT_TO_CHAPTERS = {i: [i] for i in range(1, len(TEK_TR_UNIT_TITLES) + 1)}
+
 # Osmanlıca soruların çoğu Arap harfli görseldir; ünite her soru için elle
 # data/osmanlica-1/past_exams_notes.json'da verilir. Anahtar kelimeler yalnızca yedektir.
 OSM_UNIT_KEYWORDS: dict[int, list[str]] = {
@@ -454,6 +470,11 @@ COURSE_UNIT_CONFIGS = {
     "teknik-gelistirim": {
         "titles": TEK_UNIT_TITLES,
         "chapters": TEK_UNIT_TO_CHAPTERS,
+        "keywords": {},  # bu derste çıkmış sınav yok, ünite eşleştirmesi gerekmiyor
+    },
+    "teknik-gelistirim-tr": {
+        "titles": TEK_TR_UNIT_TITLES,
+        "chapters": TEK_TR_UNIT_TO_CHAPTERS,
         "keywords": {},  # bu derste çıkmış sınav yok, ünite eşleştirmesi gerekmiyor
     },
 }

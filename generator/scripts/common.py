@@ -371,17 +371,44 @@ def cli_language_get(cli) -> str:
     return m.group(1) if m else ""
 
 
+def cli_language_set(cli, lang: str) -> bool:
+    """Set the CLI's global output language and confirm it took effect."""
+    for _ in range(2):
+        code, out, err = run_cli(cli, ["language", "set", lang], timeout=60)
+        if code == 0:
+            now = cli_language_get(cli)
+            if now and now.lower().startswith(lang.lower()[:2]):
+                return True
+    return False
+
+
 @contextlib.contextmanager
 def cli_language(cli, lang: str):
     """Set the CLI's global output language for the duration, then restore the old one.
 
-    The setting is account wide, so it is put back even when the generation fails.
+    The setting is account wide, so it is put back even when the generation fails. The language is
+    always set, even when the old value cannot be read: skipping it left the CLI on its previous
+    language and the artifact came out in the wrong one.
     """
     old = cli_language_get(cli)
-    if old and old != lang:
-        run_cli(cli, ["language", "set", lang], timeout=60)
+    cli_language_set(cli, lang)
     try:
         yield
     finally:
         if old and old != lang:
-            run_cli(cli, ["language", "set", old], timeout=60)
+            cli_language_set(cli, old)
+
+
+# Türkçeye özgü harfler; İngilizce metinde hiç bulunmazlar.
+_TR_CHARS = set("ğüşıöçĞÜŞİÖÇ")
+
+
+def text_language(text: str) -> str:
+    """Rough language of a text: 'tr', 'en' or '' when it cannot be told."""
+    letters = sum(1 for c in text if c.isalpha())
+    if not letters:
+        return ""
+    tr = sum(1 for c in text if c in _TR_CHARS)
+    if tr / letters >= 0.02:
+        return "tr"
+    return "en"

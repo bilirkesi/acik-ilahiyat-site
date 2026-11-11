@@ -1,0 +1,304 @@
+{
+  "unit": 2,
+  "unitTitle": "Bölüm 2: Multitenant Veritabanı Yönetimi: CDB ve PDB İzolasyonu",
+  "title": "Oracle Multitenant Sınavı",
+  "questions": [
+    {
+      "question": "Oracle Multitenant mimarisinde Oracle sistem meta verilerini, ortak kullanıcı hesaplarını ve global başlatma parametrelerini saklayan kök kapsayıcı veritabanı hangisidir?",
+      "answerOptions": [
+        {
+          "text": "CDB$ROOT",
+          "isCorrect": true,
+          "rationale": "CDB$ROOT, Oracle sistem meta verilerini, ortak kullanıcı hesaplarını ve global parametreleri tutarak tüm yapının merkezini oluşturur."
+        },
+        {
+          "text": "PDB$SEED",
+          "isCorrect": false,
+          "rationale": "Bu kapsayıcı yalnızca yeni PDB'ler oluşturmak için kullanılan bir sistem şablonudur."
+        },
+        {
+          "text": "User PDBs",
+          "isCorrect": false,
+          "rationale": "Kullanıcı PDB'leri global sistem parametreleri yerine uygulamaya ve kullanıcıya özel veri şemalarını barındırır."
+        },
+        {
+          "text": "v$pdbs",
+          "isCorrect": false,
+          "rationale": "Bu bir veritabanı kapsayıcısı değil, mevcut PDB'lerin durumunu gösteren bir veri sözlüğü görünümüdür."
+        }
+      ],
+      "hint": "Tüm eklenebilir veritabanlarının bağlı olduğu en üst düzey kök kapsayıcı adını hatırlayın.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Yeni eklenebilir veritabanlarını (PDB) hızlı bir şekilde dağıtmak ve oluşturmak amacıyla Oracle mimarisi tarafından sağlanan sistem şablonu hangisidir?",
+      "answerOptions": [
+        {
+          "text": "PDB$SEED",
+          "isCorrect": true,
+          "rationale": "PDB$SEED, yeni eklenebilir veritabanlarının hızlıca oluşturulmasını sağlayan sistem tarafından sağlanan salt okunur bir şablon PDB'dir."
+        },
+        {
+          "text": "CDB$ROOT",
+          "isCorrect": false,
+          "rationale": "CDB$ROOT, şablon veritabanı işlevi görmek yerine tüm veritabanı altyapısının kök kapsayıcısıdır."
+        },
+        {
+          "text": "ifsprod",
+          "isCorrect": false,
+          "rationale": "ifsprod, şablon değil, canlı üretim verilerini barındıran özel bir kullanıcı PDB'sidir."
+        },
+        {
+          "text": "ifstest",
+          "isCorrect": false,
+          "rationale": "ifstest, şablon olarak değil, test süreçleri için ayrılmış özel bir kullanıcı PDB'sidir."
+        }
+      ],
+      "hint": "Yeni veritabanı örneklerinin türetildiği çekirdek şablon adını düşünün.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "IFS mimarisinde yer alan özel kullanıcı PDB'lerinin (User PDBs) temel işlevi nedir?",
+      "answerOptions": [
+        {
+          "text": "Kullanıcı veri şemalarını, tablespace'leri ve uygulamaya özel meta verileri barındırmak",
+          "isCorrect": true,
+          "rationale": "Kullanıcı PDB'leri, IFS uygulamalarının ihtiyaç duyduğu özel veri şemalarını, nesneleri ve veritabanı alanlarını kapsayıcı düzeyinde izole eder."
+        },
+        {
+          "text": "Ortak arka plan süreçlerini ve global veritabanı belleğini yönetmek",
+          "isCorrect": false,
+          "rationale": "Ortak arka plan süreçleri ve global bellek, PDB düzeyinde değil CDB$ROOT tarafından yönetilir."
+        },
+        {
+          "text": "Yeni PDB'lerin hızlıca dağıtımı için salt okunur şablon sağlamak",
+          "isCorrect": false,
+          "rationale": "Şablon sağlama görevi özel kullanıcı PDB'lerine değil, PDB$SEED yapısına aittir."
+        },
+        {
+          "text": "Tüm veritabanı sunucusunun global başlatma parametrelerini saklamak",
+          "isCorrect": false,
+          "rationale": "Global parametrelerin yönetimi kullanıcı PDB'lerinin değil, CDB$ROOT kök kapsayıcısının sorumluluğundadır."
+        }
+      ],
+      "hint": "Uygulama ortamlarının (DEV, TEST, PROD) birbirlerinin verilerine müdahale etmeden çalıştığı özel katmanı düşünün.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Mevcut eklenebilir veritabanlarının (PDB) açık/kapalı durumlarını ve konteyner kimliklerini listelemek için hangi SQL görünümü sorgulanmalıdır?",
+      "answerOptions": [
+        {
+          "text": "v$pdbs",
+          "isCorrect": true,
+          "rationale": "v$pdbs görünümü, veritabanındaki PDB'lerin container_id, name ve open_mode gibi durum bilgilerini sağlar."
+        },
+        {
+          "text": "v$session",
+          "isCorrect": false,
+          "rationale": "v$session görünümü PDB yapılandırma durumlarını değil, aktif kullanıcı oturumlarını izlemek için kullanılır."
+        },
+        {
+          "text": "v$sys_context",
+          "isCorrect": false,
+          "rationale": "sys_context bir veri sözlüğü görünümü değil, oturum bağlamı bilgilerini döndüren bir fonksiyondur."
+        },
+        {
+          "text": "v$containers",
+          "isCorrect": false,
+          "rationale": "PDB durumları ve açılma modları için metin örneklerinde belirtilen resmi dinamik performans görünümü v$pdbs'dir."
+        }
+      ],
+      "hint": "Pluggable database durumlarını gösteren ve 'v$' ile başlayan dinamik performans görünümünü hatırlayın.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Veritabanı oturum bağlamını değiştirmek ve belirli bir eklenebilir veritabanına (örneğin ifsprod) geçiş yapmak için hangi komut kullanılır?",
+      "answerOptions": [
+        {
+          "text": "ALTER SESSION SET CONTAINER = ifsprod;",
+          "isCorrect": true,
+          "rationale": "ALTER SESSION SET CONTAINER komutu, mevcut veritabanı oturumunun bağlamını hedeflenen PDB'ye geçirmek için kullanılır."
+        },
+        {
+          "text": "ALTER SYSTEM SET CONTAINER = ifsprod;",
+          "isCorrect": false,
+          "rationale": "ALTER SYSTEM komutu veritabanı genelindeki sistem parametrelerini değiştirmek içindir; oturum bağlamını değiştirmek için kullanılmaz."
+        },
+        {
+          "text": "ALTER PLUGGABLE DATABASE ifsprod OPEN;",
+          "isCorrect": false,
+          "rationale": "Bu komut oturum bağlamını değiştirmez, kapalı durumda olan bir PDB'nin durumunu açmak için kullanılır."
+        },
+        {
+          "text": "CONNECT ifsprod AS SYSDBA;",
+          "isCorrect": false,
+          "rationale": "Doğrudan SQL kullanıcısı bağlamı değiştirme komutu metinde 'ALTER SESSION SET CONTAINER' olarak belirtilmiştir."
+        }
+      ],
+      "hint": "Geçerli oturum düzeyinde kapsayıcı tanımını ayarlamak için kullanılan DDL/DCL komut yapısını düşünün.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "PDB'lerin mantıksal ve şema izolasyonu ile ilgili aşağıda verilen ifadelerden hangisi doğrudur?",
+      "answerOptions": [
+        {
+          "text": "CDB$ROOT ortak sistem meta verilerini yönetirken, her PDB kullanıcı tabloları ve şemaları için kendi özel veri sözlüğünü (private data dictionary) tutar.",
+          "isCorrect": true,
+          "rationale": "PDB izolasyonu, her PDB'nin kendi private data dictionary yapısına sahip olması sayesinde kullanıcı nesnelerinin ayrıştırılmasını sağlar."
+        },
+        {
+          "text": "Tüm kullanıcı tabloları ve veri sözlüğü indeksleri yalnızca CDB$ROOT içerisinde tek bir merkezde depolanır.",
+          "isCorrect": false,
+          "rationale": "Tüm kullanıcı verilerinin kökte depolanması PDB'ler arasındaki mantıksal izolasyon ilkesine aykırıdır."
+        },
+        {
+          "text": "PDB$SEED, aktif kullanıcı oturumlarının mantıksal şema verilerini canlı olarak günceller.",
+          "isCorrect": false,
+          "rationale": "PDB$SEED canlı veri güncellemesi yapmaz, sadece salt okunur bir şablon işlevi görür."
+        },
+        {
+          "text": "Test ortamındaki (TEST) oturumlar, üretim (PROD) PDB'sindeki şema nesnelerine doğrudan erişip değiştirebilir.",
+          "isCorrect": false,
+          "rationale": "İzolasyon kuralı gereği, bir PDB'ye bağlı oturumlar başka bir PDB'deki şema nesnelerine müdahale edemez."
+        }
+      ],
+      "hint": "Ortak sistem meta verileri ile kullanıcıya özel veri sözlüğü arasındaki görev dağılımını göz önüne getirin.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Non-production (örneğin TEST) bir PDB'nin aşırı bellek tüketerek Production PDB performansını düşürmesini engellemek için PDB düzeyinde hangi bellek parametresi sınırlandırılabilir?",
+      "answerOptions": [
+        {
+          "text": "pga_aggregate_limit",
+          "isCorrect": true,
+          "rationale": "PDB düzeyinde sga_target veya pga_aggregate_limit parametrelerinin ayarlanması, ilgili konteynerin bellek kullanımını sınırlandırarak diğer PDB'leri korur."
+        },
+        {
+          "text": "container_id",
+          "isCorrect": false,
+          "rationale": "container_id bir bellek sınırlandırma parametresi değil, kapsayıcının sayısal kimlik bilgisidir."
+        },
+        {
+          "text": "open_mode",
+          "isCorrect": false,
+          "rationale": "open_mode bir bellek yapılandırması değil, PDB'nin erişim/açıklık durumunu (örneğin READ WRITE) belirten ifadedir."
+        },
+        {
+          "text": "sys_context",
+          "isCorrect": false,
+          "rationale": "sys_context bellek limiti koymak için kullanılan bir sistem parametresi değil, oturum bilgilerini sorgulayan bir fonksiyondur."
+        }
+      ],
+      "hint": "İlgili çalışma örneğinde PDB düzeyinde bellek üst sınırı belirlemek için ALTER SYSTEM komutunda ayarlanan parametreyi hatırlayın.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Mevcut oturumun hangi PDB kapsayıcısı içerisinde çalıştığını doğrulamak için hangi SQL fonksiyonu kullanılabilir?",
+      "answerOptions": [
+        {
+          "text": "sys_context('USERENV', 'CON_NAME')",
+          "isCorrect": true,
+          "rationale": "USERENV parametresiyle çalışan sys_context fonksiyonu, oturumun aktif olduğu kapsayıcı adını (CON_NAME) veya ID değerini doğrular."
+        },
+        {
+          "text": "SHOW PARAMETER pga_aggregate_limit;",
+          "isCorrect": false,
+          "rationale": "Bu komut oturumun kapsayıcı adını doğrulamak için değil, bellek sınır değerini görüntülemek için kullanılır."
+        },
+        {
+          "text": "SELECT * FROM v$pdbs;",
+          "isCorrect": false,
+          "rationale": "v$pdbs veritabanındaki tüm PDB'leri listeler ancak mevcut oturumun aktif bağlam adını doğrudan sys_context gibi tek bir değer olarak dönmez."
+        },
+        {
+          "text": "ALTER SESSION SET CONTAINER;",
+          "isCorrect": false,
+          "rationale": "Bu ifade bağlamı değiştirmek için kullanılır, mevcut bağlam adını doğrulayan bir sorgu fonksiyonu değildir."
+        }
+      ],
+      "hint": "'USERENV' ad alanı (namespace) üzerinden bağlam bilgilerini getiren fonksiyonu düşünün.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Oracle Multitenant mimarisinde bir DBA'in diğer kardeş PDB'lerin çalışmasını kesintiye uğratmadan tek bir PDB üzerinde gerçekleştirebileceği bağımsız işlem hangisidir?",
+      "answerOptions": [
+        {
+          "text": "PDB'yi fişten çekmek (unplug), klonlamak (clone) veya silmek (drop)",
+          "isCorrect": true,
+          "rationale": "PDB bağımsız yaşam döngüsü sayesinde, bir PDB diğer eklenebilir veritabanları etkilenmeden unplug, clone veya drop edilebilir."
+        },
+        {
+          "text": "CDB$ROOT kapsayıcısını PDB'lerden bağımsız olarak silmek",
+          "isCorrect": false,
+          "rationale": "CDB$ROOT ana kök yapıdır; diğer PDB'ler çalışırken tek başına silinemez veya devre dışı bırakılamaz."
+        },
+        {
+          "text": "PDB$SEED şablonunu silerek çalışan tüm canlı PDB'lerin veri sözlüğünü sıfırlamak",
+          "isCorrect": false,
+          "rationale": "PDB$SEED şablonunun silinmesi canlı PDB'lerin veri sözlüklerini sıfırlamaz veya yönetmez."
+        },
+        {
+          "text": "Tüm PDB'lerin ortak kullanıcı hesaplarını yalnızca tek bir PDB içinden kalıcı olarak kaldırmak",
+          "isCorrect": false,
+          "rationale": "Ortak kullanıcı hesapları PDB düzeyinde değil kök kapsayıcı (CDB$ROOT) düzeyinde yönetilir."
+        }
+      ],
+      "hint": "Bir PDB'nin yaşam döngüsünün (lifecycle) diğer PDB'lerden bağımsız yönetilmesi özelliğini düşünün.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Farklı PDB'lerdeki aktif kullanıcı oturum sayısını gruplayarak incelemek için v$session görünümünde hangi kolon kullanılmalıdır?",
+      "answerOptions": [
+        {
+          "text": "con_id",
+          "isCorrect": true,
+          "rationale": "v$session görünümündeki con_id kolonu, her oturumun hangi konteyner kimliğine ait olduğunu belirterek gruplama yapılmasına imkan tanır."
+        },
+        {
+          "text": "open_mode",
+          "isCorrect": false,
+          "rationale": "open_mode v$session görünümünde oturum gruplama kolonu değil, v$pdbs görünümünde PDB açılış durumunu belirten alandır."
+        },
+        {
+          "text": "sga_target",
+          "isCorrect": false,
+          "rationale": "sga_target oturum bilgisi değil, bellek yapılandırma parametresidir."
+        },
+        {
+          "text": "container_name",
+          "isCorrect": false,
+          "rationale": "v$session tablosundaki gruplama örneğinde oturumların bağlı olduğu konteyner kimliğini temsil eden alan con_id'dir."
+        }
+      ],
+      "hint": "Kapsayıcıların sayısal tanımlayıcısını belirten kısa kolon adını hatırlayın.",
+      "type": "multiple_choice"
+    },
+    {
+      "question": "Kapalı durumda olan 'ifsprod' adındaki bir PDB'yi erişime açmak için kullanılan doğru SQL komutu hangisidir?",
+      "answerOptions": [
+        {
+          "text": "ALTER PLUGGABLE DATABASE ifsprod OPEN;",
+          "isCorrect": true,
+          "rationale": "ALTER PLUGGABLE DATABASE <pdb_adı> OPEN komutu, hedeflenen eklenebilir veritabanını açarak kullanıma hazır hale getirir."
+        },
+        {
+          "text": "ALTER SESSION SET CONTAINER = ifsprod OPEN;",
+          "isCorrect": false,
+          "rationale": "ALTER SESSION komutu sadece mevcut oturumun bağlamını değiştirir, PDB'nin durumunu açıp kapatamaz."
+        },
+        {
+          "text": "ALTER SYSTEM SET ifsprod = OPEN;",
+          "isCorrect": false,
+          "rationale": "ALTER SYSTEM komutu veritabanı durumunu değiştirmek için bu sözdizimiyle kullanılmaz."
+        },
+        {
+          "text": "STARTUP PDB ifsprod;",
+          "isCorrect": false,
+          "rationale": "Kaynak dokümanlarda PDB durumunun açılması için gösterilen standart SQL komutu 'ALTER PLUGGABLE DATABASE ifsprod OPEN;' şeklindedir."
+        }
+      ],
+      "hint": "Eklenebilir veritabanı durumunu değiştirmek için kullanılan 'ALTER PLUGGABLE DATABASE' yapısını düşünün.",
+      "type": "multiple_choice"
+    }
+  ]
+}
