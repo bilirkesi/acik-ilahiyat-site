@@ -5,13 +5,17 @@ description: In this chapter, the student learns how to manage software maintena
 course: teknik-gelistirim
 chapter: 3
 status: stable
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-11-10T11:25:36Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-11-11T05:06:34Z }
 notebook: "https://notebooklm.google.com/notebook/d9fbd16b-86fb-45ab-af81-dc503b2c5aad"
 ---
 
 # Özet
 
 In this chapter, the student learns how to manage software maintenance, patch execution, and database upgrades for Oracle Database 19c supporting enterprise applications. The curriculum details the quarterly Release Update (RU) and Release Update Revision (RUR) lifecycle alignment, pre-patch verification with OPatch, two-stage binary patching via opatch apply, and post-patch SQL automation using datapatch across CDB$ROOT and pluggable databases (PDBs). Additionally, students explore upgrade methodologies including AutoUpgrade, DBUA, and Parallel Upgrade Utility, alongside cloud infrastructure maintenance and zero-downtime patching tools such as OS Management Hub and Ksplice.
+
+# Sesli Ders
+
+[Bölüm 3 sesli özeti](/audio/teknik-gelistirim/chapter-3.mp3) (6:20 dk, MP3)
 
 # Öğrenme Hedefleri
 
@@ -49,11 +53,11 @@ Bu bölümün içinde yaşadığı ders paneli: [Teknik Gelişim paneli](/course
 
 * **Maintenance Rationale:** Applying RUs and RURs ensures that Oracle Database backends supporting IFS Applications remain secure, stable, and bug-free [2].
 * **OPatch Version Alignment:** Database administrators must update the opatch utility to the minimum version specified in the Oracle Patch Readme before executing patch routines [2].
-* **Conflict Detection:** Running conflict checks against the target \$ORACLE_HOME prevents partial patch applications and verifies prerequisites before shutting down database services [2].
-* **Stage 1 - Binary Patching (`opatch apply`):** Binary patching replaces executable binaries, libraries, and header files within \$ORACLE_HOME while database services are down [2].
-* **Stage 2 - Post-Patch SQL Automation (`datapatch`):** Post-patch SQL automation updates SQL metadata, data dictionary objects, and PL/SQL packages inside CDB\$ROOT and all pluggable databases (PDBs) once the database is reopened [2].
+* **Conflict Detection:** Running conflict checks against the target $ORACLE_HOME prevents partial patch applications and verifies prerequisites before shutting down database services [2].
+* **Stage 1 - Binary Patching (`opatch apply`):** Binary patching replaces executable binaries, libraries, and header files within $ORACLE_HOME while database services are down [2].
+* **Stage 2 - Post-Patch SQL Automation (`datapatch`):** Post-patch SQL automation updates SQL metadata, data dictionary objects, and PL/SQL packages inside CDB$ROOT and all pluggable databases (PDBs) once the database is reopened [2].
 * **Registry Verification:** DBAs verify the patch application state across the Oracle home and pluggable databases by querying the `registry$history` and `dba_registry_sqlpatch` views [1].
-* **Version Application:** The source outlines this two-stage pipeline for CDB\$ROOT and PDB structures without restricting the `opatch apply` and `datapatch` command steps to a single database version [1, 2].
+* **Version Application:** The source outlines this two-stage pipeline for CDB$ROOT and PDB structures without restricting the `opatch apply` and `datapatch` command steps to a single database version [1, 2].
 
 ---
 

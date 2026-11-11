@@ -5,13 +5,17 @@ description: In this chapter, the student learns how to establish and maintain c
 course: teknik-gelistirim
 chapter: 9
 status: stable
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-11-10T11:25:36Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-11-11T05:06:34Z }
 notebook: "https://notebooklm.google.com/notebook/d9fbd16b-86fb-45ab-af81-dc503b2c5aad"
 ---
 
 # Özet
 
 In this chapter, the student learns how to establish and maintain centralized enterprise monitoring infrastructure using Oracle Enterprise Manager (OEM) Cloud Control 13c/14c, encompassing Oracle Management Service (OMS), Oracle Management Repository (OMR), and multi-node Oracle Management Agent (OMA) administration using emctl. The curriculum covers automated event management, incident rule set promotion, notification pipelines, blackout scheduling, and EFK stack log monitoring in IFS Cloud 25R1. Additionally, students master operational telemetry governance in IFS Cloud 26R2 using Application Monitoring Metrics (AMM), Application Monitoring Console, Server Alert Log categories, Oracle Advanced Queues, and Streams background job notifications.
+
+# Sesli Ders
+
+[Bölüm 9 sesli özeti](/audio/teknik-gelistirim/chapter-9.mp3) (5:15 dk, MP3)
 
 # Öğrenme Hedefleri
 
@@ -35,7 +39,6 @@ In this chapter, the student learns how to establish and maintain centralized en
 * screencapture-docs-ifs-techdocs-26r2-030-administration-120-monitoring-020-app-mon-100-app-mon-metrics-030-app-mon-metrics-2026-11-08-10_34_44.pdf
 * screencapture-docs-ifs-techdocs-26r2-030-administration-120-monitoring-080-oracle-queues-2026-11-08-10_35_49.pdf
 * screencapture-docs-ifs-techdocs-26r2-030-administration-140-system-info-and-util-022-system-performance-2026-11-08-10_40_05.pdf
-* Optimizing Alert Monitoring with Oracle Enterprise Manager | PPTX - Slideshare
 * About Server Alert Log - Technical Documentation For IFS Cloud
 * Application Monitoring Console - Technical Documentation For IFS Cloud
 * Monitor Server Alert Log - Technical Documentation For IFS Cloud
@@ -47,44 +50,43 @@ Bu bölümün içinde yaşadığı ders paneli: [Teknik Gelişim paneli](/course
 
 # Kaynak Temellendirme
 
-Based on the provided sources, here is what the student learns for each objective:
+Based on the provided sources, here is what the student learns for each specified objective:
 
 ---
 
 ### Objective 1: Deploying and Administering OEM Cloud Control 13c/14c Infrastructure Components
 
-* **Enterprise Infrastructure Architecture:** The student learns that Oracle Enterprise Manager (OEM) Cloud Control provides a multi-tier management framework to maintain operational health and visibility across Oracle RAC nodes, ASM storage, database instances, and host servers supporting IFS Applications [1].
-* **Oracle Management Service (OMS):** The middle-tier Java EE application runs on Oracle WebLogic Server, rendering the browser-based Cloud Control management console, processing metrics uploaded by host agents, executing administrative jobs, and managing notification alerts [1].
-* **Oracle Management Repository (OMR) and SYSMAN Schema:** A dedicated Oracle Database houses the SYSMAN repository schema to store configuration data, target health metrics, historical performance baselines, job execution logs, and incident tracking data [1].
-* **Oracle Management Agent (OMA):** Lightweight agent processes deploy directly on each managed host server to sample host CPU, memory, ASM disk space, and database target availability, communicating securely with the central OMS over bidirectional TCP port 3872 using HTTP/HTTPS protocols [1, 2].
-* **Management Plug-ins:** Software extensions integrate into OMS and OMA to extend monitoring capabilities to specific hardware, storage arrays, third-party databases, or enterprise application mid-tiers [1].
-* **CLI Administration via `emctl`:** Database administrators use the `emctl` utility on the OMS host server to verify middle-tier service health, WebLogic status, and repository connectivity [1]. On managed RAC host nodes, DBAs navigate to the agent directory (e.g. `cd /u01/app/oracle/agent/agent_inst/bin`) and execute `./emctl status agent` to check process health and OMS ping connectivity, or `./emctl upload agent` to force an immediate upload of collected telemetry payload files to the OMS repository [2].
-* **Version Context:** The training notes title this setup as OEM 13c/14c Infrastructure Setup for environments running IFS Applications (IFS Cloud, IFS Applications 10/9) [1, 2]. Where the sources describe component roles and `emctl` commands without distinguishing between 13c and 14c, the sources do not specify a version limitation [1, 2].
+* **Enterprise Infrastructure Architecture:** The student learns that Oracle Enterprise Manager (OEM) Cloud Control provides a multi-tier management framework to collect, process, and store performance diagnostics across managed targets, including Oracle RAC nodes, ASM instances, PDBs/CDBs, and host servers [1].
+* **Oracle Management Service (OMS):** OMS is a middle-tier Java EE application running on Oracle WebLogic Server [1]. It processes metrics uploaded by host agents, renders the browser-based Cloud Control management console, dispatches administrative jobs, and manages notification alerts [1].
+* **Oracle Management Repository (OMR):** OMR is a dedicated Oracle Database that houses the SYSMAN repository schema [1]. It stores configuration data, target health metrics, historical performance baselines, job execution logs, and incident tracking data [1].
+* **Oracle Management Agent (OMA):** OMA processes deploy directly on each managed host server to continuously sample host CPU utilization, memory thresholds, ASM disk group space, and database instance availability [1, 2]. Agents communicate securely with the central OMS via dedicated bidirectional TCP port 3872 using HTTP/HTTPS protocols [2].
+* **Management Plug-ins:** Plug-ins are software extensions integrated into OMS and OMA to extend monitoring capabilities to specific hardware, storage arrays, third-party databases, or enterprise application mid-tiers [1].
+* **CLI Administration via `emctl`:** Database administrators use the `emctl` utility on the OMS host server to verify WebLogic services, HTTP server status, and repository connectivity [1]. On managed cluster nodes, DBAs navigate to the agent execution directory (such as `/u01/app/oracle/agent/agent_inst/bin`) and run `./emctl status agent` to verify agent process health and OMS ping connectivity, or `./emctl upload agent` to force an immediate upload of collected telemetry payload files to the OMS repository [2].
+* **Version Context:** The training notes title this infrastructure setup as OEM 13c/14c Infrastructure Setup for environments running IFS Applications (IFS Cloud, IFS Applications 10/9) [1, 2]. Where the sources describe component roles and `emctl` commands without distinguishing between 13c and 14c, the sources do not specify a version limitation [1, 2].
 
 ---
 
 ### Objective 2: Configuring OEM Event Management, Incident Rule Sets, Blackout Schedules, and Notifications
 
-* **Event to Incident Promotion Framework:** The student learns that the Oracle Management Agent (OMA) continuously samples target metrics and generates an Event when a metric crosses a warning or critical threshold (such as host CPU utilization exceeding 95%) [3]. Pre-configured incident rules automatically promote severe events into tracked Incidents in the OMR repository, representing actionable issues requiring administrative intervention [3].
-* **Incident Rule Sets:** Rule sets define automated operational logic to send email notifications, run corrective action scripts, or generate external tickets in enterprise systems (such as ServiceNow or Jira) based on target criteria, severity levels, and time windows [3].
-* **Notification Framework:** OEM maps incident severity levels to notification delivery methods including SMTP email, SNMP traps, and operating system webhooks or scripts [3].
-* **Blackout Scheduling:** Administrative Blackouts can be scheduled during planned maintenance windows to temporarily suppress notifications and prevent false-positive alerts across IFS staging or production environments [3].
-* **Repository Verification:** DBAs verify active incidents by querying the OMR repository view `sysman.em_incidents` for target name, target type, incident name, severity, creation date, and status [4].
-* **Metric Threshold Tuning:** Standardizing and customizing OEM monitoring templates to match specific operational baselines eliminates alert noise and prevents non-actionable alert flooding [5, 6].
-* **Version Context:** The training architecture notes apply event management and incident rule sets to IFS Applications (IFS Cloud, IFS Applications 10/9) [3]. The source does not state a specific database version restriction for setting up OEM incident rule sets and blackout schedules [3].
+* **Event to Incident Promotion Framework:** The Oracle Management Agent (OMA) continuously samples target metrics and generates an Event when a metric crosses a warning or critical threshold, such as host CPU utilization exceeding 95% [3]. Pre-configured incident rules evaluate event severity and automatically promote severe events into tracked Incidents in OEM, representing actionable operational issues requiring administrative intervention [3].
+* **Incident Rule Sets:** Rule sets define the core logic for processing events and incidents [3]. They govern automated actions such as sending email notifications, executing corrective action scripts, or creating tickets in external enterprise ticketing systems (such as ServiceNow or Jira) based on target criteria, severity levels, and time windows [3].
+* **Notification Delivery Methods:** OEM incorporates a notification framework supporting transport channels including SMTP email, SNMP traps, and operating system scripts or webhooks [3]. Subscriber lists map specific incident severity levels to designated notification subscribers [3].
+* **Blackouts:** Administrative Blackouts can be scheduled during planned maintenance windows to temporarily suppress notifications and prevent false-positive alerts across IFS staging or production environments [3].
+* **Incident History Verification:** DBAs verify active critical incidents by querying the OMR repository view `sysman.em_incidents` for `target_name`, `target_type`, `incident_name`, `severity`, `creation_date`, and `status` [4].
+* **Version Context:** The training source applies event management and incident rule sets to IFS Applications (IFS Cloud, IFS Applications 10/9) [3]. The source does not state a specific database version restriction for setting up OEM incident rule sets and blackout schedules [3].
 
 ---
 
 ### Objective 3: Utilizing Monitoring Frameworks, Alert Logs, Advanced Queues, Streams, and EFK Stack Dashboards in IFS Cloud
 
-* **IFS Cloud 25R1 Log Monitoring with EFK Stack:** In IFS Cloud 25R1 Remote Deployment, log monitoring uses an EFK stack comprising Elasticsearch, Fluentd, and Kibana [7]. Elasticsearch stores system activity logs with a 7-day retention period, managed by a daily curator cronjob [7]. Fluentd collects and forwards logs to Elasticsearch [7]. Kibana provides data visualization using Kibana Query Language (KQL), featuring imported dashboards such as the Response Time Detail View Dashboard to analyze projection and entity performance sorted from highest to lowest response time by default [7-10].
-* **IFS Cloud 26R2 Application Monitoring Metrics (AMM):** In IFS Cloud 26R2, AMM structures telemetry across a hierarchy of Metric, Threshold, Service, and Service Group [11]. Monitored categories include BATCH_QUEUES (metrics like BATCH_QUEUE_CONFIG, BATCH_QUEUE_ACTIVE, BATCH_QUEUE_PROC, QUEUE_PROCESSES, STUCK_BATCH_QUEUE_PROCESSES, and DEFERRED_JOBS_EXECUTING_12H), QUEUE_ENTRIES - Background Jobs (QUEUE_READY, QUEUE_WAIT, QUEUE_EXEC, QUEUE_ERROR), and DATABASE_CONFIG (SGA_TARGET, PGA_AGGREGATE_LIMIT, DB_SESSIONS, DB_ACTIVE_SESSIONS, DB_BLOCKED_SESSIONS) [12-15].
-* **IFS Cloud 26R2 Application Monitoring Console:** Accessed in Solution Manager under Solution Manager / Monitoring / Application Monitoring Console, this console displays upper and lower warning limits for monitored entries and includes a "Show Alarms Only" filter alongside expanded Details views to inspect active queues and background tasks [16, 17].
-* **IFS Cloud 26R2 Server Alert Log Categories:** Configured in Solution Manager under Solution Manager / Monitoring / Server Alert Log Categories, administrators toggle logging, cleanup, and retention days per category [17, 18]. Standard categories include Ddl Audit, Debug, Deployment, Deployment detail, Event errors, Server Errors (tracing database errors via AFTER ERROR triggers), Sql Injections (tracing suspected SQL injection attempts via Assert_SYS), and In-Memory [18, 19].
-* **IFS Cloud 26R2 Oracle Advanced Queues Administration:** The Oracle Queues window allows starting, stopping, and purging queue tables for asynchronous background messaging, while the Oracle Queue Subscribers window tracks and manages registered consumer subscribers [20].
-* **IFS Cloud 26R2 Streams Background Job Notifications:** Streams functionality notifies end users when one-time background jobs (`Transaction_SYS.Deferred_Call`) or scheduled tasks (`Batch_SYS.New_Batch_Schedule`) completed via `Transaction_SYS.Process_All_Pending` finish running [21]. Notifications are enabled via opt-in parameters `stream_msg_on_completion_` (set to TRUE) and `stream_notes_`, and message text can be customized using the Hooking API `Transaction_SYS.Modify_Stream_Notification` [21].
-* **IFS Cloud 26R2 Real-Time System Performance Monitoring:** System administrators use the `v$sql` view in Solution Manager to inspect active SQL execution metrics, utilizing the All SQL Runtime Performance Overview and Custom Field Runtime Performance Overview screens to isolate queries exceeding 2 seconds elapsed time [22, 23].
-* **Version Context:** The sources explicitly distinguish between IFS Cloud 25R1 (EFK stack and Kibana Response Time Detail View) and IFS Cloud 26R2 (AMM metrics, Application Monitoring Console, Server Alert Log Categories, Oracle Queues, Streams notifications, and `v$sql` performance screens) [7, 8, 11, 12, 16, 18, 20-22].
+* **IFS Cloud 25R1 Log Monitoring with EFK Stack:** In IFS Cloud 25R1 Remote Deployment, log monitoring uses an EFK stack comprising Elasticsearch, Fluentd, and Kibana [5]. Elasticsearch stores system activity logs with a 7-day data retention period, managed by a daily curator cronjob [5]. Fluentd acts as a log shipper collecting and forwarding log data [5]. Kibana provides data visualization and dashboards using Kibana Query Language (KQL) [5, 6]. Imported Kibana dashboards include the Response Time Detail View Dashboard, which displays projection and entity metrics automatically sorted from highest response time to lowest response time by default [7, 8].
+* **IFS Cloud 26R2 Application Monitoring Metrics (AMM):** In IFS Cloud 26R2, AMM structures health indicators across a hierarchy of Metric, Threshold, Service, Service Groups, Expression, and Interval [9]. AMM exported metric categories include BATCH_QUEUES (such as BATCH_QUEUE_CONFIG, BATCH_QUEUE_ACTIVE, BATCH_QUEUE_PROC, QUEUE_PROCESSES, DEFERRED_JOBS_EXECUTING_12H, and STUCK_BATCH_QUEUE_PROCESSES) [10], QUEUE_ENTRIES - Background Jobs (QUEUE_READY, QUEUE_WAIT, QUEUE_EXEC, QUEUE_ERROR) [11], and DATABASE_CONFIG (SGA_TARGET, PGA_AGGREGATE_LIMIT, DB_SESSIONS, DB_ACTIVE_SESSIONS, DB_BLOCKED_SESSIONS) [12, 13].
+* **IFS Cloud 26R2 Application Monitoring Console:** Accessed in Solution Manager under Solution Manager / Monitoring / Application Monitoring Console, this console displays upper and lower warning limits for monitored entries [14]. It features a "Show Alarms Only" filter and a Details view to inspect granular data, such as active batch queue processes [14].
+* **IFS Cloud 26R2 Server Alert Log Categories:** Located in Solution Manager under Solution Manager / Monitoring / Server Alert Log Categories, administrators configure logging using Category ID, Description, Enable, Cleanup, and Days to keep parameters [15]. Standard categories include Ddl Audit (logs database DDL statements via a database trigger), Debug, Deployment, Deployment detail, Event errors, Server Errors (traces database errors via an AFTER ERROR trigger), Sql Injections (traces suspected SQL injections via `Assert_SYS`), and In-Memory (logs index removal for In-Memory tables) [15, 16].
+* **IFS Cloud 26R2 Oracle Advanced Queues:** The Oracle Queues window in IFS Cloud enables starting, stopping, and purging queue tables for asynchronous background messaging, while the Oracle Queue Subscribers window tracks registered consumers and allows removing subscribers [17].
+* **IFS Cloud 26R2 Streams Background Jobs:** Streams functionality alerts end users when background jobs or reports finish running, handling one-time background jobs (`Transaction_SYS.Deferred_Call`) and scheduled tasks (`Batch_SYS.New_Batch_Schedule`) executed by the `Transaction_SYS.Process_All_Pending` scheduler [18]. Notifications are configured using opt-in parameters `stream_msg_on_completion_` (set to TRUE) and `stream_notes_` [18]. Notification text can be customized using the Hooking API `Transaction_SYS.Modify_Stream_Notification` [18].
+* **IFS Cloud 26R2 System Performance Screens:** Real-time database performance monitoring utilizes the `v$sql` view in Solution Manager [19]. The Custom Field Runtime Performance Overview screen filters active queries with an average elapsed time exceeding 2 seconds, while the All SQL Runtime Performance Overview screen displays overall SQL execution metrics sorted by default in descending order of Elapsed Time / Exec (s) [19, 20].
+* **Version Context:** The sources explicitly distinguish between IFS Cloud 25R1 (EFK stack and Kibana Response Time Detail View) and IFS Cloud 26R2 (AMM metrics, Application Monitoring Console, Server Alert Log Categories, Oracle Queues, Streams background job notifications, and `v$sql` performance screens) [5, 7, 10, 14, 15, 17-19].
 
 ---
 
@@ -106,7 +108,6 @@ Based on the provided sources, here is what the student learns for each objectiv
 * NotebookLM kaynağı `aacb746e-7471-4005-8c02-71ce163a18de`
 * NotebookLM kaynağı `f317d051-6a57-41ae-8473-e98554c786af`
 * NotebookLM kaynağı `1d057a25-8c1e-415f-925b-d4d6a46bfebc`
-* NotebookLM kaynağı `cdb96ddd-9f69-4b98-a1c2-71919a96fb0f`
 * NotebookLM kaynağı `54fe9696-9a03-4ed9-8525-b0b6a68930fc`
 * NotebookLM kaynağı `fb3e40f1-7f6c-4f7d-b4a6-5fd27b7e8cbd`
 * NotebookLM kaynağı `3478a28d-34c2-4b40-b268-a32e9d1fa4c5`

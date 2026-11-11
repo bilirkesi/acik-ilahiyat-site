@@ -5,13 +5,17 @@ description: In this chapter, the student learns how to diagnose and optimize da
 course: teknik-gelistirim
 chapter: 8
 status: stable
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-11-10T11:25:36Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-11-11T05:06:34Z }
 notebook: "https://notebooklm.google.com/notebook/d9fbd16b-86fb-45ab-af81-dc503b2c5aad"
 ---
 
 # Özet
 
 In this chapter, the student learns how to diagnose and optimize database performance across memory architecture, session capacity, SQL execution, and recovery subsystems for IFS Applications. The curriculum covers instance memory tuning for sga_target and pga_aggregate_target, capacity parameter tuning for open_cursors and processes, AWR and ADDM report profiling during peak business hours and batch runs, and root-cause analysis of wait events including db file sequential read, db file scattered read, enq: TX - row lock contention, and latch contention. Additionally, students master Active Session History (ASH) diagnostics, execution plan profiling using DBMS_XPLAN.DISPLAY_CURSOR, and single-command RMAN table-level point in time recovery (RECOVER TABLE) introduced in Oracle Database 12c and extended in Oracle Database 19c and Oracle 26ai.
+
+# Sesli Ders
+
+[Bölüm 8 sesli özeti](/audio/teknik-gelistirim/chapter-8.mp3) (5:48 dk, MP3)
 
 # Öğrenme Hedefleri
 
@@ -30,10 +34,6 @@ In this chapter, the student learns how to diagnose and optimize database perfor
 * AWR Performance Metrics Interpretation
 * Locking & Latch Contention Drill-Downs
 * C.3 Descriptions of Wait Events - Oracle Help Center
-* Recover a Dropped Table in Oracle 19c & 26ai - RMAN Table
-* Recovery Manager (RMAN) Table Point In Time Recovery (PITR) in Oracle Database 12c Release 1 and 2 (12.1 and 12.2)
-* Video: Troubleshooting Complex Oracle Issues Part 2 | Tanel Poder Blog
-* Ожидания, статистики, коэффициенты - Oracle mechanics - WordPress.com
 * Database Performance Tuning Guide
 
 # İnteraktif Panel
@@ -42,46 +42,50 @@ Bu bölümün içinde yaşadığı ders paneli: [Teknik Gelişim paneli](/course
 
 # Kaynak Temellendirme
 
-Based on the provided sources, here is what the student learns for each specified objective.
+Based on the provided sources, here is what the student learns for each specified objective:
 
 ---
 
-### Objective 1: Memory Architecture and Capacity Parameter Tuning (`sga_target`, `pga_aggregate_target`, `open_cursors`, `processes`)
+### Objective 1: Memory Architecture and Capacity Parameter Tuning (sga_target, pga_aggregate_target, open_cursors, processes)
 
-* **System Global Area (SGA) Tuning:** Setting `sga_target` to a non-zero value activates Automatic Shared Memory Management (ASMM) to dynamically allocate memory across shared pools, including the Buffer Cache, Shared Pool, Large Pool, and Java Pool [1]. This optimizes response times and caches parsed SQL, PL/SQL code, and execution plans required for IFS Applications (IFS Cloud, IFS Applications 10, and IFS Applications 9) mid-tier session reuse [1].
-* **Program Global Area (PGA) Tuning:** Setting `pga_aggregate_target` establishes an instance-wide global target for non-shared memory allocated to individual server process work areas, such as sort operations and hash joins [1]. Dynamically managing PGA allocations prevents excessive temporary tablespace spilling during heavy batch reports [1].
-* **Processes Capacity Parameter Tuning:** The static initialization parameter `processes` defines the maximum number of operating system user processes that can simultaneously connect to the Oracle Database instance [2]. Misconfiguring `processes` too low rejects incoming connection requests from mid-tier application server pools with `ORA-00020: maximum number of processes exceeded` [2].
-* **Open Cursors Capacity Parameter Tuning:** The dynamic parameter `open_cursors` sets the maximum number of active cursors a single session can hold simultaneously in the Private SQL Area [2]. Tuning `open_cursors` sufficiently high allows Java/JDBC connection pools to cache statement handles per session without leaking cursors or triggering `ORA-01000: maximum open cursors exceeded` [2].
-* **Version Application:** The working notes detail these memory and capacity parameter configurations for environments supporting IFS Applications (IFS Cloud, IFS Applications 10, and IFS Applications 9) [1, 2]. The sources do not state a specific Oracle Database version limitation for these parameter definitions [1, 2].
-
----
-
-### Objective 2: Performance Profiling with AWR, ADDM, and ASH
-
-* **Automatic Workload Repository (AWR) Analysis:** AWR functions as an in-database historical performance data warehouse where the Memory Monitor (MMON) background process automatically flushes in-memory statistics to the `SYSAUX` tablespace at regular snapshot intervals (defaulting to 60 minutes with an 8-day retention) [3]. DBAs analyze AWR reports to evaluate total DB Time against Elapsed Time, inspect Load Profile throughput metrics, and identify top foreground wait events [3-5].
-* **Automatic Database Diagnostic Monitor (ADDM) Recommendations:** ADDM executes automatically after each AWR snapshot to analyze the performance delta between snapshot pairs based on total DB Time consumption [6]. ADDM quantifies performance issues, eliminates non-problem areas, and generates prioritized recommendations covering database configuration (such as memory pools and connection parameters), hardware resources, and SQL optimization [6]. DBAs can also run AWR Compare Period reports (`awrddrpt.sql`) to evaluate side-by-side performance changes before and after patch applications [7].
-* **Active Session History (ASH) Diagnostics:** ASH samples active database sessions every second directly into the SGA ring buffer (`v$active_session_history`), enabling DBAs to isolate transient, short-term performance spikes during batch runs that hourly AWR snapshot averages smooth out [8, 9]. Historical ASH data flushed to disk by MMON can be queried via `dba_hist_active_sess_history` [8, 9].
-* **I/O Bottleneck Identification:** DBAs query ASH data to isolate I/O bottlenecks driven by specific SQL IDs, sessions, and database objects waiting on events such as `db file sequential read` (single-block index reads), `db file scattered read` (multi-block full table scans), and `direct path read` (direct-to-PGA reads during large sorts or hash joins) [4, 8, 9].
-* **Row-Level Locking Diagnostics:** Transactional row-level locking contention is identified using the wait event `enq: TX - row lock contention`, which occurs when sessions wait for row locks held by uncommitted transactions [4, 5, 10].
-* **Latch Contention Drill-Downs:** Concurrency for shared memory structures inside the SGA is isolated using events such as `latch: cache buffers chains` (protecting buffer cache hot blocks) and Shared Pool or Library Cache latches and mutexes (such as `cursor: pin S wait on X`) [10-12].
-* **Version Application:** The training architecture notes apply AWR, ADDM, and ASH performance profiling to IFS Applications (IFS Cloud, IFS Applications 10, and IFS Applications 9) [3, 4, 6, 9, 10]. Official manuals document wait event descriptions in Oracle Database Reference 18 [13-81] and Oracle Database Performance Tuning Guide 19c [82]. Where general AWR, ADDM, and ASH mechanics are presented without specifying a single version, the sources do not explicitly name a version.
+* **System Global Area (SGA) Tuning (sga_target):** The System Global Area (SGA) is an instance-wide shared memory structure allocated at database startup [1]. Setting `sga_target` to a non-zero value activates Automatic Shared Memory Management (ASMM), allowing Oracle to dynamically tune memory pools including the Buffer Cache (caching data blocks read from disk to optimize query response times), Shared Pool (storing parsed SQL, PL/SQL code, execution plans, and data dictionary information essential for IFS mid-tier session reuse), Large Pool, and Java Pool [1]. Dynamically tuning SGA memory pools prevents hard parses and disk I/O bottlenecks during peak transactional hours in environments running IFS Applications (IFS Cloud and IFS Applications 10/9) [1].
+* **Program Global Area (PGA) Tuning (pga_aggregate_target):** The Program Global Area (PGA) is non-shared memory allocated individually for each server process handling a user session connection [1]. Setting `pga_aggregate_target` establishes an instance-wide global target for total PGA memory allocated across all sessions [1]. Oracle dynamically controls memory allocated to individual work areas for sort operations (ORDER BY), hash joins, and bitmap merges to stay within this limit under peak batch workloads, preventing excessive temporary tablespace spilling during heavy batch reports [1].
+* **Processes Capacity Parameter Tuning (processes):** The static initialization parameter `processes` defines the maximum number of operating system user processes that can simultaneously connect to the Oracle Database instance [2]. Dedicated mid-tier connection pools, background processes (such as PMON, DBWn, and LGWR), and DBA sessions consume process slots [2]. Setting `processes` too low causes connection rejections with `ORA-00020: maximum number of processes exceeded`, preventing mid-tier application servers from establishing new sessions during traffic spikes [2].
+* **Open Cursors Capacity Parameter Tuning (open_cursors):** The dynamic parameter `open_cursors` specifies the maximum number of open cursors a single session can hold simultaneously in the Private SQL Area [2]. Cursors handle parsed SQL statements and PL/SQL blocks, and mid-tier frameworks (such as Java/JDBC pools in IFS) cache statement handles to boost execution speed [2]. Setting `open_cursors` sufficiently high accommodates statement caching per session without leaking cursors or exceeding Shared Pool memory limits, preventing `ORA-01000: maximum open cursors exceeded` errors [2].
+* **Version Application:** The training sources apply these memory and capacity parameter configurations to IFS Applications (IFS Cloud and IFS Applications 10/9) workloads [1, 2]. The provided sources do not specify a database version restriction (such as Oracle Database 19c) for these parameter definitions, so the sources do not explicitly state which database version applies to these parameters [1, 2].
 
 ---
 
-### Objective 3: RMAN Table-Level Point-in-Time Recovery (RECOVER TABLE PITR)
+### Objective 2: Performance Evaluation using AWR Reports, ADDM Recommendations, and ASH Sampling Metrics
 
-* **RMAN Table Recovery Mechanics:** RMAN table-level point in time recovery (`RECOVER TABLE`) restores dropped or purged tables to a specific point in time or SCN using existing RMAN backups and archivelogs without restoring the entire database or causing system downtime [83-85].
-* **Auxiliary Instance Automation:** Upon executing `RECOVER TABLE`, RMAN automatically provisions a temporary auxiliary database instance at a designated `AUXILIARY DESTINATION` (such as `/u01/aux`), restores the minimum necessary datafiles, applies archivelogs up to the specified target time, exports the recovered table using Data Pump, imports it back into the target production database, and cleans up the auxiliary instance [84, 86-88].
-* **Remapping and Dump Options:** DBAs can use the `REMAP TABLE` clause to recover the table under a new name or schema, or specify `NOTABLEIMPORT` with `DATAPUMP DESTINATION` to generate a standalone Data Pump dump file for manual import [89-91].
-* **Auxiliary Destination Prerequisites:** The specified `AUXILIARY DESTINATION` must have free disk space equal to or greater than the combined size of the `SYSTEM`, `SYSAUX`, `UNDO`, and target table tablespaces [92-94]. DBAs must avoid placing `AUXILIARY DESTINATION` inside the Fast Recovery Area (`DB_RECOVERY_FILE_DEST`) to prevent hanging from FRA quota exhaustion [95].
-* **Version Differences:**
-  * **Oracle Database 12c:** RMAN `RECOVER TABLE` was introduced in Oracle Database 12c Release 1 (12.1) [84, 85]. Oracle Database 12c Release 2 (12.2) added schema remapping support (`REMAP TABLE 'TEST'.'T1':'TEST2'.'T1_PREV'`), automated auxiliary space checks before execution, and native Pluggable Database support (`OF PLUGGABLE DATABASE`) [91, 93, 94, 96].
-  * **Oracle Database 19c:** The `RECOVER TABLE` command syntax operates identically on Oracle Database 19c for both non-CDB and PDB environments [83, 84, 93].
-  * **Oracle 26ai:** The `RECOVER TABLE` command syntax remains identical in Oracle 26ai, while underlying plumbing incorporates adaptive parallelism to scale channels based on host CPU and I/O headroom, defaults to AES-256 backup encryption, and operates transparently against immutable backup destinations [83, 97].
+* **Automatic Workload Repository (AWR) Analysis:** AWR serves as Oracle's built-in historical performance data warehouse, automatically capturing snapshots (defaulting to 60 minutes) and retaining statistics (defaulting to 8 days) in the SYSAUX tablespace via the Memory Monitor (MMON) background process [3]. Database administrators analyze AWR reports to evaluate DB Time (cumulative time spent by active non-idle user sessions inside the database) against Elapsed Time (total wall-clock time between snapshots); if DB Time significantly exceeds Elapsed Time, the system is running under high concurrency or encountering severe wait contention [4]. AWR Load Profile metrics track per-second and per-transaction throughput, including logical reads, physical reads, block changes, redo size, and hard parses, generated using the standard script `awrrpt.sql` [4]. AWR Compare Period reports (`awrddrpt.sql` for single-instance or `awrddrpi.sql` for RAC environments) generate side-by-side metric comparisons between two distinct time periods to evaluate performance changes before and after applying patches [5].
+* **Automatic Database Diagnostic Monitor (ADDM) Recommendations:** ADDM serves as an intelligent diagnostic engine built directly into Oracle Database that executes automatically after every AWR snapshot (by default, every 60 minutes) [6]. ADDM analyzes the performance delta between snapshot pairs based on DB Time consumption, conducts a tree-structured top-down bottleneck analysis, eliminates non-problem areas, and delivers prioritized recommendations covering hardware capacity, database configuration (`sga_target`, `pga_aggregate_target`, `open_cursors`, `processes`), and schema/SQL optimization [6]. ADDM findings can be queried programmatically via `DBA_ADDM_FINDINGS` and `DBA_ADDM_TASKS` or viewed via `addmrpt.sql` [6].
+* **Active Session History (ASH) Diagnostics:** ASH samples active database sessions every second into an SGA ring buffer (`v$active_session_history`), capturing fine-grained performance data for active sessions consuming CPU or waiting on non-idle wait events [7-9]. Second-by-second sampling allows DBAs to isolate transient, short-term performance spikes during batch runs that hourly AWR snapshot averages smooth out [7-9]. Historical ASH data flushed to disk by MMON is queried via `dba_hist_active_sess_history` [7-9].
+* **Isolating Physical I/O Bottlenecks:** Physical I/O bottlenecks are isolated in ASH views (`v$active_session_history` or `dba_hist_active_sess_history`) by analyzing specific wait events: `db file sequential read` (single-block reads typical for index lookups or nested loop joins; high wait counts indicate unindexed queries, fragmented indexes, storage latency on DATA disk groups, or unselective B-Tree index range scans), `db file scattered read` (multi-block reads typical for Full Table Scans or Fast Full Index Scans), and `direct path read` / `direct path write` (direct I/O bypassing the buffer cache, caused by large sorts, hash joins spilling to temporary tablespaces, or parallel queries) [8, 10-15]. Joining `v$active_session_history` with `dba_users` and `dba_objects` maps active sessions directly to specific SQL IDs (`sql_id`), usernames, programs, and database objects experiencing disk contention [7, 8]. Combining ASH queries with execution plan profiling via `DBMS_XPLAN.DISPLAY_CURSOR` allows DBAs to inspect runtime access paths (`TABLE ACCESS FULL`, `INDEX RANGE SCAN`) and compare estimated rows (`E-Rows`) against actual rows (`A-Rows`) to identify stale table statistics or suboptimal optimizer plans [16-18].
+* **Isolating Row-Level Locking Contention:** Transactional row-level locking contention is isolated using the wait event `enq: TX - row lock contention`, which occurs when sessions wait for row-level locks held by uncommitted transactions [19, 20]. High enqueue wait counts in IFS environments typically stem from concurrent updates to the same customer order, inventory balance, or financial ledger records without proper queuing [20].
+* **Isolating Memory Latch Contention:** Internal memory latches are lightweight serialization mechanisms protecting shared data structures within the System Global Area (SGA) [20]. `Cache Buffers Chains` latch contention arises from hot blocks (frequently accessed data blocks accessed concurrently by multiple sessions, such as sequence generators or high-frequency status update tables) [20]. Shared Pool and Library Cache latches and mutexes (such as `cursor: mutex S`, `cursor: mutex X`, `cursor: pin S`, `cursor: pin S wait on X`, `cursor: pin X`, and `library cache: mutex X`) are triggered by excessive hard parsing, unshared SQL statements, or frequent cursor reloads under high mid-tier connection volume [20-26].
+* **Version Application:** The official manual Database Performance Tuning Guide 19c provides database performance tuning fundamentals, while Database Reference 18 documents wait event descriptions [27, 28]. The training notes apply AWR, ADDM, and ASH profiling workflows to IFS Applications (IFS Cloud and IFS Applications 10/9) workloads [6, 20, 29]. Where general AWR, ADDM, and ASH mechanics are presented without specifying a single database version, the sources do not explicitly state a version restriction [3, 6, 8, 29].
 
 ---
 
-💡 **Next Steps:** Would you like to generate practice flashcards covering these AWR wait events and RMAN `RECOVER TABLE` syntax, or create a quiz to test your understanding of SGA/PGA memory parameters?
+### Objective 3: RMAN Table-Level Point in Time Recovery (RECOVER TABLE PITR)
+
+* **Purpose and Benefits:** The RMAN `RECOVER TABLE` command enables database administrators to recover one or more tables or table partitions to a specified point in time from RMAN backups without affecting remaining database objects or requiring full database restores or system downtime [30, 31]. This is useful when recovering tables that have been logically corrupted or dropped and purged, when Flashback Table is not possible because the target time is older than available undo, or when DDL structural changes (such as truncate table operations) prevent Flashback Table [32].
+* **Prerequisites and Required Backups:** The target database must be in ARCHIVELOG mode and read-write mode [33]. RMAN requires a full backup of undo, SYSTEM, SYSAUX, and the tablespaces containing the target tables or partitions [34]. For pluggable databases (PDBs), backups of the SYSTEM, SYSAUX, and undo tablespaces of the root container (CDB\\(ROOT), CDB seed (PDB\\)SEED), and the specific PDB containing the tables are required [35]. Tables or partitions belonging to the SYS schema or SYSTEM and SYSAUX tablespaces cannot be recovered [36].
+* **Point-in-Time Specification:** The point in time for recovery is specified using `UNTIL TIME` (a timestamp expression), `UNTIL SCN` (System Change Number), or `UNTIL SEQUENCE` (redo log sequence number and thread) [37, 38].
+* **Automated Auxiliary Database Workflow:**
+  1. RMAN determines which backup contains the target tables or partitions based on the specified point in time [39].
+  2. RMAN checks space availability on the target host and automatically provisions an auxiliary database instance using the `AUXILIARY DESTINATION` clause (or `SET NEWNAME` commands) to store data files for the auxiliary database [39, 40].
+  3. RMAN restores the necessary data files and recovers the specified tables or partitions to the designated point in time inside the auxiliary database [39].
+  4. RMAN creates a Data Pump export dump file containing the recovered objects, with the directory specified via `DATAPUMP DESTINATION` (defaulting to `AUXILIARY DESTINATION` or `$ORACLE_HOME/dbs` on Linux) and the filename specified via `DUMP FILE` [39, 41].
+  5. By default, RMAN automatically imports the Data Pump export dump file into the target database [39, 42]. Specifying `NOTABLEIMPORT` recovers the tables to the specified point in time and generates the dump file without performing the import, allowing manual import later via Data Pump Import [39, 42].
+* **Remapping Tables, Schemas, and Tablespaces:** DBAs use the `REMAP TABLE` clause to rename recovered tables or table partitions in the target database [43, 44]. Starting in Oracle Database 12c Release 2 (12.2), `REMAP TABLE` also enables recovering tables or table partitions into a schema different from the original source schema [45]. The `REMAP TABLESPACE` clause imports recovered objects into a tablespace different from their original tablespace [43, 46].
+* **PDB Support:** In multitenant environments, tables in a PDB are recovered using `RECOVER TABLE ... OF PLUGGABLE DATABASE <pdb_name>` while connected to the root container or target PDB, recovering the table without impacting other objects in the PDB [47, 48].
+* **Version Application:** The official manual Backup and Recovery User Guide 19 documents `RECOVER TABLE` procedures for Oracle Database 19c and highlights schema remapping introduced in Oracle Database 12c Release 2 (12.2) [45, 49]. The provided sources do not mention or state facts regarding Oracle 26ai for `RECOVER TABLE` [30, 49, 50].
+
+---
+
+💡 **Next Steps:** Would you like to review practice questions from your saved **Performance Management and Tuning** quiz app, or explore the SQL scripts for querying `v$active_session_history` during peak batch runs?
 
 # Kaynaklar
 
@@ -94,8 +98,6 @@ Based on the provided sources, here is what the student learns for each specifie
 * NotebookLM kaynağı `6788fff9-3d2b-4877-86aa-77fb3cb937de`
 * NotebookLM kaynağı `dd60e449-4458-4561-92f0-7e84b9b2701d`
 * NotebookLM kaynağı `9a96c24e-77c7-4dc1-acc2-8becadcb3d70`
-* NotebookLM kaynağı `46117042-721a-4c55-8d5a-5e719dbddbbc`
-* NotebookLM kaynağı `74d0f7e7-dd58-48e2-8f06-d19d98932bc0`
-* NotebookLM kaynağı `5ac6afd8-67c5-4dd6-995b-69766ceb459b`
-* NotebookLM kaynağı `b985c5f8-c5ce-43bf-9d5a-5e2892555a8f`
 * NotebookLM kaynağı `fb991bc1-c217-4dc6-a8e2-d4332a5e6a9b`
+* NotebookLM kaynağı `9f88730c-e303-430d-af33-93a576c6f98d`
+* NotebookLM kaynağı `d7d4fb71-bfab-4126-87a9-b52b14a6b928`

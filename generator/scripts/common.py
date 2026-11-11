@@ -253,14 +253,25 @@ def _excluded(haystack: str, tier: dict) -> bool:
     return any(m.casefold() in haystack for m in tier.get("exclude_titles", []))
 
 
+def excluded_from_grounding(src, tiers):
+    """True when a source must not ground a chapter at all. A tier's `exclude_titles` lists the sources
+    that share its type without sharing its authority (third-party write-ups, personal screenshots, video
+    uploads of other people's slides). Ranking them below every tier is not enough: they are still handed
+    to NotebookLM with `-s` and end up cited, so they are dropped from the source list instead."""
+    haystack = ((src.get("title") or "") + " " + (src.get("url") or "")).casefold()
+    return any(_excluded(haystack, t) for t in tiers)
+
+
 def with_authority(ids, sources, tiers):
     """`ids` plus every ready top-tier source when none of `ids` is top tier, so a chapter built from
     lecture captions is still checked against the textbook. Order of `ids` is kept. The top tier's optional
     `max_add` caps how many of its sources are added, so a course with many top-tier documents does not
-    flood every chapter."""
+    flood every chapter. Sources a tier's `exclude_titles` rules out are dropped: they are never handed
+    to NotebookLM, so they can never be cited."""
     if not tiers:
         return list(ids)
     by_id = {s.get("id"): s for s in sources}
+    ids = [i for i in ids if not excluded_from_grounding(by_id.get(i, {}), tiers)]
     if any(source_tier(by_id.get(i, {}), tiers) == 0 for i in ids):
         return list(ids)
     top = [s["id"] for s in sources if s.get("status") == "ready" and s.get("id") not in ids

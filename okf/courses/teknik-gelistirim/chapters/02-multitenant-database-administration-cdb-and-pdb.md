@@ -5,13 +5,17 @@ description: In this chapter, the student learns how to administer Oracle Databa
 course: teknik-gelistirim
 chapter: 2
 status: stable
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-11-10T11:25:36Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-11-11T05:06:34Z }
 notebook: "https://notebooklm.google.com/notebook/d9fbd16b-86fb-45ab-af81-dc503b2c5aad"
 ---
 
 # Özet
 
 In this chapter, the student learns how to administer Oracle Database 19c Multitenant Container Databases (CDB) and manage Pluggable Database (PDB) structural architecture, including CDB$ROOT, PDB$SEED, and user PDBs [1]. The student explores operational environment isolation and resource management techniques across IFS Applications instances to prevent data contamination and resource starvation [1, 2]. Additionally, the curriculum covers configuring PDB memory thresholds such as sga_target and pga_aggregate_limit, setting PDB Resource Manager profiles, and executing independent PDB lifecycle operations like cloning and unplugging without disrupting sibling databases [1, 2].
+
+# Sesli Ders
+
+[Bölüm 2 sesli özeti](/audio/teknik-gelistirim/chapter-2.mp3) (5:33 dk, MP3)
 
 # Öğrenme Hedefleri
 
@@ -36,12 +40,12 @@ Here is what the student learns for each objective, based strictly on the provid
 
 ---
 
-### Objective 1: Administering Oracle Database 19c Multitenant Architecture and Managing CDB\\(ROOT, PDB\\)SEED, and User PDB Structures
+### Objective 1: Administering Oracle Database 19c Multitenant Architecture and Managing CDB$ROOT, PDB$SEED, and User PDB Structures
 
-* **Container Architecture Fundamentals:** The student learns that Oracle Multitenant architecture divides database infrastructure into a single root container database (CDB\$ROOT) and one or more Pluggable Databases (PDBs) [1, 2].
-* **Root Container Management:** CDB\$ROOT manages common background processes, shared system metadata, global database memory, common user accounts, and global initialization parameters [1, 2].
-* **Pluggable Database Types:** PDB\$SEED functions as a system-supplied template PDB used to rapidly provision new pluggable databases for additional IFS environments [1]. User PDBs are dedicated pluggable databases that hold user data schemas, tablespaces, and application-specific metadata required by IFS Applications [1].
-* **Metadata and Schema Isolation:** Each PDB maintains its own private data dictionary for user-created tables, indexes, and application schemas while CDB\$ROOT handles shared system metadata [2]. Mid-tier connection pools interact exclusively with their assigned PDB service, ensuring sessions in non-production instances cannot access or modify Production schema objects [2].
+* **Container Architecture Fundamentals:** The student learns that Oracle Multitenant architecture divides database infrastructure into a single root container database (CDB$ROOT) and one or more Pluggable Databases (PDBs) [1, 2].
+* **Root Container Management:** CDB$ROOT manages common background processes, shared system metadata, global database memory, common user accounts, and global initialization parameters [1, 2].
+* **Pluggable Database Types:** PDB$SEED functions as a system-supplied template PDB used to rapidly provision new pluggable databases for additional IFS environments [1]. User PDBs are dedicated pluggable databases that hold user data schemas, tablespaces, and application-specific metadata required by IFS Applications [1].
+* **Metadata and Schema Isolation:** Each PDB maintains its own private data dictionary for user-created tables, indexes, and application schemas while CDB$ROOT handles shared system metadata [2]. Mid-tier connection pools interact exclusively with their assigned PDB service, ensuring sessions in non-production instances cannot access or modify Production schema objects [2].
 * **IFS Application Stage Isolation:** In IFS Applications (specifically IFS Cloud and IFS Applications 10/9), tenant and environment isolation isolates ERP transaction data and schema objects across distinct operational stages (such as DEV, TEST, and PROD) while sharing physical hardware resources [1, 2].
 * **Official Oracle 19c Manuals:** The official manuals **Oracle Database Database Administrator's Guide, 19c** and **Oracle Database Database Concepts, 19c** provide the core administrative framework and concepts for managing multitenant database structures [3-6].
 
@@ -59,8 +63,8 @@ Here is what the student learns for each objective, based strictly on the provid
 ### Objective 3: Executing Independent Pluggable Database Lifecycle Operations and Container Management
 
 * **Independent Lifecycle Operations:** The student learns that DBAs can unplug, clone, or drop an individual PDB without interrupting active operations on sibling PDBs running on the same container instance [2].
-* **PDB Provisioning:** Rapid provisioning of new pluggable databases across IFS application stages is executed using the template PDB\$SEED [1].
-* **Container Context Switching:** DBAs switch session container contexts between CDB\$ROOT and target PDBs using SQL commands such as `ALTER SESSION SET CONTAINER = <container_name>;` [1, 2].
+* **PDB Provisioning:** Rapid provisioning of new pluggable databases across IFS application stages is executed using the template PDB$SEED [1].
+* **Container Context Switching:** DBAs switch session container contexts between CDB$ROOT and target PDBs using SQL commands such as `ALTER SESSION SET CONTAINER = <container_name>;` [1, 2].
 * **PDB State and Context Verification:** DBAs alter PDB states using commands like `ALTER PLUGGABLE DATABASE <pdb_name> OPEN;` and verify session container contexts via `sys_context('USERENV', 'CON_NAME')`, `sys_context('USERENV', 'CON_ID')`, `v$pdbs`, and `v$session` [1, 2].
 * **Official Oracle 19c Lifecycle Standard:** Official multitenant lifecycle management procedures are defined in the **Oracle Database Database Administrator's Guide, 19c** [3, 4].
 

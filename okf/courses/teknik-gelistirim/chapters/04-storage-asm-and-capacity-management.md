@@ -5,13 +5,17 @@ description: In this chapter, the student learns how to design and manage storag
 course: teknik-gelistirim
 chapter: 4
 status: stable
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-11-10T11:25:36Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-11-11T05:06:34Z }
 notebook: "https://notebooklm.google.com/notebook/d9fbd16b-86fb-45ab-af81-dc503b2c5aad"
 ---
 
 # Özet
 
 In this chapter, the student learns how to design and manage storage architecture using Oracle Automatic Storage Management (ASM) disk groups, including DATA and RECO, while configuring coarse-grained and fine-grained striping alongside redundancy models for high-concurrency OLTP workloads in IFS Cloud 25R1 and IFS Applications 10. The student explores table partitioning strategies such as Range, List, and Hash partitioning for high-volume transaction tables in Oracle Database 19c, utilizing partition pruning, local index maintenance, and Partition Maintenance Operations (PMO) to optimize query performance and disk reclamation. Additionally, the curriculum covers setting up warning thresholds at 85 percent and critical thresholds at 95 percent using DBMS_SERVER_ALERT in Oracle Enterprise Manager (OEM) to monitor logical tablespaces and physical ASM disk space, preventing unhandled out-of-space errors.
+
+# Sesli Ders
+
+[Bölüm 4 sesli özeti](/audio/teknik-gelistirim/chapter-4.mp3) (6:16 dk, MP3)
 
 # Öğrenme Hedefleri
 

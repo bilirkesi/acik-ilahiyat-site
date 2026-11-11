@@ -173,6 +173,44 @@ class TestWithAuthority(unittest.TestCase):
         self.assertEqual(common.with_authority(["t2"], self.SOURCES, tiers), ["t2"])
 
 
+class TestExcludedFromGrounding(unittest.TestCase):
+    """exclude_titles: kacirilan kaynak hem tier'a giremez hem de notlari beslemez."""
+
+    TIERS = [
+        {"label": "resmi", "types": ["web_page"], "exclude_titles": ["slideshare"]},
+        {"label": "notlar", "types": ["gemini_chat"]},
+    ]
+
+    SOURCES = [
+        {"id": "t1", "type": "web_page", "title": "Oracle Data Guard Concepts", "status": "ready"},
+        {"id": "g1", "type": "web_page", "title": "Advanced Architectures | PDF - Slideshare", "status": "ready"},
+        {"id": "n1", "type": "gemini_chat", "title": "Calisma notlari", "status": "ready"},
+    ]
+
+    def test_a_listed_source_is_excluded(self) -> None:
+        self.assertTrue(common.excluded_from_grounding(self.SOURCES[1], self.TIERS))
+
+    def test_an_official_source_is_not_excluded(self) -> None:
+        self.assertFalse(common.excluded_from_grounding(self.SOURCES[0], self.TIERS))
+
+    def test_the_url_is_matched_too(self) -> None:
+        src = {"type": "web_page", "title": "Bir yazi", "url": "https://www.slideshare.net/x"}
+        self.assertTrue(common.excluded_from_grounding(src, self.TIERS))
+
+    def test_a_source_without_tiers_is_never_excluded(self) -> None:
+        self.assertFalse(common.excluded_from_grounding(self.SOURCES[1], []))
+
+    def test_with_authority_drops_the_excluded_source(self) -> None:
+        """Gurultu kaynagi bolumun kaynak listesinde kalirsa NotebookLM'e verilir ve atif alir."""
+        self.assertEqual(common.with_authority(["t1", "g1", "n1"], self.SOURCES, self.TIERS), ["t1", "n1"])
+
+    def test_with_authority_adds_the_top_tier_when_only_the_excluded_one_is_left(self) -> None:
+        self.assertEqual(common.with_authority(["g1"], self.SOURCES, self.TIERS), ["t1"])
+
+    def test_the_excluded_source_is_not_offered_as_top_tier(self) -> None:
+        self.assertNotIn("g1", common.with_authority(["n1"], self.SOURCES, self.TIERS))
+
+
 class TestTechnicalCourseUnits(unittest.TestCase):
     """coursegraph'teki unite basliklari dersin bolum basliklariyla ayni olmali."""
 

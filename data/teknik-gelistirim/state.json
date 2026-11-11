@@ -637,6 +637,30 @@
       "url": "",
       "type": "pdf",
       "status": "ready"
+    },
+    "2cce32bb-ac3a-4281-b84a-cade9a724b03": {
+      "id": "2cce32bb-ac3a-4281-b84a-cade9a724b03",
+      "nlm_id": "2cce32bb-ac3a-4281-b84a-cade9a724b03",
+      "title": "Oracle Maximum Availability Architecture for Oracle Database@Azure",
+      "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/haovw/oracle-maximum-availability-architecture-oracle-databaseazure.html",
+      "type": "web_page",
+      "status": "ready"
+    },
+    "9f88730c-e303-430d-af33-93a576c6f98d": {
+      "id": "9f88730c-e303-430d-af33-93a576c6f98d",
+      "nlm_id": "9f88730c-e303-430d-af33-93a576c6f98d",
+      "title": "Recovering Tables and Table Partitions",
+      "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/bradv/rman-recovering-tables-partitions.html",
+      "type": "web_page",
+      "status": "ready"
+    },
+    "d7d4fb71-bfab-4126-87a9-b52b14a6b928": {
+      "id": "d7d4fb71-bfab-4126-87a9-b52b14a6b928",
+      "nlm_id": "d7d4fb71-bfab-4126-87a9-b52b14a6b928",
+      "title": "Transporting Data Across Platforms",
+      "url": "https://docs.oracle.com/en/database/oracle/oracle-database/19/bradv/rman-transporting-data-across-platforms.html",
+      "type": "web_page",
+      "status": "ready"
     }
   },
   "order": [
@@ -730,7 +754,10 @@
     "eebd95b3-55c6-4178-a201-1ffd89aa06d8",
     "6d64ce46-7a82-4114-b656-4fa48e39707a",
     "30c8d921-9b1a-45f2-9e13-aeb376263794",
-    "41a61ccb-4737-4a41-9a83-d74d9b1b76a6"
+    "41a61ccb-4737-4a41-9a83-d74d9b1b76a6",
+    "2cce32bb-ac3a-4281-b84a-cade9a724b03",
+    "9f88730c-e303-430d-af33-93a576c6f98d",
+    "d7d4fb71-bfab-4126-87a9-b52b14a6b928"
   ],
   "notebook_title": "IFS Enterprise Oracle Architecture & DBA Training Program",
   "tries": {

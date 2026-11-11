@@ -52,6 +52,14 @@ class TestGrounding(unittest.TestCase):
         self.assertTrue(text.endswith("Tahmin etme."))
         self.assertEqual(common.grounding_rules({}), "")
 
+    def test_excluded_sources_do_not_ground_a_chapter(self) -> None:
+        """exclude_titles'ta olan bir kaynak bolume atanmis olsa bile notlari beslemez."""
+        tiers = [{"label": "resmi", "types": ["web_page"], "exclude_titles": ["slideshare"]}]
+        srcs = [{"id": "t", "type": "web_page", "title": "Oracle Data Guard", "status": "ready"},
+                {"id": "g", "type": "web_page", "title": "X | PDF - Slideshare", "status": "ready"}]
+        self.assertTrue(common.excluded_from_grounding(srcs[1], tiers))
+        self.assertEqual(common.with_authority(["t", "g"], srcs, tiers), ["t"])
+
     def test_real_config_has_tiers(self) -> None:
         tiers = common.load_university(ROOT)["grounding"]["tiers"]
         self.assertIn("book", tiers[0]["types"])

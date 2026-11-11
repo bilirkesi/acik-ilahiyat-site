@@ -24,7 +24,9 @@ def dash(obj):
 
 
 def clean(text):
-    """Drop NotebookLM citation markers like [1], [2-4], [1, 3]; keep markdown list refs and ⟦k⟧."""
+    """Drop NotebookLM citation markers like [1], [2-4], [1, 3]; keep markdown list refs and ⟦k⟧.
+    NotebookLM sometimes cites by source title instead of number (`[Recovering Tables and Table
+    Partitions]`); those markers are dropped too, so the note reads the same either way."""
     out_lines = []
     for ln in (text or "").splitlines():
         s = ln.strip()
@@ -33,9 +35,17 @@ def clean(text):
             out_lines.append(ln)
             continue
         ln = re.sub(r"\s*\[\d+(?:\s*[-,]\s*\d+)*\]", "", ln)
+        # adla atıf: köşeli parantezde birden çok kelime, ama markdown link degil ("](...)" degil)
+        ln = re.sub(r"\s*\[(?![^\]\n]*\]\()[^\]\n]*[ ,][^\]\n]*\]", "", ln)
         out_lines.append(ln)
     text = "\n".join(out_lines)
     text = re.sub(r"\\\\([()\[\]])", r"\\\1", text)
+    # NotebookLM bazen urun tanimlayicisindaki "$" yerine LaTeX kacisi yazar: "V\\(CLUSTER_INTERCONNECTS",
+    # "CDB\\(ROOT)", "PDB\\)SEED". Boyle bir kacis KaTeX ayraci gibi gorunur ve tanimlayiciyi bozar;
+    # geri "$" isaretine cevrilir. Gercek LaTeX ("\\(x^2\\)") korunur: kacis bir tanimlayici
+    # bas harfinden once gelmez (buyuk harf veya alt cizgi).
+    text = re.sub(r"(?<=[A-Z_])\\\((?=[A-Za-z_])", "$", text)
+    text = re.sub(r"(?<=[A-Z_])\\\)(?=[A-Za-z_])", "$", text)
     lines = text.strip().split("\n")
     if lines and lines[0].rstrip().endswith(":") and re.match(r"(Here is|Here are|Based on)", lines[0]):
         lines = lines[1:]
@@ -149,7 +159,7 @@ def course_data(proj, slug):
         single = aof_infographics.get(f"aof-infographic-{i}")
         aof = pages if pages else (single and [single]) or None
         chapters.append({
-            "title": ch["title"], "summary": ch.get("summary", ""), "objectives": ch.get("objectives", []),
+            "title": ch["title"], "summary": clean(ch.get("summary", "")), "objectives": [clean(o) for o in ch.get("objectives", [])],
             "lectures": [by_sid[s] for s in ch.get("source_ids", []) if s in by_sid],
             "notes": clean(ch.get("grounding", {}).get("answer", "")),
             "cites": ch.get("cites") or [],

@@ -6,7 +6,7 @@
 
 ## Ownership
 - `data/<slug>/study_plan.json` — chapters with `title`, `summary`, `objectives`, `lectures`, `source_ids`, optional `grounding` and `cites`. The site's chapter pages are built from this.
-- `data/teknik-gelistirim/` — the IFS Cloud and Oracle DBA training program, the one course that is not a university course. Its material is in English, its units are its chapters (the unit titles live in `coursegraph/past_exams.py` and must equal the chapter titles here), it has no past exams, and its `state.json` records the 91 sources of an existing NotebookLM notebook in `mode: own` — the pipeline only reads that notebook, it never adds or removes a source there.
+- `data/teknik-gelistirim/` — the IFS Cloud and Oracle DBA training program, the one course that is not a university course. Its material is in English, its units are its chapters (the unit titles live in `coursegraph/past_exams.py` and must equal the chapter titles here), it has no past exams, and its `state.json` records the 94 sources of an existing NotebookLM notebook in `mode: own` — the pipeline only reads that notebook, it never adds or removes a source there.
 - `data/<slug>/quiz.json` — the final "game" quiz.
 - `data/<slug>/exams/{vize,final,yaz-kursu}.json` — practice exams; schema in `_exam_schema.md`.
 - `data/<slug>/unit_quizzes/unit-N.json` — per-unit quizzes generated from past-exam questions plus the textbook.
@@ -23,7 +23,8 @@
 - Every quiz-style file uses `questions[].answerOptions[]` with `isCorrect`; a question must have **exactly one** correct option.
 - Question `type` is one of `multiple_choice`, `multiple_select`, `fill_in_the_blank`, `short_answer`, `test`, `true_false` (or omitted). The canonical list is `generator/scripts/quiz_types.py` (`KNOWN`), shared by `scripts/check_quiz_answers.py` and `generator/scripts/qa.py`. The site auto-grades `multiple_choice`, `multiple_select` and `fill_in_the_blank` (`GRADED` in `app.js`); `short_answer` is graded by hand and `test`/`true_false` are legacy names kept for compatibility.
 - Option text is compared exactly for duplicate detection, so Ottoman Turkish diacritics (şedde/şerif) that distinguish meaning must be preserved — do not normalize them away.
-- Slugs are stable: `islam-mezhepleri-tarihi`, `turk-dili-1`, `ataturk-ilkeleri-1`, `osmanlica-1`.
+- Slugs are stable: `islam-mezhepleri-tarihi`, `turk-dili-1`, `ataturk-ilkeleri-1`, `osmanlica-1`, `teknik-gelistirim`.
+- A chapter's `source_ids` holds only sources that may ground it. The technical course's `grounding.tiers[0].exclude_titles` names the third-party write-ups and personal screenshots that share the official documentation's type; those sources stay in the notebook but never enter a chapter's `source_ids`, so they can never be cited. `generator/scripts/common.py`'s `excluded_from_grounding()` is the single rule.
 
 ## Work Guidance
 - Add or edit content here, then regenerate downstream artifacts (see `scripts/AGENTS.md` and `coursegraph/AGENTS.md`) rather than editing `site/` or `okf/` by hand.
