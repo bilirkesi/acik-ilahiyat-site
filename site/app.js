@@ -1803,13 +1803,11 @@
   function paintStudyBadges() {
     const n = dueCards().filter(([id]) => bySlug[courseOfId(id)]).length;
     document.querySelectorAll("[data-due-badge]").forEach((b) => { b.hidden = !n; b.textContent = n > 99 ? "99+" : String(n); });
-    // Üst çubuk: "Çalışma" menüsü sözlük destesi olan her dersi kendi destesine bağlar, her sayfadan açılır.
-    const glossRows = COURSES.map((c) => ({ c, due: glossDue(c.slug).length, total: glossDeck(c.slug).length }))
-      .filter((x) => x.total);
+    // Üst çubuk: "Çalışma" menüsü masa kartının satırlarını her sayfadan açar.
+    const glossRows = glossCourses();
     document.querySelectorAll("[data-gloss-list]").forEach((box) => {
       box.innerHTML = glossRows.length
-        ? `<p class="nav-due-title">Sözlük destesi</p>${glossRows.map((x) => `
-          <a class="nav-due-row" href="#/course/${x.c.slug}/sozluk"><b>${esc(x.c.subject)}</b><span>${x.due ? `${x.due} sırada` : "bugün yok"} · ${x.total} kelime</span></a>`).join("")}`
+        ? `<p class="nav-due-title">Sözlük destesi</p>${glossRows.map((x) => glossRowHtml(x, "nav-due-row")).join("")}`
         : `<p class="nav-due-empty muted">Sözlükte henüz kelime yok.</p>`;
     });
     // Ana ekrana eklenmiş uygulamanın simgesinde bekleyen tekrar sayısı (destekleyen cihazlarda; iPhone'da bildirim izni ister).
@@ -4354,6 +4352,16 @@
     const t = now || Date.now();
     return glossDeck(slug).filter((x) => (x.due || 0) <= t);
   }
+  // Ders ders deste özeti ve tek satır işaretlemesi: masa kartı ile üst çubuk menüsü buradan okur.
+  function glossCourses(now) {
+    return COURSES.map((c) => ({ c, due: glossDue(c.slug, now).length, total: glossDeck(c.slug).length }))
+      .filter((x) => x.total);
+  }
+  function glossRowHtml(x, cls) {
+    const name = esc(x.c.subject);
+    const meta = `${x.due ? `${x.due} sırada` : "bugün yok"} · ${x.total} kelime`;
+    return `<a${cls ? ` class="${cls}"` : ""} href="#/course/${x.c.slug}/sozluk"><b>${name}</b><span>${meta}</span></a>`;
+  }
   function glossNext(item, rating) {
     const box = Math.max(0, Math.min(GLOSS_STEPS.length - 1, item.box || 0));
     item.seen = (item.seen || 0) + 1;
@@ -6448,15 +6456,11 @@ document.getElementById("zin").focus();
 
   // Çalışma masasında sözlük: her ders kendi destesiyle, bugün tekrar bekleyen kelime sayısıyla.
   function glossDeskHtml() {
-    const rows = COURSES.map((c) => ({ c, due: glossDue(c.slug).length, total: glossDeck(c.slug).length }))
-      .filter((x) => x.total);
+    const rows = glossCourses();
     if (!rows.length) return "";
     const due = rows.reduce((n, x) => n + x.due, 0);
     const total = rows.reduce((n, x) => n + x.total, 0);
-    const items = rows.map((x) => `<li><a href="#/course/${x.c.slug}/sozluk">
-        <b>${esc(x.c.subject)}</b>
-        <span class="muted small">${x.due ? `${x.due} sırada` : "bugün yok"} · ${x.total} kelime</span>
-      </a></li>`).join("");
+    const items = rows.map((x) => `<li>${glossRowHtml(x)}</li>`).join("");
     return `<section class="desk-card desk-gloss">
       <h3>Sözlük destesi</h3>
       <p class="muted">${due ? `${due} kelime bugün tekrar bekliyor.` : "Bugün tekrar bekleyen kelime yok."} ${rows.length} derste ${total} kelime.</p>

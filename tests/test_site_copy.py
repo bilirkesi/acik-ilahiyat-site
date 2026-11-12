@@ -183,13 +183,18 @@ class TestBothContentPaths(unittest.TestCase):
         self.assertIn("gl-desk-list", src)
         self.assertIn("href=\"#/course/${x.c.slug}/sozluk\"", src)
         self.assertIn("${x.due ? `${x.due} sırada` : \"bugün yok\"} · ${x.total} kelime", src)
+        # Satır verisi ve işaretlemesi tek yerde: masa kartı ile üst çubuk aynı yardımcıyı kullanır.
+        self.assertIn("function glossCourses(now) {", src)
+        self.assertIn("function glossRowHtml(x, cls) {", src)
+        self.assertIn("rows.map((x) => `<li>${glossRowHtml(x)}</li>`)", src)
+        self.assertIn('glossRows.map((x) => glossRowHtml(x, "nav-due-row"))', src)
+        self.assertEqual(src.count('href="#/course/${x.c.slug}/sozluk"'), 1)
         # Üst çubuktaki "Çalışma" menüsü aynı desteleri her sayfadan açar.
         from pathlib import Path
         index = (Path(__file__).resolve().parents[1] / "generator" / "site-template" / "index.html").read_text(encoding="utf-8")
         self.assertIn("data-gloss-nav", index)
         self.assertIn("data-gloss-list", index)
         self.assertIn('document.querySelectorAll("[data-gloss-list]").forEach', src)
-        self.assertIn('class="nav-due-row" href="#/course/${x.c.slug}/sozluk"', src)
         self.assertIn("Sözlükte henüz kelime yok.", src)
 
     def test_the_published_copy_is_the_built_template(self) -> None:
