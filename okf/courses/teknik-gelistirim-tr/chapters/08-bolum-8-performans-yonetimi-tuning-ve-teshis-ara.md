@@ -1,17 +1,17 @@
 ---
 type: Chapter
 title: "Bölüm 8: Performans Yönetimi, Tuning ve Teşhis Araçları"
-description: "Öğrenci, SGA bellek havuzlarını (sga_target, pga_aggregate_target) ve oturum kapasite parametrelerini (open_cursors, processes) optimize etmeyi öğrenir. AWR raporları, ADDM önerileri ve ASH saniyelik "
+description: SGA bellek havuzlarının (sga_target, pga_aggregate_target) ve oturum kapasite parametrelerinin (open_cursors, processes) optimize edilmesi öğrenilir. AWR raporları, ADDM önerileri ve ASH saniyelik örn
 course: teknik-gelistirim-tr
 chapter: 8
 status: stable
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-11-11T19:31:19Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-11-12T07:22:59Z }
 notebook: "https://notebooklm.google.com/notebook/d9fbd16b-86fb-45ab-af81-dc503b2c5aad"
 ---
 
 # Özet
 
-Öğrenci, SGA bellek havuzlarını (sga_target, pga_aggregate_target) ve oturum kapasite parametrelerini (open_cursors, processes) optimize etmeyi öğrenir. AWR raporları, ADDM önerileri ve ASH saniyelik örnekleme verilerini analiz ederek I/O darboğazlarını, satır seviyesi kilitlenmeleri ve bellek latch çekişmelerini tespit eder. Execution plan profilleme ve indeks stratejileri ile SQL sorgularını iyileştirir.
+SGA bellek havuzlarının (sga_target, pga_aggregate_target) ve oturum kapasite parametrelerinin (open_cursors, processes) optimize edilmesi öğrenilir. AWR raporları, ADDM önerileri ve ASH saniyelik örnekleme verilerini analiz ederek I/O darboğazlarını, satır seviyesi kilitlenmeleri ve bellek latch çekişmelerini tespit eder. Execution plan profilleme ve indeks stratejileri ile SQL sorgularını iyileştirir.
 
 # Sesli Ders
 
@@ -19,9 +19,9 @@ notebook: "https://notebooklm.google.com/notebook/d9fbd16b-86fb-45ab-af81-dc503b
 
 # Öğrenme Hedefleri
 
-1. Öğrenci, sga_target, pga_aggregate_target, open_cursors ve processes parametrelerini ayarlayarak ORA-01000 ve ORA-00020 hatalarını önleyabilir.
-2. Öğrenci, AWR raporları, ADDM önerileri ve ASH metriklerini değerlendirerek I/O darboğazlarını ve kilitlenme çekişmelerini izole edebilir.
-3. Öğrenci, execution plan analizi ve wait event teşhisleri (C.3) ile IFS veritabanı SQL performansını optimize edebilir.
+1. sga_target, pga_aggregate_target, open_cursors ve processes parametrelerini ayarlayarak ORA-01000 ve ORA-00020 hatalarını önleyabilir.
+2. AWR raporları, ADDM önerileri ve ASH metriklerini değerlendirerek I/O darboğazlarını ve kilitlenme çekişmelerini izole edebilir.
+3. execution plan analizi ve wait event teşhisleri (C.3) ile IFS veritabanı SQL performansını optimize edebilir.
 
 # Dersler
 

@@ -1,17 +1,17 @@
 ---
 type: Chapter
 title: "Bölüm 6: Data Guard, MAA Standartları ve Felaket Kurtarma Operasyonları"
-description: "Öğrenci, Oracle Maximum Availability Architecture (MAA) Silver, Gold ve Platinum referans mimarilerini ve Oracle Database@Azure entegrasyonunu öğrenir. Data Guard Broker (dgmgrl) ile otomatik planlı s"
+description: "Oracle Maximum Availability Architecture (MAA) Silver, Gold ve Platinum referans mimarileri ile Oracle Database@Azure entegrasyonu öğrenilir. Data Guard Broker (dgmgrl) ile otomatik planlı switchover "
 course: teknik-gelistirim-tr
 chapter: 6
 status: stable
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-11-11T19:31:19Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-11-12T07:22:59Z }
 notebook: "https://notebooklm.google.com/notebook/d9fbd16b-86fb-45ab-af81-dc503b2c5aad"
 ---
 
 # Özet
 
-Öğrenci, Oracle Maximum Availability Architecture (MAA) Silver, Gold ve Platinum referans mimarilerini ve Oracle Database@Azure entegrasyonunu öğrenir. Data Guard Broker (dgmgrl) ile otomatik planlı switchover ve acil durum failover runbook'larını çalıştırmayı kavrar. Standby Redo Logs (SRLs) ve Real-Time Redo Apply yapılandırması ile RPO = 0 ve RTO < 5 dakika hedeflerine ulaşmayı sağlar.
+Oracle Maximum Availability Architecture (MAA) Silver, Gold ve Platinum referans mimarileri ile Oracle Database@Azure entegrasyonu öğrenilir. Data Guard Broker (dgmgrl) ile otomatik planlı switchover ve acil durum failover runbook'larını çalıştırmayı kavrar. Standby Redo Logs (SRLs) ve Real-Time Redo Apply yapılandırması ile RPO = 0 ve RTO < 5 dakika hedeflerine ulaşmayı sağlar.
 
 # Sesli Ders
 
@@ -19,9 +19,9 @@ notebook: "https://notebooklm.google.com/notebook/d9fbd16b-86fb-45ab-af81-dc503b
 
 # Öğrenme Hedefleri
 
-1. Öğrenci, Oracle Database 19c için MAA Silver, Gold ve Platinum mimarilerini değerlendirip felaket kurtarma çözümlerini uygulayabilir.
-2. Öğrenci, Data Guard Broker (dgmgrl) kullanarak Standby Redo Logs ve Real-Time Redo Apply ile planlı switchover ve failover operasyonlarını yönetebilir.
-3. Öğrenci, Active Data Guard fiziksel standby veritabanını salt okunur modda açarak raporlama yüklerini ikincil veritabanına aktarabilir.
+1. Oracle Database 19c için MAA Silver, Gold ve Platinum mimarilerini değerlendirip felaket kurtarma çözümlerini uygulayabilir.
+2. Data Guard Broker (dgmgrl) kullanarak Standby Redo Logs ve Real-Time Redo Apply ile planlı switchover ve failover operasyonlarını yönetebilir.
+3. Active Data Guard fiziksel standby veritabanını salt okunur modda açarak raporlama yüklerini ikincil veritabanına aktarabilir.
 
 # Dersler
 
@@ -43,7 +43,7 @@ Bu bölümün içinde yaşadığı ders paneli: [Teknik Gelişim (Türkçe) pane
 
 # Kaynak Temellendirme
 
-Seçili kaynaklara dayanarak, belirtilen öğrenme hedefleri doğrultusunda öğrencinin ne öğrendiği aşağıda açıklanmaktadır:
+Seçili kaynaklara dayanarak, belirtilen öğrenme hedefleri doğrultusunda öğrenilenler aşağıda açıklanmaktadır:
 
 ---
 

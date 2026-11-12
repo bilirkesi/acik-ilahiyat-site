@@ -1,17 +1,17 @@
 ---
 type: Chapter
 title: "Release Lifecycle and Patching: RU, RUR and Upgrades"
-description: In this chapter, the student learns how to manage software maintenance, patch execution, and database upgrades for Oracle Database 19c supporting enterprise applications. The curriculum details the qu
+description: "This chapter covers how to manage software maintenance, patch execution, and database upgrades for Oracle Database 19c supporting enterprise applications. The curriculum details the quarterly Release "
 course: teknik-gelistirim
 chapter: 3
 status: stable
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-11-11T05:06:34Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-11-12T07:22:59Z }
 notebook: "https://notebooklm.google.com/notebook/d9fbd16b-86fb-45ab-af81-dc503b2c5aad"
 ---
 
 # Özet
 
-In this chapter, the student learns how to manage software maintenance, patch execution, and database upgrades for Oracle Database 19c supporting enterprise applications. The curriculum details the quarterly Release Update (RU) and Release Update Revision (RUR) lifecycle alignment, pre-patch verification with OPatch, two-stage binary patching via opatch apply, and post-patch SQL automation using datapatch across CDB$ROOT and pluggable databases (PDBs). Additionally, students explore upgrade methodologies including AutoUpgrade, DBUA, and Parallel Upgrade Utility, alongside cloud infrastructure maintenance and zero-downtime patching tools such as OS Management Hub and Ksplice.
+This chapter covers how to manage software maintenance, patch execution, and database upgrades for Oracle Database 19c supporting enterprise applications. The curriculum details the quarterly Release Update (RU) and Release Update Revision (RUR) lifecycle alignment, pre-patch verification with OPatch, two-stage binary patching via opatch apply, and post-patch SQL automation using datapatch across CDB$ROOT and pluggable databases (PDBs). Additionally, the chapter examines upgrade methodologies including AutoUpgrade, DBUA, and Parallel Upgrade Utility, alongside cloud infrastructure maintenance and zero-downtime patching tools such as OS Management Hub and Ksplice.
 
 # Sesli Ders
 
@@ -19,9 +19,9 @@ In this chapter, the student learns how to manage software maintenance, patch ex
 
 # Öğrenme Hedefleri
 
-1. The student can differentiate between quarterly Release Update (RU) and Release Update Revision (RUR) patch strategies to align Oracle Database 19c maintenance with enterprise application change management policies.
-2. The student can execute two-stage patch maintenance using OPatch for binary updates in $ORACLE_HOME and datapatch for post-patch SQL metadata automation across CDB$ROOT and pluggable databases (PDBs).
-3. The student can plan and execute database upgrades to Oracle Database 19c using AutoUpgrade, DBUA, or Parallel Upgrade Utility while leveraging OS Management Hub and Ksplice for Linux infrastructure maintenance.
+1. differentiate between quarterly Release Update (RU) and Release Update Revision (RUR) patch strategies to align Oracle Database 19c maintenance with enterprise application change management policies.
+2. execute two-stage patch maintenance using OPatch for binary updates in $ORACLE_HOME and datapatch for post-patch SQL metadata automation across CDB$ROOT and pluggable databases (PDBs).
+3. plan and execute database upgrades to Oracle Database 19c using AutoUpgrade, DBUA, or Parallel Upgrade Utility while leveraging OS Management Hub and Ksplice for Linux infrastructure maintenance.
 
 # Dersler
 

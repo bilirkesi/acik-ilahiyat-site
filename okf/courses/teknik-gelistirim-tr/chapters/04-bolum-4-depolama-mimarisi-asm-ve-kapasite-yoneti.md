@@ -1,17 +1,17 @@
 ---
 type: Chapter
 title: "Bölüm 4: Depolama Mimarisi, ASM ve Kapasite Yönetimi"
-description: Öğrenci, Oracle Automatic Storage Management (ASM) DATA ve RECO disk grubu mimarisini, OLTP yükleri için striping ve redundancy modellerini öğrenir. Veritabanı tablo bölümleme (Range, List, Hash) stra
+description: Oracle Automatic Storage Management (ASM) DATA ve RECO disk grubu mimarisi ile OLTP yükleri için striping ve redundancy modelleri öğrenilir. Veritabanı tablo bölümleme (Range, List, Hash) stratejileri
 course: teknik-gelistirim-tr
 chapter: 4
 status: stable
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-11-11T19:31:19Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-11-12T07:22:59Z }
 notebook: "https://notebooklm.google.com/notebook/d9fbd16b-86fb-45ab-af81-dc503b2c5aad"
 ---
 
 # Özet
 
-Öğrenci, Oracle Automatic Storage Management (ASM) DATA ve RECO disk grubu mimarisini, OLTP yükleri için striping ve redundancy modellerini öğrenir. Veritabanı tablo bölümleme (Range, List, Hash) stratejileri ve yerel indeks yapılandırmaları ile veri büyümesini ve bölüm bakım operasyonlarını yönetmeyi kavrar. Ayrıca OEM ve DBMS_SERVER_ALERT ile tablespace ve ASM alan eşik değerlerini izleme yeteneği kazanır.
+Oracle Automatic Storage Management (ASM) DATA ve RECO disk grubu mimarisi ile OLTP yükleri için striping ve redundancy modelleri öğrenilir. Veritabanı tablo bölümleme (Range, List, Hash) stratejileri ve yerel indeks yapılandırmaları ile veri büyümesini ve bölüm bakım operasyonlarını yönetmeyi kavrar. Ayrıca OEM ve DBMS_SERVER_ALERT ile tablespace ve ASM alan eşik değerlerini izleme yeteneği kazanır.
 
 # Sesli Ders
 
@@ -19,9 +19,9 @@ notebook: "https://notebooklm.google.com/notebook/d9fbd16b-86fb-45ab-af81-dc503b
 
 # Öğrenme Hedefleri
 
-1. Öğrenci, Oracle ASM üzerinde DATA ve RECO disk gruplarını fine-grained ve coarse-grained şeritlendirme modellerine göre yapılandırabilir.
-2. Öğrenci, IFS Cloud veritabanlarında yüksek hacimli işlem tabloları için tablo bölümleme ve yerel indeks stratejilerini uygulayabilir.
-3. Öğrenci, DBMS_SERVER_ALERT ve OEM üzerinden tablespace ve ASM disk grubu için yüzde 85 uyarı ve yüzde 95 kritik alan eşiklerini tanımlayabilir.
+1. Oracle ASM üzerinde DATA ve RECO disk gruplarını fine-grained ve coarse-grained şeritlendirme modellerine göre yapılandırabilir.
+2. IFS Cloud veritabanlarında yüksek hacimli işlem tabloları için tablo bölümleme ve yerel indeks stratejilerini uygulayabilir.
+3. DBMS_SERVER_ALERT ve OEM üzerinden tablespace ve ASM disk grubu için yüzde 85 uyarı ve yüzde 95 kritik alan eşiklerini tanımlayabilir.
 
 # Dersler
 
@@ -36,7 +36,7 @@ Bu bölümün içinde yaşadığı ders paneli: [Teknik Gelişim (Türkçe) pane
 
 # Kaynak Temellendirme
 
-Seçilen kaynaklara dayanarak, belirtilen öğrenme hedefleri doğrultusunda öğrencinin ne öğrendiği aşağıda açıklanmaktadır:
+Seçilen kaynaklara dayanarak, belirtilen öğrenme hedefleri doğrultusunda öğrenilenler aşağıda açıklanmaktadır:
 
 ---
 

@@ -74,7 +74,7 @@ Rules for the bundle itself live in `okf/AGENTS.md`.
 - Prefer editing existing files over creating new ones; make the fewest changes that address the request.
 - Never commit or push without an explicit request.
 ## Project
-- Name: Açık İlahiyat Üniversitesi — a free, static study site for AÖF (Anadolu Üniversitesi) İlahiyat associate-degree courses.
+- Name: Açık Akademi — a free, static study site for AÖF (Anadolu Üniversitesi) and İÜ İlahiyat associate-degree courses plus a technical Oracle/IFS training programme. The name and the emblem are deliberately course-agnostic: `university.json` holds the branding (`name`, `shortName`, `tagline`, `issuer`, `codePrefix`) and `scripts/render_brand_icons.py` draws the emblem (an open book with light behind it) into `favicon.svg`, `crest.svg` and the PWA icons. `storageKey` stays as it is: it is the learners' local-progress key and must not change with the name.
 - Runtime: **no backend**. `site/` is a static SPA (hash router) served from any static host. All data ships as JS bundles that assign to `window.*`.
 - Source of truth for configuration: `university.json` (branding, pass mark, colors, exam dates, AÖF grading weights and pass threshold, `grounding` source ranking and prompt rules for NotebookLM generation), `courses.json` (the five courses), `universities.json`.
 - A course overrides the university-wide settings it needs in `courses.json[course].config`: the `language` and `audience` of its material, how many `chapters` it has, and its own `grounding` (source ranking and prompt rules). `load_university(root, course)` applies the override; `pipeline.py`, `audit_sources.py` and `generate_chapter_audio.py` use it, so a course can be built in another language or on another source hierarchy.

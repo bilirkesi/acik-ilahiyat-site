@@ -1,17 +1,17 @@
 ---
 type: Chapter
 title: "Bölüm 9: İzleme, Alarm ve Olay Yönetimi Mimarisi"
-description: Öğrenci, Oracle Enterprise Manager (OEM) Cloud Control 13c/14c altyapı bileşenlerini (OMS, OMR/SYSMAN, OMA) emctl CLI ile yönetmeyi öğrenir. OEM olay yönetimi, incident rule set mantığı, karartma (bla
+description: "Oracle Enterprise Manager (OEM) Cloud Control 13c/14c altyapı bileşenlerinin (OMS, OMR/SYSMAN, OMA) emctl CLI ile yönetimi öğrenilir. OEM olay yönetimi, incident rule set mantığı, karartma (blackout) "
 course: teknik-gelistirim-tr
 chapter: 9
 status: stable
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-11-11T19:31:19Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-11-12T07:22:59Z }
 notebook: "https://notebooklm.google.com/notebook/d9fbd16b-86fb-45ab-af81-dc503b2c5aad"
 ---
 
 # Özet
 
-Öğrenci, Oracle Enterprise Manager (OEM) Cloud Control 13c/14c altyapı bileşenlerini (OMS, OMR/SYSMAN, OMA) emctl CLI ile yönetmeyi öğrenir. OEM olay yönetimi, incident rule set mantığı, karartma (blackout) takvimleri ve bildirim yöntemlerini yapılandırır. Ayrıca IFS Cloud 25R1 ve 26R2 ortamlarında Application Monitoring Console (AMM), Server Alert Log kategorileri, Oracle Advanced Queues ve EFK stack panellerini kullanır.
+Oracle Enterprise Manager (OEM) Cloud Control 13c/14c altyapı bileşenlerinin (OMS, OMR/SYSMAN, OMA) emctl CLI ile yönetimi öğrenilir. OEM olay yönetimi, incident rule set mantığı, karartma (blackout) takvimleri ve bildirim yöntemlerini yapılandırır. Ayrıca IFS Cloud 25R1 ve 26R2 ortamlarında Application Monitoring Console (AMM), Server Alert Log kategorileri, Oracle Advanced Queues ve EFK stack panellerini kullanır.
 
 # Sesli Ders
 
@@ -19,9 +19,9 @@ notebook: "https://notebooklm.google.com/notebook/d9fbd16b-86fb-45ab-af81-dc503b
 
 # Öğrenme Hedefleri
 
-1. Öğrenci, OEM Cloud Control 13c/14c altyapı bileşenlerini ve emctl komut satırı aracını yönetebilir.
-2. Öğrenci, OEM olay yönetimi ve incident rule set mantığı ile yanlış alarmları bastırıp kritik metrikleri olaylara dönüştürebilir.
-3. Öğrenci, IFS Cloud 25R1 ve 26R2 ortamlarında AMM metrikleri, Server Alert Log kategorileri, Advanced Queues ve EFK stack panelleri ile izleme yapabilir.
+1. OEM Cloud Control 13c/14c altyapı bileşenlerini ve emctl komut satırı aracını yönetebilir.
+2. OEM olay yönetimi ve incident rule set mantığı ile yanlış alarmları bastırıp kritik metrikleri olaylara dönüştürebilir.
+3. IFS Cloud 25R1 ve 26R2 ortamlarında AMM metrikleri, Server Alert Log kategorileri, Advanced Queues ve EFK stack panelleri ile izleme yapabilir.
 
 # Dersler
 
@@ -49,13 +49,13 @@ Bu bölümün içinde yaşadığı ders paneli: [Teknik Gelişim (Türkçe) pane
 
 # Kaynak Temellendirme
 
-Seçilen kaynaklara dayanarak, kurumsal Oracle veritabanı yöneticileri ve IFS Cloud operasyon mühendisleri için belirtilen her bir öğrenme hedefi doğrultusunda öğrencinin ne öğrendiği aşağıda açıklanmaktadır.
+Seçilen kaynaklara dayanarak, kurumsal Oracle veritabanı yöneticileri ve IFS Cloud operasyon mühendisleri için belirtilen her bir öğrenme hedefi doğrultusunda öğrenilenler aşağıda açıklanmaktadır.
 
 ---
 
 ### Hedef 1: OEM Cloud Control 13c/14c Altyapı Bileşenlerini ve `emctl` Komut Satırı Aracını Yönetme
 
-* **Çok Katmanlı OEM Altyapı Mimarisi:** Öğrenci, Oracle Enterprise Manager (OEM) Cloud Control mimarisinin veritabanı küme bileşenlerini, ASM depolama katmanını ve sunucu donanımlarını izleyen çok katmanlı bir yapıda tasarlandığını öğrenir [1].
+* **Çok Katmanlı OEM Altyapı Mimarisi:** Oracle Enterprise Manager (OEM) Cloud Control mimarisinin veritabanı küme bileşenlerini, ASM depolama katmanını ve sunucu donanımlarını izleyen çok katmanlı bir yapıda tasarlandığını öğrenir [1].
 * **Oracle Management Service (OMS):** Oracle WebLogic Server üzerinde çalışan OMS orta katman Java EE uygulaması, host agent süreçlerinden gelen verileri işler, web tabanlı Cloud Control yönetim konsolunu sunar, yönetim işlerini yönlendirir ve bildirim alarmlarını yönetir [1].
 * **Oracle Management Repository (OMR):** `SYSMAN` şemasını barındıran adanmış Oracle veritabanı olan OMR, yapılandırma verilerini, hedef sağlık metriklerini, geçmiş performans verilerini, iş yürütme günlüklerini ve olay takip verilerini saklar [1].
 * **Oracle Management Agent (OMA):** Yönetilen her hedef sunucuda doğrudan çalışan hafif OMA süreci, hedef metriklerini toplar, OMS tarafından dağıtılan görevleri yürütür ve durum güncellemelerini TCP 3872 portu üzerinden OMS ortamına yükler [1].

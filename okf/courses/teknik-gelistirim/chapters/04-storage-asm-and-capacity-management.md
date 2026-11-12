@@ -1,17 +1,17 @@
 ---
 type: Chapter
 title: Storage, ASM and Capacity Management
-description: In this chapter, the student learns how to design and manage storage architecture using Oracle Automatic Storage Management (ASM) disk groups, including DATA and RECO, while configuring coarse-grained
+description: This chapter covers how to design and manage storage architecture using Oracle Automatic Storage Management (ASM) disk groups, including DATA and RECO, while configuring coarse-grained and fine-graine
 course: teknik-gelistirim
 chapter: 4
 status: stable
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-11-11T05:06:34Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-11-12T07:22:59Z }
 notebook: "https://notebooklm.google.com/notebook/d9fbd16b-86fb-45ab-af81-dc503b2c5aad"
 ---
 
 # Özet
 
-In this chapter, the student learns how to design and manage storage architecture using Oracle Automatic Storage Management (ASM) disk groups, including DATA and RECO, while configuring coarse-grained and fine-grained striping alongside redundancy models for high-concurrency OLTP workloads in IFS Cloud 25R1 and IFS Applications 10. The student explores table partitioning strategies such as Range, List, and Hash partitioning for high-volume transaction tables in Oracle Database 19c, utilizing partition pruning, local index maintenance, and Partition Maintenance Operations (PMO) to optimize query performance and disk reclamation. Additionally, the curriculum covers setting up warning thresholds at 85 percent and critical thresholds at 95 percent using DBMS_SERVER_ALERT in Oracle Enterprise Manager (OEM) to monitor logical tablespaces and physical ASM disk space, preventing unhandled out-of-space errors.
+This chapter covers how to design and manage storage architecture using Oracle Automatic Storage Management (ASM) disk groups, including DATA and RECO, while configuring coarse-grained and fine-grained striping alongside redundancy models for high-concurrency OLTP workloads in IFS Cloud 25R1 and IFS Applications 10. This chapter examines table partitioning strategies such as Range, List, and Hash partitioning for high-volume transaction tables in Oracle Database 19c, utilizing partition pruning, local index maintenance, and Partition Maintenance Operations (PMO) to optimize query performance and disk reclamation. Additionally, the curriculum covers setting up warning thresholds at 85 percent and critical thresholds at 95 percent using DBMS_SERVER_ALERT in Oracle Enterprise Manager (OEM) to monitor logical tablespaces and physical ASM disk space, preventing unhandled out-of-space errors.
 
 # Sesli Ders
 
@@ -19,9 +19,9 @@ In this chapter, the student learns how to design and manage storage architectur
 
 # Öğrenme Hedefleri
 
-1. The student can configure Oracle Automatic Storage Management (ASM) DATA and RECO disk groups in Oracle Database 19c using fine-grained striping for online redo logs and coarse-grained striping for data files under external, normal, or high redundancy models.
-2. The student can implement Range, List, and Hash table partitioning alongside local index strategies for high-volume transaction tables in Oracle Database 19c supporting IFS Cloud 25R1 to enable partition pruning and Partition Maintenance Operations.
-3. The student can set warning thresholds at 85 percent and critical thresholds at 95 percent via DBMS_SERVER_ALERT and Oracle Enterprise Manager (OEM) to monitor tablespace and ASM disk group capacity boundaries.
+1. configure Oracle Automatic Storage Management (ASM) DATA and RECO disk groups in Oracle Database 19c using fine-grained striping for online redo logs and coarse-grained striping for data files under external, normal, or high redundancy models.
+2. implement Range, List, and Hash table partitioning alongside local index strategies for high-volume transaction tables in Oracle Database 19c supporting IFS Cloud 25R1 to enable partition pruning and Partition Maintenance Operations.
+3. set warning thresholds at 85 percent and critical thresholds at 95 percent via DBMS_SERVER_ALERT and Oracle Enterprise Manager (OEM) to monitor tablespace and ASM disk group capacity boundaries.
 
 # Dersler
 
@@ -39,13 +39,13 @@ Bu bölümün içinde yaşadığı ders paneli: [Teknik Gelişim paneli](/course
 
 # Kaynak Temellendirme
 
-Based on the provided sources, here is what the student learns for each objective:
+Based on the provided sources, here is what each objective covers:
 
 ---
 
 ### Objective 1: Configuring ASM DATA and RECO Disk Groups, Striping Strategies, and Redundancy Models
 
-* **Dedicated Disk Group Architecture:** The student learns that Oracle Automatic Storage Management (ASM) organizes physical disks into logical Disk Groups [1, 2].
+* **Dedicated Disk Group Architecture:** Oracle Automatic Storage Management (ASM) organizes physical disks into logical Disk Groups [1, 2].
   * The **DATA disk group** serves as the primary operational storage area housing active data files, index tablespaces, system tablespaces (SYSTEM, SYSAUX), temporary files, and online redo log groups [2, 3]. High read and write IOPS performance is prioritized in DATA to process active IFS mid-tier transactions [2, 3].
   * The **RECO (or FRA) disk group** serves as the dedicated recovery storage area housing archive logs, RMAN backup sets, control file copies, Flashback logs, and multiplexed copies of online redo logs [2, 3]. Isolating recovery files in RECO prevents backup or archiving operations from competing for disk bandwidth with primary transactional data operations [2, 3].
 * **ASM Striping Strategies:**
@@ -61,7 +61,7 @@ Based on the provided sources, here is what the student learns for each objectiv
 
 ### Objective 2: Implementing Range, List, and Hash Table Partitioning and Local Indexes
 
-* **Table Partitioning Strategy:** The student learns that Table Partitioning breaks massive physical tables into smaller, manageable, independent logical segments [6]. This enables the Oracle Cost-Based Optimizer (CBO) to execute **partition pruning**, which scans only specific partitions relevant to a query and improves performance across high-volume operational tables [6].
+* **Table Partitioning Strategy:** Table Partitioning breaks massive physical tables into smaller, manageable, independent logical segments [6]. This enables the Oracle Cost-Based Optimizer (CBO) to execute **partition pruning**, which scans only specific partitions relevant to a query and improves performance across high-volume operational tables [6].
 * **Partitioning Methods:**
   * **Range Partitioning:** Maps data to partitions based on ranges of column values (such as transaction dates or order timestamps), making it the standard choice for time-series data like IFS audit logs and historical orders [6].
   * **List Partitioning:** Explicitly maps rows to partitions based on discrete lists of values in a column (such as regional site codes, business units, or country codes) [6].
@@ -76,7 +76,7 @@ Based on the provided sources, here is what the student learns for each objectiv
 
 ### Objective 3: Setting Warning and Critical Storage Thresholds via DBMS_SERVER_ALERT and OEM
 
-* **Storage Threshold Architecture:** The student learns that sudden tablespace exhaustion or ASM disk group filling can cause abrupt transaction failures, database freezes, and critical system outages in IFS Applications [8]. Configuring proactive alert thresholds in Oracle Enterprise Manager (OEM) ensures early notification before storage capacity reaches 100 percent [8].
+* **Storage Threshold Architecture:** sudden tablespace exhaustion or ASM disk group filling can cause abrupt transaction failures, database freezes, and critical system outages in IFS Applications [8]. Configuring proactive alert thresholds in Oracle Enterprise Manager (OEM) ensures early notification before storage capacity reaches 100 percent [8].
 * **Warning and Critical Threshold Levels:**
   * **Warning Thresholds:** Set at 85 percent capacity utilization to notify DBAs to investigate growing data files, clean up old staging tables, or schedule storage expansions during regular maintenance windows [8].
   * **Critical Thresholds:** Set at 95 percent capacity utilization to signify urgent storage pressure demanding immediate intervention to prevent space exhaustion and database halts [8].

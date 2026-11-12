@@ -1,17 +1,17 @@
 ---
 type: Chapter
 title: "Bölüm 1: Program Oryantasyonu ve IFS Cloud Oracle Altyapı Mimarisi"
-description: Öğrenci, IFS Cloud ve IFS Applications platformlarının Oracle 19c veritabanı altyapı mimarisini, kurumsal mimari standartlarını ve eğitim programının temel bileşenlerini öğrenir. Mimari tasarım prensi
+description: IFS Cloud ve IFS Applications platformlarının Oracle 19c veritabanı altyapı mimarisi, kurumsal mimari standartları ve eğitim programının temel bileşenleri öğrenilir. Mimari tasarım prensipleri, verita
 course: teknik-gelistirim-tr
 chapter: 1
 status: stable
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-11-11T19:31:19Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-11-12T07:22:59Z }
 notebook: "https://notebooklm.google.com/notebook/d9fbd16b-86fb-45ab-af81-dc503b2c5aad"
 ---
 
 # Özet
 
-Öğrenci, IFS Cloud ve IFS Applications platformlarının Oracle 19c veritabanı altyapı mimarisini, kurumsal mimari standartlarını ve eğitim programının temel bileşenlerini öğrenir. Mimari tasarım prensipleri, veritabanı kurulum hazırlıkları ve temel bellek ile süreç parametrelerinin genel yapısı incelenir. Ayrıca platform gereksinimleri ve lisanslama standartları ele alınır.
+IFS Cloud ve IFS Applications platformlarının Oracle 19c veritabanı altyapı mimarisi, kurumsal mimari standartları ve eğitim programının temel bileşenleri öğrenilir. Mimari tasarım prensipleri, veritabanı kurulum hazırlıkları ve temel bellek ile süreç parametrelerinin genel yapısı incelenir. Ayrıca platform gereksinimleri ve lisanslama standartları ele alınır.
 
 # Sesli Ders
 
@@ -19,9 +19,9 @@ notebook: "https://notebooklm.google.com/notebook/d9fbd16b-86fb-45ab-af81-dc503b
 
 # Öğrenme Hedefleri
 
-1. Öğrenci, IFS Cloud 25R1 ve 26R2 mimarisi için Oracle 19c veritabanı depolama tier ve sunucu gereksinimlerini planlayabilir.
-2. Öğrenci, IFS Applications 10 ve IFS Cloud platformlarında veritabanı parametrelerinin temel ölçeklendirme standartlarını yapılandırabilir.
-3. Öğrenci, enterprise ERP yükleri için veritabanı altyapı mimarisi kurulum ve oryantasyon adımlarını yönetebilir.
+1. IFS Cloud 25R1 ve 26R2 mimarisi için Oracle 19c veritabanı depolama tier ve sunucu gereksinimlerini planlayabilir.
+2. IFS Applications 10 ve IFS Cloud platformlarında veritabanı parametrelerinin temel ölçeklendirme standartlarını yapılandırabilir.
+3. enterprise ERP yükleri için veritabanı altyapı mimarisi kurulum ve oryantasyon adımlarını yönetebilir.
 
 # Dersler
 
@@ -40,7 +40,7 @@ Bu bölümün içinde yaşadığı ders paneli: [Teknik Gelişim (Türkçe) pane
 
 # Kaynak Temellendirme
 
-Belirtilen öğrenme hedefleri doğrultusunda, sağlanan kaynaklara dayanarak öğrencinin ne öğrendiği aşağıda açıklanmaktadır:
+Belirtilen öğrenme hedefleri doğrultusunda, sağlanan kaynaklara dayanarak öğrenilenler aşağıda açıklanmaktadır:
 
 ### Hedef 1: IFS Cloud 25R1 ve 26R2 Mimarisi İçin Oracle 19c Veritabanı Depolama Tier ve Sunucu Gereksinimlerini Planlama
 

@@ -1,17 +1,17 @@
 ---
 type: Chapter
 title: "Bölüm 7: Uygulama Sürekliliği ve Dayanıklılık Mimarisi"
-description: Öğrenci, Oracle Application Continuity (AC) ve Transparent Application Continuity (TAC) servis parametrelerini srvctl ile yapılandırmayı öğrenir. Transaction Guard ve Logical Transaction ID (LTXID) me
+description: Oracle Application Continuity (AC) ve Transparent Application Continuity (TAC) servis parametrelerinin srvctl ile yapılandırılması öğrenilir. Transaction Guard ve Logical Transaction ID (LTXID) mekani
 course: teknik-gelistirim-tr
 chapter: 7
 status: stable
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-11-11T19:31:19Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-11-12T07:22:59Z }
 notebook: "https://notebooklm.google.com/notebook/d9fbd16b-86fb-45ab-af81-dc503b2c5aad"
 ---
 
 # Özet
 
-Öğrenci, Oracle Application Continuity (AC) ve Transparent Application Continuity (TAC) servis parametrelerini srvctl ile yapılandırmayı öğrenir. Transaction Guard ve Logical Transaction ID (LTXID) mekanizmaları ile kesinti anında işlemlerin tekrarlanmasını ve kesintisiz oturum failover'ını kavrar. IFS orta katman bağlantı yeniden kurma mantığını ve Fast Connection Failover (FCF) entegrasyonunu test eder.
+Oracle Application Continuity (AC) ve Transparent Application Continuity (TAC) servis parametrelerinin srvctl ile yapılandırılması öğrenilir. Transaction Guard ve Logical Transaction ID (LTXID) mekanizmaları ile kesinti anında işlemlerin tekrarlanmasını ve kesintisiz oturum failover'ını kavrar. IFS orta katman bağlantı yeniden kurma mantığını ve Fast Connection Failover (FCF) entegrasyonunu test eder.
 
 # Sesli Ders
 
@@ -19,9 +19,9 @@ notebook: "https://notebooklm.google.com/notebook/d9fbd16b-86fb-45ab-af81-dc503b
 
 # Öğrenme Hedefleri
 
-1. Öğrenci, srvctl ile Oracle Database 19c üzerinde TAC ve AC servis parametrelerini (-failovertype AUTO, -commit_outcome TRUE) yapılandırabilir.
-2. Öğrenci, Application Continuity ve Transaction Guard ile kesintiler sırasında in-flight işlemlerin şeffaf bir şekilde yeniden çalıştırılmasını sağlayabilir.
-3. Öğrenci, IFS orta katman bağlantı mantığını ONS ve SCAN üzerinden test ederek kesintisiz oturum aktarımı ve oturum boşaltma süreçlerini doğrulayabilir.
+1. srvctl ile Oracle Database 19c üzerinde TAC ve AC servis parametrelerini (-failovertype AUTO, -commit_outcome TRUE) yapılandırabilir.
+2. Application Continuity ve Transaction Guard ile kesintiler sırasında in-flight işlemlerin şeffaf bir şekilde yeniden çalıştırılmasını sağlayabilir.
+3. IFS orta katman bağlantı mantığını ONS ve SCAN üzerinden test ederek kesintisiz oturum aktarımı ve oturum boşaltma süreçlerini doğrulayabilir.
 
 # Dersler
 

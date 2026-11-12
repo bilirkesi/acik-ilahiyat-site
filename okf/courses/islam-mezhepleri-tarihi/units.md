@@ -5,12 +5,12 @@ description: AÖF İLH207U İslâm Mezhepleri Tarihi ders kitabı, ünite özetl
 course: islam-mezhepleri-tarihi
 unit_count: 10
 status: stable
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-14T17:33:22Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-11-12T07:22:59Z }
 ---
 
 # İslam Mezhepleri Tarihi Ders Kitabı Üniteleri
 
-AÖF bu ders için ünite infografiği yayınlamıyor. Bu görseller ders kitabının ünite özetlerinden Açık İlahiyat için hazırlandı.
+AÖF bu ders için ünite infografiği yayınlamıyor. Bu görseller ders kitabının ünite özetlerinden Açık Akademi için hazırlandı.
 
 ## Ünite 1: Mezhepler Tarihine Giriş
 

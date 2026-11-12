@@ -341,7 +341,7 @@ def main() -> int:
             [
                 ("okf_version", '"0.2"'),
                 ("type", "Bundle Index"),
-                ("title", "Açık İlahiyat Ders Bilgisi"),
+                ("title", "Açık Akademi Ders Bilgisi"),
                 ("description", "AÖF / İÜ gibi kaynak üniversitelere göre ayrılmış ders bilgisi: yıl, dönem, bölümler, sınavlar, artifact kataloğu."),
                 ("language", "tr"),
                 ("generated", f"{{ by: {ACTOR}, at: {NOW} }}"),

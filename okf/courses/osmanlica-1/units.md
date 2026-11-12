@@ -5,12 +5,12 @@ description: AÖF TAR111U Osmanlı Türkçesi I ders kitabı, bölüm özetleri
 course: osmanlica-1
 unit_count: 8
 status: stable
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-14T17:33:22Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-11-12T07:22:59Z }
 ---
 
 # Osmanlı Türkçesi I Ders Kitabı Üniteleri
 
-AÖF bu ders için ünite infografiği yayınlamıyor. Bu görseller ders kitabının bölüm özetlerinden Açık İlahiyat için hazırlandı.
+AÖF bu ders için ünite infografiği yayınlamıyor. Bu görseller ders kitabının bölüm özetlerinden Açık Akademi için hazırlandı.
 
 ## Ünite 1: Osmanlı Türkçesi Alfabesi
 

@@ -1,17 +1,17 @@
 ---
 type: Chapter
 title: "Bölüm 10: Yedekleme, Kurtarma ve Operasyonel Uygulama"
-description: Öğrenci, Recovery Manager (RMAN) yedekleme, geri yükleme ve kurtarma operasyonlarını Oracle Database 19c ve 26ai ortamlarında yönetmeyi öğrenir. RMAN RECOVER TABLE PITR ile silinen tabloları auxiliary
+description: Recovery Manager (RMAN) yedekleme, geri yükleme ve kurtarma operasyonlarının Oracle Database 19c ve 26ai ortamlarında yönetimi öğrenilir. RMAN RECOVER TABLE PITR ile silinen tabloları auxiliary destin
 course: teknik-gelistirim-tr
 chapter: 10
 status: stable
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-11-11T19:31:19Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-11-12T07:22:59Z }
 notebook: "https://notebooklm.google.com/notebook/d9fbd16b-86fb-45ab-af81-dc503b2c5aad"
 ---
 
 # Özet
 
-Öğrenci, Recovery Manager (RMAN) yedekleme, geri yükleme ve kurtarma operasyonlarını Oracle Database 19c ve 26ai ortamlarında yönetmeyi öğrenir. RMAN RECOVER TABLE PITR ile silinen tabloları auxiliary destination kullanarak veritabanı kesintisi olmadan kurtarır. Ayrıca kesinti incelemesi hazırlığı, dba_scheduler_job_run_details ve v$diag_alert_ext sorguları ile canlıya geçiş öncesi kontrol listelerini ve eğitim ilerleme durumunu değerlendirir.
+Recovery Manager (RMAN) yedekleme, geri yükleme ve kurtarma operasyonlarının Oracle Database 19c ve 26ai ortamlarında yönetimi öğrenilir. RMAN RECOVER TABLE PITR ile silinen tabloları auxiliary destination kullanarak veritabanı kesintisi olmadan kurtarır. Ayrıca kesinti incelemesi hazırlığı, dba_scheduler_job_run_details ve v$diag_alert_ext sorguları ile canlıya geçiş öncesi kontrol listelerini ve eğitim ilerleme durumunu değerlendirir.
 
 # Sesli Ders
 
@@ -19,9 +19,9 @@ notebook: "https://notebooklm.google.com/notebook/d9fbd16b-86fb-45ab-af81-dc503b
 
 # Öğrenme Hedefleri
 
-1. Öğrenci, RMAN RESTORE, RECOVER, DUPLICATE ve FLASHBACK DATABASE komutlarını Data Recovery Advisor (DRA) amortismanını dikkate alarak çalıştırabilir.
-2. Öğrenci, Oracle 12c, 19c ve 26ai veritabanlarında RMAN RECOVER TABLE PITR ile auxiliary destination kullanarak tablo seviyesinde nokta zamanlı kurtarma yapabilir.
-3. Öğrenci, dba_scheduler_job_run_details ve v$diag_alert_ext sorguları ile kesinti sonrası incelemeleri yürüterek canlıya alım kontrol listelerini güncelleyebilir.
+1. RMAN RESTORE, RECOVER, DUPLICATE ve FLASHBACK DATABASE komutlarını Data Recovery Advisor (DRA) amortismanını dikkate alarak çalıştırabilir.
+2. Oracle 12c, 19c ve 26ai veritabanlarında RMAN RECOVER TABLE PITR ile auxiliary destination kullanarak tablo seviyesinde nokta zamanlı kurtarma yapabilir.
+3. dba_scheduler_job_run_details ve v$diag_alert_ext sorguları ile kesinti sonrası incelemeleri yürüterek canlıya alım kontrol listelerini güncelleyebilir.
 
 # Dersler
 

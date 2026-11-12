@@ -1,17 +1,17 @@
 ---
 type: Chapter
 title: "Bölüm 3: Sürüm Yaşam Döngüsü, Yama Yönetimi ve Veritabanı Yükseltme"
-description: Öğrenci, Oracle Database 19c proaktif yama stratejilerini, Release Update (RU) ve Release Update Revision (RUR) yaşam döngüsünü öğrenir. OPatch ve datapatch araçlarını kullanarak ikili dosya ve SQL me
+description: Oracle Database 19c proaktif yama stratejileri ile Release Update (RU) ve Release Update Revision (RUR) yaşam döngüsü öğrenilir. OPatch ve datapatch araçlarını kullanarak ikili dosya ve SQL metadata g
 course: teknik-gelistirim-tr
 chapter: 3
 status: stable
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-11-11T19:31:19Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-11-12T07:22:59Z }
 notebook: "https://notebooklm.google.com/notebook/d9fbd16b-86fb-45ab-af81-dc503b2c5aad"
 ---
 
 # Özet
 
-Öğrenci, Oracle Database 19c proaktif yama stratejilerini, Release Update (RU) ve Release Update Revision (RUR) yaşam döngüsünü öğrenir. OPatch ve datapatch araçlarını kullanarak ikili dosya ve SQL metadata güncellemelerini iki aşamalı olarak IFS bakım pencerelerine hizalamayı kavrar. Ayrıca AutoUpgrade, DBUA ve Parallel Upgrade Utility araçları ile Oracle 19c veritabanı yükseltme süreçlerini yönetir.
+Oracle Database 19c proaktif yama stratejileri ile Release Update (RU) ve Release Update Revision (RUR) yaşam döngüsü öğrenilir. OPatch ve datapatch araçlarını kullanarak ikili dosya ve SQL metadata güncellemelerini iki aşamalı olarak IFS bakım pencerelerine hizalamayı kavrar. Ayrıca AutoUpgrade, DBUA ve Parallel Upgrade Utility araçları ile Oracle 19c veritabanı yükseltme süreçlerini yönetir.
 
 # Sesli Ders
 
@@ -19,9 +19,9 @@ notebook: "https://notebooklm.google.com/notebook/d9fbd16b-86fb-45ab-af81-dc503b
 
 # Öğrenme Hedefleri
 
-1. Öğrenci, üç aylık Release Update (RU) ve Release Update Revision (RUR) yama stratejilerini IFS Cloud ve IFS Applications bakım pencereleriyle hizalayabilir.
-2. Öğrenci, OPatch ve datapatch otomasyonunu kullanarak CDB$ROOT ve tüm PDB'lerde iki aşamalı yama uygulama adımlarını çalıştırabilir.
-3. Öğrenci, AutoUpgrade ve DBUA araçları ile Oracle Database 19c sürüm yükseltme planlarını hazırlayıp uygulayabilir.
+1. üç aylık Release Update (RU) ve Release Update Revision (RUR) yama stratejilerini IFS Cloud ve IFS Applications bakım pencereleriyle hizalayabilir.
+2. OPatch ve datapatch otomasyonunu kullanarak CDB$ROOT ve tüm PDB'lerde iki aşamalı yama uygulama adımlarını çalıştırabilir.
+3. AutoUpgrade ve DBUA araçları ile Oracle Database 19c sürüm yükseltme planlarını hazırlayıp uygulayabilir.
 
 # Dersler
 
@@ -37,13 +37,13 @@ Bu bölümün içinde yaşadığı ders paneli: [Teknik Gelişim (Türkçe) pane
 
 # Kaynak Temellendirme
 
-Sağlanan kaynaklara dayanarak, belirtilen öğrenme hedefleri doğrultusunda öğrencinin ne öğrendiği aşağıda açıklanmaktadır:
+Sağlanan kaynaklara dayanarak, belirtilen öğrenme hedefleri doğrultusunda öğrenilenler aşağıda açıklanmaktadır:
 
 ---
 
 ### Hedef 1: Üç Aylık Release Update (RU) ve Release Update Revision (RUR) Yama Stratejilerini IFS Cloud ve IFS Applications Bakım Pencereleriyle Hizalama
 
-* **Yama Döngüsü ve IFS Ortamlarıyla Hizalanma:** Öğrenci, IFS Applications (IFS Cloud, IFS Applications 10 ve IFS Applications 9) altyapısını destekleyen Oracle veritabanı sistemlerinin güvenliğini ve kararlılığını korumak için Oracle'ın üç aylık (Ocak, Nisan, Temmuz, Ekim) yama bakım döngüsünün IFS Güncelleme ve Sürüm döngüleri ile hizalanması gerektiğini öğrenir.
+* **Yama Döngüsü ve IFS Ortamlarıyla Hizalanma:** IFS Applications (IFS Cloud, IFS Applications 10 ve IFS Applications 9) altyapısını destekleyen Oracle veritabanı sistemlerinin güvenliğini ve kararlılığını korumak için Oracle'ın üç aylık (Ocak, Nisan, Temmuz, Ekim) yama bakım döngüsünün IFS Güncelleme ve Sürüm döngüleri ile hizalanması gerektiğini öğrenir.
 * **Release Update (RU) Stratejisi:** Release Update (RU), güvenlik açığı düzeltmelerini, proaktif yüksek değerli hata düzeltmelerini ve kritik kararlılık geliştirmelerini içeren üç aylık birikimli bir yamadır. RU uygulaması veritabanını yeni bir ikincil sürüme taşır (örneğin 19.11 sürümünden 19.12 sürümüne). Performans değişikliklerini ve yürütme planlarını doğrulamak amacıyla ana IFS güncelleme döngüleri sırasında üretim dışı ortamlarda (DEV/TEST) kullanılması önerilir.
 * **Release Update Revision (RUR) Stratejisi:** Release Update Revision (RUR), sonraki RU'lardan yeni işlevsel hata düzeltmeleri eklemeden, belirli bir RU için kritik güvenlik düzeltmeleri ve regresyon düzeltmeleri sunarak mevcut bir RU'nun ömrünü uzatır (her RU için 2 revizyona kadar). RUR uygulaması revizyon rakamını artırır (örneğin 19.11.0 sürümünden 19.11.1 sürümüne). Sıkı değişiklik yönetimi politikaları gerektiren ve temel yürütme davranışını kilitlerken güvenlik güncellemeleri gerektiren üretim (PROD) ortamlarında tercih edilir.
 * **Sürüm Durumu:** Eğitim çalışma notları bu yama stratejilerini IFS Applications (IFS Cloud, IFS Applications 10 ve IFS Applications 9) ortamlarına uygular ve veritabanı sürüm örneği olarak Oracle Database 19c revizyonlarını (19.11, 19.12) sunar.

@@ -6,7 +6,8 @@
 
 ## Ownership
 - **Generated output.** Produced by `py -3 generator/scripts/build.py .` from `generator/site-template/` plus `data/` and root config. Do not hand-edit; change the template or the data and rebuild.
-- `app.js` — router, views, quiz/exam engine, concept decks (`#/kavram`), word games (`#/oyunlar`), past-exam frequency map (`#/sikcikan`), grade calculator and readiness estimate (`#/puan`), highlights and notes (`#/notlarim`), Osmanlıca letter workshop (`#/harfler`), parallel reading of a paired course in the other language (`#/course/<slug>/cift/<n>`), friend challenge (`#/meydan`), offline page. Built from `generator/site-template/app.js`.
+- `app.js` — router, views, quiz/exam engine, concept decks (`#/kavram`), word games (`#/oyunlar`), past-exam frequency map (`#/sikcikan`), grade calculator and readiness estimate (`#/puan`), highlights and notes (`#/notlarim`), Osmanlıca letter workshop (`#/harfler`), parallel reading of a paired course in the other language (`#/course/<slug>/cift/<n>`), friend challenge (`#/meydan`), question and answer (`#/soru`), offline page. Built from `generator/site-template/app.js`.
+- `crest()` in `app.js` draws the brand emblem (an open book with light behind it) inline; it uses the same coordinates as `generator/site-template/crest.svg` and the PWA icons, all written by `scripts/render_brand_icons.py`. The emblem is course-agnostic on purpose: it belongs to the platform, not to a university.
 - `data.js` — generated: `window.UNIVERSITY`, `window.COURSES`, `window.CHAT_SUMMARY`, `window.OFFLINE`.
 - `index.html`, `styles.css`, `sw.js`, `manifest.webmanifest`, `favicon.svg`, `fonts/`, `icons/` — from the template with `{{V}}` cache-bust stamped in.
 - The catalog shows every course that has `data/<slug>/manifest.json`, in `courses.json` order. `CONFIG.totalCourses` is `max(courses, plannedCourses)`: it drives the "N ders" headline and the "Ders yakında" placeholders.

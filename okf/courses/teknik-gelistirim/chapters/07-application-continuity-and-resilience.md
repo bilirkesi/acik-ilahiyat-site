@@ -1,17 +1,17 @@
 ---
 type: Chapter
 title: Application Continuity and Resilience
-description: In this chapter, the student learns how to deploy Application Continuity (AC) and Transparent Application Continuity (TAC) in Oracle Database 19c and Oracle Database 18c environments supporting IFS Ap
+description: This chapter covers how to deploy Application Continuity (AC) and Transparent Application Continuity (TAC) in Oracle Database 19c and Oracle Database 18c environments supporting IFS Applications and e
 course: teknik-gelistirim
 chapter: 7
 status: stable
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-11-11T05:06:34Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-11-12T07:22:59Z }
 notebook: "https://notebooklm.google.com/notebook/d9fbd16b-86fb-45ab-af81-dc503b2c5aad"
 ---
 
 # Özet
 
-In this chapter, the student learns how to deploy Application Continuity (AC) and Transparent Application Continuity (TAC) in Oracle Database 19c and Oracle Database 18c environments supporting IFS Applications and enterprise ERP workloads. The curriculum details how Active Data Guard read-only open mode enables offloading heavy analytical queries away from the primary database while Managed Recovery Process (MRP) maintains real-time synchronization via Standby Redo Logs (SRLs). Additionally, students examine Fast Connection Failover (FCF), Fast Application Notification (FAN), Transaction Guard commit outcome verification, and IFS mid-tier reconnection testing to achieve continuous application availability during planned maintenance or unplanned outages.
+This chapter covers how to deploy Application Continuity (AC) and Transparent Application Continuity (TAC) in Oracle Database 19c and Oracle Database 18c environments supporting IFS Applications and enterprise ERP workloads. The curriculum details how Active Data Guard read-only open mode enables offloading heavy analytical queries away from the primary database while Managed Recovery Process (MRP) maintains real-time synchronization via Standby Redo Logs (SRLs). Additionally, the chapter examines Fast Connection Failover (FCF), Fast Application Notification (FAN), Transaction Guard commit outcome verification, and IFS mid-tier reconnection testing to achieve continuous application availability during planned maintenance or unplanned outages.
 
 # Sesli Ders
 
@@ -19,9 +19,9 @@ In this chapter, the student learns how to deploy Application Continuity (AC) an
 
 # Öğrenme Hedefleri
 
-1. The student can configure Transparent Application Continuity (TAC) and Application Continuity (AC) service parameters in Oracle Database 19c using srvctl, including failovertype AUTO or TRANSACTION, commit_outcome TRUE, and failover_restore AUTO.
-2. The student can offload read-only queries and operational reporting to an Active Data Guard physical standby database opened in read-only mode with real-time apply enabled using Standby Redo Logs (SRLs).
-3. The student can test IFS mid-tier reconnection logic and Fast Connection Failover (FCF) using Oracle Notification Service (ONS) and SCAN listeners to ensure transparent session failover and session draining.
+1. configure Transparent Application Continuity (TAC) and Application Continuity (AC) service parameters in Oracle Database 19c using srvctl, including failovertype AUTO or TRANSACTION, commit_outcome TRUE, and failover_restore AUTO.
+2. offload read-only queries and operational reporting to an Active Data Guard physical standby database opened in read-only mode with real-time apply enabled using Standby Redo Logs (SRLs).
+3. test IFS mid-tier reconnection logic and Fast Connection Failover (FCF) using Oracle Notification Service (ONS) and SCAN listeners to ensure transparent session failover and session draining.
 
 # Dersler
 
@@ -37,7 +37,7 @@ Bu bölümün içinde yaşadığı ders paneli: [Teknik Gelişim paneli](/course
 
 # Kaynak Temellendirme
 
-Based on the provided sources, here is what the student learns for each specified objective.
+Based on the provided sources, here is what each specified objective covers.
 
 ---
 
