@@ -19,21 +19,12 @@
   },
   "aiu": {
     "id": "aiu",
-    "name": "Açık Akademi",
+    "name": "Açık İlahiyat Üniversitesi",
     "faculty": "Platform çatısı",
-    "short": "AAK",
+    "short": "AIU",
     "url": "",
-    "program": "Açık Akademi (toplu vitrin)",
+    "program": "Açık İlahiyat (toplu vitrin)",
     "note": "Bu platformun vitrin adı; dersler kaynak üniversitelere göre ayrılır.",
     "is_platform": true
-  },
-  "teknik": {
-    "id": "teknik",
-    "name": "IFS Cloud & Oracle DBA Eğitim Programı",
-    "faculty": "Teknik Gelişim",
-    "short": "TEK",
-    "url": "",
-    "program": "Kurumsal Oracle veritabanı ve IFS Cloud işletim eğitimi",
-    "note": "Bir üniversite dersi değildir; eğitim defterinin sahibinin kendi Oracle DBA çalışma defterinden derlenmiştir."
   }
 }

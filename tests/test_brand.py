@@ -32,27 +32,28 @@ class TestBrandName(unittest.TestCase):
         self.uni = json.loads((ROOT / "university.json").read_text(encoding="utf-8-sig"))
         self.unis = json.loads((ROOT / "universities.json").read_text(encoding="utf-8-sig"))
 
-    def test_the_platform_is_named_acik_akademi(self) -> None:
-        self.assertEqual(self.uni["name"], "Açık Akademi")
-        self.assertEqual(self.uni["shortName"], "Açık Akademi")
-        self.assertEqual(self.uni["issuer"], "Açık Akademi")
-        self.assertEqual(self.uni["codePrefix"], "AAK")
+    def test_the_platform_is_named_acik_ilahiyat(self) -> None:
+        """Bu depo Ilahiyat derslerini yayimlar; platform adi acik-akademi deposunda."""
+        self.assertEqual(self.uni["name"], "Açık İlahiyat Üniversitesi")
+        self.assertEqual(self.uni["shortName"], "Açık İlahiyat")
+        self.assertEqual(self.uni["issuer"], "Açık İlahiyat Üniversitesi")
+        self.assertEqual(self.uni["codePrefix"], "AIU")
 
     def test_the_registry_entry_matches(self) -> None:
-        self.assertEqual(self.unis["aiu"]["name"], "Açık Akademi")
-        self.assertEqual(self.unis["aiu"]["short"], "AAK")
+        self.assertEqual(self.unis["aiu"]["name"], "Açık İlahiyat Üniversitesi")
+        self.assertEqual(self.unis["aiu"]["short"], "AIU")
 
     def test_the_storage_key_is_unchanged(self) -> None:
         """Yerel ilerleme anahtari adla degismemeli; ogrencilerin ilerlemesi korunur."""
         self.assertEqual(self.uni["storageKey"], "a-k-i-lahiyat-niversitesi")
 
-    def test_the_old_name_is_gone_from_the_sources(self) -> None:
-        files = ["university.json", "universities.json", "README.md", "AGENTS.md",
-                 "generator/site-template/app.js", "generator/site-template/index.html",
-                 "scripts/export_okf.py", "coursegraph/server.py"]
-        for rel in files:
+    def test_the_platform_name_stays_in_the_sibling_repository(self) -> None:
+        """"Acik Akademi" adi bu depoda kullanilmaz; o, kardes deposunun markasi."""
+        for rel in ("university.json", "universities.json",
+                    "generator/site-template/app.js", "generator/site-template/index.html",
+                    "scripts/export_okf.py", "coursegraph/server.py"):
             text = (ROOT / rel).read_text(encoding="utf-8-sig")
-            self.assertNotIn("Açık İlahiyat", text, rel)
+            self.assertNotIn("Açık Akademi", text, rel)
 
 
 class TestBrandEmblem(unittest.TestCase):

@@ -18,7 +18,7 @@ from .indexer import write_index
 PROTOCOL_VERSION = "2025-06-18"
 SERVER_INFO = {"name": "coursegraph", "version": "1.0.0"}
 INSTRUCTIONS = (
-    "CourseGraph: Açık Akademi ders bilgi grafiği. "
+    "CourseGraph: Açık İlahiyat ders bilgi grafiği. "
     "Ders, bölüm, kavram, quiz ve vize/final/yaz sınavlarını sorgula. "
     "Araçları doğrudan kullan; dosya dosya tarama yerine graf kullan."
 )
