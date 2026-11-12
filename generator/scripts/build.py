@@ -287,6 +287,25 @@ def image_variants(site, data):
     return out
 
 
+def chat_summary(root, slugs):
+    """Soru-cevap korpusunun ozeti: katalog sayfasi 1 MB'lik chat.js'i yuklemeden sayiyi gosterir."""
+    questions = 0
+    courses = 0
+    for slug in slugs:
+        path = root / "data" / slug / "chat.json"
+        if not path.exists():
+            continue
+        try:
+            items = json.loads(path.read_text(encoding="utf-8-sig")).get("items") or []
+        except (OSError, ValueError):
+            continue
+        n = sum(1 for it in items if it.get("q") and it.get("a"))
+        if n:
+            questions += n
+            courses += 1
+    return {"questions": questions, "courses": courses}
+
+
 def offline_packs(site, data, images):
     """Ders başına çevrimdışı paket: data.js'in andığı görseller (WebP kopyası varsa onlar)."""
     packs = {}
@@ -398,7 +417,7 @@ def og_image(site, uni, data):
 
 # Kurulumda önbelleğe alınan uygulama kabuğu (görseller hariç; onlar ders paketlerinde).
 SHELL_FILES = ["index.html", "styles.css", "app.js", "data.js", "interactive.js", "coursegraph.js",
-               "past_exams.js", "unit_quizzes.js", "manifest.webmanifest", "favicon.svg"]
+               "past_exams.js", "unit_quizzes.js", "chat.js", "manifest.webmanifest", "favicon.svg"]
 SHELL_DIRS = ["fonts", "icons"]
 
 
@@ -438,6 +457,8 @@ if __name__ == "__main__":
     offline = offline_packs(site, data, image_variants(site, data))
     (site / "data.js").write_text("window.UNIVERSITY = " + json.dumps(uni, ensure_ascii=False) + ";\n"
                                   + "window.COURSES = " + json.dumps(data, ensure_ascii=False) + ";\n"
+                                  + "window.CHAT_SUMMARY = "
+                                  + json.dumps(chat_summary(proj.root, order), ensure_ascii=False) + ";\n"
                                   + "window.OFFLINE = " + json.dumps(offline, ensure_ascii=False)
                                   + ";\n")
     v = str(int(time.time()))
@@ -455,6 +476,7 @@ if __name__ == "__main__":
         ("coursegraph.js", "window.CG = { items: [], edges: {} };\n"),
         ("past_exams.js", "window.PAST_EXAMS = {};\n"),
         ("unit_quizzes.js", "window.UNIT_QUIZZES = {};\n"),
+        ("chat.js", "window.CHAT = {};\n"),
     ):
         if not (site / name).exists():
             (site / name).write_text(stub, encoding="utf-8")

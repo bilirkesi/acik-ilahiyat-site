@@ -335,6 +335,33 @@ table.transcript { width: 100%; border-collapse: collapse; background: var(--pap
 
 .sm-empty { text-align: center; color: var(--muted); padding: 2rem 0; }
 
+/* ---- soru-cevap (#/soru) ---- */
+.chat-filter { display: flex; flex-wrap: wrap; gap: .4rem; margin: .2rem 0 1.2rem; }
+.chat-chip { border: 1px solid var(--line); background: var(--surface); color: var(--navy);
+  font: 600 .82rem/1.2 var(--sans); padding: .45rem .7rem; border-radius: 999px; cursor: pointer;
+  text-align: left; }
+.chat-chip:hover { border-color: var(--gold); }
+.chat-chip.on { background: var(--navy); color: #fff; border-color: var(--navy); }
+.chat-sug { display: flex; flex-wrap: wrap; gap: .4rem; margin: 0 0 1.4rem; }
+.chat-sug .chat-chip { max-width: 100%; white-space: normal; }
+.chat-card { border: 1px solid var(--line); background: var(--surface); padding: 1rem 1.1rem; margin: 0 0 1rem; }
+.chat-card h3 { font: 600 1.05rem/1.35 var(--serif); color: var(--navy); margin: 0 0 .55rem; }
+.chat-a { font-size: .95rem; line-height: 1.6; }
+.chat-ref { font-size: .72em; vertical-align: super; color: var(--gold-text); text-decoration: none;
+  font-weight: 700; padding: 0 .1rem; }
+.chat-ref:hover { text-decoration: underline; }
+.chat-srcs { margin-top: .6rem; font-size: .85rem; color: var(--muted); }
+.chat-srcs summary { cursor: pointer; }
+.chat-srcs ol { margin: .4rem 0 0; padding-left: 1.4rem; }
+.chat-srcs li { margin: .2rem 0; }
+.chat-src-n { color: var(--gold-text); font-weight: 700; margin-right: .3rem; }
+.chat-foot { margin: .6rem 0 0; font-size: .82rem; color: var(--muted); }
+.chat-cta { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+  gap: 1rem 1.6rem; border: 1px solid var(--line); background: var(--surface-2);
+  padding: 1.1rem 1.3rem; margin: 1.6rem 0; }
+.chat-cta h2 { font: 600 1.2rem/1.3 var(--serif); color: var(--navy); margin: .1rem 0 .3rem; }
+.chat-cta p { margin: 0; font-size: .92rem; }
+
 /* ---- İnteraktif çalışma paneli (rapor mimarisi): kartlar, akış, matris, şecere ---- */
 .sm-panel { border: 1px dashed var(--line); background: var(--surface-2); padding: .9rem; margin: .3rem 0 1.1rem; }
 .sm-panel-title { font: 500 1.05rem/1.3 var(--serif); color: var(--navy); margin: 0 0 .6rem; }

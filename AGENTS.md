@@ -82,6 +82,9 @@ Rules for the bundle itself live in `okf/AGENTS.md`.
 - A course's `pair` in `courses.json` names the same program in the other language; `build.py` exports it and the
   site reads it as `#/course/<slug>/cift/<n>` (the same chapter in both languages, side by side).
 - Source of truth for course content: `data/<slug>/` (see `data/AGENTS.md`).
+- The site is static, so nothing is asked of NotebookLM at request time: the question-and-answer corpus in
+  `data/<slug>/chat.json` (built by `scripts/generate_chat.py` from the notebook's own sources) ships as
+  `site/chat.js` and the `#/soru` page retrieves from it locally.
 - Study materials are generated from NotebookLM notebooks fed with AÖF PDFs and YouTube lecture captions. Generation goes through the external `notebooklm` CLI from `notebooklm-py` (`py -3 -m pip install "notebooklm-py[browser]"`, then `notebooklm login` once); no Python module in this repo imports it, so the stdlib-only rule still holds.
 - Python entry points are run as modules from the repo root (`py -3 -m coursegraph.…`) or as scripts (`py -3 scripts/….py`). On Windows the working launcher is `py -3`; `python` is not on PATH.
 - Node.js is required to rebuild the graph and the OKF bundle: `dump_interactive()` shells out to `node` to read `site/interactive.js`. Python alone is not enough.

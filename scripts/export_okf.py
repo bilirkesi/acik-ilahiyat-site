@@ -149,6 +149,39 @@ def load_chapter_audio(slug: str) -> dict[int, dict]:
     return out
 
 
+def load_chat(slug: str) -> list[dict]:
+    """data/<slug>/chat.json; soru-cevap korpusu (site/chat.js'in kaynağı)."""
+    path = ROOT / "data" / slug / "chat.json"
+    if not path.exists():
+        return []
+    items = load_json(path).get("items") or []
+    return [it for it in items if it.get("q") and it.get("a")]
+
+
+def render_chat_page(subject: str, chat_items: list[dict]) -> str:
+    """Soru-cevap korpusunu bölümlere göre gruplayan Markdown gövdesi."""
+    by_ch: dict[int, list[dict]] = {}
+    for it in chat_items:
+        by_ch.setdefault(int(it.get("chapter") or 0), []).append(it)
+    lines = [f"# {subject} Soru & Cevap\n",
+             "Sorular dersin kendi kaynaklarından üretildi; her cevabın kaynak listesi vardır.\n"]
+    for ch in sorted(by_ch):
+        group = by_ch[ch]
+        title = group[0].get("chapterTitle") or f"Bölüm {ch}"
+        lines.append(f"## {ch}. Bölüm: {title}\n")
+        for it in group:
+            lines.append(f"### {it['q']}\n")
+            lines.append(f"{it['a']}\n")
+            srcs = it.get("sources") or []
+            if srcs:
+                links = ", ".join(
+                    f"[{s.get('title', '')}]({s['url']})" if s.get("url") else str(s.get("title", ""))
+                    for s in srcs
+                )
+                lines.append(f"**Kaynaklar:** {links}\n")
+    return "\n".join(lines)
+
+
 def load_book_units(slug: str) -> list[dict]:
     path = ROOT / "data" / slug / "unit_infographics.json"
     if not path.exists():
@@ -453,6 +486,7 @@ def main() -> int:
         sozluk = load_json(sozluk_path) if sozluk_path.exists() else {}
         unit_quizzes = load_unit_quizzes(slug)
         chapter_audio = load_chapter_audio(slug)
+        chat_items = load_chat(slug)
 
         notebook_id = meta.get("notebook_id") or manifest.get("notebook_id")
         notebook_url = (
@@ -504,6 +538,7 @@ def main() -> int:
             + f"* [Quiz](/courses/{slug}/quiz.md)\n"
             + (f"* [Ünite quizleri](/courses/{slug}/unit-quizzes/index.md) "
                f"({len(unit_quizzes)} ünite, {sum(len(u['questions']) for u in unit_quizzes)} soru)\n" if unit_quizzes else "")
+            + (f"* [Soru & Cevap](/courses/{slug}/chat.md) ({len(chat_items)} soru)\n" if chat_items else "")
             + f"* [Sınavlar](/courses/{slug}/exams/index.md) - vize, final, yaz kursu\n"
             f"* [Çıkmış vizeler](/courses/{slug}/exams/past/index.md)\n"
             f"* [Artifact'ler](/courses/{slug}/artifacts.md)\n",
@@ -736,6 +771,23 @@ def main() -> int:
                 write(OKF / "courses" / slug / "unit-quizzes" / f"unit-{n_u}.md", fm(uq_fm) + "\n".join(lines))
                 uq_index.append(f"* [Ünite {n_u}: {u_title}](unit-{n_u}.md) - {len(qs)} soru")
             write(OKF / "courses" / slug / "unit-quizzes" / "index.md", "\n".join(uq_index) + "\n")
+
+        # soru-cevap korpusu
+        if chat_items:
+            subject = meta.get("subject", slug)
+            chat_fm = [
+                ("type", "Questions"),
+                ("title", f"{subject} Soru & Cevap"),
+                ("description", f"{subject} dersinin kaynaklarından üretilmiş "
+                                f"{len(chat_items)} soru-cevap."),
+                ("course", slug),
+                ("question_count", str(len(chat_items))),
+                ("status", "stable"),
+                ("generated", f"{{ by: {ACTOR}, at: {NOW} }}"),
+                ("resource", f"/courses/{slug}/chat.md"),
+            ]
+            write(OKF / "courses" / slug / "chat.md",
+                  fm(chat_fm) + render_chat_page(subject, chat_items))
 
         # exams: vize / final / yaz-kursu
         exam_dir = ROOT / "data" / slug / "exams"

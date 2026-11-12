@@ -19,6 +19,7 @@
 - `data/<slug>/sozluk.json` — glossary keyed like `okunus.json`: `{tr, ornek, okunus, anlam, kaynak?}` (modern Turkish meaning, example sentence in Arabic script, its reading, its meaning). Drives the `#/harfler` word-reading drill and Sözlük tab; only keys that also exist in `okunus.json` are used. `kaynak` (`"Öztürk-Çorak s. N"`, printed page) is set only when `ornek` is quoted from the reference book `ozturk-corak` in `state.json` (Ali Öztürk, Reyhan Çorak, *Osmanlı Türkçesi*, İÜ AUZEF); entries without it have hand-written practice examples. Quote only phrases whose Arabic script is in the PDF text layer (the reading texts' Ottoman script is image-only) and never guess a page.
 - `data/<slug>/interactive.json`, `unit_infographics.json` — interactive panel and infographic metadata for the courses that have them.
 - `data/<slug>/audio.json` — chapter audio overviews (`chapters[]`: `chapter`, `file`, `duration`, `bytes`, `generated`) written by `scripts/generate_chapter_audio.py`; the MP3s live in `site/audio/<slug>/`.
+- `data/<slug>/chat.json` — the question-answer corpus (`items[]`: `chapter`, `chapterTitle`, `q`, `a`, `sources`) written by `scripts/generate_chat.py` from the notebook's own sources; `scripts/export_chat_site.py` turns it into `site/chat.js`, which the `#/soru` page retrieves from.
 - `_exam_schema.md` — the exam JSON field reference; keep it in sync with any schema change.
 
 ## Local Contracts

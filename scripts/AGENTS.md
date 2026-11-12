@@ -14,12 +14,25 @@ Generation (`data/` → richer content):
 - `generate_assessments.py` — for a course whose units are its chapters: one unit quiz per chapter, limited to that chapter's own sources, plus the three practice exams (`vize`, `final`, `yaz-kursu`) → `data/<slug>/unit_quizzes/unit-N.json` and `data/<slug>/exams/*.json`. Reads the plan, the sources and the course's own `grounding` from `courses.json`. Exam titles and the unit-quiz title prefix follow the course's language (`Turkish` → "Ara Sınav", "Bölüm N"). The questions' language is checked after the download: the CLI's output language is a global setting, so a quiz can come out in the wrong language; it is then regenerated.
 - `render_unit_infographics.py` — book unit summaries → unit infographics.
 - `update_notes_from_kitap.py` — refreshes study notes from `Kitap.pdf`, embedding citations.
+- `generate_chat.py` — a course's chapters → a question-answer corpus in `data/<slug>/chat.json`. One
+  `notebooklm ask` per chapter (scoped to that chapter's sources with `-s`) returns the questions a student
+  would ask and the answers; the prompt asks for source citations, and the answer's `references` become the
+  item's source list. The site is static, so the corpus is built here rather than asked live in the browser.
+  `--only N` limits it to one chapter, `--force` regenerates, `--count` sets the questions per chapter,
+  `--normalize` only repairs the citation numbers of an existing corpus. The chapter's sources come from the
+  plan's `source_ids`; they are matched against `state.json` by the source's `id` field and sent to the CLI as
+  `nlm_id`, and an id that matches nothing is resolved by keyword and number (e.g. `osm1-kitap-2`).
+  `renumber_citations()` drops the citation markers that point outside the source list (NotebookLM sometimes
+  numbers a source of the whole notebook), renumbers the rest from 1, and falls back to the chapter's sources
+  when no marker fits.
+- `export_chat_site.py` — `data/<slug>/chat.json` → `site/chat.js` (`window.CHAT`), the bundle the
+  question-and-answer page retrieves from.
 - `generate_chapter_audio.py` — per chapter, a NotebookLM audio overview limited to the chapter's `source_ids` plus the textbook when the chapter has none (the course's own language, `deep-dive`/`short` by default) → raw `assets/audio/<slug>/chapter-N.mp4` → ffmpeg mono 64 kbps `site/audio/<slug>/chapter-N.mp3` + `data/<slug>/audio.json`. Needs the `notebooklm` CLI (logged in) and ffmpeg with libmp3lame (ffprobe optional; on the owner PC ffmpeg is not on PATH, pass `--ffmpeg`); skips existing MP3s unless `--force`; `--transcode-only` re-encodes downloaded files; `--profile` picks a notebooklm-py profile (a second Google account with the notebook shared to it, for its own audio quota). A source whose state `id` is local (not a NotebookLM UUID) is sent as its `nlm_id`; the script exits if neither is a UUID. A chapter that cannot be generated (quota, expired session) is skipped and the run continues; the script then exits non-zero and lists the chapters it could not produce.
 
 Export (`data/` → site/bundle):
 - `export_unit_quizzes_site.py` — `unit_quizzes/*.json` → `site/unit_quizzes.js` (`window.UNIT_QUIZZES`).
 - `export_past_exams_site.py` — `past_exams.json` → `site/past_exams.js` (`window.PAST_EXAMS`); adds unit/chapter tags, answer key, and auto-generated solutions.
-- `export_okf.py` — course data → the `okf/` Markdown bundle; wipes `okf/` except `okf/AGENTS.md`. Every input is read before the wipe, so a broken JSON file or a missing `node` leaves the previous bundle intact instead of a half-written one.
+- `export_okf.py` — course data → the `okf/` Markdown bundle; wipes `okf/` except `okf/AGENTS.md`. Every input is read before the wipe, so a broken JSON file or a missing `node` leaves the previous bundle intact instead of a half-written one. It also writes each course's question-and-answer page (`courses/<slug>/chat.md`) from `data/<slug>/chat.json`.
 
 Infographic QA/repair:
 - `compare_nlm_infographics.py`, `fix_infographic_text.py`, `generate_nlm_infographics.py`.
