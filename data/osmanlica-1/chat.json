@@ -593,6 +593,662 @@
           "url": "https://www.youtube.com/watch?v=0vFS6f94LFA"
         }
       ]
+    },
+    {
+      "key": "ch5",
+      "chapter": 5,
+      "chapterTitle": "Arapça ve Farsça Kelimelerde Ünlüler ve Yazılışları",
+      "q": "Arapça kökenli kelimelerde hemze (ء) harfi kelime başında, içinde ve sonunda nasıl yazılır?",
+      "a": "AÖF ders kitabının 5. ünitesine göre hemze harfi kelime başında elif harfinin üstünde veya altında yer alsa da metinlerde çoğunlukla yazılmasına gerek görülmez [1]. Kelime içinde bir diş üzerine (rü'yâ, mes'ele), kelime sonunda ise tek başına (şey', cüz') yazılır [1]. Kelime sonundaki hemzeler Türkçede okunmaz, günümüz basımında gösterilmezken ilmî transkripsiyonda kesme işaretiyle yansıtılır [1].",
+      "sources": [
+        {
+          "title": "Osmanlı Türkçesi I ders kitabı, Bölüm 5: Arapça ve Farsça Kelimelerde Ünlüler ve Yazılışları",
+          "url": ""
+        }
+      ]
+    },
+    {
+      "key": "ch5",
+      "chapter": 5,
+      "chapterTitle": "Arapça ve Farsça Kelimelerde Ünlüler ve Yazılışları",
+      "q": "Arapça ve Farsça kelimelerdeki uzun ünlüler (â, û, î) Osmanlı alfabesinde hangi harflerle gösterilir?",
+      "a": "AÖF ders kitabının 5. ünitesi ve 5. ünite özet videosuna göre Arapça ve Farsçadaki uzun ünlüler harflerle gösterilir. Uzun 'â' ünlüsü elif (ا) harfiyle, uzun 'û' ünlüsü vav (و) harfiyle, uzun 'î' ünlüsü ise ye (ى) harfiyle yazılır [1, 2]. Kısa ünlüler ise harfle yazılmayıp gerektiğinde hareke işaretleriyle gösterilir [1, 2].",
+      "sources": [
+        {
+          "title": "Osmanlı Türkçesi I ders kitabı, Bölüm 5: Arapça ve Farsça Kelimelerde Ünlüler ve Yazılışları",
+          "url": ""
+        },
+        {
+          "title": "AÖF Osmanlı Türkçesi I, Ünite 5 Özet videosu",
+          "url": "https://www.youtube.com/watch?v=3HtOWWxmAD8"
+        }
+      ]
+    },
+    {
+      "key": "ch5",
+      "chapter": 5,
+      "chapterTitle": "Arapça ve Farsça Kelimelerde Ünlüler ve Yazılışları",
+      "q": "Arapça ve Farsça sayı isimleri ile sıra sayıları Osmanlı Türkçesinde nasıl sınıflandırılır?",
+      "a": "AÖF ders kitabının 5. ünitesindeki Tablo 5.3'e ve özet videoya göre Arapça sayılar vâhid (1), isneyn (2), selâse (3) şeklinde giderken Farsça sayılar yek (1), dü (2), se (3) olarak sıralanır [1, 2]. Arapça sıra sayıları ise hâdî (birinci), sânî (ikinci), sâlis (üçüncü), râbi' (dördüncü) biçiminde türetilir [1, 2]. Ayrıca 20 kelimesinin 'yirmi' (يكرمی) ve 100 kelimesinin 'mi'e' (مائه) olarak özel imlaları bulunmaktadır [1, 2].",
+      "sources": [
+        {
+          "title": "Osmanlı Türkçesi I ders kitabı, Bölüm 5: Arapça ve Farsça Kelimelerde Ünlüler ve Yazılışları",
+          "url": ""
+        },
+        {
+          "title": "AÖF Osmanlı Türkçesi I, Ünite 5 Özet videosu",
+          "url": "https://www.youtube.com/watch?v=3HtOWWxmAD8"
+        }
+      ]
+    },
+    {
+      "key": "ch5",
+      "chapter": 5,
+      "chapterTitle": "Arapça ve Farsça Kelimelerde Ünlüler ve Yazılışları",
+      "q": "Arapçaya özgü olan ve Türkçede ses karşılığı bulunmayan ayın (ع) harfi kelime başında, ortasında ve hece sonunda nasıl okunur ve telaffuz edilir?",
+      "a": "AÖF ders kitabının 5. ünitesi ve 5. ünite özet videosuna göre ayın boğaz ünsüzü olup Türk konuşma dilinde yer almaz [1, 2]. Kelime ve hece başında ünlü bir ses olarak okunurken (ilm, ömr), hece sonunda düşerek kendinden önceki ünlüye uzun ses değeri kazandırır (Kâbe, rânâ) [1, 2]. Latin harfli transkripsiyonda ise hemzeden ayırt edilmek için kuyruğu sağa bakan kesme işaretiyle gösterilir [1, 2].",
+      "sources": [
+        {
+          "title": "Osmanlı Türkçesi I ders kitabı, Bölüm 5: Arapça ve Farsça Kelimelerde Ünlüler ve Yazılışları",
+          "url": ""
+        },
+        {
+          "title": "AÖF Osmanlı Türkçesi I, Ünite 5 Özet videosu",
+          "url": "https://www.youtube.com/watch?v=3HtOWWxmAD8"
+        }
+      ]
+    },
+    {
+      "key": "ch5",
+      "chapter": 5,
+      "chapterTitle": "Arapça ve Farsça Kelimelerde Ünlüler ve Yazılışları",
+      "q": "Bir kelimenin Arapça veya Farsça kökenli olduğunu belirleyen temel harf ve yapı özellikleri nelerdir?",
+      "a": "AÖF ders kitabının 5. ünitesi ve 5. ünite özet videosuna göre peltek se (ث), ha (ح), sad (ص), dad (ض), tı (ط), zı (ظ) ve ayın (ع) harflerinin bulunduğu kelimeler ile hemze içeren kelimeler Arapçadır [1, 2]. Buna karşılık je (ژ) harfi barındıran kelimeler Farsçadır [2, 1]. Ayrıca Türkçe kelimelerin başında c, f, h, j, l, m, n, p, r, ş, z harflerinin istisnalar dışında bulunmaması ve büyük ünlü uyumuna uyması yabancı kelimeleri ayırt etmede kullanılır [2, 1].",
+      "sources": [
+        {
+          "title": "AÖF Osmanlı Türkçesi I, Ünite 5 Özet videosu",
+          "url": "https://www.youtube.com/watch?v=3HtOWWxmAD8"
+        },
+        {
+          "title": "Osmanlı Türkçesi I ders kitabı, Bölüm 5: Arapça ve Farsça Kelimelerde Ünlüler ve Yazılışları",
+          "url": ""
+        }
+      ]
+    },
+    {
+      "key": "ch5",
+      "chapter": 5,
+      "chapterTitle": "Arapça ve Farsça Kelimelerde Ünlüler ve Yazılışları",
+      "q": "Farsça kelimelerde görülen 'vâv-ı ma'dûle' nedir ve imlada nasıl bir işlevi vardır?",
+      "a": "AÖF ders kitabının 5. ünitesinde ve 5. ünite özet videosunda belirtildiğine göre vâv-ı ma'dûle, Farsça kelimelerde hı (خ) harfinden sonra yazıldığı halde hiçbir ünlü veya ünsüz sesi karşılamayan okutulmayan vav harfidir [1, 2]. Uyku anlamına gelen 'hˇâb' (خواب) ve sofra anlamına gelen 'hˇân' (خوان) kelimelerinde yer alan bu vav harfi yazılışta muhafaza edilir ancak okunmaz [1, 2].",
+      "sources": [
+        {
+          "title": "AÖF Osmanlı Türkçesi I, Ünite 5 Özet videosu",
+          "url": "https://www.youtube.com/watch?v=3HtOWWxmAD8"
+        },
+        {
+          "title": "Osmanlı Türkçesi I ders kitabı, Bölüm 5: Arapça ve Farsça Kelimelerde Ünlüler ve Yazılışları",
+          "url": ""
+        }
+      ]
+    },
+    {
+      "key": "ch5",
+      "chapter": 5,
+      "chapterTitle": "Arapça ve Farsça Kelimelerde Ünlüler ve Yazılışları",
+      "q": "Hicrî-kamerî takvimde kullanılan ay adları ile ayların 10'ar günlük dönemleri için kullanılan Arapça terimler nelerdir?",
+      "a": "AÖF ders kitabının 5. ünitesi ile özet videosuna göre Hicrî-kamerî takvim ayın hareketlerini esas alır ve 1 yılı 355 gündür [1]. Ayın ilk gününe 'gurre', son gününe 'selh' denir; ilk 10 günü 'evâil', ikinci 10 günü 'evâsıt', son 10 günü ise 'evâhir' olarak adlandırılır [1, 2]. Ayrıca resmi yazışmalarda ayların isimleri kısaltmalarıyla (örneğin Muharrem için 'm', Safer için 's') kaydedilmiştir [1].",
+      "sources": [
+        {
+          "title": "Osmanlı Türkçesi I ders kitabı, Bölüm 5: Arapça ve Farsça Kelimelerde Ünlüler ve Yazılışları",
+          "url": ""
+        },
+        {
+          "title": "AÖF Osmanlı Türkçesi I, Ünite 5 Özet videosu",
+          "url": "https://www.youtube.com/watch?v=3HtOWWxmAD8"
+        }
+      ]
+    },
+    {
+      "key": "ch5",
+      "chapter": 5,
+      "chapterTitle": "Arapça ve Farsça Kelimelerde Ünlüler ve Yazılışları",
+      "q": "Kelime başında uzun 'â' ve uzun 'î' sesleri Arap harfleriyle nasıl yazılır?",
+      "a": "AÖF ders kitabının 5. ünitesine ve 5. ünite özet videosuna göre kelime başındaki uzun 'â' sesi medli elif (آ) ile yazılır; amil (âmil) ve amir (âmir) kelimeleri buna örnektir [1, 2]. Kelime başındaki uzun 'î' sesi ise elif ve ye (اي) harflerinin birleşimiyle gösterilir; ikaz (îkâz) ve icat (îcâd) kelimeleri bu kuralı örneklendirir [2, 1].",
+      "sources": [
+        {
+          "title": "Osmanlı Türkçesi I ders kitabı, Bölüm 5: Arapça ve Farsça Kelimelerde Ünlüler ve Yazılışları",
+          "url": ""
+        },
+        {
+          "title": "AÖF Osmanlı Türkçesi I, Ünite 5 Özet videosu",
+          "url": "https://www.youtube.com/watch?v=3HtOWWxmAD8"
+        }
+      ]
+    },
+    {
+      "key": "ch5",
+      "chapter": 5,
+      "chapterTitle": "Arapça ve Farsça Kelimelerde Ünlüler ve Yazılışları",
+      "q": "Osmanlı yazışmalarında Yeniçeri ulûfelerinin ödendiği üçer aylık dönemlerin kısaltma isimleri nelerdir?",
+      "a": "AÖF ders kitabının 5. ünitesi ve 5. ünite özet videosuna göre üç aylık dönemler ayların baş harflerinden oluşan rumuzlarla anılır [1, 2]. Muharrem-Safer-Rebî'ülevvel dönemi 'masar' (مصر), Rebî'ülâhir-Cumâdelûlâ-Cumâdelâhir dönemi 'recec' (رجج), Recep-Şa'bân-Ramazân dönemi 'reşen' (رشن) ve Şevval-Zilka'de-Zilhicce dönemi 'lezez' (لذذ) şeklinde kısaltılmıştır [1, 2].",
+      "sources": [
+        {
+          "title": "AÖF Osmanlı Türkçesi I, Ünite 5 Özet videosu",
+          "url": "https://www.youtube.com/watch?v=3HtOWWxmAD8"
+        },
+        {
+          "title": "Osmanlı Türkçesi I ders kitabı, Bölüm 5: Arapça ve Farsça Kelimelerde Ünlüler ve Yazılışları",
+          "url": ""
+        }
+      ]
+    },
+    {
+      "key": "ch5",
+      "chapter": 5,
+      "chapterTitle": "Arapça ve Farsça Kelimelerde Ünlüler ve Yazılışları",
+      "q": "Rakamların yazılış yönü, okunuşu ve basamak sıralaması Osmanlı metinlerinde nasıl uygulanır ve kaynaklarda sayıların okunuşuna dair hangi kısıtlamalar belirtilmiştir?",
+      "a": "AÖF ders kitabının 5. ünitesi ve 5. ünite özet videosuna göre metinler sağdan sola yazılsa da rakamlar soldan sağa doğru yazılır [1, 2]. Toplu sayılar yazılırken önce onlar, sonra yüzler, sonra binler sıralanır ve aralarına vav eklenerek okunur; örneğin '1105' sayısı 'Hamse ve mi'e ve elf' olarak okunur [2, 1]. Öte yandan Osmanlı bürokrasisinde kullanılan divan rakamları (siyakat rakamları) gibi özel yazı türlerinin detayları 5. ünite kaynaklarında kapsanmamıştır [1].",
+      "sources": [
+        {
+          "title": "Osmanlı Türkçesi I ders kitabı, Bölüm 5: Arapça ve Farsça Kelimelerde Ünlüler ve Yazılışları",
+          "url": ""
+        },
+        {
+          "title": "AÖF Osmanlı Türkçesi I, Ünite 5 Özet videosu",
+          "url": "https://www.youtube.com/watch?v=3HtOWWxmAD8"
+        }
+      ]
+    },
+    {
+      "key": "ch6",
+      "chapter": 6,
+      "chapterTitle": "Arapça Kelimelerin Yapısı",
+      "q": "Arapça isimlerde keyfiyet (müzekkerlik-müenneslik) nedir ve tamlamalar açısından önemi nasıldır?",
+      "a": "Arapçada isimler erkek durumunu gösteren müzekker ve dişilik özelliği taşıyan müennes olmak üzere iki gramer cinsiyetine ayrılır [1]. Müzekker kelimelerde belirleyici bir alamet bulunmazken müennes kelimeler lafzî veya manevi dişilik belirtileri taşır [1]. Tamlayan ve tamlanan kelimelerin cinsiyet yönünden birbiriyle uyumlu olması gerektiği AÖF ders kitabında ve özet videoda vurgulanmıştır [1, 2].",
+      "sources": [
+        {
+          "title": "Osmanlı Türkçesi I ders kitabı, Bölüm 6: Arapça Kelimelerin Yapısı",
+          "url": ""
+        },
+        {
+          "title": "AÖF Osmanlı Türkçesi I, Ünite 6 Özet videosu",
+          "url": "https://www.youtube.com/watch?v=f_sPl7P0Lpw"
+        }
+      ]
+    },
+    {
+      "key": "ch6",
+      "chapter": 6,
+      "chapterTitle": "Arapça Kelimelerin Yapısı",
+      "q": "Arapça kelime yapısındaki 'aslî harfler' ile 'zâid harfler' neyi ifade eder ve zâid olabilen harfler hangileridir?",
+      "a": "Aslî harfler, Arapça kelimelerin kökünü oluşturan ve anlam bağını koruyan en az üç temel harftir [1, 2]. Zâid harfler ise kök harflerine eklenerek kelimeye yeni anlamlar kazandıran ilave seslerdir [2, 1]. AÖF ders kitabında ve özet ses kaydında zâid olabilecek harfler hemze, elif, te, sin, mim, nun, he, vav ve ye olarak sıralanmıştır [2, 1].",
+      "sources": [
+        {
+          "title": "AÖF Osmanlı Türkçesi I, Ünite 6 Özet videosu",
+          "url": "https://www.youtube.com/watch?v=f_sPl7P0Lpw"
+        },
+        {
+          "title": "Osmanlı Türkçesi I ders kitabı, Bölüm 6: Arapça Kelimelerin Yapısı",
+          "url": ""
+        }
+      ]
+    },
+    {
+      "key": "ch6",
+      "chapter": 6,
+      "chapterTitle": "Arapça Kelimelerin Yapısı",
+      "q": "Arapça kelimelerin türetilmesinde bükünlü (tasrîfli) dil yapısı ne anlama gelir ve Osmanlı Türkçesinde Arapçanın hangi ögeleri kullanılır?",
+      "a": "Arapça bükünlü bir dil olduğundan yeni kelimeler köke ek getirmek yerine kelime kökü kırılarak başında, ortasında veya sonunda ses değişiklikleri ve eklemeler yapılmasıyla türetilir [1]. Osmanlı Türkçesinde Arapçadan yalnızca isim ve isim soylu kelimeler ile kalıplaşmış dua ve özlü sözler alınmış; fiil çekimleri ise hiçbir şekilde kullanılmamıştır [1, 2]. Bu ilke AÖF ders kitabı ve 6. ünite özet ses kaydında temel kural olarak belirtilir [1, 2].",
+      "sources": [
+        {
+          "title": "Osmanlı Türkçesi I ders kitabı, Bölüm 6: Arapça Kelimelerin Yapısı",
+          "url": ""
+        },
+        {
+          "title": "AÖF Osmanlı Türkçesi I, Ünite 6 Özet videosu",
+          "url": "https://www.youtube.com/watch?v=f_sPl7P0Lpw"
+        }
+      ]
+    },
+    {
+      "key": "ch6",
+      "chapter": 6,
+      "chapterTitle": "Arapça Kelimelerin Yapısı",
+      "q": "Arapçada iki nesneyi ifade eden tesniye (ikilik) yapısı Osmanlı imlasında nasıl oluşturulur?",
+      "a": "Arapçada üç ve üzerindeki sayılar çoğul sayılırken, iki nesneyi göstermek için tesniye adı verilen özel ikilik formu uygulanır [1, 2]. Osmanlı Türkçesinde kelimenin sonu üstünlü okunup peşine '-eyn' (ين) eki getirilerek türetilir [1, 2]. 'Tarafeyn' (iki taraf), 'devleteyn' (iki devlet) ve 'Haremeyn' (Mekke ve Medine) kelimeleri bu kuralın ders kitabındaki başlıca örnekleridir [1, 2].",
+      "sources": [
+        {
+          "title": "Osmanlı Türkçesi I ders kitabı, Bölüm 6: Arapça Kelimelerin Yapısı",
+          "url": ""
+        },
+        {
+          "title": "AÖF Osmanlı Türkçesi I, Ünite 6 Özet videosu",
+          "url": "https://www.youtube.com/watch?v=f_sPl7P0Lpw"
+        }
+      ]
+    },
+    {
+      "key": "ch6",
+      "chapter": 6,
+      "chapterTitle": "Arapça Kelimelerin Yapısı",
+      "q": "Bir Arapça kelimenin vezni bulunurken izlenen adımlar ve aslî harflerin vezindeki karşılıkları nelerdir?",
+      "a": "Vezin bulunurken öncelikle kelimedeki aslî harfler ve zâid harfler tespit edilir [1, 2]. İlk aslî harfin yerine fe (ف), ikinci aslî harfin yerine ayn (ع) ve üçüncü aslî harfin yerine lam (ل) getirilirken zâid harfler ile kelimenin harekeleri aynen aktarılır [1, 2]. Ortaya çıkan yeni kalıp kelimenin veznini oluşturur ve bu kural ders kitabında 'kerem' ve 'ikrâm' örnekleriyle açıklanır [1, 2].",
+      "sources": [
+        {
+          "title": "Osmanlı Türkçesi I ders kitabı, Bölüm 6: Arapça Kelimelerin Yapısı",
+          "url": ""
+        },
+        {
+          "title": "AÖF Osmanlı Türkçesi I, Ünite 6 Özet videosu",
+          "url": "https://www.youtube.com/watch?v=f_sPl7P0Lpw"
+        }
+      ]
+    },
+    {
+      "key": "ch6",
+      "chapter": 6,
+      "chapterTitle": "Arapça Kelimelerin Yapısı",
+      "q": "Cem'-i mükesser (kırık çoğul) ne demektir ve türetilmesinde belirli bir kural var mıdır?",
+      "a": "Cem'-i mükesser, tekil kelimenin kök yapısının ve vezninin değiştirilmesiyle elde edilen düzensiz çokluk şeklidir [1]. Belirli bir kurala bağlı olmayıp semâî nitelik taşıdığından hangi kelimenin hangi vezinde çoğaltılacağı ancak sözlüklerden öğrenilir [1, 2]. Osmanlı Türkçesinde 'ef'âl' (efrâd), 'fu'ûl' (hurûf) ve 'mefâ'il' (mecâlis) gibi kırık çoğul kalıpları oldukça yaygın biçimde kullanılmıştır [1, 2].",
+      "sources": [
+        {
+          "title": "Osmanlı Türkçesi I ders kitabı, Bölüm 6: Arapça Kelimelerin Yapısı",
+          "url": ""
+        },
+        {
+          "title": "AÖF Osmanlı Türkçesi I, Ünite 6 Özet videosu",
+          "url": "https://www.youtube.com/watch?v=f_sPl7P0Lpw"
+        }
+      ]
+    },
+    {
+      "key": "ch6",
+      "chapter": 6,
+      "chapterTitle": "Arapça Kelimelerin Yapısı",
+      "q": "Cem'-i sâlim (kurallı çoğul) çeşitleri nelerdir ve Osmanlı Türkçesinde en çok hangi ekler tercih edilir?",
+      "a": "Cem'-i sâlim, tekil kelimenin yapısı bozulmadan ek getirilerek yapılan kurallı çokluktur [1]. Eril çoğul olan cem'-i müzekker-i sâlim '-în' (ين) veya '-ûn' (ون) ekleriyle yapılır ve Osmanlıda '-în' eki (mü'minîn, me'mûrîn) daha yaygındır [1, 2]. Dişil çoğul olan cem'-i müennes-i sâlim ise kelime sonuna '-ât' (ات) eki getirilerek oluşturulur [1, 2].",
+      "sources": [
+        {
+          "title": "Osmanlı Türkçesi I ders kitabı, Bölüm 6: Arapça Kelimelerin Yapısı",
+          "url": ""
+        },
+        {
+          "title": "AÖF Osmanlı Türkçesi I, Ünite 6 Özet videosu",
+          "url": "https://www.youtube.com/watch?v=f_sPl7P0Lpw"
+        }
+      ]
+    },
+    {
+      "key": "ch6",
+      "chapter": 6,
+      "chapterTitle": "Arapça Kelimelerin Yapısı",
+      "q": "Müenneslik alâmetleri (lafzî müenneslik) nelerdir ve Osmanlı Türkçesinde kapalı te harfi nasıl yazılır?",
+      "a": "Dişil kelimelerdeki lafzî müenneslik alametleri kelime sonundaki kapalı te (tâ-i merbûte), elif-i maksûre (kısa elif) ve elif-i memdûde (uzun elif) şeklindedir [1]. Osmanlı Türkçesinde kapalı te harfi (ة) yazılmayıp yerine açık te (ت) veya güzel he (ه) harfi kullanılır [1]. Ders kitabı bu duruma 'mu'allime' ve 'edîbe' kelimelerini örnek verir [1, 2].",
+      "sources": [
+        {
+          "title": "Osmanlı Türkçesi I ders kitabı, Bölüm 6: Arapça Kelimelerin Yapısı",
+          "url": ""
+        },
+        {
+          "title": "AÖF Osmanlı Türkçesi I, Ünite 6 Özet videosu",
+          "url": "https://www.youtube.com/watch?v=f_sPl7P0Lpw"
+        }
+      ]
+    },
+    {
+      "key": "ch6",
+      "chapter": 6,
+      "chapterTitle": "Arapça Kelimelerin Yapısı",
+      "q": "Semâî müennes nedir ve ma'nevî müenneslerden hangi yönüyle ayrılır?",
+      "a": "Semâî müennesler, bünyesinde hiçbir lafzî veya manevî dişil belirti barındırmadığı halde dişil kabul edildiği ancak işitilerek veya sözlüklerden öğrenilen kelimelerdir [1, 2]. Yaklaşık 60 kelimeden oluşan bu grupta 'arz' (yer), 'nâr' (ateş) ve 'şems' (güneş) gibi sözcükler yer alır [1]. Bu kelimelerin bir kısmı daima dişil sayılırken bazıları hem müzekker hem müennes olarak kullanılabilir [1].",
+      "sources": [
+        {
+          "title": "Osmanlı Türkçesi I ders kitabı, Bölüm 6: Arapça Kelimelerin Yapısı",
+          "url": ""
+        },
+        {
+          "title": "AÖF Osmanlı Türkçesi I, Ünite 6 Özet videosu",
+          "url": "https://www.youtube.com/watch?v=f_sPl7P0Lpw"
+        }
+      ]
+    },
+    {
+      "key": "ch6",
+      "chapter": 6,
+      "chapterTitle": "Arapça Kelimelerin Yapısı",
+      "q": "Şekilsel bir dişilik alameti taşımadığı halde dişil kabul edilen ma'nevî (i'tibârî) müennesler hangileridir?",
+      "a": "Gövdesinde müenneslik alameti bulunmayıp manen dişil sayılan kelimelere ma'nevî veya i'tibârî müennes denir [1]. Bütün kadın isimleri, ülke, şehir ve kabile adları, çift organ isimleri (el, göz), harf isimleri ile cem'-i müzekker-i sâlim dışındaki çoğullar bu gruba girer [1, 2]. Ayrıca türemiş masdarların da ma'nevî müennes kabul edildiği kaynaklarda açıkça ifade edilmiştir [1, 2].",
+      "sources": [
+        {
+          "title": "Osmanlı Türkçesi I ders kitabı, Bölüm 6: Arapça Kelimelerin Yapısı",
+          "url": ""
+        },
+        {
+          "title": "AÖF Osmanlı Türkçesi I, Ünite 6 Özet videosu",
+          "url": "https://www.youtube.com/watch?v=f_sPl7P0Lpw"
+        }
+      ]
+    },
+    {
+      "key": "ch7",
+      "chapter": 7,
+      "chapterTitle": "Aksâm-ı Seb'a, Mücerred Masdarlar, İsm-i Fâil ve İsm-i Mef'ûl",
+      "q": "Arapça kelime yapısında 'Aksâm-ı Seb'a' (kelimenin yedi kısmı) nedir ve kök harflerin sahih ve illetli oluşuna göre genel sınıflandırma nasıl yapılır?",
+      "a": "AÖF ders kitabının 7. ünitesi ve 7. ünite özet ses kaydına göre Aksâm-ı Seb'a, Arapçada isim ve fiillerin kök harflerinin niteliğine (sahih veya illetli oluşuna ve tekrarlanışına) göre ayrıldığı yedi kısımdır [1, 2]. İlletli harfler elif, vav ve ye (ا, و, ی) olup bunlardan birini barındıran fiillere mu'tel, barındırmayanlara ise sahih kelimeler denir [1, 2]. Sahih grubunu sâlim, mehmûz ve muzâaf oluştururken; mu'tel grubunu misâl, ecvef, nâkıs ve lefîf oluşturur [1].",
+      "sources": [
+        {
+          "title": "Osmanlı Türkçesi I ders kitabı, Bölüm 7: Aksâm-ı Seb'a, Mücerred Masdarlar, İsm-i Fâil ve İsm-i Mef'ûl",
+          "url": ""
+        },
+        {
+          "title": "AÖF Osmanlı Türkçesi I, Ünite 7 Özet videosu",
+          "url": "https://www.youtube.com/watch?v=tO8LLK5-AkI"
+        }
+      ]
+    },
+    {
+      "key": "ch7",
+      "chapter": 7,
+      "chapterTitle": "Aksâm-ı Seb'a, Mücerred Masdarlar, İsm-i Fâil ve İsm-i Mef'ûl",
+      "q": "Arapça mu'tel (illetli) kelimelerden misâl, ecvef ve nâkıs yapıları kök harflerinin konumuna göre nasıl ayırt edilir?",
+      "a": "AÖF ders kitabının 7. ünitesi ve 7. ünite özet ses kaydına göre ilk kök harfi illetli (vav veya ye) olan kelimelere misâl denir [1, 2]. İkinci (ortadaki) kök harfi illetli olan kelimeler ecvef, üçüncü (sondaki) kök harfi illetli olan kelimeler ise nâkıs olarak adlandırılır [1, 2]. Ayrıca ecvef ve nâkıs kelimeler kendi içlerinde vavi, yayi veya elifli türlere ayrılmaktadır [1].",
+      "sources": [
+        {
+          "title": "Osmanlı Türkçesi I ders kitabı, Bölüm 7: Aksâm-ı Seb'a, Mücerred Masdarlar, İsm-i Fâil ve İsm-i Mef'ûl",
+          "url": ""
+        },
+        {
+          "title": "AÖF Osmanlı Türkçesi I, Ünite 7 Özet videosu",
+          "url": "https://www.youtube.com/watch?v=tO8LLK5-AkI"
+        }
+      ]
+    },
+    {
+      "key": "ch7",
+      "chapter": 7,
+      "chapterTitle": "Aksâm-ı Seb'a, Mücerred Masdarlar, İsm-i Fâil ve İsm-i Mef'ûl",
+      "q": "Arapçada sülâsî mücerred masdarlar ne anlama gelir ve bunlarda vezin-anlam ilişkisi nasıldır?",
+      "a": "AÖF ders kitabının 7. ünitesi ile 7. ünite özet ses kaydına göre sülâsî mücerred masdarlar, yapısında ilave (zâid) harf bulunmayan üç aslî harfli basit masdarlardır [1, 2]. Bu masdarlar belirli bir kurala veya kalıp anlama bağlı olmayıp semâî nitelik taşırlar, dolayısıyla anlamları ancak işitilerek veya sözlüklere bakılarak öğrenilir [1, 2]. Osmanlı Türkçesinde fa'l, fi'l, fu'l gibi yaklaşık 40 civarında sülâsî mücerred masdar vezni yaygın biçimde kullanılmıştır [1, 2].",
+      "sources": [
+        {
+          "title": "Osmanlı Türkçesi I ders kitabı, Bölüm 7: Aksâm-ı Seb'a, Mücerred Masdarlar, İsm-i Fâil ve İsm-i Mef'ûl",
+          "url": ""
+        },
+        {
+          "title": "AÖF Osmanlı Türkçesi I, Ünite 7 Özet videosu",
+          "url": "https://www.youtube.com/watch?v=tO8LLK5-AkI"
+        }
+      ]
+    },
+    {
+      "key": "ch7",
+      "chapter": 7,
+      "chapterTitle": "Aksâm-ı Seb'a, Mücerred Masdarlar, İsm-i Fâil ve İsm-i Mef'ûl",
+      "q": "Lefîf kelime ne demektir ve lefîf-i mefrûk ile lefîf-i makrûn arasındaki fark nedir?",
+      "a": "AÖF ders kitabının 7. ünitesi ve özet ses kaydında açıklandığı üzere lefîf, kök harflerinden ikisi illetli harflerden oluşan kelimelerdir [1, 2]. İlletli harflerden biri kelimenin başında, diğeri sonunda (1. ve 3. harfte) yer alıyorsa buna lefîf-i mefrûk (örneğin vefâ) adı verilir [2, 1]. Kelimeyi oluşturan harflerin son ikisi (2. ve 3. harf) illetli ise buna lefîf-i makrûn (örneğin tayy) denir [2, 1].",
+      "sources": [
+        {
+          "title": "Osmanlı Türkçesi I ders kitabı, Bölüm 7: Aksâm-ı Seb'a, Mücerred Masdarlar, İsm-i Fâil ve İsm-i Mef'ûl",
+          "url": ""
+        },
+        {
+          "title": "AÖF Osmanlı Türkçesi I, Ünite 7 Özet videosu",
+          "url": "https://www.youtube.com/watch?v=tO8LLK5-AkI"
+        }
+      ]
+    },
+    {
+      "key": "ch7",
+      "chapter": 7,
+      "chapterTitle": "Aksâm-ı Seb'a, Mücerred Masdarlar, İsm-i Fâil ve İsm-i Mef'ûl",
+      "q": "Mec'ûl (yapma/sun'î) masdarlar nasıl oluşturulur, hangi işlevi görür ve Osmanlı Türkçesinde kullanımı nasıldır?",
+      "a": "AÖF ders kitabının 7. ünitesi ve 7. ünite özet ses kaydına göre mec'ûl masdarlar, türemiş sıfat veya isimlerin sonuna şeddeli ye ve te (-iyyet) eki getirilerek yapılan yapma/sun'î masdarlardır [1, 2]. Türkçedeki '-lık, -lik' ekine karşılık gelen bu yapıyla insâniyyet (insanlık), hürriyyet (hürlük) ve İslâmiyyet gibi soyut kavramlar türetilir [1, 2]. Arapçada masdarlara bu ek getirilmezken Osmanlı Türkçesinde bazı masdarlara da eklenerek yeni kelimeler türetilmiştir [1].",
+      "sources": [
+        {
+          "title": "Osmanlı Türkçesi I ders kitabı, Bölüm 7: Aksâm-ı Seb'a, Mücerred Masdarlar, İsm-i Fâil ve İsm-i Mef'ûl",
+          "url": ""
+        },
+        {
+          "title": "AÖF Osmanlı Türkçesi I, Ünite 7 Özet videosu",
+          "url": "https://www.youtube.com/watch?v=tO8LLK5-AkI"
+        }
+      ]
+    },
+    {
+      "key": "ch7",
+      "chapter": 7,
+      "chapterTitle": "Aksâm-ı Seb'a, Mücerred Masdarlar, İsm-i Fâil ve İsm-i Mef'ûl",
+      "q": "Mimli masdarlar nedir, hangi vezinlerde bulunurlar ve ism-i mekân veya ism-i zaman yapılarıyla karışması nasıl önlenir?",
+      "a": "AÖF ders kitabının 7. ünitesi ile özet ses kaydına göre başlarında zâid bir mim (م) harfi bulunan sülâsî mücerred masdarlara mimli masdar denir [1, 2]. Mimli masdarlar mef'al, mef'il, mef'alet ve mef'ilet olmak üzere dört temel vezinde türetilir [1, 2]. İsm-i mekân, ism-i âlet ve ism-i zaman vezinleriyle aynı kalıbı taşısalar da cümle içerisindeki anlamlarına bakılarak birbirlerinden ayırt edilirler [1].",
+      "sources": [
+        {
+          "title": "Osmanlı Türkçesi I ders kitabı, Bölüm 7: Aksâm-ı Seb'a, Mücerred Masdarlar, İsm-i Fâil ve İsm-i Mef'ûl",
+          "url": ""
+        },
+        {
+          "title": "AÖF Osmanlı Türkçesi I, Ünite 7 Özet videosu",
+          "url": "https://www.youtube.com/watch?v=tO8LLK5-AkI"
+        }
+      ]
+    },
+    {
+      "key": "ch7",
+      "chapter": 7,
+      "chapterTitle": "Aksâm-ı Seb'a, Mücerred Masdarlar, İsm-i Fâil ve İsm-i Mef'ûl",
+      "q": "Mücerred rubâ'î masdarlar nedir, masdar vezni ile ism-i fâ'il ve ism-i mef'ûl vezinleri nasıl oluşturulur?",
+      "a": "AÖF ders kitabının 7. ünitesi ve 7. ünite özet ses kaydına göre dört aslî harften oluşan masdarlara rubâ'î masdar denir ve tek vezni fa'lele (örneğin vesvese, terceme) şeklindedir [1, 2]. Rubâ'î masdarların ism-i fâ'ili mufa'lil (örneğin müverim, mütercim) vezninde türetilir [1, 2]. İsm-i mef'ûlü ise mufa'lel (örneğin mütercem, müselsel, mutantan) vezninde elde edilir [1, 2].",
+      "sources": [
+        {
+          "title": "Osmanlı Türkçesi I ders kitabı, Bölüm 7: Aksâm-ı Seb'a, Mücerred Masdarlar, İsm-i Fâil ve İsm-i Mef'ûl",
+          "url": ""
+        },
+        {
+          "title": "AÖF Osmanlı Türkçesi I, Ünite 7 Özet videosu",
+          "url": "https://www.youtube.com/watch?v=tO8LLK5-AkI"
+        }
+      ]
+    },
+    {
+      "key": "ch7",
+      "chapter": 7,
+      "chapterTitle": "Aksâm-ı Seb'a, Mücerred Masdarlar, İsm-i Fâil ve İsm-i Mef'ûl",
+      "q": "Mücerred sülâsî masdarların ism-i fâ'ili hangi vezinde türetilir, hangi tür fiillerden yapılır ve illetli kelimelerde i'lâl nasıl işler?",
+      "a": "AÖF ders kitabının 7. ünitesi ve özet ses kaydına göre mücerred sülâsî masdarların ism-i fâ'ili fâ'il (فاعل) vezninde türetilir ve sadece etken (aktif) fiillerden yapılır [1, 2]. Muzâaf kelimelerde vezin fâ'' (örneğin farr), ecveflerde fâ'il/fâyil (örneğin mâyil), nâkıslarda ise fâ'î (örneğin dâ'î, kārî) şeklini alır [2, 1]. Geçici durum ve eylemi yapanı gösteren bu isimler Türkçedeki '-an, -en' ekine karşılık gelir [1, 2].",
+      "sources": [
+        {
+          "title": "AÖF Osmanlı Türkçesi I, Ünite 7 Özet videosu",
+          "url": "https://www.youtube.com/watch?v=tO8LLK5-AkI"
+        },
+        {
+          "title": "Osmanlı Türkçesi I ders kitabı, Bölüm 7: Aksâm-ı Seb'a, Mücerred Masdarlar, İsm-i Fâil ve İsm-i Mef'ûl",
+          "url": ""
+        }
+      ]
+    },
+    {
+      "key": "ch7",
+      "chapter": 7,
+      "chapterTitle": "Aksâm-ı Seb'a, Mücerred Masdarlar, İsm-i Fâil ve İsm-i Mef'ûl",
+      "q": "Mücerred sülâsî masdarların ism-i mef'ûlü hangi vezinde türetilir ve ecvef ile nâkıs kelimelerde i'lâl durumunda vezinler nasıl değişir?",
+      "a": "AÖF ders kitabının 7. ünitesi ile 7. ünite özet ses kaydına göre sülâsî mücerred masdarların ism-i mef'ûlü mef'ûl (مفعول) vezninde yapılır ve edilgen (pasif) anlam taşır [1, 2]. İ'lâl durumunda vavi ecveflerde mef'ûl (örneğin makūl), yayi ecveflerde mef'îl (örneğin mehîb) vezni kullanılır [1, 2]. Vavi nâkıslarda mef'ûvv/mef'û (örneğin ma'fû), yayi nâkıslarda ise mef'iyy/mef'î (örneğin mermî) biçimine dönüşür [1, 2].",
+      "sources": [
+        {
+          "title": "Osmanlı Türkçesi I ders kitabı, Bölüm 7: Aksâm-ı Seb'a, Mücerred Masdarlar, İsm-i Fâil ve İsm-i Mef'ûl",
+          "url": ""
+        },
+        {
+          "title": "AÖF Osmanlı Türkçesi I, Ünite 7 Özet videosu",
+          "url": "https://www.youtube.com/watch?v=tO8LLK5-AkI"
+        }
+      ]
+    },
+    {
+      "key": "ch7",
+      "chapter": 7,
+      "chapterTitle": "Aksâm-ı Seb'a, Mücerred Masdarlar, İsm-i Fâil ve İsm-i Mef'ûl",
+      "q": "Sahih fiiller grubuna giren sâlim, mehmûz ve muzâaf kelimelerin temel nitelikleri ve farkları nelerdir?",
+      "a": "AÖF ders kitabının 7. ünitesi ve özet ses kaydına göre sâlim kelimeler, kök harflerinde illet harfi, hemze veya tekrarlanan harf bulunmayan en düzenli yapılardır [1, 2]. Mehmûz kelimeler, kök harflerinden biri hemze olan yapılardır; hemzenin yerine göre mehmûzü'l-fâ, mehmûzü'l-ayn veya mehmûzü'l-lâm adını alırlar [2, 1]. Muzâaf kelimeler ise kök harflerinden ikinci ve üçüncüsü aynı olan (illetli olmayan) ve genellikle şedde ile gösterilen kelimelerdir [1, 2].",
+      "sources": [
+        {
+          "title": "Osmanlı Türkçesi I ders kitabı, Bölüm 7: Aksâm-ı Seb'a, Mücerred Masdarlar, İsm-i Fâil ve İsm-i Mef'ûl",
+          "url": ""
+        },
+        {
+          "title": "AÖF Osmanlı Türkçesi I, Ünite 7 Özet videosu",
+          "url": "https://www.youtube.com/watch?v=tO8LLK5-AkI"
+        }
+      ]
+    },
+    {
+      "key": "ch8",
+      "chapter": 8,
+      "chapterTitle": "Mezîdünfih Masdarlar (I)",
+      "q": "AÖF kaynaklarına göre kök harflerin mezîdünfih bâblara aktarılmasında dikkat edilmesi gereken kural ve sınırlama nedir?",
+      "a": "Ders kitabı ve 8. ünite özet ses kaydına göre bir kelimeyi teorik olarak her bâba sokmak mümkün görünse de pratik kullanım sözlüklere bağlıdır [1, 2]. Örneğin 'harb' kelimesine işteşlik kazandırmak için 'tefâ'ul' yerine 'müfâ'ale' bâbı seçilerek 'muhârebe' kelimesi türetilmeli, kurallarda bulunmayan uydurma biçimlerden kaçınılmalıdır [1]. Dolayısıyla hangi kökün hangi bâbda kullanıldığı ancak sözlükler vasıtasıyla teyit edilebilir [1, 2].",
+      "sources": [
+        {
+          "title": "Osmanlı Türkçesi I ders kitabı, Bölüm 8: Mezîdünfih Masdarlar (I)",
+          "url": ""
+        },
+        {
+          "title": "AÖF Osmanlı Türkçesi I, Ünite 8 Özet videosu",
+          "url": "https://www.youtube.com/watch?v=R-mD_GaXGeM"
+        }
+      ]
+    },
+    {
+      "key": "ch8",
+      "chapter": 8,
+      "chapterTitle": "Mezîdünfih Masdarlar (I)",
+      "q": "Mezîdünfih masdarlar (kıyasî masdarlar) ne demektir, sülâsî mücerred masdarlardan hangi temel özellikleriyle ayrılırlar ve Osmanlı Türkçesinde kaç babı kullanılmıştır?",
+      "a": "AÖF ders kitabının 8. ünitesine ve 8. ünite özet ses kaydına göre mezîdünfih (kıyasî) masdarlar, sülâsî mücerred masdarlara belirli ekler getirilerek türetilen kurallı masdarlardır [1, 2]. Sülâsî mücerred masdarlar semâî olup belirli bir kurala dayanmazken, mezîdünfih masdarlar kıyasîdir ve kelimenin çatısında belirli anlam değişiklikleri gerçekleştirir [1, 2]. Arapçada daha fazla mezîdünfih babı bulunmakla birlikte Osmanlı Türkçesinde bunlardan 9 adedi tercih edilip kullanılmıştır [1, 2].",
+      "sources": [
+        {
+          "title": "Osmanlı Türkçesi I ders kitabı, Bölüm 8: Mezîdünfih Masdarlar (I)",
+          "url": ""
+        },
+        {
+          "title": "AÖF Osmanlı Türkçesi I, Ünite 8 Özet videosu",
+          "url": "https://www.youtube.com/watch?v=R-mD_GaXGeM"
+        }
+      ]
+    },
+    {
+      "key": "ch8",
+      "chapter": 8,
+      "chapterTitle": "Mezîdünfih Masdarlar (I)",
+      "q": "Müfâ'ale bâbı (مُفَاعَلَه) yapısı, zâid harfleri ve kazandırdığı çatı özellikleri bakımından nasıl tanımlanır?",
+      "a": "AÖF ders kitabının 8. ünitesine göre Müfâ'ale bâbında baştaki mim, ilk aslî harften sonraki elif ve sondaki te (veya güzel he) harfleri zâiddir [1]. Bu bâb, eylemin karşılıklı olarak yapıldığını ifade ederek kelimeye işteşlik (müşâreket) kazandırır veya geçişsizleştirme işlevi görür [1, 2]. İsm-i fâ'ili müfâ'il (muhâfız, muhâbir), ism-i mef'ûlü ise müfâ'al (muhâtab, mübârek) veznindedir [1].",
+      "sources": [
+        {
+          "title": "Osmanlı Türkçesi I ders kitabı, Bölüm 8: Mezîdünfih Masdarlar (I)",
+          "url": ""
+        },
+        {
+          "title": "AÖF Osmanlı Türkçesi I, Ünite 8 Özet videosu",
+          "url": "https://www.youtube.com/watch?v=R-mD_GaXGeM"
+        }
+      ]
+    },
+    {
+      "key": "ch8",
+      "chapter": 8,
+      "chapterTitle": "Mezîdünfih Masdarlar (I)",
+      "q": "Sülâsî mezîdünfih masdarlarda 'bâb' kavramı neyi ifade eder ve kelimelere ne tür anlamlar kazandırır?",
+      "a": "Ders kitabının 8. ünitesine göre sülâsî mezîdünfih masdarların elde edildiği özel yapılara 'bâb' adı verilir [1]. Bâblar kelimenin temel anlamını değiştirmeden geçişsiz (lâzım) bir fiili geçişli (müteaddî) yapmak, geçişliliğin derecesini artırmak, dönüşlülük kazandırmak veya işteşlik (müşâreket) sağlamak gibi işlevler üstlenir [1].",
+      "sources": [
+        {
+          "title": "Osmanlı Türkçesi I ders kitabı, Bölüm 8: Mezîdünfih Masdarlar (I)",
+          "url": ""
+        }
+      ]
+    },
+    {
+      "key": "ch8",
+      "chapter": 8,
+      "chapterTitle": "Mezîdünfih Masdarlar (I)",
+      "q": "Tef'îl bâbı (تفعيل) hangi zâid harflerle kurulur ve Osmanlı Türkçesinde üstlendiği temel işlevler nelerdir?",
+      "a": "AÖF ders kitabının 8. ünitesine göre Tef'îl bâbı, kökün başına te ve ikinci aslî harften sonra ye harfi eklenerek oluşturulur [1]. Bu bâb geçişsiz fiilleri geçişli yapma, geçişli fiillerin ettirgenliğini artırma, saymak/kabul etmek (ta'yîb, tasvîb), sayı isimlerine geçişlilik verme (tevhîd, teslîs) ve kalıplaşmış dua/ibare ifadelerini adlandırma (tesbîh, tehlîl) işlevlerini yerine getirir [1].",
+      "sources": [
+        {
+          "title": "Osmanlı Türkçesi I ders kitabı, Bölüm 8: Mezîdünfih Masdarlar (I)",
+          "url": ""
+        }
+      ]
+    },
+    {
+      "key": "ch8",
+      "chapter": 8,
+      "chapterTitle": "Mezîdünfih Masdarlar (I)",
+      "q": "Tef'îl bâbının ism-i fâ'il ve ism-i mef'ûl vezinleri nelerdir, nâkıs kelimelerde bu vezinler nasıl biçim değiştirir?",
+      "a": "Ders kitabının 8. ünitesine göre Tef'îl bâbının ism-i fâ'ili mufa''il (ُمَفعِّْل / mu'allim, müderris), ism-i mef'ûlü ise mufa''al (ُمَفعَّْل / mürekkeb, mükerrem) vezninde kalıplanır [1]. İ'lâl durumunda nâkıs fiillerin ism-i fâ'ili mufa''î (mürebbî, mukavvî), ism-i mef'ûlü ise mufa''â (müberrâ, müsemmâ) şeklini alır [1].",
+      "sources": [
+        {
+          "title": "Osmanlı Türkçesi I ders kitabı, Bölüm 8: Mezîdünfih Masdarlar (I)",
+          "url": ""
+        }
+      ]
+    },
+    {
+      "key": "ch8",
+      "chapter": 8,
+      "chapterTitle": "Mezîdünfih Masdarlar (I)",
+      "q": "Tefa''ul bâbı (تَفَعُّل) nasıl türetilir, cümleye hangi anlamları katar ve ism-i mef'ûlü neden az kullanılır?",
+      "a": "Tefa''ul bâbı, baştaki zâid te harfi ve ikinci aslî harfin şeddelenmesiyle kurulur [1]. Sülâsî mücerred ve Tef'îl bâbındaki geçişsiz masdarlara dönüşlülük kazandırdığı gibi bazı kelimelerde yapmacıklık (teşeccü') anlamı da ifade eder [1]. Bâbın temel işlevi dönüşlülük olduğundan, edilgenliği bildiren ism-i mef'ûl formu (mütefa''al) dilde oldukça nadir kullanılır [1].",
+      "sources": [
+        {
+          "title": "Osmanlı Türkçesi I ders kitabı, Bölüm 8: Mezîdünfih Masdarlar (I)",
+          "url": ""
+        }
+      ]
+    },
+    {
+      "key": "ch8",
+      "chapter": 8,
+      "chapterTitle": "Mezîdünfih Masdarlar (I)",
+      "q": "Tefâ'ul bâbı (تَفَاعُل) ne tür anlam ilişkileri kurar ve tefâ'ul ile tefa''ul bâbları arasındaki temel fark nedir?",
+      "a": "AÖF ders kitabının 8. ünitesi ve özet ses kaydına göre Tefâ'ul bâbı iki veya daha fazla kişi arasında işteşlik (te'âvün), yapmacıklık/sahtelik (tecâhül), dönüşlülük veya derece derece gerçekleşme (tekâmül, tezâyüd) anlamı katar [1, 2]. Tefa''ul bâbı ağırlıklı olarak dönüşlülük bildirirken Tefâ'ul bâbı öncelikle karşılıklı yapmayı (işteşliği) esas almasıyla ayrılır [1, 2]. İsmi-i fâ'ili mütefâ'il (mütekâmil) vezninde türetilmektedir [1].",
+      "sources": [
+        {
+          "title": "Osmanlı Türkçesi I ders kitabı, Bölüm 8: Mezîdünfih Masdarlar (I)",
+          "url": ""
+        },
+        {
+          "title": "AÖF Osmanlı Türkçesi I, Ünite 8 Özet videosu",
+          "url": "https://www.youtube.com/watch?v=R-mD_GaXGeM"
+        }
+      ]
+    },
+    {
+      "key": "ch8",
+      "chapter": 8,
+      "chapterTitle": "Mezîdünfih Masdarlar (I)",
+      "q": "İf'âl bâbı (افعال) Arap harfleriyle nasıl oluşturulur, temel işlevi nedir ve i'lâl durumunda vezinde ne gibi değişiklikler meydana gelir?",
+      "a": "İf'âl bâbı, mücerred sülâsî masdarın ilk aslî harfinden önce hemze, ikinci aslî harfinden sonra elif eklenerek türetilir [1]. Osmanlı Türkçesinde ağırlıklı olarak geçişsiz fiillere geçişlilik kazandırma (ettirgenlik) işlevi görür [1]. İ'lâl durumunda, ilk harfi hemze veya vav olan kelimeler 'îfâl' (îcâd, îkāz) sesini alırken, ortasında illet harfi bulunan ecvef kelimeler 'ifâle' (ِافَاَلْة) veznine dönüşür [1].",
+      "sources": [
+        {
+          "title": "Osmanlı Türkçesi I ders kitabı, Bölüm 8: Mezîdünfih Masdarlar (I)",
+          "url": ""
+        }
+      ]
+    },
+    {
+      "key": "ch8",
+      "chapter": 8,
+      "chapterTitle": "Mezîdünfih Masdarlar (I)",
+      "q": "İf'âl bâbının ism-i fâ'ili ve ism-i mef'ûlü hangi vezinlerde türetilir ve öğrenmeyi kolaylaştırmak için özet ses kaydında hangi örnek kodlama tavsiye edilmiştir?",
+      "a": "AÖF ders kitabına ve 8. ünite özet ses kaydına göre İf'âl bâbının ism-i fâ'ili müf'il (ُمفِعْل), ism-i mef'ûlü ise müf'al (ُمْفَعْل) vezninde türetilir [1, 2]. Özet ses kaydında soyut vezin kalıplarını ezberlemek yerine zihinde 'kerem - ikrâm - mükrim - mükrem' veya 'hüsün - ihsân - muhsin - muhsen' gibi örnek kelime dizilerini kodlamanın mantığı kavramada çok daha etkili olduğu vurgulanmıştır [2].",
+      "sources": [
+        {
+          "title": "Osmanlı Türkçesi I ders kitabı, Bölüm 8: Mezîdünfih Masdarlar (I)",
+          "url": ""
+        },
+        {
+          "title": "AÖF Osmanlı Türkçesi I, Ünite 8 Özet videosu",
+          "url": "https://www.youtube.com/watch?v=R-mD_GaXGeM"
+        }
+      ]
     }
   ]
 }
