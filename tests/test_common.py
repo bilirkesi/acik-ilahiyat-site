@@ -104,23 +104,14 @@ class TestCourseConfig(unittest.TestCase):
         self.assertEqual(plain["chapters"], {"min": 5, "max": 10})
         self.assertEqual(plain["grounding"]["tiers"][0]["types"], ["book"])
 
-    def test_course_config_overrides_only_what_it_defines(self) -> None:
-        cfg = common.course_config(ROOT, "teknik-gelistirim")
-        self.assertEqual(cfg["language"], "English")
-        self.assertIn("grounding", cfg)
-        plain = common.load_university(ROOT)
-        self.assertEqual(plain["language"], "Turkish", "ders yapilandirmasi universiteyi degistirmemeli")
-
     def test_course_config_of_an_unknown_course_is_empty(self) -> None:
         self.assertEqual(common.course_config(ROOT, "olmayan-ders"), {})
         self.assertEqual(common.course_config(ROOT, None), {})
 
-    def test_technical_course_loads_its_own_settings(self) -> None:
-        u = common.load_university(ROOT, "teknik-gelistirim")
-        self.assertEqual(u["language"], "English")
-        self.assertEqual(u["chapters"], {"min": 8, "max": 10})
-        self.assertTrue(u["grounding"]["tiers"])
-        self.assertTrue(u["grounding"]["rules"])
+    def test_a_course_without_a_config_keeps_the_university_settings(self) -> None:
+        plain = common.load_university(ROOT)
+        self.assertEqual(common.course_config(ROOT, "turk-dili-1"), {})
+        self.assertEqual(plain["language"], "Turkish")
 
 
 class TestSourceTier(unittest.TestCase):

@@ -142,19 +142,16 @@ class TestBothContentPaths(unittest.TestCase):
         self.assertIn('else if (parts[2] === "cift") html = viewParallel(c, +parts[3]);', src)
         self.assertIn("Çift dilli oku", src)
 
-    def test_the_paired_courses_are_exported_with_their_counterpart(self) -> None:
-        """Kardeş dersler birbirini `pair` ile gösterir ve build bunu data.js'e yazar."""
+    def test_no_course_is_paired_in_this_repository(self) -> None:
+        """Çift dilli okuma, teknik programın iki dilinde çalışır; o program acik-akademi deposunda."""
         import json
         from pathlib import Path
 
         data = (Path(__file__).resolve().parents[1] / "site" / "data.js").read_text(encoding="utf-8")
         start = data.index("window.COURSES = ") + len("window.COURSES = ")
         courses, _ = json.JSONDecoder().raw_decode(data[start:])
-        by = {c["slug"]: c for c in courses}
-        self.assertEqual(by["teknik-gelistirim"].get("pair"), "teknik-gelistirim-tr")
-        self.assertEqual(by["teknik-gelistirim-tr"].get("pair"), "teknik-gelistirim")
-        self.assertEqual(by["teknik-gelistirim"]["language"], "en")
-        self.assertEqual(by["teknik-gelistirim-tr"]["language"], "tr")
+        for c in courses:
+            self.assertNotIn("pair", c, c["slug"])
 
     def test_the_glossary_deck_is_wired_to_the_course(self) -> None:
         """Kelime destesi dersten açılır ve seçim çubuğundan kelime alır."""

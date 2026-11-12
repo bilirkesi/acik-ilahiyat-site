@@ -1,10 +1,13 @@
-# Açık Akademi
+# Açık İlahiyat Üniversitesi
 
-**Açık Akademi** — AÖF (Anadolu Üniversitesi) ve İÜ İlahiyat dersleri ile Oracle/IFS teknik eğitim
-programları için ücretsiz, internetsiz çalışan bir ders sitesi. Statik bir PWA: sunucu tarafı yok, her
-şey `window.*` veri paketleriyle tarayıcıda çalışıyor.
+**Açık İlahiyat** — AÖF (Anadolu Üniversitesi) ve İÜ İlahiyat dersleri için ücretsiz, internetsiz
+çalışan bir ders sitesi. Statik bir PWA: sunucu tarafı yok, her şey `window.*` veri paketleriyle
+tarayıcıda çalışıyor.
 
 **Live site:** <https://bilirkesi.github.io/acik-ilahiyat-site/>
+
+> Oracle/IFS eğitim programı ve platform altyapısı kardeş depoda:
+> <https://github.com/bilirkesi/acik-akademi>.
 
 ---
 
@@ -16,14 +19,11 @@ programları için ücretsiz, internetsiz çalışan bir ders sitesi. Statik bir
 | Türk Dili I | TÜR201U | 8 | 8 | 115 | 3 | 8 |
 | Atatürk İlkeleri ve İnkılap Tarihi I | TAR201U | 8 | 8 | 108 | 3 | 8 |
 | Osmanlı Türkçesi I | TAR111U | 8 | 8 | 123 | – | 8 |
-| Teknik Gelişim: IFS Cloud & Oracle DBA | TEK-ORA | 10 | 10 | 129 | 3 | 10 |
-| Teknik Gelişim (Türkçe) | TEK-ORA-TR | 10 | 10 | 194 | 3 | 10 |
 
-30 AÖF chapters plus a 10 chapter Oracle and IFS Cloud DBA training program, 435 AÖF questions
-and the past midterm (çıkmış vize) of the last five academic years.
+30 AÖF chapters, 435 AÖF questions and the past midterm (çıkmış vize) of the last five academic years.
 
-The last two courses are not university courses: they are a professional Oracle and IFS Cloud
-training programme, published in English and in Turkish from the same material.
+The Oracle and IFS Cloud DBA training programme (published in English and in Turkish) moved to the
+sibling repository `bilirkesi/acik-akademi`, which also holds the platform infrastructure.
 
 On the site a student can:
 
