@@ -28,6 +28,7 @@ training programme, published in English and in Turkish from the same material.
 On the site a student can:
 
 - read the chapter notes with the AÖF infographics and the book unit summaries side by side,
+- ask a question and get an answer with the sources it was grounded in,
 - drill the unit quizzes and the past exams, with an answer key and per-question solutions,
 - review with an FSRS-4.5 spaced-repetition desk, wrong-answer list and daily streak,
 - play the word games and the Ottoman Turkish letter workshop,
@@ -43,11 +44,14 @@ courses.json + university.json + data/<slug>/
         ├── generator/scripts/build.py ─────► site/          static SPA (the published site)
         │                                        ├── data.js           window.UNIVERSITY / COURSES / OFFLINE
         │                                        ├── app.js            the whole SPA
-        │                                        └── past_exams.js, unit_quizzes.js, coursegraph.js
+        │                                        └── past_exams.js, unit_quizzes.js, coursegraph.js, chat.js
         │
         ├── coursegraph/indexer.py ─────────► coursegraph/index/graph.json
         │       └── site_export.py ─────────► site/coursegraph.js   browser search index
         │       └── mindmap.py ─────────────► coursegraph/index/mindmaps/
+        │
+        ├── scripts/generate_chat.py ──────► data/<slug>/chat.json   question-answer corpus
+        │       └── export_chat_site.py ───► site/chat.js           window.CHAT
         │
         └── scripts/export_okf.py ──────────► okf/          Open Knowledge Format v0.2 Markdown bundle
 ```
@@ -90,6 +94,10 @@ py -3 -m coursegraph.site_export
 py -3 scripts/export_past_exams_site.py
 py -3 scripts/export_unit_quizzes_site.py
 py -3 scripts/export_okf.py
+
+# rebuild the question-answer corpus (needs the notebooklm CLI, logged in)
+py -3 scripts/generate_chat.py <slug>       # data/<slug>/chat.json from the notebook's sources
+py -3 scripts/export_chat_site.py            # site/chat.js from the corpus
 
 # checks
 py -3 -m unittest discover -s tests        # the test suite
