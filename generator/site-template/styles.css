@@ -645,6 +645,33 @@ picture { display: block; }
 /* öğrenme döngüsü: bugün şeridi, çalışma masası, tekrar ve hatalar */
 .nav-badge { display: inline-block; min-width: 1.35rem; margin-left: .25rem; padding: .12rem .38rem; border-radius: 999px; background: var(--gold); color: var(--chrome);
   font: 700 .7rem/1.1 var(--sans); text-align: center; vertical-align: 1px; }
+/* Üst çubukta sözlük: "Çalışma" menüsü ders ders desteleri listeler. */
+.nav-due { position: relative; }
+.nav-due > summary { color: var(--chrome-ink); font-size: .92rem; padding-bottom: 2px; border-bottom: 1px solid transparent;
+  cursor: pointer; list-style: none; }
+.nav-due > summary::-webkit-details-marker { display: none; }
+.nav-due > summary::after { content: "▾"; margin-left: .3rem; font-size: .7rem; }
+.nav-due > summary:hover, .nav-due > summary.active, .nav-due[open] > summary { border-bottom-color: var(--gold); }
+.nav-due > summary:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+.nav-due-panel { position: absolute; top: calc(100% + .5rem); right: 0; z-index: 60; width: min(320px, calc(100vw - 32px));
+  background: var(--paper); color: var(--ink); border: 1px solid var(--line-strong);
+  box-shadow: 0 14px 30px -18px var(--shadow); padding: .7rem .9rem .4rem; }
+.nav-due-title { margin: 0 0 .3rem; font: 600 .7rem/1 var(--sans); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.nav-due-row { display: flex; justify-content: space-between; align-items: baseline; gap: .8rem; padding: .5rem 0;
+  color: var(--ink); text-decoration: none; border-top: 1px solid var(--line); font-size: .9rem; }
+.nav-due-row b { font-weight: 600; color: var(--navy); }
+.nav-due-row span { color: var(--muted); font-size: .8rem; white-space: nowrap; }
+.nav-due-row:hover b, .nav-due-row:focus-visible b { text-decoration: underline; }
+.nav-due-empty { margin: .2rem 0 .4rem; font-size: .85rem; }
+/* Dar ekranda menü taşmasın: saydam panel yerine üst çubukta açılan satırlar. */
+@media (max-width: 720px) {
+  .nav-due { flex: 1 1 100%; }
+  .nav-due-panel { position: static; width: auto; margin: .5rem 0 .2rem; padding: .4rem 0 0;
+    background: transparent; color: var(--chrome-ink); border: 0; box-shadow: none; }
+  .nav-due-title { color: var(--chrome-soft); }
+  .nav-due-row { border-top-color: rgba(248, 244, 234, .18); }
+  .nav-due-row b, .nav-due-row span { color: var(--chrome-ink); }
+}
 .today-strip { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem 1.2rem; padding: .8rem 1rem; margin: 0 0 1.8rem;
   background: var(--paper); border: 1px solid var(--line); border-left: 4px solid var(--gold); }
 .ts-item { display: inline-flex; align-items: center; gap: .45rem; color: var(--ink); text-decoration: none; font-size: .9rem; min-height: 44px; }

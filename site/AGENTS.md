@@ -36,6 +36,9 @@
   is the learner's own content. Evaluating a word also counts as the day's activity (`day.gl`, so the streak
   and the daily summary include it). The study desk shows the deck per course (`glossDeskHtml`): one row per
   course that has words, each row linking to that course's deck and carrying its due count and deck size.
+  The header repeats that list: **Çalışma** is a `<details data-gloss-nav>` whose panel (`data-gloss-list`)
+  is painted by `paintStudyBadges`, so every page carries the same per-course rows; it closes on
+  navigation, an outside click and Escape, and the question badge stays inside its `<summary>`.
 - `sw.js` caches the app shell on first visit; new versions wait for the student to tap "Yenile" on the update toast. Course images are downloaded per course from the offline page.
 - Learner progress lives in `localStorage[CONFIG.storageKey]`; study state (concept-deck cards, mock exams, game results, entered grades `grades`, confidence counters `calib`) lives in `localStorage[CONFIG.storageKey + ".study"]`.
 - The study state defaults live in one place, `STUDY_DEFAULTS` in `app.js`; `loadStudy()` merges them under the stored object. The backup merge uses that list to tell "still at the default" from "chosen on this device": a setting that is still at its default takes the backup's value, a setting the learner changed is kept.

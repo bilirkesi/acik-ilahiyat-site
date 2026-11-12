@@ -1803,6 +1803,15 @@
   function paintStudyBadges() {
     const n = dueCards().filter(([id]) => bySlug[courseOfId(id)]).length;
     document.querySelectorAll("[data-due-badge]").forEach((b) => { b.hidden = !n; b.textContent = n > 99 ? "99+" : String(n); });
+    // Üst çubuk: "Çalışma" menüsü sözlük destesi olan her dersi kendi destesine bağlar, her sayfadan açılır.
+    const glossRows = COURSES.map((c) => ({ c, due: glossDue(c.slug).length, total: glossDeck(c.slug).length }))
+      .filter((x) => x.total);
+    document.querySelectorAll("[data-gloss-list]").forEach((box) => {
+      box.innerHTML = glossRows.length
+        ? `<p class="nav-due-title">Sözlük destesi</p>${glossRows.map((x) => `
+          <a class="nav-due-row" href="#/course/${x.c.slug}/sozluk"><b>${esc(x.c.subject)}</b><span>${x.due ? `${x.due} sırada` : "bugün yok"} · ${x.total} kelime</span></a>`).join("")}`
+        : `<p class="nav-due-empty muted">Sözlükte henüz kelime yok.</p>`;
+    });
     // Ana ekrana eklenmiş uygulamanın simgesinde bekleyen tekrar sayısı (destekleyen cihazlarda; iPhone'da bildirim izni ister).
     try {
       if (n && navigator.setAppBadge) navigator.setAppBadge(n).catch(() => {});
@@ -7921,6 +7930,8 @@ document.getElementById("zin").focus();
       a.classList.toggle("active", on);
       if (on) a.setAttribute("aria-current", "page"); else a.removeAttribute("aria-current");
     });
+    const dueSum = document.querySelector(".nav-due > summary");
+    if (dueSum) dueSum.classList.toggle("active", ["calisma", "tekrar", "hatalar", "analiz", "plan", "kavram", "notlarim", "harfler"].includes(parts[0] || ""));
     // Sayfa değişince başlığı güncelle ve odağı içeriğe taşı (ekran okuyucu yeni sayfayı okusun).
     const h1 = app.querySelector("h1");
     document.title = (h1 && parts.length ? h1.textContent.trim() + " · " : "") + CONFIG.name;
@@ -7975,6 +7986,17 @@ document.getElementById("zin").focus();
     if (r.lh) d.dataset.lh = r.lh; else delete d.dataset.lh;
     if (r.ff) d.dataset.ff = r.ff; else delete d.dataset.ff;
   }
+  // Üst çubuktaki sözlük menüsü: bir derse gidince, dışarı tıklayınca ve Escape ile kapanır.
+  (function setupGlossNav() {
+    const box = document.querySelector("[data-gloss-nav]");
+    if (!box) return;
+    const sum = box.querySelector("summary");
+    const close = () => box.removeAttribute("open");
+    box.addEventListener("click", (e) => { if (e.target.closest("a")) close(); });
+    document.addEventListener("click", (e) => { if (box.open && !box.contains(e.target)) close(); });
+    document.addEventListener("keydown", (e) => { if (e.key === "Escape" && box.open) { close(); if (sum) sum.focus(); } });
+  })();
+
   (function setupRead() {
     const btn = document.getElementById("read-toggle"), panel = document.getElementById("read-panel");
     if (!btn || !panel) return;
