@@ -8,12 +8,14 @@
   // bazlı olarak sonradan yüklenir; bu yüzden window'dan her seferinde okunur.
   const INTERACTIVE = () => window.INTERACTIVE || {};
   const CG = () => window.CG || { items: [], edges: {} };
+  const CHAT = () => window.CHAT || {};
   const VERSION = (document.querySelector('meta[name="pu-version"]') || {}).content || "";
   const LAZY_BUNDLES = {
     interactive: "interactive.js",
     coursegraph: "coursegraph.js",
     past_exams: "past_exams.js",
     unit_quizzes: "unit_quizzes.js",
+    chat: "chat.js",
   };
   const loadedBundles = {};
   function ensureBundle(name) {
@@ -426,7 +428,24 @@
         </div>
         <div class="crest-lg">${crest()}</div>
       </section>
+      ${chatCtaHtml()}
       <div class="catalog">${cards}${ghost}</div>`;
+  }
+
+  // Katalogdaki "soru sor" cagrisi: korpus varsa gosterilir. Sayi build aninda data.js'e yazilir,
+  // boylece katalog 1 MB'lik chat.js paketini yuklemek zorunda kalmaz.
+  function chatCtaHtml() {
+    const s = window.CHAT_SUMMARY || null;
+    if (!s || !s.questions) return "";
+    return `<section class="chat-cta">
+      <div>
+        <p class="eyebrow">Soru &amp; Cevap</p>
+        <h2>Derslerine sor</h2>
+        <p class="muted">Notların kaynaklarından üretilmiş ${s.questions} soru-cevap. Sorunu yaz, en uygun cevabı
+        kaynaklarıyla birlikte gösterelim.</p>
+      </div>
+      <div class="btn-row"><a class="btn" href="#/soru">Soru sor</a></div>
+    </section>`;
   }
 
   function courseLead(c) {
@@ -5503,6 +5522,208 @@
 
   const viewNotFound = () => `<h1>Sayfa bulunamadı</h1><p><a href="#/">Kataloğa dön</a></p>`;
 
+  // ---- soru-cevap (#/soru) -----------------------------------------------------
+  // Site statiktir: tarayici NotebookLM'e canli soramaz. Cevaplar `chat.js` icindeki
+  // korpustan gelir; korpus NotebookLM ile, defterin kendi kaynaklarina dayanarak uretilmistir.
+  // Esleme icin metni normalize eder: Turkce kucuk harf kurallari (I -> i) ve aksanlar
+  // atilir; boylece "sga_target" ile "sga target", "SGA" ile "sga" ayni sayilir.
+  const CHAT_FOLD = { "ç": "c", "ğ": "g", "ı": "i", "ö": "o", "ş": "s", "ü": "u", "â": "a", "î": "i", "û": "u" };
+  function chatNorm(s) {
+    return String(s || "")
+      .toLowerCase()
+      .replace(/[çğıöşüâîû]/g, (c) => CHAT_FOLD[c]);
+  }
+  // Durak kelimeler: her derste sik gecen, anlam tasiyan kelimeler. Kural: eslesme bunlari
+  // saymaz, yoksa "bu nedir" gibi bir soru her soruyu puanlar.
+  const CHAT_STOP = new Set(["acaba", "ancak", "artik", "bir", "boyle", "bu", "cevap", "da", "daha",
+    "de", "defa", "en", "gibi", "hem", "her", "ile", "ise", "mi", "mu", "nasil",
+    "neden", "nerede", "ne", "o", "olan", "olarak", "olur", "on", "soru", "ve", "veya", "ya",
+    "yani", "cok", "cunku", "icin", "var", "yok", "hangi", "hangisi", "kadar", "gore", "sonra",
+    "nedir", "nedendir", "neredir", "nelerdir", "neler", "nasildir",
+    "kac", "kactir", "kim", "kimdir"]);
+  const chatTokens = (s) => chatNorm(s).split(/[^a-z0-9_]+/).filter((w) => w.length > 1 && !CHAT_STOP.has(w));
+
+  // Korpusu bir kez indeksler: soru jetonlari, tf-idf agirliklari, cevap jetonlari.
+  let chatIndex = null;
+  function chatBuildIndex() {
+    if (chatIndex) return chatIndex;
+    const docs = [];
+    for (const [slug, bundle] of Object.entries(CHAT())) {
+      for (const it of bundle.items || []) {
+        docs.push({
+          slug,
+          item: it,
+          qTokens: new Set(chatTokens(it.q)),
+          aTokens: new Set(chatTokens(it.a)),
+        });
+      }
+    }
+    const df = new Map();
+    for (const d of docs) {
+      for (const t of new Set([...d.qTokens, ...d.aTokens])) df.set(t, (df.get(t) || 0) + 1);
+    }
+    chatIndex = { docs, df, n: Math.max(1, docs.length) };
+    return chatIndex;
+  }
+
+  function chatSearch(q, limit, slug) {
+    const idx = chatBuildIndex();
+    const query = chatTokens(q);
+    if (!query.length) return [];
+    // Bir jetonun butun korpusta yaygin olmasi zayif kanittir: "ne", "nasil" gibi kelimeler
+    // her yerde gecer. Iki kural birlikte calisir:
+    //  - taban (floor): en iyi olasi toplam puanin altinda kalan eslesmeler reddedilir.
+    //  - kapsam (coverage): sorunun kelimelerinin kacini karsiladigimiz olcer. Korpusta
+    //    hic bulunmayan bir kelime (yazim hatasi ya da alakasiz kelime) kapsami dusurur,
+    //    boylece alakasiz bir soruya zayif bir karsilik gosterilmez.
+    const totalIdf = query.reduce((s, t) => s + Math.log(1 + idx.n / (idx.df.get(t) || 1)), 0);
+    const floor = totalIdf * 0.34;
+    const docs = slug ? idx.docs.filter((d) => d.slug === slug) : idx.docs;
+    const scored = [];
+    for (const d of docs) {
+      let score = 0;
+      let hitIdf = 0;
+      let qIdf = 0;
+      for (const t of query) {
+        const idf = Math.log(1 + idx.n / (idx.df.get(t) || 1));
+        if (d.qTokens.has(t)) { score += 3 * idf; hitIdf += idf; qIdf += idf; }   // soru basliginda gecmesi guclu bir isaret
+        else if (d.aTokens.has(t)) { score += 1 * idf; hitIdf += idf; }  // cevap icinde gecmesi zayif bir isaret
+      }
+      if (score >= floor && hitIdf / totalIdf >= 0.4) scored.push({ score, qIdf, doc: d });
+    }
+    // Esit puanda soru basliginda gecen kayit one cikar: anahtar kelimeyi soruda gecen kayit
+    // yalnizca cevabinda gecen kayittan daha ilgili.
+    scored.sort((a, b) => (b.score - a.score) || (b.qIdf - a.qIdf));
+    return scored.slice(0, limit || 5);
+  }
+
+  // Cevap metnindeki [1] atif isaretlerini kaynak listesine baglayan ust bilgiye cevirir.
+  function chatRefHtml(n, s) {
+    const href = (s && s.url) || "";
+    return href
+      ? `<a class="chat-ref" href="${esc(href)}" target="_blank" rel="noopener" title="${esc(s.title || "")}">${n}</a>`
+      : `<sup class="chat-ref">${n}</sup>`;
+  }
+  function chatAnswerHtml(item, sources) {
+    const text = String(item.a || "");
+    return esc(text).replace(/\[(\d+(?:\s*,\s*\d+)*)\]/g, (m, nums) => {
+      const parts = nums.split(/\s*,\s*/).map(Number).filter((n) => n >= 1 && sources[n - 1]);
+      if (!parts.length) return m;
+      return "[" + parts.map((n) => chatRefHtml(n, sources[n - 1])).join(", ") + "]";
+    });
+  }
+
+  function chatResultHtml(hit) {
+    const { item, slug } = hit.doc;
+    const course = bySlug[slug];
+    const sources = item.sources || [];
+    const chHref = course ? `#/course/${slug}/chapter/${item.chapter}` : "#/ara";
+    const subs = sources.map((s, i) => `
+      <li><span class="chat-src-n">${i + 1}</span>${s.url
+        ? `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.title || s.url)}</a>`
+        : `<span>${esc(s.title || "")}</span>`}</li>`).join("");
+    return `<article class="chat-card">
+      <h3>${esc(item.q)}</h3>
+      <div class="chat-a">${chatAnswerHtml(item, sources)}</div>
+      ${subs ? `<details class="chat-srcs"><summary>Kaynaklar (${sources.length})</summary><ol>${subs}</ol></details>` : ""}
+      <p class="chat-foot">${course ? `<a href="${chHref}">${esc(course.subject)} · ${item.chapter}. bölüm</a>` : ""}</p>
+    </article>`;
+  }
+
+  function chatSuggestionsHtml(slug) {
+    const bundle = CHAT()[slug];
+    const items = bundle ? (bundle.items || [])
+      : Object.values(CHAT()).flatMap((b) => b.items || []);
+    const picks = [];
+    const step = Math.max(1, Math.floor(items.length / 4));
+    for (let i = 0; i < items.length && picks.length < 4; i += step) picks.push(items[i]);
+    if (!picks.length) return "";
+    return `<div class="chat-sug">${picks.map((it) =>
+      `<button class="chat-chip" type="button" data-chat-q="${esc(it.q)}">${esc(it.q)}</button>`).join("")}</div>`;
+  }
+
+  function viewChat(query) {
+    const q = String((query && query.q) || "").trim();
+    const slug = (query && query.ders) || "";
+    const courses = Object.keys(CHAT());
+    let body = "";
+    if (q) {
+      const hits = chatSearch(q, 5, slug);
+      if (hits.length) {
+        body = `<p class="sm-progress-label">${hits.length} eşleşme</p>` + hits.map(chatResultHtml).join("");
+      } else {
+        body = `<p class="sm-empty">Bu soruya uygun bir cevap yok. Aşağıdaki arama sayfasında tüm derslerde ara.</p>
+          <p><a class="btn ghost" href="#/ara?q=${encodeURIComponent(q)}">Aramada aç</a></p>`;
+      }
+    } else {
+      body = `<p class="muted">Sorunu yaz; ders notlarından hazırlanmış cevaplar arasından en uygun olanı göstereyim.</p>`;
+    }
+    return `<p class="eyebrow">Soru &amp; Cevap</p><h1>Derslerine sor</h1>
+      <p class="lead muted">Cevaplar ders notlarının kaynaklarından üretildi. Her cevabın kaynakları ve
+      bölüm bağlantısı vardır; site statiktir, cevaplar cihazında saklanır.</p>
+      <div class="sm-tools">
+        <input class="sm-search" type="search" id="chat-q" placeholder="Örn. Lozan'un ilkeleri, sga_target nedir..."
+          aria-label="Sorunu yaz" autocomplete="off" value="${esc(q)}">
+      </div>
+      ${courses.length ? `<div class="chat-filter">
+        <button class="chat-chip${slug ? "" : " on"}" type="button" data-chat-course="">Tüm dersler</button>
+        ${courses.map((s) => {
+          const c = bySlug[s];
+          return `<button class="chat-chip${slug === s ? " on" : ""}" type="button" data-chat-course="${esc(s)}">${esc(c ? c.subject : s)}</button>`;
+        }).join("")}</div>` : ""}
+      <div id="chat-results">${body}</div>
+      ${q ? "" : chatSuggestionsHtml(slug)}`;
+  }
+
+  function bindChat(query) {
+    const input = document.getElementById("chat-q");
+    const box = document.getElementById("chat-results");
+    if (!input || !box) return;
+    const slug = (query && query.ders) || "";
+    const paint = () => {
+      const q = input.value.trim();
+      const hits = q ? chatSearch(q, 5, slug) : [];
+      if (!q) {
+        box.innerHTML = `<p class="muted">Sorunu yaz; ders notlarından hazırlanmış cevaplar arasından en uygun olanı göstereyim.</p>`;
+      } else if (hits.length) {
+        box.innerHTML = `<p class="sm-progress-label">${hits.length} eşleşme</p>` + hits.map(chatResultHtml).join("");
+      } else {
+        box.innerHTML = `<p class="sm-empty">Bu soruya uygun bir cevap yok. Tüm derslerde aramak için
+          <a href="#/ara?q=${encodeURIComponent(q)}">arama sayfasını aç</a>.</p>`;
+      }
+      const next = new URLSearchParams();
+      if (q) next.set("q", q);
+      if (slug) next.set("ders", slug);
+      history.replaceState(null, "", `#/soru${next.toString() ? "?" + next.toString() : ""}`);
+    };
+    let timer = null;
+    input.addEventListener("input", () => {
+      clearTimeout(timer);
+      timer = setTimeout(paint, 140);
+    });
+    input.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") { clearTimeout(timer); paint(); }
+    });
+    document.querySelectorAll("[data-chat-course]").forEach((b) => {
+      b.onclick = () => {
+        const s = b.dataset.chatCourse;
+        const next = new URLSearchParams();
+        if (input.value.trim()) next.set("q", input.value.trim());
+        if (s) next.set("ders", s);
+        location.hash = `#/soru${next.toString() ? "?" + next.toString() : ""}`;
+        route();
+      };
+    });
+    document.querySelectorAll("[data-chat-q]").forEach((b) => {
+      b.onclick = () => {
+        input.value = b.dataset.chatQ;
+        paint();
+        input.focus();
+      };
+    });
+    if (!input.value) input.focus();
+  }
+
   // ---- CourseGraph arama sayfası (#/ara) ------------------------------------
   function searchResultsHtml(q) {
     const hits = cgSearch(q, { limit: 60 });
@@ -7850,6 +8071,7 @@ document.getElementById("zin").focus();
     else if (parts[0] === "sinavlar") needExamData();
     else if (parts[0] === "ozet") { need.add("interactive"); need.add("coursegraph"); needExamData(); }
     else if (parts[0] === "ara") need.add("coursegraph");
+    else if (parts[0] === "soru") need.add("chat");
     else if (parts[0] === "kavram") need.add("interactive");
     else if (parts[0] === "notlarim" || parts[0] === "harfler") { /* data.js yeterli */ }
     else if (parts[0] === "oyunlar") { need.add("interactive"); if (parts[1]) needExamData(); }
@@ -7874,6 +8096,7 @@ document.getElementById("zin").focus();
     else if (parts[0] === "sinavlar") { html = viewSinavlar(); bind = () => {}; }
     else if (parts[0] === "ozet") { html = viewSummary(); bind = bindSummary; }
     else if (parts[0] === "ara") { html = viewSearch(); bind = bindSearch; }
+    else if (parts[0] === "soru") { html = viewChat(query); bind = () => bindChat(query); }
     else if (parts[0] === "transcript") { html = viewTranscript(); bind = bindTranscript; }
     else if (parts[0] === "certificate") { html = viewCertificate(); bind = bindCertificate; }
     else if (parts[0] === "cevrimdisi") { html = viewOffline(); bind = bindOffline; }

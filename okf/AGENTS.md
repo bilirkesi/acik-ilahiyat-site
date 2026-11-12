@@ -13,6 +13,7 @@
 - `courses/<slug>/chapters/` — one page per study-plan chapter, with AÖF and book-unit infographics and the chapter audio overview when the course has them.
 - `courses/<slug>/exams/` — practice exams (vize/final/yaz-kursu) as Markdown.
 - `courses/<slug>/unit-quizzes/` — unit quizzes, one page per unit plus an index.
+- `courses/<slug>/chat.md` — the course's question-and-answer corpus (from `data/<slug>/chat.json`), grouped by chapter, with each answer's source list.
 - `courses/<slug>/quiz.md`, `units.md`, `sozluk.md`, `artifacts.md` — final quiz, book unit summaries (from `unit_infographics.json`), letter-workshop glossary (from `sozluk.json`), and artifact catalog.
 - `log.md` — export log.
 - `artifacts/` — artifact catalog index.

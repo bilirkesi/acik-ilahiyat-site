@@ -18,7 +18,7 @@ school: İstanbul Üniversitesi (e-Medrese yayını)
 mode: lectures
 language: tr
 status: active
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-14T21:29:52Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-11-12T06:36:15Z }
 source_provider: aof
 resource: "https://www.youtube.com/playlist?list=PLNbpRT8SFQRrt0jMiJkPXprfdebuCSTJw"
 notebook: "https://notebooklm.google.com/notebook/ad4a99c9-cc96-4f29-92f5-ca8638bc42c2"
@@ -53,6 +53,7 @@ AÖF resmî kanalındaki Konu Anlatımı playlist'i NotebookLM tarafından alın
 * [Ders kitabı üniteleri](/courses/islam-mezhepleri-tarihi/units.md) (10)
 * [Quiz](/courses/islam-mezhepleri-tarihi/quiz.md)
 * [Ünite quizleri](/courses/islam-mezhepleri-tarihi/unit-quizzes/index.md) (6 ünite, 75 soru)
+* [Soru & Cevap](/courses/islam-mezhepleri-tarihi/chat.md) (60 soru)
 * [Sınavlar](/courses/islam-mezhepleri-tarihi/exams/index.md) - vize, final, yaz kursu
 * [Çıkmış vizeler](/courses/islam-mezhepleri-tarihi/exams/past/index.md)
 * [Artifact'ler](/courses/islam-mezhepleri-tarihi/artifacts.md)
