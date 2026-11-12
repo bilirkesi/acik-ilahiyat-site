@@ -107,6 +107,20 @@ class TestLearnerWording(unittest.TestCase):
         text = path.read_text(encoding="utf-8-sig")
         self.assertIn("öğrencileri", text)
 
+    def test_the_chat_corpus_does_not_address_the_learner(self) -> None:
+        """Soru-cevap korpusu da okura "ogrenci" diye hitap etmez."""
+        for slug in ("teknik-gelistirim", "teknik-gelistirim-tr", "turk-dili-1",
+                     "islam-mezhepleri-tarihi", "ataturk-ilkeleri-1", "osmanlica-1"):
+            path = ROOT / "data" / slug / "chat.json"
+            if not path.exists():
+                continue
+            corpus = json.loads(path.read_text(encoding="utf-8-sig"))
+            for item in corpus.get("items", []):
+                text = (item.get("q") or "") + " " + (item.get("a") or "")
+                for pattern in ("öğrencinin dikkat", "öğrencinin ne", "Öğrenci, ",
+                                "The student ", "Öğrencinin "):
+                    self.assertNotIn(pattern, text, f"{slug}: {pattern}")
+
 
 if __name__ == "__main__":
     unittest.main()
