@@ -1,17 +1,17 @@
 ---
 type: Chapter
 title: Backup, Recovery and Operational Practice
-description: In this chapter, the student learns how to design, execute, and evaluate backup, recovery, and disaster recovery architectures for enterprise Oracle database environments supporting IFS Applications a
+description: This chapter covers how to design, execute, and evaluate backup, recovery, and disaster recovery architectures for enterprise Oracle database environments supporting IFS Applications and ERP workloads
 course: teknik-gelistirim
 chapter: 10
 status: stable
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-11-11T05:06:34Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-11-12T07:22:59Z }
 notebook: "https://notebooklm.google.com/notebook/d9fbd16b-86fb-45ab-af81-dc503b2c5aad"
 ---
 
 # Özet
 
-In this chapter, the student learns how to design, execute, and evaluate backup, recovery, and disaster recovery architectures for enterprise Oracle database environments supporting IFS Applications and ERP workloads. The curriculum covers Oracle Maximum Availability Architecture (MAA) Silver and Gold deployment topologies on Oracle Database@Azure, cross-platform migration from legacy Big-Endian environments to Oracle Database 19c or 26ai using Cross-Platform Transportable Tablespaces (XTTS v4) and Full Transportable Export/Import (FTEX), and Recovery Manager (RMAN) backup and recovery workflows. Additionally, students master post-outage incident reviews, investigating uncompleted batch cleanup processes using diagnostic queries against dba_scheduler_job_run_details and v$diag_alert_ext to refine pre-deployment checklists without requiring Diagnostics or Tuning Pack licenses, while completing comprehensive skills assessments on database resilience.
+This chapter covers how to design, execute, and evaluate backup, recovery, and disaster recovery architectures for enterprise Oracle database environments supporting IFS Applications and ERP workloads. The curriculum covers Oracle Maximum Availability Architecture (MAA) Silver and Gold deployment topologies on Oracle Database@Azure, cross-platform migration from legacy Big-Endian environments to Oracle Database 19c or 26ai using Cross-Platform Transportable Tablespaces (XTTS v4) and Full Transportable Export/Import (FTEX), and Recovery Manager (RMAN) backup and recovery workflows. Additionally, the chapter covers post-outage incident reviews, investigating uncompleted batch cleanup processes using diagnostic queries against dba_scheduler_job_run_details and v$diag_alert_ext to refine pre-deployment checklists without requiring Diagnostics or Tuning Pack licenses, while completing comprehensive skills assessments on database resilience.
 
 # Sesli Ders
 
@@ -19,9 +19,9 @@ In this chapter, the student learns how to design, execute, and evaluate backup,
 
 # Öğrenme Hedefleri
 
-1. The student can deploy Oracle Maximum Availability Architecture (MAA) Silver and Gold topologies on Oracle Database@Azure and execute cross-platform migration to Oracle Database 19c and 26ai using Cross-Platform Transportable Tablespaces (XTTS v4) with Full Transportable Export/Import (FTEX).
-2. The student can execute Recovery Manager (RMAN) backup, restore, and recovery operations in Oracle Database 19c, managing commands such as RESTORE, RECOVER, DUPLICATE, and FLASHBACK DATABASE while accounting for the deprecation of the Data Recovery Advisor (DRA).
-3. The student can conduct post-outage incident investigations for incomplete IFS batch cleanup jobs using queries against dba_scheduler_job_run_details and v$diag_alert_ext to refine pre-deployment checklists and monitoring thresholds.
+1. deploy Oracle Maximum Availability Architecture (MAA) Silver and Gold topologies on Oracle Database@Azure and execute cross-platform migration to Oracle Database 19c and 26ai using Cross-Platform Transportable Tablespaces (XTTS v4) with Full Transportable Export/Import (FTEX).
+2. execute Recovery Manager (RMAN) backup, restore, and recovery operations in Oracle Database 19c, managing commands such as RESTORE, RECOVER, DUPLICATE, and FLASHBACK DATABASE while accounting for the deprecation of the Data Recovery Advisor (DRA).
+3. conduct post-outage incident investigations for incomplete IFS batch cleanup jobs using queries against dba_scheduler_job_run_details and v$diag_alert_ext to refine pre-deployment checklists and monitoring thresholds.
 
 # Dersler
 
@@ -36,16 +36,16 @@ Bu bölümün içinde yaşadığı ders paneli: [Teknik Gelişim paneli](/course
 
 # Kaynak Temellendirme
 
-Based on the selected sources, here is what the student learns for each specified objective.
+Based on the selected sources, here is what each specified objective covers.
 
 ---
 
 ### Objective 1: Deploying MAA Silver and Gold Topologies on Oracle Database@Azure and Cross-Platform Migration
 
-* **MAA Silver Architecture on Oracle Database@Azure:** The student learns that the MAA Silver reference architecture on Exadata Database Service on Dedicated Infrastructure (ExaDB-D) protects against local compute or software failures within a single Azure Availability Zone (AZ) using Oracle RAC for transparent node failover [1-3]. MAA Silver integrates with Autonomous Recovery Service (ARS) for an incremental forever backup strategy with real-time data protection [2, 4]. Deploying application VMs in the same Availability Zone as the database cluster achieves low application-to-database latency between 200 and 400 microseconds (or 300 to 500 microseconds) [5, 6].
-* **MAA Gold Architecture on Oracle Database@Azure:** The student learns that the MAA Gold architecture uses Oracle Data Guard across separate Azure Availability Zones or regions to enforce zero data loss (Recovery Point Objective, RPO = 0) and rapid recovery (Recovery Time Objective, RTO) [1, 4, 7]. Cross-AZ Gold deployments use zero-data-loss synchronous replication, while cross-region deployments use OCI VCN Peering (recommended for higher single-process throughput) or Azure VNet Peering, with TDE encryption keys replicated via OCI Private Vault [7-11].
-* **MAA Platinum Architecture on Oracle Database@Azure:** The student learns that MAA Platinum Option 1 requires Oracle AI Database 26ai or higher and Oracle Active Data Guard [7, 12].
-* **Cross-Platform Migration:** The student learns that RMAN supports cross-platform data transport using image copies (`CONVERT TABLESPACE`, `CONVERT DATAFILE`, `CONVERT DATABASE`) and backup sets (`BACKUP ... FOR TRANSPORT` or `TO PLATFORM`, `RESTORE ... FROM PLATFORM`) based on platform endian formats listed in `V$TRANSPORTABLE_PLATFORM` [13-18].
+* **MAA Silver Architecture on Oracle Database@Azure:** the MAA Silver reference architecture on Exadata Database Service on Dedicated Infrastructure (ExaDB-D) protects against local compute or software failures within a single Azure Availability Zone (AZ) using Oracle RAC for transparent node failover [1-3]. MAA Silver integrates with Autonomous Recovery Service (ARS) for an incremental forever backup strategy with real-time data protection [2, 4]. Deploying application VMs in the same Availability Zone as the database cluster achieves low application-to-database latency between 200 and 400 microseconds (or 300 to 500 microseconds) [5, 6].
+* **MAA Gold Architecture on Oracle Database@Azure:** the MAA Gold architecture uses Oracle Data Guard across separate Azure Availability Zones or regions to enforce zero data loss (Recovery Point Objective, RPO = 0) and rapid recovery (Recovery Time Objective, RTO) [1, 4, 7]. Cross-AZ Gold deployments use zero-data-loss synchronous replication, while cross-region deployments use OCI VCN Peering (recommended for higher single-process throughput) or Azure VNet Peering, with TDE encryption keys replicated via OCI Private Vault [7-11].
+* **MAA Platinum Architecture on Oracle Database@Azure:** MAA Platinum Option 1 requires Oracle AI Database 26ai or higher and Oracle Active Data Guard [7, 12].
+* **Cross-Platform Migration:** RMAN supports cross-platform data transport using image copies (`CONVERT TABLESPACE`, `CONVERT DATAFILE`, `CONVERT DATABASE`) and backup sets (`BACKUP ... FOR TRANSPORT` or `TO PLATFORM`, `RESTORE ... FROM PLATFORM`) based on platform endian formats listed in `V$TRANSPORTABLE_PLATFORM` [13-18].
 * **Coverage Limitation:** The selected sources do not cover Cross-Platform Transportable Tablespaces (XTTS v4) or Full Transportable Export/Import (FTEX) [19].
 
 ---
@@ -62,7 +62,7 @@ Based on the selected sources, here is what the student learns for each specifie
 
 ### Objective 3: Post-Outage Incident Investigations for Incomplete IFS Batch Cleanup Jobs
 
-* **Incident Context and Sequential Cleanup:** The student learns to investigate past system outages caused when batch cleanup processes failed to finish prior to a deployment [40]. Cleanup steps execute sequentially, meaning if one step gets stuck, subsequent steps wait [40].
+* **Incident Context and Sequential Cleanup:** Investigating past system outages caused when batch cleanup processes failed to finish prior to a deployment [40]. Cleanup steps execute sequentially, meaning if one step gets stuck, subsequent steps wait [40].
 * **Executing Diagnostic SQL Queries:** Database administrators run read-only SQL queries that do not require Oracle Diagnostics Pack or Tuning Pack licenses [41, 42]:
   * **`dba_scheduler_job_run_details` View:** Querying `dba_scheduler_job_run_details` inspects Oracle Scheduler job execution history during the incident timeframe (`WHERE actual_start_date BETWEEN :bas AND :bit`), examining `owner`, `job_name`, `status`, `actual_start_date`, `run_duration`, and `error#` [41].
   * **`v$diag_alert_ext` View:** Querying `v$diag_alert_ext` inspects Oracle alert log entries during the incident window (`WHERE originating_timestamp BETWEEN :bas AND :bit`), filtering for error messages containing `%ORA-%` or `%deadlock%` [41].

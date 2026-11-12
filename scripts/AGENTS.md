@@ -25,6 +25,9 @@ Generation (`data/` → richer content):
   `renumber_citations()` drops the citation markers that point outside the source list (NotebookLM sometimes
   numbers a source of the whole notebook), renumbers the rest from 1, and falls back to the chapter's sources
   when no marker fits.
+- `render_brand_icons.py` — the brand emblem (an open book with light behind it) from one geometry: writes
+  `generator/site-template/favicon.svg` and `crest.svg` plus the PWA icons (`icons/*.png`, Pillow). The crest
+  in `app.js` carries the same coordinates; `tests/test_brand.py` compares them.
 - `export_chat_site.py` — `data/<slug>/chat.json` → `site/chat.js` (`window.CHAT`), the bundle the
   question-and-answer page retrieves from.
 - `generate_chapter_audio.py` — per chapter, a NotebookLM audio overview limited to the chapter's `source_ids` plus the textbook when the chapter has none (the course's own language, `deep-dive`/`short` by default) → raw `assets/audio/<slug>/chapter-N.mp4` → ffmpeg mono 64 kbps `site/audio/<slug>/chapter-N.mp3` + `data/<slug>/audio.json`. Needs the `notebooklm` CLI (logged in) and ffmpeg with libmp3lame (ffprobe optional; on the owner PC ffmpeg is not on PATH, pass `--ffmpeg`); skips existing MP3s unless `--force`; `--transcode-only` re-encodes downloaded files; `--profile` picks a notebooklm-py profile (a second Google account with the notebook shared to it, for its own audio quota). A source whose state `id` is local (not a NotebookLM UUID) is sent as its `nlm_id`; the script exits if neither is a UUID. A chapter that cannot be generated (quota, expired session) is skipped and the run continues; the script then exits non-zero and lists the chapters it could not produce.

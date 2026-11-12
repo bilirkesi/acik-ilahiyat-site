@@ -1,17 +1,17 @@
 ---
 type: Chapter
 title: Performance Management and Tuning
-description: In this chapter, the student learns how to diagnose and optimize database performance across memory architecture, session capacity, SQL execution, and recovery subsystems for IFS Applications. The cur
+description: This chapter covers how to diagnose and optimize database performance across memory architecture, session capacity, SQL execution, and recovery subsystems for IFS Applications. The curriculum covers i
 course: teknik-gelistirim
 chapter: 8
 status: stable
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-11-11T05:06:34Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-11-12T07:22:59Z }
 notebook: "https://notebooklm.google.com/notebook/d9fbd16b-86fb-45ab-af81-dc503b2c5aad"
 ---
 
 # Özet
 
-In this chapter, the student learns how to diagnose and optimize database performance across memory architecture, session capacity, SQL execution, and recovery subsystems for IFS Applications. The curriculum covers instance memory tuning for sga_target and pga_aggregate_target, capacity parameter tuning for open_cursors and processes, AWR and ADDM report profiling during peak business hours and batch runs, and root-cause analysis of wait events including db file sequential read, db file scattered read, enq: TX - row lock contention, and latch contention. Additionally, students master Active Session History (ASH) diagnostics, execution plan profiling using DBMS_XPLAN.DISPLAY_CURSOR, and single-command RMAN table-level point in time recovery (RECOVER TABLE) introduced in Oracle Database 12c and extended in Oracle Database 19c and Oracle 26ai.
+This chapter covers how to diagnose and optimize database performance across memory architecture, session capacity, SQL execution, and recovery subsystems for IFS Applications. The curriculum covers instance memory tuning for sga_target and pga_aggregate_target, capacity parameter tuning for open_cursors and processes, AWR and ADDM report profiling during peak business hours and batch runs, and root-cause analysis of wait events including db file sequential read, db file scattered read, enq: TX - row lock contention, and latch contention. Additionally, the chapter covers Active Session History (ASH) diagnostics, execution plan profiling using DBMS_XPLAN.DISPLAY_CURSOR, and single-command RMAN table-level point in time recovery (RECOVER TABLE) introduced in Oracle Database 12c and extended in Oracle Database 19c and Oracle 26ai.
 
 # Sesli Ders
 
@@ -19,9 +19,9 @@ In this chapter, the student learns how to diagnose and optimize database perfor
 
 # Öğrenme Hedefleri
 
-1. The student can configure instance memory parameters sga_target and pga_aggregate_target alongside session parameters open_cursors and processes to optimize SGA memory pools and prevent ORA-01000 and ORA-00020 capacity errors in Oracle Database 19c.
-2. The student can evaluate Automatic Workload Repository (AWR) reports, Automatic Database Diagnostic Monitor (ADDM) recommendations, and Active Session History (ASH) sampling metrics to isolate I/O bottlenecks, row-level locking, and latch contention.
-3. The student can execute RMAN table-level point in time recovery (RECOVER TABLE PITR) with an auxiliary destination in Oracle Database 12c, Oracle Database 19c, and Oracle 26ai to restore dropped or purged tables without full database restores or system downtime.
+1. configure instance memory parameters sga_target and pga_aggregate_target alongside session parameters open_cursors and processes to optimize SGA memory pools and prevent ORA-01000 and ORA-00020 capacity errors in Oracle Database 19c.
+2. evaluate Automatic Workload Repository (AWR) reports, Automatic Database Diagnostic Monitor (ADDM) recommendations, and Active Session History (ASH) sampling metrics to isolate I/O bottlenecks, row-level locking, and latch contention.
+3. execute RMAN table-level point in time recovery (RECOVER TABLE PITR) with an auxiliary destination in Oracle Database 12c, Oracle Database 19c, and Oracle 26ai to restore dropped or purged tables without full database restores or system downtime.
 
 # Dersler
 
@@ -42,7 +42,7 @@ Bu bölümün içinde yaşadığı ders paneli: [Teknik Gelişim paneli](/course
 
 # Kaynak Temellendirme
 
-Based on the provided sources, here is what the student learns for each specified objective:
+Based on the provided sources, here is what each specified objective covers:
 
 ---
 

@@ -1,10 +1,10 @@
 ---
 okf_version: "0.2"
 type: Bundle Index
-title: Açık İlahiyat Ders Bilgisi
+title: Açık Akademi Ders Bilgisi
 description: "AÖF / İÜ gibi kaynak üniversitelere göre ayrılmış ders bilgisi: yıl, dönem, bölümler, sınavlar, artifact kataloğu."
 language: tr
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-11-11T07:22:53Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-11-12T07:22:59Z }
 ---
 
 # Üniversiteler

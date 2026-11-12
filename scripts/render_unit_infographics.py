@@ -85,7 +85,7 @@ def unit_html(course: str, source: str, u: dict, total: int) -> str:
 <p class="lead">{esc(u["lead"])}</p></header>
 <div class="grid">{"".join(cards)}</div>
 <div class="keys"><b>ANAHTAR KAVRAMLAR</b>{chips}</div>
-<footer><span>Kaynak: {esc(source)}. Resmî AÖF infografiği değildir.</span><span>Açık İlahiyat · {u["unit"]}/{total}</span></footer>
+<footer><span>Kaynak: {esc(source)}. Resmî AÖF infografiği değildir.</span><span>Açık Akademi · {u["unit"]}/{total}</span></footer>
 </div></body></html>"""
 
 

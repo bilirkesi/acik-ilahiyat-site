@@ -1,17 +1,17 @@
 ---
 type: Chapter
 title: "Bölüm 5: RAC ve Grid Infrastructure Kümeleme Mimarisi"
-description: Öğrenci, Oracle Real Application Clusters (RAC) ve Grid Infrastructure bileşenlerini, private Interconnect ve High Availability IP (HAIP) yapılandırmasını öğrenir. Cache Fusion veri bloğu transferleri
+description: Oracle Real Application Clusters (RAC) ve Grid Infrastructure bileşenleri ile private Interconnect ve High Availability IP (HAIP) yapılandırması öğrenilir. Cache Fusion veri bloğu transferleri ve Glob
 course: teknik-gelistirim-tr
 chapter: 5
 status: stable
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-11-11T19:31:19Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-11-12T07:22:59Z }
 notebook: "https://notebooklm.google.com/notebook/d9fbd16b-86fb-45ab-af81-dc503b2c5aad"
 ---
 
 # Özet
 
-Öğrenci, Oracle Real Application Clusters (RAC) ve Grid Infrastructure bileşenlerini, private Interconnect ve High Availability IP (HAIP) yapılandırmasını öğrenir. Cache Fusion veri bloğu transferleri ve Global Resource Directory (GRD) kilit koordinasyon mekanizmalarını yönetmeyi kavrar. Dynamic Database Services, SCAN dinleyicileri ve Fast Application Notification (FAN) ile yük dengeleme ve kesintisiz bağlantı failover yapısını kurar.
+Oracle Real Application Clusters (RAC) ve Grid Infrastructure bileşenleri ile private Interconnect ve High Availability IP (HAIP) yapılandırması öğrenilir. Cache Fusion veri bloğu transferleri ve Global Resource Directory (GRD) kilit koordinasyon mekanizmalarını yönetmeyi kavrar. Dynamic Database Services, SCAN dinleyicileri ve Fast Application Notification (FAN) ile yük dengeleme ve kesintisiz bağlantı failover yapısını kurar.
 
 # Sesli Ders
 
@@ -19,9 +19,9 @@ notebook: "https://notebooklm.google.com/notebook/d9fbd16b-86fb-45ab-af81-dc503b
 
 # Öğrenme Hedefleri
 
-1. Öğrenci, Oracle Grid Infrastructure mimarisinde HAIP ve özel interconnect ağını yapılandırarak Cache Fusion ve GRD koordinasyonunu optimize edebilir.
-2. Öğrenci, Oracle RAC ortamında aktif-aktif düğüm kümeleme ve shared storage erişim mimarisini yönetebilir.
-3. Öğrenci, Dynamic Database Services, SCAN listeners ve FAN altyapısını yapılandırarak otomatik bağlantı yük dengelemesi ve failover sağlayabilir.
+1. Oracle Grid Infrastructure mimarisinde HAIP ve özel interconnect ağını yapılandırarak Cache Fusion ve GRD koordinasyonunu optimize edebilir.
+2. Oracle RAC ortamında aktif-aktif düğüm kümeleme ve shared storage erişim mimarisini yönetebilir.
+3. Dynamic Database Services, SCAN listeners ve FAN altyapısını yapılandırarak otomatik bağlantı yük dengelemesi ve failover sağlayabilir.
 
 # Dersler
 
@@ -37,13 +37,13 @@ Bu bölümün içinde yaşadığı ders paneli: [Teknik Gelişim (Türkçe) pane
 
 # Kaynak Temellendirme
 
-Seçili kaynaklara dayanarak, belirtilen öğrenme hedefleri doğrultusunda öğrencinin ne öğrendiği aşağıda açıklanmaktadır:
+Seçili kaynaklara dayanarak, belirtilen öğrenme hedefleri doğrultusunda öğrenilenler aşağıda açıklanmaktadır:
 
 ---
 
 ### Hedef 1: Oracle Grid Infrastructure Mimarisinde HAIP ve Özel Interconnect Ağını Yapılandırarak Cache Fusion ve GRD Koordinasyonunu Optimize Etme
 
-* **Grid Infrastructure Yazılım Yığını:** Öğrenci, Oracle Grid Infrastructure yazılımının Oracle Clusterware ve Automatic Storage Management (Oracle ASM) teknolojilerini işletim sistemi ile veritabanı örnekleri arasında tek bir yazılım yığınında birleştirdiğini öğrenir [1, 2].
+* **Grid Infrastructure Yazılım Yığını:** Oracle Grid Infrastructure yazılımının Oracle Clusterware ve Automatic Storage Management (Oracle ASM) teknolojilerini işletim sistemi ile veritabanı örnekleri arasında tek bir yazılım yığınında birleştirdiğini öğrenir [1, 2].
   * **Cluster Synchronization Services (CSS):** CSS bileşeni küme düğüm üyeliğini takip eder, düğüm yanıt verme durumunu denetler ve iletişim kopukluğu veya düğüm arızası durumunda split-brain senaryolarını önlemek için düğüm tahliyesini (node eviction) gerçekleştirir [1, 3].
   * **Cluster Ready Services (CRS/CRSD):** CRSD ana süreci; VIP adresleri, SCAN (Single Client Access Name) dinleyicileri, veritabanı örnekleri ve servisler gibi yüksek erişilebilirlik kaynaklarını yönetir, başarısız olan kaynakları otomatik olarak yeniden başlatır veya taşır [1, 4].
   * **Event Manager (EVM/EVMD):** EVM bileşeni küme olaylarını ve uyarılarını yayınlayarak hızlı failover rutinlerini başlatır [1, 5, 6].

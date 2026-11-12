@@ -5,13 +5,13 @@ description: Bu bölümde dilin temel özellikleri, doğuşu, toplum ve kültür
 course: turk-dili-1
 chapter: 1
 status: stable
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-15T18:02:32Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-11-12T07:22:59Z }
 notebook: "https://notebooklm.google.com/notebook/c702ed26-fe17-463d-b217-202acd0c3d26"
 ---
 
 # Özet
 
-Bu bölümde dilin temel özellikleri, doğuşu, toplum ve kültürle olan köklü ilişkisi ayrıntılı biçimde ele alınmaktadır. Ayrıca dünya dillerinin yapı ve köken bakımından sınıflandırılması açıklanarak Türkçenin Altay dil ailesi içindeki yeri incelenmektedir. Öğrencilerin dilin toplumsal işlevini ve kültür aktarımındaki rolünü kavramaları amaçlanmaktadır.
+Bu bölümde dilin temel özellikleri, doğuşu, toplum ve kültürle olan köklü ilişkisi ayrıntılı biçimde ele alınmaktadır. Ayrıca dünya dillerinin yapı ve köken bakımından sınıflandırılması açıklanarak Türkçenin Altay dil ailesi içindeki yeri incelenmektedir. Dilin toplumsal işlevinin ve kültür aktarımındaki rolünün kavramılması amaçlanmaktadır.
 
 # Sesli Ders
 
@@ -59,7 +59,7 @@ Bu bölümün içinde yaşadığı ders paneli: [Türk Dili paneli](/courses/tur
 
 ## 1. Dil, Kültür ve Dünya Dilleri
 
-Bu bölümde dilin temel özellikleri, doğuşu, toplum ve kültürle olan köklü ilişkisi ayrıntılı biçimde ele alınmaktadır. Ayrıca dünya dillerinin yapı ve köken bakımından sınıflandırılması açıklanarak Türkçenin Altay dil ailesi içindeki yeri incelenmektedir. Öğrencilerin dilin toplumsal işlevini ve kültür aktarımındaki rolünü kavramaları amaçlanmaktadır.
+Bu bölümde dilin temel özellikleri, doğuşu, toplum ve kültürle olan köklü ilişkisi ayrıntılı biçimde ele alınmaktadır. Ayrıca dünya dillerinin yapı ve köken bakımından sınıflandırılması açıklanarak Türkçenin Altay dil ailesi içindeki yeri incelenmektedir. Dilin toplumsal işlevinin ve kültür aktarımındaki rolünün kavramılması amaçlanmaktadır.
 
 ### Öğrenme hedefleri
 - Dilin tanımını, temel bilimsel özelliklerini ve düşünce ile ilişkisini açıklayabilme.

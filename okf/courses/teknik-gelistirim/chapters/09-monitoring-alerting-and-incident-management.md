@@ -1,17 +1,17 @@
 ---
 type: Chapter
 title: Monitoring, Alerting and Incident Management
-description: In this chapter, the student learns how to establish and maintain centralized enterprise monitoring infrastructure using Oracle Enterprise Manager (OEM) Cloud Control 13c/14c, encompassing Oracle Mana
+description: This chapter covers how to establish and maintain centralized enterprise monitoring infrastructure using Oracle Enterprise Manager (OEM) Cloud Control 13c/14c, encompassing Oracle Management Service (
 course: teknik-gelistirim
 chapter: 9
 status: stable
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-11-11T19:31:19Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-11-12T07:22:59Z }
 notebook: "https://notebooklm.google.com/notebook/d9fbd16b-86fb-45ab-af81-dc503b2c5aad"
 ---
 
 # Özet
 
-In this chapter, the student learns how to establish and maintain centralized enterprise monitoring infrastructure using Oracle Enterprise Manager (OEM) Cloud Control 13c/14c, encompassing Oracle Management Service (OMS), Oracle Management Repository (OMR), and multi-node Oracle Management Agent (OMA) administration using emctl. The curriculum covers automated event management, incident rule set promotion, notification pipelines, blackout scheduling, and EFK stack log monitoring in IFS Cloud 25R1. Additionally, students master operational telemetry governance in IFS Cloud 26R2 using Application Monitoring Metrics (AMM), Application Monitoring Console, Server Alert Log categories, Oracle Advanced Queues, and Streams background job notifications.
+This chapter covers how to establish and maintain centralized enterprise monitoring infrastructure using Oracle Enterprise Manager (OEM) Cloud Control 13c/14c, encompassing Oracle Management Service (OMS), Oracle Management Repository (OMR), and multi-node Oracle Management Agent (OMA) administration using emctl. The curriculum covers automated event management, incident rule set promotion, notification pipelines, blackout scheduling, and EFK stack log monitoring in IFS Cloud 25R1. Additionally, the chapter covers operational telemetry governance in IFS Cloud 26R2 using Application Monitoring Metrics (AMM), Application Monitoring Console, Server Alert Log categories, Oracle Advanced Queues, and Streams background job notifications.
 
 # Sesli Ders
 
@@ -19,9 +19,9 @@ In this chapter, the student learns how to establish and maintain centralized en
 
 # Öğrenme Hedefleri
 
-1. The student can deploy and administer Oracle Enterprise Manager (OEM) Cloud Control 13c/14c infrastructure components, including Oracle Management Service (OMS), SYSMAN repository schema, and Oracle Management Agent (OMA) processes using the emctl CLI utility.
-2. The student can configure OEM event management, incident rule set logic, blackout schedules, and notification delivery methods to automatically promote metric alerts to actionable incidents while suppressing false-positive alerts.
-3. The student can utilize Application Monitoring Console (AMM) metrics, Server Alert Log categories, Oracle Advanced Queues, Streams background job notifications, and EFK stack dashboards to oversee system performance in IFS Cloud 25R1 and IFS Cloud 26R2.
+1. deploy and administer Oracle Enterprise Manager (OEM) Cloud Control 13c/14c infrastructure components, including Oracle Management Service (OMS), SYSMAN repository schema, and Oracle Management Agent (OMA) processes using the emctl CLI utility.
+2. configure OEM event management, incident rule set logic, blackout schedules, and notification delivery methods to automatically promote metric alerts to actionable incidents while suppressing false-positive alerts.
+3. utilize Application Monitoring Console (AMM) metrics, Server Alert Log categories, Oracle Advanced Queues, Streams background job notifications, and EFK stack dashboards to oversee system performance in IFS Cloud 25R1 and IFS Cloud 26R2.
 
 # Dersler
 
@@ -50,13 +50,13 @@ Bu bölümün içinde yaşadığı ders paneli: [Teknik Gelişim paneli](/course
 
 # Kaynak Temellendirme
 
-Based on the provided sources, here is what the student learns for each specified objective:
+Based on the provided sources, here is what each specified objective covers:
 
 ---
 
 ### Objective 1: Deploying and Administering OEM Cloud Control 13c/14c Infrastructure Components
 
-* **Enterprise Infrastructure Architecture:** The student learns that Oracle Enterprise Manager (OEM) Cloud Control provides a multi-tier management framework to collect, process, and store performance diagnostics across managed targets, including Oracle RAC nodes, ASM instances, PDBs/CDBs, and host servers [1].
+* **Enterprise Infrastructure Architecture:** Oracle Enterprise Manager (OEM) Cloud Control provides a multi-tier management framework to collect, process, and store performance diagnostics across managed targets, including Oracle RAC nodes, ASM instances, PDBs/CDBs, and host servers [1].
 * **Oracle Management Service (OMS):** OMS is a middle-tier Java EE application running on Oracle WebLogic Server [1]. It processes metrics uploaded by host agents, renders the browser-based Cloud Control management console, dispatches administrative jobs, and manages notification alerts [1].
 * **Oracle Management Repository (OMR):** OMR is a dedicated Oracle Database that houses the SYSMAN repository schema [1]. It stores configuration data, target health metrics, historical performance baselines, job execution logs, and incident tracking data [1].
 * **Oracle Management Agent (OMA):** OMA processes deploy directly on each managed host server to continuously sample host CPU utilization, memory thresholds, ASM disk group space, and database instance availability [1, 2]. Agents communicate securely with the central OMS via dedicated bidirectional TCP port 3872 using HTTP/HTTPS protocols [2].

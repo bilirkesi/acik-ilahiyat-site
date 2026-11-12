@@ -1,8 +1,8 @@
-# Açık İlahiyat Üniversitesi
+# Açık Akademi
 
-**Açık İlahiyat** — AÖF (Anadolu Üniversitesi) İlahiyat ön lisans dersleri için ücretsiz, internetsiz
-çalışan bir ders sitesi. Statik bir PWA: sunucu tarafı yok, her şey `window.*` veri paketleriyle
-tarayıcıda çalışıyor.
+**Açık Akademi** — AÖF (Anadolu Üniversitesi) ve İÜ İlahiyat dersleri ile Oracle/IFS teknik eğitim
+programları için ücretsiz, internetsiz çalışan bir ders sitesi. Statik bir PWA: sunucu tarafı yok, her
+şey `window.*` veri paketleriyle tarayıcıda çalışıyor.
 
 **Live site:** <https://bilirkesi.github.io/acik-ilahiyat-site/>
 

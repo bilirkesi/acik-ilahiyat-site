@@ -1,17 +1,17 @@
 ---
 type: Chapter
 title: RAC and Grid Infrastructure
-description: In this chapter, the student learns how active-active Oracle Real Application Clusters (RAC) clustering and Oracle Grid Infrastructure provide high availability, operational redundancy, and horizontal
+description: This chapter covers how active-active Oracle Real Application Clusters (RAC) clustering and Oracle Grid Infrastructure provide high availability, operational redundancy, and horizontal scalability for
 course: teknik-gelistirim
 chapter: 5
 status: stable
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-11-11T05:06:34Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-11-12T07:22:59Z }
 notebook: "https://notebooklm.google.com/notebook/d9fbd16b-86fb-45ab-af81-dc503b2c5aad"
 ---
 
 # Özet
 
-In this chapter, the student learns how active-active Oracle Real Application Clusters (RAC) clustering and Oracle Grid Infrastructure provide high availability, operational redundancy, and horizontal scalability for enterprise database workloads. The curriculum covers private Interconnect networking, High Availability IP (HAIP), Cache Fusion block transfers, and Global Resource Directory (GRD) synchronization over shared Automatic Storage Management (ASM) disk groups. Additionally, students examine Oracle Maximum Availability Architecture (MAA) Silver, Gold, and Platinum tiers for Oracle Database 18c and 19c alongside dynamic workload management using SCAN listeners, Dynamic Database Services, and Fast Application Notification (FAN).
+This chapter covers how active-active Oracle Real Application Clusters (RAC) clustering and Oracle Grid Infrastructure provide high availability, operational redundancy, and horizontal scalability for enterprise database workloads. The curriculum covers private Interconnect networking, High Availability IP (HAIP), Cache Fusion block transfers, and Global Resource Directory (GRD) synchronization over shared Automatic Storage Management (ASM) disk groups. Additionally, the chapter examines Oracle Maximum Availability Architecture (MAA) Silver, Gold, and Platinum tiers for Oracle Database 18c and 19c alongside dynamic workload management using SCAN listeners, Dynamic Database Services, and Fast Application Notification (FAN).
 
 # Sesli Ders
 
@@ -19,9 +19,9 @@ In this chapter, the student learns how active-active Oracle Real Application Cl
 
 # Öğrenme Hedefleri
 
-1. The student can configure Oracle Grid Infrastructure and private Interconnect networks using High Availability IP (HAIP) to enable Cache Fusion data block transfers and Global Resource Directory (GRD) lock coordination in Oracle RAC environments.
-2. The student can evaluate Oracle Maximum Availability Architecture (MAA) Silver, Gold, and Platinum reference tiers for Oracle Database 19c to implement active-active clustering and disaster recovery solutions.
-3. The student can administer Dynamic Database Services, Single Client Access Name (SCAN) listeners, and Fast Application Notification (FAN) in Oracle Database 18c and 19c to enable automated connection load balancing and high availability failover.
+1. configure Oracle Grid Infrastructure and private Interconnect networks using High Availability IP (HAIP) to enable Cache Fusion data block transfers and Global Resource Directory (GRD) lock coordination in Oracle RAC environments.
+2. evaluate Oracle Maximum Availability Architecture (MAA) Silver, Gold, and Platinum reference tiers for Oracle Database 19c to implement active-active clustering and disaster recovery solutions.
+3. administer Dynamic Database Services, Single Client Access Name (SCAN) listeners, and Fast Application Notification (FAN) in Oracle Database 18c and 19c to enable automated connection load balancing and high availability failover.
 
 # Dersler
 
@@ -37,21 +37,21 @@ Bu bölümün içinde yaşadığı ders paneli: [Teknik Gelişim paneli](/course
 
 # Kaynak Temellendirme
 
-Based on the provided sources, here is what the student learns for each specified objective:
+Based on the provided sources, here is what each specified objective covers:
 
 ---
 
 ### Objective 1: Configuring Grid Infrastructure, Private Interconnect Networks, HAIP, Cache Fusion, and GRD Lock Coordination
 
-* **Grid Infrastructure and Clusterware Architecture:** The student learns that Oracle Grid Infrastructure combines Oracle Clusterware and Automatic Storage Management (Oracle ASM) into a single software stack that sits between the operating system and database instances [1, 2]. Oracle Clusterware provides the required infrastructure to run Oracle RAC [2, 3] and manages high-availability resources such as Virtual Internet Protocol (VIP) addresses, databases, listeners, and services [2, 4].
+* **Grid Infrastructure and Clusterware Architecture:** Oracle Grid Infrastructure combines Oracle Clusterware and Automatic Storage Management (Oracle ASM) into a single software stack that sits between the operating system and database instances [1, 2]. Oracle Clusterware provides the required infrastructure to run Oracle RAC [2, 3] and manages high-availability resources such as Virtual Internet Protocol (VIP) addresses, databases, listeners, and services [2, 4].
   * **Cluster Synchronization Services (CSS):** CSS tracks node membership across the cluster, monitors node responsiveness, and executes node eviction if a node fails or loses communication to prevent split-brain scenarios [1, 5].
   * **Cluster Ready Services (CRS) / Cluster Ready Services Daemon (CRSD):** CRSD manages high-availability resources including VIPs, Single Client Access Name (SCAN) listeners, database instances, and services, automatically restarting or relocating failed resources [1, 6].
   * **Event Manager (EVM) / Event Manager Daemon (EVMD):** EVM publishes cluster events and alerts generated by Clusterware components to initiate rapid failover routines [1, 7, 8].
-* **Private Interconnect Network and HAIP Configuration:** The student learns that Oracle RAC requires dedicated private network connectivity, known as the interconnect, used exclusively for inter-node and inter-instance communication [1, 9].
+* **Private Interconnect Network and HAIP Configuration:** Oracle RAC requires dedicated private network connectivity, known as the interconnect, used exclusively for inter-node and inter-instance communication [1, 9].
   * **Interconnect Functionality:** The private interconnect network handles internal cluster communication, heartbeat signals, and Cache Fusion data block transfers directly between instance System Global Areas (SGAs) without writing data to disk [1, 10, 11].
   * **High Availability IP (HAIP):** High Availability IP (HAIP) or operating system level network interface card (NIC) bonding uses multiple physical NICs through Redundant Interconnect Usage to guarantee high throughput and zero downtime if an interconnect NIC fails [1, 12].
   * **Verification:** Database administrators verify private interconnect configuration and active interfaces by querying the dynamic performance views V\\(CLUSTER_INTERCONNECTS and V\\)CONFIGURED_INTERCONNECTS [13, 14].
-* **Cache Fusion and Global Resource Directory (GRD) Coordination:** The student learns that Cache Fusion is a diskless cache coherency mechanism in Oracle RAC that transfers copies of data blocks directly from the memory cache of a holding instance to a requesting instance over the high-speed private interconnect [1, 10, 15-17].
+* **Cache Fusion and Global Resource Directory (GRD) Coordination:** Cache Fusion is a diskless cache coherency mechanism in Oracle RAC that transfers copies of data blocks directly from the memory cache of a holding instance to a requesting instance over the high-speed private interconnect [1, 10, 15-17].
   * **Resource Coordination:** Global Cache Service (GCS) and Global Enqueue Service (GES) coordinate buffer cache blocks and enqueues in the Global Resource Directory (GRD) [15, 18].
   * **GRD Functionality:** The GRD is distributed across all active instances [1, 10, 15] and tracks the state, location, and lock status of every cached data block across all nodes to maintain transactional consistency [1, 10, 15].
   * **Background Processes:** Global Cache Service Processes (LMS / LMSn) record data file statuses and cached block information in the GRD, control message flow, and transmit block images between instance buffer caches [18-21]. Global Enqueue Service Monitor (LMON) monitors global enqueues and resources across the cluster and performs global enqueue recovery [18, 22, 23]. Global Enqueue Service Daemon (LMD) manages incoming remote resource requests within each instance [18, 22, 24].
@@ -61,7 +61,7 @@ Based on the provided sources, here is what the student learns for each specifie
 
 ### Objective 2: Evaluating Oracle MAA Reference Tiers, Active-Active Clustering, and Disaster Recovery
 
-* **Oracle High Availability Framework and MAA:** The student learns that Oracle Maximum Availability Architecture (MAA) provides an Oracle best practices blueprint based on proven Oracle high availability technologies and recommendations to remove complexity in designing an optimal high availability architecture [27].
+* **Oracle High Availability Framework and MAA:** Oracle Maximum Availability Architecture (MAA) provides an Oracle best practices blueprint based on proven Oracle high availability technologies and recommendations to remove complexity in designing an optimal high availability architecture [27].
   * **High Availability Blueprint Scope:** The official manual High Availability Best Practices and Overview for Release 19 structures high availability best practices across Oracle RAC and Clusterware best practices, Oracle Data Guard best practices, and MAA Platinum with Oracle GoldenGate best practices [28].
   * **Disaster Recovery Strategy:** For comprehensive protection against disasters, including data corruptions and regional disasters, Oracle recommends combining Oracle Data Guard with Oracle RAC [29].
 * **Active-Active Node Clustering Mechanics:** Active-Active Node Clustering using Oracle Real Application Clusters (RAC) enables multiple database instances running on separate physical servers to concurrently access a single shared database [3, 10, 30, 31] hosted on shared Automatic Storage Management (ASM) disk groups [10, 32-34].

@@ -19,11 +19,11 @@
   },
   "aiu": {
     "id": "aiu",
-    "name": "Açık İlahiyat Üniversitesi",
+    "name": "Açık Akademi",
     "faculty": "Platform çatısı",
-    "short": "AIU",
+    "short": "AAK",
     "url": "",
-    "program": "Açık İlahiyat (toplu vitrin)",
+    "program": "Açık Akademi (toplu vitrin)",
     "note": "Bu platformun vitrin adı; dersler kaynak üniversitelere göre ayrılır.",
     "is_platform": true
   },

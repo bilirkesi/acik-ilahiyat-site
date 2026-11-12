@@ -355,23 +355,28 @@
     return html + (inList ? "</ul>" : "");
   }
 
-  // ---- arma ----------------------------------------------------------------
-  // Özgün marka: kalkan, açık kitap, on uçlu yıldız. Hiçbir okulun armasına dayanmaz.
+  // ---- amblem ----------------------------------------------------------------
+  // Özgün marka: açık kitap ve arkasından yükselen ışık. Hiçbir okulun armasına ya da
+  // bayrağa dayanmaz. Geometri `generator/site-template/crest.svg` ile birebir aynıdır
+  // (ikisini de scripts/render_brand_icons.py üretir).
   function crest() {
-    const P = CONFIG.colors.primary, A = CONFIG.colors.accent;
-    const star = Array.from({ length: 20 }, (_, i) => {
-      const r = i % 2 ? 7 : 16, a = (Math.PI / 10) * i - Math.PI / 2;
-      return (60 + r * Math.cos(a)).toFixed(1) + "," + (40 + r * Math.sin(a)).toFixed(1);
-    }).join(" ");
-    return `<svg viewBox="0 0 120 144" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="${esc(CONFIG.name)} arması">
-      <path d="M8 6h104v62c0 38-26 60-52 72C34 128 8 106 8 68z" fill="${P}" stroke="${A}" stroke-width="4"/>
-      <path d="M16 14h88v54c0 32-21 51-44 61-23-10-44-29-44-61z" fill="none" stroke="${A}" stroke-width="1.2" opacity=".7"/>
-      <polygon points="${star}" fill="${A}"/>
-      <path d="M26 78c12-6 24-6 34 0v34c-10-6-22-6-34 0z" fill="#f8f4ea"/>
-      <path d="M94 78c-12-6-24-6-34 0v34c10-6 22-6 34 0z" fill="#efe6d2"/>
-      <path d="M60 78v34" stroke="${A}" stroke-width="1.5"/>
-      <g stroke="${P}" stroke-width="1" opacity=".35"><path d="M32 86c8-3 16-3 22 0M32 93c8-3 16-3 22 0M32 100c8-3 16-3 22 0M66 86c6-3 14-3 22 0M66 93c6-3 14-3 22 0M66 100c6-3 14-3 22 0"/></g>
-      <text x="60" y="132" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-size="9" letter-spacing="2" fill="${A}">${new Date().getFullYear()}</text>
+    const P = CONFIG.colors.primary, A = CONFIG.colors.accent, C = CONFIG.colors.paper;
+    return `<svg viewBox="0 0 100 118" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="${esc(CONFIG.name)} amblemi">
+      <circle cx="50" cy="50" r="46.5" fill="${P}"/>
+      <circle cx="50" cy="37" r="17" fill="${A}"/>
+      <g fill="${A}">
+        <path d="M51.3 16 L50 6 L48.7 16 Z"/>
+        <path d="M60.37 18.7 L63.59 9.14 L58.04 17.56 Z"/>
+        <path d="M41.96 17.56 L36.41 9.14 L39.63 18.7 Z"/>
+        <path d="M66.92 24.5 L73.75 17.07 L65.25 22.51 Z"/>
+        <path d="M34.75 22.51 L26.25 17.07 L33.08 24.5 Z"/>
+      </g>
+      <g stroke="${A}" stroke-width="2.2" stroke-linejoin="round" fill="${C}">
+        <path d="M50 58 L52.21 57.48 L54.43 56.92 L56.64 56.32 L58.86 55.67 L61.07 54.99 L63.29 54.27 L65.5 53.5 L67.71 52.69 L69.93 51.85 L72.14 50.96 L74.36 50.03 L76.57 49.06 L78.79 48.05 L81 47 L81 70 L78.79 70.85 L76.57 71.67 L74.36 72.48 L72.14 73.27 L69.93 74.03 L67.71 74.78 L65.5 75.5 L63.29 76.2 L61.07 76.89 L58.86 77.55 L56.64 78.19 L54.43 78.82 L52.21 79.42 L50 80 L50 58 Z"/>
+        <path d="M50 58 L47.79 57.48 L45.57 56.92 L43.36 56.32 L41.14 55.67 L38.93 54.99 L36.71 54.27 L34.5 53.5 L32.29 52.69 L30.07 51.85 L27.86 50.96 L25.64 50.03 L23.43 49.06 L21.21 48.05 L19 47 L19 70 L21.21 70.85 L23.43 71.67 L25.64 72.48 L27.86 73.27 L30.07 74.03 L32.29 74.78 L34.5 75.5 L36.71 76.2 L38.93 76.89 L41.14 77.55 L43.36 78.19 L45.57 78.82 L47.79 79.42 L50 80 L50 58 Z"/>
+      </g>
+      <path d="M50 58 L50 80" stroke="${A}" stroke-width="2.2" fill="none"/>
+      <text x="50" y="112" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-size="9" letter-spacing="2" fill="${A}">${new Date().getFullYear()}</text>
     </svg>`;
   }
   document.querySelectorAll("[data-crest]").forEach((el) => (el.innerHTML = crest()));
@@ -767,7 +772,7 @@
     const c = bySlug[q._slug || q.course];
     const stem = plainOf(stemHtml(q));
     const lines = [
-      `Anadolu Üniversitesi Açıköğretim İlahiyat ön lisans programında${c ? ` "${c.subject}" dersine` : ""} çalışıyorum. Aşağıdaki soruyu yanlış cevapladım.`,
+      `${CONFIG.name} sitesinde${c ? ` "${c.subject}" dersine` : ""} çalışıyorum. Aşağıdaki soruyu yanlış cevapladım.`,
       "Doğru cevabı bana adım adım, ara sorular sorarak öğret ve benim cevabımın neden yanlış olduğunu açıkla. Ders kitabıyla çelişen bir şey söyleme; emin olmadığın yeri belirt. Türkçe cevap ver.",
       "",
       "Soru: " + (stem.text || "(Soru metni görsel olarak verilmiş.)") + (stem.img ? " [Soruda bir görsel var.]" : ""),
@@ -6309,7 +6314,7 @@ document.getElementById("zin").focus();
       const blob = new Blob([backupJson()], { type: "application/json" });
       const a = document.createElement("a");
       a.href = URL.createObjectURL(blob);
-      a.download = "acik-ilahiyat-yedek-" + new Date().toISOString().slice(0, 10) + ".json";
+      a.download = "acik-akademi-yedek-" + new Date().toISOString().slice(0, 10) + ".json";
       document.body.appendChild(a);
       a.click();
       setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 1000);

@@ -1,6 +1,6 @@
 # NotebookLM Pro Tree
 
-> **Modified copy (Açık İlahiyat, 2026-10-15).** Based on upstream
+> **Modified copy (Açık Akademi, 2026-10-15).** Based on upstream
 > [benju66/Notebook-Nest](https://github.com/benju66/Notebook-Nest) commit `55f44c8` (v17.9), GPL-3.0.
 > Changes in v17.9.1: also runs on `notebook.google.com` (NotebookLM's new address);
 > folder items stay visible after rename or color change; fixed garbled toast/icon characters.

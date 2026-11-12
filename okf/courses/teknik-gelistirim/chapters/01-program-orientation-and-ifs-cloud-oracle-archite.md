@@ -1,17 +1,17 @@
 ---
 type: Chapter
 title: Program Orientation and IFS Cloud Oracle Architecture
-description: In this chapter, the student learns the foundational enterprise architecture and administration practices required to manage Oracle Database 19c environments for IFS Applications and IFS Cloud. The cu
+description: "This chapter covers the foundational enterprise architecture and administration practices required to manage Oracle Database 19c environments for IFS Applications and IFS Cloud. The curriculum covers "
 course: teknik-gelistirim
 chapter: 1
 status: stable
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-11-11T19:31:19Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-11-12T07:22:59Z }
 notebook: "https://notebooklm.google.com/notebook/d9fbd16b-86fb-45ab-af81-dc503b2c5aad"
 ---
 
 # Özet
 
-In this chapter, the student learns the foundational enterprise architecture and administration practices required to manage Oracle Database 19c environments for IFS Applications and IFS Cloud. The curriculum covers Multitenant Container Database (CDB) and Pluggable Database (PDB) isolation, dynamic memory architecture tuning for sga_target and pga_aggregate_target, and Release Update (RU) and Release Update Revision (RUR) patch lifecycles. Students also master operational governance, background job lifecycle management, deployment prerequisites, and telemetry monitoring using the Application Monitoring Console in IFS Cloud 26R2, alongside operational report development in IFS Cloud 25R1.
+This chapter covers the foundational enterprise architecture and administration practices required to manage Oracle Database 19c environments for IFS Applications and IFS Cloud. The curriculum covers Multitenant Container Database (CDB) and Pluggable Database (PDB) isolation, dynamic memory architecture tuning for sga_target and pga_aggregate_target, and Release Update (RU) and Release Update Revision (RUR) patch lifecycles. The chapter also covers operational governance, background job lifecycle management, deployment prerequisites, and telemetry monitoring using the Application Monitoring Console in IFS Cloud 26R2, alongside operational report development in IFS Cloud 25R1.
 
 # Sesli Ders
 
@@ -19,9 +19,9 @@ In this chapter, the student learns the foundational enterprise architecture and
 
 # Öğrenme Hedefleri
 
-1. The student can administer Multitenant Container Database (CDB) structures and Pluggable Database (PDB) tenant isolation while tuning memory parameters sga_target and pga_aggregate_target for Oracle Database 19c.
-2. The student can align quarterly Release Update (RU) and Release Update Revision (RUR) patch maintenance cycles with IFS Applications and IFS Cloud maintenance windows.
-3. The student can execute operational governance, background process cleanup, deployment prerequisites, and server alert log monitoring within IFS Cloud 26R2 environments.
+1. administer Multitenant Container Database (CDB) structures and Pluggable Database (PDB) tenant isolation while tuning memory parameters sga_target and pga_aggregate_target for Oracle Database 19c.
+2. align quarterly Release Update (RU) and Release Update Revision (RUR) patch maintenance cycles with IFS Applications and IFS Cloud maintenance windows.
+3. execute operational governance, background process cleanup, deployment prerequisites, and server alert log monitoring within IFS Cloud 26R2 environments.
 
 # Dersler
 
@@ -45,15 +45,15 @@ Bu bölümün içinde yaşadığı ders paneli: [Teknik Gelişim paneli](/course
 
 # Kaynak Temellendirme
 
-Based on the provided sources, here is the detailed explanation of what the student learns for each specified objective.
+Based on the provided sources, here is the detailed explanation of each specified objective.
 
 ---
 
 ### Objective 1: Multitenant CDB Structures, PDB Tenant Isolation, and Memory Tuning
 
-For this objective, the student learns the following:
+For this objective, the following is covered:
 
-* **CDB and PDB Architecture:** Managing the single root container database CDB$ROOT, which handles background processes, shared system metadata, and global memory [1]. The student learns to create and administer dedicated pluggable databases, including PDB$SEED and User PDBs such as IFS_PROD, IFS_TEST, and DEV, to isolate distinct IFS application instances on shared server hardware [1-4].
+* **CDB and PDB Architecture:** Managing the single root container database CDB$ROOT, which handles background processes, shared system metadata, and global memory [1]. Creating and administering dedicated pluggable databases, including PDB$SEED and User PDBs such as IFS_PROD, IFS_TEST, and DEV, to isolate distinct IFS application instances on shared server hardware [1-4].
 * **Tenant Isolation and Session Management:** Managing PDB states, switching container contexts, and isolating transactional schema objects across environments [1, 4].
 * **Resource Manager Governance:** Configuring Oracle Resource Manager policies using `CREATE_CDB_PLAN` to assign CPU shares (`shares`) and utilization limits (`utilization_limit`) at the CDB level, preventing non-production environments from starving production resources [2-4].
 * **Dynamic Memory Tuning:** Configuring `sga_target` under Automatic Shared Memory Management (ASMM) to dynamically balance the Buffer Cache, Shared Pool, and Large Pool for high-volume OLTP transactions [1]. Configuring `pga_aggregate_target` optimizes per-process memory for sort operations and hash joins, preventing temporary tablespace spilling during large batch runs [1].
@@ -64,7 +64,7 @@ For this objective, the student learns the following:
 
 ### Objective 2: RU and RUR Patch Maintenance Alignment
 
-For this objective, the student learns the following:
+For this objective, the following is covered:
 
 * **Release Updates (RU):** Understanding quarterly cumulative patches that contain security vulnerability fixes, high-value bug fixes, and critical stability enhancements, which increment the minor database release version [1, 4].
 * **Release Update Revisions (RUR):** Understanding security and regression-focused patches that extend the lifespan of an existing RU without introducing new functional bug fixes, preserving production stability [1, 4].
@@ -75,7 +75,7 @@ For this objective, the student learns the following:
 
 ### Objective 3: Operational Governance, Process Cleanup, Prerequisites, and Alert Monitoring in IFS Cloud 26R2
 
-For this objective, the student learns the following from official IFS Cloud 26R2 documentation:
+For this objective, the following is covered from the official IFS Cloud 26R2 documentation:
 
 * **Background Process Lifecycle:** Deferred transactions and automated maintenance operations progress through states to terminal states Ready, Warning, or Error [7, 8].
 * **System Retention Parameters:** Automated purging is executed by Foundation1 Light Cleanup based on System Parameters in Solution Manager [9]. The default retention intervals are 7 days for completed jobs in state Ready, 30 days for jobs in state Warning, 180 days for jobs in state Error, and 7 days for inactive Scheduled tasks [9]. Setting the "Exclude from Cleanup" flag on a job overrides standard retention limits to preserve diagnostic data [10]. The system parameter "Number of background processes" defaults to 10 and is limited by Oracle's `JOB_QUEUE_PROCESSES` parameter [9].

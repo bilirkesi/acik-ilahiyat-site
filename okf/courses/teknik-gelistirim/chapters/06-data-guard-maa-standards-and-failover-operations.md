@@ -1,17 +1,17 @@
 ---
 type: Chapter
 title: Data Guard, MAA Standards and Failover Operations
-description: In this chapter, the student learns how to design, implement, and operate high availability and disaster recovery solutions for Oracle Database 19c supporting IFS Applications and IFS Cloud workloads.
+description: "This chapter covers how to design, implement, and operate high availability and disaster recovery solutions for Oracle Database 19c supporting IFS Applications and IFS Cloud workloads. The curriculum "
 course: teknik-gelistirim
 chapter: 6
 status: stable
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-11-11T05:06:34Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-11-12T07:22:59Z }
 notebook: "https://notebooklm.google.com/notebook/d9fbd16b-86fb-45ab-af81-dc503b2c5aad"
 ---
 
 # Özet
 
-In this chapter, the student learns how to design, implement, and operate high availability and disaster recovery solutions for Oracle Database 19c supporting IFS Applications and IFS Cloud workloads. The curriculum covers Oracle Maximum Availability Architecture (MAA) Gold and Platinum standards, combining Oracle Real Application Clusters (RAC) with Active Data Guard (ADG), Real-Time Redo Apply via Standby Redo Logs (SRLs), and Data Guard Broker (dgmgrl) automation to achieve Recovery Point Objective (RPO = 0) and Recovery Time Objective (RTO < 5 minutes). Additionally, students learn to set proactive alert thresholds in Oracle Enterprise Manager (OEM) using DBMS_SERVER_ALERT for host CPU utilization at 85 percent warning and 95 percent critical, as well as Data Guard apply lag at 300 seconds warning and 900 seconds critical, while configuring dynamic mid-tier failover using SCAN listeners.
+This chapter covers how to design, implement, and operate high availability and disaster recovery solutions for Oracle Database 19c supporting IFS Applications and IFS Cloud workloads. The curriculum covers Oracle Maximum Availability Architecture (MAA) Gold and Platinum standards, combining Oracle Real Application Clusters (RAC) with Active Data Guard (ADG), Real-Time Redo Apply via Standby Redo Logs (SRLs), and Data Guard Broker (dgmgrl) automation to achieve Recovery Point Objective (RPO = 0) and Recovery Time Objective (RTO < 5 minutes). Additionally, the chapter covers how to set proactive alert thresholds in Oracle Enterprise Manager (OEM) using DBMS_SERVER_ALERT for host CPU utilization at 85 percent warning and 95 percent critical, as well as Data Guard apply lag at 300 seconds warning and 900 seconds critical, while configuring dynamic mid-tier failover using SCAN listeners.
 
 # Sesli Ders
 
@@ -19,9 +19,9 @@ In this chapter, the student learns how to design, implement, and operate high a
 
 # Öğrenme Hedefleri
 
-1. The student can deploy Oracle Maximum Availability Architecture (MAA) Gold and Platinum tiers for Oracle Database 19c by combining Oracle Real Application Clusters (RAC), Active Data Guard (ADG), and Edition-Based Redefinition (EBR) to enforce RPO = 0 and RTO < 5 minutes.
-2. The student can administer Oracle 19c Data Guard Broker (dgmgrl) to execute automated planned switchover and emergency failover runbooks while managing Standby Redo Logs (SRLs) and Real-Time Redo Apply.
-3. The student can configure warning and critical metric thresholds in Oracle Enterprise Manager (OEM) using DBMS_SERVER_ALERT for host CPU utilization at 85 percent warning and 95 percent critical, as well as Data Guard replication apply lag at 300 seconds warning and 900 seconds critical.
+1. deploy Oracle Maximum Availability Architecture (MAA) Gold and Platinum tiers for Oracle Database 19c by combining Oracle Real Application Clusters (RAC), Active Data Guard (ADG), and Edition-Based Redefinition (EBR) to enforce RPO = 0 and RTO < 5 minutes.
+2. administer Oracle 19c Data Guard Broker (dgmgrl) to execute automated planned switchover and emergency failover runbooks while managing Standby Redo Logs (SRLs) and Real-Time Redo Apply.
+3. configure warning and critical metric thresholds in Oracle Enterprise Manager (OEM) using DBMS_SERVER_ALERT for host CPU utilization at 85 percent warning and 95 percent critical, as well as Data Guard replication apply lag at 300 seconds warning and 900 seconds critical.
 
 # Dersler
 
@@ -39,13 +39,13 @@ Bu bölümün içinde yaşadığı ders paneli: [Teknik Gelişim paneli](/course
 
 # Kaynak Temellendirme
 
-Based on the provided sources, here is what the student learns for each specified objective:
+Based on the provided sources, here is what each specified objective covers:
 
 ---
 
 ### Objective 1: Deploying Oracle MAA Gold and Platinum Tiers for Oracle Database 19c
 
-* **MAA Blueprint Scope:** The student learns that Oracle Maximum Availability Architecture (MAA) provides a best practices blueprint and reference architecture for database high availability, disaster recovery, and data protection [1, 2].
+* **MAA Blueprint Scope:** Oracle Maximum Availability Architecture (MAA) provides a best practices blueprint and reference architecture for database high availability, disaster recovery, and data protection [1, 2].
 * **Tier Selection for IFS Applications:** For enterprise environments running IFS Applications (IFS Cloud, IFS Applications 10/9), organizations target Gold and Platinum tiers to eliminate single points of failure, provide active-active scalability, and enforce strict Recovery Point Objectives (RPO = 0) and Recovery Time Objectives (RTO < 5 minutes) [1, 3].
 * **Gold Tier Architecture:** The MAA Gold tier combines Oracle Real Application Clusters (RAC) for local node failure protection with Active Data Guard (ADG) for remote disaster recovery [1]. Gold tier uses synchronous or fast asynchronous redo transport, Application Continuity for transparent mid-tier session failover, and RMAN and Flashback technologies [1].
 * **Platinum Tier Architecture:** The MAA Platinum tier builds upon Gold by integrating active-active or multi-master replication solutions such as Oracle GoldenGate alongside Active Data Guard and RAC to eliminate maintenance window impact [1]. Platinum tier utilizes Edition-Based Redefinition (EBR) to enable zero-downtime online application schema upgrades while the system is fully operational [1].
