@@ -330,6 +330,11 @@ def offline_packs(site, data, images):
         audio = [[a["src"], rev(site / a["src"]), a["bytes"]] for _, a in sorted((course.get("audio") or {}).items(), key=lambda x: int(x[0]))]
         if audio:
             packs[slug + "-ses"] = {"bytes": sum(x[2] for x in audio), "files": audio}
+    # Soru-cevap korpusu kabukta değil: soru soran öğrenci tek dosyalık paketi kendisi indirir.
+    chat = site / "chat.js"
+    if chat.exists():
+        packs["soru"] = {"bytes": chat.stat().st_size,
+                        "files": [["chat.js", rev(chat), chat.stat().st_size]]}
     return {"packs": packs, "images": images}
 
 
@@ -413,7 +418,7 @@ def og_image(site, uni, data):
 
 # Kurulumda önbelleğe alınan uygulama kabuğu (görseller hariç; onlar ders paketlerinde).
 SHELL_FILES = ["index.html", "styles.css", "app.js", "data.js", "interactive.js", "coursegraph.js",
-               "past_exams.js", "unit_quizzes.js", "chat.js", "manifest.webmanifest", "favicon.svg"]
+               "past_exams.js", "unit_quizzes.js", "manifest.webmanifest", "favicon.svg"]
 SHELL_DIRS = ["fonts", "icons"]
 
 

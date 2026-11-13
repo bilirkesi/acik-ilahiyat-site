@@ -53,6 +53,10 @@ OCR (Windows-only, for image-based PDFs that NotebookLM indexes as page images o
 
 Validation:
 - `check_quiz_answers.py` — integrity check across all quiz JSON plus `site/unit_quizzes.js` consistency. Question types come from `generator/scripts/quiz_types.py`; a type outside that list is reported as unknown.
+- `check_chat_corpus.py` — validates every `data/<slug>/chat.json`: each item needs a question, an answer, a chapter
+  inside the plan and at least one source; the answer's `[n]` markers must index that source list; questions must not
+  repeat within a course; placeholder answers ("bilmiyorum", "as an ai") fail. Answers outside 2–5 sentences, short
+  answers and chapters without questions are warnings. Errors exit 1; `--slug` limits the run, `--quiet` hides warnings.
 - `audit_sources.py` — per chapter, the `grounding.tiers` rank of assigned and cited sources; flags chapters with no textbook source. `--strict` exits 1 when a course notebook has no textbook at all.
 
 ## Local Contracts

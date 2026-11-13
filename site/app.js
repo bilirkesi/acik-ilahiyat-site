@@ -1884,6 +1884,22 @@
     }
     return out;
   }
+  // Yedek hatırlatması: ilerleme yalnızca bu tarayıcıda; uzun süre yedek alınmadıysa masada bir kez sorulur.
+  function backupReminderHtml() {
+    const cards = Object.keys(study.cards).length;
+    const words = Object.values(study.gloss || {}).reduce((n, l) => n + (l ? l.length : 0), 0);
+    if (cards + words < 20) return "";
+    const last = study.backupAt || 0;
+    if (study.backupSnooze && Date.now() - study.backupSnooze < 7 * DAY_MS) return "";
+    const days = last ? Math.floor((Date.now() - last) / DAY_MS) : null;
+    if (last && days < 30) return "";
+    return `<section class="desk-card desk-backup">
+      <h3>Yedeğini al</h3>
+      <p class="muted">${last ? `Son yedeğin ${days} gün önce.` : "Hiç yedek almadın."} ${cards + words} kayıt (soru kartı, kelime, seri, vurgu) yalnızca bu tarayıcıda duruyor; tarayıcı verisi silinirse gider.</p>
+      <div class="btn-row"><a class="btn" href="#/cevrimdisi?b=yedek">Yedek al</a><button class="btn ghost" type="button" id="backup-later">Bir hafta sonra</button></div>
+    </section>`;
+  }
+
   function viewStudyDesk() {
     const st = streakInfo();
     const day = study.days[todayKey()] || { n: 0, ok: 0, rev: 0, read: 0 };
@@ -1928,6 +1944,7 @@
         ${kavramDeskHtml()}
         ${glossDeskHtml()}
         ${marksDeskHtml()}
+        ${backupReminderHtml()}
       </div>
       <div class="btn-row desk-links"><a class="btn ghost" href="#/karisik">Karışık test</a><a class="btn ghost" href="#/karisik?mod=deneme">Deneme sınavı</a><a class="btn ghost" href="#/analiz">Gelişim analizi</a><a class="btn ghost" href="#/sikcikan">Sık çıkan konular</a><a class="btn ghost" href="#/puan">Not hesaplayıcı</a><a class="btn ghost" href="#/oyunlar">Bulmaca ve kelime oyunları</a>${harfCourse() ? `<a class="btn ghost" href="#/harfler">Osmanlıca harf atölyesi</a>` : ""}</div>
       ${resumeVideoHtml()}
@@ -4227,8 +4244,9 @@
     if (act === "word") {
       const ctx = hlCtx();
       const term = hlCur ? hlCur.q : (hlSel && hlSel.q) || "";
+      const sentence = glossSentence(term);
       hlHide();
-      if (ctx && term) glossDialog(term, ctx.slug, ctx.n);
+      if (ctx && term) glossDialog(term, ctx.slug, ctx.n, sentence);
       return;
     }
     const m = hlCur || hlNewMark("y");
@@ -4369,8 +4387,26 @@
     saveStudy();
     return deck;
   }
+  // Seçilen kelimenin geçtiği cümle: vurgu çubuğu görünürken okunur, sözlükte bağlam olarak saklanır.
+  function glossSentence(term) {
+    const sel = window.getSelection();
+    let node = sel && sel.anchorNode;
+    while (node && node.nodeType !== 1) node = node.parentNode;
+    const block = node && node.closest && node.closest("p, li, blockquote, td, dd, .notes");
+    const text = block ? block.textContent.replace(/\s+/g, " ") : "";
+    const t = String(term || "").trim();
+    if (!text || !t) return "";
+    const at = text.toLowerCase().indexOf(t.toLowerCase());
+    if (at < 0) return "";
+    const before = text.slice(0, at), after = text.slice(at + t.length);
+    const start = Math.max(before.lastIndexOf(". "), before.lastIndexOf("? "), before.lastIndexOf("! "));
+    const ends = [". ", "? ", "! "].map((m) => after.indexOf(m)).filter((x) => x >= 0);
+    const end = ends.length ? Math.min(...ends) : after.length;
+    return (before.slice(start + 1) + t + after.slice(0, end)).trim().slice(0, 240);
+  }
+
   // Okurken seçilen kelime: çubuktan açılır, kelime hazır gelir, anlamı öğrenci yazar.
-  function glossDialog(term, slug, n) {
+  function glossDialog(term, slug, n, sentence) {
     const known = glossDeck(slug).find((x) => GLOSS_KEY(x.w) === GLOSS_KEY(term));
     markDialog(`<h2 id="mk-h">Sözlüğe kelime ekle</h2>
       <p class="muted small">Kelime bu dersin destesine girer ve aralıklı tekrarla sorulur. Anlamı kendi cümlelerinle yaz.</p>
@@ -4381,6 +4417,8 @@
         if (!w) return;
         saveGlossItem(slug, Object.assign({}, known || {}, {
           w, m: f.m.value.trim(), src: n || (known && known.src) || 0,
+          ch: n || (known && known.ch) || 0,
+          ctx: String(sentence || (known && known.ctx) || "").slice(0, 240),
           box: (known && known.box) || 0, due: Date.now(),
           t: (known && known.t) || Date.now(), seen: (known && known.seen) || 0,
           lapses: (known && known.lapses) || 0,
@@ -4398,6 +4436,14 @@
       </div>
     </form>`;
   }
+  // Sınav plânı kapsamındaki bölümün kelimeleri önce sorulur: sınav yaklaşırken deste o derse döner.
+  function glossInPlan(slug, ch) {
+    const plan = activePlan();
+    if (!plan || !plan.units[slug]) return false;
+    const units = plan.units[slug];
+    return ch ? units.includes(ch) : units.length > 0;
+  }
+
   function viewGloss(c) {
     const deck = glossDeck(c.slug);
     const due = glossDue(c.slug);
@@ -4413,12 +4459,15 @@
         <div class="btn-row"><a class="btn ghost" href="#/course/${c.slug}/chapter/1">İlk bölüme git</a></div></div>`;
     }
     const now = Date.now();
-    const cur = due.slice().sort((a, b) => (a.due || 0) - (b.due || 0) || (a.t || 0) - (b.t || 0))[0];
+    const cur = due.slice().sort((a, b) => (glossInPlan(c.slug, b.ch) ? 1 : 0) - (glossInPlan(c.slug, a.ch) ? 1 : 0)
+      || (a.due || 0) - (b.due || 0) || (a.t || 0) - (b.t || 0))[0];
     const boxes = GLOSS_STEPS.map((_, i) => deck.filter((x) => (x.box || 0) === i).length);
     const card = cur ? `<section class="gl-card" data-gl-w="${esc(cur.w)}">
-        <p class="gl-kicker">${due.length} kelime sırada</p>
+        <p class="gl-kicker">${due.length} kelime sırada${due.filter((x) => glossInPlan(c.slug, x.ch)).length ? ` · ${due.filter((x) => glossInPlan(c.slug, x.ch)).length} tanesi sınav kapsamında` : ""}</p>
         <p class="gl-front" lang="${c.language || "tr"}">${esc(cur.w)}</p>
         ${cur.src ? `<p class="muted small">${cur.src}. bölümden</p>` : ""}
+        ${cur.ctx ? `<blockquote class="gl-ctx">${esc(cur.ctx)}</blockquote>` : ""}
+        ${cur.ch ? `<p class="muted small"><a href="#/course/${c.slug}/chapter/${cur.ch}">Bağlamı bölümde aç</a></p>` : ""}
         <div class="gl-reveal" hidden>
           <p class="gl-back" lang="tr">${cur.m ? esc(cur.m) : '<span class="muted">Anlam yazmamışsın.</span>'}</p>
           <div class="btn-row">
@@ -5609,6 +5658,12 @@
     const q = String((query && query.q) || "").trim();
     const slug = (query && query.ders) || "";
     const courses = Object.keys(CHAT());
+    if (!courses.length) {
+      return `<p class="eyebrow">Soru &amp; Cevap</p><h1>Derslerine sor</h1>
+        <div class="desk-card empty-state"><h3>Korpus bu cihaza inmedi</h3>
+        <p class="muted">${navigator.onLine === false ? "İnternet yok ve soru-cevap korpusu bu cihazda kayıtlı değil." : "Korpus yüklenemedi."} Korpusu bir kez indirdikten sonra internetsiz de soru sorabilirsin.</p>
+        <div class="btn-row"><a class="btn" href="#/cevrimdisi">Çevrimdışı sayfası</a><a class="btn ghost" href="#/soru">Yeniden dene</a></div></div>`;
+    }
     let body = "";
     if (q) {
       const hits = chatSearch(q, 5, slug);
@@ -5900,14 +5955,29 @@ document.getElementById("zin").focus();
 
   // Paket anahtarı "<ders>" görseller, "<ders>-ses" sesli dersler içindir.
   const isAudioPack = (key) => key.endsWith("-ses") && !!PACKS[key];
-  const packNoun = (key) => (isAudioPack(key) ? "sesli ders" : "görsel");
-  const packSubject = (key) => { const c = bySlug[isAudioPack(key) ? key.slice(0, -4) : key]; return c ? c.subject : "Ders"; };
+  const packNoun = (key) => (key === "soru" ? "soru korpusu" : isAudioPack(key) ? "sesli ders" : "görsel");
+  const packSubject = (key) => {
+    if (key === "soru") return "Soru & Cevap";
+    const c = bySlug[isAudioPack(key) ? key.slice(0, -4) : key];
+    return c ? c.subject : "Ders";
+  };
   function packRowHtml(c, key) {
     key = key || c.slug;
     const pack = PACKS[key];
     if (!pack) return "";
     return `<div class="pack" data-pack="${esc(key)}">
         <div class="pack-text"><b>${esc(c.subject)}${isAudioPack(key) ? " · sesli dersler" : ""}</b><span class="muted" data-pack-info>${pack.files.length} ${packNoun(key)} · ${mb(pack.bytes)}</span></div>
+        <div class="pack-bar" hidden><i></i></div>
+        <div class="pack-actions" data-pack-actions></div>
+      </div>`;
+  }
+
+  // Soru-cevap korpusu: tek dosya, dersden bağımsız; soru sayfası ilk açılışta yükler.
+  function chatPackRowHtml() {
+    const pack = PACKS.soru;
+    if (!pack || !canCache) return "";
+    return `<div class="pack" data-pack="soru">
+        <div class="pack-text"><b>Soru &amp; Cevap</b><span class="muted" data-pack-info>${pack.files.length} ${packNoun("soru")} · ${mb(pack.bytes)}</span></div>
         <div class="pack-bar" hidden><i></i></div>
         <div class="pack-actions" data-pack-actions></div>
       </div>`;
@@ -6126,6 +6196,9 @@ document.getElementById("zin").focus();
       <p id="shell-state" class="muted">${canCache ? "Kontrol ediliyor…" : "Bu tarayıcı çevrimdışı kaydı desteklemiyor."}</p>
       <h2>Ders görselleri</h2>
       ${canCache ? `<div class="packs">${rows}</div><p class="muted small" id="storage-info"></p>` : ""}
+      <h2>Soru &amp; Cevap korpusu</h2>
+      <p class="muted small">Soru sayfası cevapları bu dosyadan okur; ilk açılışta kabuğun parçası değildir. İndirirseniz internetsiz de soru sorabilirsiniz.</p>
+      ${canCache ? `<div class="packs">${chatPackRowHtml()}</div>` : ""}
       <h2>Uygulama olarak kurun</h2>
       <div id="install-box">${installHtml()}</div>
       <h2 id="yedek">İlerleme yedeği</h2>
@@ -6141,6 +6214,8 @@ document.getElementById("zin").focus();
   }
 
   function backupJson() {
+    study.backupAt = Date.now();
+    saveStudy();
     let name = "";
     try { name = localStorage.getItem(CONFIG.storageKey + ".name") || ""; } catch (e) { /* yok */ }
     return JSON.stringify({ app: CONFIG.storageKey, savedAt: new Date().toISOString(), progress, name, study });
@@ -8175,6 +8250,14 @@ document.getElementById("zin").focus();
     if (r.lh) d.dataset.lh = r.lh; else delete d.dataset.lh;
     if (r.ff) d.dataset.ff = r.ff; else delete d.dataset.ff;
   }
+  // Yedek hatırlatmasını bir hafta erteleyen düğme.
+  document.addEventListener("click", (e) => {
+    if (!e.target.closest("#backup-later")) return;
+    study.backupSnooze = Date.now();
+    saveStudy();
+    route();
+  });
+
   // Üst çubuktaki sözlük menüsü: bir derse gidince, dışarı tıklayınca ve Escape ile kapanır.
   (function setupGlossNav() {
     const box = document.querySelector("[data-gloss-nav]");

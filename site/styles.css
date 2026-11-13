@@ -199,6 +199,10 @@ main { max-width: 1120px; margin: 0 auto; padding: clamp(24px, 5vw, 56px) clamp(
 .gl-desk-list a:hover b, .gl-desk-list a:focus-visible b { text-decoration: underline; }
 .gl-desk-list b { font-weight: 600; }
 .gl-desk-list a span { color: var(--muted); font-size: .8rem; }
+/* Tekrar kartında kelimenin geçtiği cümle ve yedek hatırlatması. */
+.gl-ctx { margin: .7rem 0 0; padding: .5rem .8rem; border-left: 3px solid var(--gold);
+  background: var(--gold-soft); font: .95rem/1.5 var(--serif); color: var(--ink); }
+.desk-backup h3 { margin-bottom: .3rem; }
 .lectures { list-style: none; padding: 0; margin: 0; }
 .lectures li { border-bottom: 1px solid var(--line); }
 .lectures a { display: flex; gap: .8rem; padding: .7rem 0; text-decoration: none; color: var(--ink); font-size: .92rem; }
