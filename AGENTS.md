@@ -81,9 +81,8 @@ Rules for the bundle itself live in `okf/AGENTS.md`.
 - The emblem (an open book with light behind it) is written by `scripts/render_brand_icons.py` into `favicon.svg`, `crest.svg` and the PWA icons; `app.js`'s `crest()` carries the same coordinates and `tests/test_brand.py` compares them. `storageKey` stays as it is: it is the learners' local-progress key and must not change with the name.
 - A course overrides the university-wide settings it needs in `courses.json[course].config`: the `language` and `audience` of its material, how many `chapters` it has, and its own `grounding` (source ranking and prompt rules). `load_university(root, course)` applies the override; `pipeline.py`, `audit_sources.py` and `generate_chapter_audio.py` use it, so a course can be built in another language or on another source hierarchy.
 - The technical course's material is in English; the Turkish version of the same program is `teknik-gelistirim-tr` in `courses.json` (same notebook, own `config` with `config.language: "Turkish"` and Turkish grounding rules). A course entry may point at the same NotebookLM notebook: each course keeps its own `state.json`, plan and notes. The notebook itself is read, never edited or emptied; official Oracle documents are added to it when a topic has no official coverage (three so far: MAA on Database@Azure, RMAN table-level point-in-time recovery, cross-platform tablespace transport).
-- A course's `pair` in `courses.json` names the same program in the other language; `build.py` exports it and the
-  site reads it as `#/course/<slug>/cift/<n>` (the same chapter in both languages, side by side). No course here
-  is paired: the two-language Oracle/IFS programme moved to `bilirkesi/acik-akademi`.
+- No course is paired: the two-language Oracle/IFS programme (and with it the bilingual reading route) moved to
+  `bilirkesi/acik-akademi`, so `courses.json` carries no `pair` and the site has no `#/course/<slug>/cift` view.
 - Source of truth for course content: `data/<slug>/` (see `data/AGENTS.md`).
 - The site is static, so nothing is asked of NotebookLM at request time: the question-and-answer corpus in
   `data/<slug>/chat.json` (built by `scripts/generate_chat.py` from the notebook's own sources) ships as

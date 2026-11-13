@@ -462,20 +462,6 @@
     return parts.join(" ");
   }
 
-  // Çift dilli okuma: courses.json'daki "pair" aynı programın iki dildeki sürümünü eşler.
-  // Karşı dildeki bölüm aynı numaradır; eş ders ya da o numaralı bölüm yoksa düğme hiç basılmaz.
-  function pairedCourse(c) {
-    const p = c && c.pair ? bySlug[c.pair] : null;
-    return p && (p.chapters || []).length ? p : null;
-  }
-  function pairedChapter(c, n) {
-    const p = pairedCourse(c);
-    return p && p.chapters[n - 1] ? p : null;
-  }
-  function pairLangName(c) {
-    return c && c.language === "en" ? "İngilizce" : c && c.language === "tr" ? "Türkçe" : (c && c.language) || "";
-  }
-
   function viewCourse(c) {
     const s = courseStatus(c.slug);
     const vids = courseVideos(c);
@@ -518,7 +504,6 @@
             <a class="btn ghost" href="#/course/${c.slug}/exams">Çıkmış / sınavlar</a>
             <a class="btn ghost" href="#/oyunlar?ders=${c.slug}">Bulmaca ve oyunlar</a>
             ${c.okunus ? `<a class="btn ghost" href="#/harfler">Harf atölyesi</a>` : ""}
-            ${pairedChapter(c, 1) ? `<a class="btn ghost" href="#/course/${c.slug}/cift/1">Çift dilli oku (${esc(pairLangName(pairedCourse(c)))})</a>` : ""}
             <a class="btn ghost" href="#/course/${c.slug}/sozluk">Sözlük destesi${glossDeck(c.slug).length ? ` (${glossDeck(c.slug).length})` : ""}</a>
           </div>
           ${credit}
@@ -663,7 +648,6 @@
       <p class="eyebrow">${esc(c.course)} · ${n}. Bölüm</p>
       <h1>${esc(ch.title)}</h1>
       <p class="lead muted" style="font:1.15rem/1.6 var(--serif)">${esc(ch.summary)}</p>
-      ${pairedChapter(c, n) ? `<div class="btn-row" data-noprint><a class="btn ghost" href="#/course/${c.slug}/cift/${n}">Çift dilli oku (${esc(pairLangName(pairedCourse(c)))})</a></div>` : ""}
       ${audioOf(c, n) ? `<div class="btn-row" data-noprint><button class="btn ghost" type="button" data-ap-jump>Sesli dersi dinle (${Math.max(1, Math.round(audioOf(c, n).dur / 60))} dk)</button></div>` : ""}
       ${ch.image ? `<figure class="figure">${imgTag(ch.image, ch.title + " infografiği", " data-zoom")}<figcaption><b>Şekil ${n}.</b> Yalnızca bu bölümün ${nounForm(c, "plAbl", 2)} ${c.notebook ? "NotebookLM ile üretildi" : "kullanıldı"}.</figcaption></figure>` : ""}
       ${aofFiguresHtml(ch, n, "figure")}
@@ -686,32 +670,6 @@
       </div>
       <div class="ch-read-row" data-noprint>${chapterReadHtml(c, n)}</div>
       ${gameStripHtml(c, n)}
-      <div class="pager">${prev}${next}</div>`;
-  }
-
-  // Çift dilli okuma: aynı bölümün iki dildeki metni yan yana. Sütunların `lang` değeri ayrı
-  // yazılır, böylece ekran okuyucu ve tireleme her metni kendi dilinde işler.
-  function viewParallel(c, n) {
-    const p = pairedChapter(c, n);
-    if (!p) return viewNotFound();
-    const col = (course, chapter) => `<section class="par-col" lang="${course.language || "tr"}">
-        <p class="eyebrow">${esc(course.subject)} · ${esc(pairLangName(course))}</p>
-        <h2>${esc(chapter.title)}</h2>
-        <p class="muted">${esc(chapter.summary)}</p>
-        <div class="notes">${chapter.notes ? md(chapter.notes) : `<p class="muted">Bu bölümün çalışma notları henüz hazır değil.</p>`}</div>
-      </section>`;
-    const pages = Math.min(c.chapters.length, p.chapters.length);
-    const prev = n > 1 ? `<a class="btn ghost" href="#/course/${c.slug}/cift/${n - 1}">Önceki bölüm</a>` : "";
-    const next = n < pages ? `<a class="btn" href="#/course/${c.slug}/cift/${n + 1}">Sonraki bölüm</a>` : "";
-    return `<p class="crumbs"><a href="#/">Katalog</a> / <a href="#/course/${c.slug}">${esc(c.subject)}</a> / <a href="#/course/${c.slug}/chapter/${n}">${n}. Bölüm</a> / Çift dilli</p>
-      <p class="eyebrow">${esc(c.course)} · ${n}. Bölüm</p>
-      <h1>Çift dilli okuma</h1>
-      <p class="lead muted">Aynı bölümün iki dildeki metni yan yana: solda <b>${esc(pairLangName(c))}</b>, sağda <b>${esc(pairLangName(p))}</b>. Önce bir paragraf oku, sonra karşılığıyla karşılaştır; takıldığın yeri diğer sütundan takip et.</p>
-      <div class="btn-row" data-noprint>
-        <a class="btn ghost" href="#/course/${p.slug}/cift/${n}">Sürümü değiştir (${esc(pairLangName(c))} sağda)</a>
-        <a class="btn ghost" href="#/course/${c.slug}/chapter/${n}">Tek dilli bölüm</a>
-      </div>
-      <div class="par-grid">${col(c, c.chapters[n - 1])}${col(p, p.chapters[n - 1])}</div>
       <div class="pager">${prev}${next}</div>`;
   }
 
@@ -8128,7 +8086,6 @@ document.getElementById("zin").focus();
     else if (parts[0] === "course" && bySlug[parts[1]]) {
       const c = bySlug[parts[1]];
       if (parts[2] === "chapter") { html = viewChapter(c, +parts[3]); bind = () => { bindReport(); bindMarks(query); bindListen(query); bindVideos(c); }; }
-      else if (parts[2] === "cift") html = viewParallel(c, +parts[3]);
       else if (parts[2] === "sozluk") { html = viewGloss(c); bind = () => bindGloss(c); }
       else if (parts[2] === "videolar") { html = viewVideos(c, query); bind = () => bindVideos(c); }
       else if (parts[2] === "quiz") {

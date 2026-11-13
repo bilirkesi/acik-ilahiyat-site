@@ -177,10 +177,6 @@ def course_data(proj, slug):
             "kind": "lectures" if mode == "lectures" else "sources",
             "notebook": m["notebook_url"], "sourceCount": m["source_count"],
             "language": lang, "chapters": chapters, "quiz": questions}
-    # Çift dilli okuma: courses.json → "pair" aynı programın diğer dildeki sürümünü gösterir.
-    pair = c.get("pair")
-    if pair and pair in proj.courses:
-        course["pair"] = pair
     book_units = book_unit_images(proj, slug, out_dir)
     if book_units:
         course["bookUnits"] = book_units

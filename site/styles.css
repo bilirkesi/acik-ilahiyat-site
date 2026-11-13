@@ -182,11 +182,6 @@ main { max-width: 1120px; margin: 0 auto; padding: clamp(24px, 5vw, 56px) clamp(
 .figure figcaption { font-size: .8rem; color: var(--muted); padding: .5rem .2rem 0; }
 .two-col { display: grid; grid-template-columns: 1.4fr 1fr; gap: 2.5rem; }
 @media (max-width: 860px) { .two-col { grid-template-columns: 1fr; } }
-/* Çift dilli okuma: aynı bölümün iki dildeki metni yan yana. */
-.par-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; align-items: start; }
-.par-col .notes { font-size: .98rem; }
-@media (max-width: 860px) { .par-grid { grid-template-columns: 1fr; gap: 1.6rem; } }
-@media print { .par-grid { display: block; } .par-col + .par-col { margin-top: 1.4rem; padding-top: 1rem; border-top: 1px solid var(--line-strong); } }
 /* Sözlük destesi: okurken seçilen kelimeler kutu kutu aralıklı tekrarla sorulur. */
 .gl-card { border: 1px solid var(--line-strong); background: var(--surface); padding: 1.4rem; margin: 1.2rem 0; max-width: 620px; }
 .gl-kicker { font: 600 .76rem/1 var(--sans); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin: 0; }

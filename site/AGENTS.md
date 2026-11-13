@@ -6,7 +6,7 @@
 
 ## Ownership
 - **Generated output.** Produced by `py -3 generator/scripts/build.py .` from `generator/site-template/` plus `data/` and root config. Do not hand-edit; change the template or the data and rebuild.
-- `app.js` — router, views, quiz/exam engine, concept decks (`#/kavram`), word games (`#/oyunlar`), past-exam frequency map (`#/sikcikan`), grade calculator and readiness estimate (`#/puan`), highlights and notes (`#/notlarim`), Osmanlıca letter workshop (`#/harfler`), parallel reading of a paired course in the other language (`#/course/<slug>/cift/<n>`), friend challenge (`#/meydan`), question and answer (`#/soru`), offline page. Built from `generator/site-template/app.js`.
+- `app.js` — router, views, quiz/exam engine, concept decks (`#/kavram`), word games (`#/oyunlar`), past-exam frequency map (`#/sikcikan`), grade calculator and readiness estimate (`#/puan`), highlights and notes (`#/notlarim`), Osmanlıca letter workshop (`#/harfler`), friend challenge (`#/meydan`), question and answer (`#/soru`), offline page. Built from `generator/site-template/app.js`.
 - `crest()` in `app.js` draws the brand emblem (an open book with light behind it) inline; it uses the same coordinates as `generator/site-template/crest.svg` and the PWA icons, all written by `scripts/render_brand_icons.py`. The emblem is course-agnostic on purpose: it belongs to the platform, not to a university.
 - `data.js` — generated: `window.UNIVERSITY`, `window.COURSES`, `window.CHAT_SUMMARY`, `window.OFFLINE`.
 - `index.html`, `styles.css`, `sw.js`, `manifest.webmanifest`, `favicon.svg`, `fonts/`, `icons/` — from the template with `{{V}}` cache-bust stamped in.
@@ -37,10 +37,6 @@
   reads `window.CHAT_SUMMARY` (written by the builder) so the catalog shows the question count without loading
   the megabyte-sized `chat.js`.
 - `#/ses` ("Okuma sesi") is the learner-facing help for that case: it lists the voices the device actually has, says which course languages can be read, gives the step-by-step "add an English voice" instructions for the detected platform (Windows, Android, iOS, macOS, ChromeOS, Linux) with the other platforms collapsed, and plays a short sample per language to check the result. The "Notları dinle" toast links straight to it.
-- Parallel reading: `courses.json` → `pair` (exported to `data.js`) links a course to the same program in another
-  language; the view prints chapter `n` of both under `.par-grid` (two columns, stacked under 860px, sequential in
-  print). Every other course hides the entry: `pairedChapter()` returns null when the pair is missing or the paired
-  course has fewer chapters.
 - Glossary deck (`#/course/<slug>/sozluk`): the learner saves a word while reading (highlight bar →
   "Kelime", or the form on the deck page) together with its meaning. `study.gloss[<slug>]` holds
   `{w, m, src, box, due, t, seen, lapses}`; review walks the Leitner boxes in `GLOSS_STEPS = [0, 1, 3, 7,

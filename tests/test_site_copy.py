@@ -134,24 +134,23 @@ class TestBothContentPaths(unittest.TestCase):
         self.assertIn('"Bu seçimde soru yok."', src)
         self.assertIn("go.disabled = !pool.length", src)
 
-    def test_the_parallel_reading_view_only_appears_for_a_paired_course(self) -> None:
-        """Çift dilli okuma yalnız `pair` taşıyan ve karşı bölümü olan derste görünür."""
-        src = template_source()
-        self.assertIn("function viewParallel(c, n) {", src)
-        self.assertIn("return p && p.chapters[n - 1] ? p : null;", src)
-        self.assertIn('else if (parts[2] === "cift") html = viewParallel(c, +parts[3]);', src)
-        self.assertIn("Çift dilli oku", src)
-
-    def test_no_course_is_paired_in_this_repository(self) -> None:
-        """Çift dilli okuma, teknik programın iki dilinde çalışır; o program acik-akademi deposunda."""
+    def test_the_bilingual_reading_path_is_gone(self) -> None:
+        """Hiçbir ders eşlenmiş değil; çift dilli okuma yolu şablonda, veride ve CSS'te yok."""
         import json
         from pathlib import Path
 
-        data = (Path(__file__).resolve().parents[1] / "site" / "data.js").read_text(encoding="utf-8")
+        root = Path(__file__).resolve().parents[1]
+        data = (root / "site" / "data.js").read_text(encoding="utf-8")
         start = data.index("window.COURSES = ") + len("window.COURSES = ")
         courses, _ = json.JSONDecoder().raw_decode(data[start:])
         for c in courses:
             self.assertNotIn("pair", c, c["slug"])
+        src = template_source()
+        for dead in ("viewParallel", "pairedCourse", "pairedChapter", "pairLangName",
+                     'parts[2] === "cift"', "Çift dilli", "par-grid"):
+            self.assertNotIn(dead, src, dead)
+        self.assertNotIn("par-grid", (root / "generator" / "site-template" / "styles.css").read_text(encoding="utf-8"))
+        self.assertNotIn('course["pair"]', (root / "generator" / "scripts" / "build.py").read_text(encoding="utf-8"))
 
     def test_the_glossary_deck_is_wired_to_the_course(self) -> None:
         """Kelime destesi dersten açılır ve seçim çubuğundan kelime alır."""
