@@ -6,7 +6,7 @@
 
 ## Ownership
 - `data/<slug>/study_plan.json` — chapters with `title`, `summary`, `objectives`, `lectures`, `source_ids`, optional `grounding` and `cites`. The site's chapter pages are built from this.
-- The Oracle/IFS training programme (`teknik-gelistirim`, `teknik-gelistirim-tr`) moved to the sibling repository `bilirkesi/acik-akademi`; this folder holds only the four İlahiyat courses.
+- The Oracle/IFS training programme (`teknik-gelistirim`, `teknik-gelistirim-tr`) is published from a separate repository (`bilirkesi/acik-akademi`); this folder holds only the four İlahiyat courses. The repositories are independent: no course data is shared.
 - A chapter's `source_ids` holds only sources that may ground it. The technical courses' `grounding.tiers[0].exclude_titles` names the sources that must not ground a chapter: third-party write-ups, personal screenshots, and IFS techdocs pages that NotebookLM indexed as a bot-protection page instead of the document. Those sources stay in the notebook but never reach a chapter, so they can never be cited. `generator/scripts/common.py`'s `excluded_from_grounding()` is the single rule.
 - `data/<slug>/quiz.json` — the final "game" quiz.
 - `data/<slug>/exams/{vize,final,yaz-kursu}.json` — practice exams; schema in `_exam_schema.md`.
@@ -26,7 +26,7 @@
 - The notes, summaries and objectives talk about the subject, not about a student: the reader is never addressed as "öğrenci" / "the student" (write "bu bölümde öğrenilenler", "This chapter covers ..."). Historical uses — "Ebû Hanife'nin öğrencileri", a student in a classroom example — stay as they are. `tests/test_brand.py` guards the rule.
 - Question `type` is one of `multiple_choice`, `multiple_select`, `fill_in_the_blank`, `short_answer`, `test`, `true_false` (or omitted). The canonical list is `generator/scripts/quiz_types.py` (`KNOWN`), shared by `scripts/check_quiz_answers.py` and `generator/scripts/qa.py`. The site auto-grades `multiple_choice`, `multiple_select` and `fill_in_the_blank` (`GRADED` in `app.js`); `short_answer` is graded by hand and `test`/`true_false` are legacy names kept for compatibility.
 - Option text is compared exactly for duplicate detection, so Ottoman Turkish diacritics (şedde/şerif) that distinguish meaning must be preserved — do not normalize them away.
-- Slugs are stable: `islam-mezhepleri-tarihi`, `turk-dili-1`, `ataturk-ilkeleri-1`, `osmanlica-1`. The Oracle/IFS slugs (`teknik-gelistirim`, `teknik-gelistirim-tr`) belong to the sibling repository.
+- Slugs are stable: `islam-mezhepleri-tarihi`, `turk-dili-1`, `ataturk-ilkeleri-1`, `osmanlica-1`. The Oracle/IFS slugs (`teknik-gelistirim`, `teknik-gelistirim-tr`) belong to the other repository.
 
 ## Work Guidance
 - Add or edit content here, then regenerate downstream artifacts (see `scripts/AGENTS.md` and `coursegraph/AGENTS.md`) rather than editing `site/` or `okf/` by hand.

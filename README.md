@@ -6,8 +6,8 @@ tarayıcıda çalışıyor.
 
 **Live site:** <https://bilirkesi.github.io/acik-ilahiyat-site/>
 
-> Oracle/IFS eğitim programı ve platform altyapısı kardeş depoda:
-> <https://github.com/bilirkesi/acik-akademi>.
+> Oracle/IFS eğitim programı ayrı bir projede yayımlanıyor:
+> <https://github.com/bilirkesi/acik-akademi>. İki proje bağımsızdır.
 
 ---
 
@@ -22,8 +22,8 @@ tarayıcıda çalışıyor.
 
 30 AÖF chapters, 435 AÖF questions and the past midterm (çıkmış vize) of the last five academic years.
 
-The Oracle and IFS Cloud DBA training programme (published in English and in Turkish) moved to the
-sibling repository `bilirkesi/acik-akademi`, which also holds the platform infrastructure.
+The Oracle and IFS Cloud DBA training programme (published in English and in Turkish) is published
+from a separate project, `bilirkesi/acik-akademi`. The two are independent.
 
 On the site a student can:
 
