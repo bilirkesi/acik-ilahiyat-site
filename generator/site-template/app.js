@@ -1886,16 +1886,14 @@
   }
   // Yedek hatırlatması: ilerleme yalnızca bu tarayıcıda; uzun süre yedek alınmadıysa masada bir kez sorulur.
   function backupReminderHtml() {
-    const cards = Object.keys(study.cards).length;
-    const words = Object.values(study.gloss || {}).reduce((n, l) => n + (l ? l.length : 0), 0);
-    if (cards + words < 20) return "";
-    const last = study.backupAt || 0;
-    if (study.backupSnooze && Date.now() - study.backupSnooze < 7 * DAY_MS) return "";
-    const days = last ? Math.floor((Date.now() - last) / DAY_MS) : null;
-    if (last && days < 30) return "";
+    const total = Object.keys(study.cards).length
+      + Object.values(study.gloss || {}).reduce((n, l) => n + (l ? l.length : 0), 0);
+    if (total < 20 || (study.backupSnooze && Date.now() - study.backupSnooze < 7 * DAY_MS)) return "";
+    const days = study.backupAt ? Math.floor((Date.now() - study.backupAt) / DAY_MS) : null;
+    if (days !== null && days < 30) return "";
     return `<section class="desk-card desk-backup">
       <h3>Yedeğini al</h3>
-      <p class="muted">${last ? `Son yedeğin ${days} gün önce.` : "Hiç yedek almadın."} ${cards + words} kayıt (soru kartı, kelime, seri, vurgu) yalnızca bu tarayıcıda duruyor; tarayıcı verisi silinirse gider.</p>
+      <p class="muted">${days === null ? "Hiç yedek almadın." : `Son yedeğin ${days} gün önce.`} ${total} kayıt (soru kartı ve kelime) yalnızca bu tarayıcıda duruyor; tarayıcı verisi silinirse gider.</p>
       <div class="btn-row"><a class="btn" href="#/cevrimdisi?b=yedek">Yedek al</a><button class="btn ghost" type="button" id="backup-later">Bir hafta sonra</button></div>
     </section>`;
   }
@@ -4244,7 +4242,7 @@
     if (act === "word") {
       const ctx = hlCtx();
       const term = hlCur ? hlCur.q : (hlSel && hlSel.q) || "";
-      const sentence = glossSentence(term);
+      const sentence = ctx && term ? glossSentence(term) : "";
       hlHide();
       if (ctx && term) glossDialog(term, ctx.slug, ctx.n, sentence);
       return;
@@ -4394,15 +4392,10 @@
     while (node && node.nodeType !== 1) node = node.parentNode;
     const block = node && node.closest && node.closest("p, li, blockquote, td, dd, .notes");
     const text = block ? block.textContent.replace(/\s+/g, " ") : "";
-    const t = String(term || "").trim();
+    const t = String(term || "").trim().toLowerCase();
     if (!text || !t) return "";
-    const at = text.toLowerCase().indexOf(t.toLowerCase());
-    if (at < 0) return "";
-    const before = text.slice(0, at), after = text.slice(at + t.length);
-    const start = Math.max(before.lastIndexOf(". "), before.lastIndexOf("? "), before.lastIndexOf("! "));
-    const ends = [". ", "? ", "! "].map((m) => after.indexOf(m)).filter((x) => x >= 0);
-    const end = ends.length ? Math.min(...ends) : after.length;
-    return (before.slice(start + 1) + t + after.slice(0, end)).trim().slice(0, 240);
+    const hit = (text.match(/[^.!?]+[.!?]*/g) || []).find((s) => s.toLowerCase().includes(t));
+    return (hit || "").trim().slice(0, 240);
   }
 
   // Okurken seçilen kelime: çubuktan açılır, kelime hazır gelir, anlamı öğrenci yazar.
@@ -4439,9 +4432,8 @@
   // Sınav plânı kapsamındaki bölümün kelimeleri önce sorulur: sınav yaklaşırken deste o derse döner.
   function glossInPlan(slug, ch) {
     const plan = activePlan();
-    if (!plan || !plan.units[slug]) return false;
-    const units = plan.units[slug];
-    return ch ? units.includes(ch) : units.length > 0;
+    const units = plan && plan.units[slug];
+    return !!units && !!ch && units.includes(ch);
   }
 
   function viewGloss(c) {
@@ -4459,11 +4451,12 @@
         <div class="btn-row"><a class="btn ghost" href="#/course/${c.slug}/chapter/1">İlk bölüme git</a></div></div>`;
     }
     const now = Date.now();
-    const cur = due.slice().sort((a, b) => (glossInPlan(c.slug, b.ch) ? 1 : 0) - (glossInPlan(c.slug, a.ch) ? 1 : 0)
+    const planned = due.filter((x) => glossInPlan(c.slug, x.ch));
+    const cur = due.slice().sort((a, b) => (planned.includes(b) ? 1 : 0) - (planned.includes(a) ? 1 : 0)
       || (a.due || 0) - (b.due || 0) || (a.t || 0) - (b.t || 0))[0];
     const boxes = GLOSS_STEPS.map((_, i) => deck.filter((x) => (x.box || 0) === i).length);
     const card = cur ? `<section class="gl-card" data-gl-w="${esc(cur.w)}">
-        <p class="gl-kicker">${due.length} kelime sırada${due.filter((x) => glossInPlan(c.slug, x.ch)).length ? ` · ${due.filter((x) => glossInPlan(c.slug, x.ch)).length} tanesi sınav kapsamında` : ""}</p>
+        <p class="gl-kicker">${due.length} kelime sırada${planned.length ? ` · ${planned.length} tanesi sınav kapsamında` : ""}</p>
         <p class="gl-front" lang="${c.language || "tr"}">${esc(cur.w)}</p>
         ${cur.src ? `<p class="muted small">${cur.src}. bölümden</p>` : ""}
         ${cur.ctx ? `<blockquote class="gl-ctx">${esc(cur.ctx)}</blockquote>` : ""}
@@ -5955,7 +5948,7 @@ document.getElementById("zin").focus();
 
   // Paket anahtarı "<ders>" görseller, "<ders>-ses" sesli dersler içindir.
   const isAudioPack = (key) => key.endsWith("-ses") && !!PACKS[key];
-  const packNoun = (key) => (key === "soru" ? "soru korpusu" : isAudioPack(key) ? "sesli ders" : "görsel");
+  const packNoun = (key) => (key === "soru" ? "dosya" : isAudioPack(key) ? "sesli ders" : "görsel");
   const packSubject = (key) => {
     if (key === "soru") return "Soru & Cevap";
     const c = bySlug[isAudioPack(key) ? key.slice(0, -4) : key];
@@ -5967,17 +5960,6 @@ document.getElementById("zin").focus();
     if (!pack) return "";
     return `<div class="pack" data-pack="${esc(key)}">
         <div class="pack-text"><b>${esc(c.subject)}${isAudioPack(key) ? " · sesli dersler" : ""}</b><span class="muted" data-pack-info>${pack.files.length} ${packNoun(key)} · ${mb(pack.bytes)}</span></div>
-        <div class="pack-bar" hidden><i></i></div>
-        <div class="pack-actions" data-pack-actions></div>
-      </div>`;
-  }
-
-  // Soru-cevap korpusu: tek dosya, dersden bağımsız; soru sayfası ilk açılışta yükler.
-  function chatPackRowHtml() {
-    const pack = PACKS.soru;
-    if (!pack || !canCache) return "";
-    return `<div class="pack" data-pack="soru">
-        <div class="pack-text"><b>Soru &amp; Cevap</b><span class="muted" data-pack-info>${pack.files.length} ${packNoun("soru")} · ${mb(pack.bytes)}</span></div>
         <div class="pack-bar" hidden><i></i></div>
         <div class="pack-actions" data-pack-actions></div>
       </div>`;
@@ -6043,7 +6025,10 @@ document.getElementById("zin").focus();
     try {
       await downloadPack(slug, (done, total) => { activeDownloads[slug] = { done, total }; paintPacks(); });
       delete activeDownloads[slug];
-      showToast(isAudioPack(slug) ? `${packSubject(slug)} sesli dersleri indirildi. Artık internetsiz dinlenebilir.` : `${packSubject(slug)} indirildi. Görseller artık internetsiz de açılır.`);
+      const done = isAudioPack(slug) ? "sesli dersleri indirildi. Artık internetsiz dinlenebilir."
+        : slug === "soru" ? "korpusu indirildi. Artık internetsiz de soru sorabilirsin."
+        : "indirildi. Görseller artık internetsiz de açılır.";
+      showToast(`${packSubject(slug)} ${done}`);
     } catch (err) {
       delete activeDownloads[slug];
       const full = err && (err.name === "QuotaExceededError" || /quota/i.test(String(err.message)));
@@ -6198,7 +6183,7 @@ document.getElementById("zin").focus();
       ${canCache ? `<div class="packs">${rows}</div><p class="muted small" id="storage-info"></p>` : ""}
       <h2>Soru &amp; Cevap korpusu</h2>
       <p class="muted small">Soru sayfası cevapları bu dosyadan okur; ilk açılışta kabuğun parçası değildir. İndirirseniz internetsiz de soru sorabilirsiniz.</p>
-      ${canCache ? `<div class="packs">${chatPackRowHtml()}</div>` : ""}
+      ${canCache ? `<div class="packs">${packRowHtml({ subject: "Soru & Cevap" }, "soru")}</div>` : ""}
       <h2>Uygulama olarak kurun</h2>
       <div id="install-box">${installHtml()}</div>
       <h2 id="yedek">İlerleme yedeği</h2>

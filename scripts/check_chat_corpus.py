@@ -34,7 +34,7 @@ SENTENCE_END = re.compile(r"[.!?…](?=\s|$)")
 
 def sentences(text: str) -> int:
     """Kaba cumle sayimi: sonu noktalama ile biten parcalar (kisaltmalar sayilmaz)."""
-    body = re.sub(r"\b(?:[\w.]*\d)\.\s", " ", str(text or ""))
+    body = re.sub(r"\b\d+\.\s", " ", str(text or ""))
     return len(SENTENCE_END.findall(body.strip()))
 
 
@@ -90,9 +90,10 @@ def check_corpus(corpus: dict, chapters: int | None = None) -> dict:
         sources = it.get("sources") or []
         if not sources:
             errors.append(f"{tag}: kaynak yok")
-        bad = [n for n in cite_numbers(a) if n < 1 or n > max(1, len(sources))]
-        if bad:
-            errors.append(f"{tag}: atif {bad} kaynak listesinde yok ({len(sources)} kaynak)")
+        if sources:
+            bad = [n for n in cite_numbers(a) if not 1 <= n <= len(sources)]
+            if bad:
+                errors.append(f"{tag}: atif {bad} kaynak listesinde yok ({len(sources)} kaynak)")
         if a and PLACEHOLDER.search(a):
             errors.append(f"{tag}: cevap yer tutucu iceriyor")
         n_sent = sentences(a)

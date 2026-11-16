@@ -63,3 +63,15 @@ class TestClean(unittest.TestCase):
     def test_real_latex_survives(self) -> None:
         self.assertEqual(build_mod.clean("the formula \\\\(x^2\\\\) here"),
                          "the formula \\(x^2\\) here")
+
+
+class TestTheCorpusIsNotInTheShell(unittest.TestCase):
+    """Soru-cevap korpusu kabukta degil: tek dosyalik kendi cevrimdisi paketinde."""
+
+    def test_chat_js_is_not_a_shell_file(self) -> None:
+        self.assertNotIn("chat.js", build_mod.SHELL_FILES)
+
+    def test_the_built_page_offers_it_as_its_own_pack(self) -> None:
+        data = (ROOT / "site" / "data.js").read_text(encoding="utf-8")
+        self.assertRegex(data, r'"soru": \{"bytes": \d+, "files": \[\["chat\.js"')
+

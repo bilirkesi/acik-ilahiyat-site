@@ -333,8 +333,8 @@ def offline_packs(site, data, images):
     # Soru-cevap korpusu kabukta değil: soru soran öğrenci tek dosyalık paketi kendisi indirir.
     chat = site / "chat.js"
     if chat.exists():
-        packs["soru"] = {"bytes": chat.stat().st_size,
-                        "files": [["chat.js", rev(chat), chat.stat().st_size]]}
+        size = chat.stat().st_size
+        packs["soru"] = {"bytes": size, "files": [["chat.js", rev(chat), size]]}
     return {"packs": packs, "images": images}
 
 
