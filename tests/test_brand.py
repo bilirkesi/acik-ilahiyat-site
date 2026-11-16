@@ -47,8 +47,8 @@ class TestBrandName(unittest.TestCase):
         """Yerel ilerleme anahtari adla degismemeli; ogrencilerin ilerlemesi korunur."""
         self.assertEqual(self.uni["storageKey"], "a-k-i-lahiyat-niversitesi")
 
-    def test_the_platform_name_stays_in_the_sibling_repository(self) -> None:
-        """"Acik Akademi" adi bu depoda kullanilmaz; o, kardes deposunun markasi."""
+    def test_the_other_projects_brand_is_not_used_here(self) -> None:
+        """"Acik Akademi" adi ayri bir projeye ait; bu depo "Acik Ilahiyat" markasini tasir."""
         for rel in ("university.json", "universities.json",
                     "generator/site-template/app.js", "generator/site-template/index.html",
                     "scripts/export_okf.py", "coursegraph/server.py"):
