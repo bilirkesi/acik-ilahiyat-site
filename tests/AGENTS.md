@@ -20,7 +20,9 @@
   a course with no questions hides `Final (oyun)`, the `Sınav` row and `Sınavı çöz`, and its quiz
   route renders `viewNoQuiz()`, the exam hub's final card has no link, and the mixed test page
   refuses an empty pool, the bilingual reading path is gone (no `pair` in the data, no view, route or CSS in
-  the template), plus the glossary deck's route, pick action, Leitner schedule and its share of the streak.
+  the template), plus the glossary deck's route, pick action, Leitner schedule and its share of the streak. A second
+  node-run check drives the word queue: with an exam plan the in-scope word comes first, without a plan the
+  oldest review wins, and a word with no recorded chapter never counts as in scope.
 - `test_build.py` — `generator/scripts/build.py`'s `clean()`: numbered and by-title citation markers are dropped, markdown links and the reference list survive, and an escaped product identifier (`V\\(CLUSTER_INTERCONNECTS`) is restored to `V$CLUSTER_INTERCONNECTS` while real LaTeX is kept. It also pins the offline split: `chat.js` is not in `SHELL_FILES`, and the built `data.js`
   offers it as its own `soru` pack.
 - `test_chat.py` — the question-and-answer corpus: the generator reads the model's JSON (including the invalid escapes it writes), the prompt asks for source citations, the export drops incomplete items, the OKF page groups the corpus by chapter, and the retrieval rule rejects a hit below a third of the best possible score or below 40% question-term coverage. The stop words and both thresholds are read from `app.js`, so the test cannot drift from the site.
@@ -46,7 +48,7 @@
 - Keep the suite stdlib-only (`unittest`); do not add pytest.
 
 ## Verification
-- `py -3 -m unittest discover -s tests` — 189 tests, must exit 0. Run after any change to `data/`, `coursegraph/`, or the export scripts.
+- `py -3 -m unittest discover -s tests` — 190 tests, must exit 0. Run after any change to `data/`, `coursegraph/`, or the export scripts.
 - CI runs the same command on every push to `main` and on every pull request (`.github/workflows/tests.yml`).
 
 ## Child DOX Index

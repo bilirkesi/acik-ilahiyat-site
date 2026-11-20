@@ -193,6 +193,49 @@ class TestBothContentPaths(unittest.TestCase):
         self.assertIn('document.querySelectorAll("[data-gloss-list]").forEach', src)
         self.assertIn("Sözlükte henüz kelime yok.", src)
 
+    def gloss_block(self) -> str:
+        """`glossInPlan` + `glossNext`: sıranın seçildiği blok, `activePlan` stub'lanarak koşulur."""
+        src = template_source()
+        start = src.index("function glossInPlan(slug, ch) {")
+        return src[start:src.index("function viewGloss(c) {", start)]
+
+    @unittest.skipUnless(shutil.which("node"), "node yok: sözlük sırası koşulamıyor")
+    def test_the_plan_lifts_in_scope_words_and_skips_words_without_a_chapter(self) -> None:
+        """Plân kapsamındaki kelime öne alınır; bölümü kaydedilmemiş kelime kapsam dışıdır."""
+        script = """let PLAN = { units: { c: [1] } };
+function activePlan() { return PLAN; }
+""" + self.gloss_block() + """
+const due = [
+  { w: "bes", ch: 5, due: 1, t: 1 },
+  { w: "bolumsuz", due: 0, t: 0 },
+  { w: "kapsam", ch: 1, due: 9, t: 9 },
+  { w: "disi", ch: 2, due: 5, t: 5 },
+];
+const lifted = glossNext(due, "c");
+PLAN = null;
+const plain = glossNext(due, "c");
+console.log(JSON.stringify({
+  cur: lifted.cur.w,
+  planned: lifted.planned.map((x) => x.w),
+  withoutPlan: plain.cur.w,
+  noChapter: glossInPlan("c", undefined),
+  otherChapter: glossInPlan("c", 2),
+  noPlan: glossInPlan("c", 1),
+}));
+"""
+        run = subprocess.run(["node", "-e", script], capture_output=True, text=True, timeout=60)
+        self.assertEqual(run.returncode, 0, run.stderr)
+        self.assertEqual(json.loads(run.stdout), {
+            # Plan varken kapsam kelimesi, tekrar zamanı daha yeni olmasına rağmen öne geçer.
+            "cur": "kapsam",
+            "planned": ["kapsam"],
+            # Plan yokken eski davranış: en eski tekrar, bölümü olmayan kelime de sıradadır.
+            "withoutPlan": "bolumsuz",
+            "noChapter": False,
+            "otherChapter": False,
+            "noPlan": False,
+        })
+
     def test_the_published_copy_is_the_built_template(self) -> None:
         """site/ elle düzenlenmez: yayınlanan kopya şablonun aynısı olmalı."""
         if not BUILT.exists():

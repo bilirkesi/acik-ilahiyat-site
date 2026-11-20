@@ -4436,6 +4436,14 @@
     return !!units && !!ch && units.includes(ch);
   }
 
+  // Sıradaki kelime: sınav kapsamındakiler önce, sonra en eski tekrar; kapsam listesi de döner (sayaç için).
+  function glossNext(due, slug) {
+    const planned = due.filter((x) => glossInPlan(slug, x.ch));
+    const cur = due.slice().sort((a, b) => (planned.includes(b) ? 1 : 0) - (planned.includes(a) ? 1 : 0)
+      || (a.due || 0) - (b.due || 0) || (a.t || 0) - (b.t || 0))[0];
+    return { planned, cur };
+  }
+
   function viewGloss(c) {
     const deck = glossDeck(c.slug);
     const due = glossDue(c.slug);
@@ -4451,9 +4459,7 @@
         <div class="btn-row"><a class="btn ghost" href="#/course/${c.slug}/chapter/1">İlk bölüme git</a></div></div>`;
     }
     const now = Date.now();
-    const planned = due.filter((x) => glossInPlan(c.slug, x.ch));
-    const cur = due.slice().sort((a, b) => (planned.includes(b) ? 1 : 0) - (planned.includes(a) ? 1 : 0)
-      || (a.due || 0) - (b.due || 0) || (a.t || 0) - (b.t || 0))[0];
+    const { planned, cur } = glossNext(due, c.slug);
     const boxes = GLOSS_STEPS.map((_, i) => deck.filter((x) => (x.box || 0) === i).length);
     const card = cur ? `<section class="gl-card" data-gl-w="${esc(cur.w)}">
         <p class="gl-kicker">${due.length} kelime sırada${planned.length ? ` · ${planned.length} tanesi sınav kapsamında` : ""}</p>

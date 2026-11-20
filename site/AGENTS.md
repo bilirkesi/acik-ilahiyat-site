@@ -50,7 +50,7 @@
   navigation, an outside click and Escape, and the question badge stays inside its `<summary>`.
   A word saved from the highlight bar keeps its sentence (`ctx`, shown as `.gl-ctx` on the review card) and its
   chapter (`ch`, linked back to the chapter); an active exam plan lifts words from in-scope chapters first and
-  the kicker counts them (`glossInPlan`; a word saved before the chapter was recorded has no `ch`, so it stays out of the
+  the kicker counts them (`glossInPlan`/`glossNext`; a word saved before the chapter was recorded has no `ch`, so it stays out of the
   lift).
 - `sw.js` caches the app shell on first visit; new versions wait for the student to tap "Yenile" on the update toast. Course images are downloaded per course from the offline page.
 - Backup reminder: `backupJson()` stamps `study.backupAt`; once 20+ cards and words exist and the last backup is a month old (or none was ever taken), `backupReminderHtml()` shows a card on the study desk, and `#backup-later` snoozes it for a week through `study.backupSnooze`.
