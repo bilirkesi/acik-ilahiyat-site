@@ -104,5 +104,6 @@ Rules for the bundle itself live in `okf/AGENTS.md`.
 - [generator/](generator/AGENTS.md) — the `personal-university` skill that rebuilds `site/` from a template plus course data.
 - [site/](site/AGENTS.md) — generated static SPA output; understand which files are regenerated before touching them.
 - [extensions/notebook-nest/](extensions/notebook-nest/AGENTS.md) — modified Notebook-Nest Chrome extension (GPL-3.0) that editors download from `#/eklenti` to folder NotebookLM sources.
+- [extensions/notebooklm-study-app/](extensions/notebooklm-study-app/AGENTS.md) — Manifest V3 exporter that turns the open NotebookLM notebook into the same single-file study app `scripts/build_study_app.py` writes, entirely in the browser.
 - [okf/](okf/AGENTS.md) — Open Knowledge Format v0.2 Markdown bundle exported from course data.
 - [tests/](tests/AGENTS.md) — stdlib `unittest` suite over the graph, quiz data, and export scripts.

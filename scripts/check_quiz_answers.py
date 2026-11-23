@@ -3,7 +3,7 @@
 """Quiz veri bütünlüğü denetimi.
 
 Kontroller:
-- her soruda tam olarak 1 doğru şık var mı
+- her soruda tam olarak 1 doğru şık var mı (multiple_select'te en az 1; boşluk doldurmada bestAnswer)
 - şık sayısı, boş metin, rationale varlığı
 - ayni soru metni quiz içinde tekrar ediyor mu
 - data dosyaları ile site/unit_quizzes.js tutarlı mı
@@ -53,12 +53,29 @@ def check_questions(questions: list, where: str, problems: list) -> Counter:
                 if k in seen:
                     dupes[f"{label} ~ soru {seen[k]}"] += 1
                 seen[k] = i
+        qtype = q.get("type")
+        if qtype not in KNOWN:
+            problems.append(f"{label}: bilinmeyen type={qtype!r}")
+        # Boşluk doldurma ve kısa cevap şık taşımaz: cevabı `bestAnswer` / `grading` taşır.
+        if qtype == "fill_in_the_blank":
+            if not str(q.get("bestAnswer") or "").strip():
+                problems.append(f"{label}: bestAnswer boş")
+            continue
+        if qtype == "short_answer":
+            grading = q.get("grading") or {}
+            if not str(grading.get("modelAnswer") or q.get("bestAnswer") or "").strip():
+                problems.append(f"{label}: örnek cevap yok")
+            continue
         opts = q.get("answerOptions") or q.get("options") or []
         if not opts:
             problems.append(f"{label}: şık yok")
             continue
         correct = [o for o in opts if o.get("isCorrect")]
-        if len(correct) != 1:
+        # Çoktan seçmeli soruda doğru şıklar birden fazla olabilir; site kümenin tamamını ister.
+        if qtype == "multiple_select":
+            if not correct:
+                problems.append(f"{label}: doğru şık yok")
+        elif len(correct) != 1:
             problems.append(f"{label}: {len(correct)} doğru şık (1 olmalı)")
         texts = [fold(str(o.get("text", ""))) for o in opts]  # birebir metin eşitliği
         for t, c in Counter(texts).items():
@@ -67,8 +84,6 @@ def check_questions(questions: list, where: str, problems: list) -> Counter:
         for o in opts:
             if not str(o.get("text", "")).strip():
                 problems.append(f"{label}: boş şık metni")
-        if q.get("type") not in KNOWN:
-            problems.append(f"{label}: bilinmeyen type={q.get('type')!r}")
     return dupes
 
 

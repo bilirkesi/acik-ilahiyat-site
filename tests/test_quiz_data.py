@@ -72,9 +72,14 @@ class TestCheckQuestions(unittest.TestCase):
 
     def test_site_types_are_accepted(self) -> None:
         """Sitenin tanıdığı tipler 'bilinmeyen tip' sayılmamalı (liste quiz_types.py'den gelir)."""
+        # Boşluk doldurma ve kısa cevap şık taşımaz; tipin kendi cevap alanını taşır.
+        payload = {"fill_in_the_blank": {"bestAnswer": "A"},
+                   "short_answer": {"grading": {"modelAnswer": "A"}}}
         for qtype in ("multiple_choice", "multiple_select", "fill_in_the_blank",
                       "short_answer", "test", "true_false"):
-            problems, _ = self._run([_q("Soru?", [("A", True)], qtype=qtype)])
+            q = _q("Soru?", [("A", True)], qtype=qtype)
+            q.update(payload.get(qtype, {}))
+            problems, _ = self._run([q])
             self.assertEqual(problems, [], f"{qtype}: {problems}")
 
     def test_duplicate_stems_counted_not_problemed(self) -> None:

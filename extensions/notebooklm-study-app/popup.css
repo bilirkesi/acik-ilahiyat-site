@@ -1,0 +1,136 @@
+:root {
+  --primary: #1b2a4a;
+  --accent: #b08d4a;
+  --paper: #f8f4ea;
+  --ink: #16181d;
+  --muted: #5d6470;
+  --line: rgba(20, 24, 34, .16);
+  --card: #fff;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #12151a;
+    --ink: #e8e5de;
+    --muted: #a3a9b4;
+    --line: rgba(255, 255, 255, .18);
+    --card: #1a1f27;
+  }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  width: 380px;
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font: 14px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+header {
+  background: var(--primary);
+  color: #fff;
+  padding: 12px 16px;
+}
+
+header h1 {
+  margin: 0 0 2px;
+  font-size: 15px;
+  font-weight: 650;
+  letter-spacing: .02em;
+}
+
+header .muted {
+  color: rgba(255, 255, 255, .72);
+  margin: 0;
+  font-size: 12px;
+  overflow-wrap: anywhere;
+}
+
+main { padding: 14px 16px 16px; }
+
+label {
+  display: block;
+  margin: 12px 0 5px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+label:first-of-type { margin-top: 0; }
+
+.hint {
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--muted);
+}
+
+.hint code {
+  background: var(--line);
+  border-radius: 4px;
+  padding: 0 3px;
+}
+
+input[type="text"], textarea {
+  width: 100%;
+  padding: 9px 11px;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  background: var(--card);
+  color: var(--ink);
+  font: inherit;
+}
+
+textarea { resize: vertical; }
+
+input[type="file"] {
+  width: 100%;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.row {
+  display: flex;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+button {
+  flex: 1;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  background: var(--card);
+  color: var(--ink);
+  font: inherit;
+  font-weight: 600;
+  padding: 10px 12px;
+  cursor: pointer;
+}
+
+button.primary {
+  border-color: transparent;
+  background: var(--accent);
+  color: #221a06;
+}
+
+button:disabled {
+  opacity: .55;
+  cursor: default;
+}
+
+.status {
+  margin: 12px 0 0;
+  min-height: 18px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.status.good { color: #1f7a4d; }
+.status.bad { color: #b3382f; }
+
+.small { font-size: 11px; margin: 8px 0 0; }
+.muted { color: var(--muted); }

@@ -223,6 +223,49 @@ class TestFixJsonEscapes(unittest.TestCase):
         self.assertEqual(data["b"], "satir\niki")
 
 
+class TestNormalizeQuizQuestions(unittest.TestCase):
+    """NotebookLM'in dort soru tipi kendi cevabiyla korunur (canli EDBO defteri bunu gosterdi).
+
+    Bosluk doldurma ve kisa cevap sik tasimaz; `normalize_quiz_questions` onlari `bestAnswer` /
+    `grading` olmadan yazinca site ve calisma uygulamasi sorulari gosteremiyordu.
+    """
+
+    RAW = [
+        {"type": "multiple_choice", "question": "A?",
+         "answerOptions": [{"text": "a", "isCorrect": True}, {"text": "b", "isCorrect": False}]},
+        {"type": "multiple_select", "question": "B?",
+         "answerOptions": [{"text": "a", "isCorrect": True}, {"text": "b", "isCorrect": True}]},
+        {"type": "fill_in_the_blank", "question": "C? ___", "bestAnswer": "v$backup_set",
+         "acceptableAnswers": ["v$backup_set", "V$BACKUP_SET"], "rationale": "Cunku."},
+        {"type": "short_answer", "question": "D?", "grading": {"modelAnswer": "Ornek cevap."}},
+        {"type": "test", "question": "E?",
+         "answerOptions": [{"text": "a", "isCorrect": True}]},
+        {"question": "F?", "answerOptions": [{"text": "a", "isCorrect": True}]},
+    ]
+
+    def setUp(self) -> None:
+        self.qs = common.normalize_quiz_questions(self.RAW)
+
+    def test_the_type_is_kept(self) -> None:
+        self.assertEqual([q["type"] for q in self.qs],
+                         ["multiple_choice", "multiple_select", "fill_in_the_blank",
+                          "short_answer", "test", "multiple_choice"])
+
+    def test_a_select_question_keeps_every_correct_option(self) -> None:
+        self.assertEqual(sum(1 for o in self.qs[1]["answerOptions"] if o["isCorrect"]), 2)
+
+    def test_the_blank_keeps_its_answers(self) -> None:
+        self.assertEqual(self.qs[2]["bestAnswer"], "v$backup_set")
+        self.assertEqual(self.qs[2]["acceptableAnswers"], ["v$backup_set", "V$BACKUP_SET"])
+
+    def test_the_short_answer_keeps_its_grading(self) -> None:
+        self.assertEqual(self.qs[3]["grading"]["modelAnswer"], "Ornek cevap.")
+
+    def test_a_blank_without_an_answer_gets_no_best_answer(self) -> None:
+        q = common.normalize_quiz_questions([{"type": "fill_in_the_blank", "question": "x"}])[0]
+        self.assertNotIn("bestAnswer", q)
+
+
 class TestTechnicalCourseUnits(unittest.TestCase):
     """coursegraph'teki unite basliklari dersin bolum basliklariyla ayni olmali."""
 

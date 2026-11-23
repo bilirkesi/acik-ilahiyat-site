@@ -9,6 +9,7 @@ Stages, in order:
   sources       lectures mode: add videos/urls and wait. own mode: read the source list, change nothing
   plan          3 to 5 chapters via ask (JSON, no citations)
   ground        one cited ask per chapter, limited with -s to that chapter's sources
+  flashcards    one ask per chapter (its own sources) for the study app's term/definition cards
   quiz          one NotebookLM quiz per course (uses AI usage)
   infographics  one infographic per chapter (uses AI usage)
   manifest      marks the course as ready for the site
@@ -311,6 +312,56 @@ class Runner:
                 time.sleep(self.args.backoff)
         return None
 
+    def flashcards(self):
+        """One ask per chapter, limited to that chapter's sources: the cards the study app shows.
+
+        Cards are a chat ask, not a Studio generation, so the stage costs no artifact credit. The
+        result is `data/<slug>/flashcards.json`; a chapter that already has cards is skipped unless
+        `--force`, and a card whose front already exists in the course is dropped.
+        """
+        _, plan = self._plan()
+        out_path = self.p.data(self.slug) / "flashcards.json"
+        doc = json.loads(out_path.read_text(encoding="utf-8-sig")) if out_path.exists() else {}
+        cards = [c for c in doc.get("cards") or [] if isinstance(c, dict) and c.get("front")]
+        only = {int(x) for x in self.args.chapters.split(",")} if self.args.chapters else None
+        for i, ch in enumerate(plan["chapters"], 1):
+            if only and i not in only:
+                continue
+            have = any(c.get("chapter") == i for c in cards)
+            if have and not self.args.force:
+                continue
+            if have:  # --force: this chapter is re-asked, its old cards go
+                cards = [c for c in cards if c.get("chapter") != i]
+            q = (f"Write {CARDS_PER_CHAPTER} study flashcards for a mobile study app, using only these {self.noun}s. "
+                 "Each card holds one term, date, person or concept on the front and a self-contained answer of one "
+                 "or two sentences on the back. Pick the chapter's key terms, not trivia, and keep every card "
+                 f"understandable on its own. Return ONLY a JSON object, no prose, no markdown fences, in this shape: "
+                 '{"cards": [{"front": "...", "back": "..."}]} '
+                 f"Chapter: '{ch['title']}'. Write every word in {self.lang}. No em dashes. {self.rules}")
+            args = ["ask", q, "-n", self.nb]
+            for sid in self.chapter_sources(ch):
+                args += ["-s", sid]
+            code, data, out, err = run_cli_json(self.cli, args, timeout=600)
+            if code != 0 or not data:
+                self.log(f"flashcards ch{i} failed: {(err or out)[-200:]}")
+                continue
+            got = parse_cards(data.get("answer", ""))
+            if not got:
+                self.log(f"flashcards ch{i}: no parsable cards")
+                continue
+            seen = {str(c.get("front", "")).casefold() for c in cards}
+            added = 0
+            for card in got:
+                key = card["front"].casefold()
+                if key in seen:
+                    continue
+                seen.add(key)
+                cards.append({"chapter": i, "chapterTitle": _plain(ch["title"]), **card})
+                added += 1
+            self.log(f"flashcards ch{i}: {added} cards")
+            out_path.write_text(json.dumps({"slug": self.slug, "language": self.lang, "cards": cards},
+                                           indent=2, ensure_ascii=False), encoding="utf-8")
+
     def quiz(self):
         out_path = self.p.data(self.slug) / "quiz.json"
         if out_path.exists():
@@ -409,7 +460,10 @@ class Runner:
                  + (f". GAPS: {', '.join(gaps)}" if gaps else ". Complete."))
 
 
-STAGES = ["create", "sources", "plan", "ground", "quiz", "infographics", "manifest"]
+STAGES = ["create", "sources", "plan", "ground", "flashcards", "quiz", "infographics", "manifest"]
+
+# How many cards the flashcards stage asks for per chapter. `scripts/build_study_app.py` shows them.
+CARDS_PER_CHAPTER = 8
 
 # NotebookLM's chat rejects a long prompt; the plan stage keeps the whole ask under this many
 # characters by shortening the source listing.
@@ -418,6 +472,37 @@ MAX_PLAN_PROMPT = 6000
 # JSON'da gecerli kacislar. Model bunlardan baska bir kacis yazarsa ("\$" gibi) JSON okunamaz;
 # bu kacislar dusurulur, gecerli olanlar (\\, \", \n, \uXXXX) korunur.
 _JSON_ESCAPE = re.compile(r'\\(?:["\\/bfnrtu]|u[0-9a-fA-F]{4})|\\.', re.S)
+
+
+def _plain(text):
+    """One line of model text: no runs of whitespace, no citation markers."""
+    return re.sub(r"\[\d+(?:\s*[-,]\s*\d+)*\]", "", " ".join(str(text or "").split())).strip()
+
+
+def parse_cards(text):
+    """The flashcard list a model writes as JSON, repaired the way the plan answer is."""
+    raw = str(text or "")
+    start, end = raw.find("{"), raw.rfind("}")
+    if start < 0 or end <= start:
+        return []
+    raw = raw[start:end + 1]
+    try:
+        data = json.loads(raw)
+    except json.JSONDecodeError:
+        try:
+            data = json.loads(fix_json_escapes(raw))
+        except json.JSONDecodeError:
+            return []
+    items = data.get("cards") if isinstance(data, dict) else data
+    out = []
+    for c in items if isinstance(items, list) else []:
+        if not isinstance(c, dict):
+            continue
+        front, back = _plain(c.get("front")), _plain(c.get("back"))
+        if not front or not back or len(front) > 160 or len(back) > 600:
+            continue
+        out.append({"front": front, "back": back})
+    return out
 
 
 def fix_json_escapes(text):
@@ -436,8 +521,8 @@ if __name__ == "__main__":
     ap.add_argument("project")
     ap.add_argument("slug")
     ap.add_argument("stage", choices=STAGES + ["all"])
-    ap.add_argument("--chapters", help="ground and infographics only: comma list of chapter numbers")
-    ap.add_argument("--force", action="store_true", help="ground only: re-ask chapters that already have notes")
+    ap.add_argument("--chapters", help="ground, flashcards and infographics only: comma list of chapter numbers")
+    ap.add_argument("--force", action="store_true", help="ground and flashcards: re-ask chapters that already have notes or cards")
     ap.add_argument("--backoff", type=int, default=420, help="seconds to wait after a failed generation (default 7 min)")
     ap.add_argument("--attempts", type=int, default=3)
     a = ap.parse_args()

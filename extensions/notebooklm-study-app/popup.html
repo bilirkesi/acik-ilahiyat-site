@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<title>Study App Exporter</title>
+<link rel="stylesheet" href="popup.css">
+</head>
+<body>
+<header>
+  <h1>Study App Exporter</h1>
+  <p id="where" class="muted">NotebookLM sekmesi aranıyor…</p>
+</header>
+
+<main>
+  <label for="title">Defter başlığı</label>
+  <input id="title" type="text" placeholder="NotebookLM defteri" autocomplete="off">
+
+  <label for="sources">Kaynaklar <span class="hint">her satır: Başlık | bağlantı</span></label>
+  <textarea id="sources" rows="4" spellcheck="false"></textarea>
+
+  <label for="notes">Notlar <span class="hint">notlar arasına <code>---</code>; ilk satır başlık</span></label>
+  <textarea id="notes" rows="7" spellcheck="false"></textarea>
+
+  <label for="files">Ders verisi <span class="hint">isteğe bağlı: study_plan.json, quiz.json, chat.json, flashcards.json</span></label>
+  <input id="files" type="file" multiple accept="application/json,.json">
+
+  <div class="row">
+    <button id="capture" type="button">Sayfadan topla</button>
+    <button id="download" type="button" class="primary">Uygulamayı indir</button>
+  </div>
+  <p id="status" role="status" class="status"></p>
+  <p class="muted small">Dosya tarayıcınızda oluşturulur; hiçbir şey bir sunucuya gönderilmez.</p>
+</main>
+
+<script src="app-shell.js"></script>
+<script src="core.js"></script>
+<script src="popup.js"></script>
+</body>
+</html>

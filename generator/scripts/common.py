@@ -3,6 +3,8 @@ import contextlib
 import json, os, re, shutil, subprocess, sys, time
 from pathlib import Path
 
+import quiz_types
+
 SKILL_DIR = Path(__file__).resolve().parent.parent
 TEMPLATE_DIR = SKILL_DIR / "site-template"
 UUID_RE = re.compile(r"[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}", re.I)
@@ -314,14 +316,19 @@ def run_cli_json(cli, args, timeout=900):
 def normalize_quiz_questions(questions, default_type="multiple_choice", extra=()) -> list[dict]:
     """The site's question shape for questions that come from NotebookLM.
 
-    The site auto-grades only the types in `quiz_types.GRADED`; a question without a type
-    would be shown as a free text box and could not be scored. NotebookLM's quiz export
-    carries no type at all, so it is set here. Fields named in `extra` are kept as they are.
+    NotebookLM's quiz export names four types and each is graded on its own payload: options for
+    `multiple_choice` / `multiple_select` (a select question has several correct options),
+    `bestAnswer` / `acceptableAnswers` for `fill_in_the_blank`, `grading` for `short_answer`.
+    A type this repository does not know becomes `default_type`, so the site never meets a
+    question it cannot score. Fields named in `extra` are kept as they are.
     """
     out = []
     for q in questions or []:
         if not isinstance(q, dict):
             continue
+        qtype = q.get("type") or default_type
+        if qtype not in quiz_types.KNOWN:
+            qtype = default_type
         opts = []
         for o in q.get("answerOptions") or q.get("options") or []:
             if isinstance(o, str):
@@ -341,8 +348,17 @@ def normalize_quiz_questions(questions, default_type="multiple_choice", extra=()
             "question": q.get("question") or q.get("stem") or q.get("prompt") or "",
             "answerOptions": opts,
             "hint": q.get("hint") or "",
-            "type": q.get("type") or default_type,
+            "type": qtype,
         }
+        best = str(q.get("bestAnswer") or (q.get("grading") or {}).get("modelAnswer") or "")
+        if qtype == "fill_in_the_blank" and best:
+            item["bestAnswer"] = best
+            item["acceptableAnswers"] = ([str(a) for a in q.get("acceptableAnswers") or [] if str(a).strip()]
+                                         or [best])
+        elif qtype == "short_answer" and (best or isinstance(q.get("grading"), dict)):
+            item["grading"] = q["grading"] if isinstance(q.get("grading"), dict) else {"modelAnswer": best}
+        if q.get("rationale"):
+            item["rationale"] = q["rationale"]
         for k in extra:
             if q.get(k):
                 item[k] = q[k]
