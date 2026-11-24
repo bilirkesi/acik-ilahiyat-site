@@ -46,9 +46,12 @@ Export (`data/` → site/bundle):
   entries whose question no longer exists are dropped on load. The schedule is
   `STEPS = [0, 1, 3, 7, 16]` days: a right answer moves up one box, a partly right one stays where it
   is and returns tomorrow, a wrong one drops to the first box and returns tomorrow; a question never
-  repeats inside one run. The **Tekrar** tab lists what is due and starts a review run over those
-  questions (a review run never updates the best score); the panel adds a "Soru analizi" card with
-  accuracy, the most-missed questions and the most-chosen wrong options. Shuffling a question's
+  repeats inside one run. Only an already answered question can be due: an unseen one belongs to the
+  Test tab, so the queue never becomes a second copy of the whole quiz. The **Tekrar** tab lists what
+  is due and starts a review run over those questions (a review run never updates the best score);
+  the panel adds a "Soru analizi" card with accuracy, the most-missed questions, the most-chosen
+  partly correct options and the most-chosen wrong options (kept apart: a partly correct option is
+  not a trap). Shuffling a question's
   options resets that question's option counts and keeps its review history. The panel
   carries two progress bars (completed chapters, known cards) and each chapter card has a
   "Tamamlandı işaretle" toggle; both live in the same `localStorage` key as the rest of the app's

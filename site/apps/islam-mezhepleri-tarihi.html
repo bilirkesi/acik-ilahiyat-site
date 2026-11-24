@@ -170,11 +170,13 @@ footer{max-width:860px;margin:0 auto;padding:0 18px 34px;color:var(--muted);font
     });
     save();
   }
+  // Only a question that has been answered already can be due: an unseen one belongs to Test, not
+  // to the review queue, or Tekrar would just repeat the whole quiz.
   function dueQuestions() {
     var now = today();
     return DATA.quiz.filter(function (q) {
       var e = st.q[q.qid];
-      return !e || e.due <= now;
+      return e && e.n && e.due <= now;
     });
   }
 
@@ -265,25 +267,33 @@ footer{max-width:860px;margin:0 auto;padding:0 18px 34px;color:var(--muted);font
         });
         an.appendChild(ul);
       }
-      var traps = Object.keys(st.pick).map(function (k) {
+      // A partly correct option is not a trap: it is worth seeing on its own, because picking it
+      // repeatedly means the learner knows part of the answer and stops there.
+      var picks = Object.keys(st.pick).map(function (k) {
         var at = k.lastIndexOf(":"), id = k.slice(0, at), index = Number(k.slice(at + 1));
         var q = DATA.quiz.filter(function (x) { return x.qid === id; })[0];
-        return q && q.o[index] ? {text: q.o[index].t, n: st.pick[k]} : null;
-      }).filter(Boolean).sort(function (a, b) { return b.n - a.n; }).slice(0, 3);
-      if (traps.length) {
-        an.appendChild(el("div", "kicker", "En çok yanıltan seçenekler"));
-        var ul2 = el("ul", "list");
-        traps.forEach(function (t) {
-          ul2.appendChild(el("li", null, t.text + " · " + t.n + " kez seçildi"));
+        return q && q.o[index] ? {text: q.o[index].t, n: st.pick[k], part: Boolean(q.o[index].p)} : null;
+      }).filter(Boolean).sort(function (a, b) { return b.n - a.n; });
+      [["Kısmen doğru seçenekler", picks.filter(function (t) { return t.part; })],
+       ["En çok yanıltan seçenekler", picks.filter(function (t) { return !t.part; })]]
+        .forEach(function (group) {
+          if (!group[1].length) return;
+          an.appendChild(el("div", "kicker", group[0]));
+          var ul2 = el("ul", "list");
+          group[1].slice(0, 3).forEach(function (t) {
+            ul2.appendChild(el("li", null, t.text + " · " + t.n + " kez seçildi"));
+          });
+          an.appendChild(ul2);
         });
-        an.appendChild(ul2);
+      var due = dueQuestions();
+      if (due.length) {
+        var row2 = el("div", "row");
+        row2.style.marginTop = "14px";
+        var rb = el("button", "act ghost", "Tekrar (" + due.length + ")");
+        rb.onclick = function () { quizKind = "tekrar"; show("test"); };
+        row2.appendChild(rb);
+        an.appendChild(row2);
       }
-      var row2 = el("div", "row");
-      row2.style.marginTop = "14px";
-      var rb = el("button", "act ghost", "Tekrar (" + dueQuestions().length + ")");
-      rb.onclick = function () { quizKind = "tekrar"; show("test"); };
-      row2.appendChild(rb);
-      an.appendChild(row2);
       v.appendChild(an);
     }
 
@@ -563,7 +573,8 @@ footer{max-width:860px;margin:0 auto;padding:0 18px 34px;color:var(--muted);font
       due.slice(0, 12).forEach(function (q) {
         var e = st.q[q.qid];
         ul.appendChild(el("li", null, cut(q.q, 100)
-          + (e && e.n ? " · " + e.bad + " yanlış · " + e.n + " deneme" : " · yeni")));
+          + " · " + (e.bad ? e.bad + " yanlış · " : "") + (e.part ? e.part + " kısmen · " : "")
+          + e.n + " deneme"));
       });
       if (due.length > 12) {
         ul.appendChild(el("li", "muted", "+" + (due.length - 12) + " soru daha"));

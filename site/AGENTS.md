@@ -21,8 +21,9 @@
   `localStorage[storageKey + ".app"]`: known cards, completed chapters (a toggle on each chapter card,
   with a progress bar on the panel), the best test score, the per-question answer log (`q[qid]` with
   a box and a due day) and the wrong-option counts (`pick["<qid>:<index>"]`). The **Tekrar** tab
-  reviews what is due (`STEPS = [0, 1, 3, 7, 16]` days) and the panel's "Soru analizi" card shows
-  accuracy, the most-missed questions and the most-chosen wrong options.
+  reviews what is due (`STEPS = [0, 1, 3, 7, 16]` days; only questions already answered can be due)
+  and the panel's "Soru analizi" card shows accuracy, the most-missed questions, the most-chosen
+  partly correct options and the most-chosen wrong options.
 - `assets/<slug>/` — course images (jpg/webp) served to the page and packed for offline use.
 - `audio/<slug>/chapter-N.mp3` — committed chapter audio overviews from `scripts/generate_chapter_audio.py`; the builder only lists them (it never writes or deletes them).
 

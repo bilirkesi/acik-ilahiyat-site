@@ -211,9 +211,11 @@ class StudyAppTest(unittest.TestCase):
         self.assertIn("Tekrarı başlat", page)
         self.assertIn("Soru analizi", page)
         self.assertIn("En çok yanıltan seçenekler", page)
+        self.assertIn("Kısmen doğru seçenekler", page)
         self.assertIn("STEPS = [0, 1, 3, 7, 16]", page)
         self.assertIn("st.pick", page)  # şık sayacı
         self.assertIn("st.q[q.qid]", page)  # soru günlüğü
+        self.assertIn("e && e.n && e.due <= now", page)  # tekrar kuyruğu: yalnız cevaplanmış ve vadesi gelmiş
 
     def test_a_course_without_a_plan_is_skipped(self):
         with tempfile.TemporaryDirectory() as tmp:
