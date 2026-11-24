@@ -7,7 +7,8 @@
 - `manifest.json` — MV3. Permissions stay `activeTab` and `scripting`; host permissions stay limited to `notebooklm.google.com` and `notebook.google.com`. No background worker and no always-on content script: `capture.js` is injected on demand.
 - `popup.html`, `popup.css`, `popup.js` — the form, the capture call and the download (blob URL plus an anchor; no `downloads` permission).
 - `capture.js` — injected page script; its last expression is the value the popup receives. Best-effort selectors for the notebook title, source rows and notes.
-- `core.js` — pure functions only (`blocksFrom`, `parseSources`, `parseNotes`, `normalizeQuestions`, `normalizeCards`, `slugify`, `buildPayload`, `renderPage`), assigned to `NLMApp` so `node` can run them.
+- `core.js` — pure functions only (`blocksFrom`, `parseSources`, `parseNotes`, `normalizeQuestions`, `normalizeCards`, `questionId`, `slugify`, `buildPayload`, `renderPage`), assigned to `NLMApp` so `node` can run them.
+- `normalizeQuestions()` stamps every question with `qid`: its normalized stem hashed as UTF-8 bytes with djb2/32-bit into base36, the same id `_qid()` in `scripts/build_study_app.py` writes, so review history survives an export through either route. `buildPayload()` writes `units: {}`; the extension reads one quiz file, so it has no unit titles to carry.
 - `app-shell.js` — **generated** by `py -3 scripts/export_app_shell.py` from `scripts/build_study_app.py`. Never hand-edit; `tests/test_extension.py` fails when it is stale.
 - `README.md` — install, use, output tabs and limits.
 

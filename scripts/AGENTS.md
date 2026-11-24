@@ -37,7 +37,19 @@ Export (`data/` → site/bundle):
 - `build_study_app.py` — one course's pipeline data (`study_plan.json`, `quiz.json`, `unit_quizzes/`, `chat.json`, `flashcards.json`, `state.json`) → `site/apps/<slug>.html`: a single self-contained study app (panel, cards, chapters, quiz, sources; search; progress in `localStorage[storageKey + ".app"]`) with inline CSS/JS and no external asset, so it opens from `file://`, works offline and publishes as one file. The deck falls back from `flashcards.json` to `chat.json`, then to the quiz's correct options. The quiz tab keeps all four NotebookLM types: an option question grades on the click (`multiple_select` on the whole set after "Kontrol et"), a `fill_in_the_blank` / `short_answer` reveals its answer and asks the reader whether they knew it
   ("Bildim" / "Kısmen bildim" / "Bilemedim"). Every answer gets one of three verdicts: doğru, kısmen doğru
   (no point, amber) and yanlış; a selection that is only part of a `multiple_select` answer, or a source
-  option marked `isPartiallyCorrect`/`partial`/`status: "partial"`, reports as kısmen doğru. The panel
+  option marked `isPartiallyCorrect`/`partial`/`status: "partial"`, reports as kısmen doğru.
+  Every question carries `qid`, its normalized stem (whitespace collapsed, lowercased) hashed with
+  djb2/32-bit into base36 (`_qid`), so a rebuilt or reordered quiz keeps each question's history;
+  unit titles travel once in the payload's `units` map (`{"8": "..."}`), not on every question.
+  Each answer is logged in the same `localStorage` key as `q[qid] = {n, ok, part, bad, box, due}`
+  (`due` is a day number, days since the epoch) and each wrong pick as `pick["<qid>:<option index>"]`;
+  entries whose question no longer exists are dropped on load. The schedule is
+  `STEPS = [0, 1, 3, 7, 16]` days: a right answer moves up one box, a partly right one stays where it
+  is and returns tomorrow, a wrong one drops to the first box and returns tomorrow; a question never
+  repeats inside one run. The **Tekrar** tab lists what is due and starts a review run over those
+  questions (a review run never updates the best score); the panel adds a "Soru analizi" card with
+  accuracy, the most-missed questions and the most-chosen wrong options. Shuffling a question's
+  options resets that question's option counts and keeps its review history. The panel
   carries two progress bars (completed chapters, known cards) and each chapter card has a
   "Tamamlandı işaretle" toggle; both live in the same `localStorage` key as the rest of the app's
   progress. `--all` builds every course, `--out DIR` moves the folder, and a course with no `study_plan.json` is skipped.

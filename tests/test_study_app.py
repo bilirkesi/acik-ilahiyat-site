@@ -182,6 +182,39 @@ class StudyAppTest(unittest.TestCase):
         self.assertIn("Kısmen doğru: bu seçenek doğru bilgi içeriyor", page)
         self.assertIn("Tamamlandı işaretle", page)
 
+    def test_every_question_gets_a_stable_id(self):
+        """Soru kimliği kökten türetilir: boşluk ve büyük/küçük harf farkı kimliği değiştirmez."""
+        page, _ = self.build()
+        quiz = embedded(page)["quiz"]
+        qids = [q["qid"] for q in quiz]
+        self.assertEqual(len(qids), len(set(qids)))
+        for qid in qids:
+            self.assertRegex(qid, r"^[0-9a-z]+$")
+        self.assertEqual(app._qid("  Dil   NEDİR? "), app._qid("Dil NEDİR?"))
+        self.assertEqual(app._qid("Dil nedir?"), qids[0])
+
+    def test_unit_titles_travel_at_the_payload_level(self):
+        """Ünite başlığı her soruda değil, bir kez `units` haritasında taşınır."""
+        page, _ = self.build()
+        data = embedded(page)
+        self.assertEqual(data["units"], {"1": "Dil"})
+        self.assertEqual([q["ch"] for q in data["quiz"]], [0, 1])
+        self.assertEqual(sorted(data["quiz"][1]), sorted(data["quiz"][0]))
+
+    def test_the_page_carries_the_review_tab_and_option_log(self):
+        """Tekrar sekmesi, günlük tekrar takvimi ve şık analitiği sayfada yer alır."""
+        page, _ = self.build()
+        data = embedded(page)
+        self.assertIn("units", data)
+        self.assertIn('data-view="tekrar"', page)
+        self.assertIn('id="view-tekrar"', page)
+        self.assertIn("Tekrarı başlat", page)
+        self.assertIn("Soru analizi", page)
+        self.assertIn("En çok yanıltan seçenekler", page)
+        self.assertIn("STEPS = [0, 1, 3, 7, 16]", page)
+        self.assertIn("st.pick", page)  # şık sayacı
+        self.assertIn("st.q[q.qid]", page)  # soru günlüğü
+
     def test_a_course_without_a_plan_is_skipped(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = fixture(tmp, plan=False)

@@ -163,6 +163,23 @@ console.log(JSON.stringify(payload));
         self.assertEqual(payload["cards"][0]["back"], "Arka")
         self.assertEqual(payload["chapters"][0]["notes"], [{"p": "Metin"}])
 
+    def test_core_hashes_the_question_id_like_the_builder(self):
+        """Uzantının ürettiği sayfa, derleyicinin soru kimliğini ve boş ünite haritasını taşır."""
+        script = """
+require(process.argv[2]);
+const payload = globalThis.NLMApp.buildPayload({
+  title: "T", notesText: "",
+  quiz: {questions: [
+    {question: "Dil  NEDİR?", answerOptions: [{text: "a", isCorrect: true}]},
+    {question: "Kültür nedir?", answerOptions: [{text: "b", isCorrect: true}]}
+  ]}
+});
+console.log(JSON.stringify({q: payload.quiz.map(function (x) { return x.qid; }), units: payload.units}));
+"""
+        data = json.loads(self.run_node(script))
+        self.assertEqual(data["q"], [builder._qid("Dil NEDİR?"), builder._qid("Kültür nedir?")])
+        self.assertEqual(data["units"], {})
+
     def test_core_keeps_the_question_types(self):
         """Boşluk doldurma ve çoktan seçmeli sorular cevaplarıyla taşınır (canlı EDBO defteri)."""
         script = """

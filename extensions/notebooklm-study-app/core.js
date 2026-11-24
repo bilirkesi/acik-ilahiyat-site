@@ -66,6 +66,34 @@
     return out;
   }
 
+  /** UTF-8 bytes of a string, so the page's hash of a Turkish stem matches the builder's. */
+  function utf8(text) {
+    var out = [];
+    for (var i = 0; i < text.length; i += 1) {
+      var c = text.charCodeAt(i);
+      if (c < 0x80) out.push(c);
+      else if (c < 0x800) out.push(0xc0 | (c >> 6), 0x80 | (c & 63));
+      else if (c >= 0xd800 && c <= 0xdbff && i + 1 < text.length) {
+        var pair = 0x10000 + ((c - 0xd800) << 10) + (text.charCodeAt(i + 1) - 0xdc00);
+        i += 1;
+        out.push(0xf0 | (pair >> 18), 0x80 | ((pair >> 12) & 63),
+          0x80 | ((pair >> 6) & 63), 0x80 | (pair & 63));
+      } else out.push(0xe0 | (c >> 12), 0x80 | ((c >> 6) & 63), 0x80 | (c & 63));
+    }
+    return out;
+  }
+
+  /**
+   * A question's stable id: its normalized stem hashed with djb2 (32-bit), in base36.
+   * `scripts/build_study_app.py`'s `_qid()` writes the same id, so a learner's review history
+   * survives whether the page came from the builder or from this extension.
+   */
+  function questionId(stem) {
+    var bytes = utf8(oneLine(stem).toLowerCase()), h = 5381;
+    for (var i = 0; i < bytes.length; i += 1) h = (h * 33 + bytes[i]) >>> 0;
+    return h.toString(36);
+  }
+
   /** Notes separated by a line holding only `---`; the first line is the note's heading. */
   function parseNotes(text) {
     return str(text).split(/\r?\n\s*-{3,}\s*\r?\n/).map(function (chunk) {
@@ -104,7 +132,8 @@
       var why = oneLine(stripCitations(q.rationale || grading.rationale));
       if (stem && (options.length || answer)) out.push({
         q: stem, o: options, hint: oneLine(stripCitations(q.hint)),
-        type: q.type || "multiple_choice", a: answer, why: options.length ? "" : why, ch: 0
+        type: q.type || "multiple_choice", a: answer, why: options.length ? "" : why, ch: 0,
+        qid: questionId(stem)
       });
     });
     return out;
@@ -238,6 +267,7 @@
       chapters: chapters,
       cards: cards,
       quiz: quiz,
+      units: {},
       sources: sources,
       counts: { chapters: chapters.length, cards: cards.length, quiz: quiz.length },
       lang: turkish(haystack)

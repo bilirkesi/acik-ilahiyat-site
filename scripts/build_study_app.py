@@ -100,6 +100,30 @@ def _questions(data):
     return out
 
 
+def _qid(stem):
+    """A question's stable id: its normalized stem hashed with djb2 (32-bit), in base36.
+
+    The id must survive a rebuilt app and match the extension's own copy, so it is derived from the
+    stem alone (whitespace collapsed, casefolded) rather than from an index or a file position: a
+    quiz reordered or shortened keeps every other question's review history. A cryptographic hash
+    was not an option in the page, where `crypto.subtle` is asynchronous.
+    """
+    text = re.sub(r"\s+", " ", str(stem or "")).strip().lower()
+    h = 5381
+    for byte in text.encode("utf-8"):
+        h = (h * 33 + byte) & 0xFFFFFFFF
+    return _base36(h)
+
+
+def _base36(number):
+    digits = "0123456789abcdefghijklmnopqrstuvwxyz"
+    out = ""
+    while number:
+        number, rest = divmod(number, 36)
+        out = digits[rest] + out
+    return out or "0"
+
+
 def _partial(option):
     """The source's own "partly correct" mark on one option, in the spellings it appears in.
 
@@ -160,20 +184,25 @@ def course_app(root, slug):
 
     quiz = []
     seen = set()
+    units = {}  # unit number -> title, once per unit instead of on every question
     book = load(data / "quiz.json")
     for q in _questions(book):
         key = re.sub(r"\s+", " ", q["q"]).casefold()
         if key not in seen:
             seen.add(key)
-            quiz.append({**q, "ch": 0})
+            quiz.append({**q, "qid": _qid(q["q"]), "ch": 0})
     for path in sorted((data / "unit_quizzes").glob("unit-*.json"),
                        key=lambda p: int(re.sub(r"\D", "", p.stem) or 0)):
         unit = load(path, {}) or {}
+        number = unit.get("unit") or 0
+        title = _text(unit.get("unitTitle"))
+        if number and title:
+            units[str(number)] = title
         for q in _questions(unit):
             key = re.sub(r"\s+", " ", q["q"]).casefold()
             if key not in seen:
                 seen.add(key)
-                quiz.append({**q, "ch": unit.get("unit") or 0})
+                quiz.append({**q, "qid": _qid(q["q"]), "ch": number})
     quiz = quiz[:MAX_QUIZ]
 
     cards = _cards(load(data / "flashcards.json"))
@@ -215,6 +244,7 @@ def course_app(root, slug):
         "chapters": chapters,
         "cards": cards,
         "quiz": quiz,
+        "units": units,
         "sources": source_list,
         "counts": {"chapters": len(chapters), "cards": len(cards), "quiz": len(quiz),
                    "sources": len(source_list)},
@@ -293,6 +323,9 @@ border-radius:0 8px 8px 0;font-size:15px}
 padding:5px 12px;font:inherit;font-size:13px;font-weight:600;cursor:pointer}
 .chdone[aria-pressed=true]{border-color:var(--ok);color:var(--ok);background:var(--okbg)}
 .card[data-done="1"]{border-left:4px solid var(--ok)}
+.list{margin:0;padding:0;list-style:none}
+.list li{padding:7px 0;border-top:1px solid var(--line);font-size:15px}
+.list li:first-child{border-top:0}
 .empty{color:var(--muted);margin:0}
 footer{max-width:860px;margin:0 auto;padding:0 18px 34px;color:var(--muted);font-size:13px}
 """
@@ -301,8 +334,18 @@ JS = """
 (function () {
   var DATA = JSON.parse(document.getElementById("app-data").textContent);
   var KEY = DATA.storageKey + ".app";
-  var st = {known: {}, best: 0, seen: 0, done: {}};
+  var st = {known: {}, best: 0, seen: 0, done: {}, q: {}, pick: {}};
   try { Object.assign(st, JSON.parse(localStorage.getItem(KEY) || "{}")); } catch (e) {}
+  st.q = st.q || {}; st.pick = st.pick || {};
+  // A rebuilt course can retire a question: its log entry and option counts go with it.
+  (function prune() {
+    var ids = {};
+    DATA.quiz.forEach(function (q) { ids[q.qid] = 1; });
+    Object.keys(st.q).forEach(function (k) { if (!ids[k]) delete st.q[k]; });
+    Object.keys(st.pick).forEach(function (k) {
+      if (!ids[k.slice(0, k.lastIndexOf(":"))]) delete st.pick[k];
+    });
+  })();
   function save() { try { localStorage.setItem(KEY, JSON.stringify(st)); } catch (e) {} }
   function el(tag, cls, text) {
     var n = document.createElement(tag);
@@ -313,6 +356,56 @@ JS = """
   function $(s) { return document.querySelector(s); }
   function norm(s) { return (s || "").toLocaleLowerCase(); }
   var query = "";
+
+  function cut(text, n) {
+    text = String(text || "");
+    return text.length > n ? text.slice(0, n - 1) + "…" : text;
+  }
+
+  function unitName(q) {
+    return (DATA.units && DATA.units[String(q.ch || 0)]) || "";
+  }
+
+  // ---- review schedule -----------------------------------------------------
+  // Each answered question keeps a box and a due day (days since the epoch). A right answer moves
+  // it up one box; a partly right answer stays where it is and comes back tomorrow; a wrong answer
+  // drops to the first box and comes back tomorrow. A question never returns inside one run.
+  var STEPS = [0, 1, 3, 7, 16];
+  function today() { return Math.floor(Date.now() / 86400000); }
+  function entry(qid) {
+    var e = st.q[qid];
+    if (!e || typeof e !== "object") e = st.q[qid] = {n: 0, ok: 0, part: 0, bad: 0, box: 0, due: 0};
+    return e;
+  }
+  function record(q, verdict, picked) {
+    var e = entry(q.qid);
+    e.n += 1;
+    if (verdict === "ok") {
+      e.ok += 1;
+      e.box = Math.min(e.box + 1, STEPS.length - 1);
+      e.due = today() + STEPS[e.box];
+    } else if (verdict === "partial") {
+      e.part += 1;
+      e.due = today() + 1;
+    } else {
+      e.bad += 1;
+      e.box = 0;
+      e.due = today() + 1;
+    }
+    (picked || []).forEach(function (j) {
+      if (!q.o[j] || q.o[j].ok) return;
+      var key = q.qid + ":" + j;
+      st.pick[key] = (st.pick[key] || 0) + 1;
+    });
+    save();
+  }
+  function dueQuestions() {
+    var now = today();
+    return DATA.quiz.filter(function (q) {
+      var e = st.q[q.qid];
+      return !e || e.due <= now;
+    });
+  }
 
   function blocks(parent, list) {
     var ul = null;
@@ -381,6 +474,47 @@ JS = """
     row.appendChild(b1); row.appendChild(b2);
     box.appendChild(row);
     v.appendChild(box);
+
+    var answered = DATA.quiz.filter(function (q) { return st.q[q.qid] && st.q[q.qid].n; });
+    if (answered.length) {
+      var hits = answered.reduce(function (a, q) { return a + st.q[q.qid].ok; }, 0);
+      var tries = answered.reduce(function (a, q) { return a + st.q[q.qid].n; }, 0);
+      var an = el("div", "card");
+      an.appendChild(el("h3", null, "Soru analizi"));
+      an.appendChild(el("p", "muted", answered.length + " soru cevaplandı · " + tries + " denemede "
+        + hits + " doğru (" + Math.round(100 * hits / tries) + "%)"));
+      var hard = answered.slice().sort(function (a, b) {
+        return st.q[b.qid].bad - st.q[a.qid].bad;
+      }).filter(function (q) { return st.q[q.qid].bad; }).slice(0, 3);
+      if (hard.length) {
+        an.appendChild(el("div", "kicker", "En çok yanlış yapılan sorular"));
+        var ul = el("ul", "list");
+        hard.forEach(function (q) {
+          ul.appendChild(el("li", null, cut(q.q, 100) + " · " + st.q[q.qid].bad + " yanlış"));
+        });
+        an.appendChild(ul);
+      }
+      var traps = Object.keys(st.pick).map(function (k) {
+        var at = k.lastIndexOf(":"), id = k.slice(0, at), index = Number(k.slice(at + 1));
+        var q = DATA.quiz.filter(function (x) { return x.qid === id; })[0];
+        return q && q.o[index] ? {text: q.o[index].t, n: st.pick[k]} : null;
+      }).filter(Boolean).sort(function (a, b) { return b.n - a.n; }).slice(0, 3);
+      if (traps.length) {
+        an.appendChild(el("div", "kicker", "En çok yanıltan seçenekler"));
+        var ul2 = el("ul", "list");
+        traps.forEach(function (t) {
+          ul2.appendChild(el("li", null, t.text + " · " + t.n + " kez seçildi"));
+        });
+        an.appendChild(ul2);
+      }
+      var row2 = el("div", "row");
+      row2.style.marginTop = "14px";
+      var rb = el("button", "act ghost", "Tekrar (" + dueQuestions().length + ")");
+      rb.onclick = function () { quizKind = "tekrar"; show("test"); };
+      row2.appendChild(rb);
+      an.appendChild(row2);
+      v.appendChild(an);
+    }
 
     if (DATA.brand.tagline) v.appendChild(el("p", "muted", DATA.brand.tagline));
   }
@@ -479,9 +613,10 @@ JS = """
   }
 
   // ---- quiz ----------------------------------------------------------------
-  var pool = [], qi = 0, right = 0, partialRight = 0, answered = false;
+  var pool = [], qi = 0, right = 0, partialRight = 0, answered = false, quizKind = "all";
   function startQuiz() {
-    pool = DATA.quiz.filter(function (q) {
+    var source = quizKind === "tekrar" ? dueQuestions() : DATA.quiz;
+    pool = source.filter(function (q) {
       if (!query) return true;
       return norm(q.q + " " + (q.a || "") + " "
         + q.o.map(function (o) { return o.t; }).join(" ")).indexOf(query) >= 0;
@@ -503,15 +638,19 @@ JS = """
     }
     if (qi >= pool.length) {
       var pct = Math.round(100 * right / pool.length);
-      st.seen = (st.seen || 0) + 1;
-      if (pct > (st.best || 0)) st.best = pct;
-      save();
+      if (quizKind !== "tekrar") {  // a review run is not a new best score
+        st.seen = (st.seen || 0) + 1;
+        if (pct > (st.best || 0)) st.best = pct;
+        save();
+      }
       var box = el("div", "card");
-      box.appendChild(el("div", "kicker", "Test bitti"));
+      box.appendChild(el("div", "kicker", quizKind === "tekrar" ? "Tekrar bitti" : "Test bitti"));
       box.appendChild(el("h3", null, right + " / " + pool.length + " doğru · " + pct + "%" +
         (partialRight ? " · " + partialRight + " kısmen doğru" : "")));
       box.appendChild(el("p", "muted", pct >= Math.round(DATA.passMark * 100)
         ? "Geçme sınırının üstündesiniz." : "Geçme sınırı " + Math.round(DATA.passMark * 100) + "%."));
+      if (quizKind !== "tekrar") box.appendChild(el("p", "muted",
+        "Yanlış ve kısmen doğru cevaplar yarın Tekrar sekmesinde geri gelir."));
       var row = el("div", "row");
       var again = el("button", "act primary", "Yeniden çöz");
       again.onclick = startQuiz;
@@ -525,7 +664,8 @@ JS = """
     }
     var q = pool[qi];
     var card = el("section", "card");
-    card.appendChild(el("div", "kicker", "Soru " + (qi + 1) + " / " + pool.length));
+    card.appendChild(el("div", "kicker", "Soru " + (qi + 1) + " / " + pool.length
+      + (unitName(q) ? " · " + unitName(q) : "")));
     card.appendChild(el("h3", null, q.q));
     if (q.hint) card.appendChild(el("p", "muted", q.hint));
     if (!q.o.length) {  // boşluk doldurma / kısa cevap: cevap açılır, okuyucu kendi karar verir
@@ -543,10 +683,14 @@ JS = """
     // Tek doğru: tıklanan şık cevabı verir. Çoktan seçmeli: şıklar işaretlenir, küme "Kontrol et"te karşılaştırılır.
     // Üç sonuç var: doğru, kısmen doğru, yanlış. Kısmen doğru puan kazandırmaz; seçim doğru bilgi
     // içeriyor ama sorunun tam yanıtı değil.
+    function pickedIndexes() {
+      return q.o.map(function (o, j) { return j; }).filter(function (j) { return selected[j]; });
+    }
     function settle(verdict, note) {
       answered = true;
       if (verdict === "ok") right += 1;
       if (verdict === "partial") partialRight += 1;
+      record(q, verdict, pickedIndexes());
       q.o.forEach(function (o, j) {
         if (verdict === "partial" && selected[j]) labels[j].dataset.state = "partial";
         else labels[j].dataset.state = o.ok ? "ok" : (selected[j] ? "bad" : "");
@@ -614,13 +758,48 @@ JS = """
     else if (q.why) card.appendChild(el("p", "why", q.why));
     var row = el("div", "row");
     var know = el("button", "act primary", "Bildim");
-    know.onclick = function () { right += 1; qi += 1; answered = false; paintQuiz(); };
+    know.onclick = function () { right += 1; record(q, "ok"); qi += 1; answered = false; paintQuiz(); };
     var mid = el("button", "act ghost", "Kısmen bildim");
-    mid.onclick = function () { partialRight += 1; qi += 1; answered = false; paintQuiz(); };
+    mid.onclick = function () { partialRight += 1; record(q, "partial"); qi += 1; answered = false; paintQuiz(); };
     var no = el("button", "act ghost", "Bilemedim");
-    no.onclick = function () { qi += 1; answered = false; paintQuiz(); };
+    no.onclick = function () { record(q, "bad"); qi += 1; answered = false; paintQuiz(); };
     row.appendChild(know); row.appendChild(mid); row.appendChild(no);
     card.appendChild(row);
+  }
+
+  // ---- review ---------------------------------------------------------------
+  function paintTekrar() {
+    var v = $("#view-tekrar");
+    v.textContent = "";
+    var box = el("div", "card");
+    box.appendChild(el("h3", null, "Tekrar"));
+    if (!DATA.counts.quiz) {
+      box.appendChild(el("p", "empty", "Bu ders için henüz test sorusu yok."));
+      v.appendChild(box);
+      return;
+    }
+    var due = dueQuestions();
+    box.appendChild(el("p", "muted", due.length
+      ? due.length + " soru tekrar sırasında. Doğru cevap soruyu 1, 3, 7 ve 16 gün sonraya taşır; "
+        + "yanlış ve kısmen doğru cevap yarın geri gelir."
+      : "Şu an tekrar sırasında soru yok. Yanlış cevaplar ertesi gün burada görünür."));
+    if (due.length) {
+      var start = el("button", "act primary", "Tekrarı başlat (" + due.length + ")");
+      start.onclick = function () { quizKind = "tekrar"; show("test"); };
+      box.appendChild(start);
+      var ul = el("ul", "list");
+      ul.style.marginTop = "14px";
+      due.slice(0, 12).forEach(function (q) {
+        var e = st.q[q.qid];
+        ul.appendChild(el("li", null, cut(q.q, 100)
+          + (e && e.n ? " · " + e.bad + " yanlış · " + e.n + " deneme" : " · yeni")));
+      });
+      if (due.length > 12) {
+        ul.appendChild(el("li", "muted", "+" + (due.length - 12) + " soru daha"));
+      }
+      box.appendChild(ul);
+    }
+    v.appendChild(box);
   }
 
   // ---- sources -------------------------------------------------------------
@@ -642,7 +821,8 @@ JS = """
   }
 
   // ---- shell ---------------------------------------------------------------
-  var VIEWS = {panel: paintPanel, kartlar: startCards, konular: paintChapters, test: startQuiz, kaynaklar: paintSources};
+  var VIEWS = {panel: paintPanel, kartlar: startCards, konular: paintChapters, test: startQuiz,
+              tekrar: paintTekrar, kaynaklar: paintSources};
   var current = "panel";
   function show(name) {
     current = name;
@@ -655,7 +835,11 @@ JS = """
     window.scrollTo(0, 0);
   }
   Array.prototype.forEach.call(document.querySelectorAll("#tabs button"), function (b) {
-    b.onclick = function () { query = ""; $("#q").value = ""; show(b.dataset.view); };
+    b.onclick = function () {
+      query = ""; $("#q").value = "";
+      if (b.dataset.view === "test") quizKind = "all";
+      show(b.dataset.view);
+    };
   });
   var timer = null;
   $("#q").oninput = function (e) {
@@ -664,7 +848,10 @@ JS = """
     timer = setTimeout(function () { query = norm(value.trim()); VIEWS[current](); }, 120);
   };
   if (!DATA.counts.cards) document.querySelector('#tabs button[data-view="kartlar"]').hidden = true;
-  if (!DATA.counts.quiz) document.querySelector('#tabs button[data-view="test"]').hidden = true;
+  if (!DATA.counts.quiz) {
+    document.querySelector('#tabs button[data-view="test"]').hidden = true;
+    document.querySelector('#tabs button[data-view="tekrar"]').hidden = true;
+  }
   show("panel");
 })();
 """
@@ -688,6 +875,7 @@ HTML = """<!doctype html>
     <button type="button" data-view="kartlar">Kartlar</button>
     <button type="button" data-view="konular">Konular</button>
     <button type="button" data-view="test">Test</button>
+    <button type="button" data-view="tekrar">Tekrar</button>
     <button type="button" data-view="kaynaklar">Kaynaklar</button>
   </nav>
 </header>
@@ -697,6 +885,7 @@ HTML = """<!doctype html>
   <section id="view-kartlar" hidden></section>
   <section id="view-konular" hidden></section>
   <section id="view-test" hidden></section>
+  <section id="view-tekrar" hidden></section>
   <section id="view-kaynaklar" hidden></section>
 </main>
 <footer>__FOOTER__</footer>
