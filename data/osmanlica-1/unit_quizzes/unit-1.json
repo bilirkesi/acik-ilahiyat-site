@@ -265,7 +265,6 @@
           "rationale": "Kelime sonuna /an/en/ sesi katan işaret üstünlü tenvindir."
         },
         {
-          "isPartiallyCorrect": true,
           "text": "Harfin üzerine konarak aynı ünsüzün iki kez tekrarlanmasını sağlar.",
           "isCorrect": false,
           "rationale": "Ünsüzü ikizleştiren işaret şeddendir."
