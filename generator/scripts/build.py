@@ -191,6 +191,9 @@ def course_data(proj, slug):
     audio = chapter_audio(proj, slug)
     if audio:
         course["audio"] = audio
+    # Tek dosyalık çalışma uygulaması (scripts/build_study_app.py üretir): build.py yalnız bağlar.
+    if (proj.root / "site" / "apps" / f"{slug}.html").exists():
+        course["app"] = f"apps/{slug}.html"
     return course
 
 

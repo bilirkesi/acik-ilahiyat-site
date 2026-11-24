@@ -1,0 +1,390 @@
+{
+  "slug": "turk-dili-1",
+  "language": "Turkish",
+  "cards": [
+    {
+      "chapter": 1,
+      "chapterTitle": "Dil, Kültür ve Dünya Dilleri",
+      "front": "Safir-Whorf Varsayımı",
+      "back": "Bu varsayıma göre kişinin konuştuğu dil ile dünyayı algılama ve düşünme biçimi arasında sistemli bir ilişki bulunmaktadır . İnsan, dünyayı ana dilinin belirlediği ve izin verdiği ölçüde algılar ."
+    },
+    {
+      "chapter": 1,
+      "chapterTitle": "Dil, Kültür ve Dünya Dilleri",
+      "front": "Dil (Muharrem Ergin'in Tanımı)",
+      "back": "Muharrem Ergin'e göre dil, insanlar arasında anlaşmayı sağlayan doğal bir vasıta ve canlı bir varlıktır . Ayrıca temeli bilinmeyen zamanlarda atılmış gizli bir antlaşmalar sistemi ve seslerden örülmüş toplumsal bir müessesedir ."
+    },
+    {
+      "chapter": 1,
+      "chapterTitle": "Dil, Kültür ve Dünya Dilleri",
+      "front": "Ölçünlü Dil",
+      "back": "Bir ülkede farklı ağızlar ve konuşma biçimleri üstünde ortak anlaşma aracı olarak kullanılan çatı dildir . Türkiye'deki ölçünlü dil, tarihsel gelişmeler sonucunda İstanbul Türkçesine dayanmaktadır ."
+    },
+    {
+      "chapter": 1,
+      "chapterTitle": "Dil, Kültür ve Dünya Dilleri",
+      "front": "Devlet Dili ve Resmî Dil Ayrımı",
+      "back": "Devlet dili kamu alanında ve devlet yönetiminde yasal ve zorunlu olarak kullanılan resmî dildir . Resmî dil ise ülkenin tamamında veya belirli bir bölgesinde yönetim dili olan ve yasal statüsü bulunan dildir ."
+    },
+    {
+      "chapter": 1,
+      "chapterTitle": "Dil, Kültür ve Dünya Dilleri",
+      "front": "Altay Dilleri",
+      "back": "Türk, Moğol ve Mançu-Tunguz dillerinden oluşan ve akrabalıkları kesinleşmemiş bir dil grubu varsayımıdır . Korece ve Japonca ise bu grubun muhtemel üyeleri arasında değerlendirilmektedir ."
+    },
+    {
+      "chapter": 1,
+      "chapterTitle": "Dil, Kültür ve Dünya Dilleri",
+      "front": "Yapı Bakımından Dünya Dilleri",
+      "back": "Dünya dilleri biçim bilgisel özelliklerine göre eklemeli (bitişken), bükünlü (çekimli) ve yalınlayan diller olmak üzere üçe ayrılır . Türkçe bu sınıflamada sondan eklemeli bir dil yapısına sahiptir ."
+    },
+    {
+      "chapter": 1,
+      "chapterTitle": "Dil, Kültür ve Dünya Dilleri",
+      "front": "Söz Dizimi Bakımından Türkçe",
+      "back": "Dünya dilleri cümle ögelerinin sıralanışına göre altı gruba ayrılır . Türkçe, cümle ögeleri Özne-Nesne-Yüklem (ÖNY) sırasını izleyen diller arasında yer almaktadır ."
+    },
+    {
+      "chapter": 1,
+      "chapterTitle": "Dil, Kültür ve Dünya Dilleri",
+      "front": "Siyasal Dil Politikaları Türleri",
+      "back": "Ülkelerin yerel diller ve kamu kullanımı için uyguladığı dil politikaları tek dillilik, eşit çok dillilik ve ulusal/bölgesel dil sistemleri olarak üçe ayrılır . Tek dilliliğe Türkiye, eşit çok dilliliğe Belçika, ulusal/bölgesel sistemlere Hindistan örnektir ."
+    },
+    {
+      "chapter": 2,
+      "chapterTitle": "Türk Dilinin Tarihsel Gelişimi ve Kullanılan Alfabeler",
+      "front": "Eski Türkçe Dönemi",
+      "back": "Türkçenin MS 5. ile 10. yüzyılları arasındaki dönemidir ve kendi içinde Köktürk ile Uygur evreleri olmak üzere ikiye ayrılır. Bu dönemde Köktürkler Türkçenin ilk hacimli yazılı metinlerini bırakmış, Uygurlar ise yerleşik yaşama geçerek kağıt üzerine yazılı zengin bir edebiyat oluşturmuştur."
+    },
+    {
+      "chapter": 2,
+      "chapterTitle": "Türk Dilinin Tarihsel Gelişimi ve Kullanılan Alfabeler",
+      "front": "Köktürk Alfabesi",
+      "back": "Türkçenin düzenli olarak yazıya geçirilmesini sağlayan ve taş üzerine kazımaya elverişli ilk milli alfabelerimizdendir. Genel olarak 4 ayrı ünlü işareti barındırır ve bu işaretler ince ile kalın olmak üzere iki farklı ses değerini karşılar."
+    },
+    {
+      "chapter": 2,
+      "chapterTitle": "Türk Dilinin Tarihsel Gelişimi ve Kullanılan Alfabeler",
+      "front": "Orhun Yazıtları",
+      "back": "Orkun ırmağı kıyısında granit üzerine yazılmış olan ve 1893 yılında Danimarkalı bilgin V. Thomsen tarafından okunan ilk hacimli Türkçe yazılı belgelerdir. Yazıtlar sırasıyla Tonyukuk, Köl Tigin ve Bilge Kağan adına dikilmiştir."
+    },
+    {
+      "chapter": 2,
+      "chapterTitle": "Türk Dilinin Tarihsel Gelişimi ve Kullanılan Alfabeler",
+      "front": "Yeni Lisan Hareketi",
+      "back": "1911 yılında Genç Kalemler dergisinde Ömer Seyfettin ve Ali Canip Yöntem tarafından başlatılan, Ziya Gökalp'in katılımıyla güçlenen dil hareketidir. İstanbul halkının konuşma dilini yazı diline esas alarak yabancı gramer kurallarını dilden atmayı ve milli bir dil oluşturmayı hedeflemiştir."
+    },
+    {
+      "chapter": 2,
+      "chapterTitle": "Türk Dilinin Tarihsel Gelişimi ve Kullanılan Alfabeler",
+      "front": "Şemsettin Sami",
+      "back": "Eserine 'Osmanî' yerine 'Türkî' adını vererek Kamus-ı Türkî adlı çığır açıcı sözlüğü hazırlayan Osmanlı aydınıdır. Bu eser, dönemin en kapsamlı Türkçe sözlüklerinden biri kabul edilmektedir."
+    },
+    {
+      "chapter": 2,
+      "chapterTitle": "Türk Dilinin Tarihsel Gelişimi ve Kullanılan Alfabeler",
+      "front": "1 Kasım 1928",
+      "back": "Türkiye Büyük Millet Meclisinde çıkarılan kanunla Latin harflerine dayanan yeni Türk alfabesinin resmen kabul edildiği Harf Devrimi tarihidir. Kanunla birlikte 1929 yılı başından itibaren tüm resmi yazışma ve basımların yeni alfabeyle yapılması zorunlu kılınmıştır."
+    },
+    {
+      "chapter": 2,
+      "chapterTitle": "Türk Dilinin Tarihsel Gelişimi ve Kullanılan Alfabeler",
+      "front": "Türk Dil Kurumu",
+      "back": "Atatürk'ün talimatıyla 12 Temmuz 1932 tarihinde Türk Dili Tetkik Cemiyeti adıyla kurulan milli kurumdur. Türk dilini modern medeniyetin ihtiyaçlarını karşılayacak bir mükemmeliyete erdirmek ve öztürkçe söz varlığını geliştirmek amacıyla Derleme ve Tarama sözlüklerini hazırlamıştır."
+    },
+    {
+      "chapter": 2,
+      "chapterTitle": "Türk Dilinin Tarihsel Gelişimi ve Kullanılan Alfabeler",
+      "front": "Eski Oğuz Türkçesi",
+      "back": "Batı Türkçesinin 13. yüzyıldan 15. yüzyıl sonlarına kadar Anadolu'da gelişen ilk tarihsel dönemidir. Bu dönem eserlerinde konuşma diline yakın son derece yalın bir Türkçe kullanılmıştır."
+    },
+    {
+      "chapter": 4,
+      "chapterTitle": "Biçim Bilgisi, Ekler ve Sözcük Türleri",
+      "front": "Biçim Birim",
+      "back": "Biçim birim, daha küçük birimlere ayrılamayan, ses ve yapı yönünden anlamlı en küçük ögedir. Geleneksel dil bilgisindeki hem sözcük hem de ek kavramlarını kapsar."
+    },
+    {
+      "chapter": 4,
+      "chapterTitle": "Biçim Bilgisi, Ekler ve Sözcük Türleri",
+      "front": "Bağımsız ve Bağımlı Biçim Birimler",
+      "back": "Tek başlarına kullanılabilen kök durumundaki yapılar bağımsız biçim birimdir. Tek başlarına kullanılamayan ve görevlerini yerine getirmek için bağımsız biçim birimlere ihtiyaç duyan ekler ise bağımlı biçim birimdir."
+    },
+    {
+      "chapter": 4,
+      "chapterTitle": "Biçim Bilgisi, Ekler ve Sözcük Türleri",
+      "front": "Taban",
+      "back": "Eklerin yani bağımlı biçim birimlerin eklendiği yalın sözcüklerdir. Tabanlar kök sözcük olabileceği gibi türemiş sözcük de olabilir."
+    },
+    {
+      "chapter": 4,
+      "chapterTitle": "Biçim Bilgisi, Ekler ve Sözcük Türleri",
+      "front": "İşlek Ek ve Fosil Biçim Birim",
+      "back": "Yeni sözcüklerin yapımında çok kullanılan veya çok sayıda sözcükte bulunan eklere işlek ek denir. Dil bilgisel işlevini yitirip yalnızca birkaç kalıplaşmış kelimede kalan üretimsiz eklere ise fosil biçim birim adı verilir."
+    },
+    {
+      "chapter": 4,
+      "chapterTitle": "Biçim Bilgisi, Ekler ve Sözcük Türleri",
+      "front": "Ad Çekim Ekleri",
+      "back": "Ad soylu sözcüklere gelerek bağlı oldukları sözcük öbeklerine göre geçici ilişkiler kuran eklerdir. Ad durum ekleri, çoğul eki, ilgi eki, iyelik ekleri, tamlama ekleri ve ek eylem bu grupta yer alır."
+    },
+    {
+      "chapter": 4,
+      "chapterTitle": "Biçim Bilgisi, Ekler ve Sözcük Türleri",
+      "front": "Eylemsi (Fiilimsi)",
+      "back": "Fiil kök ve gövdelerinden belirli eklerle türetilen, şahıs ekleri alarak çekime girmediği için yargı bildirmeyen bitmemiş fiillerdir. Cümlede isim, sıfat veya zarf görevinde kullanılan eylemsiler yan cümle oluşturmazlar."
+    },
+    {
+      "chapter": 4,
+      "chapterTitle": "Biçim Bilgisi, Ekler ve Sözcük Türleri",
+      "front": "Örnekseme",
+      "back": "Yabancı sözcüklerin özellikle ses ve biçim bakımından model alınarak yerli biçim birimlerle sözcük üretilmesi yoludur. Bu yöntemde model alınan sözcüğe benzetmek esas olduğundan sözcük yapım ilkeleri zaman zaman ihmal edilebilir."
+    },
+    {
+      "chapter": 4,
+      "chapterTitle": "Biçim Bilgisi, Ekler ve Sözcük Türleri",
+      "front": "Eylem Çekiminde Tarz",
+      "back": "Zamanda hareket noktasının konuşanın konuştuğu andan bir başka zamana aktarılmasıyla ortaya çıkan çekim kategorisidir. Yükleme eklenen i- eyleminin geçmiş zamanlarda ve şart kipinde çekimlenmesiyle oluşan bildirme, öykü, rivayet ve şart olmak üzere dört tarz bulunmaktadır."
+    },
+    {
+      "chapter": 5,
+      "chapterTitle": "Cümle Bilgisi, Sözcük Öbekleri ve Cümle Türleri",
+      "front": "Cümle Bilgisi (Söz Dizimi)",
+      "back": "Bir dildeki sözcüklerin ve sözcük öbeklerinin cümle içindeki görevlerini, birbirleriyle olan ilişkilerini, sıralanışlarını ve cümle türlerini inceleyen bilim dalıdır. Anlatımın temel birimi olan cümlenin yapısını ve ögelerini ele alır."
+    },
+    {
+      "chapter": 5,
+      "chapterTitle": "Cümle Bilgisi, Sözcük Öbekleri ve Cümle Türleri",
+      "front": "Sözcük Öbeği",
+      "back": "Birden çok sözcüğün cümle içinde tek bir işlev görecek şekilde yan yana gelmesiyle oluşan yargısız dil birimidir. Yardımcı öge olan sözcük önce, asıl öge olan sözcük sonra gelerek öbeği oluşturur."
+    },
+    {
+      "chapter": 5,
+      "chapterTitle": "Cümle Bilgisi, Sözcük Öbekleri ve Cümle Türleri",
+      "front": "Cümlenin Temel Ögeleri",
+      "back": "Yeryüzündeki bütün dillerde cümlenin temel ögeleri yüklem ve öznedir. Yüklem cümledeki yargıyı taşıyan temel unsurken, özne yüklemde belirtilen işi, oluşu veya durumu gerçekleştiren ögedir."
+    },
+    {
+      "chapter": 5,
+      "chapterTitle": "Cümle Bilgisi, Sözcük Öbekleri ve Cümle Türleri",
+      "front": "Basit Cümle",
+      "back": "Kuruluşunda bağımsız olarak tek yargı bulunan ve tek bir çekimli yükleme sahip olan cümledir. İçinde eylemsi öbekleri bulunsa dahi tek bir çekimli yükleme bağlandığı sürece basit cümle kabul edilir."
+    },
+    {
+      "chapter": 5,
+      "chapterTitle": "Cümle Bilgisi, Sözcük Öbekleri ve Cümle Türleri",
+      "front": "Birleşik Cümle",
+      "back": "Bir temel cümle ile onu anlam ve görev bakımından tamamlayan bir veya birden fazla yan cümleden oluşan cümledir. Şartlı birleşik cümle, iç içe birleşik cümle ve ki'li birleşik cümle olmak üzere üç türü bulunur."
+    },
+    {
+      "chapter": 5,
+      "chapterTitle": "Cümle Bilgisi, Sözcük Öbekleri ve Cümle Türleri",
+      "front": "Sıralı Cümle",
+      "back": "Yapıca veya anlamca birbirine bağlı olan tek başlarına bağımsız anlam taşıyan cümlelerin virgül veya noktalı virgülle dizilmesiyle oluşan yapıdır. Ögeleri ortak olanlara bağımlı sıralı cümle, ortak ögesi bulunmayanlara bağımsız sıralı cümle denir."
+    },
+    {
+      "chapter": 5,
+      "chapterTitle": "Cümle Bilgisi, Sözcük Öbekleri ve Cümle Türleri",
+      "front": "Bağlı Cümle",
+      "back": "Aralarında anlamca ilişki bulunan ve birbirine bağlama edatlarıyla (bağlaçlarla) bağlanan cümle türüdür. Sıralı cümlelerden en belirgin farkı cümleler arasındaki bağlantının virgül yerine bağlaçlarla kurulmasıdır."
+    },
+    {
+      "chapter": 5,
+      "chapterTitle": "Cümle Bilgisi, Sözcük Öbekleri ve Cümle Türleri",
+      "front": "Ad Cümlesi",
+      "back": "Yüklemi ad, ad soylu sözcük ya da sözcük öbeği olup ek eylemle çekimlenerek yargı bildiren cümledir. Ad cümleleri genellikle özne ve yüklemden oluşur ve kural olarak nesne almazlar."
+    },
+    {
+      "chapter": 6,
+      "chapterTitle": "Türkçenin Söz Varlığı, Deyimler ve Atasözleri",
+      "front": "Söz Varlığı",
+      "back": "Bir dilin yalnızca sözlüğündeki sözcükleri değil; deyimleri, atasözlerini, kalıp sözleri, ikilemeleri, terimleri, argo ve ilişki sözlerini kapsayan bütüncül kavramdır. Dil biliminde bu zenginlik ve kavramlar dünyası dil içi dünya görüşü olarak da adlandırılmaktadır."
+    },
+    {
+      "chapter": 6,
+      "chapterTitle": "Türkçenin Söz Varlığı, Deyimler ve Atasözleri",
+      "front": "Deyim",
+      "back": "Anlatım gücünü artırmak amacıyla gerçek anlamından uzaklaşarak ilgi çekici bir anlam kazanan, en az iki sözcükten oluşan kalıplaşmış söz grubudur. Atasözlerinden farklı olarak kesin bir yargı bildirmeyip durumsal açıklamalar yaparlar ve çoğunlukla mastarla biterler."
+    },
+    {
+      "chapter": 6,
+      "chapterTitle": "Türkçenin Söz Varlığı, Deyimler ve Atasözleri",
+      "front": "Atasözü",
+      "back": "Uzun gözlem ve deneyimlere dayanan, topluma ders ve öğüt verme amacı taşıyan, kesin bir yargı bildiren kalıplaşmış bilgece sözlerdir. Ağızdan ağza aktarılarak kalıplaştıkları için sözcük dizilimleri ve kelimeleri değiştirilemez."
+    },
+    {
+      "chapter": 6,
+      "chapterTitle": "Türkçenin Söz Varlığı, Deyimler ve Atasözleri",
+      "front": "İkileme",
+      "back": "Anlatımı pekiştirmek, ifadeyi etkili kılmak ve dile müzikal bir ahenk katmak amacıyla ses veya anlam bakımından ilişkili iki sözcüğün yan yana kullanılmasıyla oluşan yapılardır. Kalıplaşmış yapılar olduklarından sözcüklerin sırası veya biçimi değiştirildiğinde anlam gücü yitirilir."
+    },
+    {
+      "chapter": 6,
+      "chapterTitle": "Türkçenin Söz Varlığı, Deyimler ve Atasözleri",
+      "front": "Ağız ve İç Alıntı",
+      "back": "Bir dilin ülke veya bölge sınırları içerisinde ses ve biçim farklılıklarıyla ayrılan yerel kollarına ağız denir. Ölçünlü dil, söz varlığını zenginleştirmek için kendi ağızlarından iç alıntı yoluyla kelimeler aktarabilmektedir."
+    },
+    {
+      "chapter": 6,
+      "chapterTitle": "Türkçenin Söz Varlığı, Deyimler ve Atasözleri",
+      "front": "Argo",
+      "back": "Belirli toplumsal grupların kendilerini gizlemek ve ayrılmak amacıyla oluşturdukları, mevcut sözcüklere yeni mecazi anlamlar yükleyen gizli ve sanatlı dil sistemidir. Açık ve kaba bir ifade biçimi olan sövgü ve küfürden işlevsel olarak ayrılır."
+    },
+    {
+      "chapter": 6,
+      "chapterTitle": "Türkçenin Söz Varlığı, Deyimler ve Atasözleri",
+      "front": "İlişki Sözleri",
+      "back": "İnsanların günlük sosyal münasebetlerinde nezaket ve inceliği sağlamak amacıyla kullandıkları gözün aydın veya yolun açık olsun gibi kalıplaşmış ifadelerdir. Toplumun yaşama tarzını ve geleneklerini yansıtan bu kalıplar önemli kültürel kodlar taşır."
+    },
+    {
+      "chapter": 6,
+      "chapterTitle": "Türkçenin Söz Varlığı, Deyimler ve Atasözleri",
+      "front": "Alkış ve Kargış",
+      "back": "Eski Türkçede alkış dua veya övgü anlamına gelirken, kargış ise beddua veya ilenç demektir. İnsanların iyi dileklerini ya da kötülük edenlere karşı ceza isteklerini dile getirdikleri kalıplaşmış ifadelerdir."
+    },
+    {
+      "chapter": 7,
+      "chapterTitle": "Diller Arası Etkileşim ve Türkçenin Yaygınlığı",
+      "front": "Alıntı ve Verinti",
+      "back": "Bir dilin başka dillerden bünyesine kattığı sözcükler alıntı, başka dillere kazandırdığı sözcükler ise verintidir. Türkçenin dünya dillerine kazandırdığı verinti sayısı on binin üzerindedir."
+    },
+    {
+      "chapter": 7,
+      "chapterTitle": "Diller Arası Etkileşim ve Türkçenin Yaygınlığı",
+      "front": "İşlenmişlik Ölçütü",
+      "back": "Dillerin gelişmiş veya az gelişmiş olarak tanımlanması bilimsel değildir; dilleri değerlendirmede temel bilimsel ölçüt işlenmişlik ve yazı diline sahip olmadır. 2015 verilerine göre yeryüzündeki 7.102 dilden sadece birkaç yüzü yazı dili niteliği taşımaktadır."
+    },
+    {
+      "chapter": 7,
+      "chapterTitle": "Diller Arası Etkileşim ve Türkçenin Yaygınlığı",
+      "front": "Türk Dilinin Coğrafi Yaygınlığı",
+      "back": "Türkçe günümüzde Avrupa'nın batısından Asya'nın doğusuna uzanan yaklaşık 12 milyon kilometrekarelik geniş bir alanda konuşulmaktadır. Bu alan tarihsel göçler, fetihler ve yurt dışına giden çalışanlar vesilesiyle biçimlenmiştir."
+    },
+    {
+      "chapter": 7,
+      "chapterTitle": "Diller Arası Etkileşim ve Türkçenin Yaygınlığı",
+      "front": "Armin Vambery'nin Tespiti",
+      "back": "Macar Türkolog Armin Vambery, Balkanlardan Mançurya'ya kadar seyahat edecek birinin sadece Türkçe bilerek bu yolculuğu kolayca gerçekleştirebileceğini belirtmiştir. Bu tespit Türk dilinin geniş iletişim gücünü gösterir."
+    },
+    {
+      "chapter": 7,
+      "chapterTitle": "Diller Arası Etkileşim ve Türkçenin Yaygınlığı",
+      "front": "Türkçeden En Çok Sözcük Alan Dil",
+      "back": "Türkçenin en fazla sözcük verdiği dil Sırpçadır. Bir zamanlar dokuz bine yakın kelimenin bulunduğu tespit edilen Sırpçada günümüzde yedi bine yakın Türkçe alıntı kullanılmaktadır."
+    },
+    {
+      "chapter": 7,
+      "chapterTitle": "Diller Arası Etkileşim ve Türkçenin Yaygınlığı",
+      "front": "İlişki ve Nezaket Sözleri",
+      "back": "İnsan ilişkilerinde iletişimi kolaylaştıran, kalıplaşmış nezaket ve incelik ifadeleridir. Ölçünlü Türkçe ve ağızlarda yer alan yüzlerce ilişki sözü kültürümüzde insan ilişkilerine verilen önemi yansıtır."
+    },
+    {
+      "chapter": 7,
+      "chapterTitle": "Diller Arası Etkileşim ve Türkçenin Yaygınlığı",
+      "front": "Söz Varlığı (Söz Dağarcığı)",
+      "back": "Bir dildeki sözcüklerin, deyimlerin, atasözlerinin, terimlerin ve kalıp sözlerin oluşturduğu bütündür. Söz varlığı aynı zamanda o dili konuşan toplumun yaşayış tarzını ve kültürünü gösteren bir aynadır."
+    },
+    {
+      "chapter": 7,
+      "chapterTitle": "Diller Arası Etkileşim ve Türkçenin Yaygınlığı",
+      "front": "Türk Yazı Dilleri Sayısı",
+      "back": "Türk dili günümüzde geniş bir coğrafyada 20 ayrı yazı dili halinde varlığını sürdürmektedir. Bu yazı dilleri bağımsız veya özerk cumhuriyetlerde devlet dili, resmi dil ya da özerk dil olarak kullanılmaktadır."
+    },
+    {
+      "chapter": 8,
+      "chapterTitle": "Güncel Dil Sorunları ve Türkçenin Kullanımı",
+      "front": "Dil Sorunlarının Kaynağı",
+      "back": "Türkçenin karşı karşıya bulunduğu sorunlar dilden değil, konuşurların duyarsızlığından, yetersizliklerinden ve kayıtsız tutumlarından kaynaklanmaktadır. Türkçe kendi gereksinimlerini karşılayacak zenginliğe ve olanaklara sahip gelişmiş bir dildir."
+    },
+    {
+      "chapter": 8,
+      "chapterTitle": "Güncel Dil Sorunları ve Türkçenin Kullanımı",
+      "front": "1933 Üniversite Reformu",
+      "back": "Cumhuriyet Dönemi'nde öğretim üyelerine Türkçe ders malzemesi hazırlama ve Türkçe yayın yapma zorunluluğu getirerek Türkçenin bilim dili olmasını sağlayan reformdur. Bu reform kapsamında yabancı öğretim üyelerine de üç yıl içinde Türkçeyi öğrenme şartı konulmuştur."
+    },
+    {
+      "chapter": 8,
+      "chapterTitle": "Güncel Dil Sorunları ve Türkçenin Kullanımı",
+      "front": "Yabancı Dille Öğretim ve Yabancı Dil Öğretimi Ayrımı",
+      "back": "Yabancı dil öğretimi bir dilin öğrenilmesi gerekliliğiyken, yabancı dille öğretim mesleki derslerin yabancı dilde verilmesidir. Yabancı dille öğretim öğrencilerin kavrayışını zorlaştırarak Türkçenin bilim dili olarak gelişmesini engeller."
+    },
+    {
+      "chapter": 8,
+      "chapterTitle": "Güncel Dil Sorunları ve Türkçenin Kullanımı",
+      "front": "Atatürk'ün Geometri Terimleri Çalışması",
+      "back": "Atatürk bizzat yazdığı Geometri kitabında üçgen, açı, açıortay, teğet, yamuk ve eşkenar dörtgen gibi 129 Türkçe terim türetmiştir. Bu çalışma ile Arapça terimlerin yerine açık ve anlaşılır Türkçe terimlerle bilim yapılabileceği kanıtlanmıştır."
+    },
+    {
+      "chapter": 8,
+      "chapterTitle": "Güncel Dil Sorunları ve Türkçenin Kullanımı",
+      "front": "Özenti Alıntısı",
+      "back": "Türkçede tam karşılığı bulunduğu halde yabancı kökenli sözcüklerin statü veya özenme sebebiyle tercih edilmesidir. Örneğin trend yerine eğilim, konsensüs yerine uzlaşma, show yerine gösteri kullanılması gerekirken yabancı biçimlerin seçilmesidir."
+    },
+    {
+      "chapter": 8,
+      "chapterTitle": "Güncel Dil Sorunları ve Türkçenin Kullanımı",
+      "front": "Kitle İletişim Araçlarında Söz Varlığı Kısırlığı",
+      "back": "Radyo ve televizyon haber programlarında geniş bir söz varlığı beklenirken bültenlerin yalnızca birkaç yüz sözcükle hazırlanması sorunudur. Araştırmalar haberlerde kullanılan ilk yüz sözcüğün toplam söz varlığının neredeyse yarısını oluşturduğunu göstermektedir."
+    },
+    {
+      "chapter": 8,
+      "chapterTitle": "Güncel Dil Sorunları ve Türkçenin Kullanımı",
+      "front": "Çeviri Yoluyla Yabancı Anlatım Kalıpları",
+      "back": "Sözcükleri Türkçe olsa da anlatım kalıbı Batı dillerinden aktarılan ifadelere verilen addır. Örneğin çay içmek yerine çay almak veya hoşça kal yerine kendine iyi bak demek Türkçenin yapısına ve kültürüne aykırıdır."
+    },
+    {
+      "chapter": 8,
+      "chapterTitle": "Güncel Dil Sorunları ve Türkçenin Kullanımı",
+      "front": "İş Yaşamında Dil Yabancılaşması",
+      "back": "İş yeri ve mağaza adlarında yabancı sözcüklerin kullanılması ile Türkçenin söz diziminin Eczane Derman örneğindeki gibi bozulmasıdır. Yasal tescil denetimi eksikliği nedeniyle caddelerde ve tabelalarda görünüm bozukluğuna yol açmaktadır."
+    },
+    {
+      "chapter": 3,
+      "chapterTitle": "Türk Dilinin Ses Yapısı ve Ses Özellikleri",
+      "front": "Ses Bilgisi (Fonetik)",
+      "back": "Konuşma seslerini özellikleri, türleri, sözcüklerdeki sıralanışları ve uğradıkları değişmeler açısından araştıran ve sınıflandıran dil bilgisi dalıdır. Konuşma seslerinin üretimi ve algılanması söyleyiş, akustik ve işitsel ses bilgisi olmak üzere üç alanda incelenir."
+    },
+    {
+      "chapter": 3,
+      "chapterTitle": "Türk Dilinin Ses Yapısı ve Ses Özellikleri",
+      "front": "Artlık-Önlük Uyumu (Büyük Ünlü Uyumu)",
+      "back": "Türkçe kökenli sözcüklerde kök hecedeki ünlünün niteliğinin, sonraki hecelerdeki ünlünün de art veya ön olmasını belirlemesidir. Kök hecede art ünlü varsa sonraki ünlüler art, ön ünlü varsa sonraki ünlüler ön ünlü olur."
+    },
+    {
+      "chapter": 3,
+      "chapterTitle": "Türk Dilinin Ses Yapısı ve Ses Özellikleri",
+      "front": "Dudak Uyumu (Küçük Ünlü Uyumu)",
+      "back": "Ölçünlü Türkçede düz ünlülerden sonra ancak düz ünlülerin, yuvarlak ünlülerden sonra ise dar-yuvarlak veya düz-geniş ünlülerin gelebilmesidir. Türkçe kökenli sözcüklerde ilk hece dışında o ve ö ünlüleri yer almaz."
+    },
+    {
+      "chapter": 3,
+      "chapterTitle": "Türk Dilinin Ses Yapısı ve Ses Özellikleri",
+      "front": "Birincil Uzun Ünlü",
+      "back": "Türkçe kökenli sözcüklerde birincil olarak bulunmayan, dilimize Arapça, Farsça veya Batı dillerinden geçen alıntı sözcüklerde görülen ses özelliğidir. Alıntı sözcüklerdeki uzun ünlüler yalın halde kısa söylenebilse de ünlüyle başlayan ek aldıklarında açık hecede ortaya çıkar."
+    },
+    {
+      "chapter": 3,
+      "chapterTitle": "Türk Dilinin Ses Yapısı ve Ses Özellikleri",
+      "front": "Türkçedeki Hece Yapısı",
+      "back": "Türkçe kökenli sözcüklerde en çok dört ses bulunabilen altı çeşit hece türü mevcuttur. Türkçe kelime kökünde veya hece sonunda üç ünsüz yan yana bulunmadığı gibi söz başında da çift ünsüz yer almaz."
+    },
+    {
+      "chapter": 3,
+      "chapterTitle": "Türk Dilinin Ses Yapısı ve Ses Özellikleri",
+      "front": "En Az Çaba Yasası",
+      "back": "Konuşma sırasında söyleyişi kolaylaştırmak amacıyla dilde en az enerjiyi harcama eğilimidir. Dilin canlılık ilkesi gereğince sözcük ve eklerde meydana gelen ses olaylarının ve zaman içindeki değişimlerin en temel nedenleri arasında yer alır."
+    },
+    {
+      "chapter": 3,
+      "chapterTitle": "Türk Dilinin Ses Yapısı ve Ses Özellikleri",
+      "front": "Ötümsüzleşme (Ünsüz Sertleşmesi)",
+      "back": "Ötümsüz ünsüzlerle biten sözcüklere ötümlü ünsüzlerle başlayan ek getirildiğinde ekin başındaki ünsüzün ötümsüz karşılığına gelişmesidir. Örneğin git-di yapısının git-ti veya sabah-dan yapısının sabah-tan şekline dönüşmesi bu ses olayına örnektir."
+    },
+    {
+      "chapter": 3,
+      "chapterTitle": "Türk Dilinin Ses Yapısı ve Ses Özellikleri",
+      "front": "Parçalar Üstü Ses Birimleri",
+      "back": "Sözlü iletilere duygu ve anlam değeri katan vurgu, durak ve tonlama gibi müzikal ses ögeleridir. Bu birimler sözcüğün anlamını, cümlede ögelerin işlevini ve bildirimin türünü doğrudan etkiler."
+    }
+  ]
+}

@@ -10,6 +10,7 @@
           "isCorrect": true
         },
         {
+          "isPartiallyCorrect": true,
           "text": "Devletin kuruluş dönemindeki askeri ve toplumsal kurumlarına aynen geri dönerek ıslahat yapabileceğini kabul etmek",
           "rationale": "Geleneksel risalelerde iddialar bu yönde olsa da modern paradigma eski düzene dönüşün imkansızlığını ve yenileşmenin kaçınılmazlığını vurgular.",
           "isCorrect": false
@@ -64,6 +65,7 @@
           "isCorrect": true
         },
         {
+          "isPartiallyCorrect": true,
           "text": "Sultan V. Mehmed Reşad",
           "rationale": "V. Mehmed Reşad, II. Abdülhamid'in tahttan indirilmesinden sonra meclis kararıyla tahta çıkarılan padişahtır.",
           "isCorrect": false
@@ -280,6 +282,7 @@
           "isCorrect": true
         },
         {
+          "isPartiallyCorrect": true,
           "text": "Musul bölgesinde derhal halk oylaması (plebisit) yapılması kararlaştırılmıştır",
           "rationale": "Türkiye halk oylamasını savunmuşsa da İngiltere bunu reddetmiş ve nihai antlaşmada halk oylaması yer almamıştır.",
           "isCorrect": false

@@ -505,6 +505,7 @@
             <a class="btn ghost" href="#/oyunlar?ders=${c.slug}">Bulmaca ve oyunlar</a>
             ${c.okunus ? `<a class="btn ghost" href="#/harfler">Harf atölyesi</a>` : ""}
             <a class="btn ghost" href="#/course/${c.slug}/sozluk">Sözlük destesi${glossDeck(c.slug).length ? ` (${glossDeck(c.slug).length})` : ""}</a>
+            ${c.app ? `<a class="btn ghost" href="${esc(c.app)}" download>Çalışma uygulaması</a>` : ""}
           </div>
           ${credit}
         </aside>
@@ -5503,7 +5504,7 @@
   function viewGate(feature) {
     return `<div class="locked"><div class="crest-lg">${crest()}</div><h1>Yalnızca üyelere</h1><p class="muted">${esc(CONFIG.issuer)} üyelerine açıktır.</p></div>`;
   }
-  // ---- Notebook-Nest eklentisi: indirme ve kurulum (#/eklenti) ----
+  // ---- eklentiler: indirme ve kurulum (#/eklenti) ----
   function viewExtension() {
     const rows = COURSES.filter((c) => c.notebook).map((c) =>
       `<li><a href="${esc(notebookEditUrl(c))}" target="_blank" rel="noopener">${esc(c.subject)}</a></li>`).join("");
@@ -5528,6 +5529,12 @@
         <li>Klasörler ve görevler yalnızca bu tarayıcıda saklanır. NotebookLM'e gitmez, defteri paylaştığın kişiler görmez. Eklentiyi kaldırmadan önce eklentideki <b>Export</b> düğmesiyle yedek al.</li>
         <li>Defterde değişiklik (kaynak ekleme, silme) yapabilmek için defterin sahibi veya düzenleyicisi olman gerekir.</li>
       </ul>
+      <div class="panel" style="margin-top:1.4rem">
+        <p class="eyebrow">İkinci eklenti</p>
+        <h2 style="margin-top:.2rem">Çalışma uygulaması dışa aktarıcı</h2>
+        <p class="muted">Açık defteri tek dosyalık bir çalışma uygulamasına çevirir: sayfadan topladığı başlık, kaynak ve notlarla kart, konu ve test sekmeleri olan bir HTML dosyası indirir. Dosya sunucusuz ve internetsiz açılır; ilerleme o dosyanın kendi tarayıcı deposunda tutulur. Kurulum yukarıdaki adımlarla aynıdır.</p>
+        <div class="btn-row"><a class="btn ghost" href="downloads/notebooklm-study-app.zip" download>Dışa aktarıcıyı indir (.zip)</a></div>
+      </div>
       <p class="muted">Notebook-Nest, Benju66'nın <a href="https://github.com/benju66/Notebook-Nest" target="_blank" rel="noopener">NotebookLM Pro Tree</a> eklentisinin değiştirilmiş kopyasıdır (GPL-3.0). Kaynak kodu ve yapılan değişiklikler zip içindeki README ve LICENSE dosyalarındadır. <a href="#/?duzenle=0">Düzenleyici modunu kapat</a></p>`;
   }
 

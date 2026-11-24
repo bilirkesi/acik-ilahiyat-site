@@ -13,6 +13,7 @@
 - `scripts/add_course.py`, `new_project.py` — scaffold a course or a new project. `add_course.py --offline`
   writes `data/<slug>/{state,study_plan,manifest}.json` so `build.py` lists a hand-written course before
   any NotebookLM run.
+- `build.py` sets `course.app` (`apps/<slug>.html`) only when `scripts/build_study_app.py` has already written that file; the course page shows its "Çalışma uygulaması" button from it. `build.py` never writes or deletes `site/apps/`.
 - `chapter_audio()` in `build.py` reads `data/<slug>/audio.json` and adds `course.audio` for MP3s that exist under `site/audio/<slug>/`; `offline_packs()` exposes them as the separate `<slug>-ses` pack.
 - `scripts/okunus.py` — builds `data/<slug>/okunus.json` (Arabic-script → Latin reading) for tap-to-pronounce.
 - `site-template/` — the SPA source that becomes `site/`: `app.js`, `index.html`, `styles.css`, `interactive.js`, `sw.js`, `manifest.webmanifest`, `favicon.svg`, `fonts/`, `icons/`.
@@ -39,7 +40,7 @@
 - `SHELL_FILES` in `build.py` lists the PWA app shell hashed into `sw.js`: `index.html`, `styles.css`, `app.js`, `data.js`, `interactive.js`, `coursegraph.js`, `past_exams.js`, `unit_quizzes.js`, `manifest.webmanifest`, `favicon.svg`. Adding a new lazy bundle means adding it here too. `chat.js` is the exception: it is a 0.3 MB corpus only the question page needs, so the shell leaves it out and the offline page offers it as its own `soru` pack (`OFFLINE.packs["soru"]`).
 - Cache busting uses a single `{{V}}` token stamped into `index.html`, `styles.css?v=`, and `sw.js`.
 - `build.py` writes a **stub** for a shell bundle that does not exist yet, so a fresh build never 404s.
-- `pipeline.py flashcards` sends one `ask` per chapter limited to that chapter's sources and asks for `CARDS_PER_CHAPTER` term/definition cards as JSON; `parse_cards()` repairs the model's invalid escapes the same way the plan stage does, drops an empty, oversized or duplicate front, and the stage skips a chapter that already has cards unless `--force` (which replaces that chapter's cards).
+- `pipeline.py flashcards` sends one `ask` per chapter limited to that chapter's sources (a state `id` that is a local key, such as `osm1-kitap-1`, is sent as its `nlm_id`) and asks for `CARDS_PER_CHAPTER` term/definition cards as JSON; `parse_cards()` repairs the model's invalid escapes the same way the plan stage does, drops an empty, oversized or duplicate front, and the stage skips a chapter that already has cards unless `--force` (which replaces that chapter's cards).
 - `pipeline.py` keeps the plan ask under `MAX_PLAN_PROMPT` characters: NotebookLM's chat rejects a prompt that is too long (around 6000 characters for a multi-line prompt), so the source listing is shortened when a course has many sources. The model answers with the source numbers, so the titles only have to stay recognisable.
 - The plan answer is JSON the model writes by hand, and it sometimes escapes characters JSON does not allow (`"CDB\$ROOT"`). `fix_json_escapes()` in `pipeline.py` drops those escapes before parsing; the valid ones (`\\`, `\"`, `\n`, `\uXXXX`) are kept, and a leftover `\$` in the text is repaired by `clean()` in `build.py`.
 - `pipeline.py ground --chapters 5,6 --force` re-asks the listed chapters even when they already have notes; `--chapters` alone limits the stage, `--force` overwrites.

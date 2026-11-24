@@ -263,6 +263,7 @@
      "rationale": "Sonda şın (ش) vardır, ç değil."
     },
     {
+     "isPartiallyCorrect": true,
      "text": "kuş / kış",
      "isCorrect": false,
      "rationale": "Kış için vav yazılmaz."
@@ -388,6 +389,7 @@
      "rationale": "Doğru. Çokluk eki her zaman لر yazılır."
     },
     {
+     "isPartiallyCorrect": true,
      "text": "Kalınlarda لار, incelerde لر",
      "isCorrect": false,
      "rationale": "Ekin ünlüsü yazılmaz; لار yanlıştır."

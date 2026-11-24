@@ -39,6 +39,7 @@
           "rationale": "Sözlükte önceden benzeri olmadan icat edilen şey anlamına gelen Bid’at dinin özündeki sonradan olma şeyleri, Tefrika ise toplum bütünlüğünün bozulmasını ifade eder."
         },
         {
+          "isPartiallyCorrect": true,
           "text": "Tefrika - Makâlât",
           "isCorrect": false,
           "rationale": "Makâlât, İslam düşüncesindeki görüşlerin derlendiği eser türlerini ifade eder, toplumsal ayrışmayla doğrudan ilgisi yoktur."

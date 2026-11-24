@@ -93,6 +93,7 @@
           "rationale": "Nâkıs fiiller Tef‘îl bâbında ism-i mef‘ûl yapılırken son illet harfi üstünleşerek mufa‘‘â (müberrâ, müsemmâ gibi) veznini oluşturur."
         },
         {
+          "isPartiallyCorrect": true,
           "text": "mufa‘‘î",
           "isCorrect": false,
           "rationale": "Mufa‘‘î vezni nâkıs kelimelerin Tef‘îl bâbındaki ism-i fâ‘il veznidir."
@@ -157,6 +158,7 @@
           "rationale": "Mufa‘‘il vezni Tef‘îl bâbının ism-i fâ‘ilidir."
         },
         {
+          "isPartiallyCorrect": true,
           "text": "mütefa‘‘al",
           "isCorrect": false,
           "rationale": "Mütefa‘‘al vezni Tefa‘‘ul bâbının ism-i mef‘ûl veznidir."

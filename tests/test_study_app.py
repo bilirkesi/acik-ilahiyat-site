@@ -164,6 +164,24 @@ class StudyAppTest(unittest.TestCase):
         self.assertEqual(sum(1 for o in quiz[2]["o"] if o["ok"]), 2)
         self.assertEqual(quiz[3]["a"], "Bir dilin büyük kollarından her biri.")
 
+    def test_a_partly_correct_option_keeps_its_mark(self):
+        """Kaynak şıkkı "kısmen doğru" işaretlediyse uygulama onu yanlıştan ayırır."""
+        with tempfile.TemporaryDirectory() as tmp:
+            root = fixture(tmp)
+            write(root / "data" / "x" / "quiz.json", {"questions": [
+                {"question": "Hangisi?", "answerOptions": [
+                    {"text": "Doğru", "isCorrect": True},
+                    {"text": "Kısmen", "isCorrect": False, "isPartiallyCorrect": True},
+                    {"text": "Yanlış", "isCorrect": False}]}]})
+            page = app.build_app(root, "x").read_text(encoding="utf-8")
+        options = embedded(page)["quiz"][0]["o"]
+        self.assertTrue(options[1]["p"])
+        self.assertNotIn("p", options[0])
+        self.assertNotIn("p", options[2])
+        self.assertIn("Kısmen doğru", page)
+        self.assertIn("Kısmen doğru: bu seçenek doğru bilgi içeriyor", page)
+        self.assertIn("Tamamlandı işaretle", page)
+
     def test_a_course_without_a_plan_is_skipped(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = fixture(tmp, plan=False)

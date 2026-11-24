@@ -71,8 +71,14 @@ class Runner:
         return [s for s in self.st.d.get("sources", {}).values() if s.get("status") == "ready"]
 
     def chapter_sources(self, ch):
-        """The chapter's own sources plus the top-tier ones (textbook) when it has none of its own."""
-        return with_authority(ch["source_ids"], self.ready_sources(), self.tiers)
+        """The chapter's own sources plus the top-tier ones (textbook) when it has none of its own.
+
+        A state entry whose `id` is a local key (e.g. `osm1-kitap-1`) is sent as its `nlm_id`, the id
+        NotebookLM knows; `with_authority` keeps working on the local ids for the tier ranking."""
+        sources = self.ready_sources()
+        by_id = {s.get("id"): s for s in sources}
+        return [by_id.get(sid, {}).get("nlm_id") or sid
+                for sid in with_authority(ch["source_ids"], sources, self.tiers)]
 
     def chapter_header(self, n, title):
         """The chapter's heading for an infographic. The course's language decides the word; a title that

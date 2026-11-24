@@ -37,6 +37,7 @@
           "rationale": "Kurucu imamdan sonra gelen ikinci adam, mezhebin görüşlerini derleyip sistemleştirerek gruba ayırt edici bir kimlik ve yazılı gelenek kazandırır."
         },
         {
+          "isPartiallyCorrect": true,
           "text": "Siyasi iktidarın desteğini alarak mezhebi devletin tek resmi mezhebi ilan ettirmek.",
           "isCorrect": false,
           "rationale": "Devlet desteği mezheplerin yayılmasında etkili olsa da 'ikinci adam'ın asli görevi siyasi nüfuz kurmaktan ziyade düşünceyi sistemleştirmektir."
@@ -155,6 +156,7 @@
           "rationale": "Hariciler genel olarak Hz. Ebubekir ve Ömer'i tam model görür, Hz. Osman'ın ilk 6 yılını ve Hz. Ali'nin tahkime kadarki dönemini meşru sayarlar."
         },
         {
+          "isPartiallyCorrect": true,
           "text": "Müslümanların canlarını, mallarını ve çocuklarını helal görüp \"istıraz\" (sorgulama/imtihan) uygulamasını zorunlu kılmaları.",
           "isCorrect": false,
           "rationale": "İstıraz (yolda durdurup insanları imtihan edip öldürme) Ezariqa'nın şiddet yanlısı uygulamasıdır, İbaziyye bunu reddeder."
@@ -334,6 +336,7 @@
           "rationale": "Zeydiler gaybet ve masumiyet inancını reddederler; imamın açıkça ortaya çıkmasını, alim ve takva sahibi olarak kılıcıyla davet etmesini şart koşarlar."
         },
         {
+          "isPartiallyCorrect": true,
           "text": "İmametin sadece Hz. Hüseyin'in soyundan gelen tek bir kişiye nasla geçtiğine ve babadan oğula aktarıldığına inanmaları.",
           "isCorrect": false,
           "rationale": "Zeydiler imametin hem Hz. Hasan hem de Hz. Hüseyin soyundan (Fatımi) gelen şartları taşıyan herhangi bir alime geçebileceğini savunurlar."

@@ -8,7 +8,9 @@ Usage:
 Reads what the NotebookLM pipeline already produced for a course (`study_plan.json`, `quiz.json`,
 `unit_quizzes/`, `chat.json`, `flashcards.json`, `state.json`) and writes `site/apps/<slug>.html`:
 one file with inline CSS and JavaScript, no server and no external assets. It opens from a file://
-path, from any static host, and offline; progress lives in the reader's localStorage.
+path, from any static host, and offline; progress (known cards, completed chapters, best test) lives
+in the reader's localStorage. A quiz answer gets one of three verdicts: correct, partly correct
+(`kısmen doğru`, no point) or wrong.
 """
 import argparse, html, json, re, sys
 from pathlib import Path
@@ -83,8 +85,11 @@ def _questions(data):
             if isinstance(o, str):
                 options.append({"t": _text(o), "ok": False, "why": ""})
             elif isinstance(o, dict):
-                options.append({"t": _text(o.get("text")), "ok": bool(o.get("isCorrect")),
-                                "why": _text(o.get("rationale") or o.get("explanation"))})
+                option = {"t": _text(o.get("text")), "ok": bool(o.get("isCorrect")),
+                          "why": _text(o.get("rationale") or o.get("explanation"))}
+                if not option["ok"] and _partial(o):
+                    option["p"] = True  # yalnız işaretliyse yazılır: işaretsiz payload aynı kalır
+                options.append(option)
         options = [o for o in options if o["t"]]
         answer = _text(q.get("bestAnswer") or grading.get("modelAnswer"))
         why = _text(q.get("rationale") or grading.get("rationale"))
@@ -93,6 +98,18 @@ def _questions(data):
                         "type": str(q.get("type") or "multiple_choice"),
                         "a": answer, "why": "" if options else why})
     return out
+
+
+def _partial(option):
+    """The source's own "partly correct" mark on one option, in the spellings it appears in.
+
+    NotebookLM writes a plain `isCorrect` today; a quiz that marks a distractor as partly right
+    (`isPartiallyCorrect`, `partial`, or `status: "partial"`) keeps that information instead of
+    flattening it into "wrong".
+    """
+    if option.get("isPartiallyCorrect") or option.get("partiallyCorrect") or option.get("partial"):
+        return True
+    return str(option.get("status") or "").strip().casefold() == "partial"
 
 
 def _cards(doc):
@@ -214,9 +231,11 @@ def _is_turkish(meta, uni):
 # ---- rendering --------------------------------------------------------------
 CSS = """
 :root{--primary:__PRIMARY__;--accent:__ACCENT__;--paper:__PAPER__;--ink:#16181d;--muted:#5d6470;
---card:#fff;--line:rgba(20,24,34,.12);--ok:#1f7a4d;--bad:#b3382f}
+--card:#fff;--line:rgba(20,24,34,.12);--ok:#1f7a4d;--bad:#b3382f;--warn:#8a5e0c;
+--warnbg:rgba(138,94,12,.10);--okbg:rgba(31,122,77,.10)}
 @media (prefers-color-scheme:dark){:root{--paper:#12151a;--ink:#e8e5de;--muted:#a3a9b4;--card:#1a1f27;
---line:rgba(255,255,255,.16);--ok:#5ec98f;--bad:#ef8b82}}
+--line:rgba(255,255,255,.16);--ok:#5ec98f;--bad:#ef8b82;--warn:#e0b055;
+--warnbg:rgba(224,176,85,.14);--okbg:rgba(94,201,143,.16)}}
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--paper);color:var(--ink);
@@ -262,8 +281,18 @@ padding:12px 14px;margin:0 0 9px;font:inherit;color:inherit;cursor:pointer}
 .opt:hover{border-color:var(--accent)}
 .opt[data-state=ok]{border-color:var(--ok);background:rgba(31,122,77,.08)}
 .opt[data-state=bad]{border-color:var(--bad);background:rgba(179,56,47,.08)}
+.opt[data-state=partial]{border-color:var(--warn);background:var(--warnbg)}
 .why{margin:10px 0 0;padding:10px 12px;border-left:3px solid var(--accent);background:rgba(176,141,74,.09);
 border-radius:0 8px 8px 0;font-size:15px}
+.why.partial{border-left-color:var(--warn);background:var(--warnbg)}
+.prog{margin:0 0 14px}
+.prog:last-child{margin-bottom:0}
+.bar.b1 i{background:var(--ok)}
+.chhead{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+.chdone{flex:0 0 auto;border:1px solid var(--line);background:none;color:var(--muted);border-radius:999px;
+padding:5px 12px;font:inherit;font-size:13px;font-weight:600;cursor:pointer}
+.chdone[aria-pressed=true]{border-color:var(--ok);color:var(--ok);background:var(--okbg)}
+.card[data-done="1"]{border-left:4px solid var(--ok)}
 .empty{color:var(--muted);margin:0}
 footer{max-width:860px;margin:0 auto;padding:0 18px 34px;color:var(--muted);font-size:13px}
 """
@@ -272,7 +301,7 @@ JS = """
 (function () {
   var DATA = JSON.parse(document.getElementById("app-data").textContent);
   var KEY = DATA.storageKey + ".app";
-  var st = {known: {}, best: 0, seen: 0};
+  var st = {known: {}, best: 0, seen: 0, done: {}};
   try { Object.assign(st, JSON.parse(localStorage.getItem(KEY) || "{}")); } catch (e) {}
   function save() { try { localStorage.setItem(KEY, JSON.stringify(st)); } catch (e) {} }
   function el(tag, cls, text) {
@@ -296,6 +325,32 @@ JS = """
     });
   }
 
+  // ---- progress ------------------------------------------------------------
+  function progressRow(name, n, total, unitText, cls) {
+    var wrap = el("div", "prog");
+    wrap.appendChild(el("p", "muted", name + ": " + n + " / " + total + " " + unitText));
+    var bar = el("div", "bar" + (cls ? " " + cls : ""));
+    var fill = el("i");
+    fill.style.width = (total ? Math.round(100 * n / total) : 0) + "%";
+    bar.appendChild(fill);
+    wrap.appendChild(bar);
+    return wrap;
+  }
+
+  function paintChapterDone(btn, card, n) {
+    var done = Boolean(st.done[n]);
+    btn.textContent = done ? "Tamamlandı ✓" : "Tamamlandı işaretle";
+    btn.setAttribute("aria-pressed", done ? "true" : "false");
+    card.dataset.done = done ? "1" : "0";
+  }
+
+  function toggleChapter(btn, card, n) {
+    if (st.done[n]) delete st.done[n]; else st.done[n] = 1;
+    save();
+    paintChapterDone(btn, card, n);
+    paintPanel();
+  }
+
   // ---- panel ---------------------------------------------------------------
   function paintPanel() {
     var v = $("#view-panel");
@@ -310,17 +365,13 @@ JS = """
     });
     v.appendChild(stats);
 
+    var doneCh = DATA.chapters.filter(function (c) { return st.done[c.n]; }).length;
     var known = DATA.cards.filter(function (c) { return st.known[c.id]; }).length;
-    var pc = DATA.counts.cards ? Math.round(100 * known / DATA.counts.cards) : 0;
     var box = el("div", "card");
-    box.appendChild(el("h3", null, "Kart ilerlemesi"));
-    box.appendChild(el("p", "muted", known + " / " + DATA.counts.cards + " kart biliniyor" +
-      (st.best ? " · en iyi test: " + st.best + "%" : "")));
-    var bar = el("div", "bar");
-    var fill = el("i");
-    fill.style.width = pc + "%";
-    bar.appendChild(fill);
-    box.appendChild(bar);
+    box.appendChild(el("h3", null, "İlerleme"));
+    box.appendChild(progressRow("Bölüm", doneCh, DATA.counts.chapters, "bölüm tamamlandı", "b1"));
+    box.appendChild(progressRow("Kart", known, DATA.counts.cards, "kart biliniyor", ""));
+    if (st.best) box.appendChild(el("p", "muted", "En iyi test: " + st.best + "%"));
     var row = el("div", "row");
     row.style.marginTop = "14px";
     var b1 = el("button", "act primary", "Kartlara başla");
@@ -391,8 +442,18 @@ JS = """
     if (!shown.length) { v.appendChild(el("p", "empty", "Aramanıza uyan bölüm yok.")); return; }
     shown.forEach(function (ch) {
       var card = el("section", "card");
-      card.appendChild(el("div", "kicker", "Bölüm " + ch.n));
-      card.appendChild(el("h3", null, ch.title));
+      var head = el("div", "chhead");
+      var left = el("div");
+      left.appendChild(el("div", "kicker", "Bölüm " + ch.n));
+      left.appendChild(el("h3", null, ch.title));
+      var mark = el("button", "chdone", "");
+      mark.type = "button";
+      mark.title = "Bu bölümü bitirdiniz mi?";
+      mark.onclick = function () { toggleChapter(mark, card, ch.n); };
+      paintChapterDone(mark, card, ch.n);
+      head.appendChild(left);
+      head.appendChild(mark);
+      card.appendChild(head);
       if (ch.summary) card.appendChild(el("p", "muted", ch.summary));
       if (ch.objectives.length) {
         var ul = el("ul", "obj");
@@ -418,7 +479,7 @@ JS = """
   }
 
   // ---- quiz ----------------------------------------------------------------
-  var pool = [], qi = 0, right = 0, answered = false;
+  var pool = [], qi = 0, right = 0, partialRight = 0, answered = false;
   function startQuiz() {
     pool = DATA.quiz.filter(function (q) {
       if (!query) return true;
@@ -429,7 +490,7 @@ JS = """
       var j = Math.floor(Math.random() * (i + 1));
       var t = pool[i]; pool[i] = pool[j]; pool[j] = t;
     }
-    qi = 0; right = 0; answered = false;
+    qi = 0; right = 0; partialRight = 0; answered = false;
     paintQuiz();
   }
   function paintQuiz() {
@@ -447,7 +508,8 @@ JS = """
       save();
       var box = el("div", "card");
       box.appendChild(el("div", "kicker", "Test bitti"));
-      box.appendChild(el("h3", null, right + " / " + pool.length + " doğru · " + pct + "%"));
+      box.appendChild(el("h3", null, right + " / " + pool.length + " doğru · " + pct + "%" +
+        (partialRight ? " · " + partialRight + " kısmen doğru" : "")));
       box.appendChild(el("p", "muted", pct >= Math.round(DATA.passMark * 100)
         ? "Geçme sınırının üstündesiniz." : "Geçme sınırı " + Math.round(DATA.passMark * 100) + "%."));
       var row = el("div", "row");
@@ -479,14 +541,19 @@ JS = """
       return b;
     });
     // Tek doğru: tıklanan şık cevabı verir. Çoktan seçmeli: şıklar işaretlenir, küme "Kontrol et"te karşılaştırılır.
-    function settle(ok, note) {
+    // Üç sonuç var: doğru, kısmen doğru, yanlış. Kısmen doğru puan kazandırmaz; seçim doğru bilgi
+    // içeriyor ama sorunun tam yanıtı değil.
+    function settle(verdict, note) {
       answered = true;
-      if (ok) right += 1;
+      if (verdict === "ok") right += 1;
+      if (verdict === "partial") partialRight += 1;
       q.o.forEach(function (o, j) {
-        labels[j].dataset.state = o.ok ? "ok" : (selected[j] ? "bad" : "");
+        if (verdict === "partial" && selected[j]) labels[j].dataset.state = "partial";
+        else labels[j].dataset.state = o.ok ? "ok" : (selected[j] ? "bad" : "");
       });
-      var why = q.o.filter(function (x) { return x.ok && x.why; })[0];
-      if (why) card.appendChild(el("p", "why", why.why));
+      var picked = q.o.filter(function (o, j) { return selected[j] && o.why; })[0];
+      var why = verdict === "partial" ? picked : q.o.filter(function (x) { return x.ok && x.why; })[0];
+      if (why) card.appendChild(el("p", verdict === "partial" ? "why partial" : "why", why.why));
       if (note) card.appendChild(el("p", "muted", note));
       card.appendChild(nextButton());
     }
@@ -503,8 +570,20 @@ JS = """
       check.style.marginTop = "6px";
       check.onclick = function () {
         if (answered) return;
-        var ok = q.o.every(function (o, j) { return Boolean(o.ok) === Boolean(selected[j]); });
-        settle(ok, ok ? "Doğru." : "Tam değil.");
+        var hits = 0, misses = 0;
+        q.o.forEach(function (o, j) {
+          if (!selected[j]) return;
+          if (o.ok) hits += 1; else misses += 1;
+        });
+        if (q.o.every(function (o, j) { return Boolean(o.ok) === Boolean(selected[j]); })) {
+          settle("ok", "Doğru.");
+        } else if (hits && !misses) {
+          settle("partial", "Kısmen doğru: doğru seçeneklerin bir kısmını işaretlediniz.");
+        } else if (hits) {
+          settle("partial", "Kısmen doğru: doğru seçeneklerden bazılarını işaretlediniz, ayrıca yanlış seçenek var.");
+        } else {
+          settle("bad", "Yanlış: doğru seçeneklerden hiçbirini işaretlemediniz.");
+        }
       };
       card.appendChild(check);
     } else {
@@ -512,7 +591,9 @@ JS = """
         b.onclick = function () {
           if (answered) return;
           selected[j] = true;
-          settle(q.o[j].ok);
+          if (q.o[j].ok) settle("ok");
+          else if (q.o[j].p) settle("partial", "Kısmen doğru: bu seçenek doğru bilgi içeriyor, ama sorunun tam yanıtı değil.");
+          else settle("bad");
         };
       });
     }
@@ -534,9 +615,11 @@ JS = """
     var row = el("div", "row");
     var know = el("button", "act primary", "Bildim");
     know.onclick = function () { right += 1; qi += 1; answered = false; paintQuiz(); };
+    var mid = el("button", "act ghost", "Kısmen bildim");
+    mid.onclick = function () { partialRight += 1; qi += 1; answered = false; paintQuiz(); };
     var no = el("button", "act ghost", "Bilemedim");
     no.onclick = function () { qi += 1; answered = false; paintQuiz(); };
-    row.appendChild(know); row.appendChild(no);
+    row.appendChild(know); row.appendChild(mid); row.appendChild(no);
     card.appendChild(row);
   }
 

@@ -125,6 +125,7 @@
           "rationale": "İki rakamı sağa bakarken, altı rakamı sola bakacak şekilde yazılır."
         },
         {
+          "isPartiallyCorrect": true,
           "text": "Yedi (٧) rakamı ters v harfine, sekiz (٨) ise düz v harfine benzer.",
           "isCorrect": false,
           "rationale": "Yedi rakamı düz 'v' harfine benzerken, sekiz rakamı 'v' harfinin ters dönmüş biçimine benzer."

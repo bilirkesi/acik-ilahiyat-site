@@ -336,6 +336,7 @@
         {
           "text": "Deyimlerin sözlerinin hiçbir zaman değiştirilememesi, atasözlerinin ise sürekli değişmesi",
           "isCorrect": false,
+          "isPartiallyCorrect": true,
           "rationale": "Her ikisi de kalıplaşmış sözlerdir; ancak bazı deyimlerde ufak varyasyonlar olabilirken atasözleri değişmez kural niteliğindedir."
         },
         {
