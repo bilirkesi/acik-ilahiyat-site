@@ -40,6 +40,14 @@
   (a rename must not wipe a reader's progress), the emblem geometry shared by `crest.svg`, `favicon.svg`
   and `app.js`'s `crest()`, and the notes' wording (they do not address the reader as a student; historical
   uses such as "Ebû Hanife'nin öğrencileri" survive).
+- `test_site_artifact.py` — the release contract: the template's CSP is `script-src 'self'`, has no inline
+  `<script>`, and `app.js` loads KaTeX from `vendor/katex/` (no `cdnjs` left); `scripts/vendor_katex.py --check`
+  matches every pinned digest; `build.py` copies `vendor/` but keeps it out of `SHELL_DIRS`; and
+  `scripts/verify_site.py` accepts a good synthetic tree while rejecting an external `script-src`, an inline
+  script, a missing `pu-version`, a stale `sw.js` `VERSION`, a shell entry that is not on disk, KaTeX inside
+  the shell, an oversized file, WebP files that `data.js` does not list (a Pillow-less build), a leaked
+  `AGENTS.md` under `--deploy`, and a live release that still serves the old `pu-version`. The real built
+  `site/` must also pass the contract.
 - `__init__.py` — package marker for discovery.
 
 ## Local Contracts
@@ -53,7 +61,7 @@
 - Keep the suite stdlib-only (`unittest`); do not add pytest.
 
 ## Verification
-- `py -3 -m unittest discover -s tests` — 226 tests, must exit 0. Run after any change to `data/`, `coursegraph/`, or the export scripts.
+- `py -3 -m unittest discover -s tests` — 246 tests, must exit 0. Run after any change to `data/`, `coursegraph/`, or the export scripts.
 - CI runs the same command on every push to `main` and on every pull request (`.github/workflows/tests.yml`).
 
 ## Child DOX Index

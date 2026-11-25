@@ -16,7 +16,8 @@
 - `build.py` sets `course.app` (`apps/<slug>.html`) only when `scripts/build_study_app.py` has already written that file; the course page shows its "Çalışma uygulaması" button from it. `build.py` never writes or deletes `site/apps/`.
 - `chapter_audio()` in `build.py` reads `data/<slug>/audio.json` and adds `course.audio` for MP3s that exist under `site/audio/<slug>/`; `offline_packs()` exposes them as the separate `<slug>-ses` pack.
 - `scripts/okunus.py` — builds `data/<slug>/okunus.json` (Arabic-script → Latin reading) for tap-to-pronounce.
-- `site-template/` — the SPA source that becomes `site/`: `app.js`, `boot.js`, `index.html`, `styles.css`, `interactive.js`, `sw.js`, `manifest.webmanifest`, `favicon.svg`, `fonts/`, `icons/`.
+- `site-template/` — the SPA source that becomes `site/`: `app.js`, `boot.js`, `index.html`, `styles.css`, `interactive.js`, `sw.js`, `manifest.webmanifest`, `favicon.svg`, `fonts/`, `icons/`, `vendor/`.
+- `site-template/vendor/katex/` — vendored KaTeX 0.16.9 (`katex.min.js`, `katex.min.css`, `contrib/auto-render.min.js`, 20 `fonts/*.woff2`, plus its MIT `LICENSE`). It is the only third-party code the site loads and it loads from our own origin, so the CSP keeps `script-src 'self'` and math still works offline. `scripts/vendor_katex.py` downloads and verifies it against pinned SHA-256 digests; `build.py` copies the folder to `site/vendor/` but keeps it out of the service-worker shell (`VENDOR_DIRS`, not `SHELL_DIRS`), because no content contains a formula and 550 KB of dead precache would be wasted.
 - `README.md`, `INSTALL_PROMPT.md` — upstream skill docs.
 
 ## Local Contracts
@@ -39,7 +40,7 @@
 - `build.py` reads `university.json`, `courses.json`, and `data/<slug>/`; it does **not** read `okf/` or `coursegraph/index/`.
 - `SHELL_FILES` in `build.py` lists the PWA app shell hashed into `sw.js`: `index.html`, `boot.js`, `styles.css`, `app.js`, `data.js`, `interactive.js`, `coursegraph.js`, `past_exams.js`, `unit_quizzes.js`, `manifest.webmanifest`, `favicon.svg`. Adding a new lazy bundle means adding it here too. `chat.js` is the exception: it is a 0.3 MB corpus only the question page needs, so the shell leaves it out and the offline page offers it as its own `soru` pack (`OFFLINE.packs["soru"]`).
 - Cache busting uses a single `{{V}}` token stamped into `index.html`, `styles.css?v=`, and `sw.js`.
-- `index.html` carries the Content-Security-Policy meta tag (GitHub Pages sends no custom headers): scripts come only from `'self'` and `https://cdnjs.cloudflare.com` (KaTeX), and inline `<script>` is forbidden. The theme/reading boot therefore lives in the external `boot.js` loaded in `<head>`, and the zoom popup binds its controls from `app.js` in the opener window. Keep new behavior in external files.
+- `index.html` carries the Content-Security-Policy meta tag (GitHub Pages sends no custom headers): `script-src 'self'` and nothing else — the site has no third-party script source, KaTeX ships in `vendor/katex/`. Inline `<script>` is forbidden, so the theme/reading boot lives in the external `boot.js` loaded in `<head>`, the zoom popup binds its controls from `app.js` in the opener window, and `ensureKatex()` appends a `<script>`/`<link>` pair under `vendor/katex/` only when a page actually contains a formula. Keep new behavior in external files.
 - `build.py` writes a **stub** for a shell bundle that does not exist yet, so a fresh build never 404s.
 - `pipeline.py flashcards` sends one `ask` per chapter limited to that chapter's sources (a state `id` that is a local key, such as `osm1-kitap-1`, is sent as its `nlm_id`) and asks for `CARDS_PER_CHAPTER` term/definition cards as JSON; `parse_cards()` repairs the model's invalid escapes the same way the plan stage does, drops an empty, oversized or duplicate front, and the stage skips a chapter that already has cards unless `--force` (which replaces that chapter's cards).
 - `pipeline.py` keeps the plan ask under `MAX_PLAN_PROMPT` characters: NotebookLM's chat rejects a prompt that is too long (around 6000 characters for a multi-line prompt), so the source listing is shortened when a course has many sources. The model answers with the source numbers, so the titles only have to stay recognisable.
@@ -56,6 +57,7 @@
 ## Verification
 - Rebuild and confirm `site/` regenerates cleanly: `py -3 generator/scripts/build.py .`
 - `py -3 -m unittest discover -s tests` guards the site bundle contracts the build depends on.
+- `py -3 scripts/vendor_katex.py --check` confirms the vendored KaTeX files still match their pinned digests.
 
 ## Child DOX Index
 - None. `site-template/` is the SPA source described under Ownership; its behavior/styling rules live in `site/AGENTS.md`.

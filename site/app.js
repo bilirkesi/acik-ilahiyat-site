@@ -254,11 +254,17 @@
   function ensureKatex() {
     if (window.renderMathInElement) return Promise.resolve();
     if (katexP) return katexP;
-    const base = "https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/";
+    const base = "vendor/katex/";
     const load = (src) => new Promise((res, rej) => {
       const s = document.createElement("script"); s.src = src; s.onload = res; s.onerror = rej;
       document.head.appendChild(s);
     });
+    // Stil de yerelden gelir (CSP: script-src 'self'); bir kez eklenir.
+    if (!document.querySelector("link[data-katex]")) {
+      const css = document.createElement("link");
+      css.rel = "stylesheet"; css.href = base + "katex.min.css"; css.setAttribute("data-katex", "");
+      document.head.appendChild(css);
+    }
     // auto-render, katex yüklendikten sonra gelmeli: paralel yüklemede katex henuz tanimli
     // olmadigi icin auto-render "ParseError" okumaya calisiyor ve hata veriyordu.
     katexP = load(base + "katex.min.js")

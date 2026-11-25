@@ -1,6 +1,7 @@
 # Runs the stdlib unittest suite on every push to main and on every pull request.
-# The suite is stdlib-only (no requirements file), so there is nothing to install;
-# the deploy workflow (.github/workflows/static.yml) only publishes site/.
+# The suite is stdlib-only (no requirements file), so there is nothing to install.
+# The deploy workflow (.github/workflows/static.yml) runs the same suite as a release
+# gate, but only after rebuilding site/, so this workflow is the fast PR signal.
 name: Tests
 
 on:

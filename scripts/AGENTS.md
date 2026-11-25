@@ -65,6 +65,10 @@ Export (`data/` → site/bundle):
 - `export_past_exams_site.py` — `past_exams.json` → `site/past_exams.js` (`window.PAST_EXAMS`); adds unit/chapter tags, answer key, and auto-generated solutions.
 - `export_okf.py` — course data → the `okf/` Markdown bundle; wipes `okf/` except `okf/AGENTS.md`. Every input is read before the wipe, so a broken JSON file or a missing `node` leaves the previous bundle intact instead of a half-written one. It also writes each course's question-and-answer page (`courses/<slug>/chat.md`) from `data/<slug>/chat.json`.
 
+Release (`site/` → host):
+- `verify_site.py` — the artifact contract `.github/workflows/static.yml` runs before publishing and again after it: required shell and `vendor/katex/` files exist, the CSP's `script-src` is exactly `'self'`, there is no inline `<script>`, `pu-version` equals `sw.js`'s `VERSION` and every `SHELL` path is on disk (with no `vendor/` path in the shell), the artifact stays under 1 GiB with no file over 100 MiB, and committed WebP copies are actually listed in `data.js` (a Pillow-less build drops them). `--deploy` fails on a leaked `AGENTS.md`; `--url` polls the live `index.html?build=<v>` until it serves the local `pu-version`, retrying for CDN lag.
+- `vendor_katex.py` — downloads KaTeX 0.16.9 into `generator/site-template/vendor/katex/` and verifies all 24 pinned SHA-256 digests (its MIT `LICENSE` included); `--check` verifies offline without the network. Bump `VERSION`, `BASE` and `FILES` together when upgrading.
+
 Infographic QA/repair:
 - `compare_nlm_infographics.py`, `fix_infographic_text.py`, `generate_nlm_infographics.py`.
 - `recreate_structure.py`, `recreate_build_manifest.py`, `recreate_render_html.py`, `recreate_chrome_shot.py` — rebuild infographic HTML/PNG from a structure manifest.
@@ -102,6 +106,8 @@ Validation:
 
 ## Verification
 - `py -3 scripts/check_quiz_answers.py` exits 0 when all quiz data and the site bundle agree.
+- `py -3 scripts/verify_site.py site` exits 0 when the built artifact satisfies the release contract (`--deploy` and `--url` add the publish-time checks).
+- `py -3 scripts/vendor_katex.py --check` exits 0 when the vendored KaTeX files match their pinned digests.
 - `py -3 scripts/audit_sources.py` before regenerating a course's content, to see which chapters rest only on lecture captions.
 - `py -3 -m unittest discover -s tests` covers `chapter_meta`/`build_solution`, the unit-quiz export, and the OKF export's "a broken input leaves the bundle intact" guarantee (`tests/test_exports.py`).
 

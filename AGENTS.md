@@ -93,7 +93,8 @@ Rules for the bundle itself live in `okf/AGENTS.md`.
 - License: GPL-3.0 (`LICENSE` at the repo root). The vendored `extensions/notebook-nest/` keeps its own GPL-3.0 notice.
 - `README.md` is the entry point for newcomers: what the project is, how to run it, how the pieces fit together.
 - Large local-only material lives in `artifacts/`, `assets/`, and `logs/`; all three are git-ignored. Never reference them as if they ship to the site.
-- The Pages workflow uploads only `site/` and deletes `site/AGENTS.md` from it first, so the DOX contract stays tracked in the repo but returns 404 on the host.
+- The Pages workflow builds `site/` from sources in CI (a stale committed copy can never ship), runs the unit suite and `scripts/verify_site.py` as a release gate, deletes `site/AGENTS.md` from the artifact, retries a failed deploy once, and then polls the live `pu-version` marker. The committed `site/` is for local browsing only.
+- The site loads no third-party script: KaTeX 0.16.9 is vendored under `generator/site-template/vendor/katex/` (pinned SHA-256 in `scripts/vendor_katex.py`) and copied to `site/vendor/`, so the CSP meta tag keeps `script-src 'self'`. The vendor folder is deliberately outside the service-worker shell.
 ## Known Gaps
 - Source quality (`py -3 scripts/audit_sources.py`): chapters of `turk-dili-1`, `ataturk-ilkeleri-1`, `islam-mezhepleri-tarihi` were planned and grounded on lecture captions only. Study notes for the three were rebuilt from `Kitap.pdf`; by owner decision, quizzes, infographics and audio made before the grounding rules stay as they are, and the rules apply to new generation only. `turk-dili-1/state.json` records only the Kitap among the notebook's 14 AÖF PDFs.
 - `data/osmanlica-1`: past-exam units come from `past_exams_notes.json`; the `OSM_UNIT_KEYWORDS` fallback in `coursegraph/past_exams.py` covers units 1-5 only, so a future final-exam question for units 6-8 needs a note entry.

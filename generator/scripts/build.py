@@ -423,6 +423,10 @@ def og_image(site, uni, data):
 SHELL_FILES = ["index.html", "boot.js", "styles.css", "app.js", "data.js", "interactive.js", "coursegraph.js",
                "past_exams.js", "unit_quizzes.js", "manifest.webmanifest", "favicon.svg"]
 SHELL_DIRS = ["fonts", "icons"]
+# Kendi kaynağımızdan gelen üçüncü taraf dosyaları (KaTeX). Uygulama kabuğuna girmez:
+# içerikte formül yok, 550 KB'ı her kurulumda önbelleğe almak boşa yük olur. Yalnızca
+# kopyalanır, sayfa gerektiğinde `vendor/katex/` yolundan yükler.
+VENDOR_DIRS = ["vendor"]
 
 
 def shell_manifest(site):
@@ -471,6 +475,9 @@ if __name__ == "__main__":
     shutil.copy2(TEMPLATE_DIR / "styles.css", site / "styles.css")
     shutil.copy2(TEMPLATE_DIR / "favicon.svg", site / "favicon.svg")
     for d in SHELL_DIRS:  # fontlar ve ikonlar: dış sunucuya gerek kalmasın
+        if (TEMPLATE_DIR / d).exists():
+            shutil.copytree(TEMPLATE_DIR / d, site / d, dirs_exist_ok=True)
+    for d in VENDOR_DIRS:  # KaTeX: CDN yerine kendi kaynağımız (CSP script-src 'self')
         if (TEMPLATE_DIR / d).exists():
             shutil.copytree(TEMPLATE_DIR / d, site / d, dirs_exist_ok=True)
     # interactive.js proje verisidir: varsa koru, yoksa şablondan boş iskelet kopyala.

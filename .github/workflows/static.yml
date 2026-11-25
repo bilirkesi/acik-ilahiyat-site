@@ -1,4 +1,9 @@
-# Simple workflow for deploying static content to GitHub Pages
+# Yayın: `site/` kaynaklardan derlenir, testler ve artefakt sözleşmesi geçmeden yayına çıkmaz.
+#
+# Commit'li `site/` yalnızca yerel gezinme içindir; yayına giden artefakt her koşuda
+# yeniden üretilir. Böylece "düzelttim ama canlıda eski sürüm var" durumu oluşamaz:
+# sürüm damgası (`pu-version`) derlemede üretilir ve yayın sonrası canlıdan okunup
+# karşılaştırılır.
 name: Deploy static content to Pages
 
 on:
@@ -22,30 +27,71 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  # Single deploy job since we're just deploying
   deploy:
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      url: ${{ steps.deployment.outputs.page_url || steps.deployment_retry.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      # build.py uses Pillow (optional for the build itself) to write the WebP variants
+      # and og-image.png. Without it data.js silently drops the WebP references, so the
+      # published site would lose the lighter images; verify_site.py fails on that.
+      - name: Install Pillow
+        run: python -m pip install --quiet pillow
+      # Artefakt kaynaklardan üretilir: bayat commit'li site/ yayına çıkamaz.
+      # Pillow yoksa görsel sıkıştırma atlanır (build.py bunu tolere eder).
+      - name: Build the site
+        run: python generator/scripts/build.py .
+      - name: Run the unittest suite
+        run: python -m unittest discover -s tests
+      - name: Verify the artifact
+        run: python scripts/verify_site.py site
       # AGENTS.md is the internal DOX contract for site/; it is tracked so the repo
       # documents itself, but it must not ship to the public host.
       - name: Drop internal docs from the artifact
         run: rm -f site/AGENTS.md
+      - name: Verify the deploy artifact
+        run: python scripts/verify_site.py site --deploy
       - name: Setup Pages
+        id: pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           # Upload only the site/ folder so index.html is at the site root
           path: 'site'
+      # Pages dağıtımı ara sıra aynı saniyede çakışıp düşüyor (run 45590097668).
+      # İlk deneme düşerse iş akışı devam eder ve bir dakika sonra yeniden dener.
       - name: Deploy to GitHub Pages
         id: deployment
+        continue-on-error: true
         uses: actions/deploy-pages@v5
         # Artifact 140 MB'tan büyüdü (sesli dersler); Pages dağıtımı 10 dakikada
         # iptal ediliyordu. 1 saat bekle.
         with:
           timeout: 3600000
+      - name: Wait before the retry
+        if: steps.deployment.outcome != 'success'
+        run: sleep 60
+      - name: Retry the deploy
+        id: deployment_retry
+        if: steps.deployment.outcome != 'success'
+        continue-on-error: true
+        uses: actions/deploy-pages@v5
+        with:
+          timeout: 3600000
+      - name: Fail when both deploy attempts failed
+        if: steps.deployment.outcome != 'success' && steps.deployment_retry.outcome != 'success'
+        run: |
+          echo "İki yayın denemesi de düştü; sayfa eski sürümde kaldı." >&2
+          exit 1
+      # Yayının gerçekten bu derlemeyi gösterdiğini doğrular (CDN gecikmesine karşı beklemeli).
+      - name: Verify the live release
+        if: steps.deployment.outcome == 'success' || steps.deployment_retry.outcome == 'success'
+        run: python scripts/verify_site.py site --deploy --url "${{ steps.pages.outputs.base_url }}"
