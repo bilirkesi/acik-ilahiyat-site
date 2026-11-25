@@ -23,7 +23,8 @@
   a box and a due day) and the wrong-option counts (`pick["<qid>:<index>"]`). The **Tekrar** tab
   reviews what is due (`STEPS = [0, 1, 3, 7, 16]` days; only questions already answered can be due)
   and the panel's "Soru analizi" card shows accuracy, the most-missed questions, the most-chosen
-  partly correct options and the most-chosen wrong options.
+  partly correct options and the most-chosen wrong options. The Tekrar tab's label shows today's due count,
+  and a "Yedek" card downloads or restores a JSON backup of that key (the restore reloads the page).
 - `assets/<slug>/` — course images (jpg/webp) served to the page and packed for offline use.
 - `audio/<slug>/chapter-N.mp3` — committed chapter audio overviews from `scripts/generate_chapter_audio.py`; the builder only lists them (it never writes or deletes them).
 

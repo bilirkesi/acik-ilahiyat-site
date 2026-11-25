@@ -55,7 +55,12 @@ Export (`data/` → site/bundle):
   options resets that question's option counts and keeps its review history. The panel
   carries two progress bars (completed chapters, known cards) and each chapter card has a
   "Tamamlandı işaretle" toggle; both live in the same `localStorage` key as the rest of the app's
-  progress. `--all` builds every course, `--out DIR` moves the folder, and a course with no `study_plan.json` is skipped.
+  progress. The Tekrar tab's label carries today's due count (`Tekrar (3)`, `title` explains it) and the
+  view says how many questions are due today; `record()` repaints the count as soon as an answer is logged,
+  and so does every view change. The panel's "Yedek" card downloads the app's `localStorage` key as JSON
+  (`{v, app, saved, st}`, file name `<storageKey>-yedek-<date>.json`; `st` alone is accepted too) and
+  restores a chosen file after a confirm, then reloads the page so the load-time prune runs.
+  `--all` builds every course, `--out DIR` moves the folder, and a course with no `study_plan.json` is skipped.
 - `export_unit_quizzes_site.py` — `unit_quizzes/*.json` → `site/unit_quizzes.js` (`window.UNIT_QUIZZES`).
 - `export_past_exams_site.py` — `past_exams.json` → `site/past_exams.js` (`window.PAST_EXAMS`); adds unit/chapter tags, answer key, and auto-generated solutions.
 - `export_okf.py` — course data → the `okf/` Markdown bundle; wipes `okf/` except `okf/AGENTS.md`. Every input is read before the wipe, so a broken JSON file or a missing `node` leaves the previous bundle intact instead of a half-written one. It also writes each course's question-and-answer page (`courses/<slug>/chat.md`) from `data/<slug>/chat.json`.

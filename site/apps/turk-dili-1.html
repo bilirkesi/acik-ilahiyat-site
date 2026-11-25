@@ -169,6 +169,7 @@ footer{max-width:860px;margin:0 auto;padding:0 18px 34px;color:var(--muted);font
       st.pick[key] = (st.pick[key] || 0) + 1;
     });
     save();
+    paintDueBadge();
   }
   // Only a question that has been answered already can be due: an unseen one belongs to Test, not
   // to the review queue, or Tekrar would just repeat the whole quiz.
@@ -178,6 +179,60 @@ footer{max-width:860px;margin:0 auto;padding:0 18px 34px;color:var(--muted);font
       var e = st.q[q.qid];
       return e && e.n && e.due <= now;
     });
+  }
+
+  // ---- due badge -----------------------------------------------------------
+  // Today's queue shows on the tab, so the learner sees it without opening Tekrar.
+  function paintDueBadge() {
+    var b = document.querySelector('#tabs button[data-view="tekrar"]');
+    if (!b) return;
+    var n = dueQuestions().length;
+    b.textContent = n ? "Tekrar (" + n + ")" : "Tekrar";
+    b.title = n ? "Bugün tekrar sırasında " + n + " soru" : "Bugün tekrar sırasında soru yok";
+  }
+
+  // ---- backup --------------------------------------------------------------
+  // The whole log is one localStorage key on this device. The backup is that key as a JSON file;
+  // a restore writes it back and reloads, so the load-time prune drops questions this course lost.
+  function backupName() {
+    return (DATA.storageKey || "calisma") + "-yedek-" + new Date().toISOString().slice(0, 10) + ".json";
+  }
+  function downloadBackup() {
+    var body = JSON.stringify({v: 1, app: KEY, saved: new Date().toISOString(), st: st}, null, 2);
+    var blob = new Blob([body], {type: "application/json"});
+    var url = URL.createObjectURL(blob);
+    var a = el("a");
+    a.href = url;
+    a.download = backupName();
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    setTimeout(function () { URL.revokeObjectURL(url); }, 4000);
+  }
+  function restoreBackup(file) {
+    var reader = new FileReader();
+    reader.onload = function () {
+      var obj = null;
+      try { obj = JSON.parse(String(reader.result || "")); } catch (e) { obj = null; }
+      var incoming = obj && typeof obj === "object" ? (obj.st || (obj.q ? obj : null)) : null;
+      if (!incoming || typeof incoming !== "object") {
+        alert("Bu dosya bir ilerleme yedeği değil.");
+        return;
+      }
+      if (obj.app && obj.app !== KEY && !confirm("Yedek başka bir derse ait görünüyor. Yine de yüklensin mi?")) return;
+      if (!confirm("Bu cihazdaki ilerleme yedekle değiştirilecek. Devam edilsin mi?")) return;
+      var fresh = {known: {}, best: 0, seen: 0, done: {}, q: {}, pick: {}};
+      Object.assign(fresh, incoming);
+      fresh.known = fresh.known || {};
+      fresh.done = fresh.done || {};
+      fresh.q = fresh.q || {};
+      fresh.pick = fresh.pick || {};
+      st = fresh;
+      save();
+      location.reload();
+    };
+    reader.onerror = function () { alert("Yedek okunamadı."); };
+    reader.readAsText(file);
   }
 
   function blocks(parent, list) {
@@ -296,6 +351,25 @@ footer{max-width:860px;margin:0 auto;padding:0 18px 34px;color:var(--muted);font
       }
       v.appendChild(an);
     }
+
+    var bk = el("div", "card");
+    bk.appendChild(el("h3", null, "Yedek"));
+    bk.appendChild(el("p", "muted", "İlerlemeniz yalnız bu cihazda tutulur. Yedeği indirip başka bir cihazda "
+      + "geri yükleyebilirsiniz."));
+    var brow = el("div", "row");
+    var down = el("button", "act ghost", "Yedeği indir");
+    down.onclick = downloadBackup;
+    var up = el("button", "act ghost", "Yedeği geri yükle");
+    var file = el("input");
+    file.type = "file"; file.accept = "application/json,.json"; file.hidden = true;
+    file.onchange = function () {
+      if (file.files && file.files[0]) restoreBackup(file.files[0]);
+      file.value = "";
+    };
+    up.onclick = function () { file.click(); };
+    brow.appendChild(down); brow.appendChild(up); brow.appendChild(file);
+    bk.appendChild(brow);
+    v.appendChild(bk);
 
     if (DATA.brand.tagline) v.appendChild(el("p", "muted", DATA.brand.tagline));
   }
@@ -565,7 +639,7 @@ footer{max-width:860px;margin:0 auto;padding:0 18px 34px;color:var(--muted);font
     }
     var due = dueQuestions();
     box.appendChild(el("p", "muted", due.length
-      ? due.length + " soru tekrar sırasında. Doğru cevap soruyu 1, 3, 7 ve 16 gün sonraya taşır; "
+      ? "Bugün vadesi gelen " + due.length + " soru var. Doğru cevap soruyu 1, 3, 7 ve 16 gün sonraya taşır; "
         + "yanlış ve kısmen doğru cevap yarın geri gelir."
       : "Şu an tekrar sırasında soru yok. Yanlış cevaplar ertesi gün burada görünür."));
     if (due.length) {
@@ -618,6 +692,7 @@ footer{max-width:860px;margin:0 auto;padding:0 18px 34px;color:var(--muted);font
       if (b) b.setAttribute("aria-selected", k === name ? "true" : "false");
     });
     VIEWS[name]();
+    paintDueBadge();
     window.scrollTo(0, 0);
   }
   Array.prototype.forEach.call(document.querySelectorAll("#tabs button"), function (b) {

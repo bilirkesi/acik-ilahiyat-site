@@ -218,6 +218,20 @@ class StudyAppTest(unittest.TestCase):
         self.assertIn("st.q[q.qid]", page)  # soru günlüğü
         self.assertIn("e && e.n && e.due <= now", page)  # tekrar kuyruğu: yalnız cevaplanmış ve vadesi gelmiş
 
+    def test_the_page_carries_a_progress_backup_and_a_due_badge(self):
+        """İlerleme tek dosyaya indirilip geri yüklenebilir; Tekrar sekmesi bugünün sayısını taşır."""
+        page, _ = self.build()
+        self.assertIn("Yedeği indir", page)
+        self.assertIn("Yedeği geri yükle", page)
+        self.assertIn("readAsText", page)  # geri yükleme dosyayı okur
+        self.assertIn("revokeObjectURL", page)  # indirme blob'u bırakır
+        self.assertIn('{v: 1, app: KEY, saved: new Date().toISOString(), st: st}', page)  # yedek zarfı
+        self.assertIn("location.reload()", page)  # geri yüklemeden sonra yükleme temizliği yeniden koşar
+        self.assertIn("function paintDueBadge", page)
+        self.assertIn('"Tekrar (" + n + ")"', page)  # sekme etiketi bugünün sayısını taşır
+        self.assertIn("Bugün vadesi gelen", page)
+        self.assertIn("save();\n    paintDueBadge();", page)  # cevap günlüğe yazılınca sayaç hemen tazelenir
+
     def test_a_course_without_a_plan_is_skipped(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = fixture(tmp, plan=False)
