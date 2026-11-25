@@ -93,6 +93,7 @@ Rules for the bundle itself live in `okf/AGENTS.md`.
 - License: GPL-3.0 (`LICENSE` at the repo root). The vendored `extensions/notebook-nest/` keeps its own GPL-3.0 notice.
 - `README.md` is the entry point for newcomers: what the project is, how to run it, how the pieces fit together.
 - Large local-only material lives in `artifacts/`, `assets/`, and `logs/`; all three are git-ignored. Never reference them as if they ship to the site.
+- The Pages workflow uploads only `site/` and deletes `site/AGENTS.md` from it first, so the DOX contract stays tracked in the repo but returns 404 on the host.
 ## Known Gaps
 - Source quality (`py -3 scripts/audit_sources.py`): chapters of `turk-dili-1`, `ataturk-ilkeleri-1`, `islam-mezhepleri-tarihi` were planned and grounded on lecture captions only. Study notes for the three were rebuilt from `Kitap.pdf`; by owner decision, quizzes, infographics and audio made before the grounding rules stay as they are, and the rules apply to new generation only. `turk-dili-1/state.json` records only the Kitap among the notebook's 14 AÖF PDFs.
 - `data/osmanlica-1`: past-exam units come from `past_exams_notes.json`; the `OSM_UNIT_KEYWORDS` fallback in `coursegraph/past_exams.py` covers units 1-5 only, so a future final-exam question for units 6-8 needs a note entry.

@@ -420,7 +420,7 @@ def og_image(site, uni, data):
 
 
 # Kurulumda önbelleğe alınan uygulama kabuğu (görseller hariç; onlar ders paketlerinde).
-SHELL_FILES = ["index.html", "styles.css", "app.js", "data.js", "interactive.js", "coursegraph.js",
+SHELL_FILES = ["index.html", "boot.js", "styles.css", "app.js", "data.js", "interactive.js", "coursegraph.js",
                "past_exams.js", "unit_quizzes.js", "manifest.webmanifest", "favicon.svg"]
 SHELL_DIRS = ["fonts", "icons"]
 
@@ -467,6 +467,7 @@ if __name__ == "__main__":
                                   + ";\n")
     v = str(int(time.time()))
     shutil.copy2(TEMPLATE_DIR / "app.js", site / "app.js")
+    shutil.copy2(TEMPLATE_DIR / "boot.js", site / "boot.js")
     shutil.copy2(TEMPLATE_DIR / "styles.css", site / "styles.css")
     shutil.copy2(TEMPLATE_DIR / "favicon.svg", site / "favicon.svg")
     for d in SHELL_DIRS:  # fontlar ve ikonlar: dış sunucuya gerek kalmasın

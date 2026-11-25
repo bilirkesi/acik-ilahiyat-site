@@ -68,7 +68,11 @@
  */
 
 // --- CONFIGURATION ---
-const REMOTE_CONFIG_URL = "https://gist.githubusercontent.com/benju66/7635f09ea87f81c890f9b736b22d9ac4/raw/notebooklm-selectors.json";
+// Sabit commit: gist'in sürümsüz "raw" ucu her zaman en son içeriği verir, yani
+// gist sahibi uzaktan seçici tablosunu değiştirebilir. Yerel kopya bilinen bir
+// revizyona kilitlidir (ab991c7, 2025-12-11). Güncellemek için bu adresi ve
+// background.js içindeki ALLOWED_CONFIG_URL'i birlikte değiştir.
+const REMOTE_CONFIG_URL = "https://gist.githubusercontent.com/benju66/7635f09ea87f81c890f9b736b22d9ac4/raw/ab991c7ba2e6650b48f068b3fb0ebe11029d7d0c/notebooklm-selectors.json";
 
 // --- VERSION HELPER (Single source of truth: manifest.json) ---
 function getExtensionVersion() {

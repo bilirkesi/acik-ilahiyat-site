@@ -31,6 +31,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      # AGENTS.md is the internal DOX contract for site/; it is tracked so the repo
+      # documents itself, but it must not ship to the public host.
+      - name: Drop internal docs from the artifact
+        run: rm -f site/AGENTS.md
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact

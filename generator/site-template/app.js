@@ -140,6 +140,17 @@
 
   // ---- yardımcılar ----------------------------------------------------------
   const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (ch) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[ch]));
+  // Bozuk yüzde-kodlaması (ör. "%E0%A4%A") decodeURIComponent'i fırlatıp yönlendiriciyi
+  // durdurmasın: çözülemeyen parça ham hâliyle geçer.
+  const safeDecode = (s) => { try { return decodeURIComponent(s); } catch (e) { return String(s ?? ""); } };
+  // Dış veriden gelen bağlantı yalnızca http(s) ya da göreli yol olabilir; javascript:/data:/vbscript:
+  // gibi şemalar "#"e düşer. Kontrol, araya sokulan boşluk/kontrol karakterlerini ayıklayarak yapılır.
+  const safeHref = (u) => {
+    const raw = String(u ?? "").trim();
+    const probe = raw.replace(/[\u0000-\u0020\u007F]+/g, "").toLowerCase();
+    const scheme = probe.match(/^([a-z][a-z0-9+.-]*):/);
+    return scheme && scheme[1] !== "http" && scheme[1] !== "https" ? "#" : raw;
+  };
   const pct = (x) => Math.round(x * 100) + "%";
   const cap = (s) => s.charAt(0).toUpperCase() + s.slice(1);
   const code = (i) => `${CONFIG.codePrefix} ${101 + i * 10}`;
@@ -5636,10 +5647,13 @@
     const course = bySlug[slug];
     const sources = item.sources || [];
     const chHref = course ? `#/course/${slug}/chapter/${item.chapter}` : "#/ara";
-    const subs = sources.map((s, i) => `
-      <li><span class="chat-src-n">${i + 1}</span>${s.url
-        ? `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.title || s.url)}</a>`
-        : `<span>${esc(s.title || "")}</span>`}</li>`).join("");
+    const subs = sources.map((s, i) => {
+      const href = s.url ? safeHref(s.url) : "";
+      return `
+      <li><span class="chat-src-n">${i + 1}</span>${href
+        ? `<a href="${esc(href)}" target="_blank" rel="noopener">${esc(s.title || s.url)}</a>`
+        : `<span>${esc(s.title || "")}</span>`}</li>`;
+    }).join("");
     return `<article class="chat-card">
       <h3>${esc(item.q)}</h3>
       <div class="chat-a">${chatAnswerHtml(item, sources)}</div>
@@ -5828,9 +5842,13 @@
     const top = Math.max(0, (screen.height - h) / 2);
     const win = window.open("", "infografik_zoom", `width=${w},height=${h},left=${left},top=${top},scrollbars=yes,resizable=yes`);
     if (!win) return;
-    const dl = esc(src);
+    const dl = esc(safeHref(src));
     const safeAlt = esc(alt || "İnfografik");
-    win.document.write(`<!doctype html><html lang="tr"><head><meta charset="utf-8"><title>${safeAlt}</title>
+    // Popup belgesi yalnızca işaretleme taşır: CSP satır içi <script> çalıştırmaz,
+    // bu yüzden yakınlaştırma davranışı burada, açan pencerenin bağlamında bağlanır.
+    const doc = win.document;
+    doc.open();
+    doc.write(`<!doctype html><html lang="tr"><head><meta charset="utf-8"><title>${safeAlt}</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:system-ui,-apple-system,sans-serif;background:#1a1f2e;color:#e8ecf4;min-height:100vh}
@@ -5852,22 +5870,23 @@ img{max-width:none;transform-origin:top center;transition:transform .12s ease;bo
   <a class="btn" href="${dl}" download>İndir</a>
 </div>
 <div class="wrap"><img id="zimg" src="${dl}" alt="${safeAlt}"></div>
-<script>
-var s=1,img=document.getElementById("zimg"),pct=document.getElementById("pct");
-function ap(){img.style.transform="scale("+s+")";pct.textContent=Math.round(s*100)+"%"}
-document.getElementById("zin").onclick=function(){s=Math.min(6,s*1.25);ap()};
-document.getElementById("zout").onclick=function(){s=Math.max(.2,s/1.25);ap()};
-document.getElementById("zreset").onclick=function(){s=1;ap()};
-document.addEventListener("keydown",function(e){
-  if(e.key==="+"||e.key==="="){s=Math.min(6,s*1.25);ap()}
-  else if(e.key==="-"||e.key==="_"){s=Math.max(.2,s/1.25);ap()}
-  else if(e.key==="0"){s=1;ap()}
-});
-img.ondblclick=function(e){e.preventDefault();var r=img.getBoundingClientRect();var f=s>1?1:2;s=f;ap()};
-document.addEventListener("keydown",function(e){if(e.key==="Escape")window.close()});
-document.getElementById("zin").focus();
-</script></body></html>`);
-    win.document.close();
+</body></html>`);
+    doc.close();
+    const img = doc.getElementById("zimg");
+    const pct = doc.getElementById("pct");
+    let s = 1;
+    const apply = () => { img.style.transform = `scale(${s})`; pct.textContent = Math.round(s * 100) + "%"; };
+    doc.getElementById("zin").onclick = () => { s = Math.min(6, s * 1.25); apply(); };
+    doc.getElementById("zout").onclick = () => { s = Math.max(.2, s / 1.25); apply(); };
+    doc.getElementById("zreset").onclick = () => { s = 1; apply(); };
+    img.ondblclick = (e) => { e.preventDefault(); s = s > 1 ? 1 : 2; apply(); };
+    doc.addEventListener("keydown", (e) => {
+      if (e.key === "+" || e.key === "=") { s = Math.min(6, s * 1.25); apply(); }
+      else if (e.key === "-" || e.key === "_") { s = Math.max(.2, s / 1.25); apply(); }
+      else if (e.key === "0") { s = 1; apply(); }
+      else if (e.key === "Escape") win.close();
+    });
+    doc.getElementById("zin").focus();
   }
 
   document.addEventListener("click", (e) => {
@@ -6854,7 +6873,7 @@ document.getElementById("zin").focus();
         const set = unitQuizMap(c.slug)[String(+parts[3])];
         if (set) out.sheet = { title: `${c.subject} · Ünite ${+parts[3]}`, sub: set.unitTitle || "Ünite quiz'i", questions: set.questions || [] };
       } else if (parts[2] === "past") {
-        const exam = pastFor(c.slug).find((s) => s.exam_id === decodeURIComponent(parts[3] || "")) || pastFor(c.slug)[0];
+        const exam = pastFor(c.slug).find((s) => s.exam_id === safeDecode(parts[3] || "")) || pastFor(c.slug)[0];
         if (exam) out.sheet = {
           title: `${c.subject} · ${exam.year || exam.exam_id} ${termName(exam.term)} vize${exam.group && exam.group !== "A" ? " " + exam.group + " grup" : ""}`,
           sub: "Çıkmış sınav", minutes: Math.round((exam.questions || []).length * MOCK_MIN_PER_Q), scoring: true,
@@ -8084,8 +8103,8 @@ document.getElementById("zin").focus();
       queryPart.split("&").forEach((kv) => {
         if (!kv) return;
         const eq = kv.indexOf("=");
-        const k = decodeURIComponent(eq < 0 ? kv : kv.slice(0, eq));
-        const v = eq < 0 ? "1" : decodeURIComponent(kv.slice(eq + 1).replace(/\+/g, " "));
+        const k = safeDecode(eq < 0 ? kv : kv.slice(0, eq));
+        const v = eq < 0 ? "1" : safeDecode(kv.slice(eq + 1).replace(/\+/g, " "));
         query[k] = v;
       });
     }
@@ -8172,7 +8191,7 @@ document.getElementById("zin").focus();
       }
       else if (parts[2] === "exams") { html = viewExamHub(c); bind = () => {}; }
       else if (parts[2] === "past") {
-        const id = decodeURIComponent(parts[3] || "");
+        const id = safeDecode(parts[3] || "");
         html = viewPastExam(c, id, query);
         bind = () => (String(query.mod || "") === "rehber" ? bindSolutionGuide(c, id) : bindPastExam(c, id));
       }

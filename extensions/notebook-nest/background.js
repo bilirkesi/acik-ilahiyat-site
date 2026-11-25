@@ -10,8 +10,18 @@
 
 const FETCH_TIMEOUT_MS = 10000; // 10 second timeout
 
+// Yalnızca sabitlenmiş seçici yapılandırması indirilir. İçerik betiği başka bir
+// adres isterse istek reddedilir; gist'in sürümsüz "raw" ucu bilerek kullanılmaz.
+// Güncelleme: content.js'teki REMOTE_CONFIG_URL ile birlikte bu sabiti değiştir.
+const ALLOWED_CONFIG_URL = "https://gist.githubusercontent.com/benju66/7635f09ea87f81c890f9b736b22d9ac4/raw/ab991c7ba2e6650b48f068b3fb0ebe11029d7d0c/notebooklm-selectors.json";
+
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     if (request.action === "fetchConfig") {
+        if (request.url !== ALLOWED_CONFIG_URL) {
+            console.warn("NotebookLM Tree: Refused config fetch for a non-allowlisted URL");
+            sendResponse({ success: false, error: "URL not allowed" });
+            return false;
+        }
         fetchWithTimeout(request.url, FETCH_TIMEOUT_MS)
             .then(response => {
                 if (!response.ok) {

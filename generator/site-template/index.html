@@ -3,6 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- CSP meta olarak verilir: GitHub Pages özel başlık göndermez. Betikler yalnızca
+     kendi kaynağımızdan ve KaTeX CDN'inden gelir; satır içi betik yoktur (tema
+     açılışı boot.js, zoom penceresi app.js içinde çalışır). Stil satır içi
+     kullanılır (app.js style öznitelikleri, zoom penceresinin <style> bloğu). -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://i.ytimg.com; font-src 'self' data:; connect-src 'self'; frame-src https://www.youtube-nocookie.com; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="pu-version" content="{{V}}">
 <title>{{NAME}}</title>
 <meta name="description" content="{{DESCRIPTION}}">
@@ -30,7 +36,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="{{SHORT}}">
 <link rel="stylesheet" href="styles.css?v={{V}}">
-<script>try{var d=document.documentElement,t=localStorage.getItem("pu.theme");if(t)d.dataset.theme=t;var r=JSON.parse(localStorage.getItem("pu.read")||"{}");if(r.fs)d.style.fontSize=r.fs+"%";if(r.lh)d.dataset.lh=r.lh;if(r.ff)d.dataset.ff=r.ff}catch(e){}</script>
+<script src="boot.js?v={{V}}"></script>
 </head>
 <body>
 <a class="skip-link" href="#app">İçeriğe geç</a>

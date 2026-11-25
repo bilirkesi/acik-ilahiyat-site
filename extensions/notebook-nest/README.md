@@ -4,6 +4,9 @@
 > [benju66/Notebook-Nest](https://github.com/benju66/Notebook-Nest) commit `55f44c8` (v17.9), GPL-3.0.
 > Changes in v17.9.1: also runs on `notebook.google.com` (NotebookLM's new address);
 > folder items stay visible after rename or color change; fixed garbled toast/icon characters.
+> Changes in v17.9.2: the remote selector config is pinned to one gist revision and the
+> background worker fetches only that URL, so a later gist edit cannot change the selectors
+> this copy runs with.
 
 A Chrome extension that transforms Google's NotebookLM from a simple list into a robust Project Management Dashboard.
 
