@@ -643,7 +643,9 @@ JS = """
     v.textContent = "";
     if (!pool.length) {
       v.appendChild(el("p", "empty", DATA.counts.quiz
-        ? "Aramanıza uyan soru yok." : "Bu ders için henüz test sorusu yok."));
+        ? (quizKind === "tekrar"
+           ? "Tekrar sırasında soru yok. Yanlış ve kısmen doğru cevaplar yarın burada görünür."
+           : "Aramanıza uyan soru yok.") : "Bu ders için henüz test sorusu yok."));
       return;
     }
     if (qi >= pool.length) {
@@ -662,8 +664,9 @@ JS = """
       if (quizKind !== "tekrar") box.appendChild(el("p", "muted",
         "Yanlış ve kısmen doğru cevaplar yarın Tekrar sekmesinde geri gelir."));
       var row = el("div", "row");
-      var again = el("button", "act primary", "Yeniden çöz");
-      again.onclick = startQuiz;
+      // A finished review has nothing due again today, so it goes back to Tekrar instead of rerunning.
+      var again = el("button", "act primary", quizKind === "tekrar" ? "Tekrara dön" : "Yeniden çöz");
+      again.onclick = quizKind === "tekrar" ? function () { show("tekrar"); } : startQuiz;
       var cards = el("button", "act ghost", "Kartlara dön");
       cards.onclick = function () { show("kartlar"); };
       row.appendChild(again); row.appendChild(cards);

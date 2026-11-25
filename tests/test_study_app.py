@@ -214,6 +214,7 @@ class StudyAppTest(unittest.TestCase):
         self.assertIn("Kısmen doğru seçenekler", page)
         self.assertIn("STEPS = [0, 1, 3, 7, 16]", page)
         self.assertIn("st.pick", page)  # şık sayacı
+        self.assertIn("Tekrara dön", page)  # biten tekrar koşusu boş kuyruğa yeniden dalmaz
         self.assertIn("st.q[q.qid]", page)  # soru günlüğü
         self.assertIn("e && e.n && e.due <= now", page)  # tekrar kuyruğu: yalnız cevaplanmış ve vadesi gelmiş
 
