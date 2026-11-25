@@ -659,7 +659,8 @@ JS = """
       box.appendChild(el("div", "kicker", quizKind === "tekrar" ? "Tekrar bitti" : "Test bitti"));
       box.appendChild(el("h3", null, right + " / " + pool.length + " doğru · " + pct + "%" +
         (partialRight ? " · " + partialRight + " kısmen doğru" : "")));
-      box.appendChild(el("p", "muted", pct >= Math.round(DATA.passMark * 100)
+      // A review run is not a test: no pass mark, just the questions coming back.
+      if (quizKind !== "tekrar") box.appendChild(el("p", "muted", pct >= Math.round(DATA.passMark * 100)
         ? "Geçme sınırının üstündesiniz." : "Geçme sınırı " + Math.round(DATA.passMark * 100) + "%."));
       if (quizKind !== "tekrar") box.appendChild(el("p", "muted",
         "Yanlış ve kısmen doğru cevaplar yarın Tekrar sekmesinde geri gelir."));

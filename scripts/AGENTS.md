@@ -48,7 +48,7 @@ Export (`data/` → site/bundle):
   is and returns tomorrow, a wrong one drops to the first box and returns tomorrow; a question never
   repeats inside one run. Only an already answered question can be due: an unseen one belongs to the
   Test tab, so the queue never becomes a second copy of the whole quiz. The **Tekrar** tab lists what
-  is due and starts a review run over those questions (a review run never updates the best score, and its result screen leads back to Tekrar because the questions return tomorrow);
+  is due and starts a review run over those questions (a review run never updates the best score, its result screen carries no pass mark and leads back to Tekrar because the questions return tomorrow);
   the panel adds a "Soru analizi" card with accuracy, the most-missed questions, the most-chosen
   partly correct options and the most-chosen wrong options (kept apart: a partly correct option is
   not a trap). Shuffling a question's
