@@ -34,14 +34,14 @@ Generation (`data/` → richer content):
 - `generate_chapter_audio.py` — per chapter, a NotebookLM audio overview limited to the chapter's `source_ids` plus the textbook when the chapter has none (the course's own language, `deep-dive`/`short` by default) → raw `assets/audio/<slug>/chapter-N.mp4` → ffmpeg mono 64 kbps `site/audio/<slug>/chapter-N.mp3` + `data/<slug>/audio.json`. Needs the `notebooklm` CLI (logged in) and ffmpeg with libmp3lame (ffprobe optional; on the owner PC ffmpeg is not on PATH, pass `--ffmpeg`); skips existing MP3s unless `--force`; `--transcode-only` re-encodes downloaded files; `--profile` picks a notebooklm-py profile (a second Google account with the notebook shared to it, for its own audio quota). A source whose state `id` is local (not a NotebookLM UUID) is sent as its `nlm_id`; the script exits if neither is a UUID. A chapter that cannot be generated (quota, expired session) is skipped and the run continues; the script then exits non-zero and lists the chapters it could not produce.
 
 Export (`data/` → site/bundle):
-- `build_study_app.py` — one course's pipeline data (`study_plan.json`, `quiz.json`, `unit_quizzes/`, `chat.json`, `flashcards.json`, `state.json`) → `site/apps/<slug>.html`: a single self-contained study app (panel, cards, chapters, quiz, sources; search; progress in `localStorage[storageKey + ".app"]`) with inline CSS/JS and no external asset, so it opens from `file://`, works offline and publishes as one file. The deck falls back from `flashcards.json` to `chat.json`, then to the quiz's correct options. The quiz tab keeps all four NotebookLM types: an option question grades on the click (`multiple_select` on the whole set after "Kontrol et"), a `fill_in_the_blank` / `short_answer` reveals its answer and asks the reader whether they knew it
+- `build_study_app.py` — one course's pipeline data (`study_plan.json`, `quiz.json`, `unit_quizzes/`, `chat.json`, `flashcards.json`, `state.json`) → `site/apps/<slug>.html`: a single self-contained study app (panel, cards, chapters, quiz, sources; search; progress in `localStorage[storageKey + ".app." + slug]`, one key per course) with inline CSS/JS and no external asset, so it opens from `file://`, works offline and publishes as one file. The deck falls back from `flashcards.json` to `chat.json`, then to the quiz's correct options. The quiz tab keeps all four NotebookLM types: an option question grades on the click (`multiple_select` on the whole set after "Kontrol et"), a `fill_in_the_blank` / `short_answer` reveals its answer and asks the reader whether they knew it
   ("Bildim" / "Kısmen bildim" / "Bilemedim"). Every answer gets one of three verdicts: doğru, kısmen doğru
   (no point, amber) and yanlış; a selection that is only part of a `multiple_select` answer, or a source
   option marked `isPartiallyCorrect`/`partial`/`status: "partial"`, reports as kısmen doğru.
   Every question carries `qid`, its normalized stem (whitespace collapsed, lowercased) hashed with
   djb2/32-bit into base36 (`_qid`), so a rebuilt or reordered quiz keeps each question's history;
   unit titles travel once in the payload's `units` map (`{"8": "..."}`), not on every question.
-  Each answer is logged in the same `localStorage` key as `q[qid] = {n, ok, part, bad, box, due}`
+  Each answer is logged in the course's own `localStorage` key as `q[qid] = {n, ok, part, bad, box, due}`
   (`due` is a day number, days since the epoch) and each wrong pick as `pick["<qid>:<option index>"]`;
   entries whose question no longer exists are dropped on load. The schedule is
   `STEPS = [0, 1, 3, 7, 16]` days: a right answer moves up one box, a partly right one stays where it
@@ -58,8 +58,12 @@ Export (`data/` → site/bundle):
   progress. The Tekrar tab's label carries today's due count (`Tekrar (3)`, `title` explains it) and the
   view says how many questions are due today; `record()` repaints the count as soon as an answer is logged,
   and so does every view change. The panel's "Yedek" card downloads the app's `localStorage` key as JSON
-  (`{v, app, saved, st}`, file name `<storageKey>-yedek-<date>.json`; `st` alone is accepted too) and
-  restores a chosen file after a confirm, then reloads the page so the load-time prune runs.
+  (`{v, app, saved, st}`, file name `<storageKey>.<slug>-yedek-<date>.json`; `st` alone is accepted too) and
+  restores a chosen file after a confirm, then reloads the page so the load-time prune runs. The key is
+  per course on purpose: the first build kept all four apps in one shared `<storageKey>.app` key, so an
+  app's load-time prune deleted another course's answers. A log left under that shared key is moved into
+  the running course's key once and the shared key is removed; the prune only ever sees one course's
+  questions, so it can no longer reach another course's log.
   `--all` builds every course, `--out DIR` moves the folder, and a course with no `study_plan.json` is skipped.
 - `export_unit_quizzes_site.py` — `unit_quizzes/*.json` → `site/unit_quizzes.js` (`window.UNIT_QUIZZES`).
 - `export_past_exams_site.py` — `past_exams.json` → `site/past_exams.js` (`window.PAST_EXAMS`); adds unit/chapter tags, answer key, and auto-generated solutions.

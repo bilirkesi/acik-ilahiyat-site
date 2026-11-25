@@ -104,9 +104,18 @@ footer{max-width:860px;margin:0 auto;padding:0 18px 34px;color:var(--muted);font
 <script>
 (function () {
   var DATA = JSON.parse(document.getElementById("app-data").textContent);
-  var KEY = DATA.storageKey + ".app";
+  // Every course keeps its own key: one shared key let each app's load-time prune delete the other
+  // courses' answers, because an app only knows its own questions.
+  var LEGACY = DATA.storageKey + ".app";
+  var KEY = LEGACY + "." + ((DATA.course && DATA.course.slug) || "ders");
   var st = {known: {}, best: 0, seen: 0, done: {}, q: {}, pick: {}};
-  try { Object.assign(st, JSON.parse(localStorage.getItem(KEY) || "{}")); } catch (e) {}
+  // The first build wrote every course into LEGACY: that log moves to this course once.
+  var stored = null, moved = false;
+  try {
+    stored = localStorage.getItem(KEY);
+    if (stored === null) { stored = localStorage.getItem(LEGACY); moved = stored !== null; }
+  } catch (e) {}
+  try { Object.assign(st, JSON.parse(stored || "{}")); } catch (e) {}
   st.q = st.q || {}; st.pick = st.pick || {};
   // A rebuilt course can retire a question: its log entry and option counts go with it.
   (function prune() {
@@ -118,6 +127,10 @@ footer{max-width:860px;margin:0 auto;padding:0 18px 34px;color:var(--muted);font
     });
   })();
   function save() { try { localStorage.setItem(KEY, JSON.stringify(st)); } catch (e) {} }
+  if (moved) {  // the migrated log is saved pruned, so the shared key never returns
+    save();
+    try { localStorage.removeItem(LEGACY); } catch (e) {}
+  }
   function el(tag, cls, text) {
     var n = document.createElement(tag);
     if (cls) n.className = cls;
@@ -195,7 +208,8 @@ footer{max-width:860px;margin:0 auto;padding:0 18px 34px;color:var(--muted);font
   // The whole log is one localStorage key on this device. The backup is that key as a JSON file;
   // a restore writes it back and reloads, so the load-time prune drops questions this course lost.
   function backupName() {
-    return (DATA.storageKey || "calisma") + "-yedek-" + new Date().toISOString().slice(0, 10) + ".json";
+    return (DATA.storageKey || "calisma") + "." + ((DATA.course && DATA.course.slug) || "ders")
+      + "-yedek-" + new Date().toISOString().slice(0, 10) + ".json";
   }
   function downloadBackup() {
     var body = JSON.stringify({v: 1, app: KEY, saved: new Date().toISOString(), st: st}, null, 2);

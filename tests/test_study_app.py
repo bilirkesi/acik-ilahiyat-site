@@ -232,6 +232,31 @@ class StudyAppTest(unittest.TestCase):
         self.assertIn("Bugün vadesi gelen", page)
         self.assertIn("save();\n    paintDueBadge();", page)  # cevap günlüğe yazılınca sayaç hemen tazelenir
 
+    def test_each_course_keeps_its_own_progress_key(self):
+        """Dört uygulama tek anahtarı paylaşınca biri açılınca diğerinin tekrar geçmişini siliyordu."""
+        with tempfile.TemporaryDirectory() as tmp:
+            root = fixture(tmp)
+            write(root / "courses.json", {
+                "x": {"subject": "Türk Dili", "course": "TÜR201U - Türk Dili I",
+                      "config": {"language": "Turkish"}},
+                "y": {"subject": "Tarih", "course": "TAR201U - Atatürk İlkeleri I",
+                      "config": {"language": "Turkish"}},
+            })
+            for slug in ("y",):
+                write(root / "data" / slug / "study_plan.json", {"chapters": [
+                    {"title": "Bölüm", "summary": "", "objectives": [], "source_ids": [],
+                     "grounding": {"answer": "Not."}},]})
+            x = app.build_app(root, "x").read_text(encoding="utf-8")
+            y = app.build_app(root, "y").read_text(encoding="utf-8")
+        self.assertIn('var KEY = LEGACY + "." + ((DATA.course && DATA.course.slug) || "ders");', x)
+        self.assertNotIn('var KEY = DATA.storageKey + ".app";', x)  # ortak anahtar kalktı
+        # İki ders aynı storageKey'i taşır ama anahtarları ders slug'ıyla ayrışır.
+        self.assertEqual(embedded(x)["storageKey"], embedded(y)["storageKey"])
+        self.assertNotEqual(embedded(x)["course"]["slug"], embedded(y)["course"]["slug"])
+        # Eski düz anahtar bir kez taşınır ve silinir; temizleme artık yalnız bu dersin kayıtlarını görür.
+        self.assertIn("localStorage.getItem(LEGACY)", x)
+        self.assertIn("localStorage.removeItem(LEGACY)", x)
+
     def test_a_course_without_a_plan_is_skipped(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = fixture(tmp, plan=False)
