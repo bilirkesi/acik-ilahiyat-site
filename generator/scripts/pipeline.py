@@ -20,7 +20,8 @@ Only one runner per project is allowed (lock file). Notebooks are never deleted 
 """
 import argparse, json, re, sys, time
 from common import (Lock, Project, cli_language, excluded_from_grounding, grounding_rules, language_code,
-                    normalize_quiz_questions, require_cli, run_cli, run_cli_json, source_tier, with_authority)
+                    normalize_quiz_questions, notebook_source_id, require_cli, run_cli, run_cli_json,
+                    source_tier, with_authority)
 
 LIMIT_HINTS = re.compile(r"rate.?limit|quota|429|resource.?exhausted|too many|usage limit|limit reached", re.I)
 
@@ -73,11 +74,11 @@ class Runner:
     def chapter_sources(self, ch):
         """The chapter's own sources plus the top-tier ones (textbook) when it has none of its own.
 
-        A state entry whose `id` is a local key (e.g. `osm1-kitap-1`) is sent as its `nlm_id`, the id
-        NotebookLM knows; `with_authority` keeps working on the local ids for the tier ranking."""
+        A state entry is sent under the id NotebookLM knows (`notebook_source_id()`: its `nlm_id`, else
+        its own `id`); `with_authority` keeps working on the local ids for the tier ranking."""
         sources = self.ready_sources()
         by_id = {s.get("id"): s for s in sources}
-        return [by_id.get(sid, {}).get("nlm_id") or sid
+        return [notebook_source_id(by_id.get(sid, {})) or sid
                 for sid in with_authority(ch["source_ids"], sources, self.tiers)]
 
     def chapter_header(self, n, title):

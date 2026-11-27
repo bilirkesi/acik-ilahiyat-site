@@ -282,6 +282,16 @@ def with_authority(ids, sources, tiers):
     return list(ids) + (top[:limit] if limit else top)
 
 
+def notebook_source_id(src):
+    """The id NotebookLM knows for a state source: its `nlm_id`, else its own `id`.
+
+    A course that keeps a local key in `id` (e.g. `osm1-kitap-1`) puts the notebook's UUID in `nlm_id`;
+    a course that writes no `nlm_id` (`turk-dili-1`, `ataturk-ilkeleri-1`, `islam-mezhepleri-tarihi`)
+    holds the UUID in `id` itself. Generators send this id with `-s` and match the CLI's `references`
+    by it, so both shapes reach the right source."""
+    return src.get("nlm_id") or src.get("id") or ""
+
+
 def grounding_rules(u):
     """One prompt paragraph from `grounding`: the source ranking plus the extra rules. Empty if unset."""
     g = u.get("grounding") or {}

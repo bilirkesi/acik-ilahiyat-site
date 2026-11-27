@@ -26,7 +26,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "generator" / "scripts"))
-from common import grounding_rules, language_code, load_university, with_authority  # noqa: E402
+from common import (grounding_rules, language_code, load_university, notebook_source_id,  # noqa: E402
+                    with_authority)
 
 BITRATE = "64k"
 UUID = re.compile(r"^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$")
@@ -81,9 +82,9 @@ def generate(nb, chapter, out_raw, args, sources, uni, default_audience=None):
     tiers = (uni.get("grounding") or {}).get("tiers") or []
     by_id = {s.get("id"): s for s in sources}
     for sid in with_authority(chapter.get("source_ids", []), sources, tiers):
-        sid = by_id.get(sid, {}).get("nlm_id", sid)  # local ids (e.g. osm1-kitap-1) map to the notebook's id
+        sid = notebook_source_id(by_id.get(sid, {})) or sid
         if not UUID.match(sid):
-            sys.exit(f"source {sid!r} has no NotebookLM id; set nlm_id for it in state.json")
+            sys.exit(f"source {sid!r} has no NotebookLM id; set nlm_id (or a UUID `id`) for it in state.json")
         cmd += ["-s", sid]
     res = run(cmd, capture_output=True)
     print(res.stdout.strip())

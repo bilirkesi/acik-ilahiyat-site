@@ -29,8 +29,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "generator" / "scripts"))
 
-from common import (cli_language, find_cli, language_code, load_university, require_cli,  # noqa: E402
-                    with_authority)
+from common import (cli_language, find_cli, language_code, load_university, notebook_source_id,  # noqa: E402
+                    require_cli, with_authority)
 from pipeline import fix_json_escapes  # noqa: E402
 
 # Sitede gösterilecek metin dili: dersin kendi dili.
@@ -100,15 +100,6 @@ def match_local_id(sid, sources):
         if len(hits) == 1:
             return hits[0]
     return None
-
-
-def nlm_source_id(source):
-    """Kaynagin defterdeki id'si: `nlm_id`, yoksa kaydin kendi `id`'si.
-
-    Bazi derslerde (orn. `turk-dili-1`) state.json kaynagin NotebookLM UUID'sini dogrudan `id`
-    alaninda tutar ve `nlm_id` yazmaz; `pipeline.py` de ayni kurali kullanir.
-    """
-    return source.get("nlm_id") or source.get("id") or ""
 
 
 def resolve_chapter_sources(chapter, sources, tiers=None):
@@ -300,7 +291,7 @@ def main() -> int:
         prompt = template.format(title=ch["title"], count=args.count, lang=lang)
         cmd = [cli, "ask", prompt, "-n", nb, "--json", "--timeout", "600"]
         for s in srcs:
-            if sid := nlm_source_id(s):
+            if sid := notebook_source_id(s):
                 cmd += ["-s", sid]
         obj = None
         for attempt in range(1, args.attempts + 1):
@@ -328,7 +319,7 @@ def main() -> int:
         items = []
         # Atiflar: ask cevabindaki "references" kaynak id + atif numarasi verir. Liste atif
         # numarasina gore siralanir (bos yerler birakilir), boylece "[3]" dogru kaynaga gider.
-        by_nlm = {sid: s for s in srcs if (sid := nlm_source_id(s))}
+        by_nlm = {sid: s for s in srcs if (sid := notebook_source_id(s))}
         refs = {}
         for ref in (data.get("references") or []):
             sid = ref.get("source_id")

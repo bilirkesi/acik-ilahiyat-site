@@ -165,6 +165,26 @@ class TestWithAuthority(unittest.TestCase):
         self.assertEqual(common.with_authority(["t2"], self.SOURCES, tiers), ["t2"])
 
 
+class TestNotebookSourceId(unittest.TestCase):
+    """`notebook_source_id`: once `nlm_id`, yoksa kaydin kendi `id`'si.
+
+    Uc ders (turk-dili-1, ataturk-ilkeleri-1, islam-mezhepleri-tarihi) defterin UUID'sini dogrudan
+    `id` alaninda tutar ve `nlm_id` yazmaz; osm1-kitap-1 gibi yerel anahtar kullanan ders UUID'yi
+    `nlm_id`'de tutar. Iki sekil de ayni id'ye cozulur.
+    """
+
+    def test_a_local_key_is_mapped_to_its_nlm_id(self) -> None:
+        self.assertEqual(common.notebook_source_id({"id": "osm1-kitap-1", "nlm_id": "uuid-1"}), "uuid-1")
+
+    def test_a_state_without_nlm_id_keeps_its_own_id(self) -> None:
+        self.assertEqual(
+            common.notebook_source_id({"id": "817b5ed4-4b8c-45a3-905d-dea47e9a1ec8", "title": "TÜRK DİLİ I - Kitap"}),
+            "817b5ed4-4b8c-45a3-905d-dea47e9a1ec8")
+
+    def test_a_source_without_an_id_is_empty(self) -> None:
+        self.assertEqual(common.notebook_source_id({}), "")
+
+
 class TestExcludedFromGrounding(unittest.TestCase):
     """exclude_titles: kacirilan kaynak hem tier'a giremez hem de notlari beslemez."""
 

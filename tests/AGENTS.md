@@ -10,7 +10,7 @@
 - `test_graph.py` — `CourseGraph` query layer on a temporary fixture graph (search ranking, explore, impact, overview, chapter detail, missing-index error).
 - `test_quiz_data.py` — the quiz checker's own behavior on synthetic bad input, plus real-data integrity and `site/unit_quizzes.js` consistency.
 - `test_exports.py` — `chapter_meta`/`build_solution`, the unit-quiz export in a sandboxed `ROOT`, the `past_exams.js`/`unit_quizzes.js` bundle contracts, the OKF export's "a broken input leaves the bundle intact" guarantee, and the grounding helpers plus `audit_sources.audit`.
-- `test_common.py` — `generator/scripts/common.py`: the pipeline `Lock` (second runner refused, stale lock cleared), `_pid_alive` (Windows needs `OpenProcess`, `os.kill(pid, 0)` is a `CTRL_C_EVENT` there), `source_tier` (type, title and URL matching, `exclude_titles`), `excluded_from_grounding` and `with_authority` (an excluded source never grounds a chapter, `max_add`), the per-course config (`courses.json` → `config`) and `generator/scripts/quiz_types.py` with its agreement with the site's `GRADED` set. Also checks that the technical course's unit titles equal its chapter titles.
+- `test_common.py` — `generator/scripts/common.py`: the pipeline `Lock` (second runner refused, stale lock cleared), `_pid_alive` (Windows needs `OpenProcess`, `os.kill(pid, 0)` is a `CTRL_C_EVENT` there), `source_tier` (type, title and URL matching, `exclude_titles`), `notebook_source_id` (`nlm_id`, else the source's own `id`), `excluded_from_grounding` and `with_authority` (an excluded source never grounds a chapter, `max_add`), the per-course config (`courses.json` → `config`) and `generator/scripts/quiz_types.py` with its agreement with the site's `GRADED` set. Also checks that the technical course's unit titles equal its chapter titles.
 - `test_site_copy.py` — the site template's copy contract: the Turkish noun table
   (`NOUN_FORMS`/`nounForm`: "0 kaynak", "kaynağı", "kaynakların"), the absence of glued suffixes
   (`noun(c, n) + "yı"`), the "puanlık soru" quiz header, and the both-paths copy
@@ -32,7 +32,7 @@
 - `test_extension.py` — `extensions/notebooklm-study-app/`: the MV3 manifest (popup exists, only `activeTab`/`scripting`, only the two NotebookLM hosts, no background worker or content script), no remote code or `eval` in the extension files, the generated `app-shell.js` equal to `scripts/export_app_shell.py`'s output, and a `node` run of `core.js` (payload from typed fields and from the pipeline's JSON, the question types it carries, the `qid` its `questionId()` computes against the builder's `_qid()` plus the empty `units` map, `</script>` escaping, `slugify` on Turkish letters, and a rendered page that matches `build_study_app.render_app`). The node checks skip when `node` is missing.
 - `test_build.py` — `generator/scripts/build.py`'s `clean()`: numbered and by-title citation markers are dropped, markdown links and the reference list survive, and an escaped product identifier (`V\\(CLUSTER_INTERCONNECTS`) is restored to `V$CLUSTER_INTERCONNECTS` while real LaTeX is kept. It also pins the offline split: `chat.js` is not in `SHELL_FILES`, and the built `data.js`
   offers it as its own `soru` pack.
-- `test_chat.py` — the question-and-answer corpus: the generator reads the model's JSON (including the invalid escapes it writes), the prompt asks for source citations, the export drops incomplete items, the NotebookLM id of a source (`nlm_id`, else the source's own `id`), the OKF page groups the corpus by chapter, and the retrieval rule rejects a hit below a third of the best possible score or below 40% question-term coverage. The stop words and both thresholds are read from `app.js`, so the test cannot drift from the site.
+- `test_chat.py` — the question-and-answer corpus: the generator reads the model's JSON (including the invalid escapes it writes), the prompt asks for source citations, the export drops incomplete items, the OKF page groups the corpus by chapter, and the retrieval rule rejects a hit below a third of the best possible score or below 40% question-term coverage. The stop words and both thresholds are read from `app.js`, so the test cannot drift from the site.
 - `test_check_chat_corpus.py` — `scripts/check_chat_corpus.py`: a clean corpus has no findings, a missing answer or
   source, a citation outside the source list, a repeated question (case and spacing ignored), a placeholder answer and a
   chapter past the plan are errors, an over-long answer and an uncovered chapter are warnings, a source list without the tier-0 textbook warns (an error under `strict`), and the corpora in the repository must stay error-free.
@@ -62,7 +62,7 @@
 - Keep the suite stdlib-only (`unittest`); do not add pytest.
 
 ## Verification
-- `py -3 -m unittest discover -s tests` — 252 tests, must exit 0. Run after any change to `data/`, `coursegraph/`, or the export scripts.
+- `py -3 -m unittest discover -s tests` — 254 tests, must exit 0. Run after any change to `data/`, `coursegraph/`, or the export scripts.
 - CI runs the same command on every push to `main` and on every pull request (`.github/workflows/tests.yml`).
 
 ## Child DOX Index
