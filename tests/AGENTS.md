@@ -10,7 +10,7 @@
 - `test_graph.py` — `CourseGraph` query layer on a temporary fixture graph (search ranking, explore, impact, overview, chapter detail, missing-index error).
 - `test_quiz_data.py` — the quiz checker's own behavior on synthetic bad input, plus real-data integrity and `site/unit_quizzes.js` consistency.
 - `test_exports.py` — `chapter_meta`/`build_solution`, the unit-quiz export in a sandboxed `ROOT`, the `past_exams.js`/`unit_quizzes.js` bundle contracts, the OKF export's "a broken input leaves the bundle intact" guarantee, and the grounding helpers plus `audit_sources.audit`.
-- `test_common.py` — `generator/scripts/common.py`: the pipeline `Lock` (second runner refused, stale lock cleared), `_pid_alive` (Windows needs `OpenProcess`, `os.kill(pid, 0)` is a `CTRL_C_EVENT` there), `source_tier` (type, title and URL matching, `exclude_titles`), `notebook_source_id` (`nlm_id`, else the source's own `id`), `excluded_from_grounding` and `with_authority` (an excluded source never grounds a chapter, `max_add`), the per-course config (`courses.json` → `config`) and `generator/scripts/quiz_types.py` with its agreement with the site's `GRADED` set. Also checks that the technical course's unit titles equal its chapter titles.
+- `test_common.py` — `generator/scripts/common.py`: the pipeline `Lock` (second runner refused, stale lock cleared), `_pid_alive` (Windows needs `OpenProcess`, `os.kill(pid, 0)` is a `CTRL_C_EVENT` there), `source_tier` (type, title and URL matching, `exclude_titles`), `notebook_source_id` (`nlm_id`, else the source's own `id`) plus its two consumers (`pipeline.Runner.chapter_sources` and `generate_chapter_audio.generate`: a local key reaches the CLI as its `nlm_id`, a UUID `id` as itself, an id that resolves to neither is passed through by the pipeline and stops the audio script before any CLI call), `excluded_from_grounding` and `with_authority` (an excluded source never grounds a chapter, `max_add`), the per-course config (`courses.json` → `config`) and `generator/scripts/quiz_types.py` with its agreement with the site's `GRADED` set. Also checks that the technical course's unit titles equal its chapter titles.
 - `test_site_copy.py` — the site template's copy contract: the Turkish noun table
   (`NOUN_FORMS`/`nounForm`: "0 kaynak", "kaynağı", "kaynakların"), the absence of glued suffixes
   (`noun(c, n) + "yı"`), the "puanlık soru" quiz header, and the both-paths copy
@@ -62,7 +62,7 @@
 - Keep the suite stdlib-only (`unittest`); do not add pytest.
 
 ## Verification
-- `py -3 -m unittest discover -s tests` — 254 tests, must exit 0. Run after any change to `data/`, `coursegraph/`, or the export scripts.
+- `py -3 -m unittest discover -s tests` — 260 tests, must exit 0. Run after any change to `data/`, `coursegraph/`, or the export scripts.
 - CI runs the same command on every push to `main` and on every pull request (`.github/workflows/tests.yml`).
 
 ## Child DOX Index

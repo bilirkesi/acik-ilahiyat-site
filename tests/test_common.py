@@ -4,6 +4,7 @@ generator/scripts/ bir paket değil; modüller sys.path'e eklenerek import edili
 """
 from __future__ import annotations
 
+import importlib.util
 import json
 import os
 import re
@@ -11,6 +12,7 @@ import sys
 import tempfile
 import unittest
 from pathlib import Path
+from types import SimpleNamespace
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "generator" / "scripts"))
@@ -18,6 +20,17 @@ sys.path.insert(0, str(ROOT / "generator" / "scripts"))
 import common  # noqa: E402
 import pipeline  # noqa: E402
 import quiz_types  # noqa: E402
+
+
+def _load_script(rel, name):
+    """scripts/ bir paket değil: betikler dosya yolundan yüklenir."""
+    spec = importlib.util.spec_from_file_location(name, ROOT / rel)
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    return mod
+
+
+audio = _load_script("scripts/generate_chapter_audio.py", "generate_chapter_audio")
 
 
 class TestLock(unittest.TestCase):
@@ -183,6 +196,102 @@ class TestNotebookSourceId(unittest.TestCase):
 
     def test_a_source_without_an_id_is_empty(self) -> None:
         self.assertEqual(common.notebook_source_id({}), "")
+
+
+class TestChapterSources(unittest.TestCase):
+    """`pipeline.Runner.chapter_sources`: bölümün kaynakları NotebookLM'in bildiği id'ye çözülür.
+
+    `Runner.__init__` `require_cli()` çağırdığı için örnek `__new__` ile kurulup yalnız
+    `chapter_sources`ın okuduğu iki üye (`tiers`, `ready_sources`) verilir.
+    """
+
+    TIERS = [{"label": "kitap", "types": ["book"]}]
+    UUID = "3f2b6c1e-8a44-4d47-9c1e-2b0e5a7d9f10"
+
+    def _runner(self, sources):
+        r = pipeline.Runner.__new__(pipeline.Runner)
+        r.tiers = self.TIERS
+        r.ready_sources = lambda: sources
+        return r
+
+    def test_a_local_key_is_sent_as_its_nlm_id(self) -> None:
+        sources = [{"id": "osm1-kitap-1", "nlm_id": self.UUID, "type": "book", "status": "ready"}]
+        self.assertEqual(self._runner(sources).chapter_sources({"source_ids": ["osm1-kitap-1"]}), [self.UUID])
+
+    def test_a_source_that_holds_the_uuid_in_id_is_sent_as_it_is(self) -> None:
+        sources = [{"id": self.UUID, "type": "file", "title": "TÜRK DİLİ I - Kitap", "status": "ready"}]
+        self.assertEqual(self._runner(sources).chapter_sources({"source_ids": [self.UUID]}), [self.UUID])
+
+    def test_an_id_that_matches_no_source_is_passed_through(self) -> None:
+        """İkisi de yoksa çözülecek bir id yoktur: plan id'si olduğu gibi CLI'ya gider ve NotebookLM onu
+        reddeder, `ground` o bölümü atlar. Ses betiği aynı durumda durur (aşağıdaki test)."""
+        runner = self._runner([{"id": self.UUID, "type": "file", "status": "ready"}])
+        self.assertEqual(runner.chapter_sources({"source_ids": ["osm1-kitap-1"]}), ["osm1-kitap-1"])
+
+
+class TestChapterAudioSourceIds(unittest.TestCase):
+    """`generate_chapter_audio.generate`: `-s` id'si NotebookLM'in bildiği id'dir.
+
+    Yerel anahtar (`osm1-kitap-1`) `nlm_id`'ye, doğrudan UUID tutan `id` kendisine çözülür; ikisi de
+    yoksa yerel anahtar CLI'ya verilemez, betik `SystemExit` ile durur.
+    """
+
+    UUID = "817b5ed4-4b8c-45a3-905d-dea47e9a1ec8"
+    UNI = {"language": "Turkish", "audience": "öğrenciler",
+           "grounding": {"tiers": [{"label": "kitap", "types": ["book"]}]}}
+
+    def _args(self):
+        return SimpleNamespace(nlm=["notebooklm"], format="deep-dive", length="short", language="tr")
+
+    def _generate(self, sources, chapter):
+        """`generate`ı sahte bir `run` ile çalıştırır; yapılan CLI çağrılarını döndürür."""
+        calls = []
+
+        def fake_run(cmd, **kw):
+            calls.append([str(c) for c in cmd])
+            return SimpleNamespace(stdout="")
+
+        old = audio.run
+        audio.run = fake_run
+        try:
+            with tempfile.TemporaryDirectory() as td:
+                audio.generate("notebook-1", chapter, Path(td) / "chapter-1.mp4", self._args(), sources, self.UNI)
+        finally:
+            audio.run = old
+        return calls
+
+    @staticmethod
+    def _source_args(cmd):
+        return [cmd[i + 1] for i, a in enumerate(cmd) if a == "-s"]
+
+    def test_a_local_key_is_sent_as_its_nlm_id(self) -> None:
+        sources = [{"id": "osm1-kitap-1", "nlm_id": self.UUID, "type": "book", "status": "ready"}]
+        cmd = self._generate(sources, {"title": "Bölüm 1", "source_ids": ["osm1-kitap-1"]})[0]
+        self.assertEqual(self._source_args(cmd), [self.UUID])
+
+    def test_a_source_that_holds_the_uuid_in_id_is_sent_as_it_is(self) -> None:
+        sources = [{"id": self.UUID, "type": "file", "status": "ready"}]
+        cmd = self._generate(sources, {"title": "Bölüm 1", "source_ids": [self.UUID]})[0]
+        self.assertEqual(self._source_args(cmd), [self.UUID])
+
+    def test_a_source_without_a_notebook_id_stops_before_any_cli_call(self) -> None:
+        calls = []
+
+        def fake_run(cmd, **kw):
+            calls.append(cmd)
+            return SimpleNamespace(stdout="{}")
+
+        old = audio.run
+        audio.run = fake_run
+        try:
+            with tempfile.TemporaryDirectory() as td, self.assertRaises(SystemExit) as cm:
+                audio.generate("notebook-1", {"title": "Bölüm 1", "source_ids": ["osm1-kitap-1"]},
+                               Path(td) / "chapter-1.mp4", self._args(),
+                               [{"id": "osm1-kitap-1", "type": "book", "status": "ready"}], self.UNI)
+        finally:
+            audio.run = old
+        self.assertIn("has no NotebookLM id", str(cm.exception))
+        self.assertEqual(calls, [])
 
 
 class TestExcludedFromGrounding(unittest.TestCase):
