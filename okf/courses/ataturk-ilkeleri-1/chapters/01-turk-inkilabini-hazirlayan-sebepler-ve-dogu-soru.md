@@ -5,7 +5,7 @@ description: Osmanlı Devleti'nin 17. ve 18. yüzyıllardaki dönüşüm süreci
 course: ataturk-ilkeleri-1
 chapter: 1
 status: stable
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-15T18:02:32Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-11-27T08:28:47Z }
 notebook: "https://notebooklm.google.com/notebook/436f4e9d-25d4-4441-98f1-ed97d01b9b7f"
 ---
 
@@ -202,3 +202,4 @@ Metindeki ⟦n⟧ işaretleri bu listeye açılır. Alıntıya tıklayınca çö
 
 * NotebookLM kaynağı `125b94f1-ab7e-4312-b936-3d2ed8001566`
 * NotebookLM kaynağı `00bbd239-2163-4216-98fd-de561a0119c9`
+* NotebookLM kaynağı `8e318f43-21c9-4b22-8666-c8da80b55285`

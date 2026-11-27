@@ -5,7 +5,7 @@ description: "Ankara'da 23 Nisan 1920'de Türkiye Büyük Millet Meclisi'nin aç
 course: ataturk-ilkeleri-1
 chapter: 4
 status: stable
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-15T18:02:32Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-11-27T08:28:47Z }
 notebook: "https://notebooklm.google.com/notebook/436f4e9d-25d4-4441-98f1-ed97d01b9b7f"
 ---
 
@@ -178,3 +178,4 @@ Metindeki ⟦n⟧ işaretleri bu listeye açılır. Alıntıya tıklayınca çö
 
 * NotebookLM kaynağı `a7f0b749-02d2-481a-9a9c-5766f6d71348`
 * NotebookLM kaynağı `02a1f712-2b89-4e88-9209-57fec97f95d7`
+* NotebookLM kaynağı `8e318f43-21c9-4b22-8666-c8da80b55285`

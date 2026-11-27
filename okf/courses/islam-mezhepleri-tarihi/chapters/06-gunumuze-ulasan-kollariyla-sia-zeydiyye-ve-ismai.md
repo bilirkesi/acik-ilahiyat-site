@@ -5,7 +5,7 @@ description: Bu bölümde Şia'nın günümüze kadar varlığını sürdüren k
 course: islam-mezhepleri-tarihi
 chapter: 6
 status: stable
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-15T15:29:24Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-11-27T08:28:47Z }
 notebook: "https://notebooklm.google.com/notebook/ad4a99c9-cc96-4f29-92f5-ca8638bc42c2"
 ---
 
@@ -157,3 +157,4 @@ Metindeki ⟦n⟧ işaretleri bu listeye açılır. Alıntıya tıklayınca çö
 
 * NotebookLM kaynağı `c84bc21f-b1a4-42e8-a2fa-99a13942acb3`
 * NotebookLM kaynağı `2610f1ed-122f-4900-87f3-2315dac3ac1f`
+* NotebookLM kaynağı `963c118b-9e55-402d-8399-9237939ce477`

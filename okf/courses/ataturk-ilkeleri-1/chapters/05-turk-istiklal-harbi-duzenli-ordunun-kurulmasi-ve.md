@@ -5,7 +5,7 @@ description: Kuvayı Milliye birliklerinin düşman ilerleyişini durdurmada yet
 course: ataturk-ilkeleri-1
 chapter: 5
 status: stable
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-15T18:02:32Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-11-27T08:28:47Z }
 notebook: "https://notebooklm.google.com/notebook/436f4e9d-25d4-4441-98f1-ed97d01b9b7f"
 ---
 
@@ -187,3 +187,4 @@ Metindeki ⟦n⟧ işaretleri bu listeye açılır. Alıntıya tıklayınca çö
 # Kaynaklar
 
 * NotebookLM kaynağı `64ee7ea9-39cd-48e7-bb54-bdbed2588a57`
+* NotebookLM kaynağı `8e318f43-21c9-4b22-8666-c8da80b55285`

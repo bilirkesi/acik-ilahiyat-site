@@ -5,7 +5,7 @@ description: Bu bölümde söz diziminin temel ögeleri olan sözcük öbekleri 
 course: turk-dili-1
 chapter: 5
 status: stable
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-15T18:02:32Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-11-27T08:28:47Z }
 notebook: "https://notebooklm.google.com/notebook/c702ed26-fe17-463d-b217-202acd0c3d26"
 ---
 
@@ -192,3 +192,4 @@ Metindeki ⟦n⟧ işaretleri bu listeye açılır. Alıntıya tıklayınca çö
 * NotebookLM kaynağı `020dc516-64f8-4f00-a2d4-cec4f80e8336`
 * NotebookLM kaynağı `a79b2fea-4a60-4bf3-997d-4b63612b8618`
 * NotebookLM kaynağı `bcd8ae54-c756-4248-b4d0-b193fee317ba`
+* NotebookLM kaynağı `03e31490-de9b-40aa-8d64-76ad02d657ca`

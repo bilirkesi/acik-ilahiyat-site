@@ -5,7 +5,7 @@ description: Birinci Dünya Savaşı sonrasında imzalanan Mondros Mütarekesi, 
 course: ataturk-ilkeleri-1
 chapter: 3
 status: stable
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-15T18:02:32Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-11-27T08:28:47Z }
 notebook: "https://notebooklm.google.com/notebook/436f4e9d-25d4-4441-98f1-ed97d01b9b7f"
 ---
 
@@ -192,3 +192,4 @@ Metindeki ⟦n⟧ işaretleri bu listeye açılır. Alıntıya tıklayınca çö
 
 * NotebookLM kaynağı `d28a99ae-9765-4c98-877a-7666bed245ba`
 * NotebookLM kaynağı `b134e1a0-81f1-4f7b-897d-37d56695d010`
+* NotebookLM kaynağı `8e318f43-21c9-4b22-8666-c8da80b55285`

@@ -5,7 +5,7 @@ description: "Bu bölümde dillerin birbirleriyle girdikleri tarihsel ve kültü
 course: turk-dili-1
 chapter: 7
 status: stable
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-15T18:02:32Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-11-27T08:28:47Z }
 notebook: "https://notebooklm.google.com/notebook/c702ed26-fe17-463d-b217-202acd0c3d26"
 ---
 
@@ -149,3 +149,4 @@ Metindeki ⟦n⟧ işaretleri bu listeye açılır. Alıntıya tıklayınca çö
 # Kaynaklar
 
 * NotebookLM kaynağı `c67d0580-7a24-4952-81cc-4020384610de`
+* NotebookLM kaynağı `03e31490-de9b-40aa-8d64-76ad02d657ca`

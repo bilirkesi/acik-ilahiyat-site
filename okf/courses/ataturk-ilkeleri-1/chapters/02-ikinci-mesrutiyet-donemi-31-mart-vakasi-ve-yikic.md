@@ -5,7 +5,7 @@ description: İkinci Meşrutiyet'in ilanı sonrasında İttihat ve Terakki Cemiy
 course: ataturk-ilkeleri-1
 chapter: 2
 status: stable
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-15T18:02:32Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-11-27T08:28:47Z }
 notebook: "https://notebooklm.google.com/notebook/436f4e9d-25d4-4441-98f1-ed97d01b9b7f"
 ---
 
@@ -195,3 +195,4 @@ Metindeki ⟦n⟧ işaretleri bu listeye açılır. Alıntıya tıklayınca çö
 
 * NotebookLM kaynağı `e61c4979-9bea-44ce-9b03-dac8f460a7b9`
 * NotebookLM kaynağı `01de3f1b-a9fa-4be0-8f2d-63bc48da5fca`
+* NotebookLM kaynağı `8e318f43-21c9-4b22-8666-c8da80b55285`

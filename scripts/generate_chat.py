@@ -29,7 +29,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "generator" / "scripts"))
 
-from common import cli_language, find_cli, language_code, load_university, require_cli  # noqa: E402
+from common import (cli_language, find_cli, language_code, load_university, require_cli,  # noqa: E402
+                    with_authority)
 from pipeline import fix_json_escapes  # noqa: E402
 
 # Sitede gösterilecek metin dili: dersin kendi dili.
@@ -100,15 +101,20 @@ def match_local_id(sid, sources):
     return None
 
 
-def resolve_chapter_sources(chapter, sources):
-    """Bolumun kaynaklarini state.json kaynaklariyla eslestirir."""
+def resolve_chapter_sources(chapter, sources, tiers=None):
+    """Bolumun kaynaklarini state.json kaynaklariyla eslestirir.
+
+    Bolum yalnizca video/altyazi gosteriyorsa `with_authority` dersin ders kitabini da ekler: notlar
+    kitaptan uretildigi icin cevaplar da kitaba dayanmali, yalnizca ders anlatimina degil.
+    """
     by_id = {s.get("id"): s for s in sources}
     out = []
     for sid in chapter.get("source_ids", []):
         hit = by_id.get(sid) or match_local_id(sid, sources)
         if hit and hit not in out:
             out.append(hit)
-    return out
+    ids = with_authority([s.get("id") for s in out], sources, tiers or [])
+    return [by_id[i] for i in ids if i in by_id]
 
 
 def parse_json(text):
@@ -200,13 +206,13 @@ def renumber_citations(answer, sources, fallback=None):
     return text, cited
 
 
-def chapter_sources(plan, state):
+def chapter_sources(plan, state, tiers=None):
     """Bolum basina kaynak listesi: {bolum: [{title, url}, ...]}."""
     sources = list(state.get("sources", {}).values())
     out = {}
     for i, ch in enumerate(plan.get("chapters", []), 1):
         out[i] = [{"title": s["title"], "url": s.get("url") or ""}
-                  for s in resolve_chapter_sources(ch, sources)]
+                  for s in resolve_chapter_sources(ch, sources, tiers)]
     return out
 
 
@@ -241,8 +247,9 @@ def main() -> int:
             sys.exit(f"{args.slug}: chat.json yok")
         plan = json.loads((d / "study_plan.json").read_text(encoding="utf-8-sig"))
         state = json.loads((d / "state.json").read_text(encoding="utf-8-sig"))
+        tiers = (load_university(ROOT, args.slug).get("grounding") or {}).get("tiers") or []
         corpus = normalize_corpus(json.loads(out_path.read_text(encoding="utf-8-sig")),
-                                  chapter_sources(plan, state))
+                                  chapter_sources(plan, state, tiers))
         out_path.write_text(json.dumps(corpus, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
         print(f"normalized {out_path.relative_to(ROOT)}: {len(corpus['items'])} questions")
         return 0
@@ -250,6 +257,7 @@ def main() -> int:
     plan = json.loads((d / "study_plan.json").read_text(encoding="utf-8-sig"))
     state = json.loads((d / "state.json").read_text(encoding="utf-8-sig"))
     uni = load_university(ROOT, args.slug)
+    tiers = (uni.get("grounding") or {}).get("tiers") or []
     lang = language_code(uni)
     nb = state.get("notebook_id")
     if not nb:
@@ -275,7 +283,7 @@ def main() -> int:
         if key in done and not args.force:
             print(f"  chapter {n}: exists, skipped", flush=True)
             continue
-        srcs = resolve_chapter_sources(ch, sources)
+        srcs = resolve_chapter_sources(ch, sources, tiers)
         if not srcs:
             print(f"  chapter {n}: no sources, skipped", flush=True)
             continue

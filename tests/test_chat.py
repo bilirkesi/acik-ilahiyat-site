@@ -317,6 +317,23 @@ class TestChatSources(unittest.TestCase):
         chapter = {"source_ids": ["bilinmeyen-9"]}
         self.assertEqual(gen.resolve_chapter_sources(chapter, self.SOURCES), [])
 
+    def test_chapter_sources_add_the_textbook(self) -> None:
+        """Video disinda ust katman kaynak yoksa ders kitabi da gonderilir (notlar kitaptan uretildi)."""
+        tiers = [{"label": "kitap", "types": ["file"]}, {"label": "video", "types": ["youtube"]}]
+        sources = [
+            {"id": "v1", "nlm_id": "u1", "type": "youtube", "status": "ready",
+             "title": "Ünite 1 Özet videosu"},
+            {"id": "b1", "nlm_id": "u2", "type": "file", "status": "ready",
+             "title": "TÜRK DİLİ I - Kitap"},
+        ]
+        chapter = {"source_ids": ["v1"]}
+        got = gen.resolve_chapter_sources(chapter, sources, tiers)
+        self.assertEqual([s["id"] for s in got], ["v1", "b1"])
+        # Kitap zaten listede: yeniden eklenmez, sira korunur.
+        chapter = {"source_ids": ["v1", "b1"]}
+        got = gen.resolve_chapter_sources(chapter, sources, tiers)
+        self.assertEqual([s["id"] for s in got], ["v1", "b1"])
+
 
 class TestChatBuild(unittest.TestCase):
     """build.py: katalog sayfasinin sayiyi chat.js'i yuklemeden gostermesi."""

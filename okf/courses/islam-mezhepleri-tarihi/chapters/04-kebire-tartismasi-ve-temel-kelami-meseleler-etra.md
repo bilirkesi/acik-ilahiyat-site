@@ -5,7 +5,7 @@ description: Bu bölümde Haricilerin tekfir söylemine tepki olarak doğan Mür
 course: islam-mezhepleri-tarihi
 chapter: 4
 status: stable
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-15T15:29:24Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-11-27T08:28:47Z }
 notebook: "https://notebooklm.google.com/notebook/ad4a99c9-cc96-4f29-92f5-ca8638bc42c2"
 ---
 
@@ -244,3 +244,4 @@ Metindeki ⟦n⟧ işaretleri bu listeye açılır. Alıntıya tıklayınca çö
 
 * NotebookLM kaynağı `6a987eeb-5cf6-4e82-bdfc-24f225db7696`
 * NotebookLM kaynağı `54a07659-7f9f-4539-8e92-f0c0d798e282`
+* NotebookLM kaynağı `963c118b-9e55-402d-8399-9237939ce477`

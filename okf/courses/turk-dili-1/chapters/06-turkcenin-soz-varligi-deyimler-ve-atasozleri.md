@@ -5,7 +5,7 @@ description: Bu bölümde Türk dilinin zengin söz varlığını oluşturan dey
 course: turk-dili-1
 chapter: 6
 status: stable
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-15T18:02:32Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-11-27T08:28:47Z }
 notebook: "https://notebooklm.google.com/notebook/c702ed26-fe17-463d-b217-202acd0c3d26"
 ---
 
@@ -146,3 +146,4 @@ Metindeki ⟦n⟧ işaretleri bu listeye açılır. Alıntıya tıklayınca çö
 * NotebookLM kaynağı `5fe5fa5d-a094-4068-b576-9bc137520cf6`
 * NotebookLM kaynağı `901b2e7a-4965-42f8-b4e7-e922ac9c579c`
 * NotebookLM kaynağı `d39be437-316d-4262-ab2e-51c07aa7e4db`
+* NotebookLM kaynağı `03e31490-de9b-40aa-8d64-76ad02d657ca`

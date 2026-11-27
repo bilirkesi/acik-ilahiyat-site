@@ -22,6 +22,9 @@ Generation (`data/` → richer content):
   `--normalize` only repairs the citation numbers of an existing corpus. The chapter's sources come from the
   plan's `source_ids`; they are matched against `state.json` by the source's `id` field and sent to the CLI as
   `nlm_id`, and an id that matches nothing is resolved by keyword and number (e.g. `osm1-kitap-2`).
+  `with_authority()` then adds the course's textbook when none of the chapter's sources is top tier, the
+  same rule the note and quiz pipelines use: a chapter planned on captions alone is still answered from the
+  book, and `--normalize` lists that book as the fallback source.
   `renumber_citations()` drops the citation markers that point outside the source list (NotebookLM sometimes
   numbers a source of the whole notebook), renumbers the rest from 1, and falls back to the chapter's sources
   when no marker fits.

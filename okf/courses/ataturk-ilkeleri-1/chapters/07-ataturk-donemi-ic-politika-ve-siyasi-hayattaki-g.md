@@ -5,7 +5,7 @@ description: "Cumhuriyetin ilanının ardından çok partili siyasi hayata geçi
 course: ataturk-ilkeleri-1
 chapter: 7
 status: stable
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-15T18:02:32Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-11-27T08:28:47Z }
 notebook: "https://notebooklm.google.com/notebook/436f4e9d-25d4-4441-98f1-ed97d01b9b7f"
 ---
 
@@ -164,3 +164,4 @@ Metindeki ⟦n⟧ işaretleri bu listeye açılır. Alıntıya tıklayınca çö
 
 * NotebookLM kaynağı `6c36dfa4-e154-4627-8e19-2bcb4a7de7d1`
 * NotebookLM kaynağı `da8ab100-6470-4014-b9e6-763d6a97742e`
+* NotebookLM kaynağı `8e318f43-21c9-4b22-8666-c8da80b55285`

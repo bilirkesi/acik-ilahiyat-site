@@ -5,7 +5,7 @@ description: Bu bölümde Türk dilinin biçim bilgisi yapısı, en küçük anl
 course: turk-dili-1
 chapter: 4
 status: stable
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-15T18:02:32Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-11-27T08:28:47Z }
 notebook: "https://notebooklm.google.com/notebook/c702ed26-fe17-463d-b217-202acd0c3d26"
 ---
 
@@ -188,3 +188,4 @@ Metindeki ⟦n⟧ işaretleri bu listeye açılır. Alıntıya tıklayınca çö
 * NotebookLM kaynağı `2969046e-5dad-483e-8443-89e87a4bceae`
 * NotebookLM kaynağı `b39debaa-7511-4b0a-a4c3-f9625763ab0e`
 * NotebookLM kaynağı `0473eb57-585b-48f9-8560-25c1bdf06c34`
+* NotebookLM kaynağı `03e31490-de9b-40aa-8d64-76ad02d657ca`

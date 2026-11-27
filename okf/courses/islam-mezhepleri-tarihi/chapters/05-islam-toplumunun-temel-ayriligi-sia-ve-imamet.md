@@ -5,7 +5,7 @@ description: Bu bölümde Hz. Peygamber sonrası liderlik tartışmalarıyla ba�
 course: islam-mezhepleri-tarihi
 chapter: 5
 status: stable
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-15T15:29:24Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-11-27T08:28:47Z }
 notebook: "https://notebooklm.google.com/notebook/ad4a99c9-cc96-4f29-92f5-ca8638bc42c2"
 ---
 
@@ -234,3 +234,4 @@ Metindeki ⟦n⟧ işaretleri bu listeye açılır. Alıntıya tıklayınca çö
 # Kaynaklar
 
 * NotebookLM kaynağı `7a7daeaa-058a-45fd-8230-ba6f591e7118`
+* NotebookLM kaynağı `963c118b-9e55-402d-8399-9237939ce477`

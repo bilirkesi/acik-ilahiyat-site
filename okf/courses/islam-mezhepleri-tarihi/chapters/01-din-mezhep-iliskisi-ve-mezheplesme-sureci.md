@@ -5,7 +5,7 @@ description: Bu bölümde din ve mezhep kavramları arasındaki ilişki ile Hz. 
 course: islam-mezhepleri-tarihi
 chapter: 1
 status: stable
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-10-15T15:29:24Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-11-27T08:28:47Z }
 notebook: "https://notebooklm.google.com/notebook/ad4a99c9-cc96-4f29-92f5-ca8638bc42c2"
 ---
 
@@ -172,3 +172,4 @@ Metindeki ⟦n⟧ işaretleri bu listeye açılır. Alıntıya tıklayınca çö
 
 * NotebookLM kaynağı `1e500d4f-39aa-482f-b337-a348aeb722d4`
 * NotebookLM kaynağı `62954e7e-cb44-41b9-b4ac-3d149fda5468`
+* NotebookLM kaynağı `963c118b-9e55-402d-8399-9237939ce477`

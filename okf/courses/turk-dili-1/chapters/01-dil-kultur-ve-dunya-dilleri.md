@@ -5,7 +5,7 @@ description: Bu bölümde dilin temel özellikleri, doğuşu, toplum ve kültür
 course: turk-dili-1
 chapter: 1
 status: stable
-generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-11-12T07:22:59Z }
+generated: { by: acik-ilahiyat-exporter/1.0, at: 2026-11-27T08:28:47Z }
 notebook: "https://notebooklm.google.com/notebook/c702ed26-fe17-463d-b217-202acd0c3d26"
 ---
 
@@ -157,3 +157,4 @@ Metindeki ⟦n⟧ işaretleri bu listeye açılır. Alıntıya tıklayınca çö
 * NotebookLM kaynağı `817b5ed4-4b8c-45a3-905d-dea47e9a1ec8`
 * NotebookLM kaynağı `29022b9d-b9e6-4b8e-afdc-89e7aafb8965`
 * NotebookLM kaynağı `0ba38058-1d6c-4ca0-b2a8-65f1b72461da`
+* NotebookLM kaynağı `03e31490-de9b-40aa-8d64-76ad02d657ca`
