@@ -65,6 +65,32 @@ class TestTheCorpusChecks(unittest.TestCase):
         self.assertTrue(any("cumle" in w for w in res["warnings"]), res["warnings"])
         self.assertTrue(any("bolum 1" in w for w in res["warnings"]), res["warnings"])
 
+    TIERS = [{"label": "ders kitabi", "titles": ["Kitap", "ders kitabı"]},
+             {"label": "video", "types": ["youtube"]}]
+
+    def test_a_source_list_without_the_textbook_warns(self) -> None:
+        """Kaynak listesinde ders kitabi yoksa uyari; `strict` ile hata."""
+        corpus = {"items": [{"chapter": 1, "q": "soru?", "a": "Cevap [1]. Ikinci cumle.",
+                              "sources": [{"title": "Ünite 1 Konu Anlatımı", "url": "u"}]}]}
+        res = check.check_corpus(corpus, chapters=1, tiers=self.TIERS)
+        self.assertEqual(res["errors"], [])
+        self.assertTrue(any("ust katman" in w for w in res["warnings"]), res["warnings"])
+        strict = check.check_corpus(corpus, chapters=1, tiers=self.TIERS, strict=True)
+        self.assertTrue(any("ust katman" in e for e in strict["errors"]), strict["errors"])
+
+    def test_a_source_list_with_the_textbook_passes(self) -> None:
+        corpus = {"items": [{"chapter": 1, "q": "soru?", "a": "Cevap [1]. Ikinci cumle.",
+                              "sources": [{"title": "TÜRK DİLİ I - Kitap", "url": ""}]}]}
+        res = check.check_corpus(corpus, chapters=1, tiers=self.TIERS, strict=True)
+        self.assertFalse(any("ust katman" in e for e in res["errors"]), res["errors"])
+
+    def test_the_grounding_check_needs_tiers(self) -> None:
+        """`tiers` verilmezse kaynak listesi yalnizca eski kurallarla denetlenir."""
+        corpus = {"items": [{"chapter": 1, "q": "soru?", "a": "Cevap [1]. Ikinci cumle.",
+                              "sources": [{"title": "Ünite 1 Konu Anlatımı", "url": "u"}]}]}
+        res = check.check_corpus(corpus, chapters=1, strict=True)
+        self.assertEqual(res["errors"], [])
+
     def test_cite_numbers_expands_ranges(self) -> None:
         self.assertEqual(check.cite_numbers("X [1, 3] Y [2-4]"), [1, 3, 2, 3, 4])
 

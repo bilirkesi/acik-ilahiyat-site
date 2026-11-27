@@ -21,7 +21,8 @@ Generation (`data/` → richer content):
   `--only N` limits it to one chapter, `--force` regenerates, `--count` sets the questions per chapter,
   `--normalize` only repairs the citation numbers of an existing corpus. The chapter's sources come from the
   plan's `source_ids`; they are matched against `state.json` by the source's `id` field and sent to the CLI as
-  `nlm_id`, and an id that matches nothing is resolved by keyword and number (e.g. `osm1-kitap-2`).
+  `nlm_id`, or the source's own `id` when the state records none (`nlm_source_id()`, the same rule
+  `pipeline.py` uses), and an id that matches nothing is resolved by keyword and number (e.g. `osm1-kitap-2`).
   `with_authority()` then adds the course's textbook when none of the chapter's sources is top tier, the
   same rule the note and quiz pipelines use: a chapter planned on captions alone is still answered from the
   book, and `--normalize` lists that book as the fallback source.
@@ -95,7 +96,10 @@ Validation:
 - `check_chat_corpus.py` — validates every `data/<slug>/chat.json`: each item needs a question, an answer, a chapter
   inside the plan and at least one source; the answer's `[n]` markers must index that source list; questions must not
   repeat within a course; placeholder answers ("bilmiyorum", "as an ai") fail. Answers outside 2–5 sentences, short
-  answers and chapters without questions are warnings. Errors exit 1; `--slug` limits the run, `--quiet` hides warnings.
+  answers and chapters without questions are warnings. Each item's source list is also checked for the course's top
+  `grounding.tiers` source (the textbook): a chapter whose items list captions only warns, and `--strict` makes it an
+  error (the three regenerated corpora still list captions only until `generate_chat.py --force` runs). Errors exit 1;
+  `--slug` limits the run, `--quiet` hides warnings.
 - `audit_sources.py` — per chapter, the `grounding.tiers` rank of assigned and cited sources; flags chapters with no textbook source. `--strict` exits 1 when a course notebook has no textbook at all.
 
 ## Local Contracts

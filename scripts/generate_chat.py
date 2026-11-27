@@ -78,7 +78,8 @@ def match_local_id(sid, sources):
 
     Bazi planlar state.json'da olmayan yerel id'ler kullanir (orn. "osm1-kitap-1",
     "osm1-video-3"). Boyle id'ler once anahtar kelimeye ("kitap", "video"), sonra bolum
-    numarasina gore cozulur. Defterde olmayan kaynaklar (nlm_id'si olmayanlar) elenir.
+    numarasina gore cozulur. `nlm_id`'si olmayan kayitlar (orn. bir videonun ses kopyasi) aday
+    olmaz, boylece eslesme videoya duser.
     """
     parts = [p for p in re.split(r"[^a-z0-9]+", str(sid).lower()) if p]
     num = next((p for p in reversed(parts) if p.isdigit()), "")
@@ -99,6 +100,15 @@ def match_local_id(sid, sources):
         if len(hits) == 1:
             return hits[0]
     return None
+
+
+def nlm_source_id(source):
+    """Kaynagin defterdeki id'si: `nlm_id`, yoksa kaydin kendi `id`'si.
+
+    Bazi derslerde (orn. `turk-dili-1`) state.json kaynagin NotebookLM UUID'sini dogrudan `id`
+    alaninda tutar ve `nlm_id` yazmaz; `pipeline.py` de ayni kurali kullanir.
+    """
+    return source.get("nlm_id") or source.get("id") or ""
 
 
 def resolve_chapter_sources(chapter, sources, tiers=None):
@@ -290,7 +300,8 @@ def main() -> int:
         prompt = template.format(title=ch["title"], count=args.count, lang=lang)
         cmd = [cli, "ask", prompt, "-n", nb, "--json", "--timeout", "600"]
         for s in srcs:
-            cmd += ["-s", s["nlm_id"]]
+            if sid := nlm_source_id(s):
+                cmd += ["-s", sid]
         obj = None
         for attempt in range(1, args.attempts + 1):
             code, out, err = run(cmd, timeout=900)
@@ -317,7 +328,7 @@ def main() -> int:
         items = []
         # Atiflar: ask cevabindaki "references" kaynak id + atif numarasi verir. Liste atif
         # numarasina gore siralanir (bos yerler birakilir), boylece "[3]" dogru kaynaga gider.
-        by_nlm = {s["nlm_id"]: s for s in srcs if s.get("nlm_id")}
+        by_nlm = {sid: s for s in srcs if (sid := nlm_source_id(s))}
         refs = {}
         for ref in (data.get("references") or []):
             sid = ref.get("source_id")

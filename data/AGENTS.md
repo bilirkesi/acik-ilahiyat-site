@@ -19,7 +19,7 @@
 - `data/<slug>/interactive.json`, `unit_infographics.json` — interactive panel and infographic metadata for the courses that have them.
 - `data/<slug>/flashcards.json` — the study app's deck, written by `py -3 generator/scripts/pipeline.py . <slug> flashcards` (one `ask` per chapter, scoped to that chapter's sources): `cards[]` of `{chapter, chapterTitle, front, back}`. It costs no Studio generation. `scripts/build_study_app.py` ships it; without the file the deck falls back to `chat.json`, then to the quiz's correct options.
 - `data/<slug>/audio.json` — chapter audio overviews (`chapters[]`: `chapter`, `file`, `duration`, `bytes`, `generated`) written by `scripts/generate_chapter_audio.py`; the MP3s live in `site/audio/<slug>/`.
-- `data/<slug>/chat.json` — the question-answer corpus (`items[]`: `chapter`, `chapterTitle`, `q`, `a`, `sources`) written by `scripts/generate_chat.py` from the notebook's own sources; `scripts/export_chat_site.py` turns it into `site/chat.js`, which the `#/soru` page retrieves from.
+- `data/<slug>/chat.json` — the question-answer corpus (`items[]`: `chapter`, `chapterTitle`, `q`, `a`, `sources`) written by `scripts/generate_chat.py` from the notebook's own sources; `scripts/export_chat_site.py` turns it into `site/chat.js`, which the `#/soru` page retrieves from. An item's `sources` should include the course's top-tier source; `scripts/check_chat_corpus.py` checks that and warns until the corpus is regenerated under the grounding rule.
 - `_exam_schema.md` — the exam JSON field reference; keep it in sync with any schema change.
 
 ## Local Contracts

@@ -317,6 +317,14 @@ class TestChatSources(unittest.TestCase):
         chapter = {"source_ids": ["bilinmeyen-9"]}
         self.assertEqual(gen.resolve_chapter_sources(chapter, self.SOURCES), [])
 
+    def test_the_notebook_id_falls_back_to_the_source_id(self) -> None:
+        """state.json `nlm_id` yazmiyorsa kaynagin `id`'si NotebookLM id'sidir (pipeline.py'nin kurali)."""
+        self.assertEqual(gen.nlm_source_id(
+            {"id": "817b5ed4-4b8c-45a3-905d-dea47e9a1ec8", "title": "TÜRK DİLİ I - Kitap"}),
+            "817b5ed4-4b8c-45a3-905d-dea47e9a1ec8")
+        self.assertEqual(gen.nlm_source_id({"id": "osm1-kitap-1", "nlm_id": "uuid-1"}), "uuid-1")
+        self.assertEqual(gen.nlm_source_id({}), "")
+
     def test_chapter_sources_add_the_textbook(self) -> None:
         """Video disinda ust katman kaynak yoksa ders kitabi da gonderilir (notlar kitaptan uretildi)."""
         tiers = [{"label": "kitap", "types": ["file"]}, {"label": "video", "types": ["youtube"]}]
